@@ -44,6 +44,67 @@
 
     /* Hero CTA row */
     .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: .5rem; }
+
+    /* ── PLAYER MOBILE COMPACT ─────────────────────────────────────
+       Desktop : barre 105px, iframe h=90 + margin-top:35px (code RadioKing original)
+       Mobile  : barre 62px,  iframe h=50 + margin-top:8px  (version compacte)
+       On utilise deux iframes cachées/visibles selon breakpoint.
+    ─────────────────────────────────────────────────────────────── */
+
+    /* Desktop : montrer rk-desktop, cacher rk-mobile */
+    .rk-desktop {
+      display: block;
+      flex: 1; min-width: 0;
+      height: 90px; border: 0;
+      margin-top: 35px;        /* offset RadioKing original */
+      align-self: flex-start;
+    }
+    .rk-mobile { display: none; }
+
+    @media (max-width: 767px) {
+      /* Barre compacte 62px */
+      #topRadioBar {
+        height: 62px !important;
+        padding: 0 8px !important;
+        gap: 8px !important;
+      }
+      body {
+        padding-top: 62px !important;
+      }
+      html {
+        scroll-padding-top: 62px !important;
+      }
+
+      /* Logo plus petit */
+      .bar-logo { margin-left: 0; }
+      .bar-logo-img {
+        width: 42px !important;
+        height: 42px !important;
+      }
+
+      /* Cacher badge et wave sur mobile */
+      .live-badge { display: none !important; }
+      .bar-wave   { display: none !important; }
+
+      /* Burger plus compact */
+      .bar-burger {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 1.2rem !important;
+        margin-right: 0 !important;
+      }
+
+      /* Cacher l'iframe desktop, montrer l'iframe mobile */
+      .rk-desktop { display: none !important; }
+      .rk-mobile {
+        display: block !important;
+        flex: 1; min-width: 0;
+        height: 50px;
+        border: 0;
+        margin-top: 8px;       /* offset réduit pour h=50 */
+        align-self: flex-start;
+      }
+    }
   </style>
 </head>
 <body>
@@ -63,8 +124,14 @@
     EN DIRECT MAINTENANT
   </div>
 
-  <!-- CENTRE : player RadioKing (code original exact) -->
-  <iframe src="https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90"
+  <!-- CENTRE desktop : player RadioKing h=90 (original) -->
+  <iframe class="rk-desktop"
+    src="https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90"
+    allow="autoplay" title="Radio Odyssey — Lecteur en direct"></iframe>
+
+  <!-- CENTRE mobile : player RadioKing h=50 compact -->
+  <iframe class="rk-mobile"
+    src="https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=50"
     allow="autoplay" title="Radio Odyssey — Lecteur en direct"></iframe>
 
   <!-- DROITE : wave + burger -->

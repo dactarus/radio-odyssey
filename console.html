@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Console Radio Odyssey — Éditeur Live</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --purple: #7B2FBE;
+      --pink:   #FF3CAC;
+      --navy:   #0b1c2d;
+      --blue:   #1e7fcb;
+      --panel:  #13202f;
+      --panel2: #1a2d40;
+      --border: rgba(30,127,203,.25);
+      --text:   #e2eaf4;
+      --muted:  #7a9bb5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--text); height: 100vh; overflow: hidden; }
+
+    /* ── LAYOUT ── */
+    #app { display: grid; grid-template-columns: 340px 1fr; grid-template-rows: 52px 1fr; height: 100vh; }
+
+    /* ── TOPBAR ── */
+    #topbar {
+      grid-column: 1 / -1;
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px;
+      padding: 0 16px;
+    }
+    .tb-logo { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1rem;
+      background: linear-gradient(135deg, #7B2FBE, #FF3CAC); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text; }
+    .tb-badge { background: rgba(30,127,203,.2); color: var(--blue); border: 1px solid var(--border);
+      border-radius: 6px; font-size: .72rem; font-weight: 700; padding: .2rem .6rem; }
+    .tb-spacer { flex: 1; }
+    .tb-btn {
+      background: rgba(255,255,255,.06); border: 1px solid var(--border);
+      color: var(--text); border-radius: 8px; padding: .35rem .9rem;
+      font-size: .82rem; font-weight: 600; cursor: pointer; transition: all .2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .tb-btn:hover { background: rgba(30,127,203,.2); border-color: var(--blue); }
+    .tb-btn.primary { background: linear-gradient(135deg,#7B2FBE,#FF3CAC); border-color: transparent; color: #fff; }
+    .tb-btn.primary:hover { opacity: .9; }
+    .tb-sep { width: 1px; height: 24px; background: var(--border); }
+
+    /* ── SIDEBAR ── */
+    #sidebar {
+      background: var(--panel);
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      padding-bottom: 2rem;
+    }
+    #sidebar::-webkit-scrollbar { width: 4px; }
+    #sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+    /* Page selector */
+    #page-selector {
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    #page-selector label { font-size: .72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--muted); display: block; margin-bottom: 6px; }
+    #page-selector select {
+      width: 100%; background: var(--panel2); border: 1px solid var(--border);
+      color: var(--text); border-radius: 8px; padding: .45rem .7rem;
+      font-size: .85rem; font-family: 'Inter', sans-serif; cursor: pointer;
+    }
+
+    /* Section headers */
+    .s-head {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 14px 6px;
+      font-size: .7rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .12em; color: var(--blue);
+      border-bottom: 1px solid rgba(30,127,203,.1);
+      margin-top: 4px; cursor: pointer; user-select: none;
+    }
+    .s-head .chevron { margin-left: auto; font-size: .8rem; transition: transform .2s; }
+    .s-head.collapsed .chevron { transform: rotate(-90deg); }
+    .s-body { padding: 8px 12px; }
+    .s-body.hidden { display: none; }
+
+    /* Field rows */
+    .field {
+      margin-bottom: 12px;
+    }
+    .field label {
+      display: block; font-size: .75rem; font-weight: 600; color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .field input[type="text"],
+    .field input[type="number"],
+    .field textarea,
+    .field select {
+      width: 100%; background: var(--panel2); border: 1px solid var(--border);
+      color: var(--text); border-radius: 7px; padding: .4rem .65rem;
+      font-size: .83rem; font-family: 'Inter', sans-serif;
+      transition: border-color .2s; resize: vertical;
+    }
+    .field input:focus, .field textarea:focus, .field select:focus {
+      outline: none; border-color: var(--blue);
+    }
+    .field textarea { min-height: 72px; line-height: 1.5; }
+    .field input[type="color"] {
+      width: 100%; height: 36px; border-radius: 7px; border: 1px solid var(--border);
+      background: var(--panel2); cursor: pointer; padding: 2px;
+    }
+    .field .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .field .hint { font-size: .7rem; color: var(--muted); margin-top: 3px; }
+
+    /* Toggle */
+    .toggle-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .toggle-row label { font-size: .8rem; font-weight: 600; color: var(--text); flex: 1; }
+    .toggle { position: relative; width: 36px; height: 20px; flex-shrink: 0; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle .slider {
+      position: absolute; inset: 0; background: rgba(255,255,255,.1);
+      border-radius: 20px; cursor: pointer; transition: .2s;
+    }
+    .toggle .slider::before {
+      content: ''; position: absolute; width: 14px; height: 14px;
+      background: #fff; border-radius: 50%; left: 3px; top: 3px; transition: .2s;
+    }
+    .toggle input:checked + .slider { background: var(--blue); }
+    .toggle input:checked + .slider::before { transform: translateX(16px); }
+
+    /* Apply btn */
+    .apply-btn {
+      width: 100%; background: linear-gradient(135deg,#7B2FBE,#1e7fcb);
+      border: none; color: #fff; border-radius: 8px;
+      padding: .55rem; font-weight: 700; font-size: .88rem;
+      cursor: pointer; transition: opacity .2s; margin-top: 4px;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .apply-btn:hover { opacity: .85; }
+    .apply-btn.success { background: linear-gradient(135deg,#22c55e,#16a34a); }
+
+    /* ── PREVIEW FRAME ── */
+    #preview-zone {
+      background: #000;
+      display: flex; flex-direction: column;
+      position: relative;
+    }
+    #preview-toolbar {
+      background: var(--panel2); border-bottom: 1px solid var(--border);
+      padding: 6px 12px; display: flex; align-items: center; gap: 8px;
+    }
+    .pt-label { font-size: .75rem; color: var(--muted); font-weight: 600; }
+    .pt-url { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--text);
+      background: var(--panel); border: 1px solid var(--border); border-radius: 6px;
+      padding: .25rem .6rem; flex: 1; }
+    .pt-size-btn {
+      background: rgba(255,255,255,.06); border: 1px solid var(--border);
+      color: var(--muted); border-radius: 6px; padding: .25rem .6rem;
+      font-size: .72rem; cursor: pointer; transition: all .15s;
+    }
+    .pt-size-btn.active, .pt-size-btn:hover { background: rgba(30,127,203,.2); color: var(--text); border-color: var(--blue); }
+
+    #preview-container {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      background: repeating-linear-gradient(45deg, #0d1a26 0, #0d1a26 10px, #0f1e2e 10px, #0f1e2e 20px);
+      overflow: hidden; padding: 0;
+    }
+    #preview-frame {
+      border: none;
+      transition: width .3s, height .3s;
+      box-shadow: 0 0 40px rgba(0,0,0,.5);
+    }
+
+    /* ── STATUS BAR ── */
+    #statusbar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--panel); border-top: 1px solid var(--border);
+      padding: 4px 16px; display: flex; align-items: center; gap: 12px;
+      font-size: .72rem; color: var(--muted); z-index: 100;
+    }
+    #status-msg { color: #22c55e; }
+    .sb-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; 
+      animation: blink-g 2s infinite; }
+    @keyframes blink-g { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    /* ── CODE PANEL ── */
+    #code-panel {
+      display: none;
+      position: fixed; inset: 52px 0 24px 340px;
+      background: #0d1520; z-index: 50;
+      flex-direction: column;
+    }
+    #code-panel.open { display: flex; }
+    #code-panel-header {
+      background: var(--panel2); border-bottom: 1px solid var(--border);
+      padding: 8px 14px; display: flex; align-items: center; gap: 10px;
+      font-size: .82rem; font-weight: 700;
+    }
+    #code-output {
+      flex: 1; overflow: auto; padding: 16px;
+      font-family: 'JetBrains Mono', monospace; font-size: .78rem;
+      line-height: 1.7; color: #a8d1f0; white-space: pre-wrap;
+    }
+
+    /* ── DIFF BADGE ── */
+    .diff-badge {
+      background: rgba(255,154,60,.15); color: #FF9A3C;
+      border: 1px solid rgba(255,154,60,.3); border-radius: 5px;
+      font-size: .68rem; font-weight: 700; padding: .1rem .4rem;
+      display: none;
+    }
+    .diff-badge.show { display: inline-block; }
+
+    /* Scrollbar global */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-thumb { background: rgba(30,127,203,.3); border-radius: 3px; }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <!-- ══ TOPBAR ══ -->
+  <div id="topbar">
+    <span class="tb-logo">🎙 Radio Odyssey</span>
+    <span class="tb-badge">Console Éditeur v1.0</span>
+    <div class="tb-spacer"></div>
+    <button class="tb-btn" onclick="refreshPreview()"><i class="bi bi-arrow-clockwise"></i> Actualiser</button>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" onclick="toggleCode()"><i class="bi bi-code-slash"></i> HTML</button>
+    <button class="tb-btn" onclick="openInTab()"><i class="bi bi-box-arrow-up-right"></i> Ouvrir</button>
+    <div class="tb-sep"></div>
+    <button class="tb-btn primary" onclick="downloadAll()"><i class="bi bi-download"></i> Télécharger</button>
+  </div>
+
+  <!-- ══ SIDEBAR ══ -->
+  <div id="sidebar">
+
+    <!-- Page selector -->
+    <div id="page-selector">
+      <label>Page à éditer</label>
+      <select id="sel-page" onchange="loadPage()">
+        <option value="index.html">🏠 Accueil (index.html)</option>
+        <option value="radio-coherence-cardiaque.html">❤️ Cohérence Cardiaque</option>
+        <option value="radio-bien-etre-en-ligne.html">🌿 Bien-être en Ligne</option>
+        <option value="radio-annees-80-en-ligne.html">🕺 Années 80</option>
+        <option value="musique-pour-se-concentrer.html">🎯 Concentration</option>
+        <option value="radio-detente-moderne.html">🌙 Détente Moderne</option>
+        <option value="radio-anti-stress-gratuite.html">🧘 Anti-Stress</option>
+        <option value="radio-pour-travailler.html">💻 Pour Travailler</option>
+        <option value="radio-dance-energisante.html">💃 Dance Énergisante</option>
+        <option value="musique-pour-respiration-guidee.html">🫁 Respiration Guidée</option>
+        <option value="positive-european-music-station.html">🇪🇺 European Positive</option>
+        <option value="keep-listening-radio-odyssey.html">▶️ Keep Listening</option>
+        <option value="european-chill-radio.html">☁️ European Chill</option>
+        <option value="feel-good-music-radio.html">😊 Feel Good Radio</option>
+      </select>
+    </div>
+
+    <!-- ── SEO ── -->
+    <div class="s-head" onclick="toggleSection(this)">
+      <i class="bi bi-search"></i> SEO &amp; Méta
+      <span class="diff-badge" id="diff-seo">modifié</span>
+      <i class="bi bi-chevron-down chevron"></i>
+    </div>
+    <div class="s-body" id="sec-seo">
+      <div class="field">
+        <label>Titre de la page (balise &lt;title&gt;)</label>
+        <input type="text" id="f-title" placeholder="Ex: Radio Odyssey – Cohérence Cardiaque" oninput="markDirty('seo')"/>
+        <div class="hint">Idéalement entre 50 et 60 caractères</div>
+      </div>
+      <div class="field">
+        <label>Description méta</label>
+        <textarea id="f-desc" rows="3" placeholder="Description courte pour Google (150 caractères max)" oninput="markDirty('seo')"></textarea>
+        <div class="hint" id="desc-count">0 / 155 caractères</div>
+      </div>
+      <button class="apply-btn" onclick="applySection('seo')"><i class="bi bi-check2"></i> Appliquer SEO</button>
+    </div>
+
+    <!-- ── HERO ── -->
+    <div class="s-head" onclick="toggleSection(this)">
+      <i class="bi bi-image"></i> Hero (bandeau haut)
+      <span class="diff-badge" id="diff-hero">modifié</span>
+      <i class="bi bi-chevron-down chevron"></i>
+    </div>
+    <div class="s-body" id="sec-hero">
+      <div class="field">
+        <label>Titre principal (h1)</label>
+        <input type="text" id="f-h1" placeholder="Titre principal de la page" oninput="markDirty('hero')"/>
+      </div>
+      <div class="field">
+        <label>Sous-titre / description hero</label>
+        <textarea id="f-subtitle" rows="2" placeholder="Courte phrase sous le titre" oninput="markDirty('hero')"></textarea>
+      </div>
+      <div class="field">
+        <label>Couleur de fond (dégradé de départ)</label>
+        <div class="row-2">
+          <div>
+            <input type="color" id="f-col1" value="#7B2FBE" oninput="previewGradient()"/>
+            <div class="hint">Couleur 1</div>
+          </div>
+          <div>
+            <input type="color" id="f-col2" value="#FF3CAC" oninput="previewGradient()"/>
+            <div class="hint">Couleur 2</div>
+          </div>
+        </div>
+        <div id="grad-preview" style="height:24px;border-radius:8px;margin-top:6px;background:linear-gradient(135deg,#7B2FBE,#FF3CAC);"></div>
+      </div>
+      <button class="apply-btn" onclick="applySection('hero')"><i class="bi bi-check2"></i> Appliquer Hero</button>
+    </div>
+
+    <!-- ── TEXTES ── -->
+    <div class="s-head" onclick="toggleSection(this)">
+      <i class="bi bi-pencil"></i> Contenu texte
+      <span class="diff-badge" id="diff-content">modifié</span>
+      <i class="bi bi-chevron-down chevron"></i>
+    </div>
+    <div class="s-body" id="sec-content">
+      <div class="field">
+        <label>Sélectionner un bloc à éditer</label>
+        <select id="f-block-sel" onchange="loadBlock()">
+          <option value="">— Cliquez sur un élément dans la preview —</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Contenu du bloc (HTML autorisé)</label>
+        <textarea id="f-block-content" rows="6" placeholder="Sélectionnez un élément dans la preview pour l'éditer ici" oninput="markDirty('content')"></textarea>
+      </div>
+      <button class="apply-btn" onclick="applyBlock()"><i class="bi bi-check2"></i> Appliquer ce bloc</button>
+      <div class="hint" style="margin-top:6px;">💡 Cliquez directement sur un texte dans la preview pour l'éditer</div>
+    </div>
+
+    <!-- ── LIENS ── -->
+    <div class="s-head collapsed" onclick="toggleSection(this)">
+      <i class="bi bi-link-45deg"></i> Liens &amp; Boutons
+      <span class="diff-badge" id="diff-links">modifié</span>
+      <i class="bi bi-chevron-down chevron"></i>
+    </div>
+    <div class="s-body hidden" id="sec-links">
+      <div class="field">
+        <label>URL du player RadioKing</label>
+        <input type="text" id="f-player-url" placeholder="https://player.radioking.io/..." oninput="markDirty('links')"/>
+      </div>
+      <div class="field">
+        <label>Email de contact</label>
+        <input type="text" id="f-email" placeholder="odysseylaradio@gmail.com" oninput="markDirty('links')"/>
+      </div>
+      <div class="field">
+        <label>URL Facebook</label>
+        <input type="text" id="f-fb" oninput="markDirty('links')"/>
+      </div>
+      <div class="field">
+        <label>URL Instagram</label>
+        <input type="text" id="f-ig" oninput="markDirty('links')"/>
+      </div>
+      <button class="apply-btn" onclick="applySection('links')"><i class="bi bi-check2"></i> Appliquer les liens</button>
+    </div>
+
+    <!-- ── STYLE GLOBAL ── -->
+    <div class="s-head collapsed" onclick="toggleSection(this)">
+      <i class="bi bi-palette"></i> Style global
+      <span class="diff-badge" id="diff-style">modifié</span>
+      <i class="bi bi-chevron-down chevron"></i>
+    </div>
+    <div class="s-body hidden" id="sec-style">
+      <div class="toggle-row">
+        <label>Mode sombre</label>
+        <label class="toggle"><input type="checkbox" id="f-dark" onchange="previewDark()"><span class="slider"></span></label>
+      </div>
+      <div class="field">
+        <label>Couleur principale (violet)</label>
+        <input type="color" id="f-primary" value="#7B2FBE" oninput="previewPrimary()"/>
+      </div>
+      <div class="field">
+        <label>Couleur accent (rose)</label>
+        <input type="color" id="f-accent" value="#FF3CAC" oninput="previewAccent()"/>
+      </div>
+      <div class="field">
+        <label>Taille de police de base</label>
+        <select id="f-fontsize" onchange="previewFontSize()">
+          <option value="15px">Petite (15px)</option>
+          <option value="16px" selected>Normale (16px)</option>
+          <option value="17px">Grande (17px)</option>
+          <option value="18px">Très grande (18px)</option>
+        </select>
+      </div>
+      <button class="apply-btn" onclick="applySection('style')"><i class="bi bi-check2"></i> Appliquer le style</button>
+    </div>
+
+    <!-- ── CSS CUSTOM ── -->
+    <div class="s-head collapsed" onclick="toggleSection(this)">
+      <i class="bi bi-braces"></i> CSS personnalisé
+      <i class="bi bi-chevron-down chevron"></i>
+    </div>
+    <div class="s-body hidden" id="sec-css">
+      <div class="field">
+        <label>CSS additionnel (ajouté en fin de &lt;style&gt;)</label>
+        <textarea id="f-custom-css" rows="8" style="font-family:'JetBrains Mono',monospace;font-size:.78rem;" placeholder="/* Vos règles CSS ici */
+.page-hero h1 { font-size: 3rem; }"></textarea>
+      </div>
+      <button class="apply-btn" onclick="applyCustomCSS()"><i class="bi bi-check2"></i> Appliquer le CSS</button>
+    </div>
+
+  </div><!-- /sidebar -->
+
+  <!-- ══ PREVIEW ZONE ══ -->
+  <div id="preview-zone">
+    <div id="preview-toolbar">
+      <span class="pt-label">Aperçu</span>
+      <div class="pt-url" id="pt-url-display">index.html</div>
+      <button class="pt-size-btn active" onclick="setSize('desktop',this)" title="Desktop">🖥</button>
+      <button class="pt-size-btn" onclick="setSize('tablet',this)" title="Tablette">📱</button>
+      <button class="pt-size-btn" onclick="setSize('mobile',this)" title="Mobile">📲</button>
+    </div>
+    <div id="preview-container">
+      <iframe id="preview-frame" src="index.html" style="width:100%;height:100%;"></iframe>
+    </div>
+  </div>
+
+</div><!-- /app -->
+
+<!-- ══ CODE PANEL ══ -->
+<div id="code-panel">
+  <div id="code-panel-header">
+    <i class="bi bi-code-slash"></i> HTML Source — <span id="code-filename">index.html</span>
+    <button class="tb-btn" style="margin-left:auto;" onclick="copyCode()"><i class="bi bi-clipboard"></i> Copier</button>
+    <button class="tb-btn" onclick="toggleCode()"><i class="bi bi-x"></i> Fermer</button>
+  </div>
+  <div id="code-output"></div>
+</div>
+
+<!-- ══ STATUS BAR ══ -->
+<div id="statusbar">
+  <div class="sb-dot"></div>
+  <span id="status-msg">Console prête — Sélectionnez une page et cliquez sur les éléments pour les éditer</span>
+  <div style="flex:1"></div>
+  <span id="status-page">index.html</span>
+  <span>|</span>
+  <span id="status-size">Desktop</span>
+</div>
+
+<script>
+// ================================================================
+//  RADIO ODYSSEY CONSOLE — Éditeur Live
+// ================================================================
+
+const pages = {};       // cache HTML des pages
+let currentPage = 'index.html';
+let currentBlockEl = null;
+let dirtyMap = {};
+
+// ── INIT ─────────────────────────────────────────────────────────
+window.addEventListener('load', () => {
+  loadPage();
+  setupDescCounter();
+  setupFrameListener();
+});
+
+function setupDescCounter() {
+  const desc = document.getElementById('f-desc');
+  const count = document.getElementById('desc-count');
+  desc.addEventListener('input', () => {
+    const n = desc.value.length;
+    count.textContent = `${n} / 155 caractères`;
+    count.style.color = n > 155 ? '#ef4444' : 'var(--muted)';
+  });
+}
+
+// ── PAGE LOADING ─────────────────────────────────────────────────
+function loadPage() {
+  const sel = document.getElementById('sel-page');
+  currentPage = sel.value;
+  document.getElementById('pt-url-display').textContent = currentPage;
+  document.getElementById('status-page').textContent = currentPage;
+  document.getElementById('code-filename').textContent = currentPage;
+
+  // Load in preview iframe
+  const frame = document.getElementById('preview-frame');
+  frame.src = currentPage;
+
+  // Load fields from cached HTML or fetch
+  if (pages[currentPage]) {
+    populateFields(pages[currentPage]);
+  } else {
+    fetch(currentPage)
+      .then(r => r.text())
+      .then(html => {
+        pages[currentPage] = html;
+        populateFields(html);
+        setStatus(`Page "${currentPage}" chargée`);
+      })
+      .catch(() => setStatus('⚠️ Aperçu uniquement — déployez pour tester en live', 'warn'));
+  }
+  dirtyMap = {};
+  document.querySelectorAll('.diff-badge').forEach(b => b.classList.remove('show'));
+}
+
+function populateFields(html) {
+  // Title
+  const titleMatch = html.match(/<title>([^<]*)<\/title>/);
+  document.getElementById('f-title').value = titleMatch ? decodeHTML(titleMatch[1].replace(' – Radio Odyssey','').replace(' - Radio Odyssey','')) : '';
+
+  // Meta desc
+  const descMatch = html.match(/name="description"\s+content="([^"]*)"/);
+  document.getElementById('f-desc').value = descMatch ? decodeHTML(descMatch[1]) : '';
+  document.getElementById('f-desc').dispatchEvent(new Event('input'));
+
+  // H1
+  const h1Match = html.match(/<h1[^>]*>([^<]*)<\/h1>/);
+  if (h1Match) document.getElementById('f-h1').value = decodeHTML(h1Match[1]);
+
+  // Subtitle (page-hero p)
+  const subMatch = html.match(/class="page-hero"[\s\S]*?<h1[^>]*>.*?<\/h1>\s*<p[^>]*>([\s\S]*?)<\/p>/);
+  if (subMatch) document.getElementById('f-subtitle').value = decodeHTML(subMatch[1].trim());
+
+  // Gradient colors from page-hero inline style
+  const gradMatch = html.match(/\.page-hero\{background:linear-gradient\(135deg,([^,]+),([^;)]+)\)/);
+  if (gradMatch) {
+    const c1 = gradMatch[1].trim();
+    const c2 = gradMatch[2].trim().replace(')','');
+    if (c1.startsWith('#')) document.getElementById('f-col1').value = c1;
+    if (c2.startsWith('#')) document.getElementById('f-col2').value = c2;
+    previewGradient();
+  }
+
+  // Player URL
+  const playerMatch = html.match(/src="(https:\/\/player\.radioking[^"]+)"/);
+  if (playerMatch) document.getElementById('f-player-url').value = playerMatch[1];
+
+  // Email
+  const emailMatch = html.match(/href="mailto:([^"]+)"/);
+  if (emailMatch) document.getElementById('f-email').value = emailMatch[1];
+
+  // Social
+  const fbMatch = html.match(/aria-label="Facebook"[^>]*href="([^"]+)"/)||html.match(/href="(https:\/\/www\.facebook[^"]+)"/);
+  if (fbMatch) document.getElementById('f-fb').value = fbMatch[1];
+  const igMatch = html.match(/href="(https:\/\/www\.instagram[^"]+)"/);
+  if (igMatch) document.getElementById('f-ig').value = igMatch[1];
+}
+
+// ── CLICK-TO-EDIT in iframe ──────────────────────────────────────
+function setupFrameListener() {
+  const frame = document.getElementById('preview-frame');
+  frame.addEventListener('load', () => {
+    try {
+      const doc = frame.contentDocument;
+      if (!doc) return;
+
+      // Inject edit overlay styles
+      const style = doc.createElement('style');
+      style.textContent = `
+        [data-editable]:hover { outline: 2px dashed #1e7fcb !important; outline-offset: 3px !important; cursor: pointer !important; }
+        [data-editable].ro-selected { outline: 2px solid #FF3CAC !important; outline-offset: 3px !important; background: rgba(255,60,172,.04) !important; }
+        .ro-edit-tooltip { position: fixed; top: 8px; right: 8px; background: #1e7fcb; color: #fff;
+          font-size: 11px; padding: 4px 10px; border-radius: 6px; z-index: 99999;
+          font-family: sans-serif; pointer-events: none; }
+      `;
+      doc.head.appendChild(style);
+
+      // Add tooltip
+      const tip = doc.createElement('div');
+      tip.className = 'ro-edit-tooltip';
+      tip.textContent = '✏️ Cliquez sur un texte pour l\'éditer';
+      doc.body.appendChild(tip);
+
+      // Mark editable elements
+      const editables = doc.querySelectorAll('h1, h2, h3, h4, p, li, .hero-eyebrow, .tagline, .btn-ro, .btn-hero, .section-eyebrow, .t-name, .t-role');
+      editables.forEach((el, i) => {
+        el.dataset.editable = i;
+        el.addEventListener('click', e => {
+          e.preventDefault(); e.stopPropagation();
+          // Deselect previous
+          doc.querySelectorAll('.ro-selected').forEach(x => x.classList.remove('ro-selected'));
+          el.classList.add('ro-selected');
+          currentBlockEl = el;
+          // Populate editor
+          const ta = document.getElementById('f-block-content');
+          ta.value = el.innerHTML;
+          const sel = document.getElementById('f-block-sel');
+          sel.innerHTML = `<option value="${i}">${el.tagName} — "${el.textContent.substring(0,40)}..."</option>`;
+          // Open content section
+          const sec = document.getElementById('sec-content');
+          sec.classList.remove('hidden');
+          document.querySelector('[onclick="toggleSection(this)"]');
+          setStatus(`Élément sélectionné : <${el.tagName.toLowerCase()}>`);
+          ta.focus();
+        });
+      });
+
+      // Remove tooltip after 3s
+      setTimeout(() => tip.remove(), 3500);
+
+    } catch(e) {
+      // Cross-origin — expected when deployed remotely
+    }
+  });
+}
+
+// ── APPLY SECTIONS ───────────────────────────────────────────────
+function applySection(section) {
+  if (!pages[currentPage]) {
+    setStatus('⚠️ Chargez d\'abord la page via fetch (serveur local requis)', 'warn');
+    // Still apply to iframe directly
+    applyToFrame(section);
+    return;
+  }
+  let html = pages[currentPage];
+
+  if (section === 'seo') {
+    const title = document.getElementById('f-title').value;
+    const desc  = document.getElementById('f-desc').value;
+    html = html.replace(/<title>[^<]*<\/title>/, `<title>${title} – Radio Odyssey</title>`);
+    html = html.replace(/name="description"\s+content="[^"]*"/, `name="description" content="${desc}"`);
+    setStatus('✅ SEO appliqué');
+  }
+
+  if (section === 'hero') {
+    const h1  = document.getElementById('f-h1').value;
+    const sub = document.getElementById('f-subtitle').value;
+    const c1  = document.getElementById('f-col1').value;
+    const c2  = document.getElementById('f-col2').value;
+    // h1
+    html = html.replace(/(<h1[^>]*>)[^<]*(<\/h1>)/, `$1${h1}$2`);
+    // gradient in inline style
+    html = html.replace(
+      /\.page-hero\{background:linear-gradient\(135deg,[^;]+;/,
+      `.page-hero{background:linear-gradient(135deg,${c1},${c2});`
+    );
+    setStatus('✅ Hero appliqué');
+  }
+
+  if (section === 'links') {
+    const email = document.getElementById('f-email').value;
+    const fb    = document.getElementById('f-fb').value;
+    const ig    = document.getElementById('f-ig').value;
+    if (email) html = html.replace(/href="mailto:[^"]+"/g, `href="mailto:${email}"`);
+    if (fb)    html = html.replace(/(href=")(https:\/\/www\.facebook[^"]+)(")/g, `$1${fb}$3`);
+    if (ig)    html = html.replace(/(href=")(https:\/\/www\.instagram[^"]+)(")/g, `$1${ig}$3`);
+    setStatus('✅ Liens appliqués');
+  }
+
+  pages[currentPage] = html;
+  updateCodePanel(html);
+  applyToFrame(section);
+  markApplied(section);
+}
+
+function applyBlock() {
+  const frame = document.getElementById('preview-frame');
+  const content = document.getElementById('f-block-content').value;
+  try {
+    const doc = frame.contentDocument;
+    if (currentBlockEl && doc) {
+      currentBlockEl.innerHTML = content;
+      setStatus('✅ Bloc mis à jour dans l\'aperçu');
+    }
+  } catch(e) {}
+  setStatus('✅ Modification appliquée — téléchargez pour sauvegarder');
+}
+
+function applyCustomCSS() {
+  const css = document.getElementById('f-custom-css').value;
+  const frame = document.getElementById('preview-frame');
+  try {
+    const doc = frame.contentDocument;
+    let styleEl = doc.getElementById('ro-custom-css');
+    if (!styleEl) {
+      styleEl = doc.createElement('style');
+      styleEl.id = 'ro-custom-css';
+      doc.head.appendChild(styleEl);
+    }
+    styleEl.textContent = css;
+    setStatus('✅ CSS personnalisé appliqué dans l\'aperçu');
+  } catch(e) {
+    setStatus('⚠️ Erreur CSS', 'warn');
+  }
+}
+
+function applyToFrame(section) {
+  const frame = document.getElementById('preview-frame');
+  try {
+    const doc = frame.contentDocument;
+    if (!doc) return;
+
+    if (section === 'hero') {
+      const h1 = doc.querySelector('.page-hero h1, .hero h1');
+      if (h1) h1.innerHTML = document.getElementById('f-h1').value;
+      const sub = doc.querySelector('.page-hero p, .hero .tagline');
+      if (sub) sub.innerHTML = document.getElementById('f-subtitle').value;
+      const c1 = document.getElementById('f-col1').value;
+      const c2 = document.getElementById('f-col2').value;
+      const hero = doc.querySelector('.page-hero, .hero');
+      if (hero) hero.style.background = `linear-gradient(135deg,${c1},${c2})`;
+    }
+    if (section === 'seo') {
+      doc.title = document.getElementById('f-title').value + ' – Radio Odyssey';
+    }
+  } catch(e) {}
+}
+
+// ── GRADIENT PREVIEW ─────────────────────────────────────────────
+function previewGradient() {
+  const c1 = document.getElementById('f-col1').value;
+  const c2 = document.getElementById('f-col2').value;
+  document.getElementById('grad-preview').style.background = `linear-gradient(135deg,${c1},${c2})`;
+
+  // Apply live to iframe
+  const frame = document.getElementById('preview-frame');
+  try {
+    const hero = frame.contentDocument.querySelector('.page-hero, .hero');
+    if (hero) hero.style.background = `linear-gradient(135deg,${c1},${c2})`;
+  } catch(e) {}
+}
+
+function previewPrimary() {
+  const c = document.getElementById('f-primary').value;
+  const frame = document.getElementById('preview-frame');
+  try {
+    let s = frame.contentDocument.getElementById('ro-primary-override');
+    if (!s) { s = frame.contentDocument.createElement('style'); s.id = 'ro-primary-override'; frame.contentDocument.head.appendChild(s); }
+    s.textContent = `:root { --ro-purple: ${c}; }`;
+  } catch(e) {}
+}
+
+function previewAccent() {
+  const c = document.getElementById('f-accent').value;
+  const frame = document.getElementById('preview-frame');
+  try {
+    let s = frame.contentDocument.getElementById('ro-accent-override');
+    if (!s) { s = frame.contentDocument.createElement('style'); s.id = 'ro-accent-override'; frame.contentDocument.head.appendChild(s); }
+    s.textContent = `:root { --ro-pink: ${c}; }`;
+  } catch(e) {}
+}
+
+function previewFontSize() {
+  const sz = document.getElementById('f-fontsize').value;
+  const frame = document.getElementById('preview-frame');
+  try {
+    let s = frame.contentDocument.getElementById('ro-font-override');
+    if (!s) { s = frame.contentDocument.createElement('style'); s.id = 'ro-font-override'; frame.contentDocument.head.appendChild(s); }
+    s.textContent = `html { font-size: ${sz}; }`;
+  } catch(e) {}
+}
+
+function previewDark() {
+  const dark = document.getElementById('f-dark').checked;
+  const frame = document.getElementById('preview-frame');
+  try {
+    let s = frame.contentDocument.getElementById('ro-dark-override');
+    if (!s) { s = frame.contentDocument.createElement('style'); s.id = 'ro-dark-override'; frame.contentDocument.head.appendChild(s); }
+    s.textContent = dark ? `body { filter: invert(1) hue-rotate(180deg); } img, video { filter: invert(1) hue-rotate(180deg); }` : '';
+  } catch(e) {}
+}
+
+// ── PREVIEW SIZE ─────────────────────────────────────────────────
+function setSize(mode, btn) {
+  const frame = document.getElementById('preview-frame');
+  const container = document.getElementById('preview-container');
+  document.querySelectorAll('.pt-size-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const sizes = {
+    desktop: { w: '100%', h: '100%' },
+    tablet:  { w: '768px', h: '92%' },
+    mobile:  { w: '390px', h: '92%' }
+  };
+  const s = sizes[mode];
+  frame.style.width  = s.w;
+  frame.style.height = s.h;
+  document.getElementById('status-size').textContent = {desktop:'Desktop',tablet:'Tablette',mobile:'Mobile'}[mode];
+}
+
+// ── REFRESH ───────────────────────────────────────────────────────
+function refreshPreview() {
+  const frame = document.getElementById('preview-frame');
+  frame.src = frame.src;
+  setStatus('🔄 Actualisation...');
+  setTimeout(() => setStatus('✅ Page actualisée'), 1200);
+}
+
+// ── CODE PANEL ────────────────────────────────────────────────────
+function toggleCode() {
+  const panel = document.getElementById('code-panel');
+  panel.classList.toggle('open');
+  if (panel.classList.contains('open') && pages[currentPage]) {
+    updateCodePanel(pages[currentPage]);
+  }
+}
+
+function updateCodePanel(html) {
+  document.getElementById('code-output').textContent = html;
+}
+
+function copyCode() {
+  const code = document.getElementById('code-output').textContent;
+  navigator.clipboard.writeText(code).then(() => setStatus('✅ HTML copié dans le presse-papiers'));
+}
+
+// ── DOWNLOAD ─────────────────────────────────────────────────────
+function downloadAll() {
+  if (!pages[currentPage]) {
+    setStatus('⚠️ Modifiez d\'abord quelque chose pour générer le fichier', 'warn');
+    return;
+  }
+  const blob = new Blob([pages[currentPage]], { type: 'text/html;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = currentPage;
+  a.click();
+  setStatus(`✅ ${currentPage} téléchargé — remplacez-le dans votre dossier`);
+}
+
+// ── OPEN IN TAB ──────────────────────────────────────────────────
+function openInTab() {
+  window.open(currentPage, '_blank');
+}
+
+// ── HELPERS ──────────────────────────────────────────────────────
+function toggleSection(head) {
+  const body = head.nextElementSibling;
+  head.classList.toggle('collapsed');
+  body.classList.toggle('hidden');
+}
+
+function loadBlock() {}
+
+function markDirty(section) {
+  dirtyMap[section] = true;
+  const badge = document.getElementById(`diff-${section}`);
+  if (badge) badge.classList.add('show');
+}
+
+function markApplied(section) {
+  const badge = document.getElementById(`diff-${section}`);
+  if (badge) badge.classList.remove('show');
+  dirtyMap[section] = false;
+}
+
+function setStatus(msg, type) {
+  const el = document.getElementById('status-msg');
+  el.textContent = msg;
+  el.style.color = type === 'warn' ? '#FF9A3C' : '#22c55e';
+  setTimeout(() => {
+    el.textContent = 'Prêt';
+    el.style.color = '#22c55e';
+  }, 4000);
+}
+
+function decodeHTML(str) {
+  const t = document.createElement('textarea');
+  t.innerHTML = str;
+  return t.value;
+}
+</script>
+</body>
+</html>

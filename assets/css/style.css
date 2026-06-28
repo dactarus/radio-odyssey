@@ -39,7 +39,7 @@ body {
   color: var(--ro-dark);
   background: var(--ro-light);
   margin: 0;
-  padding-top: var(--bar-h);
+  padding-top: calc(var(--bar-h) + 20px); /* +20px buffer sous le player */
   -webkit-font-smoothing: antialiased;
 }
 
@@ -513,7 +513,7 @@ img { max-width: 100%; }
 @media (max-width: 768px) {
   :root { --bar-h: var(--bar-h-mob); }
   html  { scroll-padding-top: var(--bar-h-mob); }
-  body  { padding-top: var(--bar-h-mob); }
+  body  { padding-top: calc(var(--bar-h-mob) + 12px); }
 
   #topRadioBar {
     height: var(--bar-h-mob);   /* 75px */
