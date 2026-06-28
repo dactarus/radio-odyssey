@@ -26,6 +26,26 @@
     .page-cta-bar{background:linear-gradient(135deg,#0b1c2d,#1a3a5c);border-radius:20px;padding:2.5rem 2rem;color:#fff;text-align:center;margin-top:2rem;}
     .page-cta-bar h3{font-size:1.4rem;font-weight:900;margin-bottom:.75rem;}
     .tag-pill{display:inline-block;background:rgba(123,47,190,.1);color:var(--ro-purple);border-radius:999px;padding:.25rem .8rem;font-size:.78rem;font-weight:700;margin:.2rem;}
+    /* ── CORRECTION PLAYER OVERLAP ────────────────────────────────
+       Le player RadioKing déployé (avec pochette) fait ~160px.
+       On ajoute de l'espace pour que le breadcrumb reste visible.
+       Desktop : padding-top body = 170px (au lieu de 125px)
+       Mobile  : padding-top body = 74px  (barre compacte 62px)
+    ──────────────────────────────────────────────────────────────── */
+    body {
+      padding-top: 170px;          /* desktop : player déplié 160px + marge */
+    }
+    html {
+      scroll-padding-top: 170px;
+    }
+    @media (max-width: 767px) {
+      body {
+        padding-top: 74px !important;   /* mobile : barre 62px + 12px marge */
+      }
+      html {
+        scroll-padding-top: 74px !important;
+      }
+    }
   </style>
 </head>
 <body>
