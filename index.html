@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Radio Odyssey – Positive Web Radio | Bien-être &amp; Bonne Humeur 24h/24</title>
+  <meta name="description" content="Radio Odyssey, votre web radio 100% positive ! Hits des années 80, dance, easy listening, cohérence cardiaque. Gratuite, sans pub, non-stop 24h/24."/>
+  <meta name="robots" content="index, follow"/>
+  <meta property="og:title" content="Radio Odyssey – Positive Web Radio"/>
+  <meta property="og:description" content="Web radio musicale positive en streaming 24h/24. Joyeuse, bien-être, gratuite."/>
+  <meta property="og:image" content="assets/images/logo.png"/>
+  <meta property="og:type" content="website"/>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+
+  <style>
+    /* ── SVG icon wrappers ── */
+    .svg-icon {
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .svg-icon svg { width: 100%; height: 100%; display: block; }
+
+    /* Feature card icon circles */
+    .fc-icon {
+      width: 72px; height: 72px; border-radius: 50%;
+      margin: 0 auto 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .fc-icon svg { width: 40px; height: 40px; }
+
+    /* Page card icon */
+    .pg-icon { width: 52px; height: 52px; border-radius: 14px; }
+    .pg-icon svg { width: 28px; height: 28px; }
+
+    /* Schedule icon */
+    .schedule-icon svg { width: 28px; height: 28px; }
+
+    /* Social icon */
+    .social-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+    /* Hero CTA row */
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: .5rem; }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     PLAYER BAR STICKY
+     ============================================================ -->
+<div id="topRadioBar">
+
+  <!-- GAUCHE : logo + badge -->
+  <a class="bar-logo" href="index.html" aria-label="Radio Odyssey — Accueil">
+    <img class="bar-logo-img" src="assets/images/logo.png" alt="Radio Odyssey"
+         onerror="this.style.opacity='0'"/>
+  </a>
+  <div class="live-badge">
+    <span class="live-dot"></span>
+    EN DIRECT MAINTENANT
+  </div>
+
+  <!-- CENTRE : player RadioKing (code original exact) -->
+  <iframe src="https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90"
+    allow="autoplay" title="Radio Odyssey — Lecteur en direct"></iframe>
+
+  <!-- DROITE : wave + burger -->
+  <div class="bar-wave" aria-hidden="true">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <button class="bar-burger"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#site-nav"
+          aria-controls="site-nav"
+          aria-label="Ouvrir le menu"
+          style="margin-right:16px;">
+    <i class="bi bi-list"></i>
+  </button>
+
+</div>
+
+<!-- Script RadioKing (original) -->
+<script src="https://player.radioking.io/scripts/iframe.bundle.js"></script>
+
+<!-- ============================================================
+     OFFCANVAS NAV
+     ============================================================ -->
+<div class="offcanvas offcanvas-start" id="site-nav" tabindex="-1" aria-labelledby="nav-label">
+  <div class="offcanvas-header">
+    <div class="offcanvas-title" id="nav-label">
+      <img src="assets/images/logo.png" alt="Logo Radio Odyssey"/>
+      Radio Odyssey
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fermer"></button>
+  </div>
+  <div class="offcanvas-body p-2">
+
+    <span class="nav-cat">🏠 Accueil</span>
+    <a class="nav-link" href="index.html"><span class="ni">🏠</span> Page d'accueil</a>
+
+    <span class="nav-cat">💆 Bien-être &amp; Santé</span>
+    <a class="nav-link" href="radio-coherence-cardiaque.html"><span class="ni">❤️</span> Cohérence Cardiaque</a>
+    <a class="nav-link" href="radio-bien-etre-en-ligne.html"><span class="ni">🌿</span> Bien-être en Ligne</a>
+    <a class="nav-link" href="radio-anti-stress-gratuite.html"><span class="ni">🧘</span> Anti-Stress Gratuite</a>
+    <a class="nav-link" href="musique-pour-respiration-guidee.html"><span class="ni">🫁</span> Respiration Guidée</a>
+    <a class="nav-link" href="radio-detente-moderne.html"><span class="ni">🌙</span> Détente Moderne</a>
+
+    <span class="nav-cat">🎵 Musique &amp; Énergie</span>
+    <a class="nav-link" href="radio-annees-80-en-ligne.html"><span class="ni">🕺</span> Années 80 en Ligne</a>
+    <a class="nav-link" href="radio-dance-energisante.html"><span class="ni">💃</span> Dance Énergisante</a>
+    <a class="nav-link" href="musique-pour-se-concentrer.html"><span class="ni">🎯</span> Concentration</a>
+    <a class="nav-link" href="radio-pour-travailler.html"><span class="ni">💻</span> Pour Travailler</a>
+
+    <span class="nav-cat">🌍 International</span>
+    <a class="nav-link" href="positive-european-music-station.html"><span class="ni">🇪🇺</span> European Positive</a>
+    <a class="nav-link" href="european-chill-radio.html"><span class="ni">☁️</span> European Chill</a>
+    <a class="nav-link" href="feel-good-music-radio.html"><span class="ni">😊</span> Feel Good Radio</a>
+    <a class="nav-link" href="keep-listening-radio-odyssey.html"><span class="ni">▶️</span> Keep Listening</a>
+
+    <div class="offcanvas-cta">
+      <a class="btn-ro w-100 justify-content-center"
+         href="https://play.radioking.io/radio-odyssey" target="_blank" rel="noopener">
+        <i class="bi bi-broadcast"></i>&nbsp; Écouter en Direct
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="hero-bubble hero-bubble-1"></div>
+  <div class="hero-bubble hero-bubble-2"></div>
+  <div class="container">
+    <div class="row align-items-center gy-5">
+
+      <div class="col-lg-7 hero-content">
+        <div class="hero-eyebrow">
+          <span class="hero-live-dot"></span>
+          EN DIRECT MAINTENANT &nbsp;·&nbsp; LIVE NOW
+        </div>
+        <h1>Radio Odyssey<br/><em>La Positive Radio !</em></h1>
+        <p class="tagline">
+          Le meilleur des hits — des années 80 à aujourd'hui, non-stop 24h/24 🎶<br/>
+          <span style="font-size:.92rem;opacity:.85;font-style:italic;">
+            The best hits — from the 80s to today, non-stop 24/7
+          </span>
+        </p>
+        <div class="hero-cta">
+          <a href="https://play.radioking.io/radio-odyssey" target="_blank" rel="noopener" class="btn-hero">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+            ÉCOUTER EN DIRECT
+          </a>
+          <a href="https://radio-odyssey-v8b.vercel.app/" target="_blank" rel="noopener" class="btn-hero-ghost">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            App Mobile
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">24/7<span>Musique non-stop</span></div>
+          <div class="hero-stat">80's<span>Tubes remixés</span></div>
+          <div class="hero-stat">100%<span>Gratuit &amp; positif</span></div>
+          <div class="hero-stat">0<span>Publicités</span></div>
+        </div>
+      </div>
+
+      <div class="col-lg-5 text-center">
+        <img class="hero-logo-img"
+             src="assets/images/logo.png"
+             alt="Radio Odyssey"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FEATURES — Pourquoi Radio Odyssey ?
+     ============================================================ -->
+<section class="ro-section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-eyebrow">Pourquoi nous écouter ?</span>
+      <h2>Une radio <span class="highlight">100% positive</span> &amp; unique</h2>
+      <p class="text-muted mt-2" style="max-width:520px;margin:0 auto;font-size:.93rem;">
+        Radio Odyssey, c'est plus qu'une simple radio — une expérience musicale
+        et bien-être unique, disponible partout, gratuitement, depuis janvier 2024.
+      </p>
+    </div>
+    <div class="row g-4">
+
+      <!-- Card 1 : 80s -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="feature-card text-center">
+          <div class="fc-icon" style="background:linear-gradient(135deg,rgba(255,60,172,.12),rgba(123,47,190,.12))">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="21" stroke="#FF3CAC" stroke-width="2.5" fill="none"/>
+              <circle cx="24" cy="24" r="5" stroke="#7B2FBE" stroke-width="2" fill="none"/>
+              <circle cx="24" cy="24" r="1.5" fill="#FF3CAC"/>
+              <path d="M6 24 C6 14 14 6 24 6" stroke="#FF9A3C" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M42 24 C42 34 34 42 24 42" stroke="#FF9A3C" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <rect x="30" y="14" width="10" height="7" rx="2" stroke="#7B2FBE" stroke-width="1.8" fill="none"/>
+              <line x1="32" y1="21" x2="32" y2="26" stroke="#7B2FBE" stroke-width="1.8" stroke-linecap="round"/>
+              <line x1="38" y1="21" x2="38" y2="26" stroke="#7B2FBE" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Tubes des Années 80</h3>
+          <p>Les plus grands hits remixés par les meilleurs DJ's. Nostalgie et énergie garanties !</p>
+        </div>
+      </div>
+
+      <!-- Card 2 : Dance -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="feature-card text-center">
+          <div class="fc-icon" style="background:linear-gradient(135deg,rgba(255,154,60,.12),rgba(255,215,0,.12))">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="9" r="4" stroke="#FF9A3C" stroke-width="2" fill="none"/>
+              <path d="M24 13 L20 24 L14 22" stroke="#FF9A3C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M24 13 L26 24 L33 20" stroke="#FFD700" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M20 24 L17 36 L12 38" stroke="#FF3CAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M26 24 L28 36 L34 40" stroke="#FF3CAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <!-- music note -->
+              <path d="M36 8 L42 6 L42 12 L36 14 Z" stroke="#7B2FBE" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+              <line x1="36" y1="14" x2="36" y2="20" stroke="#7B2FBE" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Dance &amp; Énergie</h3>
+          <p>Les hits dance incontournables des 30 dernières années pour booster votre journée.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 : Bien-être -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="feature-card text-center">
+          <div class="fc-icon" style="background:linear-gradient(135deg,rgba(0,198,255,.12),rgba(123,47,190,.12))">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- heart -->
+              <path d="M24 38 C24 38 8 28 8 18 C8 12.5 12 8 18 8 C21 8 24 10 24 10 C24 10 27 8 30 8 C36 8 40 12.5 40 18 C40 28 24 38 24 38Z" stroke="#FF3CAC" stroke-width="2.2" fill="none" stroke-linejoin="round"/>
+              <!-- wave inside -->
+              <path d="M14 21 C16 17 18 25 20 21 C22 17 24 25 26 21 C28 17 30 25 32 21 C34 17 36 25 38 21" stroke="#00C6FF" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+            </svg>
+          </div>
+          <h3>Bien-être &amp; Sérénité</h3>
+          <p>Séquences de cohérence cardiaque guidées tout au long de la journée — exclusivité Radio Odyssey !</p>
+        </div>
+      </div>
+
+      <!-- Card 4 : Gratuit -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="feature-card text-center">
+          <div class="fc-icon" style="background:linear-gradient(135deg,rgba(255,215,0,.15),rgba(255,154,60,.12))">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="18" stroke="#FFD700" stroke-width="2.2" fill="none"/>
+              <path d="M16 24 L22 30 L32 18" stroke="#FF9A3C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- star sparkles -->
+              <path d="M8 10 L9.5 7 L11 10 L8 8.5 L11 8.5Z" fill="#FFD700" opacity=".7"/>
+              <path d="M38 36 L39 34 L40 36 L38 35 L40 35Z" fill="#FFD700" opacity=".7"/>
+              <path d="M40 12 L41 10 L42 12 L40 11 L42 11Z" fill="#FF9A3C" opacity=".7"/>
+            </svg>
+          </div>
+          <h3>100% Gratuit</h3>
+          <p>Aucune publicité, aucun abonnement. Écoutez librement, partout, tout le temps !</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     COHERENCE CARDIAQUE
+     ============================================================ -->
+<section class="ro-section ro-section-alt">
+  <div class="container">
+    <div class="row gy-4 align-items-center">
+      <div class="col-lg-6">
+        <span class="section-eyebrow">Exclusivité Radio Odyssey</span>
+        <h2>Cohérence Cardiaque<br/><span class="highlight">chaque heure !</span></h2>
+        <p class="mt-3">
+          Tous les jours, profitez de séquences courtes de cohérence cardiaque pour vous sentir mieux,
+          en harmonie avec vous-même et serein(e).
+        </p>
+        <p style="font-size:.88rem;font-style:italic;color:var(--ro-muted);">
+          Every day, enjoy short cardiac coherence sequences to feel better, in harmony with yourself and serene.
+        </p>
+        <div class="alert mb-3" style="background:rgba(0,198,255,.08);border:1.5px solid rgba(0,198,255,.25);border-radius:14px;font-size:.88rem;">
+          <strong>🫁 Inspirez 5 secondes — expirez 5 secondes</strong> au rythme de la musique.<br/>
+          <em>Inhale 5 sec · Exhale 5 sec — we guide you.</em>
+        </div>
+        <a href="radio-coherence-cardiaque.html" class="btn-ro">
+          <i class="bi bi-arrow-right-circle-fill"></i>&nbsp;En savoir plus
+        </a>
+      </div>
+      <div class="col-lg-6">
+        <div class="coherence-banner">
+          <h3>❤️ Programme quotidien
+            <br/><span style="font-size:.9rem;font-weight:600;opacity:.85;">Today's Cardiac Coherence Schedule</span>
+          </h3>
+          <p style="font-size:.86rem;opacity:.92;margin-top:.5rem;">Séquences de cohérence cardiaque chaque jour :</p>
+          <div class="breath-times">
+            <span class="breath-badge">7H · 3min</span><span class="breath-badge">8H · 3min</span>
+            <span class="breath-badge">9H · 3min</span><span class="breath-badge">10H · 1min</span>
+            <span class="breath-badge">11H · 1min</span><span class="breath-badge">12H · 3min</span>
+            <span class="breath-badge">13H · 3min</span><span class="breath-badge">14H · 1min</span>
+            <span class="breath-badge">15H · 1min</span><span class="breath-badge">16H · 1min</span>
+            <span class="breath-badge">17H · 1min</span><span class="breath-badge">18H · 3min</span>
+            <span class="breath-badge">19H · 3min</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     13 PAGES THÉMATIQUES
+     ============================================================ -->
+<section class="ro-section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-eyebrow">Explorez Radio Odyssey</span>
+      <h2>Toutes nos <span class="highlight">thématiques</span></h2>
+      <p class="text-muted mt-2" style="max-width:500px;margin:0 auto;font-size:.93rem;">
+        De la cohérence cardiaque à la dance énergisante, trouvez exactement ce dont vous avez besoin.
+      </p>
+    </div>
+
+    <div class="row g-3">
+
+      <!-- Macros pour icônes SVG inline des page-cards -->
+
+      <div class="col-md-6 col-xl-4">
+        <a class="page-card" href="radio-coherence-cardiaque.html">
+          <div class="pg-icon svg-icon" style="background:linear-gradient(135deg,rgba(255,60,172,.1),rgba(0,198,255,.1))">
+            <svg viewBox="0 0 28 28" fill="none"><path d="M14 22.5C14 22.5 4 16.5 4 10.5C4 7.5 6.5 5 9.5 5C11.2 5 14 6.8 14 6.8C14 6.8 16.8 5 18.5 5C21.5 5 24 7.5 24 10.5C24 16.5 14 22.5 14 22.5Z" stroke="#FF3CAC" stroke-width="1.8" fill="none"/><path d="M8 12 C9 10 10 14 11 12 C12 10 13 14 14 12 C15 10 16 14 17 12 C18 10 19 14 20 12" stroke="#00C6FF" stroke-width="1.4" stroke-linecap="round" fill="none"/></svg>
+          </div>
+          <div><h4>Cohérence Cardiaque</h4><p>Radio &amp; musique guidée pour respirer et vous recentrer</p></div>
+          <i class="bi bi-arrow-right pg-arrow"></i>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-xl-4">
+        <a class="page-card" href="radio-bien-etre-en-ligne.html">
+          <div class="pg-icon svg-icon" style="background:linear-gradient(135deg,rgba(0,198,255,.1),rgba(123,47,190,.1))">
+            <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="10" r="5" stroke="#00C6FF" stroke-width="1.8"/><path d="M6 23C6 18.6 9.6 15 14 15C18.4 15 22 18.6 22 23" stroke="#7B2FBE" stroke-width="1.8" stroke-linecap="round"/><path d="M20 7L22 5M8 7L6 5" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div><h4>Bien-être en Ligne</h4><p>Votre dose quotidienne de positivité et de sérénité</p></div>
+          <i class="bi bi-arrow-right pg-arrow"></i>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-xl-4">
+        <a class="page-card" href="radio-annees-80-en-ligne.html">
+          <div class="pg-icon svg-icon" style="background:linear-gradient(135deg,rgba(255,154,60,.12),rgba(255,60,172,.1))">
+            <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#FF9A3C" stroke-width="1.8"/><circle cx="14" cy="14" r="3" stroke="#FF3CAC" stroke-width="1.5"/><circle cx="14" cy="14" r=".8" fill="#FF9A3C"/><path d="M5 14C5 8.5 9 4 14 4" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div><h4>Années 80 en Ligne</h4><p>Les hits cultes remixés — nostalgie &amp; énergie pure !</p></div>
+          <i class="bi bi-arrow-right pg-arrow"></i>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-xl-4">
+        <a class="page-card" href="musique-pour-se-concentrer.html">
+          <div class="pg-icon svg-icon" style="background:linear-gradient(135deg,rgba(123,47,190,.1),rgba(0,198,255,.1))">
+            <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#7B2FBE" stroke-width="1.8"/><circle cx="14" cy="14" r="5" stroke="#00C6FF" stroke-width="1.5"/><circle cx="14" cy="14" r="2" fill="#7B2FBE"/><line x1="14" y1="4" x2="14" y2="7" stroke="#FF9A3C" stroke-width="1.8" stroke-linecap="round"/><line x1="24" y1="14" x2="21" y2="14" stroke="#FF9A3C" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <div><h4>Musique pour se Concentrer</h4><p>La playlist idéale pour travailler efficacement</p></div>
+          <i class="bi bi-arrow-right pg-arrow"></i>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-xl-4">
+        <a class="page-card" href="radio-detente-moderne.html">
+          <div class="pg-icon svg-icon" style="background:linear-gradient(135deg,rgba(123,47,190,.1),rgba(255,60,172,.08))">
+            <svg viewBox="0 0 28 28" fill="none"><path d="M14 4C14 4 20 8 20 14C20 18 17 21 14 22C11 21 8 18 8 14C8 8 14 4 14 4Z" stroke="#7B2FBE" stroke-width="1.8" fill="none"/><path d="M4 14C7 11 10 13 14 10C18 7 22 10 24 14" stroke="#FF3CAC" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="14" cy="14" r="2.5" stroke="#FFD700" stroke-width="1.4"/></svg>
+          </div>
+          <div><h4>Détente Moderne</h4><p>Musique apaisante pour vous ressourcer après votre journée</p></div>
+          <i class="bi bi-arrow-right pg-arrow"></i>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-xl-4">
+        <a class="page-card" href="radio-anti-stress-gratuite.html">
+          <div class="pg-icon svg-icon" style="background:linear-gradient(135deg,rgba(0,198,255,.1),rgba(123,47,190,.1))">
+            <svg viewBox="0 0 28 28" fill="none"><path d="M14 5C11 5 8 7.5 8 11C8 14 10 16 14 18C18 16 20 14 20 11C20 7.5 17 5 14 5Z" stroke="#00C6FF" stroke-width="1.8" fill="none"/><path d="M14 18V23" stroke="#7B2FBE" stroke-width="1.8" stroke-linecap="round"/><path d="M10 23H18" stroke="#7B2FBE" stroke-width="1.8" stroke-linecap="round"/><path d="M11 9C11 9 12 12 14 12C16 12 17 9 17 9" stroke="#FF3CAC" stroke-width="1.4" stroke-linecap="round" fill="none"/></svg>
+          </div>
+          <div><h4>Anti-Stress Gratuite</h4><p>Relâchez la pression avec notre sélection anti-stress</p></div>
+          <i class="bi bi-arrow-right pg-arrow"></i>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-xl-4">
+        <a class="page-card" href="radio-pour-travailler.html">
+          <div class="pg-icon svg-icon" style="background:linear-gradient(135deg,rgba(123,47,190,.1),rgba(255,154,60,.1))">
+            <svg viewBox="0 0 28 28" fill="none"><rect x="4" y="7" width="20" height="13" rx="2" stroke="#7B2FBE" stroke-width="1.8"/><line x1="9" y1="23" x2="19" y2="23" stroke="#7B2FBE" stroke-width="1.8" stroke-linecap="round"/><line x1="14" y1="20" x2="14" y2="23" stroke="#7B2FBE" stroke-width="1.5" stroke-linecap="round"/><line x1="8" y1="12" x2="11" y2="12" stroke="#FF9A3C" stroke-width="1.5" stroke-linecap="round"/><line x1="13" y1="12" x2="16" y2="12" stroke="#FF9A3C" stroke-width="1.5" stroke-linecap="round"/><line x1="18" y1="12" x2="20" y2="12" stroke="#FF9A3C" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div><h4>Radio pour Travailler</h4><p>Restez focus et productif avec les bons beats</p></div>
+          <i class="bi bi-arrow-right pg-arrow"></i>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-xl-4">
+        <a class="page-card" href="radio-dance-energisante.html">
+          <div class="pg-icon svg-icon" style="background:linear-gradient(135deg,rgba(255,60,172,.12),rgba(255,154,60,.1))">
+            <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="6" r="3" stroke="#FF3CAC" stroke-width="1.8"/><path d="M14 9L11 18L7 16" stroke="#FF3CAC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 9L16 18L21 15" stroke="#FF9A3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 18L9 24" stroke="#7B2FBE" stroke-width="1.6" stroke-linecap="round"/><path d="M16 18L18 24" stroke="#7B2FBE" stroke-width="1.6" stroke-linecap="round"/><path d="M22 5L24 3M24 7L22 7" stroke="#FFD700" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <div><h4>Dance Énergisante</h4><p>L'énergie dance pour faire bouger votre corps !</p></div>
+          <i class="bi bi-arrow-right pg-arrow"></i>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-xl-4">
+        <a class="page-card" href="musique-pour-respiration-guidee.html">
+          <div class="pg-icon svg-icon" style="background:linear-gradient(135deg,rgba(0,198,255,.12),rgba(123,47,190,.08))">
+            <svg viewBox="0 0 28 28" fill="none"><ellipse cx="14" cy="10" rx="6" ry="8" stroke="#00C6FF" stroke-width="1.8"/><path d="M8 15C8 15 6 18 6 21C6 21 10 22 14 22C18 22 22 21 22 21C22 18 20 15 20 15" stroke="#7B2FBE" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M6 10C4 10 3 13 5 14" stroke="#FF3CAC" stroke-width="1.4" stroke-linecap="round" fill="none"/><path d="M22 10C24 10 25 13 23 14" stroke="#FF3CAC" stroke-width="1.4" stroke-linecap="round" fill="none"/></svg>
+          </div>
+          <div><h4>Respiration Guidée</h4><p>Musique synchronisée avec votre respiration</p></div>
+          <i class="bi bi-arrow-right pg-arrow"></i>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-xl-4">
+        <a class="page-card" href="positive-european-music-station.html">
+          <div class="pg-icon svg-icon" style="background:linear-gradient(135deg,rgba(30,127,203,.12),rgba(255,215,0,.1))">
+            <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#1e7fcb" stroke-width="1.8"/><ellipse cx="14" cy="14" rx="4" ry="10" stroke="#1e7fcb" stroke-width="1.3"/><line x1="4" y1="10" x2="24" y2="10" stroke="#FFD700" stroke-width="1.3"/><line x1="4" y1="18" x2="24" y2="18" stroke="#FFD700" stroke-width="1.3"/></svg>
+          </div>
+          <div><h4>Positive European Station</h4><p>The best of European positive vibes — all day long</p></div>
+          <i class="bi bi-arrow-right pg-arrow"></i>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-xl-4">
+        <a class="page-card" href="keep-listening-radio-odyssey.html">
+          <div class="pg-icon svg-icon" style="background:linear-gradient(135deg,rgba(123,47,190,.1),rgba(255,60,172,.1))">
+            <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#7B2FBE" stroke-width="1.8"/><polygon points="11,9 11,19 21,14" stroke="#FF3CAC" stroke-width="1.5" fill="rgba(255,60,172,.15)" stroke-linejoin="round"/></svg>
+          </div>
+          <div><h4>Keep Listening</h4><p>Can't stop, won't stop — Radio Odyssey non-stop</p></div>
+          <i class="bi bi-arrow-right pg-arrow"></i>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-xl-4">
+        <a class="page-card" href="european-chill-radio.html">
+          <div class="pg-icon svg-icon" style="background:linear-gradient(135deg,rgba(0,198,255,.1),rgba(30,127,203,.12))">
+            <svg viewBox="0 0 28 28" fill="none"><path d="M4 16C4 16 7 10 14 10C21 10 24 16 24 16" stroke="#00C6FF" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M6 18C6 18 9 13 14 13C19 13 22 18 22 18" stroke="#1e7fcb" stroke-width="1.4" stroke-linecap="round" fill="none"/><path d="M8 20C9.5 18 11.5 17 14 17C16.5 17 18.5 18 20 20" stroke="#7B2FBE" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg>
+          </div>
+          <div><h4>European Chill Radio</h4><p>Laid-back European chill vibes for any moment</p></div>
+          <i class="bi bi-arrow-right pg-arrow"></i>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-xl-4">
+        <a class="page-card" href="feel-good-music-radio.html">
+          <div class="pg-icon svg-icon" style="background:linear-gradient(135deg,rgba(255,215,0,.14),rgba(255,154,60,.1))">
+            <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#FFD700" stroke-width="1.8"/><path d="M10 11.5C10 10.7 10.7 10 11.5 10C12.3 10 13 10.7 13 11.5" stroke="#FF9A3C" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M15 11.5C15 10.7 15.7 10 16.5 10C17.3 10 18 10.7 18 11.5" stroke="#FF9A3C" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M9 16C10 19 18 19 19 16" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+          </div>
+          <div><h4>Feel Good Music Radio</h4><p>Pure feel-good music to brighten your day</p></div>
+          <i class="bi bi-arrow-right pg-arrow"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PLANNING
+     ============================================================ -->
+<section class="ro-section ro-section-alt">
+  <div class="container">
+    <div class="row gy-5 align-items-center">
+      <div class="col-lg-5">
+        <span class="section-eyebrow">Grille des programmes</span>
+        <h2>Une semaine <span class="highlight">toujours rythmée</span></h2>
+        <p class="mt-3" style="color:var(--ro-muted);">
+          Musique non-stop alternant nouveautés, tubes des années 80 et tubes des 30 dernières années.
+          Avec en exclusivité des séquences bien-être tout au long de la journée !
+        </p>
+        <p style="font-size:.82rem;font-style:italic;color:var(--ro-muted);">
+          Non-stop music alternating new releases, 80s hits and hits from the last 30 years,
+          with exclusive wellness sequences throughout the day!
+        </p>
+      </div>
+      <div class="col-lg-7">
+        <div class="schedule-table">
+
+          <div class="schedule-row">
+            <div class="schedule-time">7–9H</div>
+            <div class="schedule-icon svg-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="9" stroke="#FF9A3C" stroke-width="1.8"/><line x1="14" y1="14" x2="14" y2="7" stroke="#FF9A3C" stroke-width="1.8" stroke-linecap="round"/><line x1="14" y1="14" x2="18" y2="14" stroke="#FF3CAC" stroke-width="1.6" stroke-linecap="round"/><path d="M6 6L4 4M22 6L24 4" stroke="#FFD700" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div class="schedule-info"><h5>Les Matinales</h5><p>Météo, Horoscope &amp; Cohérence Cardiaque 3 min</p></div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">Journée</div>
+            <div class="schedule-icon svg-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="6" stroke="#FFD700" stroke-width="2"/><line x1="14" y1="4" x2="14" y2="6" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/><line x1="14" y1="22" x2="14" y2="24" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/><line x1="4" y1="14" x2="6" y2="14" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/><line x1="22" y1="14" x2="24" y2="14" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="schedule-info"><h5>Hits non-stop</h5><p>Easy listening, années 80 remixés, dance &amp; nouveautés</p></div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">10–17H</div>
+            <div class="schedule-icon svg-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 22C14 22 6 17 6 11C6 7.7 9 5 12 5C13.2 5 14 5.8 14 5.8C14 5.8 14.8 5 16 5C19 5 22 7.7 22 11C22 17 14 22 14 22Z" stroke="#7B2FBE" stroke-width="1.8" fill="none"/><path d="M9 12C9.8 10 11 13 12 11C13 9 14 13 15 11C16 9 17 13 18 11C18.8 9 20 12 20 12" stroke="#FF3CAC" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+            </div>
+            <div class="schedule-info"><h5>Focus &amp; Bien-être</h5><p>Cohérence cardiaque 1 min à chaque heure pleine</p></div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">18–19H</div>
+            <div class="schedule-icon svg-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 18C8 14 12 16 14 12C16 8 20 12 24 10" stroke="#FF9A3C" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="5" cy="20" r="2" stroke="#FF3CAC" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2" stroke="#FF9A3C" stroke-width="1.5" fill="none"/><circle cx="23" cy="10" r="2" stroke="#FFD700" stroke-width="1.5" fill="none"/></svg>
+            </div>
+            <div class="schedule-info"><h5>L'Apéro Musical</h5><p>Cohérence cardiaque 3 min + les tubes du soir</p></div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">Nuit</div>
+            <div class="schedule-icon svg-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M18 6C14 6 10 9.5 10 14C10 18.4 13.6 22 18 22C20 22 21.8 21.2 23 20C20.5 19.4 18 17.2 18 14C18 10.8 20.5 8.6 23 8C21.8 6.8 20 6 18 6Z" stroke="#7B2FBE" stroke-width="1.8" fill="none"/><path d="M6 9L7 8M8 5L8 7M5 7L7 7" stroke="#FFD700" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </div>
+            <div class="schedule-info"><h5>Night &amp; Chill</h5><p>Playlist douce pour accompagner votre nuit</p></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section class="ro-section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-eyebrow">C'est vous qui le dites !</span>
+      <h2>Ils <span class="highlight">adorent</span> Radio Odyssey</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4"><div class="testimonial-card">
+        <div class="stars mb-1">★★★★★</div>
+        <p>Radio Odyssey, c'est ma dose quotidienne de bonheur ! Je ne peux pas commencer ma journée sans.</p>
+        <div class="t-name">Sophie L.</div><div class="t-role">Auditrice Heureuse</div>
+      </div></div>
+      <div class="col-md-6 col-lg-4"><div class="testimonial-card">
+        <div class="stars mb-1">★★★★★</div>
+        <p>Des tubes qui me font danser toute la journée ! La sélection dance est incroyable.</p>
+        <div class="t-name">Julien T.</div><div class="t-role">DJ Passionné</div>
+      </div></div>
+      <div class="col-md-6 col-lg-4"><div class="testimonial-card">
+        <div class="stars mb-1">★★★★★</div>
+        <p>Les années 80 à aujourd'hui, un vrai régal ! Et les séquences de cohérence cardiaque changent tout.</p>
+        <div class="t-name">Claire B.</div><div class="t-role">Amatrice de Hits</div>
+      </div></div>
+      <div class="col-md-6 col-lg-4"><div class="testimonial-card">
+        <div class="stars mb-1">★★★★★</div>
+        <p>Une radio qui met de bonne humeur, j'adore ! Exactement ce dont j'avais besoin au travail.</p>
+        <div class="t-name">Nathalie R.</div><div class="t-role">Créative Énergique</div>
+      </div></div>
+      <div class="col-md-6 col-lg-4"><div class="testimonial-card">
+        <div class="stars mb-1">★★★★★</div>
+        <p>Radio Odyssey, c'est comme un bon café le matin ! Je ne peux plus m'en passer.</p>
+        <div class="t-name">Thomas P.</div><div class="t-role">Auditeur Fidèle</div>
+      </div></div>
+      <div class="col-md-6 col-lg-4"><div class="testimonial-card">
+        <div class="stars mb-1">★★★★★</div>
+        <p>C'est addictif ! La meilleure webradio française — positive, variée, parfaite.</p>
+        <div class="t-name">Marc D.</div><div class="t-role">Fan de Musique</div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PLATEFORMES
+     ============================================================ -->
+<section class="ro-section ro-section-alt">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-eyebrow">Disponible partout / Available everywhere</span>
+      <h2>Écoutez sur <span class="highlight">toutes les plateformes</span></h2>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <a class="platform-pill" href="https://play.radioking.io/radio-odyssey" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="3" stroke="#7B2FBE" stroke-width="1.5"/><polygon points="6,5 6,11 12,8" fill="#7B2FBE"/></svg>RadioKing</a>
+      <a class="platform-pill" href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8C3 5.2 5.2 3 8 3C10.8 3 13 5.2 13 8" stroke="#FF3CAC" stroke-width="1.5" stroke-linecap="round"/><path d="M5 8C5 6.3 6.3 5 8 5C9.7 5 11 6.3 11 8" stroke="#FF9A3C" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="8" r="1.5" fill="#FF3CAC"/></svg>TuneIn</a>
+      <a class="platform-pill" href="https://fr.welove.radio/radio/radio-odyssey/" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 13C8 13 2 9 2 5.5C2 3.6 3.6 2 5.5 2C6.4 2 8 3 8 3C8 3 9.6 2 10.5 2C12.4 2 14 3.6 14 5.5C14 9 8 13 8 13Z" stroke="#FF3CAC" stroke-width="1.5" fill="none"/></svg>WeLoveRadio</a>
+      <a class="platform-pill" href="https://www.deezer.com/search/radio%20odyssey/livestream" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="7" width="3" height="6" rx="1" fill="#FF9A3C"/><rect x="5" y="5" width="3" height="8" rx="1" fill="#FF3CAC"/><rect x="9" y="3" width="3" height="10" rx="1" fill="#7B2FBE"/><rect x="13" y="1" width="2" height="12" rx="1" fill="#00C6FF"/></svg>Deezer</a>
+      <a class="platform-pill" href="https://radio.orange.com/radios/radio_odyssey" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#FF9A3C" stroke-width="1.5" fill="none"/><circle cx="8" cy="8" r="3" fill="#FF9A3C" opacity=".3"/></svg>Orange</a>
+      <a class="platform-pill" href="https://www.radioline.co/fr/radios/radio_odyssey" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="2" y1="4" x2="14" y2="4" stroke="#7B2FBE" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="8" x2="14" y2="8" stroke="#FF3CAC" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="12" x2="14" y2="12" stroke="#00C6FF" stroke-width="1.5" stroke-linecap="round"/></svg>RadioLine</a>
+      <a class="platform-pill" href="https://mytuner-radio.com/fr/radio/radio-odyssey-512057/" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#FF9A3C" stroke-width="1.5"/><circle cx="8" cy="8" r="2" stroke="#7B2FBE" stroke-width="1.3"/></svg>MyTuner</a>
+      <a class="platform-pill" href="https://streema.com/radios/Radio_Odyssey" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 11C4 8 6 9 8 6C10 3 12 6 14 5" stroke="#00C6FF" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>Streema</a>
+      <a class="platform-pill" href="https://www.getmeradio.com/stations/radioodyssey-10965/" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8C3 8 5 4 8 4C11 4 13 8 13 8C13 8 11 12 8 12C5 12 3 8 3 8Z" stroke="#FF3CAC" stroke-width="1.5" fill="none"/><circle cx="8" cy="8" r="2" fill="#FF3CAC" opacity=".4"/></svg>GetMeRadio</a>
+      <a class="platform-pill" href="https://appradiofm.com/radio/Radio-Odyssey-Ciss%C3%A9-Vienne-FR-38k5a" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="4" y="1" width="8" height="14" rx="2" stroke="#7B2FBE" stroke-width="1.5"/><circle cx="8" cy="12" r="1" fill="#7B2FBE"/></svg>Radio FM</a>
+      <a class="platform-pill" href="https://radio.streamitter.com/station/radio-odyssey" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polygon points="3,3 3,13 13,8" stroke="#FF9A3C" stroke-width="1.5" fill="none" stroke-linejoin="round"/></svg>Streamitter</a>
+      <a class="platform-pill" href="https://theonestopradio.com/radio/radio%20odyssey%20fr-google_vignette" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#1e7fcb" stroke-width="1.5"/><ellipse cx="8" cy="8" rx="2.5" ry="6" stroke="#1e7fcb" stroke-width="1.2"/></svg>OneStopRadio</a>
+    </div>
+    <p class="text-center mt-4" style="font-size:.88rem;color:var(--ro-muted);">
+      Disponible sur <strong>Alexa</strong> : <em>"Alexa, lance Radio Odyssey sur TuneIn"</em>
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     APP MOBILE
+     ============================================================ -->
+<section class="ro-section">
+  <div class="container">
+    <div class="app-section">
+      <div class="row gy-4 align-items-center">
+        <div class="col-lg-5">
+          <h3>Installez l'application<br/>Radio Odyssey !</h3>
+          <p style="opacity:.92;margin-top:.75rem;">
+            Retrouvez Radio Odyssey sur votre smartphone comme une vraie application —
+            sans aucun abonnement, sans frais !<br/>
+            <em style="font-size:.86rem;">Find Radio Odyssey on your smartphone like a real app — free forever!</em>
+          </p>
+          <a href="https://radio-odyssey-v8b.vercel.app/" target="_blank" rel="noopener" class="btn-hero mt-2" style="margin-top:.75rem;display:inline-flex;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Accéder à l'app
+          </a>
+        </div>
+        <div class="col-lg-7">
+          <div class="row g-3">
+            <div class="col-sm-6"><div class="app-step">
+              <h5>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-.15em"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                Installation iPhone
+              </h5>
+              <ol><li>Ouvrir le site dans <strong>Safari</strong></li><li>Appuyer sur <strong>Partager</strong></li><li>Choisir <strong>Ajouter à l'écran d'accueil</strong></li><li>L'icône Radio Odyssey apparaît !</li></ol>
+            </div></div>
+            <div class="col-sm-6"><div class="app-step">
+              <h5>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-.15em"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                Installation Android
+              </h5>
+              <ol><li>Ouvrir le site dans <strong>Chrome</strong></li><li>Appuyer sur <strong>Installer l'application</strong></li><li>Confirmer l'installation</li><li>L'app s'installe comme une vraie app !</li></ol>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PARTENAIRE
+     ============================================================ -->
+<section class="ro-section ro-section-alt">
+  <div class="container">
+    <div class="text-center mb-4">
+      <span class="section-eyebrow">Partenaire officiel</span>
+      <h2>Ils soutiennent <span class="highlight">Radio Odyssey</span></h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="partner-card text-center">
+          <a href="https://www.elisabeth.academy/programme-ebg/" target="_blank" rel="noopener">
+            <img src="https://r.mobirisesite.com/1156359/assets/images/g53bc2f8543877ba74a0be27161f1-h_ml2hyxmy.jpg"
+                 alt="Elisabeth Academy — Bien-être global"
+                 style="max-width:220px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.1);"
+                 onerror="this.style.display='none'"/>
+          </a>
+          <h4 class="mt-3 mb-1">Bien-être Global 365</h4>
+          <p style="color:var(--ro-muted);font-size:.9rem;">
+            <strong>Elisabeth Grimaud</strong> — Docteur en psychologie<br/>
+            Créatrice de programmes en ligne de bien-être.<br/>
+            <strong>Découvrez le programme "Épanouissement Global 365" !</strong>
+          </p>
+          <a href="https://www.elisabeth.academy/" target="_blank" rel="noopener" class="btn-ro">
+            <i class="bi bi-box-arrow-up-right"></i>&nbsp;Découvrir
+          </a>
+          <p class="mt-3" style="font-size:.78rem;color:var(--ro-muted);">
+            Grâce au soutien de nos partenaires, Radio Odyssey vous offre ses programmes gratuitement. Merci !
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="ro-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="text-center mb-5">
+          <span class="section-eyebrow">Questions fréquentes / FAQ</span>
+          <h2>Tout ce que vous <span class="highlight">voulez savoir</span></h2>
+        </div>
+        <div class="accordion ro-accordion" id="faq">
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#f1">Comment écouter Radio Odyssey ? / How to listen?</button></h2>
+            <div id="f1" class="accordion-collapse collapse show" data-bs-parent="#faq"><div class="accordion-body">C'est simple ! Cliquez sur "Écouter en Direct" en haut de la page ou choisissez une plateforme ci-dessus. <em>It's simple! Click "Listen Live" at the top or pick a platform above.</em></div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f2">Quels genres de musique ? / What kind of music?</button></h2>
+            <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">Des années 80 aux hits d'aujourd'hui ! Remixes 80's, dance, easy listening, nouveautés et séquences bien-être. <em>From the 80s to today's hits — all genres, all good vibes!</em></div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f3">Y a-t-il des publicités ? / Are there ads?</button></h2>
+            <div id="f3" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body"><strong>Pas de pub, que la musique !</strong> Radio Odyssey est et restera sans publicité. <em>No ads, just music!</em></div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f4">Puis-je demander des chansons ? / Can I request songs?</button></h2>
+            <div id="f4" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">Oui ! Envoyez vos demandes à <a href="mailto:odysseylaradio@gmail.com">odysseylaradio@gmail.com</a>. <em>Yes! Send requests by email.</em></div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f5">Est-ce gratuit ? / Is it free?</button></h2>
+            <div id="f5" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body"><strong>Absolument et pour toujours !</strong> Aucun centime à débourser. <em>Absolutely — free forever!</em></div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f6">Comment soutenir Radio Odyssey ? / How to support us?</button></h2>
+            <div id="f6" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">Partagez avec vos proches, restez à l'écoute, et suivez-nous sur les réseaux sociaux ! <em>Share with friends, stay tuned, follow us on social media!</em></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SOCIAL
+     ============================================================ -->
+<section class="ro-section ro-section-alt">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-eyebrow">Suivez-nous / Follow us</span>
+      <h2>Restez connectés <span class="highlight">avec nous !</span></h2>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <a class="social-btn social-fb" href="https://www.facebook.com/profile.php?id=61588289230589" target="_blank" rel="noopener">
+        <svg class="si" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073C24 5.41 18.627 0 12 0S0 5.41 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.413c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <a class="social-btn social-ig" href="https://www.instagram.com/radio_odyssey_france/" target="_blank" rel="noopener">
+        <svg class="si" viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#E1306C" stroke="none"/></svg>
+        Instagram
+      </a>
+      <a class="social-btn social-tw" href="https://x.com/Odysseylaradio" target="_blank" rel="noopener">
+        <svg class="si" viewBox="0 0 24 24" fill="#1DA1F2"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        X / Twitter
+      </a>
+      <a class="social-btn social-yt" href="https://www.youtube.com/channel/UCodzZ_dhFdJwQ90nZzVHluw" target="_blank" rel="noopener">
+        <svg class="si" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        YouTube
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CTA FINAL
+     ============================================================ -->
+<section class="ro-section" style="background:linear-gradient(135deg,#0b1c2d 0%,#1a3a5c 50%,#0b1c2d 100%);color:#fff;">
+  <div class="container text-center">
+    <img src="assets/images/logo.png" alt="Radio Odyssey"
+         style="height:90px;width:90px;border-radius:50%;margin-bottom:1.5rem;
+                border:3px solid rgba(255,255,255,.3);
+                box-shadow:0 0 0 6px rgba(30,127,203,.25), 0 0 40px rgba(30,127,203,.4);"/>
+    <h2 style="-webkit-text-fill-color:#fff;font-size:clamp(1.7rem,4vw,2.8rem);">
+      Prêt(e) à voyager avec Radio Odyssey ?
+    </h2>
+    <p style="opacity:.88;font-size:1.05rem;max-width:500px;margin:1rem auto 2rem;">
+      Rejoignez des milliers d'auditeurs qui commencent chaque journée avec une dose de positivité !
+    </p>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <a href="https://play.radioking.io/radio-odyssey" target="_blank" rel="noopener" class="btn-hero">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+        ÉCOUTER MAINTENANT
+      </a>
+      <a href="mailto:odysseylaradio@gmail.com" class="btn-hero-ghost">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        Nous Contacter
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer id="site-footer">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-lg-4">
+        <div class="footer-logo-wrap">
+          <img src="assets/images/logo.png" alt="Radio Odyssey"/>
+          <div class="footer-brand">Radio Odyssey<small>Positive Web Radio ✨</small></div>
+        </div>
+        <p style="font-size:.85rem;max-width:280px;">
+          La webradio positive française — Hits des années 80, dance, easy listening
+          et bien-être, 24h/24, gratuitement, depuis janvier 2024 !
+        </p>
+        <a href="mailto:odysseylaradio@gmail.com" style="color:var(--ro-sky)!important;">
+          odysseylaradio@gmail.com
+        </a>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <h5>Navigation</h5>
+        <a href="index.html">Accueil</a>
+        <a href="radio-coherence-cardiaque.html">Cohérence Cardiaque</a>
+        <a href="radio-bien-etre-en-ligne.html">Bien-être</a>
+        <a href="radio-annees-80-en-ligne.html">Années 80</a>
+        <a href="radio-dance-energisante.html">Dance</a>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <h5>Thématiques</h5>
+        <a href="musique-pour-se-concentrer.html">Concentration</a>
+        <a href="radio-anti-stress-gratuite.html">Anti-Stress</a>
+        <a href="radio-pour-travailler.html">Travail</a>
+        <a href="radio-detente-moderne.html">Détente</a>
+        <a href="musique-pour-respiration-guidee.html">Respiration</a>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <h5>International</h5>
+        <a href="positive-european-music-station.html">European Positive</a>
+        <a href="european-chill-radio.html">European Chill</a>
+        <a href="feel-good-music-radio.html">Feel Good Radio</a>
+        <a href="keep-listening-radio-odyssey.html">Keep Listening</a>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <h5>Écouter sur</h5>
+        <a href="https://play.radioking.io/radio-odyssey" target="_blank" rel="noopener">RadioKing</a>
+        <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener">TuneIn</a>
+        <a href="https://www.deezer.com/search/radio%20odyssey/livestream" target="_blank" rel="noopener">Deezer</a>
+        <a href="https://fr.welove.radio/radio/radio-odyssey/" target="_blank" rel="noopener">WeLoveRadio</a>
+        <a href="https://radio.orange.com/radios/radio_odyssey" target="_blank" rel="noopener">Orange</a>
+      </div>
+    </div>
+    <hr/>
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <div class="footer-bottom">© 2026 Radio Odyssey. Tous droits réservés. | Depuis le 19 janvier 2024</div>
+      <div class="footer-social d-flex gap-3">
+        <a href="https://www.facebook.com/profile.php?id=61588289230589" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/radio_odyssey_france/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://x.com/Odysseylaradio" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.youtube.com/channel/UCodzZ_dhFdJwQ90nZzVHluw" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

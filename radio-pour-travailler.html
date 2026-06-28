@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Radio Odyssey, une radio pour travailler en ligne &#8211; Concentration, &#233;nergie et &#233;quilibre – Radio Odyssey</title>
+  <meta name="description" content="Radio pour travailler en ligne sur Radio Odyssey : rythmes structur&#233;s, concentration, hits 80 et coh&#233;rence cardiaque pour une productivit&#233; optimale."/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    .page-hero{background:linear-gradient(135deg,#2D2D3A,#7B2FBE);color:#fff;padding:4rem 0 3.5rem;position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;top:-80px;right:-100px;width:400px;height:400px;background:rgba(255,255,255,.07);border-radius:50%;pointer-events:none;}
+    .page-hero-icon{width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;}
+    .page-hero-icon svg{width:48px;height:48px;}
+    .page-hero h1{font-size:clamp(1.9rem,4.5vw,3rem);font-weight:900;line-height:1.1;color:#fff;}
+    .page-hero p{font-size:1.05rem;opacity:.9;max-width:580px;}
+    .content-card{background:#fff;border-radius:20px;padding:2.2rem;box-shadow:0 8px 30px rgba(123,47,190,.12);margin-bottom:1.5rem;border:1.5px solid rgba(123,47,190,.08);}
+    .content-card h2{font-size:1.5rem;font-weight:800;margin-bottom:1rem;}
+    .content-card h3{font-size:1.1rem;font-weight:800;margin-bottom:.6rem;color:var(--ro-purple);}
+    .content-card p{font-size:.92rem;color:var(--ro-muted);line-height:1.78;}
+    .content-card ul{font-size:.9rem;color:var(--ro-muted);padding-left:1.2rem;}
+    .content-card ul li{margin-bottom:.4rem;}
+    .highlight-box{background:linear-gradient(135deg,rgba(123,47,190,.07),rgba(255,60,172,.05));border:1.5px solid rgba(123,47,190,.15);border-radius:16px;padding:1.5rem;margin:1.2rem 0;}
+    .page-cta-bar{background:linear-gradient(135deg,#0b1c2d,#1a3a5c);border-radius:20px;padding:2.5rem 2rem;color:#fff;text-align:center;margin-top:2rem;}
+    .page-cta-bar h3{font-size:1.4rem;font-weight:900;margin-bottom:.75rem;}
+    .tag-pill{display:inline-block;background:rgba(123,47,190,.1);color:var(--ro-purple);border-radius:999px;padding:.25rem .8rem;font-size:.78rem;font-weight:700;margin:.2rem;}
+  </style>
+</head>
+<body>
+
+<!-- PLAYER BAR -->
+<div id="topRadioBar">
+
+  <!-- GAUCHE : logo + badge -->
+  <a class="bar-logo" href="index.html" aria-label="Radio Odyssey — Accueil">
+    <img class="bar-logo-img" src="assets/images/logo.png" alt="Radio Odyssey"
+         onerror="this.style.opacity='0'"/>
+  </a>
+  <div class="live-badge">
+    <span class="live-dot"></span>
+    EN DIRECT MAINTENANT
+  </div>
+
+  <!-- CENTRE : player RadioKing (code original exact) -->
+  <iframe src="https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90"
+    allow="autoplay" title="Radio Odyssey — Lecteur en direct"></iframe>
+
+  <!-- DROITE : wave + burger -->
+  <div class="bar-wave" aria-hidden="true">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <button class="bar-burger"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#site-nav"
+          aria-controls="site-nav"
+          aria-label="Ouvrir le menu"
+          style="margin-right:16px;">
+    <i class="bi bi-list"></i>
+  </button>
+
+</div>
+<script src="https://player.radioking.io/scripts/iframe.bundle.js"></script>
+
+<!-- OFFCANVAS NAV -->
+<div class="offcanvas offcanvas-start" id="site-nav" tabindex="-1" aria-labelledby="nav-label">
+  <div class="offcanvas-header">
+    <div class="offcanvas-title" id="nav-label"><img src="assets/images/logo.png" alt="Logo"/> Radio Odyssey</div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fermer"></button>
+  </div>
+  <div class="offcanvas-body p-2">
+    <span class="nav-cat">🏠 Accueil</span>
+    <a class="nav-link" href="index.html"><span class="ni">🏠</span> Page d'accueil</a>
+    <span class="nav-cat">💆 Bien-être &amp; Santé</span>
+    <a class="nav-link" href="radio-coherence-cardiaque.html"><span class="ni">❤️</span> Cohérence Cardiaque</a>
+    <a class="nav-link" href="radio-bien-etre-en-ligne.html"><span class="ni">🌿</span> Bien-être en Ligne</a>
+    <a class="nav-link" href="radio-anti-stress-gratuite.html"><span class="ni">🧘</span> Anti-Stress Gratuite</a>
+    <a class="nav-link" href="musique-pour-respiration-guidee.html"><span class="ni">🫁</span> Respiration Guidée</a>
+    <a class="nav-link" href="radio-detente-moderne.html"><span class="ni">🌙</span> Détente Moderne</a>
+    <span class="nav-cat">🎵 Musique &amp; Énergie</span>
+    <a class="nav-link" href="radio-annees-80-en-ligne.html"><span class="ni">🕺</span> Années 80 en Ligne</a>
+    <a class="nav-link" href="radio-dance-energisante.html"><span class="ni">💃</span> Dance Énergisante</a>
+    <a class="nav-link" href="musique-pour-se-concentrer.html"><span class="ni">🎯</span> Concentration</a>
+    <a class="nav-link" href="radio-pour-travailler.html"><span class="ni">💻</span> Pour Travailler</a>
+    <span class="nav-cat">🌍 International</span>
+    <a class="nav-link" href="positive-european-music-station.html"><span class="ni">🇪🇺</span> European Positive</a>
+    <a class="nav-link" href="european-chill-radio.html"><span class="ni">☁️</span> European Chill</a>
+    <a class="nav-link" href="feel-good-music-radio.html"><span class="ni">😊</span> Feel Good Radio</a>
+    <a class="nav-link" href="keep-listening-radio-odyssey.html"><span class="ni">▶️</span> Keep Listening</a>
+    <div class="offcanvas-cta">
+      <a class="btn-ro w-100 justify-content-center" href="https://play.radioking.io/radio-odyssey" target="_blank" rel="noopener"><i class="bi bi-broadcast"></i>&nbsp;Écouter en Direct</a>
+    </div>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <nav aria-label="breadcrumb" style="margin-bottom:1rem;">
+      <ol class="breadcrumb" style="background:none;padding:0;margin:0;font-size:.82rem;opacity:.8;">
+        <li class="breadcrumb-item"><a href="index.html" style="color:rgba(255,255,255,.8);text-decoration:none;">Accueil</a></li>
+        <li class="breadcrumb-item active" style="color:#fff;">Radio Odyssey, une radio pour travailler en ligne &#8211; Concentration, &#233;nergie et &#233;quilibre</li>
+      </ol>
+    </nav>
+    <div class="page-hero-icon"><svg viewBox="0 0 48 48" fill="none"><rect x="5" y="9" width="38" height="24" rx="3" stroke="white" stroke-width="2.5"/><line x1="14" y1="41" x2="34" y2="41" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="24" y1="33" x2="24" y2="41" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="13" y1="20" x2="20" y2="20" stroke="rgba(255,255,255,.65)" stroke-width="2" stroke-linecap="round"/><line x1="23" y1="20" x2="30" y2="20" stroke="rgba(255,255,255,.65)" stroke-width="2" stroke-linecap="round"/><line x1="33" y1="20" x2="36" y2="20" stroke="rgba(255,255,255,.65)" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <h1>Radio pour Travailler en Ligne</h1>
+    <p>Musique positive, respiration guid&#233;e et coh&#233;rence cardiaque &#8212; une &#233;nergie ma&#238;tris&#233;e pour rester concentr&#233; plus longtemps.</p>
+  </div>
+</section>
+
+<main class="ro-section">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-lg-8">
+        
+<div class="content-card">
+  <h2>Vous cherchez une radio pour travailler efficacement&#160;?</h2>
+  <p>Radio Odyssey propose une diffusion en ligne pens&#233;e pour accompagner vos journ&#233;es de travail&#160;: rythmes structur&#233;s, hits 80 revisit&#233;s, ambiance dynamique et s&#233;quences de respiration guid&#233;e int&#233;gr&#233;es.</p>
+</div>
+
+<div class="content-card">
+  <h2>Pourquoi choisir une radio pour travailler&#160;?</h2>
+  <p>Contrairement aux playlists fixes, une radio en ligne offre&#160;:</p>
+  <ul>
+    <li>Une continuit&#233; sonore naturelle</li>
+    <li>Une vari&#233;t&#233; ma&#238;tris&#233;e</li>
+    <li>Une dynamique &#233;volutive</li>
+    <li>Moins de microd&#233;cisions (pas besoin de changer de titre)</li>
+  </ul>
+  <p>Cette fluidit&#233; aide &#224; maintenir un &#233;tat de &#171;&#160;flow&#160;&#187; productif.</p>
+</div>
+
+<div class="content-card">
+  <h2>L&#8217;&#233;quilibre entre stimulation et calme</h2>
+  <p>Travailler efficacement demande&#160;: une stimulation suffisante, un stress contr&#244;l&#233; et un rythme stable. Radio Odyssey combine&#160;:</p>
+  <ul>
+    <li>Musique dance mod&#233;r&#233;e</li>
+    <li>Influences 80s revisit&#233;es</li>
+    <li>Ambiances easy listening</li>
+    <li>S&#233;quences de coh&#233;rence cardiaque</li>
+  </ul>
+  <p>Cette alternance permet d&#8217;&#233;viter la surcharge mentale.</p>
+</div>
+
+<div class="content-card">
+  <h2>La coh&#233;rence cardiaque au service de la productivit&#233;</h2>
+  <p>Quelques minutes de respiration guid&#233;e peuvent&#160;:</p>
+  <ul>
+    <li>R&#233;duire la tension</li>
+    <li>Clarifier les id&#233;es</li>
+    <li>Am&#233;liorer la prise de d&#233;cision</li>
+    <li>Relancer l&#8217;attention</li>
+  </ul>
+  <p>Radio Odyssey int&#232;gre ces pauses dans son flux musical pour accompagner naturellement votre journ&#233;e.</p>
+  
+<div class="highlight-box" style="margin-top:1rem;">
+  <strong>S&#233;ances de 3 minutes :</strong> 7h, 8h, 9h, 12h, 13h, 18h, 19h.<br/>
+  <strong>S&#233;ances de 1 minute :</strong> 10h, 11h, 14h, 15h, 16h, 17h.
+</div>
+
+</div>
+
+<div class="content-card">
+  <h2>Id&#233;ale pour&#8230;</h2>
+  <ul>
+    <li>Les t&#233;l&#233;travailleurs</li>
+    <li>Les ind&#233;pendants</li>
+    <li>Les &#233;tudiants</li>
+    <li>Les environnements de bureau</li>
+    <li>Les sessions cr&#233;atives</li>
+  </ul>
+  <p>Elle offre un cadre sonore stimulant mais &#233;quilibr&#233;.</p>
+</div>
+
+<div class="page-cta-bar">
+  <h3>Boostez votre productivit&#233; maintenant</h3>
+  <a href="https://play.radioking.io/radio-odyssey" target="_blank" rel="noopener" class="btn-hero">
+    <i class="bi bi-broadcast-pin"></i> &#201;couter et Travailler
+  </a>
+</div>
+
+      </div>
+      <div class="col-lg-4">
+        
+<div class="content-card" style="position:sticky;top:calc(var(--bar-h) + 1.5rem);">
+  <h3 style="color:var(--ro-purple);font-size:1rem;">&#127925; Ecouter maintenant</h3>
+  <p style="font-size:.85rem;">Radio Odyssey en direct, 24h/24, gratuit et sans pub !</p>
+  <a href="https://play.radioking.io/radio-odyssey" target="_blank" rel="noopener"
+     class="btn-ro w-100 justify-content-center mb-3" style="font-size:.88rem;">
+    <i class="bi bi-broadcast-pin"></i>&nbsp;Lancer la radio
+  </a>
+  <hr style="border-color:rgba(123,47,190,.1);"/>
+  <p style="font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--ro-muted);margin:.8rem 0 .4rem;">Autres pages</p>
+  <div style="display:flex;flex-direction:column;gap:.28rem;font-size:.82rem;">
+    <a href="index.html" style="color:var(--ro-purple);text-decoration:none;">&#127968; Accueil</a>
+    <a href="radio-coherence-cardiaque.html" style="color:var(--ro-purple);text-decoration:none;">&#10084;&#65039; Coherence Cardiaque</a>
+    <a href="radio-bien-etre-en-ligne.html" style="color:var(--ro-purple);text-decoration:none;">&#127807; Bien-etre en Ligne</a>
+    <a href="radio-anti-stress-gratuite.html" style="color:var(--ro-purple);text-decoration:none;">&#129335; Anti-Stress</a>
+    <a href="musique-pour-respiration-guidee.html" style="color:var(--ro-purple);text-decoration:none;">&#129769; Respiration Guidee</a>
+    <a href="radio-annees-80-en-ligne.html" style="color:var(--ro-purple);text-decoration:none;">&#128250; Annees 80</a>
+    <a href="radio-dance-energisante.html" style="color:var(--ro-purple);text-decoration:none;">&#128131; Dance</a>
+    <a href="musique-pour-se-concentrer.html" style="color:var(--ro-purple);text-decoration:none;">&#127919; Concentration</a>
+    <a href="radio-pour-travailler.html" style="color:var(--ro-purple);text-decoration:none;">&#128187; Pour Travailler</a>
+    <a href="radio-detente-moderne.html" style="color:var(--ro-purple);text-decoration:none;">&#127761; Detente Moderne</a>
+    <a href="feel-good-music-radio.html" style="color:var(--ro-purple);text-decoration:none;">&#128522; Feel Good Radio</a>
+    <a href="european-chill-radio.html" style="color:var(--ro-purple);text-decoration:none;">&#9729;&#65039; European Chill</a>
+    <a href="positive-european-music-station.html" style="color:var(--ro-purple);text-decoration:none;">&#127466;&#127482; European Positive</a>
+    <a href="keep-listening-radio-odyssey.html" style="color:var(--ro-purple);text-decoration:none;">&#9654;&#65039; Keep Listening</a>
+  </div>
+</div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer id="site-footer">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-lg-4">
+        <div class="footer-logo-wrap">
+          <img src="assets/images/logo.png" alt="Radio Odyssey"/>
+          <div class="footer-brand">Radio Odyssey<small>Positive Web Radio ✨</small></div>
+        </div>
+        <p style="font-size:.85rem;max-width:280px;">La webradio positive française — Hits des années 80, dance, easy listening et bien-être, 24h/24, gratuitement, depuis janvier 2024 !</p>
+        <a href="mailto:odysseylaradio@gmail.com" style="color:var(--ro-sky)!important;">odysseylaradio@gmail.com</a>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <h5>Navigation</h5>
+        <a href="index.html">Accueil</a>
+        <a href="radio-coherence-cardiaque.html">Cohérence Cardiaque</a>
+        <a href="radio-bien-etre-en-ligne.html">Bien-être</a>
+        <a href="radio-annees-80-en-ligne.html">Années 80</a>
+        <a href="radio-dance-energisante.html">Dance</a>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <h5>Thématiques</h5>
+        <a href="musique-pour-se-concentrer.html">Concentration</a>
+        <a href="radio-anti-stress-gratuite.html">Anti-Stress</a>
+        <a href="radio-pour-travailler.html">Travail</a>
+        <a href="radio-detente-moderne.html">Détente</a>
+        <a href="musique-pour-respiration-guidee.html">Respiration</a>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <h5>International</h5>
+        <a href="positive-european-music-station.html">European Positive</a>
+        <a href="european-chill-radio.html">European Chill</a>
+        <a href="feel-good-music-radio.html">Feel Good Radio</a>
+        <a href="keep-listening-radio-odyssey.html">Keep Listening</a>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <h5>Écouter sur</h5>
+        <a href="https://play.radioking.io/radio-odyssey" target="_blank" rel="noopener">RadioKing</a>
+        <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener">TuneIn</a>
+        <a href="https://www.deezer.com/search/radio%20odyssey/livestream" target="_blank" rel="noopener">Deezer</a>
+        <a href="https://fr.welove.radio/radio/radio-odyssey/" target="_blank" rel="noopener">WeLoveRadio</a>
+        <a href="https://radio.orange.com/radios/radio_odyssey" target="_blank" rel="noopener">Orange</a>
+      </div>
+    </div>
+    <hr/>
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <div class="footer-bottom">© 2026 Radio Odyssey. Tous droits réservés. | Depuis le 19 janvier 2024</div>
+      <div class="footer-social d-flex gap-3">
+        <a href="https://www.facebook.com/profile.php?id=61588289230589" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/radio_odyssey_france/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://x.com/Odysseylaradio" target="_blank" rel="noopener" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.youtube.com/channel/UCodzZ_dhFdJwQ90nZzVHluw" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
