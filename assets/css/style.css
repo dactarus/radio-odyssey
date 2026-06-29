@@ -103,6 +103,7 @@ img { max-width: 100%; }
   flex-shrink: 0; white-space: nowrap;
   user-select: none;
   margin-left: 14px;
+  margin-right: 14px; /* espace avant le player */
 }
 .live-dot {
   width: 9px; height: 9px;
