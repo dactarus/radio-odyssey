@@ -278,5 +278,33 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/main.js"></script>
+
+<script>
+/* ── Radio Odyssey : boutons Écouter → autoplay dans le player sticky ── */
+function roPlayNow(e){
+  if(e){ e.preventDefault(); e.stopPropagation(); }
+
+  var isMobile = window.innerWidth <= 767;
+  var iframe = document.querySelector(
+    isMobile ? '#topRadioBar iframe.rk-mobile' : '#topRadioBar iframe.rk-desktop'
+  );
+  // Fallback
+  if(!iframe) iframe = document.querySelector('#topRadioBar iframe');
+
+  if(iframe){
+    // Recharger le src avec autoplay (&a=1 = paramètre autoplay RadioKing)
+    var base = isMobile
+      ? 'https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=50&a=1'
+      : 'https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90&a=1';
+    // Forcer le rechargement même si src identique
+    iframe.src = '';
+    setTimeout(function(){ iframe.src = base; }, 50);
+  }
+
+  // Scroll vers le haut pour montrer le player
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
+
 </body>
 </html>
