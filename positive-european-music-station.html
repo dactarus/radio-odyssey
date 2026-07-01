@@ -299,31 +299,34 @@
 <script src="assets/js/main.js"></script>
 
 <script>
-/* ── Radio Odyssey : boutons Écouter → autoplay dans le player sticky ── */
+/* ── Radio Odyssey : lecture adaptée desktop/mobile ── */
 function roPlayNow(e){
   if(e){ e.preventDefault(); e.stopPropagation(); }
 
-  var isMobile = window.innerWidth <= 767;
-  var iframe = document.querySelector(
-    isMobile ? '#topRadioBar iframe.rk-mobile' : '#topRadioBar iframe.rk-desktop'
-  );
-  // Fallback
-  if(!iframe) iframe = document.querySelector('#topRadioBar iframe');
+  var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+                 || window.innerWidth <= 767;
 
-  if(iframe){
-    // Recharger le src avec autoplay (&a=1 = paramètre autoplay RadioKing)
-    var base = isMobile
-      ? 'https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=50&a=1'
-      : 'https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90&a=1';
-    // Forcer le rechargement même si src identique
-    iframe.src = '';
-    setTimeout(function(){ iframe.src = base; }, 50);
+  if(isMobile){
+    // Mobile : les navigateurs bloquent l'autoplay iframe.
+    // On ouvre le player RadioKing dans un nouvel onglet — 
+    // il démarre immédiatement car c'est une action utilisateur directe.
+    window.open('https://link.radioking.com/radio-odyssey', '_blank');
+    return;
   }
 
-  // Scroll vers le haut pour montrer le player
+  // Desktop : recharger l'iframe avec autoplay
+  var iframe = document.querySelector('#topRadioBar iframe.rk-desktop')
+            || document.querySelector('#topRadioBar iframe');
+
+  if(iframe){
+    var src = 'https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90&a=1';
+    iframe.src = '';
+    setTimeout(function(){ iframe.src = src; }, 50);
+  }
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
 </script>
+
 
 </body>
 </html>

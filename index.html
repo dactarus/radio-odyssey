@@ -94,19 +94,20 @@
     },
     "image": "https://radio-odyssey.com/assets/images/logo.png",
     "description": "Radio Odyssey est une webradio positive 100% gratuite diffusant des hits des années 80 revisités, de la dance, du easy listening et des séquences de cohérence cardiaque, 24h/24 et 7j/7.",
-    "broadcastFrequency": "Webradio — streaming en ligne",
-    "broadcastTimezone": "Europe/Paris",
-    "inLanguage": ["fr", "en"],
-    "genre": ["Pop", "Dance", "80s", "Easy Listening", "Well-being"],
-    "founder": {
-      "@type": "Person",
-      "name": "Radio Odyssey"
-    },
     "foundingDate": "2024-01-19",
+    "areaServed": {
+      "@type": "Place",
+      "name": "Monde entier — streaming international"
+    },
+    "availableLanguage": [
+      { "@type": "Language", "name": "French", "alternateName": "fr" },
+      { "@type": "Language", "name": "English", "alternateName": "en" }
+    ],
     "contactPoint": {
       "@type": "ContactPoint",
       "email": "odysseylaradio@gmail.com",
-      "contactType": "customer support"
+      "contactType": "customer support",
+      "availableLanguage": ["French", "English"]
     },
     "sameAs": [
       "https://www.facebook.com/profile.php?id=61588289230589",
@@ -114,7 +115,7 @@
       "https://x.com/Odysseylaradio",
       "https://www.youtube.com/channel/UCodzZ_dhFdJwQ90nZzVHluw",
       "https://tunein.com/radio/RADIO-ODYSSEY-s339104/",
-      "https://play.radioking.io/radio-odyssey"
+      "https://link.radioking.com/radio-odyssey"
     ],
     "potentialAction": {
       "@type": "ListenAction",
@@ -123,7 +124,9 @@
         "urlTemplate": "https://link.radioking.com/radio-odyssey",
         "actionPlatform": [
           "https://schema.org/DesktopWebPlatform",
-          "https://schema.org/MobileWebPlatform"
+          "https://schema.org/MobileWebPlatform",
+          "https://schema.org/IOSPlatform",
+          "https://schema.org/AndroidPlatform"
         ]
       },
       "expectsAcceptanceOf": {
@@ -133,16 +136,17 @@
         "availability": "https://schema.org/InStock"
       }
     },
-    "knowsAbout": [
+    "subjectOf": [
       {
-        "@type": "MusicGroup",
-        "name": "Artistes années 80",
-        "genre": ["Pop", "Synthpop", "Dance", "New Wave"]
+        "@type": "MusicPlaylist",
+        "name": "Programmation Radio Odyssey",
+        "genre": ["Pop", "Dance", "80s", "Easy Listening", "Synthpop", "New Wave"],
+        "description": "Hits des années 80 revisités, dance moderne et easy listening, 24h/24"
       },
       {
-        "@type": "Thing",
-        "name": "Cohérence cardiaque",
-        "description": "Technique de respiration guidée pour le bien-être et la réduction du stress"
+        "@type": "MusicGroup",
+        "name": "Artistes diffusés sur Radio Odyssey",
+        "genre": ["Pop", "Synthpop", "Dance", "New Wave", "Easy Listening"]
       }
     ]
   }
@@ -1190,31 +1194,34 @@
 <script src="assets/js/main.js"></script>
 
 <script>
-/* ── Radio Odyssey : boutons Écouter → autoplay dans le player sticky ── */
+/* ── Radio Odyssey : lecture adaptée desktop/mobile ── */
 function roPlayNow(e){
   if(e){ e.preventDefault(); e.stopPropagation(); }
 
-  var isMobile = window.innerWidth <= 767;
-  var iframe = document.querySelector(
-    isMobile ? '#topRadioBar iframe.rk-mobile' : '#topRadioBar iframe.rk-desktop'
-  );
-  // Fallback
-  if(!iframe) iframe = document.querySelector('#topRadioBar iframe');
+  var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+                 || window.innerWidth <= 767;
 
-  if(iframe){
-    // Recharger le src avec autoplay (&a=1 = paramètre autoplay RadioKing)
-    var base = isMobile
-      ? 'https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=50&a=1'
-      : 'https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90&a=1';
-    // Forcer le rechargement même si src identique
-    iframe.src = '';
-    setTimeout(function(){ iframe.src = base; }, 50);
+  if(isMobile){
+    // Mobile : les navigateurs bloquent l'autoplay iframe.
+    // On ouvre le player RadioKing dans un nouvel onglet — 
+    // il démarre immédiatement car c'est une action utilisateur directe.
+    window.open('https://link.radioking.com/radio-odyssey', '_blank');
+    return;
   }
 
-  // Scroll vers le haut pour montrer le player
+  // Desktop : recharger l'iframe avec autoplay
+  var iframe = document.querySelector('#topRadioBar iframe.rk-desktop')
+            || document.querySelector('#topRadioBar iframe');
+
+  if(iframe){
+    var src = 'https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90&a=1';
+    iframe.src = '';
+    setTimeout(function(){ iframe.src = src; }, 50);
+  }
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
 </script>
+
 
 </body>
 </html>
