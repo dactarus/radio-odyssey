@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+
+const styles = [
+  {
+    name: 'Synthpop & Années 80',
+    color: '#FF3CAC',
+    desc: "Le cœur historique de Radio Odyssey : les tubes des années 80, remixés pour sonner résolument actuels.",
+    artists: ['Bananarama', 'Wham!', 'Tears For Fears', 'Simple Minds', 'Duran Duran', 'Eurythmics', 'Talk Talk', 'Culture Club', 'Pet Shop Boys'],
+    link: { href: '/radio-annees-80-en-ligne.html', label: 'Voir la page Années 80 en Ligne' },
+  },
+  {
+    name: 'Dance & Électro',
+    color: '#00C6FF',
+    desc: "Des beats énergiques pour toute la journée, entre gros noms de la dance actuelle et remixes électro des classiques.",
+    artists: ['David Guetta', 'Ofenbach', 'Calvin Harris', 'Clean Bandit', 'Kungs', 'R3HAB', 'Robin Schulz', 'Lost Frequencies', 'Avicii', 'Kygo'],
+    link: { href: '/radio-dance-energisante.html', label: 'Voir la page Dance Énergisante' },
+  },
+  {
+    name: 'Pop Française',
+    color: '#7B2FBE',
+    desc: "Une place importante pour la chanson française, des références installées aux voix plus récentes.",
+    artists: ['Mylène Farmer', 'Angèle', 'Zazie', 'Pascal Obispo', 'Indochine', 'Christophe Willem', 'Christophe Maé', 'Stromae', 'Clara Luciani', 'Soprano'],
+    link: null,
+  },
+  {
+    name: 'Ballades & Voix Puissantes',
+    color: '#FFD700',
+    desc: "Pour les moments plus posés de la journée, des voix marquantes et des refrains qui donnent des frissons.",
+    artists: ['Sia', 'Coldplay', 'Sting', 'Céline Dion', 'Adele', 'Whitney Houston', 'Sam Smith'],
+    link: null,
+  },
+  {
+    name: 'Funk & Disco',
+    color: '#FF9A3C',
+    desc: "Les racines groovy de la dance moderne, toujours aussi efficaces sur l'antenne.",
+    artists: ['Earth, Wind & Fire', 'Chic', 'Average White Band', 'Kool & The Gang'],
+    link: null,
+  },
+];
+---
+<Layout
+  lang="fr"
+  title="Les Styles Musicaux sur Radio Odyssey — Synthpop, Dance, Pop & Ballades"
+  description="Synthpop et années 80, dance/électro, pop française, ballades puissantes, funk & disco : découvrez tous les styles musicaux diffusés sur Radio Odyssey."
+>
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Les styles musicaux sur Radio Odyssey"
+    title="Les Styles Musicaux sur Radio Odyssey"
+    text="De la synthpop des années 80 à la dance actuelle, en passant par la pop française et les ballades puissantes — voici les styles qui composent l'antenne."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="26" width="5" height="14" rx="1.5" stroke="white" stroke-width="2.2"/><rect x="17" y="18" width="5" height="22" rx="1.5" stroke="white" stroke-width="2.2"/><rect x="26" y="10" width="5" height="30" rx="1.5" stroke="white" stroke-width="2.2"/><rect x="35" y="21" width="5" height="19" rx="1.5" stroke="white" stroke-width="2.2"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Un son identifiable, entre plusieurs univers</h2>
+            <p>Radio Odyssey ne diffuse pas un seul style, mais un équilibre pensé entre plusieurs familles musicales : la pop, la dance, quelques ballades puissantes, jamais de rap urbain. À l'intérieur de cet équilibre, trois catégories reviennent en boucle, chacune annoncée sur l'antenne par un jingle dédié : les <strong>nouveautés</strong>, les <strong>golds</strong> — souvent remixés pour sonner actuels — et les <strong>années 80</strong>, elles aussi largement revisitées.</p>
+            <p>Voici les grandes familles de styles que vous pouvez entendre, avec des artistes réellement diffusés sur l'antenne en juin 2026.</p>
+          </div>
+
+          {styles.map((s) => (
+            <div class="content-card">
+              <h2 style={`color:${s.color};`}>{s.name}</h2>
+              <p>{s.desc}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem;">
+                {s.artists.map((a) => (
+                  <span class="tag-pill">{a}</span>
+                ))}
+              </div>
+              {s.link && (
+                <p style="margin-top:1rem;">
+                  <a href={s.link.href} style="color:var(--ro-purple);font-weight:700;">→ {s.link.label}</a>
+                </p>
+              )}
+            </div>
+          ))}
+
+          <div class="content-card">
+            <h2>Envie de savoir qui passe le plus souvent ?</h2>
+            <p>Notre page <a href="/artistes-diffuses-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">artistes diffusés sur Radio Odyssey</a> détaille les artistes les plus présents à l'antenne, tous styles confondus, avec des exemples de titres réellement joués.</p>
+          </div>
+
+          <div class="page-cta-bar">
+            <h3>Écoutez tous ces styles se mélanger en direct</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <i class="bi bi-broadcast-pin"></i> Écouter Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
