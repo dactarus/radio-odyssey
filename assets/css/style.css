@@ -470,7 +470,7 @@ img { max-width: 100%; }
 /* ── HERO ────────────────────────────────────────────────────── */
 .hero {
   background: var(--ro-grad-main); color: #fff;
-  padding: 5.5rem 0 4.5rem; position: relative; overflow: hidden;
+  padding: 5.5rem 0 7rem; position: relative; overflow: hidden;
 }
 .hero-bubble {
   position: absolute; border-radius: 50%; pointer-events: none;
