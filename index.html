@@ -218,214 +218,233 @@
 
 
 <!-- ============================================================
-     TITRES RÉCENTS — En direct de l'antenne
+     TITRES RÉCENTS — En ce moment sur Radio Odyssey
      ============================================================ -->
-<section id="recent-tracks-section" style="
-  position: relative;
-  background: linear-gradient(180deg, #110820 0%, #0d1a2e 60%, #f4eeff 100%);
-  padding: 0 0 0 0;
-  overflow: hidden;
-">
+<section id="now-playing-section">
 
-  <!-- IMAGE HERO VISUEL (smartphone + ondes) -->
-  <div style="position:relative; max-height: 520px; overflow:hidden;">
-    <img src="assets/images/hero-visual.jpg"
-         alt="Radio Odyssey – La Positive Radio"
-         style="width:100%; display:block; object-fit:cover; object-position:center 30%;
-                max-height:520px; filter:brightness(.82);" />
+  <!-- Vague décorative de transition depuis le hero -->
+  <div style="line-height:0;background:var(--hero-bottom,#FF9A3C);">
+    <svg viewBox="0 0 1440 54" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
+         style="width:100%;height:54px;display:block;">
+      <path d="M0,32 C360,60 1080,0 1440,28 L1440,54 L0,54 Z"
+            fill="#1a0d2e"/>
+    </svg>
+  </div>
 
-    <!-- Dégradé haut (transition depuis le hero) -->
-    <div style="position:absolute;top:0;left:0;right:0;height:120px;
-      background:linear-gradient(180deg,#110820 0%,transparent 100%);
-      pointer-events:none;"></div>
+  <div style="background:linear-gradient(135deg,#1a0d2e 0%,#2d1060 40%,#1a0d2e 100%);padding:2.5rem 0 3rem;">
+    <div class="container">
 
-    <!-- Dégradé bas (transition vers section suivante) -->
-    <div style="position:absolute;bottom:0;left:0;right:0;height:120px;
-      background:linear-gradient(0deg,#f4eeff 0%,transparent 100%);
-      pointer-events:none;"></div>
-
-    <!-- OVERLAY : titres en transparence SUR l'image -->
-    <div style="
-      position:absolute; bottom:0; left:0; right:0;
-      padding: 0 1.5rem 2rem;
-    ">
-      <div style="text-align:center; margin-bottom:1rem;">
-        <span style="
-          display:inline-flex; align-items:center; gap:.5rem;
-          background:rgba(0,0,0,.35); backdrop-filter:blur(8px);
-          border:1px solid rgba(255,255,255,.15); border-radius:999px;
-          padding:.35rem 1rem;
-          font-family:'Nunito',sans-serif; font-weight:700; font-size:.78rem;
-          letter-spacing:.08em; color:rgba(255,255,255,.9);
-        ">
-          <span style="width:7px;height:7px;border-radius:50%;background:#ff2b2b;
-            animation:pulse-dot 1.4s infinite;flex-shrink:0;"></span>
-          RÉCEMMENT DIFFUSÉS
-        </span>
+      <!-- En-tête -->
+      <div style="text-align:center;margin-bottom:1.8rem;">
+        <div style="display:inline-flex;align-items:center;gap:.55rem;
+          background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+          backdrop-filter:blur(8px);border-radius:999px;
+          padding:.4rem 1.1rem;margin-bottom:.9rem;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#ff2b2b;
+            flex-shrink:0;animation:pulse-dot 1.4s infinite;"></span>
+          <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;
+            letter-spacing:.1em;color:rgba(255,255,255,.9);">EN CE MOMENT SUR RADIO ODYSSEY</span>
+        </div>
+        <h2 style="font-family:'Nunito',sans-serif;font-weight:900;
+          font-size:clamp(1.4rem,3vw,2rem);color:#fff;margin:0;line-height:1.15;">
+          Les <span style="background:linear-gradient(135deg,#FF3CAC,#FFD700);
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+            background-clip:text;">4 derniers titres</span> diffusés
+        </h2>
       </div>
 
-      <!-- GRILLE DES 4 TITRES -->
-      <div id="recent-tracks" style="
-        display:flex; gap:.75rem; justify-content:center;
-        flex-wrap:wrap;
-      ">
-        <!-- Skeletons de chargement -->
-        <div class="track-card track-skeleton"></div>
-        <div class="track-card track-skeleton"></div>
-        <div class="track-card track-skeleton"></div>
-        <div class="track-card track-skeleton"></div>
+      <!-- Grille des 4 titres -->
+      <div id="np-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
+        <!-- Skeletons -->
+        <div class="np-skeleton"></div>
+        <div class="np-skeleton"></div>
+        <div class="np-skeleton"></div>
+        <div class="np-skeleton"></div>
       </div>
+
+      <!-- Lien discret -->
+      <p style="text-align:center;margin-top:1.4rem;margin-bottom:0;
+        font-size:.78rem;color:rgba(255,255,255,.35);font-family:'Nunito',sans-serif;">
+        ↻ Mis à jour automatiquement toutes les 30 secondes
+      </p>
+
     </div>
+  </div>
+
+  <!-- Vague de transition vers la section suivante (fond blanc #FAFAFA) -->
+  <div style="line-height:0;background:#1a0d2e;">
+    <svg viewBox="0 0 1440 54" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
+         style="width:100%;height:54px;display:block;">
+      <path d="M0,26 C480,54 960,0 1440,30 L1440,54 L0,54 Z"
+            fill="#FAFAFA"/>
+    </svg>
   </div>
 
 </section>
 
 <style>
-/* ── Track cards ── */
-.track-card {
-  background: rgba(255,255,255,.12);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,.2);
-  border-radius: 16px;
-  padding: .75rem;
+/* ── Now Playing Cards ── */
+.np-card {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 18px;
+  padding: 1rem;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: .75rem;
-  width: calc(25% - .6rem);
-  min-width: 180px;
-  max-width: 240px;
-  transition: transform .25s, background .25s;
+  transition: transform .25s, background .25s, box-shadow .25s;
+  position: relative;
+  overflow: hidden;
 }
-.track-card:hover {
-  transform: translateY(-4px);
-  background: rgba(255,255,255,.2);
+.np-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--ro-purple), var(--ro-pink));
+  opacity: 0;
+  transition: opacity .25s;
 }
-.track-art {
-  width: 52px; height: 52px;
-  border-radius: 10px;
+.np-card:hover { transform: translateY(-5px); background: rgba(255,255,255,.12); box-shadow: 0 16px 40px rgba(0,0,0,.4); }
+.np-card:hover::before { opacity: 1; }
+
+/* Badge "EN COURS" */
+.np-card.np-current::before { opacity: 1; background: linear-gradient(90deg,#FF3CAC,#FFD700); }
+.np-now-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: rgba(255,60,172,.2); border: 1px solid rgba(255,60,172,.4);
+  border-radius: 999px; padding: .2rem .65rem;
+  font-family: 'Nunito', sans-serif; font-weight: 800;
+  font-size: .62rem; letter-spacing: .08em; color: #FF3CAC;
+  width: fit-content; margin-bottom: .1rem;
+}
+.np-now-badge span { width: 5px; height: 5px; border-radius: 50%; background: #FF3CAC; animation: pulse-dot 1.4s infinite; }
+
+.np-ago {
+  font-size: .68rem; color: rgba(255,255,255,.4);
+  font-family: 'Nunito', sans-serif; font-weight: 600;
+  margin-top: .1rem;
+}
+
+/* Artwork */
+.np-art-wrap {
+  position: relative; width: 100%; padding-top: 100%;
+  border-radius: 12px; overflow: hidden;
+  background: linear-gradient(135deg,rgba(123,47,190,.6),rgba(255,60,172,.4));
+  flex-shrink: 0;
+}
+.np-art {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
   object-fit: cover;
-  flex-shrink: 0;
-  background: rgba(255,255,255,.1);
-  box-shadow: 0 4px 14px rgba(0,0,0,.35);
 }
-.track-art-placeholder {
-  width: 52px; height: 52px;
-  border-radius: 10px;
-  flex-shrink: 0;
-  background: linear-gradient(135deg,rgba(123,47,190,.5),rgba(255,60,172,.4));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem;
+.np-art-icon {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 2rem; opacity: .6;
 }
-.track-info { min-width: 0; flex: 1; }
-.track-title {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800; font-size: .82rem;
-  color: #fff;
+.np-shadow {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+  background: linear-gradient(0deg, rgba(0,0,0,.55) 0%, transparent 100%);
+}
+
+/* Infos */
+.np-title {
+  font-family: 'Nunito', sans-serif; font-weight: 800;
+  font-size: .92rem; color: #fff;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  margin-bottom: .15rem;
+  line-height: 1.3;
 }
-.track-artist {
-  font-size: .72rem;
-  color: rgba(255,255,255,.65);
+.np-artist {
+  font-size: .78rem; color: rgba(255,255,255,.6);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.track-badge {
-  font-size: .62rem; font-weight: 700;
-  color: var(--ro-gold);
-  font-family: 'Nunito', sans-serif;
-  margin-top: .2rem;
-  letter-spacing: .04em;
+  margin-top: .15rem;
 }
 
 /* Skeleton */
-.track-skeleton {
-  min-height: 76px;
+.np-skeleton {
+  border-radius: 18px; height: 180px;
   background: linear-gradient(90deg,
-    rgba(255,255,255,.08) 0%,
-    rgba(255,255,255,.16) 50%,
-    rgba(255,255,255,.08) 100%);
+    rgba(255,255,255,.05) 0%,
+    rgba(255,255,255,.12) 50%,
+    rgba(255,255,255,.05) 100%);
   background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
+  animation: np-shimmer 1.5s infinite;
 }
-@keyframes shimmer {
-  0%   { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
+@keyframes np-shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 
 /* Responsive */
-@media (max-width: 900px) {
-  .track-card {
-    width: calc(50% - .4rem);
-    max-width: none;
-  }
-}
-@media (max-width: 500px) {
-  .track-card { width: 100%; max-width: 100%; }
-  #recent-tracks-section img { max-height: 380px; }
+@media (max-width: 900px) { #np-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px) { #np-grid { grid-template-columns: repeat(2,1fr); gap:.6rem; }
+  .np-skeleton { height: 140px; }
 }
 </style>
 
 <script>
-/* ── Chargement des titres récents via API RadioKing ── */
-(function () {
-  var API = 'https://api.radioking.io/widget/radio/radio-odyssey/track/ckoi?limit=4';
-  var container = document.getElementById('recent-tracks');
-  if (!container) return;
+(function(){
+  var grid = document.getElementById('np-grid');
+  if(!grid) return;
 
-  function timeAgo(dateStr) {
-    if (!dateStr) return '';
-    var d = new Date(dateStr);
-    var diff = Math.floor((Date.now() - d.getTime()) / 1000);
-    if (diff < 60)  return 'À l'instant';
-    if (diff < 120) return 'Il y a 1 min';
-    if (diff < 3600) return 'Il y a ' + Math.floor(diff / 60) + ' min';
-    return 'Il y a ' + Math.floor(diff / 3600) + 'h';
+  // API directe RadioKing (fonctionne sans CORS sur la plupart des navigateurs
+  // car RadioKing envoie Access-Control-Allow-Origin: *)
+  var API = 'https://api.radioking.io/widget/radio/radio-odyssey/track/ckoi?limit=4';
+
+  function timeAgo(dateStr){
+    if(!dateStr) return '';
+    var diff = Math.floor((Date.now() - new Date(dateStr).getTime()) / 1000);
+    if(diff < 60)  return 'À l'instant';
+    if(diff < 120) return 'Il y a 1 min';
+    if(diff < 3600) return 'Il y a ' + Math.floor(diff/60) + ' min';
+    return 'Il y a ' + Math.floor(diff/3600) + 'h';
   }
 
-  function renderTracks(tracks) {
-    container.innerHTML = '';
-    tracks.forEach(function (t, i) {
+  function render(tracks){
+    grid.innerHTML = '';
+    tracks.slice(0,4).forEach(function(t, i){
       var card = document.createElement('div');
-      card.className = 'track-card';
+      card.className = 'np-card' + (i===0 ? ' np-current' : '');
 
+      // Badge
+      var badgeHtml = i === 0
+        ? '<div class="np-now-badge"><span></span>EN COURS</div>'
+        : '<div class="np-ago">' + timeAgo(t.started_at) + '</div>';
+
+      // Artwork
       var artHtml = t.cover
-        ? '<img class="track-art" src="' + t.cover + '" alt="' + (t.title||'') + '" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="track-art-placeholder" style="display:none;">♪</div>'
-        : '<div class="track-art-placeholder">♪</div>';
-
-      var badge = i === 0 ? '<div class="track-badge">▶ EN COURS</div>' : '<div class="track-badge">' + timeAgo(t.started_at) + '</div>';
+        ? '<img class="np-art" src="' + t.cover + '" alt="" loading="lazy" onerror="this.style.opacity=0"/><div class="np-shadow"></div>'
+        : '<div class="np-art-icon">♪</div>';
 
       card.innerHTML =
-        artHtml +
-        '<div class="track-info">' +
-          '<div class="track-title">' + (t.title || 'Titre inconnu') + '</div>' +
-          '<div class="track-artist">' + (t.artist || 'Artiste inconnu') + '</div>' +
-          badge +
+        '<div class="np-art-wrap">' + artHtml + '</div>' +
+        '<div>' +
+          badgeHtml +
+          '<div class="np-title">' + (t.title  || 'Titre inconnu') + '</div>' +
+          '<div class="np-artist">' + (t.artist || '') + '</div>' +
         '</div>';
 
-      container.appendChild(card);
+      grid.appendChild(card);
     });
   }
 
-  function loadTracks() {
-    fetch(API)
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        var tracks = Array.isArray(data) ? data : (data.data || data.tracks || []);
-        if (tracks.length) renderTracks(tracks.slice(0, 4));
-        else container.innerHTML = '<p style="color:rgba(255,255,255,.6);font-size:.85rem;text-align:center;width:100%;">Chargement en cours…</p>';
-      })
-      .catch(function () {
-        container.innerHTML = '<p style="color:rgba(255,255,255,.6);font-size:.85rem;text-align:center;width:100%;">Chargement en cours…</p>';
-      });
+  function showError(){
+    grid.innerHTML =
+      '<div style="grid-column:1/-1;text-align:center;color:rgba(255,255,255,.4);' +
+      'font-size:.85rem;padding:2rem;">Chargement des titres en cours…</div>';
   }
 
-  loadTracks();
-  // Rafraîchir toutes les 30 secondes
-  setInterval(loadTracks, 30000);
+  function load(){
+    fetch(API, {cache:'no-store'})
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        var arr = Array.isArray(d) ? d : (d.data || d.tracks || []);
+        arr.length ? render(arr) : showError();
+      })
+      .catch(showError);
+  }
+
+  load();
+  setInterval(load, 30000);
 })();
 </script>
-
 
 
 
