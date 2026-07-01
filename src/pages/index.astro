@@ -663,8 +663,7 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
       {NAV_CATEGORIES.map((cat) => (
         <div class="col-md-6 col-lg-4">
           <a class="page-card" href={cat.hub} style="flex-direction:column;align-items:flex-start;text-align:left;padding:1.8rem;">
-            <div class="pg-icon" style="width:64px;height:64px;font-size:1.9rem;background:linear-gradient(135deg,rgba(123,47,190,.12),rgba(255,60,172,.1));margin-bottom:1rem;">
-              {cat.emoji}
+            <div class="pg-icon svg-icon" style={`width:64px;height:64px;background:${cat.iconBg};margin-bottom:1rem;`} set:html={cat.icon}>
             </div>
             <div>
               <h4 style="font-size:1.05rem;">{cat.label}</h4>

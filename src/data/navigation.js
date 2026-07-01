@@ -5,6 +5,8 @@ export const NAV_CATEGORIES = [
   {
     id: 'bien-etre',
     emoji: '💆',
+    icon: '<svg viewBox="0 0 48 48" fill="none"><path d="M24 40C24 40 6 28 6 16C6 10.5 10 6 15 6C18 6 24 9 24 9C24 9 30 6 33 6C38 6 42 10.5 42 16C42 28 24 40 24 40Z" stroke="#FF3CAC" stroke-width="2.3" fill="none"/><path d="M10 20C13 16 16 24 19 20C22 16 25 24 28 20C31 16 34 24 37 20" stroke="#00C6FF" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>',
+    iconBg: 'linear-gradient(135deg,rgba(255,60,172,.12),rgba(0,198,255,.1))',
     label: 'Bien-être & Santé',
     hub: '/bien-etre-et-sante.html',
     hubTitle: 'Bien-être & Santé',
@@ -20,6 +22,8 @@ export const NAV_CATEGORIES = [
   {
     id: 'musique-energie',
     emoji: '🎵',
+    icon: '<svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="9" r="4" stroke="#FF9A3C" stroke-width="1.8"/><path d="M24 13 L20 24 L14 22" stroke="#FF9A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M24 13 L26 24 L33 20" stroke="#FF3CAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M20 24 L17 36 L12 38" stroke="#7B2FBE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M26 24 L28 36 L34 40" stroke="#7B2FBE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>',
+    iconBg: 'linear-gradient(135deg,rgba(255,154,60,.12),rgba(255,60,172,.1))',
     label: 'Musique & Énergie',
     hub: '/musique-et-energie.html',
     hubTitle: 'Musique & Énergie',
@@ -34,6 +38,8 @@ export const NAV_CATEGORIES = [
   {
     id: 'playlists-jour',
     emoji: '🕐',
+    icon: '<svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="17" stroke="#FFD700" stroke-width="2.2"/><line x1="24" y1="24" x2="24" y2="13" stroke="#FF9A3C" stroke-width="2.2" stroke-linecap="round"/><line x1="24" y1="24" x2="32" y2="29" stroke="#FF3CAC" stroke-width="2" stroke-linecap="round"/></svg>',
+    iconBg: 'linear-gradient(135deg,rgba(255,215,0,.16),rgba(255,154,60,.1))',
     label: 'Playlists du Jour',
     hub: '/playlists-du-jour.html',
     hubTitle: 'Playlists selon le Moment de la Journée',
@@ -50,6 +56,8 @@ export const NAV_CATEGORIES = [
   {
     id: 'artistes-styles',
     emoji: '🎤',
+    icon: '<svg viewBox="0 0 48 48" fill="none"><circle cx="19" cy="27" r="14" stroke="#7B2FBE" stroke-width="2.2"/><circle cx="19" cy="27" r="4.5" stroke="#7B2FBE" stroke-width="1.8"/><circle cx="19" cy="27" r="1.2" fill="#7B2FBE"/><path d="M27 13L37 9V21L27 25Z" stroke="#FF3CAC" stroke-width="1.8" stroke-linejoin="round" fill="none"/></svg>',
+    iconBg: 'linear-gradient(135deg,rgba(123,47,190,.1),rgba(255,60,172,.1))',
     label: 'Artistes & Styles',
     hub: '/artistes-et-styles.html',
     hubTitle: 'Artistes & Styles Musicaux',
@@ -62,6 +70,8 @@ export const NAV_CATEGORIES = [
   {
     id: 'conseils-ecoute',
     emoji: '📡',
+    icon: '<svg viewBox="0 0 48 48" fill="none"><path d="M8 26V24C8 14.6 15.2 7 24 7C32.8 7 40 14.6 40 24V26" stroke="#1e7fcb" stroke-width="2.2" stroke-linecap="round" fill="none"/><rect x="4" y="26" width="8" height="12" rx="3" stroke="#1e7fcb" stroke-width="2.2"/><rect x="36" y="26" width="8" height="12" rx="3" stroke="#00C6FF" stroke-width="2.2"/></svg>',
+    iconBg: 'linear-gradient(135deg,rgba(30,127,203,.12),rgba(0,198,255,.1))',
     label: "Conseils d'Écoute",
     hub: '/conseils-ecoute.html',
     hubTitle: "Bien Écouter Radio Odyssey",
@@ -75,6 +85,8 @@ export const NAV_CATEGORIES = [
   {
     id: 'international',
     emoji: '🌍',
+    icon: '<svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="17" stroke="#00C6FF" stroke-width="2.2"/><ellipse cx="24" cy="24" rx="7" ry="17" stroke="#1e7fcb" stroke-width="1.6" fill="none"/><line x1="7.5" y1="18" x2="40.5" y2="18" stroke="#1e7fcb" stroke-width="1.4"/><line x1="7.5" y1="30" x2="40.5" y2="30" stroke="#1e7fcb" stroke-width="1.4"/></svg>',
+    iconBg: 'linear-gradient(135deg,rgba(0,198,255,.1),rgba(30,127,203,.12))',
     label: 'International',
     hub: '/international.html',
     hubTitle: 'International',
