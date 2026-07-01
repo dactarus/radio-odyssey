@@ -520,30 +520,47 @@ img { max-width: 100%; }
 
 /* ── RESPONSIVE ──────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  :root { --bar-h: var(--bar-h-mob); }
-  html  { scroll-padding-top: var(--bar-h-mob); }
-  body  { padding-top: calc(var(--bar-h-mob) + 12px); }
+  /* ── MOBILE : barre haute avec iframe RadioKing pleine hauteur ── */
+  :root { --bar-h: 90px; }           /* barre mobile = 90px */
+  html  { scroll-padding-top: 90px; }
+  body  { padding-top: 90px; }
 
   #topRadioBar {
-    height: var(--bar-h-mob);   /* 75px */
+    height: 90px !important;          /* assez grand pour voir le bouton ▶ */
+    overflow: hidden;
+    align-items: flex-start !important;
+    padding-top: 0 !important;
   }
 
-  /* Mobile : cacher le logo pour libérer de la place pour l'iframe */
+  /* Cacher le logo sur mobile pour libérer toute la largeur */
   .bar-logo { display: none !important; }
 
-  /* Mobile : cacher desktop, afficher iframe mobile */
+  /* Cacher le badge et la wave sur mobile */
+  .live-badge { display: none !important; }
+  .bar-wave   { display: none !important; }
+
+  /* Burger aligné en haut */
+  .bar-burger {
+    align-self: center !important;
+    margin-right: 8px !important;
+    flex-shrink: 0;
+  }
+
+  /* Cacher iframe desktop */
   #topRadioBar iframe.rk-desktop { display: none !important; }
+
+  /* Iframe mobile : prend toute la hauteur, margin-top=0 */
   #topRadioBar iframe.rk-mobile {
     display: block !important;
     flex: 1;
     min-width: 0;
-    height: 65px;
+    height: 90px;           /* pleine hauteur = toute l'UI RadioKing visible */
     border: 0;
-    margin-top: 8px;
+    margin-top: 0 !important;  /* pas de décalage = bouton ▶ en haut, accessible */
     align-self: flex-start;
   }
 
-  /* Cacher le bouton alternatif (plus nécessaire) */
+  /* Cacher le bouton alternatif */
   .rk-mobile-btn { display: none !important; }
 
   /* Bouton écoute mobile */
