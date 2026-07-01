@@ -164,6 +164,202 @@
   </div>
 </div>
 
+<div class="content-card" id="cc-exercise-card">
+  <h2>Exercice de Coh&eacute;rence Cardiaque</h2>
+  <p style="margin-bottom:1.5rem;">Cliquez sur <strong>Commencer</strong> et suivez le disque au rythme de votre respiration.</p>
+
+  <div style="text-align:center;margin-bottom:1rem;">
+
+    <!-- Cercle animé -->
+    <div style="position:relative;display:inline-block;width:200px;height:200px;margin-bottom:.5rem;">
+      <svg style="position:absolute;top:0;left:0;" width="200" height="200" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="92" fill="none" stroke="rgba(30,127,203,.15)" stroke-width="3"/>
+        <circle cx="100" cy="100" r="74" fill="rgba(30,127,203,.06)" stroke="none"/>
+      </svg>
+      <div id="cc-circle" style="
+        position:absolute;top:50%;left:50%;
+        transform:translate(-50%,-50%);
+        width:130px;height:130px;border-radius:50%;
+        background:radial-gradient(circle at 40% 35%,#3ab4e8,#1a5fa8);
+        box-shadow:0 0 40px rgba(30,127,203,.45),inset 0 0 20px rgba(255,255,255,.08);
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        transition:width .6s ease,height .6s ease,box-shadow .6s ease;
+      ">
+        <div id="cc-label" style="font-family:'Nunito',sans-serif;font-weight:900;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:2px;">PR&Ecirc;T</div>
+        <div id="cc-number" style="font-family:'Nunito',sans-serif;font-weight:900;font-size:2.6rem;color:#fff;line-height:1;">5</div>
+        <div id="cc-unit" style="font-family:'Nunito',sans-serif;font-size:.7rem;color:rgba(255,255,255,.7);margin-top:2px;">secondes</div>
+      </div>
+    </div>
+
+    <!-- Dots -->
+    <div style="display:flex;justify-content:center;gap:8px;margin:14px 0 18px;">
+      <span class="cc-dot cc-dot-on"></span>
+      <span class="cc-dot"></span>
+      <span class="cc-dot"></span>
+      <span class="cc-dot"></span>
+      <span class="cc-dot"></span>
+    </div>
+
+    <!-- Bouton -->
+    <button id="cc-btn" onclick="ccBegin()" style="
+      background:linear-gradient(135deg,#8B3CF7,#7B2FBE);
+      color:#fff;border:none;border-radius:999px;
+      font-family:'Nunito',sans-serif;font-weight:800;font-size:1.05rem;
+      padding:.85rem 3rem;cursor:pointer;
+      box-shadow:0 6px 24px rgba(123,47,190,.4);
+      transition:transform .15s,box-shadow .15s;
+    " onmouseover="this.style.transform='translateY(-2px)'"
+       onmouseout="this.style.transform='none'">
+      Commencer
+    </button>
+  </div>
+
+  <style>
+    .cc-dot{width:10px;height:10px;border-radius:50%;background:rgba(123,47,190,.18);border:1.5px solid rgba(123,47,190,.28);transition:background .4s;}
+    .cc-dot-on{background:#7B2FBE!important;}
+  </style>
+
+  <script>
+  (function(){
+    var tmr=null, phase='ready', cnt=5, cycle=0, TOTAL=6, IN=5, OUT=5;
+    var circ=document.getElementById('cc-circle');
+    var lbl=document.getElementById('cc-label');
+    var num=document.getElementById('cc-number');
+    var unt=document.getElementById('cc-unit');
+    var btn=document.getElementById('cc-btn');
+    var dots=document.querySelectorAll('#cc-exercise-card .cc-dot');
+
+    function dot(n){dots.forEach(function(d,i){d.classList.toggle('cc-dot-on',i===n);});}
+
+    function setCircle(sz,glow,bg){
+      circ.style.width=sz; circ.style.height=sz;
+      circ.style.boxShadow=glow;
+      if(bg)circ.style.background=bg;
+    }
+
+    function reset(){
+      if(tmr){clearInterval(tmr);tmr=null;}
+      phase='ready';cnt=5;cycle=0;
+      lbl.textContent='PRÊTT'; lbl.style.color='rgba(255,255,255,.85)';
+      // fix label
+      lbl.textContent='PRÊT';
+      num.textContent='5'; unt.textContent='secondes';
+      setCircle('130px','0 0 40px rgba(30,127,203,.45),inset 0 0 20px rgba(255,255,255,.08)',
+        'radial-gradient(circle at 40% 35%,#3ab4e8,#1a5fa8)');
+      dot(0);
+      btn.textContent='Recommencer'; btn.onclick=window.ccBegin;
+    }
+
+    function tick(){
+      if(phase==='inhale'){
+        var p=(IN-cnt)/IN;
+        var sz=Math.round(110+p*70)+'px';
+        lbl.textContent='INSPIREZ'; lbl.style.color='#90e0ff';
+        num.textContent=cnt; unt.textContent=cnt>1?'secondes':'seconde';
+        setCircle(sz,
+          '0 0 '+(30+Math.round(p*35))+'px rgba(30,180,255,'+(0.3+p*0.5).toFixed(2)+')',
+          'radial-gradient(circle at 40% 35%,#3ac8f5,#1e7fcb)');
+        dot(Math.min(4,Math.floor(cycle*5/TOTAL)));
+        cnt--;
+        if(cnt<0){phase='exhale';cnt=OUT;}
+
+      }else if(phase==='exhale'){
+        var p2=(OUT-cnt)/OUT;
+        var sz2=Math.round(180-p2*70)+'px';
+        lbl.textContent='EXPIREZ'; lbl.style.color='#a8f0c8';
+        num.textContent=cnt; unt.textContent=cnt>1?'secondes':'seconde';
+        setCircle(sz2,
+          '0 0 '+(65-Math.round(p2*35))+'px rgba(30,127,203,'+(0.8-p2*0.4).toFixed(2)+')',
+          'radial-gradient(circle at 40% 35%,#3a9fd8,#1a5fa8)');
+        cnt--;
+        if(cnt<0){
+          cycle++; dot(Math.min(4,cycle));
+          if(cycle>=TOTAL){reset();return;}
+          phase='inhale'; cnt=IN;
+        }
+      }
+    }
+
+    window.ccBegin=function(){
+      if(tmr){clearInterval(tmr);tmr=null;}
+      phase='inhale';cnt=IN;cycle=0;
+      btn.textContent='Arrêter'; btn.onclick=reset;
+      tick(); tmr=setInterval(tick,1000);
+    };
+  })();
+  </script>
+</div>
+
+<div class="content-card">
+  <h3 style="font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#FFD700;margin-bottom:1rem;">COMMENT PRATIQUER</h3>
+  <div style="background:rgba(11,28,45,.04);border:1px solid rgba(123,47,190,.1);border-radius:16px;padding:1.2rem;display:flex;flex-direction:column;gap:.9rem;">
+    <div style="display:flex;gap:.85rem;align-items:flex-start;">
+      <span style="min-width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(30,127,203,.45);color:#7B2FBE;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</span>
+      <p style="margin:0;font-size:.91rem;line-height:1.65;color:var(--ro-muted);">Installez-vous confortablement, dos droit, &eacute;paules rel&acirc;ch&eacute;es.</p>
+    </div>
+    <div style="display:flex;gap:.85rem;align-items:flex-start;">
+      <span style="min-width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(30,127,203,.45);color:#7B2FBE;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</span>
+      <p style="margin:0;font-size:.91rem;line-height:1.65;color:var(--ro-muted);"><strong style="color:#2b9fd8;">Inspirez</strong> lentement par le nez pendant <strong>5 secondes</strong> en gonflant le ventre.</p>
+    </div>
+    <div style="display:flex;gap:.85rem;align-items:flex-start;">
+      <span style="min-width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(30,127,203,.45);color:#7B2FBE;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</span>
+      <p style="margin:0;font-size:.91rem;line-height:1.65;color:var(--ro-muted);"><strong style="color:#38a169;">Expirez</strong> doucement par la bouche pendant <strong>5 secondes</strong>, ventre qui rentre.</p>
+    </div>
+    <div style="display:flex;gap:.85rem;align-items:flex-start;">
+      <span style="min-width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(30,127,203,.45);color:#7B2FBE;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</span>
+      <p style="margin:0;font-size:.91rem;line-height:1.65;color:var(--ro-muted);">Suivez le disque&nbsp;: quand il <strong style="color:#2b9fd8;">grandit &rarr; inspirez</strong>, quand il <strong style="color:#38a169;">r&eacute;tr&eacute;cit &rarr; expirez</strong>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="content-card">
+  <h2>Les bienfaits</h2>
+  <div class="row g-3">
+    <div class="col-6">
+      <div style="background:linear-gradient(135deg,rgba(123,47,190,.08),rgba(0,198,255,.06));border-radius:14px;padding:1rem;text-align:center;">
+        <div style="font-size:1.6rem;margin-bottom:.4rem;">&#129335;</div>
+        <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;">R&eacute;duction du stress</div>
+        <div style="font-size:.75rem;color:var(--ro-muted);margin-top:.2rem;">Baisse du cortisol d&egrave;s 5 min</div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div style="background:linear-gradient(135deg,rgba(255,60,172,.08),rgba(123,47,190,.06));border-radius:14px;padding:1rem;text-align:center;">
+        <div style="font-size:1.6rem;margin-bottom:.4rem;">&#10084;&#65039;</div>
+        <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;">C&#x153;ur en coh&eacute;rence</div>
+        <div style="font-size:.75rem;color:var(--ro-muted);margin-top:.2rem;">Synchronisation c&#x153;ur-respiration</div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div style="background:linear-gradient(135deg,rgba(0,198,255,.08),rgba(30,127,203,.06));border-radius:14px;padding:1rem;text-align:center;">
+        <div style="font-size:1.6rem;margin-bottom:.4rem;">&#129504;</div>
+        <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;">Clart&eacute; mentale</div>
+        <div style="font-size:.75rem;color:var(--ro-muted);margin-top:.2rem;">Concentration et m&eacute;moire</div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div style="background:linear-gradient(135deg,rgba(255,215,0,.1),rgba(255,154,60,.07));border-radius:14px;padding:1rem;text-align:center;">
+        <div style="font-size:1.6rem;margin-bottom:.4rem;">&#128564;</div>
+        <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;">Meilleur sommeil</div>
+        <div style="font-size:.75rem;color:var(--ro-muted);margin-top:.2rem;">Favorise l'endormissement</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-card">
+  <h2>Horaires de diffusion</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
+    <span class="tag-pill">7H &bull; 3min</span><span class="tag-pill">8H &bull; 3min</span>
+    <span class="tag-pill">9H &bull; 3min</span><span class="tag-pill">10H &bull; 1min</span>
+    <span class="tag-pill">11H &bull; 1min</span><span class="tag-pill">12H &bull; 3min</span>
+    <span class="tag-pill">13H &bull; 3min</span><span class="tag-pill">14H &bull; 1min</span>
+    <span class="tag-pill">15H &bull; 1min</span><span class="tag-pill">16H &bull; 1min</span>
+    <span class="tag-pill">17H &bull; 1min</span><span class="tag-pill">18H &bull; 3min</span>
+    <span class="tag-pill">19H &bull; 3min</span>
+  </div>
+</div>
+
+
 <div class="content-card">
   <h2>Radio Odyssey, une radio bien-&#234;tre qui fait du bien &#127925;</h2>
   <p>Dans un monde o&#249; tout va toujours plus vite, prendre quelques minutes pour respirer et &#233;couter de la musique positive peut changer une journ&#233;e enti&#232;re.</p>
