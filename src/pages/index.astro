@@ -38,6 +38,11 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
     /* Hero CTA row */
     .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: .5rem; }
 
+    /* Grille des programmes — chaque créneau renvoie vers sa page dédiée */
+    a.schedule-row { text-decoration: none; color: inherit; }
+    a.schedule-row .schedule-arrow { margin-left: auto; color: var(--ro-purple); opacity: .45; transition: opacity .2s, transform .2s; flex-shrink: 0; }
+    a.schedule-row:hover .schedule-arrow { opacity: 1; transform: translateX(3px); }
+
     /* ── ESPACE SOUS LE PLAYER (desktop) ────────────────────────────
        Le player RadioKing déployé (avec pochette) dépasse la hauteur
        déclarée de la barre (~180px réels contre 105px). Même besoin
@@ -385,6 +390,16 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
   display: none !important;
 }
 
+/* Le wrapper du widget (RadioKing) a son propre fond BLANC intégré —
+   sur ce fond, le texte blanc du titre/artiste devient invisible.
+   On le neutralise pour laisser apparaître le fond sombre de la
+   section et rendre le texte lisible. */
+#rk-played-tracks-widget [class*="articleCard"] {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
 /* Grille 4 colonnes */
 #rk-played-tracks-widget #rk-played-tracks-table {
   display: grid !important;
@@ -392,16 +407,18 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
   gap: 1rem !important;
 }
 
-/* Chaque carte : flex ROW (pochette gauche, infos droite) */
+/* Chaque carte : pochette en haut (pleine largeur), infos en dessous —
+   le titre et l'artiste ont ainsi toute la largeur de la carte pour
+   rester lisibles, plutôt que d'être écrasés à côté d'une vignette. */
 #rk-played-tracks-widget [class*="track-line"] {
   background: rgba(255,255,255,.07) !important;
   border: 1px solid rgba(255,255,255,.13) !important;
   border-radius: 18px !important;
-  padding: .9rem !important;
+  padding: 0 !important;
   display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  gap: .85rem !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  position: relative !important;
   transition: transform .25s, background .25s !important;
   overflow: hidden !important;
 }
@@ -410,82 +427,93 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
   background: rgba(255,255,255,.13) !important;
 }
 
-/* ★ Pochette : taille fixe 72×72px ★ */
+/* ★ Pochette : pleine largeur, carrée ★ */
 #rk-played-tracks-widget [class*="played-tracks__image--"] {
-  width: 72px !important;
-  height: 72px !important;
-  min-width: 72px !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1 / 1 !important;
+  min-width: 0 !important;
   object-fit: cover !important;
-  border-radius: 10px !important;
-  box-shadow: 0 4px 14px rgba(0,0,0,.5) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
   flex-shrink: 0 !important;
+  display: block !important;
 }
 
-/* Colonne infos (date, titre, artiste) */
+/* Colonne infos (titre, artiste) — sous la pochette */
 #rk-played-tracks-widget [class*="played-tracks__infos--"] {
   min-width: 0 !important;
-  flex: 1 !important;
+  padding: .8rem .9rem .9rem !important;
 }
 #rk-played-tracks-widget [class*="title-block"] {
   min-width: 0 !important;
   overflow: hidden !important;
 }
 
-/* Date/heure + icône horloge */
+/* Date/heure : en pastille au-dessus de la pochette, pas dans le texte */
 #rk-played-tracks-widget [class*="played-tracks__date--"] {
   display: flex !important;
   align-items: center !important;
-  gap: .3rem !important;
-  font-size: .68rem !important;
-  color: rgba(255,255,255,.35) !important;
-  margin-bottom: .2rem !important;
+  gap: .25rem !important;
+  position: absolute !important;
+  top: .6rem !important;
+  right: .6rem !important;
+  background: rgba(11,28,45,.65) !important;
+  backdrop-filter: blur(4px) !important;
+  border-radius: 999px !important;
+  padding: .2rem .55rem !important;
+  font-size: .64rem !important;
+  color: rgba(255,255,255,.85) !important;
+  z-index: 2 !important;
 }
 #rk-played-tracks-widget [class*="played-tracks__date--"] svg {
-  width: 10px !important;
-  height: 10px !important;
+  width: 9px !important;
+  height: 9px !important;
   flex-shrink: 0 !important;
 }
 #rk-played-tracks-widget [class*="played-tracks__date--"] svg .st0 {
-  fill: rgba(255,255,255,.35) !important;
+  fill: rgba(255,255,255,.85) !important;
 }
 
-/* Titre du morceau */
+/* Titre du morceau — bien visible, sur 2 lignes si besoin */
 #rk-played-tracks-widget [class*="played-tracks__title--"] {
   font-weight: 800 !important;
-  font-size: .9rem !important;
+  font-size: 1rem !important;
+  line-height: 1.3 !important;
   color: #fff !important;
-  display: block !important;
-  white-space: nowrap !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
   overflow: hidden !important;
-  text-overflow: ellipsis !important;
+  margin-bottom: .25rem !important;
 }
 
 /* Artiste */
 #rk-played-tracks-widget [class*="played-tracks__artist--"] {
-  font-size: .78rem !important;
-  color: rgba(255,255,255,.6) !important;
+  font-size: .85rem !important;
+  font-weight: 600 !important;
+  color: rgba(255,255,255,.75) !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
+  display: block !important;
 }
 
-/* Premier titre : badge EN COURS
-   Inséré dans la colonne infos (pas dans la ligne image+texte) pour ne
-   pas voler de largeur au titre/artiste — sinon le texte de la carte
-   "en cours de lecture" se retrouve écrasé à quelques pixels. */
-#rk-played-tracks-widget [class*="track-line"]:first-child [class*="played-tracks__infos--"]::before {
+/* Premier titre : badge EN COURS, en overlay sur la pochette */
+#rk-played-tracks-widget [class*="track-line"]:first-child::after {
   content: '▶ EN COURS' !important;
-  display: inline-block !important;
-  background: rgba(255,60,172,.2) !important;
-  border: 1px solid rgba(255,60,172,.4) !important;
+  position: absolute !important;
+  top: .6rem !important;
+  left: .6rem !important;
+  background: rgba(255,60,172,.85) !important;
+  border: 1px solid rgba(255,255,255,.4) !important;
   border-radius: 999px !important;
   padding: .18rem .65rem !important;
   font-size: .62rem !important;
   font-weight: 800 !important;
-  letter-spacing: .08em !important;
-  color: #FF3CAC !important;
-  align-self: flex-start !important;
-  margin-bottom: .3rem !important;
+  letter-spacing: .06em !important;
+  color: #fff !important;
+  z-index: 2 !important;
 }
 
 /* Responsive */
@@ -498,9 +526,6 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
   #rk-played-tracks-widget #rk-played-tracks-table {
     grid-template-columns: repeat(2,1fr) !important;
     gap: .6rem !important;
-  }
-  #rk-played-tracks-widget [class*="track-line"] {
-    flex-wrap: wrap !important;
   }
 }
 </style>
@@ -702,7 +727,7 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
       <div class="col-lg-7">
                 <div class="schedule-table">
 
-          <div class="schedule-row">
+          <a class="schedule-row" href="/musique-pour-le-reveil.html">
             <div class="schedule-time">6&ndash;9H</div>
             <div class="schedule-icon svg-icon">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="9" stroke="#FF9A3C" stroke-width="1.8"/><line x1="14" y1="14" x2="14" y2="7" stroke="#FF9A3C" stroke-width="1.8" stroke-linecap="round"/><line x1="14" y1="14" x2="18" y2="14" stroke="#FF3CAC" stroke-width="1.6" stroke-linecap="round"/><path d="M6 6L4 4M22 6L24 4" stroke="#FFD700" stroke-width="1.4" stroke-linecap="round"/></svg>
@@ -711,9 +736,10 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
               <h5>La Matinale</h5>
               <p>M&eacute;t&eacute;o, horoscope &amp; hits pour bien commencer &mdash; coh&eacute;rence cardiaque 3 min</p>
             </div>
-          </div>
+            <i class="bi bi-chevron-right schedule-arrow"></i>
+          </a>
 
-          <div class="schedule-row">
+          <a class="schedule-row" href="/playlist-pour-la-matinee.html">
             <div class="schedule-time">9&ndash;12H</div>
             <div class="schedule-icon svg-icon">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="6" stroke="#FFD700" stroke-width="2"/><line x1="14" y1="4" x2="14" y2="6" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/><line x1="14" y1="22" x2="14" y2="24" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/><line x1="4" y1="14" x2="6" y2="14" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/><line x1="22" y1="14" x2="24" y2="14" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/></svg>
@@ -722,9 +748,10 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
               <h5>Hits Non-Stop</h5>
               <p>Ann&eacute;es 80 remix&eacute;s + tubes dance &mdash; coh&eacute;rence cardiaque 1 min &agrave; 10H et 11H</p>
             </div>
-          </div>
+            <i class="bi bi-chevron-right schedule-arrow"></i>
+          </a>
 
-          <div class="schedule-row">
+          <a class="schedule-row" href="/musique-pour-la-pause-dejeuner.html">
             <div class="schedule-time">12&ndash;14H</div>
             <div class="schedule-icon svg-icon">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 22C14 22 6 17 6 11C6 7.7 9 5 12 5C13.2 5 14 5.8 14 5.8C14 5.8 14.8 5 16 5C19 5 22 7.7 22 11C22 17 14 22 14 22Z" stroke="#7B2FBE" stroke-width="1.8" fill="none"/><path d="M9 12C9.8 10 11 13 12 11C13 9 14 13 15 11C16 9 17 13 18 11C18.8 9 20 12 20 12" stroke="#FF3CAC" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
@@ -733,9 +760,10 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
               <h5>Le 12&ndash;14 : Respirez en Musique</h5>
               <p>Charts &amp; nouveaut&eacute;s &mdash; coh&eacute;rence cardiaque 3 min &agrave; 12H et 13H</p>
             </div>
-          </div>
+            <i class="bi bi-chevron-right schedule-arrow"></i>
+          </a>
 
-          <div class="schedule-row">
+          <a class="schedule-row" href="/musique-pour-lapres-midi.html">
             <div class="schedule-time">14&ndash;18H</div>
             <div class="schedule-icon svg-icon">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 18C8 14 12 16 14 12C16 8 20 12 24 10" stroke="#FF9A3C" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="5" cy="20" r="2" stroke="#FF3CAC" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2" stroke="#FF9A3C" stroke-width="1.5" fill="none"/><circle cx="23" cy="10" r="2" stroke="#FFD700" stroke-width="1.5" fill="none"/></svg>
@@ -744,9 +772,10 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
               <h5>Easy Listening</h5>
               <p>Golds &amp; incontournables &mdash; coh&eacute;rence cardiaque 1 min &agrave; 14H, 15H, 16H et 17H</p>
             </div>
-          </div>
+            <i class="bi bi-chevron-right schedule-arrow"></i>
+          </a>
 
-          <div class="schedule-row">
+          <a class="schedule-row" href="/musique-pour-laperitif.html">
             <div class="schedule-time">18&ndash;21H</div>
             <div class="schedule-icon svg-icon">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="10" r="5" stroke="#FF3CAC" stroke-width="1.8"/><path d="M24 15L26 13M26 19L24 19" stroke="#FFD700" stroke-width="1.4" stroke-linecap="round"/><path d="M14 15L11 24" stroke="#FF3CAC" stroke-width="2.2" stroke-linecap="round"/><path d="M14 15L17 24" stroke="#7B2FBE" stroke-width="2.2" stroke-linecap="round"/></svg>
@@ -755,9 +784,10 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
               <h5>Mix du Soir</h5>
               <p>Dance hits pour finir la journ&eacute;e &mdash; coh&eacute;rence cardiaque 3 min &agrave; 18H et 19H</p>
             </div>
-          </div>
+            <i class="bi bi-chevron-right schedule-arrow"></i>
+          </a>
 
-          <div class="schedule-row">
+          <a class="schedule-row" href="/musique-pour-la-nuit.html">
             <div class="schedule-time">21H&ndash;6H</div>
             <div class="schedule-icon svg-icon">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M18 6C14 6 10 9.5 10 14C10 18.4 13.6 22 18 22C20 22 21.8 21.2 23 20C20.5 19.4 18 17.2 18 14C18 10.8 20.5 8.6 23 8C21.8 6.8 20 6 18 6Z" stroke="#7B2FBE" stroke-width="1.8" fill="none"/><path d="M6 9L7 8M8 5L8 7M5 7L7 7" stroke="#FFD700" stroke-width="1.3" stroke-linecap="round"/></svg>
@@ -766,7 +796,8 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
               <h5>Nuit</h5>
               <p>Musique non-stop pour accompagner votre nuit</p>
             </div>
-          </div>
+            <i class="bi bi-chevron-right schedule-arrow"></i>
+          </a>
 
         </div>
       </div>
