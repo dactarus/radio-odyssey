@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<Layout lang="en" title="Radio Odyssey, Relax with European chill music – Radio Odyssey" description="Radio Odyssey brings you the best European chill music online. Lounge, chillout, soft electro and feel-good music for peaceful moments.">
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#1e7fcb"
+    homeLabel="🏠 Home"
+    breadcrumbCurrent="Radio Odyssey, Relax with European chill music"
+    title="European Chill Radio"
+    text="Radio Odyssey brings you the best European chill music and relaxing vibes online."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M5 28C10 21 15 27 20 20C25 13 30 22 35 15C40 9 43 19 43 19" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M5 36C10 29 15 35 20 28C25 21 30 30 35 23C40 17 43 27 43 27" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+        
+          <div class="content-card">
+            <h2>Relax with the Best European Chill Music</h2>
+            <p>Enjoy lounge, chillout, soft electro, relaxing pop and feel-good music selected for peaceful moments and positive energy.</p>
+            <p>Perfect for&#160;: work, study, driving, caf&#233;s, restaurants and relaxing evenings.</p>
+            <div class="highlight-box">
+              <a href="#" onclick="roPlayNow(event)" class="btn-ro">
+                <i class="bi bi-broadcast-pin"></i>&nbsp;&#9654; Listen Live Now
+              </a>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Explore Radio Odyssey</h2>
+            <ul>
+              <li><a href="index.html" style="color:var(--ro-purple);">Home Page</a></li>
+              <li><a href="positive-european-music-station.html" style="color:var(--ro-purple);">Positive European Music Station</a></li>
+              <li><a href="european-chill-radio.html" style="color:var(--ro-purple);">European Chill Radio</a></li>
+              <li><a href="feel-good-music-radio.html" style="color:var(--ro-purple);">Feel Good Music Radio</a></li>
+              <li><a href="keep-listening-radio-odyssey.html" style="color:var(--ro-purple);">Listen on Alexa</a></li>
+            </ul>
+          </div>
+
+          <div class="page-cta-bar">
+            <h3>Chill out with the best of Europe</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <i class="bi bi-broadcast-pin"></i> Listen to European Chill
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

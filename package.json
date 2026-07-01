@@ -1,0 +1,16 @@
+{
+  "name": "radio-odyssey",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview --port 4322",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^7.0.4"
+  }
+}

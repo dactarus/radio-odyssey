@@ -1,0 +1,99 @@
+---
+---
+<!-- ============================================================
+     PLAYER BAR STICKY
+     ============================================================ -->
+<div id="topRadioBar">
+
+  <!-- GAUCHE : logo + badge -->
+  <a class="bar-logo" href="/index.html" aria-label="Radio Odyssey — Accueil">
+    <img class="bar-logo-img" src="/assets/images/logo.png" alt="Radio Odyssey"
+         onerror="this.style.opacity='0'"/>
+  </a>
+  <div class="live-badge">
+    <span class="live-dot"></span>
+    EN DIRECT
+  </div>
+
+  <!-- CENTRE desktop : player RadioKing h=90 (original) -->
+  <iframe class="rk-desktop"
+    src="https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90"
+    allow="autoplay" title="Radio Odyssey — Lecteur en direct"></iframe>
+
+  <!-- CENTRE mobile : player RadioKing h=50 compact -->
+  <iframe class="rk-mobile"
+    src="https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=50"
+    allow="autoplay" title="Radio Odyssey — Lecteur en direct"></iframe>
+
+  <!-- BOUTON mobile alternatif (affiché si iframe trop petite) -->
+  <a class="rk-mobile-btn" href="https://link.radioking.com/radio-odyssey" target="_blank" rel="noopener"
+     aria-label="Écouter Radio Odyssey">
+    <span class="rk-mobile-play">&#9654;</span>
+    <span class="rk-mobile-label">
+      <span class="rk-mobile-title" id="mobile-now-playing">Radio Odyssey</span>
+      <span class="rk-mobile-sub">Appuyer pour écouter</span>
+    </span>
+  </a>
+
+  <!-- DROITE : wave + burger -->
+  <div class="bar-wave" aria-hidden="true">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <button class="bar-burger"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#site-nav"
+          aria-controls="site-nav"
+          aria-label="Ouvrir le menu"
+          style="margin-right:16px;">
+    <i class="bi bi-list"></i>
+  </button>
+
+</div>
+
+<!-- Script RadioKing (original) -->
+<script is:inline src="https://player.radioking.io/scripts/iframe.bundle.js"></script>
+
+<!-- ============================================================
+     OFFCANVAS NAV
+     ============================================================ -->
+<div class="offcanvas offcanvas-start" id="site-nav" tabindex="-1" aria-labelledby="nav-label">
+  <div class="offcanvas-header">
+    <div class="offcanvas-title" id="nav-label">
+      <img src="/assets/images/logo.png" alt="Logo Radio Odyssey"/>
+      Radio Odyssey
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fermer"></button>
+  </div>
+  <div class="offcanvas-body p-2">
+
+    <span class="nav-cat">🏠 Accueil</span>
+    <a class="nav-link" href="/index.html"><span class="ni">🏠</span> Page d'accueil</a>
+
+    <span class="nav-cat">💆 Bien-être &amp; Santé</span>
+    <a class="nav-link" href="/radio-coherence-cardiaque.html"><span class="ni">❤️</span> Cohérence Cardiaque</a>
+    <a class="nav-link" href="/radio-bien-etre-en-ligne.html"><span class="ni">🌿</span> Bien-être en Ligne</a>
+    <a class="nav-link" href="/radio-anti-stress-gratuite.html"><span class="ni">🧘</span> Anti-Stress Gratuite</a>
+    <a class="nav-link" href="/musique-pour-respiration-guidee.html"><span class="ni">🫁</span> Respiration Guidée</a>
+    <a class="nav-link" href="/radio-detente-moderne.html"><span class="ni">🌙</span> Détente Moderne</a>
+
+    <span class="nav-cat">🎵 Musique &amp; Énergie</span>
+    <a class="nav-link" href="/radio-annees-80-en-ligne.html"><span class="ni">🕺</span> Années 80 en Ligne</a>
+    <a class="nav-link" href="/radio-dance-energisante.html"><span class="ni">💃</span> Dance Énergisante</a>
+    <a class="nav-link" href="/musique-pour-se-concentrer.html"><span class="ni">🎯</span> Concentration</a>
+    <a class="nav-link" href="/radio-pour-travailler.html"><span class="ni">💻</span> Pour Travailler</a>
+
+    <span class="nav-cat">🌍 International</span>
+    <a class="nav-link" href="/positive-european-music-station.html"><span class="ni">🇪🇺</span> European Positive</a>
+    <a class="nav-link" href="/european-chill-radio.html"><span class="ni">☁️</span> European Chill</a>
+    <a class="nav-link" href="/feel-good-music-radio.html"><span class="ni">😊</span> Feel Good Radio</a>
+    <a class="nav-link" href="/keep-listening-radio-odyssey.html"><span class="ni">▶️</span> Keep Listening</a>
+
+    <div class="offcanvas-cta">
+      <a class="btn-ro w-100 justify-content-center"
+         href="https://link.radioking.com/radio-odyssey" target="_blank" rel="noopener">
+        <i class="bi bi-broadcast"></i>&nbsp; Écouter en Direct
+      </a>
+    </div>
+  </div>
+</div>

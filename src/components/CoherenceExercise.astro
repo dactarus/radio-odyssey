@@ -1,0 +1,127 @@
+---
+---
+<div class="content-card" id="cc-exercise-card">
+  <h2>Exercice de Coh&eacute;rence Cardiaque</h2>
+  <p style="margin-bottom:1.5rem;">Cliquez sur <strong>Commencer</strong> et suivez le disque au rythme de votre respiration.</p>
+
+  <div style="text-align:center;margin-bottom:1rem;">
+
+    <!-- Cercle animé -->
+    <div style="position:relative;display:inline-block;width:200px;height:200px;margin-bottom:.5rem;">
+      <svg style="position:absolute;top:0;left:0;" width="200" height="200" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="92" fill="none" stroke="rgba(30,127,203,.15)" stroke-width="3"/>
+        <circle cx="100" cy="100" r="74" fill="rgba(30,127,203,.06)" stroke="none"/>
+      </svg>
+      <div id="cc-circle" style="
+        position:absolute;top:50%;left:50%;
+        transform:translate(-50%,-50%);
+        width:130px;height:130px;border-radius:50%;
+        background:radial-gradient(circle at 40% 35%,#3ab4e8,#1a5fa8);
+        box-shadow:0 0 40px rgba(30,127,203,.45),inset 0 0 20px rgba(255,255,255,.08);
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        transition:width .6s ease,height .6s ease,box-shadow .6s ease;
+      ">
+        <div id="cc-label" style="font-family:'Nunito',sans-serif;font-weight:900;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:2px;">PR&Ecirc;T</div>
+        <div id="cc-number" style="font-family:'Nunito',sans-serif;font-weight:900;font-size:2.6rem;color:#fff;line-height:1;">5</div>
+        <div id="cc-unit" style="font-family:'Nunito',sans-serif;font-size:.7rem;color:rgba(255,255,255,.7);margin-top:2px;">secondes</div>
+      </div>
+    </div>
+
+    <!-- Dots -->
+    <div style="display:flex;justify-content:center;gap:8px;margin:14px 0 18px;">
+      <span class="cc-dot cc-dot-on"></span>
+      <span class="cc-dot"></span>
+      <span class="cc-dot"></span>
+      <span class="cc-dot"></span>
+      <span class="cc-dot"></span>
+    </div>
+
+    <!-- Bouton -->
+    <button id="cc-btn" onclick="ccBegin()" style="
+      background:linear-gradient(135deg,#8B3CF7,#7B2FBE);
+      color:#fff;border:none;border-radius:999px;
+      font-family:'Nunito',sans-serif;font-weight:800;font-size:1.05rem;
+      padding:.85rem 3rem;cursor:pointer;
+      box-shadow:0 6px 24px rgba(123,47,190,.4);
+      transition:transform .15s,box-shadow .15s;
+    " onmouseover="this.style.transform='translateY(-2px)'"
+       onmouseout="this.style.transform='none'">
+      Commencer
+    </button>
+  </div>
+
+  <style is:global>
+    .cc-dot{width:10px;height:10px;border-radius:50%;background:rgba(123,47,190,.18);border:1.5px solid rgba(123,47,190,.28);transition:background .4s;}
+    .cc-dot-on{background:#7B2FBE!important;}
+  </style>
+
+  <script is:inline>
+  (function(){
+    var tmr=null, phase='ready', cnt=5, cycle=0, TOTAL=6, IN=5, OUT=5;
+    var circ=document.getElementById('cc-circle');
+    var lbl=document.getElementById('cc-label');
+    var num=document.getElementById('cc-number');
+    var unt=document.getElementById('cc-unit');
+    var btn=document.getElementById('cc-btn');
+    var dots=document.querySelectorAll('#cc-exercise-card .cc-dot');
+
+    function dot(n){dots.forEach(function(d,i){d.classList.toggle('cc-dot-on',i===n);});}
+
+    function setCircle(sz,glow,bg){
+      circ.style.width=sz; circ.style.height=sz;
+      circ.style.boxShadow=glow;
+      if(bg)circ.style.background=bg;
+    }
+
+    function reset(){
+      if(tmr){clearInterval(tmr);tmr=null;}
+      phase='ready';cnt=5;cycle=0;
+      lbl.textContent='PRÊTT'; lbl.style.color='rgba(255,255,255,.85)';
+      // fix label
+      lbl.textContent='PRÊT';
+      num.textContent='5'; unt.textContent='secondes';
+      setCircle('130px','0 0 40px rgba(30,127,203,.45),inset 0 0 20px rgba(255,255,255,.08)',
+        'radial-gradient(circle at 40% 35%,#3ab4e8,#1a5fa8)');
+      dot(0);
+      btn.textContent='Recommencer'; btn.onclick=window.ccBegin;
+    }
+
+    function tick(){
+      if(phase==='inhale'){
+        var p=(IN-cnt)/IN;
+        var sz=Math.round(110+p*70)+'px';
+        lbl.textContent='INSPIREZ'; lbl.style.color='#90e0ff';
+        num.textContent=cnt; unt.textContent=cnt>1?'secondes':'seconde';
+        setCircle(sz,
+          '0 0 '+(30+Math.round(p*35))+'px rgba(30,180,255,'+(0.3+p*0.5).toFixed(2)+')',
+          'radial-gradient(circle at 40% 35%,#3ac8f5,#1e7fcb)');
+        dot(Math.min(4,Math.floor(cycle*5/TOTAL)));
+        cnt--;
+        if(cnt<0){phase='exhale';cnt=OUT;}
+
+      }else if(phase==='exhale'){
+        var p2=(OUT-cnt)/OUT;
+        var sz2=Math.round(180-p2*70)+'px';
+        lbl.textContent='EXPIREZ'; lbl.style.color='#a8f0c8';
+        num.textContent=cnt; unt.textContent=cnt>1?'secondes':'seconde';
+        setCircle(sz2,
+          '0 0 '+(65-Math.round(p2*35))+'px rgba(30,127,203,'+(0.8-p2*0.4).toFixed(2)+')',
+          'radial-gradient(circle at 40% 35%,#3a9fd8,#1a5fa8)');
+        cnt--;
+        if(cnt<0){
+          cycle++; dot(Math.min(4,cycle));
+          if(cycle>=TOTAL){reset();return;}
+          phase='inhale'; cnt=IN;
+        }
+      }
+    }
+
+    window.ccBegin=function(){
+      if(tmr){clearInterval(tmr);tmr=null;}
+      phase='inhale';cnt=IN;cycle=0;
+      btn.textContent='Arrêter'; btn.onclick=reset;
+      tick(); tmr=setInterval(tick,1000);
+    };
+  })();
+  </script>
+</div>

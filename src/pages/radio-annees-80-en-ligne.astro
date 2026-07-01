@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<Layout lang="fr" title="Radio Odyssey, les années 80 en ligne – Hits cultes et remix modernes – Radio Odyssey" description="Radio années 80 en ligne gratuite sur Radio Odyssey : hits cultes, remix modernes et cohérence cardiaque. Écouter maintenant.">
+  <PageHero
+    gradientFrom="#FF9A3C"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Radio Odyssey, les années 80 en ligne – Hits cultes et remix modernes"
+    title="Radio Années 80 en Ligne"
+    text="Radio Odyssey revisite les hits emblématiques des 80s avec une programmation moderne, dynamique et équilibrée. Sylée !"
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.5"/><circle cx="24" cy="24" r="8" stroke="rgba(255,255,255,.7)" stroke-width="2"/><circle cx="24" cy="24" r="2.5" fill="white" opacity=".8"/><path d="M8 24C8 15.2 15.2 8 24 8" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round"/><path d="M40 24C40 32.8 32.8 40 24 40" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+        
+          <div class="content-card">
+            <h2>Radio ann&#233;es 80 en ligne gratuite &#8211; Hits cultes et remix modernes</h2>
+            <p>Radio Odyssey revisite les hits embl&#233;matiques des 80s avec une programmation moderne, dynamique et &#233;quilibr&#233;e. Une exp&#233;rience sonore qui m&#234;le nostalgie, puissance rythmique et respiration int&#233;gr&#233;e.</p>
+            <div class="highlight-box">
+              <p>&#127926; <strong>Radio Odyssey sur SoundCloud</strong><br/>
+              Un mix &#233;quilibr&#233;, un m&#233;lange subtil des ann&#233;es 80 &#224; nos jours, avec des s&#233;quences de coh&#233;rence cardiaque en d&#233;but d&#8217;heure.<br/>
+              <a href="https://soundcloud.com/odysseylaradio" target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">
+                &#8594; D&#233;couvrir l&#8217;univers de Radio Odyssey sur SoundCloud
+              </a></p>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Pourquoi les ann&#233;es 80 restent intemporelles&#160;?</h2>
+            <p>Les ann&#233;es 80 ont marqu&#233; l&#8217;histoire de la musique&#160;:</p>
+            <ul>
+              <li>Synth&#233;tiseurs iconiques</li>
+              <li>Rythmes dance puissants</li>
+              <li>M&#233;lodies m&#233;morables et fredonnantes</li>
+              <li>&#201;nergie positive</li>
+            </ul>
+            <p>Cette d&#233;cennie continue d&#8217;influencer la pop et la dance actuelle. Radio Odyssey s&#233;lectionne et revisite ces titres pour leur donner une nouvelle intensit&#233;.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une radio ann&#233;es 80s diff&#233;rente</h2>
+            <p>La programmation propose&#160;:</p>
+            <ul>
+              <li>Hits 80 revisit&#233;s</li>
+              <li>Versions modernис&#233;es</li>
+              <li>Transitions dynamiques</li>
+              <li>S&#233;quences de respiration int&#233;gr&#233;es</li>
+            </ul>
+            <p>Cette alternance permet de conserver l&#8217;&#233;nergie tout en apportant un &#233;quilibre int&#233;rieur.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Les ann&#233;es 80, &#233;nergie et concentration</h2>
+            <p>La musique des ann&#233;es 80 poss&#232;de un tempo souvent motivant et structurant. Elle peut&#160;:</p>
+            <ul>
+              <li>Stimuler la motivation</li>
+              <li>Favoriser la cr&#233;ativit&#233;</li>
+              <li>Accompagner le travail</li>
+              <li>Booster l&#8217;humeur</li>
+            </ul>
+            <p>Associ&#233;e &#224; des moments de coh&#233;rence cardiaque, elle cr&#233;e une exp&#233;rience unique&#160;: &#233;nergisante mais ma&#238;tris&#233;e.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>&#201;couter une radio 80s en ligne partout</h2>
+            <p>La radio ann&#233;es 80 en ligne s&#233;duit chaque jour des milliers d&#8217;auditeurs. Entre synth&#233;tiseurs mythiques, refrains inoubliables et rythmes dansants, les hits 80 continuent de faire vibrer toutes les g&#233;n&#233;rations.</p>
+            <p>Gr&#226;ce au streaming en ligne, vous pouvez &#233;couter Radio Odyssey&#160;:</p>
+            <ul>
+              <li>Au bureau</li>
+              <li>&#192; domicile</li>
+              <li>En voiture</li>
+              <li>En mobilit&#233;</li>
+            </ul>
+            <p>Sans inscription, sans application obligatoire.</p>
+          </div>
+
+          <div class="page-cta-bar">
+            <h3>Retournez dans les ann&#233;es 80 maintenant&#160;!</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <i class="bi bi-broadcast-pin"></i> &#201;couter les Ann&#233;es 80
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<Layout lang="fr" title="Radio Odyssey, une radio anti-stress gratuite en ligne – Musique apaisante et respiration guidée – Radio Odyssey" description="Radio anti-stress gratuite en ligne sur Radio Odyssey : musique équilibrée, respiration guidée et cohérence cardiaque pour réduire le stress.">
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#1e7fcb"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Radio Odyssey, une radio anti-stress gratuite en ligne – Musique apaisante et respiration guidée"
+    title="Radio Anti-Stress Gratuite"
+    text="Musique positive, respiration guidée et cohérence cardiaque — écouter, respirer, relâcher."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 8C17 8 12 13 12 19C12 26 17 30 24 33C31 30 36 26 36 19C36 13 31 8 24 8Z" stroke="white" stroke-width="2.5"/><path d="M24 33V42" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M17 42H31" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M19 17C19 17 21 22 24 22C27 22 29 17 29 17" stroke="rgba(255,255,255,.65)" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+        
+          <div class="content-card">
+            <h2>Vous recherchez une radio anti-stress gratuite&#160;?</h2>
+            <p>Radio Odyssey propose une diffusion en ligne m&#234;lant musique &#233;quilibr&#233;e, hits 80 revisit&#233;s, ambiances modernes et s&#233;quences de coh&#233;rence cardiaque int&#233;gr&#233;es.</p>
+            <p><strong>Une solution simple&#160;: &#233;couter, respirer, rel&#226;cher.</strong></p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pourquoi &#233;couter une radio anti-stress chaque jour&#160;?</h2>
+            <p>Le stress quotidien peut impacter&#160;:</p>
+            <ul>
+              <li>La concentration</li>
+              <li>Le sommeil</li>
+              <li>La clart&#233; mentale</li>
+              <li>L&#8217;&#233;nergie</li>
+            </ul>
+            <p>Une radio anti-stress permet de cr&#233;er un environnement sonore apaisant sans effort. Contrairement aux applications isol&#233;es, une radio en ligne offre une continuit&#233; naturelle et immersive.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une approche diff&#233;rente du bien-&#234;tre</h2>
+            <p>Radio Odyssey ne diffuse pas uniquement de la musique lente. La programmation combine&#160;:</p>
+            <ul>
+              <li>Ambiances easy listening</li>
+              <li>Influences 80s revisit&#233;es</li>
+              <li>Rythmes mod&#233;r&#233;s</li>
+              <li>S&#233;quences de respiration structur&#233;e</li>
+            </ul>
+            <p>Cette alternance aide &#224; r&#233;duire la tension tout en maintenant une &#233;nergie positive.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>La coh&#233;rence cardiaque contre le stress</h2>
+            <p>La coh&#233;rence cardiaque repose sur une respiration rythm&#233;e&#160;: <strong>6 respirations par minute</strong>. Pratiqu&#233;e r&#233;guli&#232;rement, elle peut&#160;:</p>
+            <ul>
+              <li>Diminuer la sensation de stress</li>
+              <li>Stabiliser le rythme cardiaque</li>
+              <li>Favoriser le calme mental</li>
+              <li>Am&#233;liorer la gestion &#233;motionnelle</li>
+            </ul>
+            <p>Radio Odyssey int&#232;gre ces s&#233;quences directement dans son flux musical.</p>
+  
+          <div class="highlight-box" style="margin-top:1rem;">
+            <strong>S&#233;ances de 3 minutes :</strong> 7h, 8h, 9h, 12h, 13h, 18h, 19h.<br/>
+            <strong>S&#233;ances de 1 minute :</strong> 10h, 11h, 14h, 15h, 16h, 17h.
+          </div>
+
+          </div>
+
+          <div class="content-card">
+            <h2>Une radio anti-stress accessible partout</h2>
+            <p>Radio Odyssey est id&#233;ale&#160;:</p>
+            <ul>
+              <li>Au bureau</li>
+              <li>&#192; domicile</li>
+              <li>Pendant une pause</li>
+              <li>En fin de journ&#233;e</li>
+              <li>Lors de moments de tension</li>
+            </ul>
+            <p>Aucune inscription requise. Un simple clic suffit.</p>
+          </div>
+
+          <div class="page-cta-bar">
+            <h3>Rel&#226;chez la pression maintenant &#8212; gratuitement</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <i class="bi bi-broadcast-pin"></i> &#201;couter l&#8217;Anti-Stress
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

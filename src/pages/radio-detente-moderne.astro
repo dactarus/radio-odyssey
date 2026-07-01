@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<Layout lang="fr" title="Radio Odyssey, une radio détente moderne – Musique relaxante, énergie douce et respiration – Radio Odyssey" description="Radio détente moderne en ligne sur Radio Odyssey : musique apaisante, énergie douce et cohérence cardiaque pour se ressourcer.">
+  <PageHero
+    gradientFrom="#1e7fcb"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Radio Odyssey, une radio détente moderne – Musique relaxante, énergie douce et respiration"
+    title="Radio Détente Moderne"
+    text="Musique positive, respiration guidée et cohérence cardiaque — une détente contemporaine, adaptée au rythme de vie actuel."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M30 8C22 8 16 14.5 16 22C16 30 22 36 30 36C34 36 37.5 34.5 40 32C36 39 29 44 21 44C11.6 44 4 36.4 4 27C4 17.6 11.6 10 21 10C24 10 26.8 10.8 30 12" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M36 6L37.5 3L39 6L36 4.5L39 4.5Z" fill="white" opacity=".7"/><path d="M42 15L43 13L44 15L42 14L44 14Z" fill="white" opacity=".6"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+        
+          <div class="content-card">
+            <h2>Vous recherchez une radio d&#233;tente moderne en ligne&#160;?</h2>
+            <p>Radio Odyssey propose une exp&#233;rience &#233;quilibr&#233;e&#160;: une programmation fluide m&#234;lant hits 80 revisit&#233;s, ambiances actuelles et s&#233;quences de coh&#233;rence cardiaque int&#233;gr&#233;es.</p>
+            <p>Une d&#233;tente contemporaine, adapt&#233;e au rythme de vie actuel.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Qu&#8217;est-ce qu&#8217;une radio d&#233;tente moderne&#160;?</h2>
+            <p>Contrairement aux radios zen traditionnelles souvent tr&#232;s lentes, une radio d&#233;tente moderne doit&#160;:</p>
+            <ul>
+              <li>Apaiser sans casser l&#8217;&#233;nergie</li>
+              <li>Favoriser la concentration</li>
+              <li>Offrir une dynamique musicale actuelle</li>
+              <li>Maintenir un tempo agr&#233;able</li>
+            </ul>
+            <p>Radio Odyssey cr&#233;e cet &#233;quilibre entre relaxation et vitalit&#233;.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une ambiance musicale &#233;quilibr&#233;e</h2>
+            <p>La programmation combine&#160;:</p>
+            <ul>
+              <li>Ambiances easy listening</li>
+              <li>Influences 80s revisit&#233;es</li>
+              <li>Rythmes mod&#233;r&#233;s</li>
+              <li>S&#233;lections dance douces</li>
+            </ul>
+            <p>Cette diversit&#233; &#233;vite la monotonie tout en maintenant un climat sonore agr&#233;able.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Respiration et d&#233;tente consciente</h2>
+            <p>La d&#233;tente moderne ne passe pas seulement par la musique. Radio Odyssey int&#232;gre des s&#233;quences de coh&#233;rence cardiaque permettant de&#160;:</p>
+            <ul>
+              <li>Ralentir le rythme cardiaque</li>
+              <li>R&#233;duire le stress accumul&#233;</li>
+              <li>Stabiliser les &#233;motions</li>
+              <li>Recentrer l&#8217;attention</li>
+            </ul>
+  
+          <div class="highlight-box" style="margin-top:1rem;">
+            <strong>S&#233;ances de 3 minutes :</strong> 7h, 8h, 9h, 12h, 13h, 18h, 19h.<br/>
+            <strong>S&#233;ances de 1 minute :</strong> 10h, 11h, 14h, 15h, 16h, 17h.
+          </div>
+
+          </div>
+
+          <div class="content-card">
+            <h2>Id&#233;ale pour&#8230;</h2>
+            <ul>
+              <li>Aux pauses en journ&#233;e</li>
+              <li>Aux moments de transition</li>
+              <li>Aux fins d&#8217;apr&#232;s-midi</li>
+              <li>Au travail l&#233;ger</li>
+              <li>&#192; la relaxation active</li>
+            </ul>
+            <p>Elle accompagne sans envahir.</p>
+          </div>
+
+          <div class="page-cta-bar">
+            <h3>D&#233;compressez maintenant avec Radio Odyssey</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <i class="bi bi-broadcast-pin"></i> &#201;couter et se d&#233;tendre
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

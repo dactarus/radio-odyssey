@@ -1,0 +1,90 @@
+---
+---
+<!-- FOOTER -->
+<footer id="site-footer">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-lg-4">
+        <div class="footer-logo-wrap">
+          <img src="/assets/images/logo.png" alt="Radio Odyssey"/>
+          <div class="footer-brand">Radio Odyssey<small>Positive Web Radio ✨</small></div>
+        </div>
+        <p style="font-size:.85rem;max-width:280px;">La webradio positive française — Hits des années 80, dance, easy listening et bien-être, 24h/24, gratuitement, depuis janvier 2024 !</p>
+        <a href="mailto:odysseylaradio@gmail.com" style="color:var(--ro-sky)!important;">odysseylaradio@gmail.com</a>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <h5>Navigation</h5>
+        <a href="/index.html">Accueil</a>
+        <a href="/radio-coherence-cardiaque.html">Cohérence Cardiaque</a>
+        <a href="/radio-bien-etre-en-ligne.html">Bien-être</a>
+        <a href="/radio-annees-80-en-ligne.html">Années 80</a>
+        <a href="/radio-dance-energisante.html">Dance</a>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <h5>Thématiques</h5>
+        <a href="/musique-pour-se-concentrer.html">Concentration</a>
+        <a href="/radio-anti-stress-gratuite.html">Anti-Stress</a>
+        <a href="/radio-pour-travailler.html">Travail</a>
+        <a href="/radio-detente-moderne.html">Détente</a>
+        <a href="/musique-pour-respiration-guidee.html">Respiration</a>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <h5>International</h5>
+        <a href="/positive-european-music-station.html">European Positive</a>
+        <a href="/european-chill-radio.html">European Chill</a>
+        <a href="/feel-good-music-radio.html">Feel Good Radio</a>
+        <a href="/keep-listening-radio-odyssey.html">Keep Listening</a>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <h5>Écouter sur</h5>
+        <a href="https://link.radioking.com/radio-odyssey" target="_blank" rel="noopener">RadioKing</a>
+        <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener">TuneIn</a>
+        <a href="https://www.deezer.com/search/radio%20odyssey/livestream" target="_blank" rel="noopener">Deezer</a>
+        <a href="https://fr.welove.radio/radio/radio-odyssey/" target="_blank" rel="noopener">WeLoveRadio</a>
+        <a href="https://radio.orange.com/radios/radio_odyssey" target="_blank" rel="noopener">Orange</a>
+      </div>
+    </div>
+    <hr/>
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <div class="footer-bottom">© 2026 Radio Odyssey. Tous droits réservés. | Depuis le 19 janvier 2024</div>
+      <div class="footer-social d-flex gap-3">
+        <a href="https://www.facebook.com/profile.php?id=61588289230589" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/radio_odyssey_france/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://x.com/Odysseylaradio" target="_blank" rel="noopener" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.youtube.com/channel/UCodzZ_dhFdJwQ90nZzVHluw" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script is:inline src="/assets/js/main.js"></script>
+
+<script is:inline>
+/* ── Radio Odyssey : lecture adaptée desktop/mobile ── */
+function roPlayNow(e){
+  if(e){ e.preventDefault(); e.stopPropagation(); }
+
+  var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+                 || window.innerWidth <= 767;
+
+  if(isMobile){
+    // Mobile : les navigateurs bloquent l'autoplay iframe.
+    // On ouvre le player RadioKing dans un nouvel onglet —
+    // il démarre immédiatement car c'est une action utilisateur directe.
+    window.open('https://link.radioking.com/radio-odyssey', '_blank');
+    return;
+  }
+
+  // Desktop : recharger l'iframe avec autoplay
+  var iframe = document.querySelector('#topRadioBar iframe.rk-desktop')
+            || document.querySelector('#topRadioBar iframe');
+
+  if(iframe){
+    var src = 'https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90&a=1';
+    iframe.src = '';
+    setTimeout(function(){ iframe.src = src; }, 50);
+  }
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>

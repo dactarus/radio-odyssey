@@ -1,0 +1,71 @@
+---
+interface Props {
+  gradientFrom: string;
+  gradientTo: string;
+  homeLabel?: string;
+  breadcrumbCurrent: string;
+  title: string;
+  text: string;
+}
+
+const {
+  gradientFrom,
+  gradientTo,
+  homeLabel = '🏠 Accueil',
+  breadcrumbCurrent,
+  title,
+  text,
+} = Astro.props;
+---
+<style is:global>
+  .page-hero{color:#fff;padding:2.5rem 0 3.5rem;position:relative;overflow:hidden;}
+  .page-hero::before{content:'';position:absolute;top:-80px;right:-100px;width:400px;height:400px;background:rgba(255,255,255,.07);border-radius:50%;pointer-events:none;}
+  .page-hero-icon{width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;}
+  .page-hero-icon svg{width:48px;height:48px;}
+  .page-hero h1{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:900;line-height:1.08;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.25);}
+  .page-hero p{font-size:1.1rem;opacity:1;max-width:600px;font-weight:600;text-shadow:0 1px 8px rgba(0,0,0,.2);}
+  .content-card{background:#fff;border-radius:20px;padding:2.2rem;box-shadow:0 8px 30px rgba(123,47,190,.12);margin-bottom:1.5rem;border:1.5px solid rgba(123,47,190,.08);}
+  .content-card h2{font-size:1.5rem;font-weight:800;margin-bottom:1rem;}
+  .content-card h3{font-size:1.1rem;font-weight:800;margin-bottom:.6rem;color:var(--ro-purple);}
+  .content-card p{font-size:.92rem;color:var(--ro-muted);line-height:1.78;}
+  .content-card ul{font-size:.9rem;color:var(--ro-muted);padding-left:1.2rem;}
+  .content-card ul li{margin-bottom:.4rem;}
+  .highlight-box{background:linear-gradient(135deg,rgba(123,47,190,.07),rgba(255,60,172,.05));border:1.5px solid rgba(123,47,190,.15);border-radius:16px;padding:1.5rem;margin:1.2rem 0;}
+  .page-cta-bar{background:linear-gradient(135deg,#0b1c2d,#1a3a5c);border-radius:20px;padding:2.5rem 2rem;color:#fff;text-align:center;margin-top:2rem;}
+  .page-cta-bar h3{font-size:1.4rem;font-weight:900;margin-bottom:.75rem;}
+  .tag-pill{display:inline-block;background:rgba(123,47,190,.1);color:var(--ro-purple);border-radius:999px;padding:.25rem .8rem;font-size:.78rem;font-weight:700;margin:.2rem;}
+  /* ── CORRECTION PLAYER OVERLAP ────────────────────────────────
+     Le player RadioKing déployé (avec pochette) fait ~160px.
+     On ajoute de l'espace pour que le breadcrumb reste visible.
+     Desktop : padding-top body = 170px (au lieu de 125px)
+     Mobile  : padding-top body = 74px  (barre compacte 62px)
+  ──────────────────────────────────────────────────────────────── */
+  body {
+    padding-top: 170px;          /* desktop : player déplié 160px + marge */
+  }
+  html {
+    scroll-padding-top: 170px;
+  }
+  @media (max-width: 767px) {
+    body {
+      padding-top: 60px !important;   /* mobile : barre 90px */
+    }
+    html {
+      scroll-padding-top: 60px !important;
+    }
+  }
+</style>
+
+<section class="page-hero" style={`background:linear-gradient(135deg,${gradientFrom},${gradientTo})`}>
+  <div class="container">
+    <nav aria-label="breadcrumb" style="margin-bottom:1.2rem;">
+      <ol class="breadcrumb" style="background:rgba(0,0,0,.18);padding:.5rem 1rem;border-radius:999px;margin:0;font-size:.88rem;display:inline-flex;backdrop-filter:blur(6px);">
+        <li class="breadcrumb-item"><a href="/index.html" style="color:#fff;text-decoration:none;font-weight:700;">{homeLabel}</a></li>
+        <li class="breadcrumb-item active" style="color:#fff;">{breadcrumbCurrent}</li>
+      </ol>
+    </nav>
+    <div class="page-hero-icon"><slot name="icon" /></div>
+    <h1>{title}</h1>
+    <p>{text}</p>
+  </div>
+</section>

@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<Layout lang="fr" title="Radio Odyssey, une radio dance énergisante en ligne – Hits puissants et énergie positive – Radio Odyssey" description="Radio dance énergisante en ligne sur Radio Odyssey : hits dance modernes, influences 80s et cohérence cardiaque pour garder l’énergie.">
+  <PageHero
+    gradientFrom="#FF3CAC"
+    gradientTo="#FF9A3C"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Radio Odyssey, une radio dance énergisante en ligne – Hits puissants et énergie positive"
+    title="Radio Dance Énergisante en Ligne"
+    text="Musique positive, respiration guidée et cohérence cardiaque — ici, la puissance rythmique rencontre l’équilibre."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="10" r="5" stroke="white" stroke-width="2.5"/><path d="M24 15L19 29L11 26" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 15L28 29L37 24" stroke="rgba(255,255,255,.75)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 29L16 41" stroke="white" stroke-width="2.2" stroke-linecap="round"/><path d="M28 29L31 41" stroke="white" stroke-width="2.2" stroke-linecap="round"/><path d="M38 8L42 5M43 12L40 12" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+        
+          <div class="content-card">
+            <h2>Vous cherchez une radio dance &#233;nergisante&#160;?</h2>
+            <p>Radio Odyssey propose un flux musical rythm&#233; m&#234;lant dance moderne, influences 80s revisit&#233;es et s&#233;quences de respiration int&#233;gr&#233;es pour garder l&#8217;&#233;nergie&#8230; sans la subir.</p>
+            <div class="highlight-box">
+              <p>&#127926; <strong>Radio Odyssey sur SoundCloud</strong><br/>
+              Un mix &#233;quilibr&#233;, des ann&#233;es 80 &#224; nos jours, avec des s&#233;quences de coh&#233;rence cardiaque en d&#233;but d&#8217;heure.<br/>
+              <a href="https://soundcloud.com/odysseylaradio" target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">
+                &#8594; D&#233;couvrir Radio Odyssey sur SoundCloud
+              </a></p>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Pourquoi la musique dance booste l&#8217;&#233;nergie&#160;?</h2>
+            <p>La musique dance agit directement sur&#160;:</p>
+            <ul>
+              <li>Le niveau de motivation</li>
+              <li>La dopamine</li>
+              <li>Le rythme cardiaque</li>
+              <li>L&#8217;engagement mental</li>
+            </ul>
+            <p>Un tempo soutenu favorise l&#8217;action, la concentration dynamique et l&#8217;envie d&#8217;avancer.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une radio dance diff&#233;rente</h2>
+            <p>Contrairement aux radios dance classiques souvent satur&#233;es ou agressives, Radio Odyssey int&#232;gre&#160;:</p>
+            <ul>
+              <li>Des hits dance modernes</li>
+              <li>Des influences 80s synth&#233;tiques</li>
+              <li>Des transitions fluides</li>
+              <li>Des s&#233;quences de coh&#233;rence cardiaque</li>
+            </ul>
+            <p>Cette alternance permet d&#8217;&#233;viter la fatigue auditive tout en conservant un haut niveau d&#8217;&#233;nergie.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>&#201;nergie et respiration&#160;: un &#233;quilibre strat&#233;gique</h2>
+            <p>Une &#233;nergie continue sans pause peut cr&#233;er de la tension. C&#8217;est pourquoi Radio Odyssey int&#232;gre des moments de respiration guid&#233;e permettant de&#160;:</p>
+            <ul>
+              <li>Stabiliser le rythme cardiaque</li>
+              <li>Maintenir la concentration</li>
+              <li>Relancer l&#8217;attention</li>
+              <li>Pr&#233;server l&#8217;&#233;quilibre mental</li>
+            </ul>
+  
+          <div class="highlight-box" style="margin-top:1rem;">
+            <strong>S&#233;ances de 3 minutes :</strong> 7h, 8h, 9h, 12h, 13h, 18h, 19h.<br/>
+            <strong>S&#233;ances de 1 minute :</strong> 10h, 11h, 14h, 15h, 16h, 17h.
+          </div>
+
+          </div>
+
+          <div class="content-card">
+            <h2>Id&#233;ale pour&#8230;</h2>
+            <ul>
+              <li>Le sport l&#233;ger ou l&#8217;&#233;chauffement</li>
+              <li>Le t&#233;l&#233;travail dynamique</li>
+              <li>Les sessions cr&#233;atives</li>
+              <li>Les moments o&#249; la motivation baisse</li>
+            </ul>
+            <p>Une &#233;nergie ma&#238;tris&#233;e, moderne et positive.</p>
+          </div>
+
+          <div class="page-cta-bar">
+            <h3>C&#8217;est parti, on danse&#160;!</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <i class="bi bi-broadcast-pin"></i> &#201;couter la Dance
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

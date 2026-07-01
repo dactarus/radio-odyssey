@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<Layout lang="en" title="Listen to feel-good music online with Radio Odyssey – Radio Odyssey" description="Listen to feel-good music online with Radio Odyssey, the positive European music station streaming uplifting hits and chill music live 24/7.">
+  <PageHero
+    gradientFrom="#FFD700"
+    gradientTo="#FF9A3C"
+    homeLabel="🏠 Home"
+    breadcrumbCurrent="Listen to feel-good music online with Radio Odyssey"
+    title="Feel Good Music Radio"
+    text="Listen to feel-good music online with Radio Odyssey, the positive European music station streaming uplifting hits, relaxing vibes and chill music live 24/7."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.5"/><path d="M15 28C17.5 34 30.5 34 33 28" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/><circle cx="18" cy="20" r="2.5" fill="white" opacity=".75"/><circle cx="30" cy="20" r="2.5" fill="white" opacity=".75"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+        
+          <div class="content-card">
+            <h2>Feel Good Music, All Day Long</h2>
+            <p>Radio Odyssey offers a unique mix of positive pop music, lounge, chillout, soft electronic sounds and relaxing international hits carefully selected to create a peaceful and enjoyable atmosphere.</p>
+            <p>Whether you are working, studying, driving, relaxing at home or enjoying time with friends, Radio Odyssey brings positive energy and smooth music anytime, anywhere.</p>
+            <div class="highlight-box">
+              <a href="#" onclick="roPlayNow(event)" class="btn-ro" style="background:linear-gradient(135deg,#FFD700,#FF9A3C);">
+                <i class="bi bi-broadcast-pin"></i>&nbsp;&#127911; Listen Live Now
+              </a>
+              <p style="margin-top:.75rem;font-size:.84rem;opacity:.85;">Streaming worldwide from France with positive European vibes.</p>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>&#127758; International Feel-Good Music</h2>
+            <p>Radio Odyssey connects listeners around the world with relaxing music, positive vibes and uplifting sounds from Europe and beyond.</p>
+            <p>Available on&#160;:</p>
+            <ul>
+              <li><a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener" style="color:var(--ro-purple);">TuneIn Radio</a></li>
+              <li><a href="https://www.radioline.co/fr/radios/radio_odyssey" target="_blank" rel="noopener" style="color:var(--ro-purple);">Radio.net</a></li>
+              <li><a href="https://mytuner-radio.com/fr/radio/radio-odyssey-512057/" target="_blank" rel="noopener" style="color:var(--ro-purple);">MyTuner Radio</a></li>
+              <li><a href="https://streema.com/radios/Radio_Odyssey" target="_blank" rel="noopener" style="color:var(--ro-purple);">Streema</a></li>
+              <li><a href="https://www.getmeradio.com/stations/radioodyssey-10965/" target="_blank" rel="noopener" style="color:var(--ro-purple);">Online Radio Box</a></li>
+              <li>Alexa / Amazon Echo</li>
+            </ul>
+          </div>
+
+          <div class="content-card">
+            <h2>&#128251; Listen on Alexa</h2>
+            <p>Simply say&#160;:</p>
+            <div class="highlight-box" style="font-size:1.1rem;font-family:'Nunito',sans-serif;font-weight:800;color:var(--ro-purple);">
+              &#128172; "Alexa, play Radio Odyssey"
+            </div>
+            <p style="margin-top:.75rem;font-size:.88rem;color:var(--ro-muted);">Enjoy positive European music hands-free at home anytime.</p>
+          </div>
+
+          <div class="page-cta-bar" style="background:linear-gradient(135deg,#1e3a5c,#0b1c2d);">
+            <h3>Feel good, right now!</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <i class="bi bi-broadcast-pin"></i> Listen to Feel Good Radio
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

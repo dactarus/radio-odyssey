@@ -1,24 +1,14 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8"/>
-  <link rel="icon" type="image/png" href="assets/images/logo.png"/>
-  <link rel="apple-touch-icon" href="assets/images/logo.png"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Radio Odyssey – Positive Web Radio | Bien-être &amp; Bonne Humeur 24h/24</title>
-  <meta name="description" content="Radio Odyssey, votre web radio 100% positive ! Hits des années 80, dance, easy listening, cohérence cardiaque. Gratuite, sans pub, non-stop 24h/24."/>
-  <meta name="robots" content="index, follow"/>
-  <meta property="og:title" content="Radio Odyssey – Positive Web Radio"/>
-  <meta property="og:description" content="Web radio musicale positive en streaming 24h/24. Joyeuse, bien-être, gratuite."/>
-  <meta property="og:image" content="assets/images/logo.png"/>
-  <meta property="og:type" content="website"/>
+---
+import Layout from '../layouts/Layout.astro';
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="assets/css/style.css"/>
-
-  <style>
+const title = 'Radio Odyssey – Positive Web Radio | Bien-être & Bonne Humeur 24h/24';
+const description = "Radio Odyssey, votre web radio 100% positive ! Hits des années 80, dance, easy listening, cohérence cardiaque. Gratuite, sans pub, non-stop 24h/24.";
+const ogTitle = 'Radio Odyssey – Positive Web Radio';
+const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse, bien-être, gratuite.";
+---
+<Layout lang="fr" title={title} description={description} ogTitle={ogTitle} ogDescription={ogDescription}>
+  <Fragment slot="head">
+  <style is:global>
     /* ── SVG icon wrappers ── */
     .svg-icon {
       display: flex; align-items: center; justify-content: center;
@@ -77,23 +67,21 @@
       }
     }
   </style>
-
-  <!-- Schema.org — RadioStation + MusicGroup (0 erreur, 0 avertissement) -->
-  <script type="application/ld+json">
+  <script is:inline type="application/ld+json">
   [
     {
       "@context": "https://schema.org",
       "@type": "RadioStation",
       "name": "Radio Odyssey",
       "alternateName": "La Positive Radio",
-      "url": "https://radio-odyssey.com",
+      "url": "https://www.radio-odyssey.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://radio-odyssey.com/assets/images/logo.png",
+        "url": "https://www.radio-odyssey.com/assets/images/logo.png",
         "width": 512,
         "height": 512
       },
-      "image": "https://radio-odyssey.com/assets/images/logo.png",
+      "image": "https://www.radio-odyssey.com/assets/images/logo.png",
       "description": "Radio Odyssey est une webradio positive 100% gratuite diffusant des hits des années 80 revisités, de la dance, du easy listening et des séquences de cohérence cardiaque, 24h/24 et 7j/7.",
       "foundingDate": "2024-01-19",
       "address": {
@@ -138,111 +126,13 @@
       "@type": "MusicGroup",
       "name": "Artistes diffusés sur Radio Odyssey",
       "genre": ["Pop", "Synthpop", "Dance", "New Wave", "Easy Listening"],
-      "url": "https://radio-odyssey.com",
+      "url": "https://www.radio-odyssey.com",
       "description": "Sélection musicale de Radio Odyssey : hits des années 80 revisités, dance moderne et easy listening."
     }
   ]
   </script>
-</head>
-<body>
+  </Fragment>
 
-<!-- ============================================================
-     PLAYER BAR STICKY
-     ============================================================ -->
-<div id="topRadioBar">
-
-  <!-- GAUCHE : logo + badge -->
-  <a class="bar-logo" href="index.html" aria-label="Radio Odyssey — Accueil">
-    <img class="bar-logo-img" src="assets/images/logo.png" alt="Radio Odyssey"
-         onerror="this.style.opacity='0'"/>
-  </a>
-  <div class="live-badge">
-    <span class="live-dot"></span>
-    EN DIRECT
-  </div>
-
-  <!-- CENTRE desktop : player RadioKing h=90 (original) -->
-  <iframe class="rk-desktop"
-    src="https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90"
-    allow="autoplay" title="Radio Odyssey — Lecteur en direct"></iframe>
-
-  <!-- CENTRE mobile : player RadioKing h=50 compact -->
-  <iframe class="rk-mobile"
-    src="https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=50"
-    allow="autoplay" title="Radio Odyssey — Lecteur en direct"></iframe>
-
-  <!-- BOUTON mobile alternatif (affiché si iframe trop petite) -->
-  <a class="rk-mobile-btn" href="https://link.radioking.com/radio-odyssey" target="_blank" rel="noopener"
-     aria-label="Écouter Radio Odyssey">
-    <span class="rk-mobile-play">&#9654;</span>
-    <span class="rk-mobile-label">
-      <span class="rk-mobile-title" id="mobile-now-playing">Radio Odyssey</span>
-      <span class="rk-mobile-sub">Appuyer pour écouter</span>
-    </span>
-  </a>
-
-  <!-- DROITE : wave + burger -->
-  <div class="bar-wave" aria-hidden="true">
-    <span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span>
-  </div>
-  <button class="bar-burger"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#site-nav"
-          aria-controls="site-nav"
-          aria-label="Ouvrir le menu"
-          style="margin-right:16px;">
-    <i class="bi bi-list"></i>
-  </button>
-
-</div>
-
-<!-- Script RadioKing (original) -->
-<script src="https://player.radioking.io/scripts/iframe.bundle.js"></script>
-
-<!-- ============================================================
-     OFFCANVAS NAV
-     ============================================================ -->
-<div class="offcanvas offcanvas-start" id="site-nav" tabindex="-1" aria-labelledby="nav-label">
-  <div class="offcanvas-header">
-    <div class="offcanvas-title" id="nav-label">
-      <img src="assets/images/logo.png" alt="Logo Radio Odyssey"/>
-      Radio Odyssey
-    </div>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fermer"></button>
-  </div>
-  <div class="offcanvas-body p-2">
-
-    <span class="nav-cat">🏠 Accueil</span>
-    <a class="nav-link" href="index.html"><span class="ni">🏠</span> Page d'accueil</a>
-
-    <span class="nav-cat">💆 Bien-être &amp; Santé</span>
-    <a class="nav-link" href="radio-coherence-cardiaque.html"><span class="ni">❤️</span> Cohérence Cardiaque</a>
-    <a class="nav-link" href="radio-bien-etre-en-ligne.html"><span class="ni">🌿</span> Bien-être en Ligne</a>
-    <a class="nav-link" href="radio-anti-stress-gratuite.html"><span class="ni">🧘</span> Anti-Stress Gratuite</a>
-    <a class="nav-link" href="musique-pour-respiration-guidee.html"><span class="ni">🫁</span> Respiration Guidée</a>
-    <a class="nav-link" href="radio-detente-moderne.html"><span class="ni">🌙</span> Détente Moderne</a>
-
-    <span class="nav-cat">🎵 Musique &amp; Énergie</span>
-    <a class="nav-link" href="radio-annees-80-en-ligne.html"><span class="ni">🕺</span> Années 80 en Ligne</a>
-    <a class="nav-link" href="radio-dance-energisante.html"><span class="ni">💃</span> Dance Énergisante</a>
-    <a class="nav-link" href="musique-pour-se-concentrer.html"><span class="ni">🎯</span> Concentration</a>
-    <a class="nav-link" href="radio-pour-travailler.html"><span class="ni">💻</span> Pour Travailler</a>
-
-    <span class="nav-cat">🌍 International</span>
-    <a class="nav-link" href="positive-european-music-station.html"><span class="ni">🇪🇺</span> European Positive</a>
-    <a class="nav-link" href="european-chill-radio.html"><span class="ni">☁️</span> European Chill</a>
-    <a class="nav-link" href="feel-good-music-radio.html"><span class="ni">😊</span> Feel Good Radio</a>
-    <a class="nav-link" href="keep-listening-radio-odyssey.html"><span class="ni">▶️</span> Keep Listening</a>
-
-    <div class="offcanvas-cta">
-      <a class="btn-ro w-100 justify-content-center"
-         href="https://link.radioking.com/radio-odyssey" target="_blank" rel="noopener">
-        <i class="bi bi-broadcast"></i>&nbsp; Écouter en Direct
-      </a>
-    </div>
-  </div>
-</div>
 
 
 <!-- ============================================================
@@ -291,7 +181,7 @@
       </div>
     </div>
   </div>
-
+</section>
 
 <!-- ============================================================
      TITRES RÉCENTS — En ce moment sur Radio Odyssey
@@ -335,7 +225,7 @@
            data-date="1"
            data-buy="0">
       </div>
-      <script type="text/javascript"
+      <script is:inline type="text/javascript"
               src="https://widget.radioking.io/played-tracks/build/script.min.js">
       </script>
 
@@ -359,7 +249,7 @@
 </section>
 
 <!-- Surcharge CSS du widget RadioKing pour l'intégrer au thème sombre -->
-<style>
+<style is:global>
 /* ── Widget RadioKing — Titres récents ── */
 #rk-played-tracks-widget * {
   font-family: 'Nunito', sans-serif !important;
@@ -466,6 +356,137 @@
   #rk-played-tracks-widget .rk-tracks-list {
     grid-template-columns: repeat(2,1fr) !important;
     gap: .6rem !important;
+  }
+}
+
+/* ── Widget RadioKing — sélecteurs à jour (juillet 2026) ──────────
+   RadioKing a renommé ses classes internes (modules CSS avec hash,
+   ex: src-components-played-tracks__title--hTeYp). On cible via
+   [class*="..."] pour rester robuste si le hash change, tout en
+   gardant les règles ci-dessus au cas où l'ancien balisage revienne.
+─────────────────────────────────────────────────────────────────── */
+
+/* Cacher le formulaire de recherche par date/heure */
+#rk-played-tracks-widget [class*="played-tracks__form--"] {
+  display: none !important;
+}
+
+/* Grille 4 colonnes */
+#rk-played-tracks-widget #rk-played-tracks-table {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 1rem !important;
+}
+
+/* Chaque carte : flex ROW (pochette gauche, infos droite) */
+#rk-played-tracks-widget [class*="track-line"] {
+  background: rgba(255,255,255,.07) !important;
+  border: 1px solid rgba(255,255,255,.13) !important;
+  border-radius: 18px !important;
+  padding: .9rem !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: .85rem !important;
+  transition: transform .25s, background .25s !important;
+  overflow: hidden !important;
+}
+#rk-played-tracks-widget [class*="track-line"]:hover {
+  transform: translateY(-4px) !important;
+  background: rgba(255,255,255,.13) !important;
+}
+
+/* ★ Pochette : taille fixe 72×72px ★ */
+#rk-played-tracks-widget [class*="played-tracks__image--"] {
+  width: 72px !important;
+  height: 72px !important;
+  min-width: 72px !important;
+  object-fit: cover !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,.5) !important;
+  flex-shrink: 0 !important;
+}
+
+/* Colonne infos (date, titre, artiste) */
+#rk-played-tracks-widget [class*="played-tracks__infos--"] {
+  min-width: 0 !important;
+  flex: 1 !important;
+}
+#rk-played-tracks-widget [class*="title-block"] {
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Date/heure + icône horloge */
+#rk-played-tracks-widget [class*="played-tracks__date--"] {
+  display: flex !important;
+  align-items: center !important;
+  gap: .3rem !important;
+  font-size: .68rem !important;
+  color: rgba(255,255,255,.35) !important;
+  margin-bottom: .2rem !important;
+}
+#rk-played-tracks-widget [class*="played-tracks__date--"] svg {
+  width: 10px !important;
+  height: 10px !important;
+  flex-shrink: 0 !important;
+}
+#rk-played-tracks-widget [class*="played-tracks__date--"] svg .st0 {
+  fill: rgba(255,255,255,.35) !important;
+}
+
+/* Titre du morceau */
+#rk-played-tracks-widget [class*="played-tracks__title--"] {
+  font-weight: 800 !important;
+  font-size: .9rem !important;
+  color: #fff !important;
+  display: block !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Artiste */
+#rk-played-tracks-widget [class*="played-tracks__artist--"] {
+  font-size: .78rem !important;
+  color: rgba(255,255,255,.6) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Premier titre : badge EN COURS
+   Inséré dans la colonne infos (pas dans la ligne image+texte) pour ne
+   pas voler de largeur au titre/artiste — sinon le texte de la carte
+   "en cours de lecture" se retrouve écrasé à quelques pixels. */
+#rk-played-tracks-widget [class*="track-line"]:first-child [class*="played-tracks__infos--"]::before {
+  content: '▶ EN COURS' !important;
+  display: inline-block !important;
+  background: rgba(255,60,172,.2) !important;
+  border: 1px solid rgba(255,60,172,.4) !important;
+  border-radius: 999px !important;
+  padding: .18rem .65rem !important;
+  font-size: .62rem !important;
+  font-weight: 800 !important;
+  letter-spacing: .08em !important;
+  color: #FF3CAC !important;
+  align-self: flex-start !important;
+  margin-bottom: .3rem !important;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  #rk-played-tracks-widget #rk-played-tracks-table {
+    grid-template-columns: repeat(2,1fr) !important;
+  }
+}
+@media (max-width: 480px) {
+  #rk-played-tracks-widget #rk-played-tracks-table {
+    grid-template-columns: repeat(2,1fr) !important;
+    gap: .6rem !important;
+  }
+  #rk-played-tracks-widget [class*="track-line"] {
+    flex-wrap: wrap !important;
   }
 }
 </style>
@@ -1127,103 +1148,4 @@
   </div>
 </section>
 
-
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
-<footer id="site-footer">
-  <div class="container">
-    <div class="row gy-4">
-      <div class="col-lg-4">
-        <div class="footer-logo-wrap">
-          <img src="assets/images/logo.png" alt="Radio Odyssey"/>
-          <div class="footer-brand">Radio Odyssey<small>Positive Web Radio ✨</small></div>
-        </div>
-        <p style="font-size:.85rem;max-width:280px;">
-          La webradio positive française — Hits des années 80, dance, easy listening
-          et bien-être, 24h/24, gratuitement, depuis janvier 2024 !
-        </p>
-        <a href="mailto:odysseylaradio@gmail.com" style="color:var(--ro-sky)!important;">
-          odysseylaradio@gmail.com
-        </a>
-      </div>
-      <div class="col-sm-6 col-lg-2">
-        <h5>Navigation</h5>
-        <a href="index.html">Accueil</a>
-        <a href="radio-coherence-cardiaque.html">Cohérence Cardiaque</a>
-        <a href="radio-bien-etre-en-ligne.html">Bien-être</a>
-        <a href="radio-annees-80-en-ligne.html">Années 80</a>
-        <a href="radio-dance-energisante.html">Dance</a>
-      </div>
-      <div class="col-sm-6 col-lg-2">
-        <h5>Thématiques</h5>
-        <a href="musique-pour-se-concentrer.html">Concentration</a>
-        <a href="radio-anti-stress-gratuite.html">Anti-Stress</a>
-        <a href="radio-pour-travailler.html">Travail</a>
-        <a href="radio-detente-moderne.html">Détente</a>
-        <a href="musique-pour-respiration-guidee.html">Respiration</a>
-      </div>
-      <div class="col-sm-6 col-lg-2">
-        <h5>International</h5>
-        <a href="positive-european-music-station.html">European Positive</a>
-        <a href="european-chill-radio.html">European Chill</a>
-        <a href="feel-good-music-radio.html">Feel Good Radio</a>
-        <a href="keep-listening-radio-odyssey.html">Keep Listening</a>
-      </div>
-      <div class="col-sm-6 col-lg-2">
-        <h5>Écouter sur</h5>
-        <a href="https://link.radioking.com/radio-odyssey" target="_blank" rel="noopener">RadioKing</a>
-        <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener">TuneIn</a>
-        <a href="https://www.deezer.com/search/radio%20odyssey/livestream" target="_blank" rel="noopener">Deezer</a>
-        <a href="https://fr.welove.radio/radio/radio-odyssey/" target="_blank" rel="noopener">WeLoveRadio</a>
-        <a href="https://radio.orange.com/radios/radio_odyssey" target="_blank" rel="noopener">Orange</a>
-      </div>
-    </div>
-    <hr/>
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
-      <div class="footer-bottom">© 2026 Radio Odyssey. Tous droits réservés. | Depuis le 19 janvier 2024</div>
-      <div class="footer-social d-flex gap-3">
-        <a href="https://www.facebook.com/profile.php?id=61588289230589" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com/radio_odyssey_france/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-        <a href="https://x.com/Odysseylaradio" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="https://www.youtube.com/channel/UCodzZ_dhFdJwQ90nZzVHluw" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/main.js"></script>
-
-<script>
-/* ── Radio Odyssey : lecture adaptée desktop/mobile ── */
-function roPlayNow(e){
-  if(e){ e.preventDefault(); e.stopPropagation(); }
-
-  var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
-                 || window.innerWidth <= 767;
-
-  if(isMobile){
-    // Mobile : les navigateurs bloquent l'autoplay iframe.
-    // On ouvre le player RadioKing dans un nouvel onglet — 
-    // il démarre immédiatement car c'est une action utilisateur directe.
-    window.open('https://link.radioking.com/radio-odyssey', '_blank');
-    return;
-  }
-
-  // Desktop : recharger l'iframe avec autoplay
-  var iframe = document.querySelector('#topRadioBar iframe.rk-desktop')
-            || document.querySelector('#topRadioBar iframe');
-
-  if(iframe){
-    var src = 'https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90&a=1';
-    iframe.src = '';
-    setTimeout(function(){ iframe.src = src; }, 50);
-  }
-  window.scrollTo({top: 0, behavior: 'smooth'});
-}
-</script>
-
-
-</body>
-</html>
+</Layout>

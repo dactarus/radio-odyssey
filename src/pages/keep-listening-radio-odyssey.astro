@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<Layout lang="en" title="Keep Listening Radio Odyssey, positive european music station – Radio Odyssey" description="Keep listening to Radio Odyssey everywhere — on Alexa, TuneIn, Radio.net, MyTuner and more. Your positive European music station, 24/7.">
+  <PageHero
+    gradientFrom="#7B2FBE"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Home"
+    breadcrumbCurrent="Keep Listening Radio Odyssey, positive european music station"
+    title="Keep Listening to Radio Odyssey"
+    text="Enjoying the music? Stay connected with Radio Odyssey everywhere you go."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.5"/><polygon points="19,15 19,33 36,24" stroke="white" stroke-width="2" fill="rgba(255,255,255,.2)" stroke-linejoin="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+        
+          <div class="content-card">
+            <h2>&#127911; Add Radio Odyssey to Your Home Screen</h2>
+            <p>On Android and iPhone, you can add Radio Odyssey directly to your home screen for one-tap listening anytime.</p>
+            <div class="row g-3 mt-2">
+              <div class="col-sm-6">
+                <div class="highlight-box">
+                  <strong>&#127822; On iPhone (Safari)</strong>
+                  <ol style="font-size:.88rem;padding-left:1.1rem;margin-top:.5rem;">
+                    <li>Open Radio Odyssey in <strong>Safari</strong></li>
+                    <li>Tap the <strong>Share</strong> button</li>
+                    <li>Choose <strong>Add to Home Screen</strong></li>
+                    <li>The Radio Odyssey icon appears!</li>
+                  </ol>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="highlight-box">
+                  <strong>&#129302; On Android (Chrome)</strong>
+                  <ol style="font-size:.88rem;padding-left:1.1rem;margin-top:.5rem;">
+                    <li>Open Radio Odyssey in <strong>Chrome</strong></li>
+                    <li>Tap <strong>Install app</strong></li>
+                    <li>Confirm installation</li>
+                    <li>The app installs like a real app!</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>&#128251; Listen on Alexa</h2>
+            <p>Simply say&#160;:</p>
+            <div class="highlight-box" style="font-size:1.1rem;font-family:'Nunito',sans-serif;font-weight:800;color:var(--ro-purple);">
+              &#128172; "Alexa, play Radio Odyssey"
+            </div>
+            <p style="margin-top:.75rem;font-size:.88rem;color:var(--ro-muted);">Enjoy positive European music hands-free at home anytime.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>&#127758; Listen Everywhere</h2>
+            <ul>
+              <li><a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener" style="color:var(--ro-purple);">TuneIn</a></li>
+              <li><a href="https://www.radioline.co/fr/radios/radio_odyssey" target="_blank" rel="noopener" style="color:var(--ro-purple);">Radio.net</a></li>
+              <li><a href="https://mytuner-radio.com/fr/radio/radio-odyssey-512057/" target="_blank" rel="noopener" style="color:var(--ro-purple);">MyTuner Radio</a></li>
+              <li><a href="https://streema.com/radios/Radio_Odyssey" target="_blank" rel="noopener" style="color:var(--ro-purple);">Streema</a></li>
+              <li><a href="https://www.getmeradio.com/stations/radioodyssey-10965/" target="_blank" rel="noopener" style="color:var(--ro-purple);">Online Radio Box</a></li>
+            </ul>
+            <p style="margin-top:.75rem;">Radio Odyssey is your positive European music station with chill, feel-good and relaxing hits from around the world.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Explore Radio Odyssey</h2>
+            <ul>
+              <li><a href="index.html" style="color:var(--ro-purple);">Home Page</a></li>
+              <li><a href="positive-european-music-station.html" style="color:var(--ro-purple);">Positive European Music Station</a></li>
+              <li><a href="european-chill-radio.html" style="color:var(--ro-purple);">European Chill Radio</a></li>
+              <li><a href="feel-good-music-radio.html" style="color:var(--ro-purple);">Feel Good Music Radio</a></li>
+            </ul>
+          </div>
+
+          <div class="page-cta-bar">
+            <h3>Keep listening &#8212; you won't regret it!</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <i class="bi bi-broadcast-pin"></i> Listen Now
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
