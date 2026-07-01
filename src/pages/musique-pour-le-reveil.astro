@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import DayScheduleNav from '../components/DayScheduleNav.astro';
+---
+<Layout
+  lang="fr"
+  title="Musique pour le Réveil — Bien Démarrer sa Matinée avec Radio Odyssey"
+  description="Découvrez la playlist matinale de Radio Odyssey : musique douce et énergisante entre 6h et 9h, avec cohérence cardiaque pour un réveil en douceur, 100% gratuit."
+>
+  <PageHero
+    gradientFrom="#FF9A3C"
+    gradientTo="#FFD700"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Musique pour le réveil — Bien démarrer sa matinée"
+    title="Musique pour le Réveil"
+    text="La Matinale de Radio Odyssey — 6h à 9h, pour ouvrir les yeux en douceur et démarrer la journée du bon pied."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="30" r="10" stroke="white" stroke-width="2.5"/><line x1="24" y1="8" x2="24" y2="14" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="10" y1="16" x2="14" y2="20" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="38" y1="16" x2="34" y2="20" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="8" y1="38" x2="40" y2="38" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Pourquoi bien choisir sa musique du réveil ?</h2>
+            <p>Les premières minutes après le réveil donnent souvent le ton de toute la journée. Un réveil trop brutal — alarme stridente, silence, actualités anxiogènes — peut installer une tension qui persiste des heures. À l'inverse, une transition musicale douce aide le corps et l'esprit à se remettre en mouvement progressivement.</p>
+            <p>C'est exactement le rôle de <strong>La Matinale</strong>, la tranche 6h-9h de Radio Odyssey : une sélection pensée pour accompagner le réveil sans brusquer, puis monter doucement en énergie à mesure que la matinée avance.</p>
+          </div>
+
+          <div class="content-card">
+            <h3 style="font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#FFD700;margin-bottom:1rem;">CE QUI VOUS ATTEND ENTRE 6H ET 9H</h3>
+            <div style="background:rgba(11,28,45,.04);border:1px solid rgba(123,47,190,.1);border-radius:16px;padding:1.2rem;display:flex;flex-direction:column;gap:.9rem;">
+              <div style="display:flex;gap:.85rem;align-items:flex-start;">
+                <span style="min-width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,154,60,.5);color:#FF9A3C;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</span>
+                <p style="margin:0;font-size:.91rem;line-height:1.65;color:var(--ro-muted);">Des titres calmes et mélodiques pour ne pas brusquer le réveil.</p>
+              </div>
+              <div style="display:flex;gap:.85rem;align-items:flex-start;">
+                <span style="min-width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,154,60,.5);color:#FF9A3C;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</span>
+                <p style="margin:0;font-size:.91rem;line-height:1.65;color:var(--ro-muted);">Une montée en énergie progressive à mesure que 9h approche.</p>
+              </div>
+              <div style="display:flex;gap:.85rem;align-items:flex-start;">
+                <span style="min-width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,154,60,.5);color:#FF9A3C;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</span>
+                <p style="margin:0;font-size:.91rem;line-height:1.65;color:var(--ro-muted);">Une séquence de <a href="/radio-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque</a> de 3 minutes à 7h, 8h et 9h pour ancrer le calme avant de partir.</p>
+              </div>
+              <div style="display:flex;gap:.85rem;align-items:flex-start;">
+                <span style="min-width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,154,60,.5);color:#FF9A3C;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</span>
+                <p style="margin:0;font-size:.91rem;line-height:1.65;color:var(--ro-muted);">Aucune coupure publicitaire — la transition reste fluide du lit jusqu'à la porte.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Comment intégrer Radio Odyssey à votre routine du matin</h2>
+            <ul>
+              <li>Lancez la radio sur votre téléphone dès que l'alarme sonne, au lieu d'une sonnerie stridente</li>
+              <li>Diffusez-la sur une enceinte connectée dans la cuisine pendant le petit-déjeuner</li>
+              <li>Gardez-la en fond pendant que vous vous préparez, pour garder ce rythme calme jusqu'au départ</li>
+            </ul>
+            <p>Comme pour toutes les tranches horaires de Radio Odyssey, aucune inscription n'est nécessaire : un clic sur "Écouter en direct" suffit.</p>
+          </div>
+
+          <DayScheduleNav current="/musique-pour-le-reveil.html" />
+
+          <div class="content-card">
+            <h2>Envie d'un réveil encore plus apaisé ?</h2>
+            <p>Si le stress du matin est un vrai sujet pour vous, la page <a href="/musique-pour-respiration-guidee.html" style="color:var(--ro-purple);font-weight:700;">musique pour respiration guidée</a> détaille l'exercice de cohérence cardiaque diffusé chaque heure sur l'antenne, avec un outil interactif pour le pratiquer dès maintenant.</p>
+          </div>
+
+          <div class="page-cta-bar">
+            <h3>Réveillez-vous en douceur, dès aujourd'hui</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <i class="bi bi-broadcast-pin"></i> Écouter La Matinale
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

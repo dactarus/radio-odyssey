@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import DayScheduleNav from '../components/DayScheduleNav.astro';
+---
+<Layout
+  lang="fr"
+  title="Musique pour l'Après-midi — Easy Listening avec Radio Odyssey"
+  description="La playlist de 14h à 18h sur Radio Odyssey : easy listening et golds pour rester concentré tout l'après-midi, avec cohérence cardiaque toutes les heures."
+>
+  <PageHero
+    gradientFrom="#1e7fcb"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Musique pour l'après-midi — Easy listening"
+    title="Musique pour l'Après-midi"
+    text="Easy Listening — 14h à 18h, des golds et des incontournables pour tenir la distance jusqu'au soir sans décrocher."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M8 26V24C8 14.6 15.2 7 24 7C32.8 7 40 14.6 40 24V26" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/><rect x="4" y="26" width="8" height="12" rx="3" stroke="white" stroke-width="2.5"/><rect x="36" y="26" width="8" height="12" rx="3" stroke="white" stroke-width="2.5"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Le coup de mou de 15h ? La musique peut aider</h2>
+            <p>L'après-midi, entre 14h et 18h, est souvent la période la plus difficile à tenir : la digestion pèse, la concentration baisse, et les heures semblent s'étirer avant la fin de journée. C'est précisément le créneau <strong>Easy Listening</strong> de Radio Odyssey : des golds et incontournables sélectionnés pour accompagner sans fatiguer, avec juste assez d'énergie pour rester alerte sans être distrait.</p>
+          </div>
+
+          <div class="content-card">
+            <h3 style="font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7B2FBE;margin-bottom:1rem;">CE QUI REND CETTE PLAYLIST IDÉALE POUR TRAVAILLER</h3>
+            <div style="background:rgba(11,28,45,.04);border:1px solid rgba(123,47,190,.1);border-radius:16px;padding:1.2rem;display:flex;flex-direction:column;gap:.9rem;">
+              <div style="display:flex;gap:.85rem;align-items:flex-start;">
+                <span style="min-width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(123,47,190,.45);color:#7B2FBE;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</span>
+                <p style="margin:0;font-size:.91rem;line-height:1.65;color:var(--ro-muted);">Des morceaux familiers et mélodiques, qui ne demandent pas d'attention active — parfait en fond sonore.</p>
+              </div>
+              <div style="display:flex;gap:.85rem;align-items:flex-start;">
+                <span style="min-width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(123,47,190,.45);color:#7B2FBE;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</span>
+                <p style="margin:0;font-size:.91rem;line-height:1.65;color:var(--ro-muted);">Un rythme stable, sans pics d'énergie brusques qui coupent la concentration.</p>
+              </div>
+              <div style="display:flex;gap:.85rem;align-items:flex-start;">
+                <span style="min-width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(123,47,190,.45);color:#7B2FBE;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</span>
+                <p style="margin:0;font-size:.91rem;line-height:1.65;color:var(--ro-muted);">4 pauses respiration d'1 minute (14h, 15h, 16h, 17h) pour relâcher la tension sans quitter son poste de travail.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Pour aller plus loin</h2>
+            <p>Si votre priorité l'après-midi est avant tout de rester concentré sur une tâche précise, la page <a href="/musique-pour-se-concentrer.html" style="color:var(--ro-purple);font-weight:700;">musique pour se concentrer</a> détaille notre sélection la plus structurée. Si c'est plutôt le cadre "radio de bureau" toute la journée qui vous intéresse, direction <a href="/radio-pour-travailler.html" style="color:var(--ro-purple);font-weight:700;">radio pour travailler</a>.</p>
+          </div>
+
+          <DayScheduleNav current="/musique-pour-lapres-midi.html" />
+
+          <div class="page-cta-bar">
+            <h3>Tenez la distance jusqu'au soir</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <i class="bi bi-broadcast-pin"></i> Écouter Easy Listening
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

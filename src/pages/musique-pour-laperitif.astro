@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import DayScheduleNav from '../components/DayScheduleNav.astro';
+---
+<Layout
+  lang="fr"
+  title="Musique pour l'Apéritif et la Soirée — Mix du Soir Radio Odyssey"
+  description="La playlist de 18h à 21h sur Radio Odyssey : dance hits pour finir la journée en beauté, entre apéro, cuisine et premières heures de la soirée."
+>
+  <PageHero
+    gradientFrom="#FF9A3C"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Musique pour l'apéritif et la soirée — Mix du soir"
+    title="Musique pour l'Apéritif et la Soirée"
+    text="Mix du Soir — 18h à 21h, des dance hits pour clôturer la journée de travail et lancer la soirée avec entrain."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M14 8H34L26 26V38" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="18" y1="38" x2="30" y2="38" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="16" y1="12" x2="32" y2="12" stroke="rgba(255,255,255,.5)" stroke-width="1.8"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>La bascule entre journée de travail et soirée</h2>
+            <p>18h, l'ordinateur se ferme, les enfants rentrent de l'école, l'apéro se prépare : c'est un vrai moment de transition. Le <strong>Mix du Soir</strong> de Radio Odyssey accompagne ce basculement avec des dance hits énergiques, pour clore la journée sur une note positive plutôt que de la laisser simplement s'éteindre.</p>
+            <p>Deux nouvelles séquences de <a href="/radio-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque</a> de 3 minutes, à 18h et 19h, marquent aussi symboliquement la fin de la journée de travail.</p>
+          </div>
+
+          <div class="content-card">
+            <h3 style="font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#FF3CAC;margin-bottom:1rem;">DES IDÉES POUR PROFITER DE CE CRÉNEAU</h3>
+            <div class="row g-3">
+              <div class="col-6">
+                <div style="background:linear-gradient(135deg,rgba(255,154,60,.1),rgba(255,60,172,.06));border-radius:14px;padding:1rem;text-align:center;">
+                  <div style="font-size:1.6rem;margin-bottom:.4rem;">🍸</div>
+                  <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;">Apéro entre amis</div>
+                  <div style="font-size:.75rem;color:var(--ro-muted);margin-top:.2rem;">En fond sur une enceinte connectée</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div style="background:linear-gradient(135deg,rgba(255,60,172,.1),rgba(255,215,0,.06));border-radius:14px;padding:1rem;text-align:center;">
+                  <div style="font-size:1.6rem;margin-bottom:.4rem;">🍳</div>
+                  <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;">Préparer le dîner</div>
+                  <div style="font-size:.75rem;color:var(--ro-muted);margin-top:.2rem;">Un rythme qui donne de l'entrain en cuisine</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div style="background:linear-gradient(135deg,rgba(0,198,255,.08),rgba(30,127,203,.06));border-radius:14px;padding:1rem;text-align:center;">
+                  <div style="font-size:1.6rem;margin-bottom:.4rem;">🚗</div>
+                  <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;">Trajet retour</div>
+                  <div style="font-size:.75rem;color:var(--ro-muted);margin-top:.2rem;">De quoi décompresser sur la route</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div style="background:linear-gradient(135deg,rgba(255,215,0,.12),rgba(255,154,60,.08));border-radius:14px;padding:1rem;text-align:center;">
+                  <div style="font-size:1.6rem;margin-bottom:.4rem;">💃</div>
+                  <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;">Dance hits</div>
+                  <div style="font-size:.75rem;color:var(--ro-muted);margin-top:.2rem;">Les 30 dernières années de tubes</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Envie de prolonger l'énergie ?</h2>
+            <p>Si l'apéro se transforme en vraie soirée dansante, notre page <a href="/radio-dance-energisante.html" style="color:var(--ro-purple);font-weight:700;">radio dance énergisante</a> prend le relais avec une sélection encore plus rythmée. À l'inverse, pour ralentir doucement en fin de soirée, direction <a href="/radio-detente-moderne.html" style="color:var(--ro-purple);font-weight:700;">détente moderne</a>.</p>
+          </div>
+
+          <DayScheduleNav current="/musique-pour-laperitif.html" />
+
+          <div class="page-cta-bar">
+            <h3>Lancez la soirée en musique</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <i class="bi bi-broadcast-pin"></i> Écouter le Mix du Soir
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
