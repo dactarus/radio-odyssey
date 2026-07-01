@@ -77,6 +77,76 @@
       }
     }
   </style>
+
+  <!-- Schema.org structured data — RadioStation + MusicGroup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RadioStation",
+    "name": "Radio Odyssey",
+    "alternateName": "La Positive Radio",
+    "url": "https://radio-odyssey.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://radio-odyssey.com/assets/images/logo.png",
+      "width": 512,
+      "height": 512
+    },
+    "image": "https://radio-odyssey.com/assets/images/logo.png",
+    "description": "Radio Odyssey est une webradio positive 100% gratuite diffusant des hits des années 80 revisités, de la dance, du easy listening et des séquences de cohérence cardiaque, 24h/24 et 7j/7.",
+    "broadcastFrequency": "Webradio — streaming en ligne",
+    "broadcastTimezone": "Europe/Paris",
+    "inLanguage": ["fr", "en"],
+    "genre": ["Pop", "Dance", "80s", "Easy Listening", "Well-being"],
+    "founder": {
+      "@type": "Person",
+      "name": "Radio Odyssey"
+    },
+    "foundingDate": "2024-01-19",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "odysseylaradio@gmail.com",
+      "contactType": "customer support"
+    },
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61588289230589",
+      "https://www.instagram.com/radio_odyssey_france/",
+      "https://x.com/Odysseylaradio",
+      "https://www.youtube.com/channel/UCodzZ_dhFdJwQ90nZzVHluw",
+      "https://tunein.com/radio/RADIO-ODYSSEY-s339104/",
+      "https://play.radioking.io/radio-odyssey"
+    ],
+    "potentialAction": {
+      "@type": "ListenAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://link.radioking.com/radio-odyssey",
+        "actionPlatform": [
+          "https://schema.org/DesktopWebPlatform",
+          "https://schema.org/MobileWebPlatform"
+        ]
+      },
+      "expectsAcceptanceOf": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    "knowsAbout": [
+      {
+        "@type": "MusicGroup",
+        "name": "Artistes années 80",
+        "genre": ["Pop", "Synthpop", "Dance", "New Wave"]
+      },
+      {
+        "@type": "Thing",
+        "name": "Cohérence cardiaque",
+        "description": "Technique de respiration guidée pour le bien-être et la réduction du stress"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -284,21 +354,13 @@
 
 <!-- Surcharge CSS du widget RadioKing pour l'intégrer au thème sombre -->
 <style>
-/* Conteneur général du widget */
-#rk-played-tracks-widget {
-  --rk-bg:          transparent;
-  --rk-text:        #ffffff;
-  --rk-subtext:     rgba(255,255,255,.6);
-  --rk-border:      rgba(255,255,255,.12);
-  --rk-accent:      #FF3CAC;
-}
-
-/* Le widget génère des éléments .rk-played-track-item */
+/* ── Widget RadioKing — Titres récents ── */
 #rk-played-tracks-widget * {
   font-family: 'Nunito', sans-serif !important;
+  box-sizing: border-box !important;
 }
 
-/* Wrapper liste */
+/* Wrapper liste : 4 colonnes */
 #rk-played-tracks-widget ul,
 #rk-played-tracks-widget .rk-tracks-list {
   display: grid !important;
@@ -309,34 +371,36 @@
   margin: 0 !important;
 }
 
-/* Chaque carte */
+/* Chaque carte : flex ROW (pochette gauche, infos droite) */
 #rk-played-tracks-widget li,
 #rk-played-tracks-widget .rk-played-track-item {
   background: rgba(255,255,255,.07) !important;
   border: 1px solid rgba(255,255,255,.13) !important;
   border-radius: 18px !important;
-  padding: 1rem !important;
+  padding: .9rem !important;
   display: flex !important;
-  flex-direction: column !important;
-  gap: .75rem !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: .85rem !important;
   transition: transform .25s, background .25s !important;
-  color: #fff !important;
+  overflow: hidden !important;
 }
 #rk-played-tracks-widget li:hover,
 #rk-played-tracks-widget .rk-played-track-item:hover {
-  transform: translateY(-5px) !important;
+  transform: translateY(-4px) !important;
   background: rgba(255,255,255,.13) !important;
 }
 
-/* Jaquette */
+/* ★ Pochette : taille fixe 72×72px — comme le logo du player ★ */
 #rk-played-tracks-widget img,
 #rk-played-tracks-widget .rk-track-cover {
-  width: 100% !important;
-  height: auto !important;
-  aspect-ratio: 1 !important;
+  width: 72px !important;
+  height: 72px !important;
+  min-width: 72px !important;
   object-fit: cover !important;
-  border-radius: 12px !important;
-  box-shadow: 0 8px 24px rgba(0,0,0,.4) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,.5) !important;
+  flex-shrink: 0 !important;
 }
 
 /* Titre du morceau */
