@@ -520,48 +520,62 @@ img { max-width: 100%; }
 
 /* ── RESPONSIVE ──────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  /* ── MOBILE : barre haute avec iframe RadioKing pleine hauteur ── */
-  :root { --bar-h: 90px; }           /* barre mobile = 90px */
-  html  { scroll-padding-top: 90px; }
-  body  { padding-top: 90px; }
+  /* ── MOBILE : barre compacte SANS player (lien direct RadioKing) ── */
+  :root { --bar-h: 60px; }
+  html  { scroll-padding-top: 60px; }
+  body  { padding-top: 60px; }
 
   #topRadioBar {
-    height: 90px !important;          /* assez grand pour voir le bouton ▶ */
+    height: 60px !important;
+    padding: 0 10px !important;
+    gap: 10px !important;
     overflow: hidden;
-    align-items: flex-start !important;
-    padding-top: 0 !important;
+    align-items: center !important;
   }
 
-  /* Cacher le logo sur mobile pour libérer toute la largeur */
-  .bar-logo { display: none !important; }
+  /* Logo visible et compact */
+  .bar-logo { display: flex !important; margin-left: 0 !important; }
+  .bar-logo-img { width: 44px !important; height: 44px !important; }
 
-  /* Cacher le badge et la wave sur mobile */
+  /* Cacher badge, wave et les deux iframes */
   .live-badge { display: none !important; }
   .bar-wave   { display: none !important; }
+  #topRadioBar iframe.rk-desktop { display: none !important; }
+  #topRadioBar iframe.rk-mobile  { display: none !important; }
 
-  /* Burger aligné en haut */
+  /* Bouton écoute mobile : grand, facile à taper */
+  .rk-mobile-btn {
+    display: flex !important;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #FF3CAC, #7B2FBE);
+    border-radius: 10px;
+    padding: 8px 14px;
+    text-decoration: none;
+    color: #fff !important;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: .88rem;
+    letter-spacing: .02em;
+    box-shadow: 0 3px 12px rgba(123,47,190,.4);
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .rk-mobile-play {
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .rk-mobile-label { display: none !important; }
+
+  /* Burger compact */
   .bar-burger {
-    align-self: center !important;
-    margin-right: 8px !important;
+    width: 38px !important; height: 38px !important;
+    font-size: 1.3rem !important;
+    margin-right: 0 !important;
     flex-shrink: 0;
   }
-
-  /* Cacher iframe desktop */
-  #topRadioBar iframe.rk-desktop { display: none !important; }
-
-  /* Iframe mobile : prend toute la hauteur, margin-top=0 */
-  #topRadioBar iframe.rk-mobile {
-    display: block !important;
-    flex: 1;
-    min-width: 0;
-    height: 90px;           /* pleine hauteur = toute l'UI RadioKing visible */
-    border: 0;
-    margin-top: 0 !important;  /* pas de décalage = bouton ▶ en haut, accessible */
-    align-self: flex-start;
-  }
-
-  /* Cacher le bouton alternatif */
-  .rk-mobile-btn { display: none !important; }
 
   /* Bouton écoute mobile */
   .rk-mobile-btn {
@@ -614,8 +628,41 @@ img { max-width: 100%; }
   .ro-section { padding: 3.5rem 0; }
   .hero-stats { gap: 1.2rem; }
   .hero-stat  { font-size: 1.5rem; }
-}
 
+  /* ── Témoignages : forcer couleurs lisibles sur mobile ── */
+  .testimonial-card {
+    background: #fff !important;
+    color: #2D2D3A !important;
+  }
+  .testimonial-card p { color: #3a3a4a !important; }
+  .t-name { color: #2D2D3A !important; }
+  .t-role { color: #6c6c80 !important; }
+  .stars  { color: #FFD700 !important; }
+
+  /* ── Feature cards "100% positive" : textes lisibles ── */
+  .feature-card {
+    background: #fff !important;
+    color: #2D2D3A !important;
+  }
+  .feature-card h3 { color: #2D2D3A !important; }
+  .feature-card p  { color: #4a4a5a !important; }
+
+  /* ── Cohérence cardiaque : section alt (#f4eeff) ── */
+  .ro-section-alt { background: #f0e8ff !important; }
+  .ro-section-alt h2 { color: #1a0a2e !important; }
+  .ro-section-alt p  { color: #2a1a3e !important; }
+  .ro-section-alt ul, .ro-section-alt li { color: #2a1a3e !important; }
+  .content-card h2, .content-card h3 { color: #1a0a2e !important; }
+  .content-card p { color: #3a2a4e !important; }
+  .content-card ul li { color: #3a2a4e !important; }
+  .highlight-box p { color: #2a1a3e !important; }
+
+  /* Ajustements généraux mobile */
+  .hero { padding: 3rem 0 5rem; }
+  .ro-section { padding: 3rem 0; }
+  .hero-stats { gap: 1.2rem; }
+  .hero-stat  { font-size: 1.5rem; }
+}
 @media (max-width: 480px) {
   .btn-hero, .btn-ro { font-size: .95rem; padding: .72rem 1.4rem; }
 }
