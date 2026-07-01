@@ -26,8 +26,8 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
     background: none;
     border: none;
     font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    font-size: .86rem;
+    font-weight: 800;
+    font-size: .92rem;
     color: var(--ro-dark);
     padding: .9rem .9rem;
     display: flex;
@@ -76,7 +76,7 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
       {NAV_CATEGORIES.map((cat) => (
         <li class="dropdown">
           <button class="ro-mega-nav-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <span>{cat.emoji}</span> {cat.label} <i class="bi bi-chevron-down" style="font-size:.65rem;"></i>
+            {cat.label} <i class="bi bi-chevron-down" style="font-size:.65rem;"></i>
           </button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item ro-hub-link" href={cat.hub}>Voir toute la catégorie →</a></li>

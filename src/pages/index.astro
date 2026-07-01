@@ -38,6 +38,19 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
     /* Hero CTA row */
     .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: .5rem; }
 
+    /* ── ESPACE SOUS LE PLAYER (desktop) ────────────────────────────
+       Le player RadioKing déployé (avec pochette) dépasse la hauteur
+       déclarée de la barre (~180px réels contre 105px). Même besoin
+       que sur les pages secondaires (170px) pour que le méga-menu ne
+       soit pas caché derrière le lecteur.
+    ─────────────────────────────────────────────────────────────── */
+    body {
+      padding-top: 190px;
+    }
+    html {
+      scroll-padding-top: 190px;
+    }
+
     /* ── PLAYER MOBILE COMPACT ─────────────────────────────────────
        Géré dans style.css via .rk-desktop / .rk-mobile
        Ici : uniquement les overrides propres à la page d'accueil
