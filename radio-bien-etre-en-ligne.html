@@ -416,45 +416,6 @@
   </ul>
 </div>
 
-<div class="content-card">
-  <h2>Exercice de Coh&#233;rence Cardiaque</h2>
-  <p>&#192; pratiquer quand vous le souhaitez. Suivez le mouvement du cercle ci-dessous&nbsp;: inspirez lorsqu&#8217;il grandit, expirez lorsqu&#8217;il r&#233;tr&#233;cit.</p>
-  
-<div style="text-align:center;padding:2rem 0;">
-  <svg id="breath-svg" viewBox="0 0 200 200" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <radialGradient id="bg" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#00C6FF" stop-opacity=".18"/>
-        <stop offset="100%" stop-color="#7B2FBE" stop-opacity=".05"/>
-      </radialGradient>
-    </defs>
-    <circle cx="100" cy="100" r="90" fill="url(#bg)" stroke="rgba(123,47,190,.12)" stroke-width="1"/>
-    <circle id="breath-circle" cx="100" cy="100" r="45" fill="none" stroke="#7B2FBE" stroke-width="3" opacity=".8">
-      <animate attributeName="r" values="45;72;45" dur="10s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values=".8;1;.8" dur="10s" repeatCount="indefinite"/>
-      <animate attributeName="stroke" values="#7B2FBE;#FF3CAC;#7B2FBE" dur="10s" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="100" cy="100" r="30" fill="rgba(123,47,190,.06)" stroke="rgba(123,47,190,.25)" stroke-width="1.5">
-      <animate attributeName="r" values="30;50;30" dur="10s" repeatCount="indefinite"/>
-    </circle>
-    <text id="breath-text" x="100" y="108" text-anchor="middle"
-          font-family="Nunito,sans-serif" font-weight="900" font-size="13" fill="#7B2FBE">
-      INSPIREZ...
-    </text>
-  </svg>
-  <p style="font-size:.82rem;color:var(--ro-muted);margin-top:.5rem;">
-    5s inspiration &mdash; 5s expiration &mdash; 6 respirations/minute
-  </p>
-  <script>
-    (function(){
-      var txt = document.getElementById('breath-text');
-      if(!txt) return;
-      var phase = true;
-      setInterval(function(){ txt.textContent = phase ? 'EXPIREZ...' : 'INSPIREZ...'; phase = !phase; }, 5000);
-    })();
-  </script>
-</div>
-
 </div>
 
 <div class="content-card">
