@@ -215,7 +215,218 @@
       </div>
     </div>
   </div>
+
+
+<!-- ============================================================
+     TITRES RÉCENTS — En direct de l'antenne
+     ============================================================ -->
+<section id="recent-tracks-section" style="
+  position: relative;
+  background: linear-gradient(180deg, #110820 0%, #0d1a2e 60%, #f4eeff 100%);
+  padding: 0 0 0 0;
+  overflow: hidden;
+">
+
+  <!-- IMAGE HERO VISUEL (smartphone + ondes) -->
+  <div style="position:relative; max-height: 520px; overflow:hidden;">
+    <img src="assets/images/hero-visual.jpg"
+         alt="Radio Odyssey – La Positive Radio"
+         style="width:100%; display:block; object-fit:cover; object-position:center 30%;
+                max-height:520px; filter:brightness(.82);" />
+
+    <!-- Dégradé haut (transition depuis le hero) -->
+    <div style="position:absolute;top:0;left:0;right:0;height:120px;
+      background:linear-gradient(180deg,#110820 0%,transparent 100%);
+      pointer-events:none;"></div>
+
+    <!-- Dégradé bas (transition vers section suivante) -->
+    <div style="position:absolute;bottom:0;left:0;right:0;height:120px;
+      background:linear-gradient(0deg,#f4eeff 0%,transparent 100%);
+      pointer-events:none;"></div>
+
+    <!-- OVERLAY : titres en transparence SUR l'image -->
+    <div style="
+      position:absolute; bottom:0; left:0; right:0;
+      padding: 0 1.5rem 2rem;
+    ">
+      <div style="text-align:center; margin-bottom:1rem;">
+        <span style="
+          display:inline-flex; align-items:center; gap:.5rem;
+          background:rgba(0,0,0,.35); backdrop-filter:blur(8px);
+          border:1px solid rgba(255,255,255,.15); border-radius:999px;
+          padding:.35rem 1rem;
+          font-family:'Nunito',sans-serif; font-weight:700; font-size:.78rem;
+          letter-spacing:.08em; color:rgba(255,255,255,.9);
+        ">
+          <span style="width:7px;height:7px;border-radius:50%;background:#ff2b2b;
+            animation:pulse-dot 1.4s infinite;flex-shrink:0;"></span>
+          RÉCEMMENT DIFFUSÉS
+        </span>
+      </div>
+
+      <!-- GRILLE DES 4 TITRES -->
+      <div id="recent-tracks" style="
+        display:flex; gap:.75rem; justify-content:center;
+        flex-wrap:wrap;
+      ">
+        <!-- Skeletons de chargement -->
+        <div class="track-card track-skeleton"></div>
+        <div class="track-card track-skeleton"></div>
+        <div class="track-card track-skeleton"></div>
+        <div class="track-card track-skeleton"></div>
+      </div>
+    </div>
+  </div>
+
 </section>
+
+<style>
+/* ── Track cards ── */
+.track-card {
+  background: rgba(255,255,255,.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 16px;
+  padding: .75rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  width: calc(25% - .6rem);
+  min-width: 180px;
+  max-width: 240px;
+  transition: transform .25s, background .25s;
+}
+.track-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,.2);
+}
+.track-art {
+  width: 52px; height: 52px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: rgba(255,255,255,.1);
+  box-shadow: 0 4px 14px rgba(0,0,0,.35);
+}
+.track-art-placeholder {
+  width: 52px; height: 52px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg,rgba(123,47,190,.5),rgba(255,60,172,.4));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+}
+.track-info { min-width: 0; flex: 1; }
+.track-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800; font-size: .82rem;
+  color: #fff;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  margin-bottom: .15rem;
+}
+.track-artist {
+  font-size: .72rem;
+  color: rgba(255,255,255,.65);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.track-badge {
+  font-size: .62rem; font-weight: 700;
+  color: var(--ro-gold);
+  font-family: 'Nunito', sans-serif;
+  margin-top: .2rem;
+  letter-spacing: .04em;
+}
+
+/* Skeleton */
+.track-skeleton {
+  min-height: 76px;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,.08) 0%,
+    rgba(255,255,255,.16) 50%,
+    rgba(255,255,255,.08) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .track-card {
+    width: calc(50% - .4rem);
+    max-width: none;
+  }
+}
+@media (max-width: 500px) {
+  .track-card { width: 100%; max-width: 100%; }
+  #recent-tracks-section img { max-height: 380px; }
+}
+</style>
+
+<script>
+/* ── Chargement des titres récents via API RadioKing ── */
+(function () {
+  var API = 'https://api.radioking.io/widget/radio/radio-odyssey/track/ckoi?limit=4';
+  var container = document.getElementById('recent-tracks');
+  if (!container) return;
+
+  function timeAgo(dateStr) {
+    if (!dateStr) return '';
+    var d = new Date(dateStr);
+    var diff = Math.floor((Date.now() - d.getTime()) / 1000);
+    if (diff < 60)  return 'À l'instant';
+    if (diff < 120) return 'Il y a 1 min';
+    if (diff < 3600) return 'Il y a ' + Math.floor(diff / 60) + ' min';
+    return 'Il y a ' + Math.floor(diff / 3600) + 'h';
+  }
+
+  function renderTracks(tracks) {
+    container.innerHTML = '';
+    tracks.forEach(function (t, i) {
+      var card = document.createElement('div');
+      card.className = 'track-card';
+
+      var artHtml = t.cover
+        ? '<img class="track-art" src="' + t.cover + '" alt="' + (t.title||'') + '" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="track-art-placeholder" style="display:none;">♪</div>'
+        : '<div class="track-art-placeholder">♪</div>';
+
+      var badge = i === 0 ? '<div class="track-badge">▶ EN COURS</div>' : '<div class="track-badge">' + timeAgo(t.started_at) + '</div>';
+
+      card.innerHTML =
+        artHtml +
+        '<div class="track-info">' +
+          '<div class="track-title">' + (t.title || 'Titre inconnu') + '</div>' +
+          '<div class="track-artist">' + (t.artist || 'Artiste inconnu') + '</div>' +
+          badge +
+        '</div>';
+
+      container.appendChild(card);
+    });
+  }
+
+  function loadTracks() {
+    fetch(API)
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var tracks = Array.isArray(data) ? data : (data.data || data.tracks || []);
+        if (tracks.length) renderTracks(tracks.slice(0, 4));
+        else container.innerHTML = '<p style="color:rgba(255,255,255,.6);font-size:.85rem;text-align:center;width:100%;">Chargement en cours…</p>';
+      })
+      .catch(function () {
+        container.innerHTML = '<p style="color:rgba(255,255,255,.6);font-size:.85rem;text-align:center;width:100%;">Chargement en cours…</p>';
+      });
+  }
+
+  loadTracks();
+  // Rafraîchir toutes les 30 secondes
+  setInterval(loadTracks, 30000);
+})();
+</script>
+
+
 
 
 <!-- ============================================================
