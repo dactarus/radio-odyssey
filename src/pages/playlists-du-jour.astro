@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import CategoryHub from '../components/CategoryHub.astro';
+---
+<Layout
+  lang="fr"
+  title="Playlists selon le Moment de la Journée — Radio Odyssey"
+  description="Réveil, matinée, pause déjeuner, après-midi, apéritif, nuit : découvrez la playlist de Radio Odyssey pour chaque moment de la journée."
+>
+  <PageHero
+    gradientFrom="#FFD700"
+    gradientTo="#FF9A3C"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Playlists du Jour"
+    title="Playlists du Jour"
+    text="Une ambiance différente à chaque heure — la sélection de Radio Odyssey, tranche horaire par tranche horaire."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.5"/><line x1="24" y1="24" x2="24" y2="14" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="24" y1="24" x2="31" y2="28" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+          <CategoryHub categoryId="playlists-jour" />
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

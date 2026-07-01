@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import CategoryHub from '../components/CategoryHub.astro';
+---
+<Layout
+  lang="fr"
+  title="Bien-être & Santé — Toutes les Pages Radio Odyssey"
+  description="Cohérence cardiaque, respiration guidée, anti-stress, détente : retrouvez toutes les pages bien-être de Radio Odyssey en un seul endroit."
+>
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Bien-être & Santé"
+    title="Bien-être & Santé"
+    text="Musique positive, respiration guidée et cohérence cardiaque — toutes nos pages dédiées à votre bien-être."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 40C24 40 6 28 6 16C6 10.5 10 6 15 6C18 6 24 9 24 9C24 9 30 6 33 6C38 6 42 10.5 42 16C42 28 24 40 24 40Z" stroke="white" stroke-width="2.5"/><path d="M10 20C13 16 16 24 19 20C22 16 25 24 28 20C31 16 34 24 37 20" stroke="rgba(255,255,255,.65)" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+          <CategoryHub categoryId="bien-etre" />
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

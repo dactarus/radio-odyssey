@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import CategoryHub from '../components/CategoryHub.astro';
+---
+<Layout
+  lang="fr"
+  title="Bien Écouter Radio Odyssey — Mobile, Voiture, Enceinte Connectée"
+  description="Tous nos guides pour écouter Radio Odyssey partout : sur mobile, en voiture ou sur une enceinte connectée."
+>
+  <PageHero
+    gradientFrom="#1e7fcb"
+    gradientTo="#00C6FF"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Conseils d'Écoute"
+    title="Bien Écouter Radio Odyssey"
+    text="Sur mobile, en voiture ou sur une enceinte connectée : tous nos guides pour ne jamais perdre le fil."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><rect x="16" y="6" width="16" height="36" rx="8" stroke="white" stroke-width="2.5"/><circle cx="24" cy="16" r="3" stroke="white" stroke-width="2"/><circle cx="24" cy="28" r="5" stroke="white" stroke-width="2"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+          <CategoryHub categoryId="conseils-ecoute" />
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

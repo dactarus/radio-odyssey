@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import CategoryHub from '../components/CategoryHub.astro';
+---
+<Layout
+  lang="fr"
+  title="Radio Odyssey — International (English Pages)"
+  description="Radio Odyssey en anglais : positive european music station, chill radio, feel good music et plus, pour nos auditeurs à travers le monde."
+>
+  <PageHero
+    gradientFrom="#1e7fcb"
+    gradientTo="#FFD700"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="International"
+    title="International"
+    text="Radio Odyssey en anglais, pour nos auditeurs à travers le monde."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.5"/><ellipse cx="24" cy="24" rx="7" ry="18" stroke="rgba(255,255,255,.65)" stroke-width="2"/><line x1="6" y1="17" x2="42" y2="17" stroke="rgba(255,255,255,.5)" stroke-width="1.8"/><line x1="6" y1="31" x2="42" y2="31" stroke="rgba(255,255,255,.5)" stroke-width="1.8"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+          <CategoryHub categoryId="international" />
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

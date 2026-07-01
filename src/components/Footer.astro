@@ -1,4 +1,6 @@
 ---
+import { NAV_CATEGORIES } from '../data/navigation.js';
+const FOOTER_PAGE_LIMIT = 4;
 ---
 <!-- FOOTER -->
 <footer id="site-footer">
@@ -12,46 +14,17 @@
         <p style="font-size:.85rem;max-width:280px;">La webradio positive française — Hits des années 80, dance, easy listening et bien-être, 24h/24, gratuitement, depuis janvier 2024 !</p>
         <a href="mailto:odysseylaradio@gmail.com" style="color:var(--ro-sky)!important;">odysseylaradio@gmail.com</a>
       </div>
-      <div class="col-sm-6 col-lg-2">
-        <h5>Navigation</h5>
-        <a href="/index.html">Accueil</a>
-        <a href="/radio-coherence-cardiaque.html">Cohérence Cardiaque</a>
-        <a href="/radio-bien-etre-en-ligne.html">Bien-être</a>
-        <a href="/radio-annees-80-en-ligne.html">Années 80</a>
-        <a href="/radio-dance-energisante.html">Dance</a>
-        <a href="/artistes-diffuses-radio-odyssey.html">Artistes Diffusés</a>
-        <a href="/styles-musicaux-radio-odyssey.html">Styles Musicaux</a>
-      </div>
-      <div class="col-sm-6 col-lg-2">
-        <h5>Thématiques</h5>
-        <a href="/musique-pour-se-concentrer.html">Concentration</a>
-        <a href="/radio-anti-stress-gratuite.html">Anti-Stress</a>
-        <a href="/radio-pour-travailler.html">Travail</a>
-        <a href="/radio-detente-moderne.html">Détente</a>
-        <a href="/musique-pour-respiration-guidee.html">Respiration</a>
-      </div>
-      <div class="col-sm-6 col-lg-2">
-        <h5>Playlists du Jour</h5>
-        <a href="/musique-pour-le-reveil.html">Le Réveil</a>
-        <a href="/playlist-pour-la-matinee.html">La Matinée</a>
-        <a href="/musique-pour-la-pause-dejeuner.html">Pause Déjeuner</a>
-        <a href="/musique-pour-lapres-midi.html">L'Après-midi</a>
-        <a href="/musique-pour-laperitif.html">L'Apéritif</a>
-        <a href="/musique-pour-la-nuit.html">La Nuit</a>
-      </div>
-      <div class="col-sm-6 col-lg-2">
-        <h5>Bien Écouter</h5>
-        <a href="/ecouter-radio-odyssey-sur-mobile.html">Sur Mobile</a>
-        <a href="/ecouter-radio-odyssey-en-voiture.html">En Voiture</a>
-        <a href="/ecouter-radio-odyssey-enceinte-connectee.html">Enceinte Connectée</a>
-      </div>
-      <div class="col-sm-6 col-lg-2">
-        <h5>International</h5>
-        <a href="/positive-european-music-station.html">European Positive</a>
-        <a href="/european-chill-radio.html">European Chill</a>
-        <a href="/feel-good-music-radio.html">Feel Good Radio</a>
-        <a href="/keep-listening-radio-odyssey.html">Keep Listening</a>
-      </div>
+      {NAV_CATEGORIES.map((cat) => (
+        <div class="col-sm-6 col-lg-2">
+          <h5>{cat.label}</h5>
+          {cat.pages.slice(0, FOOTER_PAGE_LIMIT).map((p) => (
+            <a href={p.href}>{p.label}</a>
+          ))}
+          {cat.pages.length > FOOTER_PAGE_LIMIT && (
+            <a href={cat.hub} style="font-weight:700;">Voir tout →</a>
+          )}
+        </div>
+      ))}
       <div class="col-sm-6 col-lg-2">
         <h5>Écouter sur</h5>
         <a href="https://link.radioking.com/radio-odyssey" target="_blank" rel="noopener">RadioKing</a>

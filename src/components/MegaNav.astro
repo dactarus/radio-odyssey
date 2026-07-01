@@ -1,0 +1,97 @@
+---
+import { NAV_CATEGORIES } from '../data/navigation.js';
+---
+<style is:global>
+  .ro-mega-nav {
+    background: #fff;
+    border-bottom: 1px solid rgba(123,47,190,.1);
+    box-shadow: 0 2px 12px rgba(123,47,190,.06);
+  }
+  @media (max-width: 767px) {
+    .ro-mega-nav { display: none !important; }
+    #topRadioBar .bar-burger { display: flex !important; }
+  }
+  @media (min-width: 768px) {
+    #topRadioBar .bar-burger { display: none !important; }
+  }
+  .ro-mega-nav-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .2rem;
+    margin: 0;
+    padding: 0;
+  }
+  .ro-mega-nav-toggle {
+    background: none;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: .86rem;
+    color: var(--ro-dark);
+    padding: .9rem .9rem;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  .ro-mega-nav-toggle:hover,
+  .ro-mega-nav-toggle:focus,
+  .ro-mega-nav-toggle[aria-expanded="true"] {
+    color: var(--ro-purple);
+    background: rgba(123,47,190,.06);
+  }
+  .ro-mega-nav-toggle::after { display: none; }
+  .ro-mega-nav .dropdown-menu {
+    border: none;
+    border-radius: 16px;
+    box-shadow: var(--ro-shadow, 0 8px 30px rgba(123,47,190,.18));
+    padding: .6rem;
+    min-width: 260px;
+  }
+  .ro-mega-nav .dropdown-item {
+    border-radius: 10px;
+    padding: .5rem .7rem;
+    font-size: .86rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .ro-mega-nav .dropdown-item strong { font-weight: 700; }
+  .ro-mega-nav .dropdown-item small { color: var(--ro-muted); font-size: .74rem; }
+  .ro-mega-nav .dropdown-item:hover,
+  .ro-mega-nav .dropdown-item:focus {
+    background: rgba(123,47,190,.08);
+    color: var(--ro-purple);
+  }
+  .ro-mega-nav .dropdown-item.ro-hub-link {
+    color: var(--ro-purple);
+    font-weight: 800;
+  }
+</style>
+
+<nav class="ro-mega-nav" aria-label="Navigation principale">
+  <div class="container">
+    <ul class="ro-mega-nav-list">
+      {NAV_CATEGORIES.map((cat) => (
+        <li class="dropdown">
+          <button class="ro-mega-nav-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span>{cat.emoji}</span> {cat.label} <i class="bi bi-chevron-down" style="font-size:.65rem;"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item ro-hub-link" href={cat.hub}>Voir toute la catégorie →</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            {cat.pages.map((p) => (
+              <li>
+                <a class="dropdown-item" href={p.href}>
+                  <strong>{p.emoji} {p.label}</strong>
+                  <small>{p.desc}</small>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>

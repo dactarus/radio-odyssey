@@ -1,4 +1,6 @@
 ---
+import MegaNav from './MegaNav.astro';
+import { NAV_CATEGORIES } from '../data/navigation.js';
 ---
 <!-- ============================================================
      PLAYER BAR STICKY
@@ -55,7 +57,12 @@
 <script is:inline src="https://player.radioking.io/scripts/iframe.bundle.js"></script>
 
 <!-- ============================================================
-     OFFCANVAS NAV
+     MEGA-MENU (desktop)
+     ============================================================ -->
+<MegaNav />
+
+<!-- ============================================================
+     OFFCANVAS NAV (mobile)
      ============================================================ -->
 <div class="offcanvas offcanvas-start" id="site-nav" tabindex="-1" aria-labelledby="nav-label">
   <div class="offcanvas-header">
@@ -70,41 +77,15 @@
     <span class="nav-cat">🏠 Accueil</span>
     <a class="nav-link" href="/index.html"><span class="ni">🏠</span> Page d'accueil</a>
 
-    <span class="nav-cat">💆 Bien-être &amp; Santé</span>
-    <a class="nav-link" href="/radio-coherence-cardiaque.html"><span class="ni">❤️</span> Cohérence Cardiaque</a>
-    <a class="nav-link" href="/radio-bien-etre-en-ligne.html"><span class="ni">🌿</span> Bien-être en Ligne</a>
-    <a class="nav-link" href="/radio-anti-stress-gratuite.html"><span class="ni">🧘</span> Anti-Stress Gratuite</a>
-    <a class="nav-link" href="/musique-pour-respiration-guidee.html"><span class="ni">🫁</span> Respiration Guidée</a>
-    <a class="nav-link" href="/radio-detente-moderne.html"><span class="ni">🌙</span> Détente Moderne</a>
-
-    <span class="nav-cat">🎵 Musique &amp; Énergie</span>
-    <a class="nav-link" href="/radio-annees-80-en-ligne.html"><span class="ni">🕺</span> Années 80 en Ligne</a>
-    <a class="nav-link" href="/radio-dance-energisante.html"><span class="ni">💃</span> Dance Énergisante</a>
-    <a class="nav-link" href="/musique-pour-se-concentrer.html"><span class="ni">🎯</span> Concentration</a>
-    <a class="nav-link" href="/radio-pour-travailler.html"><span class="ni">💻</span> Pour Travailler</a>
-
-    <span class="nav-cat">🕐 Playlists du Jour</span>
-    <a class="nav-link" href="/musique-pour-le-reveil.html"><span class="ni">🌅</span> Le Réveil (6H-9H)</a>
-    <a class="nav-link" href="/playlist-pour-la-matinee.html"><span class="ni">☀️</span> La Matinée (9H-12H)</a>
-    <a class="nav-link" href="/musique-pour-la-pause-dejeuner.html"><span class="ni">🕐</span> La Pause Déjeuner (12H-14H)</a>
-    <a class="nav-link" href="/musique-pour-lapres-midi.html"><span class="ni">🎧</span> L'Après-midi (14H-18H)</a>
-    <a class="nav-link" href="/musique-pour-laperitif.html"><span class="ni">🍸</span> L'Apéritif (18H-21H)</a>
-    <a class="nav-link" href="/musique-pour-la-nuit.html"><span class="ni">🌙</span> La Nuit (21H-6H)</a>
-
-    <span class="nav-cat">🎤 Artistes &amp; Styles</span>
-    <a class="nav-link" href="/artistes-diffuses-radio-odyssey.html"><span class="ni">🎤</span> Artistes Diffusés</a>
-    <a class="nav-link" href="/styles-musicaux-radio-odyssey.html"><span class="ni">🎚️</span> Styles Musicaux</a>
-
-    <span class="nav-cat">📡 Conseils d'Écoute</span>
-    <a class="nav-link" href="/ecouter-radio-odyssey-sur-mobile.html"><span class="ni">📱</span> Sur Mobile</a>
-    <a class="nav-link" href="/ecouter-radio-odyssey-en-voiture.html"><span class="ni">🚗</span> En Voiture</a>
-    <a class="nav-link" href="/ecouter-radio-odyssey-enceinte-connectee.html"><span class="ni">🔊</span> Enceinte Connectée</a>
-
-    <span class="nav-cat">🌍 International</span>
-    <a class="nav-link" href="/positive-european-music-station.html"><span class="ni">🇪🇺</span> European Positive</a>
-    <a class="nav-link" href="/european-chill-radio.html"><span class="ni">☁️</span> European Chill</a>
-    <a class="nav-link" href="/feel-good-music-radio.html"><span class="ni">😊</span> Feel Good Radio</a>
-    <a class="nav-link" href="/keep-listening-radio-odyssey.html"><span class="ni">▶️</span> Keep Listening</a>
+    {NAV_CATEGORIES.map((cat) => (
+      <>
+        <span class="nav-cat">{cat.emoji} {cat.label}</span>
+        <a class="nav-link" href={cat.hub}><span class="ni">🔎</span> <strong>Voir tout</strong></a>
+        {cat.pages.map((p) => (
+          <a class="nav-link" href={p.href}><span class="ni">{p.emoji}</span> {p.label}</a>
+        ))}
+      </>
+    ))}
 
     <div class="offcanvas-cta">
       <a class="btn-ro w-100 justify-content-center"

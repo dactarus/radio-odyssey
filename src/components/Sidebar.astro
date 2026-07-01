@@ -1,4 +1,5 @@
 ---
+import { NAV_CATEGORIES } from '../data/navigation.js';
 ---
 <div class="content-card" style="position:sticky;top:calc(var(--bar-h) + 1.5rem);">
   <h3 style="color:var(--ro-purple);font-size:1rem;">🎵 Ecouter maintenant</h3>
@@ -8,32 +9,11 @@
     <i class="bi bi-broadcast-pin"></i>&nbsp;Lancer la radio
   </a>
   <hr style="border-color:rgba(123,47,190,.1);"/>
-  <p style="font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--ro-muted);margin:.8rem 0 .4rem;">Autres pages</p>
+  <p style="font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--ro-muted);margin:.8rem 0 .4rem;">Explorer le site</p>
   <div style="display:flex;flex-direction:column;gap:.28rem;font-size:.82rem;">
     <a href="/index.html" style="color:var(--ro-purple);text-decoration:none;">🏠 Accueil</a>
-    <a href="/radio-coherence-cardiaque.html" style="color:var(--ro-purple);text-decoration:none;">❤️ Coherence Cardiaque</a>
-    <a href="/radio-bien-etre-en-ligne.html" style="color:var(--ro-purple);text-decoration:none;">🌿 Bien-etre en Ligne</a>
-    <a href="/radio-anti-stress-gratuite.html" style="color:var(--ro-purple);text-decoration:none;">🤷 Anti-Stress</a>
-    <a href="/musique-pour-respiration-guidee.html" style="color:var(--ro-purple);text-decoration:none;">🫩 Respiration Guidee</a>
-    <a href="/radio-annees-80-en-ligne.html" style="color:var(--ro-purple);text-decoration:none;">📺 Annees 80</a>
-    <a href="/radio-dance-energisante.html" style="color:var(--ro-purple);text-decoration:none;">💃 Dance</a>
-    <a href="/musique-pour-se-concentrer.html" style="color:var(--ro-purple);text-decoration:none;">🎯 Concentration</a>
-    <a href="/radio-pour-travailler.html" style="color:var(--ro-purple);text-decoration:none;">💻 Pour Travailler</a>
-    <a href="/radio-detente-moderne.html" style="color:var(--ro-purple);text-decoration:none;">🌑 Detente Moderne</a>
-    <a href="/musique-pour-le-reveil.html" style="color:var(--ro-purple);text-decoration:none;">🌅 Le Reveil</a>
-    <a href="/playlist-pour-la-matinee.html" style="color:var(--ro-purple);text-decoration:none;">☀️ La Matinee</a>
-    <a href="/musique-pour-la-pause-dejeuner.html" style="color:var(--ro-purple);text-decoration:none;">🕐 Pause Dejeuner</a>
-    <a href="/musique-pour-lapres-midi.html" style="color:var(--ro-purple);text-decoration:none;">🎧 L'Apres-midi</a>
-    <a href="/musique-pour-laperitif.html" style="color:var(--ro-purple);text-decoration:none;">🍸 L'Aperitif</a>
-    <a href="/musique-pour-la-nuit.html" style="color:var(--ro-purple);text-decoration:none;">🌙 La Nuit</a>
-    <a href="/artistes-diffuses-radio-odyssey.html" style="color:var(--ro-purple);text-decoration:none;">🎤 Artistes Diffuses</a>
-    <a href="/styles-musicaux-radio-odyssey.html" style="color:var(--ro-purple);text-decoration:none;">🎚️ Styles Musicaux</a>
-    <a href="/ecouter-radio-odyssey-sur-mobile.html" style="color:var(--ro-purple);text-decoration:none;">📱 Ecouter sur Mobile</a>
-    <a href="/ecouter-radio-odyssey-en-voiture.html" style="color:var(--ro-purple);text-decoration:none;">🚗 Ecouter en Voiture</a>
-    <a href="/ecouter-radio-odyssey-enceinte-connectee.html" style="color:var(--ro-purple);text-decoration:none;">🔊 Enceinte Connectee</a>
-    <a href="/feel-good-music-radio.html" style="color:var(--ro-purple);text-decoration:none;">😊 Feel Good Radio</a>
-    <a href="/european-chill-radio.html" style="color:var(--ro-purple);text-decoration:none;">☁️ European Chill</a>
-    <a href="/positive-european-music-station.html" style="color:var(--ro-purple);text-decoration:none;">🇪🇺 European Positive</a>
-    <a href="/keep-listening-radio-odyssey.html" style="color:var(--ro-purple);text-decoration:none;">▶️ Keep Listening</a>
+    {NAV_CATEGORIES.map((cat) => (
+      <a href={cat.hub} style="color:var(--ro-purple);text-decoration:none;">{cat.emoji} {cat.label}</a>
+    ))}
   </div>
 </div>

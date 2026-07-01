@@ -1,0 +1,27 @@
+---
+import { NAV_CATEGORIES } from '../data/navigation.js';
+
+interface Props {
+  categoryId: string;
+}
+const { categoryId } = Astro.props;
+const category = NAV_CATEGORIES.find((c) => c.id === categoryId);
+---
+<div class="content-card">
+  <h2>{category.hubTitle}</h2>
+  <p>{category.hubIntro}</p>
+</div>
+
+<div class="row g-3">
+  {category.pages.map((p) => (
+    <div class="col-md-6">
+      <a class="page-card" href={p.href}>
+        <div class="pg-icon" style="background:linear-gradient(135deg,rgba(123,47,190,.1),rgba(255,60,172,.1));font-size:1.5rem;">
+          {p.emoji}
+        </div>
+        <div><h4>{p.label}</h4><p>{p.desc}</p></div>
+        <i class="bi bi-arrow-right pg-arrow"></i>
+      </a>
+    </div>
+  ))}
+</div>
