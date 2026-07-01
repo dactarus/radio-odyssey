@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<Layout
+  lang="fr"
+  title="Comment Écouter Radio Odyssey sur Enceinte Connectée — Alexa, Google Home, Sonos"
+  description="Le guide pour écouter Radio Odyssey sur enceinte connectée : commande vocale Alexa, Google Home, Sonos et autres enceintes compatibles TuneIn."
+>
+  <PageHero
+    gradientFrom="#FF9A3C"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Comment écouter Radio Odyssey sur enceinte connectée"
+    title="Écouter Radio Odyssey sur Enceinte Connectée"
+    text="Alexa, Google Home, Sonos... diffusez Radio Odyssey dans toute la maison, à la voix ou en un geste."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><rect x="16" y="6" width="16" height="36" rx="8" stroke="white" stroke-width="2.5"/><circle cx="24" cy="16" r="3" stroke="white" stroke-width="2"/><circle cx="24" cy="28" r="5" stroke="white" stroke-width="2"/><path d="M36 18C38 20 38 24 36 26" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M40 14C44 18 44 26 40 30" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>La radio positive, partout dans la maison</h2>
+            <p>Sans télécommande ni smartphone en main, les enceintes connectées sont la façon la plus simple de garder Radio Odyssey en fond sonore toute la journée — cuisine, salon, chambre. Voici comment faire selon votre équipement.</p>
+          </div>
+
+          <div class="content-card">
+            <h3 style="font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#FF9A3C;margin-bottom:1rem;">🔊 AMAZON ALEXA</h3>
+            <p>La commande vocale officielle, la plus simple :</p>
+            <div class="highlight-box">
+              <strong>"Alexa, lance Radio Odyssey sur TuneIn"</strong>
+            </div>
+            <p style="font-size:.88rem;color:var(--ro-muted);">Fonctionne sur tous les appareils Echo, ainsi que sur les enceintes tierces compatibles Alexa.</p>
+          </div>
+
+          <div class="content-card">
+            <h3 style="font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7B2FBE;margin-bottom:1rem;">🔊 GOOGLE HOME / GOOGLE NEST</h3>
+            <p>TuneIn est également disponible comme source radio sur les enceintes Google. Essayez :</p>
+            <div class="highlight-box">
+              <strong>"Ok Google, joue Radio Odyssey sur TuneIn"</strong>
+            </div>
+            <p style="font-size:.88rem;color:var(--ro-muted);">Si la commande vocale ne trouve pas la station du premier coup, ouvrez l'application Google Home et recherchez "Radio Odyssey" dans les sources radio disponibles.</p>
+          </div>
+
+          <div class="content-card">
+            <h3 style="font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#1e7fcb;margin-bottom:1rem;">🔊 SONOS ET AUTRES ENCEINTES WI-FI</h3>
+            <p>Les enceintes Sonos et la plupart des systèmes audio multiroom intègrent nativement <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">TuneIn</a> comme source. Ouvrez l'application de votre enceinte, allez dans les radios en ligne, et recherchez "Radio Odyssey".</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pas d'enceinte connectée à commande vocale ?</h2>
+            <p>Toute enceinte Bluetooth classique fonctionne aussi très bien : lancez simplement Radio Odyssey depuis votre <a href="/ecouter-radio-odyssey-sur-mobile.html" style="color:var(--ro-purple);font-weight:700;">smartphone</a> et connectez-le en Bluetooth à votre enceinte.</p>
+          </div>
+
+          <div class="page-cta-bar">
+            <h3>Installez l'ambiance positive chez vous</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <i class="bi bi-broadcast-pin"></i> Écouter en Direct
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

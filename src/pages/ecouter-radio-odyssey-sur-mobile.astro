@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<Layout
+  lang="fr"
+  title="Comment Écouter Radio Odyssey sur Mobile — iPhone & Android"
+  description="Le guide complet pour écouter Radio Odyssey sur smartphone : lecture en direct, installation de l'app iPhone/Android, et applications tierces compatibles."
+>
+  <PageHero
+    gradientFrom="#1e7fcb"
+    gradientTo="#00C6FF"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Comment écouter Radio Odyssey sur mobile"
+    title="Écouter Radio Odyssey sur Mobile"
+    text="Le guide complet pour écouter Radio Odyssey sur iPhone et Android, en direct ou via l'application."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><rect x="14" y="6" width="20" height="36" rx="3" stroke="white" stroke-width="2.5"/><line x1="20" y1="36" x2="28" y2="36" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Écouter en direct, en un clic</h2>
+            <p>Sur mobile, appuyez simplement sur le bouton <strong>"Écouter en Direct"</strong> présent en haut de chaque page du site. Le flux s'ouvre directement dans un nouvel onglet et démarre immédiatement.</p>
+            <div class="highlight-box">
+              <p><strong>💡 Pourquoi un nouvel onglet ?</strong><br/>Les navigateurs mobiles (Safari, Chrome) bloquent le démarrage automatique du son dans une iframe intégrée à une page. Pour garantir une lecture immédiate dès votre clic, Radio Odyssey ouvre donc directement le lecteur RadioKing dans un nouvel onglet — c'est une contrainte technique des navigateurs, pas un choix arbitraire.</p>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h3 style="font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#1e7fcb;margin-bottom:1rem;">INSTALLER RADIO ODYSSEY COMME UNE APPLICATION</h3>
+            <p style="margin-bottom:1rem;">Sans passer par l'App Store ou le Google Play Store, vous pouvez ajouter Radio Odyssey à votre écran d'accueil comme une vraie application, gratuitement et sans aucun abonnement.</p>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div style="background:rgba(11,28,45,.04);border:1px solid rgba(123,47,190,.1);border-radius:16px;padding:1.2rem;height:100%;">
+                  <h5 style="font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;margin-bottom:.6rem;"><i class="bi bi-apple"></i>&nbsp; Sur iPhone</h5>
+                  <ol style="font-size:.88rem;color:var(--ro-muted);padding-left:1.1rem;">
+                    <li>Ouvrez <a href="https://radio-odyssey-v8b.vercel.app/" target="_blank" rel="noopener" style="color:var(--ro-purple);">l'app Radio Odyssey</a> dans <strong>Safari</strong></li>
+                    <li>Appuyez sur l'icône <strong>Partager</strong></li>
+                    <li>Choisissez <strong>Ajouter à l'écran d'accueil</strong></li>
+                    <li>L'icône Radio Odyssey apparaît, prête à l'emploi</li>
+                  </ol>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div style="background:rgba(11,28,45,.04);border:1px solid rgba(123,47,190,.1);border-radius:16px;padding:1.2rem;height:100%;">
+                  <h5 style="font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;margin-bottom:.6rem;"><i class="bi bi-android2"></i>&nbsp; Sur Android</h5>
+                  <ol style="font-size:.88rem;color:var(--ro-muted);padding-left:1.1rem;">
+                    <li>Ouvrez <a href="https://radio-odyssey-v8b.vercel.app/" target="_blank" rel="noopener" style="color:var(--ro-purple);">l'app Radio Odyssey</a> dans <strong>Chrome</strong></li>
+                    <li>Appuyez sur <strong>Installer l'application</strong></li>
+                    <li>Confirmez l'installation</li>
+                    <li>L'app s'installe comme une vraie application</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Via une application tierce</h2>
+            <p>Radio Odyssey est aussi disponible sur les principales applications de radio en ligne, pratiques si vous les utilisez déjà au quotidien :</p>
+            <ul>
+              <li><a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">TuneIn</a> — recherchez "Radio Odyssey"</li>
+              <li><a href="https://www.deezer.com/search/radio%20odyssey/livestream" target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">Deezer</a> — dans l'onglet radios en direct</li>
+              <li><a href="https://mytuner-radio.com/fr/radio/radio-odyssey-512057/" target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">MyTuner</a></li>
+              <li><a href="https://fr.welove.radio/radio/radio-odyssey/" target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">WeLoveRadio</a></li>
+            </ul>
+          </div>
+
+          <div class="content-card">
+            <h2>Pour aller plus loin</h2>
+            <p>Vous conduisez et voulez écouter Radio Odyssey via Bluetooth ou CarPlay ? Direction notre page <a href="/ecouter-radio-odyssey-en-voiture.html" style="color:var(--ro-purple);font-weight:700;">écouter Radio Odyssey en voiture</a>. Vous avez une enceinte connectée à la maison ? Voyez notre page <a href="/ecouter-radio-odyssey-enceinte-connectee.html" style="color:var(--ro-purple);font-weight:700;">enceintes connectées</a>.</p>
+          </div>
+
+          <div class="page-cta-bar">
+            <h3>Lancez Radio Odyssey depuis votre mobile</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <i class="bi bi-broadcast-pin"></i> Écouter en Direct
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
