@@ -322,7 +322,7 @@ img { max-width: 100%; }
 }
 .feature-card:hover { transform: translateY(-8px); box-shadow: var(--ro-shadow-lg); }
 .feature-card .card-icon { margin-bottom: 1.1rem; display: block; }
-.feature-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: .5rem; }
+.feature-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: .5rem; color: #2D2D3A !important; }
 .feature-card p  { font-size: .88rem; color: var(--ro-muted); margin: 0; }
 
 .page-card {
