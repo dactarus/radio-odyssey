@@ -394,10 +394,11 @@ img { max-width: 100%; }
   font-family: 'Nunito', sans-serif; font-size: 4.5rem; font-weight: 900;
   color: rgba(123,47,190,.1); line-height: 1; pointer-events: none;
 }
-.testimonial-card p { font-size: .9rem; font-style: italic; margin-bottom: 1rem; padding-top: .5rem; }
-.t-name { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .88rem; }
-.t-role { font-size: .76rem; color: var(--ro-muted); }
-.stars  { color: var(--ro-gold); font-size: .88rem; letter-spacing: 1px; }
+/* Couleurs garanties desktop ET mobile */
+.testimonial-card p { font-size: .9rem; font-style: italic; margin-bottom: 1rem; padding-top: .5rem; color: #3a3a4a !important; }
+.t-name { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .88rem; color: var(--ro-dark) !important; }
+.t-role { font-size: .76rem; color: var(--ro-muted) !important; }
+.stars  { color: var(--ro-gold) !important; font-size: .88rem; letter-spacing: 1px; }
 
 /* ── PLATFORMS ───────────────────────────────────────────────── */
 .platform-pill {
@@ -545,6 +546,33 @@ img { max-width: 100%; }
 /* Sur fond sombre (section dark) : ombre plus lumineuse */
 .ro-section-dark h2 .highlight {
   filter: drop-shadow(0 2px 12px rgba(255,60,172,.6));
+}
+
+
+/* ── Cohérence cardiaque section : textes sombres sur fond lavande ── */
+.ro-section-alt p,
+.ro-section-alt ul,
+.ro-section-alt li {
+  color: #2a1a3e;
+}
+.ro-section-alt p em,
+.ro-section-alt p span {
+  color: #3a2a4e;
+}
+/* Highlight-box dans section alt */
+.ro-section-alt .highlight-box p,
+.ro-section-alt .alert p,
+.ro-section-alt .alert strong,
+.ro-section-alt .alert em {
+  color: #1a0a2e !important;
+  text-shadow: 0 1px 4px rgba(255,255,255,.4);
+}
+/* Ombre portée sur les p blancs de cohérence */
+.coherence-banner p { text-shadow: 0 1px 6px rgba(0,0,0,.3); }
+
+/* ── Partenaire : ombres portées sur titres ── */
+.partner-card h4 {
+  text-shadow: 0 2px 8px rgba(123,47,190,.25);
 }
 
 /* ── RESPONSIVE ──────────────────────────────────────────────── */
