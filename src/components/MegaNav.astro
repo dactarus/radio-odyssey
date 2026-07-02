@@ -73,33 +73,29 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
 <nav class="ro-mega-nav" aria-label="Navigation principale">
   <div class="container">
     <ul class="ro-mega-nav-list">
-      {NAV_CATEGORIES.map((cat, i) => (
-        <Fragment>
-          <li class="dropdown">
-            <button class="ro-mega-nav-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              {cat.label} <i class="bi bi-chevron-down" style="font-size:.65rem;"></i>
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item ro-hub-link" href={cat.hub}>Voir toute la catégorie →</a></li>
-              <li><hr class="dropdown-divider" /></li>
-              {cat.pages.map((p) => (
-                <li>
-                  <a class="dropdown-item" href={p.href}>
-                    <strong>{p.emoji} {p.label}</strong>
-                    <small>{p.desc}</small>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </li>
-          {i === 0 && (
-            <li>
-              <a class="ro-mega-nav-toggle" href="/index.html">
-                <i class="bi bi-house-door-fill" style="font-size:.85rem;"></i> Accueil
-              </a>
-            </li>
-          )}
-        </Fragment>
+      <li>
+        <a class="ro-mega-nav-toggle" href="/index.html">
+          <i class="bi bi-house-door-fill" style="font-size:.85rem;"></i> Accueil
+        </a>
+      </li>
+      {NAV_CATEGORIES.map((cat) => (
+        <li class="dropdown">
+          <button class="ro-mega-nav-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {cat.label} <i class="bi bi-chevron-down" style="font-size:.65rem;"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item ro-hub-link" href={cat.hub}>Voir toute la catégorie →</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            {cat.pages.map((p) => (
+              <li>
+                <a class="dropdown-item" href={p.href}>
+                  <strong>{p.emoji} {p.label}</strong>
+                  <small>{p.desc}</small>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
       ))}
     </ul>
   </div>
