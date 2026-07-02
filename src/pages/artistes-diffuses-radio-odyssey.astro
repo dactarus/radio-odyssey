@@ -4,16 +4,16 @@ import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import { ARTISTS } from '../data/artists.js';
 
-// Les 9 premiers artistes de la liste restent en grandes cartes "phares"
+// Les 10 premiers artistes de la liste restent en grandes cartes "phares"
 // (voir SEO_BLUEPRINT.md §6). Au-delà, la page resterait ingérable à
 // l'échelle de 100 fiches — les suivants passent en pastilles cliquables.
-const flagship = ARTISTS.slice(0, 9).map((a) => ({
+const flagship = ARTISTS.slice(0, 10).map((a) => ({
   name: a.name,
   slug: a.slug,
   note: a.facts[0],
   example: a.tracks[0],
 }));
-const moreWithPage = ARTISTS.slice(9);
+const moreWithPage = ARTISTS.slice(10);
 
 // Artistes très présents sur l'antenne, pas encore dotés de leur propre
 // fiche (lots suivants — voir SEO_BLUEPRINT.md).
