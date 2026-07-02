@@ -19,8 +19,8 @@ const [gradientFrom, gradientTo] = GRADIENTS[index % GRADIENTS.length];
 const others = ARTISTS.filter((a) => a.slug !== artist.slug);
 const related = [0, 1, 2].map((offset) => others[(index + offset) % others.length]);
 
-const title = `${artist.name} sur Radio Odyssey — Titres Diffusés & Infos`;
-const description = `${artist.name} (${artist.genre}) sur Radio Odyssey : titres diffusés sur l'antenne, l'essentiel à savoir, et pourquoi cet artiste fait partie de la programmation.`;
+const title = `${artist.name} : Remix & Titres en Radio Gratuite — Radio Odyssey`;
+const description = `${artist.name} (${artist.genre}) sur Radio Odyssey : remix diffusés sur l'antenne, titres réellement joués, et une radio 100% gratuite, sans pub, à écouter en direct sur mobile ou ordinateur.`;
 
 const schema = {
   '@context': 'https://schema.org',
@@ -39,6 +39,10 @@ const faq = [
     q: `Radio Odyssey diffuse-t-elle souvent ${artist.name} ?`,
     a: `Oui — ${artist.name} fait partie des artistes régulièrement présents dans la programmation (${artist.playCount} passages recensés sur un mois de diffusion). Voir aussi notre page <a href="/artistes-diffuses-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">artistes diffusés sur Radio Odyssey</a>.`,
   },
+  {
+    q: `Peut-on écouter ${artist.name} gratuitement sur une radio en ligne ?`,
+    a: `Oui — Radio Odyssey est une web radio 100% gratuite et sans publicité, accessible depuis un ordinateur, un mobile ou une enceinte connectée, avec ${artist.name} parmi les artistes réguliers de la programmation.`,
+  },
 ];
 ---
 <Layout lang="fr" title={title} description={description}>
@@ -52,7 +56,7 @@ const faq = [
     homeLabel="🏠 Accueil"
     breadcrumbCurrent={`${artist.name} sur Radio Odyssey`}
     title={`${artist.name} sur Radio Odyssey`}
-    text={`${artist.genre} — ${artist.origin}. Découvrez pourquoi ${artist.name} fait partie de la programmation de l'antenne.`}
+    text={`${artist.genre} — ${artist.origin}. Écoutez les titres et remix de ${artist.name} sur une radio gratuite, sans pub, disponible sur mobile.`}
   >
     <Fragment slot="icon">
       <svg viewBox="0 0 48 48" fill="none"><circle cx="19" cy="27" r="14" stroke="white" stroke-width="2.3"/><circle cx="19" cy="27" r="4.5" stroke="white" stroke-width="1.8"/><circle cx="19" cy="27" r="1.2" fill="white"/><path d="M27 13L37 9V21L27 25Z" stroke="rgba(255,255,255,.8)" stroke-width="1.8" stroke-linejoin="round" fill="none"/></svg>
