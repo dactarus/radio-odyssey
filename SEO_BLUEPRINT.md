@@ -82,6 +82,7 @@ Total live à ce jour : 31 pages (24 pages de contenu + 6 hubs + accueil).
 | `/musique-pour-lapres-midi.html` | musique pour l'après-midi | Live |
 | `/musique-pour-laperitif.html` | musique pour l'apéritif | Live |
 | `/musique-pour-la-nuit.html` | musique pour la nuit | Live |
+| `/comment-radio-odyssey-choisit-sa-musique.html` | comment radio odyssey choisit sa musique | Live (voir §6ter suite) |
 
 ### Artistes & Styles
 | URL | Mot-clé cible | Statut |
@@ -273,7 +274,7 @@ Le propriétaire a expliqué son métier de programmateur radio, contexte import
 - **Conséquence pour l'extraction CSV** : un export sur 1 mois surreprésente les nouveautés du moment (forte rotation temporaire) ; un export sur 6 mois (voir fichier `Radio odyssey report musique et chroniques -from-2026-01-01-to-2026-06-30.csv`, format différent — une ligne par titre avec un champ `Play frequency` déjà agrégé, pas un log brut par diffusion) lisse ce biais et reflète mieux le fonds récurrent réel de l'antenne.
 - **Vérification faite avec le fichier 6 mois** : le top 20 par cumul de `Play frequency` sur la période recoupe très largement les artistes déjà publiés (David Guetta, Taylor Swift, Gims, Shakira, Bruno Mars, Ed Sheeran, Madonna, Harry Styles, Mika, Katy Perry, R3HAB, Miley Cyrus, Pascal Obispo, Lady Gaga, Ofenbach, Angèle, Alex Warren, Vanessa Paradis) — la sélection en 7 lots basée sur l'export d'un seul mois (juin 2026) était donc solide, pas besoin de tout refaire.
 - **"Tom York"** (écarté du Lot 6 par prudence) apparaît de façon stable sur 6 mois : 285 passages cumulés sur 3 titres différents — ce n'est pas un artefact d'un seul mois. ✅ Identité clarifiée par le propriétaire le 2026-07-02 : c'est un artiste "Découverte Radio Odyssey" (voir §6ter), fiche créée sous `/decouverte-tom-york.html`.
-- **Piste de contenu à fort potentiel SEO (proposée, pas encore construite)** : un article expliquant concrètement comment la programmation de Radio Odyssey est construite (tranches horaires, cycle nouveauté → récurrent, absence d'automatisation façon Selector) serait un contenu d'expertise unique, non réplicable par un concurrent — bon candidat E-E-A-T. Le propriétaire a donné le feu vert le 2026-07-02 ("on peut faire une page... tu pourras me poser toutes les questions") — une liste de questions d'interview lui a été envoyée (tranches horaires, déclencheur nouveauté→récurrent, durée moyenne d'une nouveauté, proportions cibles nouveautés/récurrents/golds/80s, traitement des Découvertes, exemple concret récent). En attente de ses réponses avant de rédiger la page.
+- ✅ **Article publié le 2026-07-02** : `/comment-radio-odyssey-choisit-sa-musique.html` (cocon Playlists du Jour). Contenu construit à partir des réponses détaillées du propriétaire aux questions d'interview (7 tranches horaires en rotation, catégorie "remix années 80" limitée à 2-3 tranches, tranches matinales alternées, tranche 18h-minuit plus rythmée, limite du réglage global RadioKing vs Selector, cycle nouveauté→récurrent/fin de diffusion, méthode des auditoriums et son regard critique dessus, traitement des Découvertes avec jingle dédié, exemple de la programmation de Noël). **Deux points explicitement gardés confidentiels par le propriétaire** ("mais chut…", "encore un secret de fabrication…") : l'alternative aux auditoriums coûteux, et les critères précis de sélection des titres de Noël — mentionnés sur la page comme du "savoir-faire maison" sans être détaillés. Rappel : le terme interne "Frigo" (voir §6ter) ne doit jamais apparaître sur le site — règle qui s'applique à tout contenu futur sur ce sujet.
 
 ### 6ter. Cocon "Découvertes Radio Odyssey" (créé le 2026-07-02)
 
@@ -309,4 +310,4 @@ Bios fournies directement par le propriétaire (dossiers de presse / connaissanc
 
 ---
 
-*Dernière mise à jour : 2026-07-02, lors de la création du cocon Découvertes Radio Odyssey (4 fiches + hub).*
+*Dernière mise à jour : 2026-07-02, lors de la publication de l'article "Comment Radio Odyssey choisit sa musique".*
