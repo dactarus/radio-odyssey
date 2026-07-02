@@ -358,7 +358,7 @@ Le propriétaire a fait auditer le site par claude.ai avant de poursuivre l'enri
 - Liens internes `/index.html` normalisés vers `/` dans les composants partagés.
 - **Emojis retirés du méga-menu, de l'offcanvas mobile, de la sidebar et des cartes de hub** — remplacés par des icônes Bootstrap Icons monochromes (déjà chargées sitewide), choisies au cas par cas pour matcher le sujet de chaque page (ex. `bi-activity` pour cohérence cardiaque, `bi-lungs` pour respiration guidée, `bi-peace` pour anti-stress). Demande du propriétaire : "c'est vrai que les emojis ce n'est pas top... que ça fasse classe."
 
-**Non traité, hors périmètre technique de Claude Code :** iframe RadioKing sans `loading="lazy"` (risque UX sur le "écouter en direct" si mal fait — à discuter avant d'y toucher), migration de l'app PWA vers un sous-domaine `app.radio-odyssey.com` (nécessite un accès DNS/Vercel côté propriétaire), mise en place d'un analytics respectueux de la vie privée (Matomo/Plausible — outil à choisir avec le propriétaire).
+**Non traité, hors périmètre technique de Claude Code :** iframe RadioKing sans `loading="lazy"` (risque UX sur le "écouter en direct" si mal fait — à discuter avant d'y toucher), mise en place d'un analytics respectueux de la vie privée (Matomo/Plausible — outil à choisir avec le propriétaire).
 
 ---
 
@@ -387,7 +387,7 @@ Widget "en cours de lecture", partenaire EBG et FAQ non retouchés : aucune rég
 - **Schema BreadcrumbList** : ajouté sans toucher aux pages individuelles — dérivé automatiquement du `<title>` de chaque page (suffixe "| Radio Odyssey" / "— Radio Odyssey" retiré), avec fallback silencieux sur la home (pas de fil d'Ariane pour la racine). Ce qui semblait nécessiter de la "plomberie" à l'audit (§9) s'est révélé faisable via une regex simple sur une donnée déjà là.
 
 **Reste de la liste "Tier 2/3" (nécessitent le propriétaire) — toujours en attente, non traités :**
-- Sous-domaine `app.radio-odyssey.com` (accès DNS/registrar + Vercel du propriétaire) — expliqué en détail au propriétaire le 2026-07-02, en attente qu'il le fasse de son côté avant que les 10 liens vers `radio-odyssey-v8b.vercel.app` puissent être mis à jour.
+- ✅ **Sous-domaine `app.radio-odyssey.com` : fait le 2026-07-02.** Registrar : IONOS. Propriétaire guidé pas à pas (CNAME `app` → `2d6b90a171aae715.vercel-dns-017.com.` côté IONOS, domaine ajouté dans Vercel). Vérifié fonctionnel (`curl -I https://app.radio-odyssey.com/` → HTTP 200, certificat SSL valide). Les 12 occurrences de `radio-odyssey-v8b.vercel.app` dans le code ont été remplacées par `app.radio-odyssey.com` (commit `c0edd62`).
 - Analytics respectueux de la vie privée (Matomo/Plausible) — choix de l'outil à faire avec le propriétaire.
 - Lazy-loading de l'iframe RadioKing — tradeoff UX à trancher avant d'y toucher.
 - Vraies images de partage social (1200×630 par catégorie) — nécessite du travail graphique.
