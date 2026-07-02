@@ -16,9 +16,16 @@ export function getStaticPaths() {
 const { artist } = Astro.props;
 
 const others = DISCOVERIES.filter((a) => a.slug !== artist.slug);
+const isScarce = artist.scarcity !== 'partielle';
 
-const title = `${artist.name} — Découverte Radio Odyssey`;
-const description = `${artist.name} (${artist.genre}) : portrait d'une découverte Radio Odyssey, la radio qui soutient les artistes émergents et la scène musicale.`;
+const title = `${artist.name} : Biographie, Titres et Actualité — Radio Odyssey`;
+const description = isScarce
+  ? `Qui est ${artist.name} ? Biographie, titres diffusés et actualité — Radio Odyssey est l'une des rares sources en français à s'intéresser à cet artiste (${artist.genre}).`
+  : `${artist.name} (${artist.genre}) : biographie, titres diffusés sur Radio Odyssey, et les données réelles de diffusion que la radio est l'une des seules à publier.`;
+
+const scarcityNote = isScarce
+  ? `Il existe très peu, voire aucune biographie complète de ${artist.name} en français ailleurs en ligne — cette fiche est l'une des rares sources qui lui soit consacrée.`
+  : `${artist.name} bénéficie déjà d'une présence en ligne établie ; Radio Odyssey y ajoute ses propres données réelles de diffusion, que personne d'autre ne publie.`;
 
 const schema = {
   '@context': 'https://schema.org',
@@ -33,6 +40,12 @@ const statusSentence = artist.active
   : `${artist.name} a fait partie des Découvertes Radio Odyssey mises en avant sur l'antenne en ${artist.since}.`;
 
 const faq = [
+  {
+    q: `Qui est ${artist.name} ?`,
+    a: isScarce
+      ? `${artist.facts[0]} Il existe très peu d'informations à son sujet en dehors des plateformes de streaming — Radio Odyssey vous propose ici l'une des biographies les plus complètes disponibles en français.`
+      : `${artist.facts[0]} Radio Odyssey vous propose ici sa biographie ainsi que ses données réelles de diffusion sur l'antenne.`,
+  },
   {
     q: `Quels titres de ${artist.name} passent sur Radio Odyssey ?`,
     a: `${artist.tracks.map((t) => `<em>${t}</em>`).join(', ')}. Retrouvez l'ensemble de nos Découvertes sur notre page <a href="/decouvertes-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Découvertes Radio Odyssey</a>.`,
@@ -54,7 +67,7 @@ const faq = [
     homeLabel="🏠 Accueil"
     breadcrumbCurrent={`${artist.name} — Découverte Radio Odyssey`}
     title={`${artist.name}`}
-    text={`✨ Découverte Radio Odyssey — ${artist.genre} — ${artist.origin}.`}
+    text={`${artist.genre} — ${artist.origin}. ${isScarce ? "Biographie et actualité — l'une des rares sources en français sur cet artiste." : 'Biographie, titres et données réelles de diffusion.'}`}
   >
     <Fragment slot="icon">
       <svg viewBox="0 0 48 48" fill="none"><path d="M24 6L27.5 18.5L40 22L27.5 25.5L24 38L20.5 25.5L8 22L20.5 18.5L24 6Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg>
@@ -67,9 +80,13 @@ const faq = [
         <div class="col-lg-8">
 
           <div class="content-card" style="border-left:3px solid var(--ro-gold, #FFD700);">
-            <p style="margin:0;font-size:.86rem;color:var(--ro-muted);">
+            <p style="margin:0 0 .6rem;font-size:.86rem;color:var(--ro-muted);">
               <i class="bi bi-stars" style="color:var(--ro-gold, #FFD700);"></i>
               Cette fiche fait partie des <strong>Découvertes Radio Odyssey</strong> — des artistes émergents que la radio choisit de soutenir, en dehors de tout classement par audience. <a href="/decouvertes-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">En savoir plus sur la démarche →</a>
+            </p>
+            <p style="margin:0;font-size:.86rem;color:var(--ro-muted);">
+              <i class="bi bi-search" style="color:var(--ro-purple);"></i>
+              {scarcityNote}
             </p>
           </div>
 
@@ -91,7 +108,7 @@ const faq = [
           </div>
 
           <div class="content-card">
-            <h2>Portrait</h2>
+            <h2>Biographie de {artist.name}</h2>
             <p>{artist.portrait}</p>
           </div>
 
