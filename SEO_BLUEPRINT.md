@@ -377,4 +377,24 @@ Widget "en cours de lecture", partenaire EBG et FAQ non retouchés : aucune rég
 
 ---
 
-*Dernière mise à jour : 2026-07-02, refonte de la hiérarchie de la page d'accueil (§10).*
+## 11. Changement de partenaire + reste de la liste post-audit (2026-07-02)
+
+**Partenaire officiel remplacé** : le bloc "Ils soutiennent Radio Odyssey" (homepage, `#partenaire`) pointe désormais vers **santementalepositive.fr** (et non plus elisabeth.academy), nouveau logo, mention explicite "Partenariat exclusif", crédite **Elisabeth Bélot-Grimaud — Docteure en psychologie**. Lien "Partenaire" ajouté dans le footer (`/#partenaire`) — demande explicite du propriétaire, "il y a des gens qui cherchent ce genre d'infos en bas des sites". Ancienne image `partenaire-ebg.jpg` supprimée du dépôt (plus référencée nulle part).
+
+**Reste de la liste "Tier 1" (items faisables sans arbitrage du propriétaire) — tous livrés le 2026-07-02 :**
+- **hreflang** : implémenté en auto-référencement (`hreflang={lang}` + `hreflang="x-default"` vers la home) plutôt qu'en paires FR/EN, car les 4 pages EN sont du contenu autonome, pas des traductions 1:1 des pages FR — une vraie paire hreflang aurait été fausse.
+- **Logo optimisé** : 1024×1024 / 1,2 Mo → 512×512 / ~290 Ko (aucune perte visible, la taille d'affichage max sur le site est 300px). Original conservé hors dépôt (scratchpad de session) en cas de besoin futur d'un export plus grand.
+- **Schema BreadcrumbList** : ajouté sans toucher aux pages individuelles — dérivé automatiquement du `<title>` de chaque page (suffixe "| Radio Odyssey" / "— Radio Odyssey" retiré), avec fallback silencieux sur la home (pas de fil d'Ariane pour la racine). Ce qui semblait nécessiter de la "plomberie" à l'audit (§9) s'est révélé faisable via une regex simple sur une donnée déjà là.
+
+**Reste de la liste "Tier 2/3" (nécessitent le propriétaire) — toujours en attente, non traités :**
+- Sous-domaine `app.radio-odyssey.com` (accès DNS/registrar + Vercel du propriétaire) — expliqué en détail au propriétaire le 2026-07-02, en attente qu'il le fasse de son côté avant que les 10 liens vers `radio-odyssey-v8b.vercel.app` puissent être mis à jour.
+- Analytics respectueux de la vie privée (Matomo/Plausible) — choix de l'outil à faire avec le propriétaire.
+- Lazy-loading de l'iframe RadioKing — tradeoff UX à trancher avant d'y toucher.
+- Vraies images de partage social (1200×630 par catégorie) — nécessite du travail graphique.
+- Google Search Console — **le propriétaire s'en charge lui-même** (2026-07-02), sitemap déjà prêt côté code.
+- Extension du cocon "Les Coulisses" (mécanique des jingles etc.).
+- Témoignages homepage toujours illustratifs (rendus discrets le 2026-07-02, §10) — à remplacer par de vrais avis au fil du temps si le propriétaire en reçoit.
+
+---
+
+*Dernière mise à jour : 2026-07-02, changement de partenaire (Santé Mentale Positive) + livraison complète du Tier 1 post-audit (hreflang, logo, BreadcrumbList).*
