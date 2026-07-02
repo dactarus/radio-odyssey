@@ -340,7 +340,28 @@ Bios fournies directement par le propriétaire (dossiers de presse / connaissanc
 - Articles de type magazine (nombre et cadence à définir — mentionné une fois, pas encore priorisé)
 - Extension du cocon Artistes & Styles au-delà de 100 fiches
 - Sous-cocon dédié entreprise/bien-être au travail si `coherence-cardiaque-au-bureau.html` performe bien
+- Contenu supplémentaire pour "Les Coulisses" (mécanique des jingles, etc. — voir §6ter suite)
 
 ---
 
-*Dernière mise à jour : 2026-07-02, lors du pivot SEO du cocon Découvertes ("l'information introuvable ailleurs", §6ter).*
+## 9. Benchmark externe du 2026-07-02 (claude.ai / Fable 5) — vérifié et trié
+
+Le propriétaire a fait auditer le site par claude.ai avant de poursuivre l'enrichissement. Une bonne partie du rapport décrivait l'ancien site pré-migration (33 pages HTML dupliquées, pas de composants) — **obsolète, ignoré**. La suggestion de déplacer les 4 pages EN sous `/en/` a aussi été écartée : ça violerait la règle de stabilité des URLs (voir §2) sans décision explicite + redirections 301.
+
+**Ce qui a été vérifié comme réel et corrigé le 2026-07-02 :**
+- `/mentions-legales.html` créé — Radio Odyssey, association loi 1901. **Adresse volontairement non publiée** sur demande explicite du propriétaire — ne jamais publier cette adresse (ni sur le site, ni dans ce dépôt Git, ni dans aucun fichier versionné) ; disponible uniquement via la mémoire privée de session si besoin de la retrouver.
+- `/politique-de-confidentialite.html` créé — reflète l'état réel (pas de cookies, pas d'analytics, pas de formulaire hormis mailto, services tiers listés honnêtement).
+- Schema `RadioStation`/`Organization` sitewide dans `Layout.astro` (avec `sameAs` vers les réseaux sociaux réels). `BreadcrumbList` volontairement pas ajouté — demanderait de tracker le chemin de navigation par page, pas encore fait.
+- `twitter:card` passé en `summary_large_image` (l'image reste `logo.png`, carrée — un vrai visuel 1200×630 par catégorie reste à faire, nécessite du travail graphique).
+- Les 13 titres `<title>` des pages pré-migration (marque en double, >90 caractères) nettoyés, FR et EN.
+- Allégation "baisse du cortisol dès 5 min" (non sourcée, sur 3 pages) corrigée : citation du Dr David O'Hare / méthode 3-6-5 ajoutée sur `bienfaits-coherence-cardiaque.html`, formulation adoucie ailleurs.
+- Liens internes `/index.html` normalisés vers `/` dans les composants partagés.
+- **Emojis retirés du méga-menu, de l'offcanvas mobile, de la sidebar et des cartes de hub** — remplacés par des icônes Bootstrap Icons monochromes (déjà chargées sitewide), choisies au cas par cas pour matcher le sujet de chaque page (ex. `bi-activity` pour cohérence cardiaque, `bi-lungs` pour respiration guidée, `bi-peace` pour anti-stress). Demande du propriétaire : "c'est vrai que les emojis ce n'est pas top... que ça fasse classe."
+
+**Point ouvert, pas encore traité :** les témoignages de la page d'accueil (Sophie L., Nathalie R., Thomas P.) sont confirmés **illustratifs** par le propriétaire (pas de vrais retours auditeurs). Décision à prendre : les retirer, les relabelliser honnêtement, ou les remplacer par de vrais avis au fil du temps — voir avec le propriétaire avant de trancher, ne pas modifier unilatéralement le ton de la page d'accueil.
+
+**Non traité, hors périmètre technique de Claude Code :** iframe RadioKing sans `loading="lazy"` (risque UX sur le "écouter en direct" si mal fait — à discuter avant d'y toucher), migration de l'app PWA vers un sous-domaine `app.radio-odyssey.com` (nécessite un accès DNS/Vercel côté propriétaire), mise en place d'un analytics respectueux de la vie privée (Matomo/Plausible — outil à choisir avec le propriétaire).
+
+---
+
+*Dernière mise à jour : 2026-07-02, audit du site (mentions légales, confidentialité, schema, titres, sourçage, refonte icônes).*
