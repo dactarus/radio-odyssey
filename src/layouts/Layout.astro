@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 
 interface Props {
   lang?: 'fr' | 'en';
@@ -93,5 +94,6 @@ const breadcrumbSchema = isHome ? null : {
   <Header />
   <slot />
   <Footer />
+  <CookieConsent />
 </body>
 </html>

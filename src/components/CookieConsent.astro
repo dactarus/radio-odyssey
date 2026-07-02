@@ -1,0 +1,142 @@
+---
+// Bandeau de consentement cookies — Google Analytics n'est chargé
+// qu'après acceptation explicite. Choix mémorisé en localStorage.
+// "Refuser" a la même importance visuelle qu'"Accepter" (exigence CNIL).
+const GA_MEASUREMENT_ID = 'G-6CXEFXNH97';
+---
+<div id="ro-cookie-banner" class="ro-cookie-banner" role="dialog" aria-live="polite" aria-label="Consentement aux cookies" hidden>
+  <div class="ro-cookie-inner">
+    <p class="ro-cookie-text">
+      <i class="bi bi-cookie" style="color:var(--ro-purple);margin-right:.4rem;"></i>
+      Radio Odyssey utilise Google Analytics pour mesurer l'audience du site (statistiques anonymes, pages visitées, provenance). Aucun cookie n'est déposé sans votre accord.
+      <a href="/politique-de-confidentialite.html" style="color:var(--ro-purple);font-weight:700;text-decoration:underline;">En savoir plus</a>
+    </p>
+    <div class="ro-cookie-actions">
+      <button type="button" id="ro-cookie-decline" class="ro-cookie-btn ro-cookie-btn-decline">Refuser</button>
+      <button type="button" id="ro-cookie-accept" class="ro-cookie-btn ro-cookie-btn-accept">Accepter</button>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .ro-cookie-banner {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 2000;
+    background: #fff;
+    border-top: 2px solid rgba(123,47,190,.15);
+    box-shadow: 0 -8px 30px rgba(11,28,45,.15);
+    padding: 1.1rem 1.2rem;
+  }
+  .ro-cookie-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+  .ro-cookie-text {
+    margin: 0;
+    font-size: .86rem;
+    color: var(--ro-muted);
+    flex: 1 1 380px;
+  }
+  .ro-cookie-actions {
+    display: flex;
+    gap: .7rem;
+    flex-shrink: 0;
+  }
+  /* Les deux boutons ont exactement le même gabarit (taille, poids de
+     police, padding) — seule la couleur change. Le RGPD/la CNIL exige
+     que "Refuser" soit aussi facile et visible qu'"Accepter", jamais
+     traité comme une option secondaire (pas de bouton "fantôme"). */
+  .ro-cookie-btn {
+    padding: .6rem 1.4rem;
+    font-size: .86rem;
+    font-weight: 800;
+    font-family: 'Nunito', sans-serif;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+  }
+  .ro-cookie-btn-accept {
+    background: linear-gradient(135deg, var(--ro-purple), var(--ro-pink, #FF3CAC));
+    color: #fff;
+  }
+  .ro-cookie-btn-decline {
+    background: #eef0f4;
+    color: var(--ro-dark);
+  }
+  @media (max-width: 575px) {
+    .ro-cookie-actions { width: 100%; }
+    .ro-cookie-actions button { flex: 1; }
+  }
+</style>
+
+<script define:vars={{ GA_MEASUREMENT_ID }}>
+  (function () {
+    var STORAGE_KEY = 'ro-cookie-consent';
+
+    function loadGoogleAnalytics() {
+      if (window.roGaLoaded) return;
+      window.roGaLoaded = true;
+
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+      document.head.appendChild(script);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', GA_MEASUREMENT_ID);
+    }
+
+    function hideBanner() {
+      var banner = document.getElementById('ro-cookie-banner');
+      if (banner) banner.hidden = true;
+    }
+
+    function showBanner() {
+      var banner = document.getElementById('ro-cookie-banner');
+      if (banner) banner.hidden = false;
+    }
+
+    var consent = localStorage.getItem(STORAGE_KEY);
+    if (consent === 'accepted') {
+      loadGoogleAnalytics();
+    } else if (consent !== 'declined') {
+      showBanner();
+    }
+
+    // Ce script s'exécute après le HTML du bandeau (même composant, plus
+    // bas dans le flux du document) : les boutons existent déjà dans le
+    // DOM à ce stade, pas besoin d'attendre DOMContentLoaded (qui peut
+    // déjà s'être déclenché avant ce point selon comment Astro sert le
+    // script, auquel cas le listener ne se déclencherait jamais).
+    var acceptBtn = document.getElementById('ro-cookie-accept');
+    var declineBtn = document.getElementById('ro-cookie-decline');
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', function () {
+        localStorage.setItem(STORAGE_KEY, 'accepted');
+        loadGoogleAnalytics();
+        hideBanner();
+      });
+    }
+    if (declineBtn) {
+      declineBtn.addEventListener('click', function () {
+        localStorage.setItem(STORAGE_KEY, 'declined');
+        hideBanner();
+      });
+    }
+
+    // Permet de rouvrir le choix depuis le lien "Gérer les cookies" du footer
+    window.roOpenCookiePreferences = function () {
+      localStorage.removeItem(STORAGE_KEY);
+      showBanner();
+    };
+  })();
+</script>
