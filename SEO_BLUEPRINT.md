@@ -358,10 +358,23 @@ Le propriétaire a fait auditer le site par claude.ai avant de poursuivre l'enri
 - Liens internes `/index.html` normalisés vers `/` dans les composants partagés.
 - **Emojis retirés du méga-menu, de l'offcanvas mobile, de la sidebar et des cartes de hub** — remplacés par des icônes Bootstrap Icons monochromes (déjà chargées sitewide), choisies au cas par cas pour matcher le sujet de chaque page (ex. `bi-activity` pour cohérence cardiaque, `bi-lungs` pour respiration guidée, `bi-peace` pour anti-stress). Demande du propriétaire : "c'est vrai que les emojis ce n'est pas top... que ça fasse classe."
 
-**Point ouvert, pas encore traité :** les témoignages de la page d'accueil (Sophie L., Nathalie R., Thomas P.) sont confirmés **illustratifs** par le propriétaire (pas de vrais retours auditeurs). Décision à prendre : les retirer, les relabelliser honnêtement, ou les remplacer par de vrais avis au fil du temps — voir avec le propriétaire avant de trancher, ne pas modifier unilatéralement le ton de la page d'accueil.
-
 **Non traité, hors périmètre technique de Claude Code :** iframe RadioKing sans `loading="lazy"` (risque UX sur le "écouter en direct" si mal fait — à discuter avant d'y toucher), migration de l'app PWA vers un sous-domaine `app.radio-odyssey.com` (nécessite un accès DNS/Vercel côté propriétaire), mise en place d'un analytics respectueux de la vie privée (Matomo/Plausible — outil à choisir avec le propriétaire).
 
 ---
 
-*Dernière mise à jour : 2026-07-02, audit du site (mentions légales, confidentialité, schema, titres, sourçage, refonte icônes).*
+## 10. Refonte de la hiérarchie de la page d'accueil (2026-07-02)
+
+Suite au benchmark (§9), le propriétaire a confirmé que les témoignages homepage sont **illustratifs** (pas de vrais retours auditeurs), et a demandé : les rendre plus discrets plutôt que les retirer ("psychologiquement ça donne confiance même si l'internaute se doute que c'est retravaillé"), et repenser la hiérarchie générale — le scroll était jugé trop long, pas clair sur ce qui doit être vu immédiatement vs. relégué au menu/onglets.
+
+**Proposition validée et implémentée** (`src/pages/index.astro`, 13 sections → 10, -357/+86 lignes) :
+- **Palier 1 (immédiat)** : Hero + widget "en cours de lecture" juste en dessous — inchangés, c'est la preuve de vie de l'antenne.
+- **Palier 2 (différenciation)** : bloc "Pourquoi nous écouter" (4 cartes) **supprimé** — redondant avec la grille "Toutes nos thématiques" juste en dessous, qui devient la section d'exploration principale. Cohérence Cardiaque réduite à un bandeau compact une ligne (au lieu d'une section 2 colonnes avec tableau de 13 horaires) — reste visible mais n'occupe plus tout un écran, renvoie vers la page dédiée pour le détail.
+- **Palier 3 (preuve sociale, plus bas et condensé)** : grille des programmes condensée en pilules horaires + lien vers Playlists du Jour (au lieu de 6 grandes cartes avec description). Témoignages réduits à 3 petites cartes discrètes (au lieu de 6), **rôles fictifs retirés** (ex. "Créative Énergique") — juste prénom + initiale, plus bas dans la page. Plateformes + app mobile **fusionnées en une seule section** : 13 pastilles de plateformes réduites à 7 (les plus connues), étapes d'installation iPhone/Android retirées de l'accueil (déjà présentes sur `ecouter-radio-odyssey-sur-mobile.html`, remplacées par un lien).
+- **Supprimé entièrement** : section "Restez connectés" (Facebook/Instagram/X/YouTube) — doublon exact des icônes déjà dans le footer, présent sur chaque page.
+- **Inchangés** : partenaire EBG, FAQ (accordéon, coût de scroll nul replié), CTA final.
+
+Widget "en cours de lecture", partenaire EBG et FAQ non retouchés : aucune régression fonctionnelle attendue, uniquement une réorganisation/condensation de contenu déjà existant.
+
+---
+
+*Dernière mise à jour : 2026-07-02, refonte de la hiérarchie de la page d'accueil (§10).*
