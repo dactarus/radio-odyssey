@@ -254,4 +254,20 @@ export const ARTISTS = [
     linkHref: '/styles-musicaux-radio-odyssey.html',
     linkLabel: 'styles musicaux Radio Odyssey',
   },
+  {
+    slug: 'aya-nakamura',
+    name: 'Aya Nakamura',
+    genre: 'Pop urbaine',
+    origin: 'France',
+    playCount: 19,
+    tracks: ['Baddies (Radio Odyssey Edit ft. Joé Dwèt Filé)'],
+    facts: [
+      'Artiste française, l’une des chanteuses francophones les plus écoutées au monde.',
+      'Incontournable de la scène pop française et internationale de ces dernières années.',
+      'Diffusée sur Radio Odyssey via une sélection de titres phares, en édit exclusif.',
+    ],
+    why: "Bien que Radio Odyssey privilégie la pop, la dance et les ballades plutôt que le rap urbain, Aya Nakamura reste une artiste incontournable — quelques-uns de ses titres phares trouvent donc leur place sur l'antenne.",
+    linkHref: '/styles-musicaux-radio-odyssey.html',
+    linkLabel: 'styles musicaux Radio Odyssey',
+  },
 ];

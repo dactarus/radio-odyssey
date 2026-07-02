@@ -36,7 +36,7 @@ const faq = [
     a: `Parmi les titres régulièrement diffusés : ${artist.tracks.slice(0, 3).map((t) => `<em>${t}</em>`).join(', ')}. Retrouvez l'ensemble de la sélection en écoutant l'antenne en direct.`,
   },
   {
-    q: `${artist.name} est-il souvent diffusé sur Radio Odyssey ?`,
+    q: `Radio Odyssey diffuse-t-elle souvent ${artist.name} ?`,
     a: `Oui — ${artist.name} fait partie des artistes régulièrement présents dans la programmation (${artist.playCount} passages recensés sur un mois de diffusion). Voir aussi notre page <a href="/artistes-diffuses-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">artistes diffusés sur Radio Odyssey</a>.`,
   },
 ];
@@ -82,7 +82,7 @@ const faq = [
           </div>
 
           <div class="content-card">
-            <h2>Pourquoi {artist.name} est diffusé sur Radio Odyssey</h2>
+            <h2>Pourquoi Radio Odyssey diffuse {artist.name}</h2>
             <p set:html={artist.why} />
             <p>Retrouvez cet univers musical sur notre page <a href={artist.linkHref} style="color:var(--ro-purple);font-weight:700;">{artist.linkLabel}</a>.</p>
           </div>
