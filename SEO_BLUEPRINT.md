@@ -134,7 +134,22 @@ Total live à ce jour : 31 pages (24 pages de contenu + 6 hubs + accueil).
 | `/artiste-jean-jacques-goldman.html` | jean-jacques goldman radio odyssey | Live (Lot 3) |
 | `/artiste-stromae.html` | stromae radio odyssey | Live (Lot 3) |
 | `/artiste-elton-john.html` | elton john radio odyssey | Live (Lot 3) |
-| `/artiste-[slug].html` (×54 restants) | [nom artiste] radio odyssey | Planifié, par lots de 15-20 (§6) |
+| `/artiste-tame-impala.html` | tame impala radio odyssey | Live (Lot 4) |
+| `/artiste-alex-warren.html` | alex warren radio odyssey | Live (Lot 4) |
+| `/artiste-jeremy-frerot.html` | jérémy frérot radio odyssey | Live (Lot 4) |
+| `/artiste-sound-of-legend.html` | sound of legend radio odyssey | Live (Lot 4) |
+| `/artiste-ofenbach.html` | ofenbach radio odyssey | Live (Lot 4) |
+| `/artiste-djo.html` | djo radio odyssey | Live (Lot 4) |
+| `/artiste-christophe-willem.html` | christophe willem radio odyssey | Live (Lot 4) |
+| `/artiste-christophe-mae.html` | christophe maé radio odyssey | Live (Lot 4) |
+| `/artiste-tove-lo.html` | tove lo radio odyssey | Live (Lot 4) |
+| `/artiste-zaho.html` | zaho radio odyssey | Live (Lot 4) |
+| `/artiste-bananarama.html` | bananarama radio odyssey | Live (Lot 4) |
+| `/artiste-clara-luciani.html` | clara luciani radio odyssey | Live (Lot 4) |
+| `/artiste-amy-macdonald.html` | amy macdonald radio odyssey | Live (Lot 4) |
+| `/artiste-sade.html` | sade radio odyssey | Live (Lot 4) |
+| `/artiste-soprano.html` | soprano radio odyssey | Live (Lot 4) |
+| `/artiste-[slug].html` (×39 restants) | [nom artiste] radio odyssey | Planifié, par lots de 15-20 (§6) |
 
 ### Conseils d'Écoute
 | URL | Mot-clé cible | Statut |
@@ -196,7 +211,9 @@ Shakira (105), Madonna (100), David Guetta (97), Gims (96), Ed Sheeran (92), Bru
 
 **Lot 3 (15 fiches) livré le 2026-07-02** : Sting, Sabrina Carpenter, Katy Perry, Miley Cyrus, Céline Dion, Simple Minds, Maroon 5, Phil Collins, Robbie Williams, Wham!, Karol G, Vanessa Paradis, Jean-Jacques Goldman, Stromae, Elton John — noms qui étaient déjà annoncés (fiches à venir) sur la page hub, désormais tous dotés d'une fiche réelle. Le bloc "Ils sont aussi très présents sur l'antenne" (liste à plat, non cliquable) est retiré de la page hub puisqu'il est vide pour l'instant ; il sera réintroduit au prochain lot avec les 15 noms suivants.
 
-Reste 54 fiches à produire par lots.
+**Lot 4 (15 fiches) livré le 2026-07-02** : Tame Impala, Alex Warren, Jérémy Frérot, Sound Of Legend, Ofenbach, Djo, Christophe Willem, Christophe Maé, Tove Lo, Zaho, Bananarama, Clara Luciani, Amy Macdonald, Sade, Soprano — classement réel recalculé sur le même export CSV juin 2026. **5 entrées du classement ont été écartées** faute d'identité suffisamment vérifiable pour un contenu factuel fiable à ce stade : "Helena" (87 passages), "Marine" (72), "K-Pop Demon Hunters" (80 — bande originale d'un film d'animation, pas un artiste au sens propre), "The Second Voice" (68), "Jeck & Carla" (53). À revisiter si une identification fiable est possible plus tard (voir §8).
+
+Reste 39 fiches à produire par lots.
 
 **⚠️ Piège grammatical à éviter sur toutes les futures fiches :** ne jamais accorder un adjectif/participe passé ("diffusé/diffusée") directement sur le nom de l'artiste dans un template générique — un artiste peut être un homme, une femme ou un groupe, et le genre n'est pas dans les données. Toujours formuler pour que l'accord se fasse sur "Radio Odyssey" (féminin, invariable dans le contexte) plutôt que sur l'artiste, ex. "Radio Odyssey diffuse-t-elle souvent [Artiste] ?" plutôt que "[Artiste] est-il/elle diffusé(e) ?". Bug repéré et corrigé le 2026-07-02 par le propriétaire du site sur la fiche Madonna.
 
@@ -218,4 +235,4 @@ Reste 54 fiches à produire par lots.
 
 ---
 
-*Dernière mise à jour : 2026-07-02, lors de la création du Lot 3 du cocon Artistes (15 fiches).*
+*Dernière mise à jour : 2026-07-02, lors de la création du Lot 4 du cocon Artistes (15 fiches).*
