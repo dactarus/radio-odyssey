@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import { DISCOVERIES } from '../data/discoveries.js';
+
+export function getStaticPaths() {
+  return DISCOVERIES.map((artist) => ({
+    params: { slug: artist.slug },
+    props: { artist },
+  }));
+}
+
+const { artist } = Astro.props;
+
+const others = DISCOVERIES.filter((a) => a.slug !== artist.slug);
+
+const title = `${artist.name} — Découverte Radio Odyssey`;
+const description = `${artist.name} (${artist.genre}) : portrait d'une découverte Radio Odyssey, la radio qui soutient les artistes émergents et la scène musicale.`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicGroup',
+  name: artist.name,
+  genre: artist.genre,
+  foundingLocation: artist.origin,
+};
+
+const statusSentence = artist.active
+  ? `Oui — ${artist.name} fait partie des Découvertes Radio Odyssey toujours en rotation sur l'antenne (présente depuis ${artist.since}).`
+  : `${artist.name} a fait partie des Découvertes Radio Odyssey mises en avant sur l'antenne en ${artist.since}.`;
+
+const faq = [
+  {
+    q: `Quels titres de ${artist.name} passent sur Radio Odyssey ?`,
+    a: `${artist.tracks.map((t) => `<em>${t}</em>`).join(', ')}. Retrouvez l'ensemble de nos Découvertes sur notre page <a href="/decouvertes-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Découvertes Radio Odyssey</a>.`,
+  },
+  {
+    q: `${artist.name} est-il/elle toujours diffusé(e) sur Radio Odyssey ?`,
+    a: statusSentence,
+  },
+];
+---
+<Layout lang="fr" title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+  </Fragment>
+
+  <PageHero
+    gradientFrom="#FFD700"
+    gradientTo="#00C6FF"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent={`${artist.name} — Découverte Radio Odyssey`}
+    title={`${artist.name}`}
+    text={`✨ Découverte Radio Odyssey — ${artist.genre} — ${artist.origin}.`}
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 6L27.5 18.5L40 22L27.5 25.5L24 38L20.5 25.5L8 22L20.5 18.5L24 6Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card" style="border-left:3px solid var(--ro-gold, #FFD700);">
+            <p style="margin:0;font-size:.86rem;color:var(--ro-muted);">
+              <i class="bi bi-stars" style="color:var(--ro-gold, #FFD700);"></i>
+              Cette fiche fait partie des <strong>Découvertes Radio Odyssey</strong> — des artistes émergents que la radio choisit de soutenir, en dehors de tout classement par audience. <a href="/decouvertes-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">En savoir plus sur la démarche →</a>
+            </p>
+          </div>
+
+          <div class="content-card">
+            <h2>3 choses essentielles à savoir sur {artist.name}</h2>
+            <ul>
+              {artist.facts.map((fact) => <li set:html={fact} />)}
+            </ul>
+          </div>
+
+          <div class="content-card">
+            <h2>Titres de {artist.name} diffusés sur l'antenne</h2>
+            <p style="margin-bottom:1rem;">Extrait réel de la programmation de Radio Odyssey :</p>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+              {artist.tracks.map((track) => (
+                <span class="tag-pill">♪ {track}</span>
+              ))}
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Portrait</h2>
+            <p>{artist.portrait}</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pourquoi Radio Odyssey soutient {artist.name}</h2>
+            <p set:html={artist.why} />
+            <p>Retrouvez cet univers musical sur notre page <a href={artist.linkHref} style="color:var(--ro-purple);font-weight:700;">{artist.linkLabel}</a>.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix={`decouverte-${artist.slug}`} />
+
+          <RelatedPages
+            alsoLike={others.map((a) => ({
+              href: `/decouverte-${a.slug}.html`,
+              label: a.name,
+              desc: `${a.genre} — ${a.origin}`,
+            }))}
+            associated={[
+              { href: '/decouvertes-radio-odyssey.html', label: 'Toutes les Découvertes Radio Odyssey' },
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les artistes diffusés' },
+              { href: '/styles-musicaux-radio-odyssey.html', label: 'Tous les styles musicaux' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez {artist.name} en direct sur Radio Odyssey</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Écouter Radio Odyssey
+              </a>
+              <a href="/decouvertes-radio-odyssey.html" class="btn-hero-ghost">
+                <i class="bi bi-stars"></i> Toutes les Découvertes
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

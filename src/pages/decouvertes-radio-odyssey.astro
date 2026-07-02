@@ -1,0 +1,108 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import { DISCOVERIES } from '../data/discoveries.js';
+
+const active = DISCOVERIES.filter((a) => a.active);
+const past = DISCOVERIES.filter((a) => !a.active);
+
+const faq = [
+  {
+    q: 'Comment Radio Odyssey choisit-elle ses Découvertes ?',
+    a: "Radio Odyssey est régulièrement sollicitée par des maisons de disques, des labels et des artistes indépendants. Chaque proposition est écoutée, et celles qui correspondent à la couleur musicale et à l'univers positif de l'antenne peuvent rejoindre la programmation, au même titre que les artistes déjà installés.",
+  },
+  {
+    q: 'Comment proposer un artiste ou un titre à Radio Odyssey ?',
+    a: 'Les maisons de disques, labels et artistes peuvent envoyer leur proposition par e-mail à <a href="mailto:odysseylaradio@gmail.com" style="color:var(--ro-purple);font-weight:700;">odysseylaradio@gmail.com</a>. Radio Odyssey est à l\'affût d\'artistes émergents qui correspondent à l\'esprit positif et entraînant de l\'antenne.',
+  },
+];
+---
+<Layout
+  lang="fr"
+  title="Découvertes Radio Odyssey — La Radio qui Soutient les Artistes Émergents"
+  description="Radio Odyssey soutient la scène musicale émergente : découvrez les artistes que la radio met en avant, en dehors de tout classement par audience, et comment proposer votre musique."
+>
+  <PageHero
+    gradientFrom="#FFD700"
+    gradientTo="#00C6FF"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Découvertes Radio Odyssey"
+    title="Découvertes Radio Odyssey"
+    text="Radio Odyssey soutient les artistes émergents et la scène musicale — voici celles et ceux que la radio a choisi de mettre en avant, en dehors de tout classement par audience."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 6L27.5 18.5L40 22L27.5 25.5L24 38L20.5 25.5L8 22L20.5 18.5L24 6Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Une radio à l'affût de nouveaux talents</h2>
+            <p>Au-delà des artistes déjà installés sur l'antenne, Radio Odyssey se donne pour mission de soutenir la scène musicale émergente. Régulièrement sollicitée par des maisons de disques et des artistes indépendants, la radio écoute chaque proposition et choisit, au cas par cas, celles qui correspondent à sa couleur musicale et à son esprit positif — sans se soucier du nombre de followers ou de streams déjà acquis.</p>
+            <p style="margin-bottom:0;">Certaines de ces Découvertes trouvent durablement leur public et rejoignent la programmation régulière ; d'autres restent des moments forts d'une saison. Dans tous les cas, ce sont de vraies prises de risque éditoriales, assumées par l'équipe de la radio.</p>
+          </div>
+
+          <div class="content-card">
+            <h3 style="font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7B2FBE;margin-bottom:1rem;">ACTUELLEMENT SUR L'ANTENNE</h3>
+            <div class="row g-3">
+              {active.map((a) => (
+                <div class="col-md-6">
+                  <a href={`/decouverte-${a.slug}.html`} style="display:block;text-decoration:none;color:inherit;background:linear-gradient(135deg,rgba(255,215,0,.1),rgba(0,198,255,.08));border-radius:14px;padding:1rem 1.2rem;height:100%;">
+                    <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--ro-dark);">✨ {a.name} <i class="bi bi-arrow-right" style="font-size:.75rem;color:var(--ro-purple);"></i></div>
+                    <div style="font-size:.82rem;color:var(--ro-muted);margin-top:.2rem;">{a.genre} — {a.origin}</div>
+                    <div style="font-size:.76rem;color:var(--ro-purple);margin-top:.5rem;font-style:italic;">♪ {a.tracks[0]}</div>
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h3 style="font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7B2FBE;margin-bottom:1rem;">DES DÉCOUVERTES QUI ONT MARQUÉ L'ANTENNE</h3>
+            <div class="row g-3">
+              {past.map((a) => (
+                <div class="col-md-6">
+                  <a href={`/decouverte-${a.slug}.html`} style="display:block;text-decoration:none;color:inherit;background:rgba(123,47,190,.05);border-radius:14px;padding:1rem 1.2rem;height:100%;">
+                    <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--ro-dark);">{a.name} <i class="bi bi-arrow-right" style="font-size:.75rem;color:var(--ro-purple);"></i></div>
+                    <div style="font-size:.82rem;color:var(--ro-muted);margin-top:.2rem;">{a.genre} — {a.origin}</div>
+                    <div style="font-size:.76rem;color:var(--ro-purple);margin-top:.5rem;font-style:italic;">♪ {a.tracks[0]}</div>
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="content-card" style="background:linear-gradient(135deg,rgba(255,215,0,.08),rgba(0,198,255,.06));border:1.5px solid rgba(0,198,255,.15);">
+            <h2>Vous êtes une maison de disques ou un artiste ?</h2>
+            <p>Radio Odyssey est à l'affût d'artistes émergents qui correspondent à la couleur musicale et à l'univers positif de l'antenne. Si vous souhaitez proposer un titre ou un artiste, envoyez votre demande par e-mail à <a href="mailto:odysseylaradio@gmail.com" style="color:var(--ro-purple);font-weight:700;">odysseylaradio@gmail.com</a>.</p>
+            <p style="margin-bottom:0;">Chaque proposition est écoutée avec attention — c'est ainsi que sont nées toutes les Découvertes présentées sur cette page.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="decouvertes-hub" />
+
+          <div class="content-card">
+            <h2>Poursuivre la découverte</h2>
+            <p>Retrouvez tous les artistes diffusés sur notre page <a href="/artistes-diffuses-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">artistes diffusés sur Radio Odyssey</a>, ou explorez les <a href="/styles-musicaux-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">styles musicaux</a> présents sur l'antenne.</p>
+          </div>
+
+          <div class="page-cta-bar">
+            <h3>Écoutez les Découvertes en direct</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <i class="bi bi-broadcast-pin"></i> Écouter Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

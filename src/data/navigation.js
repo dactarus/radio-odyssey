@@ -72,6 +72,7 @@ export const NAV_CATEGORIES = [
     pages: [
       { href: '/artistes-diffuses-radio-odyssey.html', emoji: '🎤', label: 'Artistes Diffusés', desc: "Madonna, Shakira, Daft Punk... qui passe sur l'antenne" },
       { href: '/styles-musicaux-radio-odyssey.html', emoji: '🎚️', label: 'Styles Musicaux', desc: 'Synthpop, dance, pop française, ballades...' },
+      { href: '/decouvertes-radio-odyssey.html', emoji: '✨', label: 'Découvertes Radio Odyssey', desc: 'Les artistes émergents soutenus par la radio' },
     ],
   },
   {
