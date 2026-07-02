@@ -104,7 +104,22 @@ Total live à ce jour : 31 pages (24 pages de contenu + 6 hubs + accueil).
 | `/artiste-mylene-farmer.html` | mylène farmer radio odyssey | Live (Lot 1) |
 | `/artiste-angele.html` | angèle radio odyssey | Live (Lot 1) |
 | `/artiste-aya-nakamura.html` | aya nakamura radio odyssey | Live (Lot 1, ajout hors classement passages — artiste incontournable signalée par le propriétaire) |
-| `/artiste-[slug].html` (×84 restants) | [nom artiste] radio odyssey | Planifié, par lots de 15-20 (§6) |
+| `/artiste-jennifer-lopez.html` | jennifer lopez radio odyssey | Live (Lot 2) |
+| `/artiste-taylor-swift.html` | taylor swift radio odyssey | Live (Lot 2) |
+| `/artiste-zazie.html` | zazie radio odyssey | Live (Lot 2) |
+| `/artiste-pascal-obispo.html` | pascal obispo radio odyssey | Live (Lot 2) |
+| `/artiste-justin-bieber.html` | justin bieber radio odyssey | Live (Lot 2) |
+| `/artiste-indochine.html` | indochine radio odyssey | Live (Lot 2) |
+| `/artiste-bebe-rexha.html` | bebe rexha radio odyssey | Live (Lot 2) |
+| `/artiste-ariana-grande.html` | ariana grande radio odyssey | Live (Lot 2) |
+| `/artiste-coldplay.html` | coldplay radio odyssey | Live (Lot 2) |
+| `/artiste-calvin-harris.html` | calvin harris radio odyssey | Live (Lot 2) |
+| `/artiste-alicia-keys.html` | alicia keys radio odyssey | Live (Lot 2) |
+| `/artiste-dua-lipa.html` | dua lipa radio odyssey | Live (Lot 2) |
+| `/artiste-the-weeknd.html` | the weeknd radio odyssey | Live (Lot 2) |
+| `/artiste-harry-styles.html` | harry styles radio odyssey | Live (Lot 2) |
+| `/artiste-sia.html` | sia radio odyssey | Live (Lot 2) |
+| `/artiste-[slug].html` (×69 restants) | [nom artiste] radio odyssey | Planifié, par lots de 15-20 (§6) |
 
 ### Conseils d'Écoute
 | URL | Mot-clé cible | Statut |
@@ -160,7 +175,11 @@ Shakira (105), Madonna (100), David Guetta (97), Gims (96), Ed Sheeran (92), Bru
 
 **URL pattern retenu et implémenté :** `/artiste-[slug].html`, plat, cohérent avec le reste du site. Techniquement : route dynamique Astro `src/pages/artiste-[slug].astro` avec `getStaticPaths()` lisant `src/data/artists.js` — ajouter un artiste = ajouter une entrée dans ce fichier, aucune autre édition de code nécessaire. Chaque fiche a son propre schema.org `MusicGroup`, une FAQ courte générée à partir des données (2 questions), et des liens vers 3 autres fiches artistes + les deux pages hub (`artistes-diffuses-radio-odyssey.html`, `styles-musicaux-radio-odyssey.html`). Les fiches ne sont pas listées individuellement dans le méga-menu (deviendrait ingérable à 100) — la découverte se fait via la page `artistes-diffuses-radio-odyssey.html` (qui pointe vers chaque fiche créée) et le sitemap.
 
-**Lot 1 (16 fiches) livré le 2026-07-02** : les 9 artistes "phares" déjà mis en avant (Madonna, Shakira, Michael Jackson, Ed Sheeran, Mika, Daft Punk, David Guetta, U2, Queen) + les 6 suivants par nombre de passages réels (Gims, Bruno Mars, Lady Gaga, Teddy Swims, Mylène Farmer, Angèle) + Aya Nakamura (ajoutée hors classement, sur demande explicite — artiste incontournable de la scène française malgré l'absence de rap urbain dans la programmation générale). Reste 84 fiches à produire par lots.
+**Lot 1 (16 fiches) livré le 2026-07-02** : les 9 artistes "phares" déjà mis en avant (Madonna, Shakira, Michael Jackson, Ed Sheeran, Mika, Daft Punk, David Guetta, U2, Queen) + les 6 suivants par nombre de passages réels (Gims, Bruno Mars, Lady Gaga, Teddy Swims, Mylène Farmer, Angèle) + Aya Nakamura (ajoutée hors classement, sur demande explicite — artiste incontournable de la scène française malgré l'absence de rap urbain dans la programmation générale).
+
+**Lot 2 (15 fiches) livré le 2026-07-02** : Jennifer Lopez, Taylor Swift, Zazie, Pascal Obispo, Justin Bieber, Indochine, Bebe Rexha, Ariana Grande, Coldplay, Calvin Harris, Alicia Keys, Dua Lipa, The Weeknd, Harry Styles, Sia — par nombre de passages réels, poursuite directe du classement. À partir de ce lot, la page `artistes-diffuses-radio-odyssey.html` ne garde en grandes cartes que les 9 premiers artistes ; les suivants passent en pastilles cliquables (`moreWithPage`) pour que la page reste gérable à l'échelle de 100 fiches.
+
+Reste 69 fiches à produire par lots.
 
 **⚠️ Piège grammatical à éviter sur toutes les futures fiches :** ne jamais accorder un adjectif/participe passé ("diffusé/diffusée") directement sur le nom de l'artiste dans un template générique — un artiste peut être un homme, une femme ou un groupe, et le genre n'est pas dans les données. Toujours formuler pour que l'accord se fasse sur "Radio Odyssey" (féminin, invariable dans le contexte) plutôt que sur l'artiste, ex. "Radio Odyssey diffuse-t-elle souvent [Artiste] ?" plutôt que "[Artiste] est-il/elle diffusé(e) ?". Bug repéré et corrigé le 2026-07-02 par le propriétaire du site sur la fiche Madonna.
 

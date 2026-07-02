@@ -4,22 +4,21 @@ import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import { ARTISTS } from '../data/artists.js';
 
-// Les 15 premières fiches créées (voir SEO_BLUEPRINT.md §6) — chacune a
-// sa propre page /artiste-[slug].html et est donc mise en avant ici.
-const flagship = ARTISTS.map((a) => ({
+// Les 9 premiers artistes de la liste restent en grandes cartes "phares"
+// (voir SEO_BLUEPRINT.md §6). Au-delà, la page resterait ingérable à
+// l'échelle de 100 fiches — les suivants passent en pastilles cliquables.
+const flagship = ARTISTS.slice(0, 9).map((a) => ({
   name: a.name,
   slug: a.slug,
   note: a.facts[0],
   example: a.tracks[0],
 }));
+const moreWithPage = ARTISTS.slice(9);
 
 // Artistes très présents sur l'antenne, pas encore dotés de leur propre
 // fiche (lots suivants — voir SEO_BLUEPRINT.md).
 const alsoOnAir = [
-  'Jennifer Lopez', 'Taylor Swift', 'Zazie', 'Pascal Obispo', 'Justin Bieber',
-  'Indochine', 'Bebe Rexha', 'Ariana Grande', 'Coldplay', 'Calvin Harris',
-  'Alicia Keys', 'Dua Lipa', 'The Weeknd', 'Harry Styles', 'Sia', 'Sting',
-  'Sabrina Carpenter', 'Katy Perry', 'Miley Cyrus', 'Céline Dion',
+  'Sting', 'Sabrina Carpenter', 'Katy Perry', 'Miley Cyrus', 'Céline Dion',
   'Simple Minds', 'Maroon 5', 'Phil Collins', 'Robbie Williams', 'Wham!',
   'Karol G', 'Vanessa Paradis', 'Jean-Jacques Goldman', 'Stromae', 'Elton John',
 ];
@@ -69,6 +68,16 @@ const alsoOnAir = [
                     <div style="font-size:.76rem;color:var(--ro-purple);margin-top:.5rem;font-style:italic;">♪ {a.example}</div>
                   </a>
                 </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Également très présents sur l'antenne</h2>
+            <p style="margin-bottom:1rem;">Chacun de ces artistes a désormais sa propre fiche, avec les titres réellement diffusés :</p>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+              {moreWithPage.map((a) => (
+                <a href={`/artiste-${a.slug}.html`} class="tag-pill" style="text-decoration:none;">{a.name} →</a>
               ))}
             </div>
           </div>
