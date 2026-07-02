@@ -88,6 +88,11 @@ Total live à ce jour : 31 pages (24 pages de contenu + 6 hubs + accueil).
 |---|---|---|
 | `/artistes-diffuses-radio-odyssey.html` | artistes diffusés radio odyssey | Live |
 | `/styles-musicaux-radio-odyssey.html` | styles musicaux radio odyssey | Live |
+| `/decouvertes-radio-odyssey.html` | découvertes radio odyssey | Live (voir §6bis) |
+| `/decouverte-tom-york.html` | tom york radio odyssey | Live |
+| `/decouverte-tree-gees.html` | tree gees radio odyssey | Live |
+| `/decouverte-tony-jay.html` | tony jay radio odyssey | Live |
+| `/decouverte-remi-dorage.html` | remi dorage radio odyssey | Live |
 | `/artiste-madonna.html` | madonna radio odyssey | Live (Lot 1) |
 | `/artiste-shakira.html` | shakira radio odyssey | Live (Lot 1) |
 | `/artiste-michael-jackson.html` | michael jackson radio odyssey | Live (Lot 1) |
@@ -267,8 +272,24 @@ Le propriétaire a expliqué son métier de programmateur radio, contexte import
 - **Cycle de vie d'un titre** : un titre est d'abord une **"nouveauté"** (rotation ~3 diffusions/jour). S'il est puissant, il bascule ensuite dans la catégorie **"récurrents"** — d'anciennes nouveautés qui reviennent avec une stratégie de programmation pensée pour garder une couleur actuelle. Ce n'est donc pas un simple vieillissement : c'est une decision éditoriale.
 - **Conséquence pour l'extraction CSV** : un export sur 1 mois surreprésente les nouveautés du moment (forte rotation temporaire) ; un export sur 6 mois (voir fichier `Radio odyssey report musique et chroniques -from-2026-01-01-to-2026-06-30.csv`, format différent — une ligne par titre avec un champ `Play frequency` déjà agrégé, pas un log brut par diffusion) lisse ce biais et reflète mieux le fonds récurrent réel de l'antenne.
 - **Vérification faite avec le fichier 6 mois** : le top 20 par cumul de `Play frequency` sur la période recoupe très largement les artistes déjà publiés (David Guetta, Taylor Swift, Gims, Shakira, Bruno Mars, Ed Sheeran, Madonna, Harry Styles, Mika, Katy Perry, R3HAB, Miley Cyrus, Pascal Obispo, Lady Gaga, Ofenbach, Angèle, Alex Warren, Vanessa Paradis) — la sélection en 7 lots basée sur l'export d'un seul mois (juin 2026) était donc solide, pas besoin de tout refaire.
-- **"Tom York"** (écarté du Lot 6 par prudence) apparaît de façon stable sur 6 mois : 285 passages cumulés sur 3 titres différents — ce n'est pas un artefact d'un seul mois. Toujours pas d'identité confirmée de mon côté ; à clarifier avec le propriétaire avant d'éventuellement lui créer une fiche.
-- **Piste de contenu à fort potentiel SEO (proposée, pas encore construite)** : un article expliquant concrètement comment la programmation de Radio Odyssey est construite (tranches horaires, cycle nouveauté → récurrent, absence d'automatisation façon Selector) serait un contenu d'expertise unique, non réplicable par un concurrent — bon candidat E-E-A-T. À discuter avec le propriétaire avant de le lancer (nouvelle page, angle et cocon à définir).
+- **"Tom York"** (écarté du Lot 6 par prudence) apparaît de façon stable sur 6 mois : 285 passages cumulés sur 3 titres différents — ce n'est pas un artefact d'un seul mois. ✅ Identité clarifiée par le propriétaire le 2026-07-02 : c'est un artiste "Découverte Radio Odyssey" (voir §6ter), fiche créée sous `/decouverte-tom-york.html`.
+- **Piste de contenu à fort potentiel SEO (proposée, pas encore construite)** : un article expliquant concrètement comment la programmation de Radio Odyssey est construite (tranches horaires, cycle nouveauté → récurrent, absence d'automatisation façon Selector) serait un contenu d'expertise unique, non réplicable par un concurrent — bon candidat E-E-A-T. Le propriétaire a donné le feu vert le 2026-07-02 ("on peut faire une page... tu pourras me poser toutes les questions") — une liste de questions d'interview lui a été envoyée (tranches horaires, déclencheur nouveauté→récurrent, durée moyenne d'une nouveauté, proportions cibles nouveautés/récurrents/golds/80s, traitement des Découvertes, exemple concret récent). En attente de ses réponses avant de rédiger la page.
+
+### 6ter. Cocon "Découvertes Radio Odyssey" (créé le 2026-07-02)
+
+Nouvelle sous-thématique dans "Artistes & Styles", distincte du cocon Artistes principal (§6) : des artistes émergents que le propriétaire choisit personnellement de soutenir (sollicitations de maisons de disques/labels), **pas classés par volume de diffusion**. Fichier source : `src/data/discoveries.js` ; route dynamique : `src/pages/decouverte-[slug].astro` ; page hub : `/decouvertes-radio-odyssey.html`.
+
+**Ton éditorial demandé par le propriétaire** : mettre en avant le fait que Radio Odyssey soutient les artistes et la scène musicale émergente, et que les maisons de disques/artistes peuvent proposer leur musique à `odysseylaradio@gmail.com`. Radio Odyssey se positionne comme "à l'affût" de talents qui correspondent à la couleur et à l'univers de l'antenne.
+
+**⚠️ Terminologie strictement interne, jamais à publier sur le site :** le propriétaire distingue en interne les "nouveautés" qui deviennent soit **récurrentes** (diffusion maintenue car le titre est fort), soit mises au **"Frigo"** (plus diffusées du tout) — ce dernier terme est un secret de fabrication explicitement demandé de ne jamais apparaître publiquement ("ne précise pas la notion de frigo, c'est interne, entre nous", 2026-07-02). Sur le site, cette distinction se traduit uniquement par un choix de temps verbal (présent pour un artiste toujours diffusé, passé pour un artiste qui a marqué l'antenne à un moment donné), jamais par une explication du mécanisme. Champ `active: true/false` dans `discoveries.js` pilote ce choix de temps dans le template — ne jamais ajouter de texte qui nommerait ou décrirait la catégorie "Frigo".
+
+**Fiches créées (lot 1, 4 artistes)** — statut déterminé par recoupement de l'historique de diffusion complet (fichiers couvrant janvier 2025 à juillet 2026, voir mémoire `reference-radioking-programming-export`), pas par supposition :
+- **Tom York** (`active: true`) — en rotation depuis mars 2025, toujours diffusé. Chanteur pop rock anglais, également remixeur pour OneRepublic et Lara Fabian.
+- **Tree Gees** (`active: true`) — en rotation depuis juin 2025, toujours diffusé. Groupe italien, hommage aux Bee Gees + compositions originales dans leur style (anecdote "Sweet Embrace").
+- **Tony Jay** (`active: false`) — diffusé avril-novembre 2025. DJ/producteur français, style afro/deep house/electro, single "Africa Vitamine" avec la chanteuse Luanne et la saxophoniste Mili Sax.
+- **Rémi Dorage** (`active: false`) — diffusé septembre-novembre 2025 (+ reliquat léger début 2026). Chanteur français, chanson positive/dansante, collaboration franco-danoise avec le producteur Néonors ("Un Sourire Lundi", "Ma Folie").
+
+Bios fournies directement par le propriétaire (dossiers de presse / connaissance personnelle) — ne pas réutiliser telles quelles ailleurs sans vérifier qu'elles restent à jour (nouveaux singles, nouveaux statuts actif/inactif) si de nouvelles Découvertes sont ajoutées plus tard.
 
 ---
 
@@ -288,4 +309,4 @@ Le propriétaire a expliqué son métier de programmateur radio, contexte import
 
 ---
 
-*Dernière mise à jour : 2026-07-02, lors de la création du Lot 7 du cocon Artistes (9 fiches) — clôture du lot initial de 69 fiches.*
+*Dernière mise à jour : 2026-07-02, lors de la création du cocon Découvertes Radio Odyssey (4 fiches + hub).*
