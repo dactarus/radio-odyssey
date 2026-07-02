@@ -164,7 +164,22 @@ Total live à ce jour : 31 pages (24 pages de contenu + 6 hubs + accueil).
 | `/artiste-lost-frequencies.html` | lost frequencies radio odyssey | Live (Lot 5) |
 | `/artiste-robin-schulz.html` | robin schulz radio odyssey | Live (Lot 5) |
 | `/artiste-rihanna.html` | rihanna radio odyssey | Live (Lot 5) |
-| `/artiste-[slug].html` (×24 restants) | [nom artiste] radio odyssey | Planifié, par lots de 15-20 (§6) |
+| `/artiste-ridsa.html` | ridsa radio odyssey | Live (Lot 6) |
+| `/artiste-doja-cat.html` | doja cat radio odyssey | Live (Lot 6) |
+| `/artiste-adele.html` | adele radio odyssey | Live (Lot 6) |
+| `/artiste-avicii.html` | avicii radio odyssey | Live (Lot 6) |
+| `/artiste-christina-aguilera.html` | christina aguilera radio odyssey | Live (Lot 6) |
+| `/artiste-jamiroquai.html` | jamiroquai radio odyssey | Live (Lot 6) |
+| `/artiste-lizzo.html` | lizzo radio odyssey | Live (Lot 6) |
+| `/artiste-the-black-eyed-peas.html` | black eyed peas radio odyssey | Live (Lot 6) |
+| `/artiste-bob-sinclar.html` | bob sinclar radio odyssey | Live (Lot 6) |
+| `/artiste-kylie-minogue.html` | kylie minogue radio odyssey | Live (Lot 6) |
+| `/artiste-moby.html` | moby radio odyssey | Live (Lot 6) |
+| `/artiste-laurent-voulzy.html` | laurent voulzy radio odyssey | Live (Lot 6) |
+| `/artiste-dj-snake.html` | dj snake radio odyssey | Live (Lot 6) |
+| `/artiste-pierre-garnier.html` | pierre garnier radio odyssey | Live (Lot 6) |
+| `/artiste-dario-g.html` | dario g radio odyssey | Live (Lot 6) |
+| `/artiste-[slug].html` (×9 restants) | [nom artiste] radio odyssey | Planifié, par lots de 15-20 (§6) |
 
 ### Conseils d'Écoute
 | URL | Mot-clé cible | Statut |
@@ -230,7 +245,9 @@ Shakira (105), Madonna (100), David Guetta (97), Gims (96), Ed Sheeran (92), Bru
 
 **Lot 5 (15 fiches) livré le 2026-07-02** : Clean Bandit, Charlotte Cardin, R3HAB, Simply Red, Damiano David, Ava Max, M. Pokora, Benson Boone, Kungs, Earth Wind & Fire, Charlie Winston, Amir, Lost Frequencies, Robin Schulz, Rihanna. Les 5 noms ambigus du Lot 4 restent écartés (toujours pas d'identité vérifiable). Un nom "Tom York" (37 passages, titre "Sunscreen") a aussi été écarté — probable graphie erronée dans l'export CSV, identité non confirmée, à ne pas confondre avec Thom Yorke (Radiohead) sans certitude. **Anomalie de données repérée** : le CSV contient une entrée "Jean‐Jacques Goldman" (37 passages) avec un tiret typographique différent (U+2010) de la fiche déjà publiée "Jean-Jacques Goldman" (tiret standard, 18 passages) — même artiste, deux graphies. Pas de nouvelle fiche créée (déjà couvert), mais le total réel de passages de Jean-Jacques Goldman est donc ~55, pas 18 — à corriger dans sa fiche existante si l'exactitude du chiffre affiché devient importante.
 
-Reste 24 fiches à produire par lots.
+**Lot 6 (15 fiches) livré le 2026-07-02** : Ridsa, Doja Cat, Adele, Avicii, Christina Aguilera, Jamiroquai, Lizzo, The Black Eyed Peas, Bob Sinclar, Kylie Minogue, Moby, Laurent Voulzy, DJ Snake, Pierre Garnier, Dario G — classement réel poursuivi, mêmes règles d'écartement des identités ambiguës (Santa, Styleto, "Justé, Jaxstyle, Jon" écartés ce tour-ci pour la même raison).
+
+Reste 9 fiches à produire (probablement un dernier petit lot).
 
 **⚠️ Piège grammatical à éviter sur toutes les futures fiches :** ne jamais accorder un adjectif/participe passé ("diffusé/diffusée") directement sur le nom de l'artiste dans un template générique — un artiste peut être un homme, une femme ou un groupe, et le genre n'est pas dans les données. Toujours formuler pour que l'accord se fasse sur "Radio Odyssey" (féminin, invariable dans le contexte) plutôt que sur l'artiste, ex. "Radio Odyssey diffuse-t-elle souvent [Artiste] ?" plutôt que "[Artiste] est-il/elle diffusé(e) ?". Bug repéré et corrigé le 2026-07-02 par le propriétaire du site sur la fiche Madonna.
 
@@ -252,4 +269,4 @@ Reste 24 fiches à produire par lots.
 
 ---
 
-*Dernière mise à jour : 2026-07-02, lors de la création du Lot 5 du cocon Artistes (15 fiches).*
+*Dernière mise à jour : 2026-07-02, lors de la création du Lot 6 du cocon Artistes (15 fiches).*
