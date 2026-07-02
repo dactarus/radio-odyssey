@@ -58,7 +58,6 @@ export const NAV_CATEGORIES = [
       { href: '/musique-pour-lapres-midi.html', emoji: '🎧', label: "L'Après-midi (14H-18H)", desc: 'Easy listening pour tenir la distance' },
       { href: '/musique-pour-laperitif.html', emoji: '🍸', label: "L'Apéritif (18H-21H)", desc: 'Mix du soir pour lancer la soirée' },
       { href: '/musique-pour-la-nuit.html', emoji: '🌙', label: 'La Nuit (21H-6H)', desc: 'Le fil Good Feeling non-stop' },
-      { href: '/comment-radio-odyssey-choisit-sa-musique.html', emoji: '🎛️', label: 'Comment on Choisit la Musique', desc: 'Les coulisses de la programmation, expliquées par le programmateur' },
     ],
   },
   {
@@ -89,6 +88,19 @@ export const NAV_CATEGORIES = [
       { href: '/ecouter-radio-odyssey-sur-mobile.html', emoji: '📱', label: 'Sur Mobile', desc: 'App, lecture en direct et applications tierces' },
       { href: '/ecouter-radio-odyssey-en-voiture.html', emoji: '🚗', label: 'En Voiture', desc: 'Bluetooth, CarPlay et Android Auto' },
       { href: '/ecouter-radio-odyssey-enceinte-connectee.html', emoji: '🔊', label: 'Enceinte Connectée', desc: 'Alexa, Google Home, Sonos...' },
+    ],
+  },
+  {
+    id: 'coulisses',
+    emoji: '🎬',
+    icon: '<svg viewBox="0 0 48 48" fill="none"><path d="M24 8L27 14L34 12L33 19L40 22L34 25L36 32L29 30L26 37L24 31L18 36L17 29L10 31L13 24L7 21L14 18L12 11L19 13L22 8L24 8Z" stroke="#FFD700" stroke-width="1.8" stroke-linejoin="round" fill="none"/><circle cx="24" cy="21" r="5" stroke="#7B2FBE" stroke-width="2"/></svg>',
+    iconBg: 'linear-gradient(135deg,rgba(255,215,0,.12),rgba(123,47,190,.1))',
+    label: 'Les Coulisses',
+    hub: '/coulisses-de-radio-odyssey.html',
+    hubTitle: 'Les Coulisses de Radio Odyssey',
+    hubIntro: "Programmation, jingles, choix éditoriaux... la fabrication de l'antenne expliquée par l'équipe de Radio Odyssey.",
+    pages: [
+      { href: '/comment-radio-odyssey-choisit-sa-musique.html', emoji: '🎛️', label: 'Comment on Choisit la Musique', desc: 'Les coulisses de la programmation, expliquées par le programmateur' },
     ],
   },
   {
