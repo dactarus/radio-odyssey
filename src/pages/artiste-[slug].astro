@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import { ARTISTS, GRADIENTS } from '../data/artists.js';
+
+export function getStaticPaths() {
+  return ARTISTS.map((artist, index) => ({
+    params: { slug: artist.slug },
+    props: { artist, index },
+  }));
+}
+
+const { artist, index } = Astro.props;
+const [gradientFrom, gradientTo] = GRADIENTS[index % GRADIENTS.length];
+
+const others = ARTISTS.filter((a) => a.slug !== artist.slug);
+const related = [0, 1, 2].map((offset) => others[(index + offset) % others.length]);
+
+const title = `${artist.name} sur Radio Odyssey — Titres Diffusés & Infos`;
+const description = `${artist.name} (${artist.genre}) sur Radio Odyssey : titres diffusés sur l'antenne, l'essentiel à savoir, et pourquoi cet artiste fait partie de la programmation.`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicGroup',
+  name: artist.name,
+  genre: artist.genre,
+  foundingLocation: artist.origin,
+};
+
+const faq = [
+  {
+    q: `Quels titres de ${artist.name} passent sur Radio Odyssey ?`,
+    a: `Parmi les titres régulièrement diffusés : ${artist.tracks.slice(0, 3).map((t) => `<em>${t}</em>`).join(', ')}. Retrouvez l'ensemble de la sélection en écoutant l'antenne en direct.`,
+  },
+  {
+    q: `${artist.name} est-il souvent diffusé sur Radio Odyssey ?`,
+    a: `Oui — ${artist.name} fait partie des artistes régulièrement présents dans la programmation (${artist.playCount} passages recensés sur un mois de diffusion). Voir aussi notre page <a href="/artistes-diffuses-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">artistes diffusés sur Radio Odyssey</a>.`,
+  },
+];
+---
+<Layout lang="fr" title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+  </Fragment>
+
+  <PageHero
+    gradientFrom={gradientFrom}
+    gradientTo={gradientTo}
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent={`${artist.name} sur Radio Odyssey`}
+    title={`${artist.name} sur Radio Odyssey`}
+    text={`${artist.genre} — ${artist.origin}. Découvrez pourquoi ${artist.name} fait partie de la programmation de l'antenne.`}
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="19" cy="27" r="14" stroke="white" stroke-width="2.3"/><circle cx="19" cy="27" r="4.5" stroke="white" stroke-width="1.8"/><circle cx="19" cy="27" r="1.2" fill="white"/><path d="M27 13L37 9V21L27 25Z" stroke="rgba(255,255,255,.8)" stroke-width="1.8" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>3 choses essentielles à savoir sur {artist.name}</h2>
+            <ul>
+              {artist.facts.map((fact) => <li set:html={fact} />)}
+            </ul>
+          </div>
+
+          <div class="content-card">
+            <h2>Titres de {artist.name} diffusés sur l'antenne</h2>
+            <p style="margin-bottom:1rem;">Extrait réel de la programmation de Radio Odyssey :</p>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+              {artist.tracks.map((track) => (
+                <span class="tag-pill">♪ {track}</span>
+              ))}
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Pourquoi {artist.name} est diffusé sur Radio Odyssey</h2>
+            <p set:html={artist.why} />
+            <p>Retrouvez cet univers musical sur notre page <a href={artist.linkHref} style="color:var(--ro-purple);font-weight:700;">{artist.linkLabel}</a>.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix={`artiste-${artist.slug}`} />
+
+          <RelatedPages
+            alsoLike={related.map((a) => ({
+              href: `/artiste-${a.slug}.html`,
+              label: a.name,
+              desc: `${a.genre} — ${a.origin}`,
+            }))}
+            associated={[
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les artistes diffusés' },
+              { href: '/styles-musicaux-radio-odyssey.html', label: 'Tous les styles musicaux' },
+              { href: '/artistes-et-styles.html', label: 'Le cocon Artistes & Styles' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez {artist.name} en direct sur Radio Odyssey</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Écouter Radio Odyssey
+              </a>
+              <a href="https://radio-odyssey-v8b.vercel.app/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <i class="bi bi-phone"></i> Télécharger l'application
+              </a>
+              <a href="/artistes-et-styles.html" class="btn-hero-ghost">
+                <i class="bi bi-grid"></i> Découvrir les autres thèmes
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

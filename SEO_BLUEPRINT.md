@@ -88,7 +88,22 @@ Total live à ce jour : 31 pages (24 pages de contenu + 6 hubs + accueil).
 |---|---|---|
 | `/artistes-diffuses-radio-odyssey.html` | artistes diffusés radio odyssey | Live |
 | `/styles-musicaux-radio-odyssey.html` | styles musicaux radio odyssey | Live |
-| `/artiste/[slug].html` (×100) | [nom artiste] radio odyssey | Planifié (§6) |
+| `/artiste-madonna.html` | madonna radio odyssey | Live (Lot 1) |
+| `/artiste-shakira.html` | shakira radio odyssey | Live (Lot 1) |
+| `/artiste-michael-jackson.html` | michael jackson radio odyssey | Live (Lot 1) |
+| `/artiste-ed-sheeran.html` | ed sheeran radio odyssey | Live (Lot 1) |
+| `/artiste-mika.html` | mika radio odyssey | Live (Lot 1) |
+| `/artiste-daft-punk.html` | daft punk radio odyssey | Live (Lot 1) |
+| `/artiste-david-guetta.html` | david guetta radio odyssey | Live (Lot 1) |
+| `/artiste-u2.html` | u2 radio odyssey | Live (Lot 1) |
+| `/artiste-queen.html` | queen radio odyssey | Live (Lot 1) |
+| `/artiste-gims.html` | gims radio odyssey | Live (Lot 1) |
+| `/artiste-bruno-mars.html` | bruno mars radio odyssey | Live (Lot 1) |
+| `/artiste-lady-gaga.html` | lady gaga radio odyssey | Live (Lot 1) |
+| `/artiste-teddy-swims.html` | teddy swims radio odyssey | Live (Lot 1) |
+| `/artiste-mylene-farmer.html` | mylène farmer radio odyssey | Live (Lot 1) |
+| `/artiste-angele.html` | angèle radio odyssey | Live (Lot 1) |
+| `/artiste-[slug].html` (×85 restants) | [nom artiste] radio odyssey | Planifié, par lots de 15-20 (§6) |
 
 ### Conseils d'Écoute
 | URL | Mot-clé cible | Statut |
@@ -142,7 +157,9 @@ Shakira (105), Madonna (100), David Guetta (97), Gims (96), Ed Sheeran (92), Bru
 
 **Rollout : par lots de 15-20**, en commençant par le haut du classement ci-dessus. Pas de génération des 100 en une passe (risque qualité/exactitude à cette échelle).
 
-**URL pattern à trancher avant le premier lot :** `/artiste-[nom].html` (cohérent avec le reste du site, plat) vs `/artiste/[nom].html` (sous-dossier). Le site utilise `build.format: 'file'` avec des URLs plates partout — recommandation : rester plat, ex. `/artiste-madonna.html`, pour cohérence avec l'existant.
+**URL pattern retenu et implémenté :** `/artiste-[slug].html`, plat, cohérent avec le reste du site. Techniquement : route dynamique Astro `src/pages/artiste-[slug].astro` avec `getStaticPaths()` lisant `src/data/artists.js` — ajouter un artiste = ajouter une entrée dans ce fichier, aucune autre édition de code nécessaire. Chaque fiche a son propre schema.org `MusicGroup`, une FAQ courte générée à partir des données (2 questions), et des liens vers 3 autres fiches artistes + les deux pages hub (`artistes-diffuses-radio-odyssey.html`, `styles-musicaux-radio-odyssey.html`). Les fiches ne sont pas listées individuellement dans le méga-menu (deviendrait ingérable à 100) — la découverte se fait via la page `artistes-diffuses-radio-odyssey.html` (qui pointe vers chaque fiche créée) et le sitemap.
+
+**Lot 1 (15 fiches) livré le 2026-07-02** : les 9 artistes "phares" déjà mis en avant (Madonna, Shakira, Michael Jackson, Ed Sheeran, Mika, Daft Punk, David Guetta, U2, Queen) + les 6 suivants par nombre de passages réels (Gims, Bruno Mars, Lady Gaga, Teddy Swims, Mylène Farmer, Angèle). Reste 85 fiches à produire par lots.
 
 ---
 
@@ -162,4 +179,4 @@ Shakira (105), Madonna (100), David Guetta (97), Gims (96), Ed Sheeran (92), Bru
 
 ---
 
-*Dernière mise à jour : 2026-07-02, lors de la création du Lot 002 (cocon Bien-être).*
+*Dernière mise à jour : 2026-07-02, lors de la création du Lot 1 du cocon Artistes (15 fiches).*

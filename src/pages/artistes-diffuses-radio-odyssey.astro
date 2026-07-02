@@ -2,21 +2,20 @@
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
+import { ARTISTS } from '../data/artists.js';
 
-const flagship = [
-  { name: 'Madonna', note: 'Une icône pop depuis les années 80', example: 'Into The Groove (You Can Dance Remix Edit)' },
-  { name: 'Shakira', note: "L'artiste la plus diffusée sur l'antenne en juin 2026", example: 'Hips Don’t Lie (Remix)' },
-  { name: 'Michael Jackson', note: 'Les golds indémodables, en version remasterisée', example: 'Earth Song (Jason Parker 2023 Remix)' },
-  { name: 'Ed Sheeran', note: 'Les ballades puissantes et les tubes du moment', example: 'Perfect (Mike Perry Remix)' },
-  { name: 'Mika', note: 'La pop joyeuse et colorée', example: 'Relax, Take It Easy (Nu Disco Mix)' },
-  { name: 'Daft Punk', note: "L'électro française devenue culte", example: 'Get Lucky Vs Fresh (Odyssey Mashup)' },
-  { name: 'David Guetta', note: 'La référence dance actuelle', example: 'Beautiful People (Cassö Remix)' },
-  { name: 'U2', note: 'Le rock qui traverse les générations', example: "Beautiful Day (ARTY Remix)" },
-  { name: 'Queen', note: 'Les hymnes intemporels', example: 'Radio Ga Ga (2019 Remix)' },
-];
+// Les 15 premières fiches créées (voir SEO_BLUEPRINT.md §6) — chacune a
+// sa propre page /artiste-[slug].html et est donc mise en avant ici.
+const flagship = ARTISTS.map((a) => ({
+  name: a.name,
+  slug: a.slug,
+  note: a.facts[0],
+  example: a.tracks[0],
+}));
 
+// Artistes très présents sur l'antenne, pas encore dotés de leur propre
+// fiche (lots suivants — voir SEO_BLUEPRINT.md).
 const alsoOnAir = [
-  'Gims', 'Bruno Mars', 'Lady Gaga', 'Teddy Swims', 'Mylène Farmer', 'Angèle',
   'Jennifer Lopez', 'Taylor Swift', 'Zazie', 'Pascal Obispo', 'Justin Bieber',
   'Indochine', 'Bebe Rexha', 'Ariana Grande', 'Coldplay', 'Calvin Harris',
   'Alicia Keys', 'Dua Lipa', 'The Weeknd', 'Harry Styles', 'Sia', 'Sting',
@@ -64,11 +63,11 @@ const alsoOnAir = [
             <div class="row g-3">
               {flagship.map((a) => (
                 <div class="col-md-6">
-                  <div style="background:linear-gradient(135deg,rgba(255,215,0,.08),rgba(123,47,190,.06));border-radius:14px;padding:1rem 1.2rem;height:100%;">
-                    <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--ro-dark);">{a.name}</div>
+                  <a href={`/artiste-${a.slug}.html`} style="display:block;text-decoration:none;color:inherit;background:linear-gradient(135deg,rgba(255,215,0,.08),rgba(123,47,190,.06));border-radius:14px;padding:1rem 1.2rem;height:100%;transition:transform .2s;">
+                    <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--ro-dark);">{a.name} <i class="bi bi-arrow-right" style="font-size:.75rem;color:var(--ro-purple);"></i></div>
                     <div style="font-size:.82rem;color:var(--ro-muted);margin-top:.2rem;">{a.note}</div>
                     <div style="font-size:.76rem;color:var(--ro-purple);margin-top:.5rem;font-style:italic;">♪ {a.example}</div>
-                  </div>
+                  </a>
                 </div>
               ))}
             </div>
@@ -76,7 +75,7 @@ const alsoOnAir = [
 
           <div class="content-card">
             <h2>Ils sont aussi très présents sur l'antenne</h2>
-            <p style="margin-bottom:1rem;">D'après notre relevé de programmation de juin 2026 — plus de <strong>12 900 titres diffusés</strong> et près de <strong>950 artistes différents</strong> — voici d'autres noms que vous entendrez régulièrement :</p>
+            <p style="margin-bottom:1rem;">D'après notre relevé de programmation de juin 2026 — plus de <strong>12 900 titres diffusés</strong> et près de <strong>950 artistes différents</strong> — voici d'autres noms que vous entendrez régulièrement (fiches à venir) :</p>
             <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
               {alsoOnAir.map((name) => (
                 <span class="tag-pill">{name}</span>
