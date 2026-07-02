@@ -1,0 +1,169 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import CoherenceExercise from '../components/CoherenceExercise.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Comment pratiquer la cohérence cardiaque',
+  description: "Guide pas à pas pour pratiquer la cohérence cardiaque : respiration en 5 secondes / 5 secondes, avec l'outil interactif de Radio Odyssey.",
+  step: [
+    { '@type': 'HowToStep', name: 'Installez-vous', text: 'Installez-vous confortablement, assis, dos droit, épaules relâchées.' },
+    { '@type': 'HowToStep', name: 'Inspirez', text: 'Inspirez lentement par le nez pendant 5 secondes en gonflant le ventre.' },
+    { '@type': 'HowToStep', name: 'Expirez', text: 'Expirez doucement par la bouche pendant 5 secondes, ventre qui rentre.' },
+    { '@type': 'HowToStep', name: 'Répétez', text: 'Répétez ce cycle pendant 5 minutes, soit environ 30 respirations.' },
+    { '@type': 'HowToStep', name: 'Terminez en douceur', text: 'Terminez la séance en revenant à une respiration naturelle, sans forcer.' },
+  ],
+};
+
+const faq = [
+  { q: 'Combien de temps dure une séance de cohérence cardiaque ?', a: "La méthode la plus citée est le <strong>3-6-5</strong> : 3 séances par jour, 6 respirations par minute, pendant 5 minutes. Sur Radio Odyssey, les séquences intégrées à l'antenne durent 1 ou 3 minutes selon l'heure — un format plus court, adapté à une écoute au fil de la journée." },
+  { q: 'Faut-il pratiquer tous les jours pour que ça fonctionne ?', a: "La régularité est généralement présentée comme plus importante que la durée. Pratiquer quelques minutes chaque jour, à heures fixes, est souvent recommandé plutôt que de longues séances occasionnelles." },
+  { q: 'La cohérence cardiaque peut-elle remplacer un traitement médical ?', a: "Non. La cohérence cardiaque est une technique de respiration qui peut accompagner une bonne hygiène de vie, mais elle ne remplace pas un avis ou un traitement médical. En cas de trouble de santé, consultez un professionnel de santé." },
+  { q: 'Peut-on pratiquer la cohérence cardiaque en marchant ou en travaillant ?', a: "Oui, une fois le rythme intégré, il est possible de le maintenir en marchant calmement ou en restant assis à son poste de travail — voir notre page dédiée à la <a href='/coherence-cardiaque-au-bureau.html' style='color:var(--ro-purple);font-weight:700;'>cohérence cardiaque au bureau</a>." },
+  { q: "Pourquoi le rythme 5 secondes / 5 secondes précisément ?", a: "Ce rythme correspond à 6 respirations par minute, un tempo souvent cité comme favorisant la variabilité de la fréquence cardiaque. C'est ce rythme qu'utilise l'outil interactif de cette page et les séquences diffusées sur l'antenne de Radio Odyssey." },
+];
+---
+<Layout
+  lang="fr"
+  title="Comment Pratiquer la Cohérence Cardiaque — Guide Pas à Pas | Radio Odyssey"
+  description="Le guide complet pour pratiquer la cohérence cardiaque : rythme 5s/5s, étapes détaillées, erreurs à éviter, avec l'outil interactif de Radio Odyssey."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(howToSchema)} />
+  </Fragment>
+
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#1e7fcb"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Comment pratiquer la cohérence cardiaque"
+    title="Comment Pratiquer la Cohérence Cardiaque"
+    text="Le guide pas à pas — rythme, étapes, erreurs à éviter, et un outil interactif pour s'entraîner tout de suite."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="17" stroke="white" stroke-width="2.3"/><path d="M24 15V24L30 28" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Qu'est-ce que la cohérence cardiaque, en bref</h2>
+            <p>La cohérence cardiaque est une technique de respiration guidée, basée sur un rythme précis : environ <strong>6 respirations par minute</strong>. Contrairement à une respiration libre, elle suit un tempo régulier — c'est justement ce tempo qui en fait l'intérêt, et ce que Radio Odyssey intègre directement dans sa programmation, chaque heure.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Le rythme à respecter : 5 secondes / 5 secondes</h2>
+            <h3>Pourquoi 6 respirations par minute ?</h3>
+            <p>Ce rythme (5 secondes d'inspiration, 5 secondes d'expiration) est celui le plus souvent cité dans les protocoles de cohérence cardiaque. Il est suffisamment lent pour se démarquer d'une respiration naturelle, sans être inconfortable à tenir.</p>
+            <h3>Combien de temps par séance ?</h3>
+            <p>La référence la plus connue est la méthode "3-6-5" : 3 fois par jour, 6 respirations par minute, pendant 5 minutes. Radio Odyssey propose des séquences plus courtes (1 ou 3 minutes) intégrées à l'antenne à heures fixes, pensées pour s'insérer facilement dans une journée.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Guide pas à pas : essayez maintenant</h2>
+            <p style="margin-bottom:1.5rem;">Suivez le disque ci-dessous : quand il grandit, inspirez. Quand il rétrécit, expirez.</p>
+          </div>
+
+          <CoherenceExercise />
+
+          <div class="content-card">
+            <h3 style="font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#1e7fcb;margin-bottom:1rem;">LES 5 ÉTAPES EN DÉTAIL</h3>
+            <div style="background:rgba(11,28,45,.04);border:1px solid rgba(123,47,190,.1);border-radius:16px;padding:1.2rem;display:flex;flex-direction:column;gap:.9rem;">
+              <div style="display:flex;gap:.85rem;align-items:flex-start;">
+                <span style="min-width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(30,127,203,.45);color:#1e7fcb;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</span>
+                <p style="margin:0;font-size:.91rem;line-height:1.65;color:var(--ro-muted);"><strong>Installez-vous</strong> confortablement, assis, dos droit, épaules relâchées.</p>
+              </div>
+              <div style="display:flex;gap:.85rem;align-items:flex-start;">
+                <span style="min-width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(30,127,203,.45);color:#1e7fcb;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</span>
+                <p style="margin:0;font-size:.91rem;line-height:1.65;color:var(--ro-muted);"><strong>Inspirez</strong> lentement par le nez pendant 5 secondes en gonflant le ventre.</p>
+              </div>
+              <div style="display:flex;gap:.85rem;align-items:flex-start;">
+                <span style="min-width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(30,127,203,.45);color:#1e7fcb;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</span>
+                <p style="margin:0;font-size:.91rem;line-height:1.65;color:var(--ro-muted);"><strong>Expirez</strong> doucement par la bouche pendant 5 secondes, ventre qui rentre.</p>
+              </div>
+              <div style="display:flex;gap:.85rem;align-items:flex-start;">
+                <span style="min-width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(30,127,203,.45);color:#1e7fcb;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</span>
+                <p style="margin:0;font-size:.91rem;line-height:1.65;color:var(--ro-muted);"><strong>Répétez</strong> ce cycle pendant 5 minutes, soit une trentaine de respirations.</p>
+              </div>
+              <div style="display:flex;gap:.85rem;align-items:flex-start;">
+                <span style="min-width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(30,127,203,.45);color:#1e7fcb;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">5</span>
+                <p style="margin:0;font-size:.91rem;line-height:1.65;color:var(--ro-muted);"><strong>Terminez en douceur</strong>, en revenant à une respiration naturelle, sans forcer.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Les erreurs fréquentes à éviter</h2>
+            <h3>Respirer trop vite</h3>
+            <p>Le réflexe naturel est souvent d'accélérer sous la pression du décompte. Mieux vaut ralentir consciemment, quitte à ne pas suivre le rythme exact au début.</p>
+            <h3>Forcer l'amplitude</h3>
+            <p>Une respiration ample ne veut pas dire une respiration forcée. Gardez un mouvement naturel du ventre, sans tension inutile dans les épaules ou la poitrine.</p>
+            <h3>Pratiquer de façon irrégulière</h3>
+            <p>Une pratique ponctuelle, uniquement dans les moments de crise, est moins efficace qu'une pratique régulière à heures fixes — c'est pour cela que Radio Odyssey diffuse ses séquences à heures précises chaque jour.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Quand pratiquer dans la journée</h2>
+            <h3>Le matin</h3>
+            <p>Pratiquer au réveil aide à démarrer la journée sur un rythme calme, avant l'agitation quotidienne. Voir notre page <a href="/musique-pour-le-reveil.html" style="color:var(--ro-purple);font-weight:700;">musique pour le réveil</a>.</p>
+            <h3>Avant un moment stressant</h3>
+            <p>Avant une réunion, un examen ou un rendez-vous important, quelques minutes de cohérence cardiaque peuvent aider à aborder le moment plus calmement.</p>
+            <h3>En fin de journée</h3>
+            <p>Pratiquer en fin d'après-midi ou en soirée aide à marquer une coupure avant de passer à autre chose.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pratiquer en musique avec Radio Odyssey</h2>
+            <h3>Les séquences intégrées à l'antenne</h3>
+            <p>Plutôt que d'ouvrir une application séparée, Radio Odyssey intègre directement des séquences de cohérence cardiaque dans son flux musical — vous écoutez la radio, et la séquence arrive au bon moment, sans rien configurer.</p>
+            <h3>Les horaires précis</h3>
+            <p>Séances de 3 minutes à 7h, 8h, 9h, 12h, 13h, 18h et 19h. Séances de 1 minute à 10h, 11h, 14h, 15h, 16h et 17h. Le détail complet est sur notre page <a href="/radio-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">radio cohérence cardiaque</a>.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="cpcc" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/radio-coherence-cardiaque.html', label: 'Radio Cohérence Cardiaque', desc: 'Écoutez les séquences intégrées à l\'antenne' },
+              { href: '/bienfaits-coherence-cardiaque.html', label: 'Les Bienfaits de la Cohérence Cardiaque', desc: 'Ce que dit la méthode sur ses effets' },
+              { href: '/musique-pour-respiration-guidee.html', label: 'Musique pour Respiration Guidée', desc: 'Approfondir la pratique en musique' },
+            ]}
+            associated={[
+              { href: '/coherence-cardiaque-au-bureau.html', label: 'Cohérence cardiaque au bureau' },
+              { href: '/radio-pour-travailler.html', label: 'Radio pour travailler' },
+              { href: '/bien-etre-et-sante.html', label: 'Tout le cocon Bien-être' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Pratiquez en musique, dès maintenant</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Écouter Radio Odyssey
+              </a>
+              <a href="https://radio-odyssey-v8b.vercel.app/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <i class="bi bi-phone"></i> Télécharger l'application
+              </a>
+              <a href="/bien-etre-et-sante.html" class="btn-hero-ghost">
+                <i class="bi bi-grid"></i> Découvrir les autres thèmes
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

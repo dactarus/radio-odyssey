@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'La cohérence cardiaque est-elle scientifiquement reconnue ?', a: "La cohérence cardiaque s'appuie sur des travaux autour de la variabilité de la fréquence cardiaque, étudiée depuis plusieurs décennies. Comme toute technique de respiration, ses effets varient d'une personne à l'autre — elle est généralement présentée comme un complément à un mode de vie équilibré, pas comme un traitement." },
+  { q: 'En combien de temps ressent-on des effets ?', a: "Certains utilisateurs rapportent une sensation de calme dès la première séance ; les effets rapportés sur la durée sont généralement associés à une pratique régulière sur plusieurs semaines." },
+  { q: 'La cohérence cardiaque est-elle adaptée à tout le monde ?', a: "C'est une technique de respiration douce, accessible à la majorité des personnes. En cas de pathologie cardiaque ou respiratoire, demandez l'avis d'un professionnel de santé avant de démarrer une pratique régulière." },
+  { q: 'Faut-il un équipement spécifique ?', a: "Non — c'est tout l'intérêt de la méthode. Un endroit calme suffit. Radio Odyssey l'intègre directement dans son flux, sans application ni capteur à installer." },
+];
+---
+<Layout
+  lang="fr"
+  title="Les Bienfaits de la Cohérence Cardiaque — Ce Que Dit la Méthode | Radio Odyssey"
+  description="Stress, sommeil, concentration : les effets généralement associés à la pratique régulière de la cohérence cardiaque, expliqués simplement."
+>
+  <PageHero
+    gradientFrom="#FF3CAC"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Les bienfaits de la cohérence cardiaque"
+    title="Les Bienfaits de la Cohérence Cardiaque"
+    text="Stress, sommeil, concentration, émotions : ce que la méthode de respiration guidée peut apporter, expliqué simplement."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 40C24 40 6 28 6 16C6 10.5 10 6 15 6C18 6 24 9 24 9C24 9 30 6 33 6C38 6 42 10.5 42 16C42 28 24 40 24 40Z" stroke="white" stroke-width="2.5"/><path d="M17 22L21 26L31 16" stroke="rgba(255,255,255,.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Une technique de respiration, pas un remède miracle</h2>
+            <p>La cohérence cardiaque est souvent présentée comme une solution rapide et accessible pour mieux gérer le stress du quotidien. C'est une technique de respiration guidée — ses effets rapportés dépendent de la régularité de la pratique, comme pour n'importe quelle habitude de bien-être.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Sur la gestion du stress</h2>
+            <h3>Un rythme qui invite au calme</h3>
+            <p>Ralentir volontairement sa respiration à 6 cycles par minute est souvent associé à une sensation de calme plus rapide qu'une respiration libre, en particulier dans les moments de tension.</p>
+            <h3>Une pause consciente dans la journée</h3>
+            <p>Au-delà de la respiration elle-même, le simple fait de s'arrêter quelques minutes, à heures fixes, aide à ponctuer une journée chargée.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Sur la concentration</h2>
+            <h3>Un esprit plus disponible</h3>
+            <p>De nombreux pratiquants rapportent une meilleure clarté mentale après une séance, ce qui en fait une technique parfois utilisée avant une tâche demandant de la concentration.</p>
+            <h3>Une transition entre deux activités</h3>
+            <p>Quelques minutes de cohérence cardiaque entre deux tâches peuvent aider à "réinitialiser" l'attention avant de passer à autre chose.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Sur le sommeil</h2>
+            <h3>Une pratique du soir</h3>
+            <p>Pratiquée en fin de journée, la cohérence cardiaque est souvent utilisée comme rituel avant le coucher, pour faire retomber les tensions accumulées.</p>
+            <h3>Ce que Radio Odyssey propose</h3>
+            <p>Les séquences de cohérence cardiaque de Radio Odyssey s'arrêtent à 19h — l'antenne de nuit privilégie ensuite le fil "Good Feeling", positif et non-stop. Pour une ambiance calme en soirée, direction nos pages <a href="/radio-detente-moderne.html" style="color:var(--ro-purple);font-weight:700;">détente moderne</a> ou <a href="/radio-anti-stress-gratuite.html" style="color:var(--ro-purple);font-weight:700;">anti-stress</a>.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Sur les émotions</h2>
+            <h3>Un outil de régulation</h3>
+            <p>La respiration guidée est fréquemment citée comme un moyen simple de reprendre pied face à une émotion forte, en redonnant un point d'ancrage physique (le souffle) sur lequel se concentrer.</p>
+            <h3>Une pratique complémentaire, pas un traitement</h3>
+            <p>Il est important de le rappeler : la cohérence cardiaque peut accompagner un mieux-être au quotidien, mais elle ne remplace pas un suivi médical ou psychologique en cas de besoin.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="bcc" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/comment-pratiquer-la-coherence-cardiaque.html', label: 'Comment Pratiquer la Cohérence Cardiaque', desc: 'Le guide pas à pas avec outil interactif' },
+              { href: '/radio-coherence-cardiaque.html', label: 'Radio Cohérence Cardiaque', desc: 'Écoutez les séquences sur l\'antenne' },
+              { href: '/radio-anti-stress-gratuite.html', label: 'Radio Anti-Stress Gratuite', desc: 'Pour relâcher la pression' },
+            ]}
+            associated={[
+              { href: '/musique-pour-respiration-guidee.html', label: 'Respiration guidée' },
+              { href: '/difference-musicotherapie-radio-bien-etre.html', label: 'Musicothérapie vs radio bien-être' },
+              { href: '/bien-etre-et-sante.html', label: 'Tout le cocon Bien-être' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Ressentez les effets par vous-même</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Écouter Radio Odyssey
+              </a>
+              <a href="https://radio-odyssey-v8b.vercel.app/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <i class="bi bi-phone"></i> Télécharger l'application
+              </a>
+              <a href="/bien-etre-et-sante.html" class="btn-hero-ghost">
+                <i class="bi bi-grid"></i> Découvrir les autres thèmes
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

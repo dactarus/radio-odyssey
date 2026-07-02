@@ -1,0 +1,39 @@
+---
+interface LinkItem {
+  href: string;
+  label: string;
+  desc: string;
+}
+interface Props {
+  alsoLike: LinkItem[];
+  associated: LinkItem[];
+}
+const { alsoLike, associated } = Astro.props;
+---
+{alsoLike.length > 0 && (
+  <div class="content-card">
+    <h2>Vous aimerez aussi</h2>
+    <div style="display:flex;flex-direction:column;gap:.7rem;">
+      {alsoLike.map((p) => (
+        <a href={p.href} style="display:flex;justify-content:space-between;align-items:center;gap:1rem;text-decoration:none;color:var(--ro-dark);padding:.7rem .9rem;border-radius:12px;background:rgba(123,47,190,.04);">
+          <span>
+            <strong style="color:var(--ro-purple);">{p.label}</strong><br/>
+            <span style="font-size:.82rem;color:var(--ro-muted);">{p.desc}</span>
+          </span>
+          <i class="bi bi-arrow-right" style="color:var(--ro-purple);flex-shrink:0;"></i>
+        </a>
+      ))}
+    </div>
+  </div>
+)}
+
+{associated.length > 0 && (
+  <div class="content-card">
+    <h2>Pages associées</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+      {associated.map((p) => (
+        <a href={p.href} class="tag-pill" style="text-decoration:none;">{p.label}</a>
+      ))}
+    </div>
+  </div>
+)}

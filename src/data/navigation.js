@@ -17,6 +17,13 @@ export const NAV_CATEGORIES = [
       { href: '/radio-anti-stress-gratuite.html', emoji: '🧘', label: 'Anti-Stress Gratuite', desc: 'Relâchez la pression avec notre sélection anti-stress' },
       { href: '/musique-pour-respiration-guidee.html', emoji: '🫁', label: 'Respiration Guidée', desc: 'Musique synchronisée avec votre respiration' },
       { href: '/radio-detente-moderne.html', emoji: '🌙', label: 'Détente Moderne', desc: 'Musique apaisante pour vous ressourcer après votre journée' },
+      { href: '/comment-pratiquer-la-coherence-cardiaque.html', emoji: '📖', label: 'Comment Pratiquer la Cohérence Cardiaque', desc: 'Le guide pas à pas avec outil interactif' },
+      { href: '/bienfaits-coherence-cardiaque.html', emoji: '✅', label: 'Les Bienfaits de la Cohérence Cardiaque', desc: 'Ce que dit la méthode sur ses effets' },
+      { href: '/radio-sans-publicite.html', emoji: '🚫', label: 'Radio Sans Publicité', desc: '100% gratuite, aucune coupure' },
+      { href: '/coherence-cardiaque-au-bureau.html', emoji: '💼', label: 'Cohérence Cardiaque au Bureau', desc: 'La pratiquer pendant sa journée de travail' },
+      { href: '/musique-sans-parole-pour-se-concentrer.html', emoji: '🎼', label: 'Musique Sans Parole pour se Concentrer', desc: "L'instrumental pour rester concentré" },
+      { href: '/difference-musicotherapie-radio-bien-etre.html', emoji: '⚖️', label: 'Musicothérapie ou Radio Bien-être ?', desc: 'Une clarification honnête' },
+      { href: '/avis-radio-odyssey-bien-etre.html', emoji: '💬', label: 'Avis sur Radio Odyssey', desc: 'Ce que nos auditeurs en disent' },
     ],
   },
   {

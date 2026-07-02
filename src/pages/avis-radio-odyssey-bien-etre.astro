@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'Les témoignages affichés sont-ils vérifiés par un tiers ?', a: "Ce sont des retours partagés par notre communauté d'auditeurs, présentés tels quels sur le site. Ce ne sont pas des avis certifiés par une plateforme d'avis indépendante." },
+  { q: 'Comment laisser mon propre avis sur Radio Odyssey ?', a: "Écrivez-nous directement à odysseylaradio@gmail.com — nous lisons chaque message, et les meilleurs retours peuvent être mis en avant sur le site." },
+  { q: 'Radio Odyssey convient-elle à tout le monde ?', a: "C'est une programmation grand public, pensée pour plaire au plus grand nombre. Comme pour toute radio, les goûts musicaux et les besoins de chacun restent différents — le mieux est de l'essayer gratuitement pour se faire son propre avis." },
+];
+---
+<Layout
+  lang="fr"
+  title="Avis sur Radio Odyssey — Le Bien-être au Quotidien Selon nos Auditeurs"
+  description="Ce que disent les auditeurs de Radio Odyssey sur l'aspect bien-être, la cohérence cardiaque intégrée, et pourquoi ils l'écoutent au quotidien."
+>
+  <PageHero
+    gradientFrom="#FF3CAC"
+    gradientTo="#FFD700"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Avis sur Radio Odyssey — Bien-être"
+    title="Avis sur Radio Odyssey"
+    text="Ce que nos auditeurs disent de l'aspect bien-être de la radio — et ce qu'on ne prétend pas être."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 6L28.5 18.5L42 20L31.5 28.5L34.5 42L24 34.5L13.5 42L16.5 28.5L6 20L19.5 18.5Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Ce que nos auditeurs disent de l'aspect bien-être</h2>
+            <h3>Sur la routine du matin</h3>
+            <blockquote style="border-left:3px solid var(--ro-purple);padding-left:1rem;margin:0 0 1rem;font-style:italic;color:var(--ro-dark);">
+              "Radio Odyssey, c'est ma dose quotidienne de bonheur ! Je ne peux pas commencer ma journée sans."
+              <footer style="font-style:normal;font-size:.82rem;color:var(--ro-muted);margin-top:.3rem;">— Sophie L., auditrice</footer>
+            </blockquote>
+            <blockquote style="border-left:3px solid var(--ro-purple);padding-left:1rem;margin:0;font-style:italic;color:var(--ro-dark);">
+              "Les années 80 à aujourd'hui, un vrai régal ! Et les séquences de cohérence cardiaque changent tout."
+              <footer style="font-style:normal;font-size:.82rem;color:var(--ro-muted);margin-top:.3rem;">— Claire B., auditrice</footer>
+            </blockquote>
+          </div>
+
+          <div class="content-card">
+            <h3 style="margin-top:0;">Sur l'ambiance au travail</h3>
+            <blockquote style="border-left:3px solid var(--ro-purple);padding-left:1rem;margin:0;font-style:italic;color:var(--ro-dark);">
+              "Une radio qui met de bonne humeur, j'adore ! Exactement ce dont j'avais besoin au travail."
+              <footer style="font-style:normal;font-size:.82rem;color:var(--ro-muted);margin-top:.3rem;">— Nathalie R., auditrice</footer>
+            </blockquote>
+          </div>
+
+          <div class="content-card">
+            <h2>Pourquoi ces retours reviennent souvent</h2>
+            <h3>La régularité des séquences cohérence cardiaque</h3>
+            <p>Le fait que les séquences arrivent à heures fixes, sans qu'il soit nécessaire d'y penser, revient souvent dans les retours — c'est la simplicité d'usage qui est appréciée, plus qu'une fonctionnalité en particulier.</p>
+            <h3>Une radio qui accompagne sans exiger d'attention</h3>
+            <p>Contrairement à une application de méditation qui demande de s'arrêter pour l'utiliser, Radio Odyssey reste un fond sonore que l'on peut suivre ou non, selon le moment.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Ce que Radio Odyssey n'est pas (pour rester honnête)</h2>
+            <h3>Pas un dispositif médical</h3>
+            <p>Radio Odyssey ne prétend traiter aucune pathologie. Voir notre page <a href="/difference-musicotherapie-radio-bien-etre.html" style="color:var(--ro-purple);font-weight:700;">musicothérapie ou radio bien-être</a> pour une explication plus complète de cette distinction.</p>
+            <h3>Pas une promesse de résultat garanti</h3>
+            <p>Comme pour toute pratique de bien-être, les effets ressentis varient d'une personne à l'autre. Nous préférons rester transparents plutôt que de promettre un résultat universel.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Comment se faire son propre avis</h2>
+            <h3>Tester gratuitement, sans engagement</h3>
+            <p>Aucune inscription, aucun coût : le meilleur moyen de savoir si Radio Odyssey vous convient reste de l'écouter.</p>
+            <h3>Comparer avec les autres pages bien-être du site</h3>
+            <p>Chaque page du <a href="/bien-etre-et-sante.html" style="color:var(--ro-purple);font-weight:700;">cocon Bien-être</a> détaille un angle différent — cohérence cardiaque, anti-stress, détente — pour trouver celui qui correspond le mieux à votre besoin.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Partager votre propre expérience</h2>
+            <h3>Comment nous contacter</h3>
+            <p>Écrivez-nous à <a href="mailto:odysseylaradio@gmail.com" style="color:var(--ro-purple);font-weight:700;">odysseylaradio@gmail.com</a> pour partager votre expérience de la radio.</p>
+            <h3>Pourquoi votre avis compte</h3>
+            <p>Radio Odyssey est une radio indépendante, sans grand groupe médiatique derrière elle — les retours des auditeurs comptent directement dans les choix de programmation.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="avis" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/radio-sans-publicite.html', label: 'Radio Sans Publicité', desc: 'Pourquoi Radio Odyssey reste gratuite' },
+              { href: '/difference-musicotherapie-radio-bien-etre.html', label: 'Musicothérapie vs Radio Bien-être', desc: 'Une clarification honnête' },
+            ]}
+            associated={[
+              { href: '/bien-etre-et-sante.html', label: 'Tout le cocon Bien-être' },
+              { href: '/radio-coherence-cardiaque.html', label: 'Radio Cohérence Cardiaque' },
+              { href: '/index.html', label: "Page d'accueil" },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Faites-vous votre propre avis</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Écouter Radio Odyssey
+              </a>
+              <a href="https://radio-odyssey-v8b.vercel.app/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <i class="bi bi-phone"></i> Télécharger l'application
+              </a>
+              <a href="/bien-etre-et-sante.html" class="btn-hero-ghost">
+                <i class="bi bi-grid"></i> Découvrir les autres thèmes
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'Peut-on pratiquer la cohérence cardiaque au bureau sans déranger ses collègues ?', a: "Oui — c'est justement l'intérêt d'une séquence intégrée à une radio en fond sonore : elle ne demande ni de fermer les yeux, ni de s'isoler. Un casque ou des écouteurs suffisent pour une pratique totalement discrète." },
+  { q: 'Faut-il des écouteurs pour en profiter au travail ?', a: "Ce n'est pas obligatoire si vous êtes seul dans votre bureau, mais recommandé en open space pour ne pas déranger vos collègues avec le flux musical." },
+  { q: 'Combien de temps ça représente sur une journée de travail ?', a: "Entre 9h et 18h, Radio Odyssey diffuse 6 séquences (1 minute chacune) : à 10h, 11h, 14h, 15h, 16h et 17h — soit 6 minutes réparties dans la journée, sans qu'il soit nécessaire de bloquer du temps dédié." },
+  { q: 'Mon employeur peut-il proposer ça à toute l\'équipe ?', a: "Oui, rien n'empêche de diffuser Radio Odyssey en fond sonore collectif dans un espace de travail qui s'y prête, à condition que ça convienne à toute l'équipe." },
+];
+---
+<Layout
+  lang="fr"
+  title="Cohérence Cardiaque au Bureau — Pratiquer Pendant sa Journée de Travail"
+  description="Comment intégrer la cohérence cardiaque à sa journée de travail, discrètement, grâce aux séquences diffusées par Radio Odyssey aux horaires de bureau."
+>
+  <PageHero
+    gradientFrom="#1e7fcb"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Cohérence cardiaque au bureau"
+    title="Cohérence Cardiaque au Bureau"
+    text="Intégrer la respiration guidée à sa journée de travail, sans quitter son poste ni bloquer du temps dédié."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="32" height="22" rx="3" stroke="white" stroke-width="2.3"/><line x1="18" y1="38" x2="30" y2="38" stroke="white" stroke-width="2.3" stroke-linecap="round"/><line x1="24" y1="32" x2="24" y2="38" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M16 21C16 21 18 25 20 21C22 17 24 25 26 21C28 17 30 21 32 21" stroke="rgba(255,255,255,.7)" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Pourquoi pratiquer au travail</h2>
+            <p>La journée de bureau concentre souvent l'essentiel des sources de tension : réunions, deadlines, sollicitations continues. C'est justement le contexte où une pause respiration de quelques secondes peut avoir le plus d'utilité — à condition qu'elle soit simple à intégrer sans bouleverser son organisation.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Les horaires de bureau et les séquences Radio Odyssey</h2>
+            <h3>Matinée (9h-12h)</h3>
+            <p>Deux séquences d'1 minute, à 10h et 11h, s'intègrent dans le créneau <a href="/playlist-pour-la-matinee.html" style="color:var(--ro-purple);font-weight:700;">Hits Non-Stop</a>.</p>
+            <h3>Pause déjeuner (12h-14h)</h3>
+            <p>Deux séquences plus longues, de 3 minutes, à 12h et 13h — un bon moment pour une vraie coupure avant de reprendre. Voir la page <a href="/musique-pour-la-pause-dejeuner.html" style="color:var(--ro-purple);font-weight:700;">musique pour la pause déjeuner</a>.</p>
+            <h3>Après-midi (14h-18h)</h3>
+            <p>Quatre séquences d'1 minute, à 14h, 15h, 16h et 17h — pile pendant le coup de mou classique de l'après-midi, détaillé sur notre page <a href="/musique-pour-lapres-midi.html" style="color:var(--ro-purple);font-weight:700;">musique pour l'après-midi</a>.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Comment pratiquer discrètement à son poste</h2>
+            <h3>Avec des écouteurs</h3>
+            <p>La solution la plus discrète en open space : un casque ou des écouteurs, et Radio Odyssey en fond pendant que vous travaillez normalement.</p>
+            <h3>Sans quitter son écran</h3>
+            <p>Contrairement à une application de méditation qui demande de fermer les yeux, la séquence passe dans le flux musical — vous continuez votre tâche, la respiration se fait en fond.</p>
+            <h3>Entre deux réunions</h3>
+            <p>Si une séquence tombe juste avant un rendez-vous, quelques respirations volontaires peuvent aider à aborder la réunion plus posément.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Les bénéfices attendus en contexte professionnel</h2>
+            <h3>Réduire la tension avant une réunion</h3>
+            <p>Quelques respirations lentes avant un échange important sont souvent citées comme un moyen simple d'aborder la discussion plus calmement.</p>
+            <h3>Retrouver de la concentration</h3>
+            <p>Une courte pause respiration entre deux tâches peut aider à "changer de registre" mentalement, plutôt que d'enchaîner sans coupure.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Mettre en place une routine d'équipe</h2>
+            <h3>Proposer un moment collectif</h3>
+            <p>Certaines équipes choisissent de diffuser une radio en fond sonore commun — Radio Odyssey peut s'intégrer à ce type d'usage, séquences de cohérence cardiaque comprises.</p>
+            <h3>Sensibiliser sans contraindre</h3>
+            <p>L'idée n'est pas d'imposer une pratique, mais de la rendre disponible : ceux qui le souhaitent suivent la séquence, les autres continuent simplement d'écouter la musique.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="ccb" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/comment-pratiquer-la-coherence-cardiaque.html', label: 'Comment Pratiquer la Cohérence Cardiaque', desc: 'Le guide pas à pas' },
+              { href: '/bienfaits-coherence-cardiaque.html', label: 'Les Bienfaits de la Cohérence Cardiaque', desc: 'Ce que dit la méthode' },
+            ]}
+            associated={[
+              { href: '/radio-pour-travailler.html', label: 'Radio pour travailler' },
+              { href: '/musique-pour-se-concentrer.html', label: 'Musique pour se concentrer' },
+              { href: '/musique-sans-parole-pour-se-concentrer.html', label: 'Musique sans parole pour se concentrer' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Intégrez la cohérence cardiaque à votre journée de travail</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Écouter Radio Odyssey
+              </a>
+              <a href="https://radio-odyssey-v8b.vercel.app/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <i class="bi bi-phone"></i> Télécharger l'application
+              </a>
+              <a href="/bien-etre-et-sante.html" class="btn-hero-ghost">
+                <i class="bi bi-grid"></i> Découvrir les autres thèmes
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

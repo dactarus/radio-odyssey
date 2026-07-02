@@ -1,0 +1,48 @@
+---
+interface QA {
+  q: string;
+  a: string;
+}
+interface Props {
+  items: QA[];
+  idPrefix: string;
+}
+const { items, idPrefix } = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+};
+---
+<div class="content-card">
+  <h2>Questions fréquentes</h2>
+  <div class="accordion ro-accordion" id={`faq-${idPrefix}`}>
+    {items.map((item, i) => (
+      <div class="accordion-item">
+        <h3 class="accordion-header">
+          <button
+            class={`accordion-button ${i === 0 ? '' : 'collapsed'}`}
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target={`#${idPrefix}-f${i}`}
+          >
+            {item.q}
+          </button>
+        </h3>
+        <div id={`${idPrefix}-f${i}`} class={`accordion-collapse collapse ${i === 0 ? 'show' : ''}`} data-bs-parent={`#faq-${idPrefix}`}>
+          <div class="accordion-body" set:html={item.a} />
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
