@@ -5,12 +5,12 @@ interface Props {
 const { current } = Astro.props;
 
 const slots = [
-  { href: '/musique-pour-le-reveil.html', time: '6H – 9H', label: 'Le Réveil', emoji: '🌅' },
-  { href: '/playlist-pour-la-matinee.html', time: '9H – 12H', label: 'La Matinée', emoji: '☀️' },
-  { href: '/musique-pour-la-pause-dejeuner.html', time: '12H – 14H', label: 'La Pause Déjeuner', emoji: '🕐' },
-  { href: '/musique-pour-lapres-midi.html', time: '14H – 18H', label: "L'Après-midi", emoji: '🎧' },
-  { href: '/musique-pour-laperitif.html', time: '18H – 21H', label: "L'Apéritif", emoji: '🍸' },
-  { href: '/musique-pour-la-nuit.html', time: '21H – 6H', label: 'La Nuit', emoji: '🌙' },
+  { href: '/musique-pour-le-reveil.html', time: '6H – 9H', label: 'Le Réveil', bi: 'sunrise' },
+  { href: '/playlist-pour-la-matinee.html', time: '9H – 12H', label: 'La Matinée', bi: 'sun' },
+  { href: '/musique-pour-la-pause-dejeuner.html', time: '12H – 14H', label: 'La Pause Déjeuner', bi: 'cup-hot' },
+  { href: '/musique-pour-lapres-midi.html', time: '14H – 18H', label: "L'Après-midi", bi: 'headphones' },
+  { href: '/musique-pour-laperitif.html', time: '18H – 21H', label: "L'Apéritif", bi: 'cup-straw' },
+  { href: '/musique-pour-la-nuit.html', time: '21H – 6H', label: 'La Nuit', bi: 'moon-stars' },
 ];
 ---
 <div class="content-card">
@@ -20,13 +20,13 @@ const slots = [
     {slots.map((s) => (
       s.href === current ? (
         <div style="display:flex;align-items:center;gap:.7rem;padding:.6rem .9rem;border-radius:12px;background:rgba(123,47,190,.08);border:1.5px solid rgba(123,47,190,.25);">
-          <span style="font-size:1.1rem;">{s.emoji}</span>
+          <span style="font-size:1.1rem;color:var(--ro-purple);"><i class={`bi bi-${s.bi}`}></i></span>
           <strong style="color:var(--ro-purple);flex:1;">{s.label}</strong>
           <span class="tag-pill" style="margin:0;">{s.time}</span>
         </div>
       ) : (
         <a href={s.href} style="display:flex;align-items:center;gap:.7rem;padding:.6rem .9rem;border-radius:12px;text-decoration:none;color:var(--ro-dark);transition:background .2s;">
-          <span style="font-size:1.1rem;">{s.emoji}</span>
+          <span style="font-size:1.1rem;color:var(--ro-purple);"><i class={`bi bi-${s.bi}`}></i></span>
           <strong style="flex:1;font-weight:700;">{s.label}</strong>
           <span class="tag-pill" style="margin:0;">{s.time}</span>
         </a>

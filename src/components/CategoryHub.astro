@@ -16,8 +16,8 @@ const category = NAV_CATEGORIES.find((c) => c.id === categoryId);
   {category.pages.map((p) => (
     <div class="col-md-6">
       <a class="page-card" href={p.href}>
-        <div class="pg-icon" style="background:linear-gradient(135deg,rgba(123,47,190,.1),rgba(255,60,172,.1));font-size:1.5rem;">
-          {p.emoji}
+        <div class="pg-icon" style="background:linear-gradient(135deg,rgba(123,47,190,.1),rgba(255,60,172,.1));color:var(--ro-purple);font-size:1.3rem;">
+          <i class={`bi bi-${p.bi}`}></i>
         </div>
         <div><h4>{p.label}</h4><p>{p.desc}</p></div>
         <i class="bi bi-arrow-right pg-arrow"></i>

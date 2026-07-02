@@ -90,7 +90,7 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
             {cat.pages.map((p) => (
               <li>
                 <a class="dropdown-item" href={p.href}>
-                  <strong>{p.emoji} {p.label}</strong>
+                  <strong><i class={`bi bi-${p.bi}`} style="color:var(--ro-purple);font-size:.85rem;margin-right:.35rem;"></i>{p.label}</strong>
                   <small>{p.desc}</small>
                 </a>
               </li>
