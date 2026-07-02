@@ -58,6 +58,7 @@ export const NAV_CATEGORIES = [
       { href: '/musique-pour-lapres-midi.html', emoji: '🎧', label: "L'Après-midi (14H-18H)", desc: 'Easy listening pour tenir la distance' },
       { href: '/musique-pour-laperitif.html', emoji: '🍸', label: "L'Apéritif (18H-21H)", desc: 'Mix du soir pour lancer la soirée' },
       { href: '/musique-pour-la-nuit.html', emoji: '🌙', label: 'La Nuit (21H-6H)', desc: 'Le fil Good Feeling non-stop' },
+      { href: '/comment-radio-odyssey-choisit-sa-musique.html', emoji: '🎛️', label: 'Comment on Choisit la Musique', desc: 'Les coulisses de la programmation, expliquées par le programmateur' },
     ],
   },
   {
