@@ -119,7 +119,22 @@ Total live à ce jour : 31 pages (24 pages de contenu + 6 hubs + accueil).
 | `/artiste-the-weeknd.html` | the weeknd radio odyssey | Live (Lot 2) |
 | `/artiste-harry-styles.html` | harry styles radio odyssey | Live (Lot 2) |
 | `/artiste-sia.html` | sia radio odyssey | Live (Lot 2) |
-| `/artiste-[slug].html` (×69 restants) | [nom artiste] radio odyssey | Planifié, par lots de 15-20 (§6) |
+| `/artiste-sting.html` | sting radio odyssey | Live (Lot 3) |
+| `/artiste-sabrina-carpenter.html` | sabrina carpenter radio odyssey | Live (Lot 3) |
+| `/artiste-katy-perry.html` | katy perry radio odyssey | Live (Lot 3) |
+| `/artiste-miley-cyrus.html` | miley cyrus radio odyssey | Live (Lot 3) |
+| `/artiste-celine-dion.html` | céline dion radio odyssey | Live (Lot 3) |
+| `/artiste-simple-minds.html` | simple minds radio odyssey | Live (Lot 3) |
+| `/artiste-maroon-5.html` | maroon 5 radio odyssey | Live (Lot 3) |
+| `/artiste-phil-collins.html` | phil collins radio odyssey | Live (Lot 3) |
+| `/artiste-robbie-williams.html` | robbie williams radio odyssey | Live (Lot 3) |
+| `/artiste-wham.html` | wham radio odyssey | Live (Lot 3) |
+| `/artiste-karol-g.html` | karol g radio odyssey | Live (Lot 3) |
+| `/artiste-vanessa-paradis.html` | vanessa paradis radio odyssey | Live (Lot 3) |
+| `/artiste-jean-jacques-goldman.html` | jean-jacques goldman radio odyssey | Live (Lot 3) |
+| `/artiste-stromae.html` | stromae radio odyssey | Live (Lot 3) |
+| `/artiste-elton-john.html` | elton john radio odyssey | Live (Lot 3) |
+| `/artiste-[slug].html` (×54 restants) | [nom artiste] radio odyssey | Planifié, par lots de 15-20 (§6) |
 
 ### Conseils d'Écoute
 | URL | Mot-clé cible | Statut |
@@ -179,7 +194,9 @@ Shakira (105), Madonna (100), David Guetta (97), Gims (96), Ed Sheeran (92), Bru
 
 **Lot 2 (15 fiches) livré le 2026-07-02** : Jennifer Lopez, Taylor Swift, Zazie, Pascal Obispo, Justin Bieber, Indochine, Bebe Rexha, Ariana Grande, Coldplay, Calvin Harris, Alicia Keys, Dua Lipa, The Weeknd, Harry Styles, Sia — par nombre de passages réels, poursuite directe du classement. À partir de ce lot, la page `artistes-diffuses-radio-odyssey.html` ne garde en grandes cartes que les 9 premiers artistes ; les suivants passent en pastilles cliquables (`moreWithPage`) pour que la page reste gérable à l'échelle de 100 fiches.
 
-Reste 69 fiches à produire par lots.
+**Lot 3 (15 fiches) livré le 2026-07-02** : Sting, Sabrina Carpenter, Katy Perry, Miley Cyrus, Céline Dion, Simple Minds, Maroon 5, Phil Collins, Robbie Williams, Wham!, Karol G, Vanessa Paradis, Jean-Jacques Goldman, Stromae, Elton John — noms qui étaient déjà annoncés (fiches à venir) sur la page hub, désormais tous dotés d'une fiche réelle. Le bloc "Ils sont aussi très présents sur l'antenne" (liste à plat, non cliquable) est retiré de la page hub puisqu'il est vide pour l'instant ; il sera réintroduit au prochain lot avec les 15 noms suivants.
+
+Reste 54 fiches à produire par lots.
 
 **⚠️ Piège grammatical à éviter sur toutes les futures fiches :** ne jamais accorder un adjectif/participe passé ("diffusé/diffusée") directement sur le nom de l'artiste dans un template générique — un artiste peut être un homme, une femme ou un groupe, et le genre n'est pas dans les données. Toujours formuler pour que l'accord se fasse sur "Radio Odyssey" (féminin, invariable dans le contexte) plutôt que sur l'artiste, ex. "Radio Odyssey diffuse-t-elle souvent [Artiste] ?" plutôt que "[Artiste] est-il/elle diffusé(e) ?". Bug repéré et corrigé le 2026-07-02 par le propriétaire du site sur la fiche Madonna.
 
@@ -201,4 +218,4 @@ Reste 69 fiches à produire par lots.
 
 ---
 
-*Dernière mise à jour : 2026-07-02, lors de la création du Lot 1 du cocon Artistes (15 fiches).*
+*Dernière mise à jour : 2026-07-02, lors de la création du Lot 3 du cocon Artistes (15 fiches).*

@@ -14,14 +14,6 @@ const flagship = ARTISTS.slice(0, 10).map((a) => ({
   example: a.tracks[0],
 }));
 const moreWithPage = ARTISTS.slice(10);
-
-// Artistes très présents sur l'antenne, pas encore dotés de leur propre
-// fiche (lots suivants — voir SEO_BLUEPRINT.md).
-const alsoOnAir = [
-  'Sting', 'Sabrina Carpenter', 'Katy Perry', 'Miley Cyrus', 'Céline Dion',
-  'Simple Minds', 'Maroon 5', 'Phil Collins', 'Robbie Williams', 'Wham!',
-  'Karol G', 'Vanessa Paradis', 'Jean-Jacques Goldman', 'Stromae', 'Elton John',
-];
 ---
 <Layout
   lang="fr"
@@ -83,14 +75,8 @@ const alsoOnAir = [
           </div>
 
           <div class="content-card">
-            <h2>Ils sont aussi très présents sur l'antenne</h2>
-            <p style="margin-bottom:1rem;">D'après notre relevé de programmation de juin 2026 — plus de <strong>12 900 titres diffusés</strong> et près de <strong>950 artistes différents</strong> — voici d'autres noms que vous entendrez régulièrement (fiches à venir) :</p>
-            <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
-              {alsoOnAir.map((name) => (
-                <span class="tag-pill">{name}</span>
-              ))}
-              <span class="tag-pill">et bien d'autres…</span>
-            </div>
+            <h2>Et bien d'autres…</h2>
+            <p style="margin-bottom:0;">D'après notre relevé de programmation de juin 2026 — plus de <strong>12 900 titres diffusés</strong> et près de <strong>950 artistes différents</strong> — de nouvelles fiches artistes sont ajoutées régulièrement. Revenez bientôt pour découvrir les prochains ajouts.</p>
           </div>
 
           <div class="content-card">
