@@ -149,7 +149,22 @@ Total live à ce jour : 31 pages (24 pages de contenu + 6 hubs + accueil).
 | `/artiste-amy-macdonald.html` | amy macdonald radio odyssey | Live (Lot 4) |
 | `/artiste-sade.html` | sade radio odyssey | Live (Lot 4) |
 | `/artiste-soprano.html` | soprano radio odyssey | Live (Lot 4) |
-| `/artiste-[slug].html` (×39 restants) | [nom artiste] radio odyssey | Planifié, par lots de 15-20 (§6) |
+| `/artiste-clean-bandit.html` | clean bandit radio odyssey | Live (Lot 5) |
+| `/artiste-charlotte-cardin.html` | charlotte cardin radio odyssey | Live (Lot 5) |
+| `/artiste-r3hab.html` | r3hab radio odyssey | Live (Lot 5) |
+| `/artiste-simply-red.html` | simply red radio odyssey | Live (Lot 5) |
+| `/artiste-damiano-david.html` | damiano david radio odyssey | Live (Lot 5) |
+| `/artiste-ava-max.html` | ava max radio odyssey | Live (Lot 5) |
+| `/artiste-m-pokora.html` | m pokora radio odyssey | Live (Lot 5) |
+| `/artiste-benson-boone.html` | benson boone radio odyssey | Live (Lot 5) |
+| `/artiste-kungs.html` | kungs radio odyssey | Live (Lot 5) |
+| `/artiste-earth-wind-and-fire.html` | earth wind and fire radio odyssey | Live (Lot 5) |
+| `/artiste-charlie-winston.html` | charlie winston radio odyssey | Live (Lot 5) |
+| `/artiste-amir.html` | amir radio odyssey | Live (Lot 5) |
+| `/artiste-lost-frequencies.html` | lost frequencies radio odyssey | Live (Lot 5) |
+| `/artiste-robin-schulz.html` | robin schulz radio odyssey | Live (Lot 5) |
+| `/artiste-rihanna.html` | rihanna radio odyssey | Live (Lot 5) |
+| `/artiste-[slug].html` (×24 restants) | [nom artiste] radio odyssey | Planifié, par lots de 15-20 (§6) |
 
 ### Conseils d'Écoute
 | URL | Mot-clé cible | Statut |
@@ -213,7 +228,9 @@ Shakira (105), Madonna (100), David Guetta (97), Gims (96), Ed Sheeran (92), Bru
 
 **Lot 4 (15 fiches) livré le 2026-07-02** : Tame Impala, Alex Warren, Jérémy Frérot, Sound Of Legend, Ofenbach, Djo, Christophe Willem, Christophe Maé, Tove Lo, Zaho, Bananarama, Clara Luciani, Amy Macdonald, Sade, Soprano — classement réel recalculé sur le même export CSV juin 2026. **5 entrées du classement ont été écartées** faute d'identité suffisamment vérifiable pour un contenu factuel fiable à ce stade : "Helena" (87 passages), "Marine" (72), "K-Pop Demon Hunters" (80 — bande originale d'un film d'animation, pas un artiste au sens propre), "The Second Voice" (68), "Jeck & Carla" (53). À revisiter si une identification fiable est possible plus tard (voir §8).
 
-Reste 39 fiches à produire par lots.
+**Lot 5 (15 fiches) livré le 2026-07-02** : Clean Bandit, Charlotte Cardin, R3HAB, Simply Red, Damiano David, Ava Max, M. Pokora, Benson Boone, Kungs, Earth Wind & Fire, Charlie Winston, Amir, Lost Frequencies, Robin Schulz, Rihanna. Les 5 noms ambigus du Lot 4 restent écartés (toujours pas d'identité vérifiable). Un nom "Tom York" (37 passages, titre "Sunscreen") a aussi été écarté — probable graphie erronée dans l'export CSV, identité non confirmée, à ne pas confondre avec Thom Yorke (Radiohead) sans certitude. **Anomalie de données repérée** : le CSV contient une entrée "Jean‐Jacques Goldman" (37 passages) avec un tiret typographique différent (U+2010) de la fiche déjà publiée "Jean-Jacques Goldman" (tiret standard, 18 passages) — même artiste, deux graphies. Pas de nouvelle fiche créée (déjà couvert), mais le total réel de passages de Jean-Jacques Goldman est donc ~55, pas 18 — à corriger dans sa fiche existante si l'exactitude du chiffre affiché devient importante.
+
+Reste 24 fiches à produire par lots.
 
 **⚠️ Piège grammatical à éviter sur toutes les futures fiches :** ne jamais accorder un adjectif/participe passé ("diffusé/diffusée") directement sur le nom de l'artiste dans un template générique — un artiste peut être un homme, une femme ou un groupe, et le genre n'est pas dans les données. Toujours formuler pour que l'accord se fasse sur "Radio Odyssey" (féminin, invariable dans le contexte) plutôt que sur l'artiste, ex. "Radio Odyssey diffuse-t-elle souvent [Artiste] ?" plutôt que "[Artiste] est-il/elle diffusé(e) ?". Bug repéré et corrigé le 2026-07-02 par le propriétaire du site sur la fiche Madonna.
 
@@ -235,4 +252,4 @@ Reste 39 fiches à produire par lots.
 
 ---
 
-*Dernière mise à jour : 2026-07-02, lors de la création du Lot 4 du cocon Artistes (15 fiches).*
+*Dernière mise à jour : 2026-07-02, lors de la création du Lot 5 du cocon Artistes (15 fiches).*
