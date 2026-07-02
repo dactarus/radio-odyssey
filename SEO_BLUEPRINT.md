@@ -36,14 +36,15 @@ Chaque nouvelle page doit répondre à une intention de recherche **réellement 
 
 | Cocon | Hub | Pages live | Pages prévues (non créées) |
 |---|---|---|---|
-| Bien-être & Santé | `/bien-etre-et-sante.html` | 5 | **+7 en cours (Lot 002, §5)** |
+| Bien-être & Santé | `/bien-etre-et-sante.html` | 12 | — |
 | Musique & Énergie | `/musique-et-energie.html` | 4 | — |
 | Playlists du Jour | `/playlists-du-jour.html` | 6 | — |
-| Artistes & Styles | `/artistes-et-styles.html` | 2 | **+100 fiches artistes (§6)** |
+| Artistes & Styles | `/artistes-et-styles.html` | 104 (2 hubs + 100 fiches artistes + 4 fiches Découvertes) | — (objectif 100 fiches atteint, §6) |
 | Conseils d'Écoute | `/conseils-ecoute.html` | 3 | — |
+| Les Coulisses | `/coulisses-de-radio-odyssey.html` | 1 | **Prévu : mécanique des jingles et autres coulisses éditoriales (demande du propriétaire, 2026-07-02)** |
 | International (EN) | `/international.html` | 4 | — |
 
-Total live à ce jour : 31 pages (24 pages de contenu + 6 hubs + accueil).
+Total live à ce jour : 145 pages (voir `git log` pour la valeur exacte, ce nombre évolue vite — ne pas se fier à ce total sans revérifier).
 
 ---
 
@@ -82,7 +83,6 @@ Total live à ce jour : 31 pages (24 pages de contenu + 6 hubs + accueil).
 | `/musique-pour-lapres-midi.html` | musique pour l'après-midi | Live |
 | `/musique-pour-laperitif.html` | musique pour l'apéritif | Live |
 | `/musique-pour-la-nuit.html` | musique pour la nuit | Live |
-| `/comment-radio-odyssey-choisit-sa-musique.html` | comment radio odyssey choisit sa musique | Live (voir §6ter suite) |
 
 ### Artistes & Styles
 | URL | Mot-clé cible | Statut |
@@ -202,6 +202,12 @@ Total live à ce jour : 31 pages (24 pages de contenu + 6 hubs + accueil).
 | `/ecouter-radio-odyssey-en-voiture.html` | écouter radio odyssey voiture | Live |
 | `/ecouter-radio-odyssey-enceinte-connectee.html` | écouter radio odyssey enceinte connectée | Live |
 
+### Les Coulisses (nouveau cocon, créé le 2026-07-02)
+| URL | Mot-clé cible | Statut |
+|---|---|---|
+| `/coulisses-de-radio-odyssey.html` | coulisses radio odyssey | Live (hub) |
+| `/comment-radio-odyssey-choisit-sa-musique.html` | comment radio odyssey choisit sa musique | Live (déplacé depuis Playlists du Jour) |
+
 ### International
 | URL | Mot-clé cible | Statut |
 |---|---|---|
@@ -274,7 +280,8 @@ Le propriétaire a expliqué son métier de programmateur radio, contexte import
 - **Conséquence pour l'extraction CSV** : un export sur 1 mois surreprésente les nouveautés du moment (forte rotation temporaire) ; un export sur 6 mois (voir fichier `Radio odyssey report musique et chroniques -from-2026-01-01-to-2026-06-30.csv`, format différent — une ligne par titre avec un champ `Play frequency` déjà agrégé, pas un log brut par diffusion) lisse ce biais et reflète mieux le fonds récurrent réel de l'antenne.
 - **Vérification faite avec le fichier 6 mois** : le top 20 par cumul de `Play frequency` sur la période recoupe très largement les artistes déjà publiés (David Guetta, Taylor Swift, Gims, Shakira, Bruno Mars, Ed Sheeran, Madonna, Harry Styles, Mika, Katy Perry, R3HAB, Miley Cyrus, Pascal Obispo, Lady Gaga, Ofenbach, Angèle, Alex Warren, Vanessa Paradis) — la sélection en 7 lots basée sur l'export d'un seul mois (juin 2026) était donc solide, pas besoin de tout refaire.
 - **"Tom York"** (écarté du Lot 6 par prudence) apparaît de façon stable sur 6 mois : 285 passages cumulés sur 3 titres différents — ce n'est pas un artefact d'un seul mois. ✅ Identité clarifiée par le propriétaire le 2026-07-02 : c'est un artiste "Découverte Radio Odyssey" (voir §6ter), fiche créée sous `/decouverte-tom-york.html`.
-- ✅ **Article publié le 2026-07-02** : `/comment-radio-odyssey-choisit-sa-musique.html` (cocon Playlists du Jour). Contenu construit à partir des réponses détaillées du propriétaire aux questions d'interview (7 tranches horaires en rotation, catégorie "remix années 80" limitée à 2-3 tranches, tranches matinales alternées, tranche 18h-minuit plus rythmée, limite du réglage global RadioKing vs Selector, cycle nouveauté→récurrent/fin de diffusion, méthode des auditoriums et son regard critique dessus, traitement des Découvertes avec jingle dédié, exemple de la programmation de Noël). **Deux points explicitement gardés confidentiels par le propriétaire** ("mais chut…", "encore un secret de fabrication…") : l'alternative aux auditoriums coûteux, et les critères précis de sélection des titres de Noël — mentionnés sur la page comme du "savoir-faire maison" sans être détaillés. Rappel : le terme interne "Frigo" (voir §6ter) ne doit jamais apparaître sur le site — règle qui s'applique à tout contenu futur sur ce sujet.
+- ✅ **Article publié le 2026-07-02** : `/comment-radio-odyssey-choisit-sa-musique.html`. Contenu construit à partir des réponses détaillées du propriétaire aux questions d'interview (7 tranches horaires en rotation, catégorie "remix années 80" limitée à 2-3 tranches, tranches matinales alternées, tranche 18h-minuit plus rythmée, limite du réglage global RadioKing vs Selector, cycle nouveauté→récurrent/fin de diffusion, méthode des auditoriums et son regard critique dessus, traitement des Découvertes avec jingle dédié, exemple de la programmation de Noël). **Deux points explicitement gardés confidentiels par le propriétaire** ("mais chut…", "encore un secret de fabrication…") : l'alternative aux auditoriums coûteux, et les critères précis de sélection des titres de Noël — mentionnés sur la page comme du "savoir-faire maison" sans être détaillés. Rappel : le terme interne "Frigo" (voir §6ter) ne doit jamais apparaître sur le site — règle qui s'applique à tout contenu futur sur ce sujet.
+- **Réorganisation du 2026-07-02** : le propriétaire a demandé de sortir cet article de "Playlists du Jour" pour créer un cocon dédié, **"Les Coulisses de Radio Odyssey"** (nouvel onglet du méga-menu, positionné entre "Conseils d'Écoute" et "International"), avec l'intention explicite d'y ajouter plus tard d'autres contenus coulisses (ex. la mécanique de fabrication des jingles et leur rôle dans le flux musical). Hub : `/coulisses-de-radio-odyssey.html`. Note technique : le libellé complet "Les Coulisses de Radio Odyssey" est utilisé comme titre de page/H1, mais l'onglet du méga-menu affiche la forme courte "Les Coulisses" (cohérent avec la longueur des autres onglets et pour éviter que la barre de navigation ne passe à la ligne sur les résolutions d'ordinateur portable ~1280-1366px).
 
 ### 6ter. Cocon "Découvertes Radio Odyssey" (créé le 2026-07-02)
 
@@ -310,4 +317,4 @@ Bios fournies directement par le propriétaire (dossiers de presse / connaissanc
 
 ---
 
-*Dernière mise à jour : 2026-07-02, lors de la publication de l'article "Comment Radio Odyssey choisit sa musique".*
+*Dernière mise à jour : 2026-07-02, lors de la création du cocon "Les Coulisses de Radio Odyssey" (7e catégorie du méga-menu).*
