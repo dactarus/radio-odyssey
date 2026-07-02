@@ -12,7 +12,7 @@ Dernière mise à jour : 1er juillet 2026
 | **URL** | https://www.radio-odyssey.com |
 | **Slogan** | La Positive Radio ! |
 | **Email** | odysseylaradio@gmail.com |
-| **Créé le** | 19 janvier 2024 |
+| **Créé le** | 19 janvier 2025 |
 | **Hébergeur** | Vercel (gratuit) |
 | **Domaine** | IONOS |
 | **Dépôt** | GitHub → déploiement auto Vercel |
