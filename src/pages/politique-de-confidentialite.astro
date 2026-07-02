@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<Layout
+  lang="fr"
+  title="Politique de Confidentialité — Radio Odyssey"
+  description="Politique de confidentialité de Radio Odyssey : quelles données sont collectées (très peu), quels cookies sont déposés (aucun), et comment nous contacter."
+>
+  <PageHero
+    gradientFrom="#0b1c2d"
+    gradientTo="#1e7fcb"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Politique de Confidentialité"
+    title="Politique de Confidentialité"
+    text="Ce que Radio Odyssey collecte comme données (très peu), et ce qu'elle ne fait pas."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 6L38 12V22C38 32 32 39 24 42C16 39 10 32 10 22V12L24 6Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/><path d="M18 24L22.5 28.5L31 19" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Radio Odyssey attache de l'importance à la protection de votre vie privée. Cette page explique, simplement et honnêtement, ce que le site collecte comme données — et surtout ce qu'il ne collecte pas.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Aucun compte, aucun formulaire d'inscription</h2>
+            <p style="margin-bottom:0;">Radio Odyssey ne demande la création d'aucun compte pour écouter la radio. Le site ne contient aucun formulaire d'inscription, aucune newsletter et aucun système de connexion. La seule façon de nous contacter est l'e-mail (<a href="mailto:odysseylaradio@gmail.com" style="color:var(--ro-purple);font-weight:700;">odysseylaradio@gmail.com</a>) : vous restez seul maître des informations que vous choisissez d'y inclure.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Cookies et mesure d'audience</h2>
+            <p style="margin-bottom:0;">Le site radio-odyssey.com ne dépose aucun cookie de suivi publicitaire, et n'utilise actuellement aucun outil de mesure d'audience (Google Analytics ou équivalent). Aucun bandeau de consentement cookies n'est donc nécessaire à ce jour. Si un outil de mesure d'audience respectueux de la vie privée venait à être mis en place, cette page serait mise à jour en conséquence.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Services tiers utilisés sur le site</h2>
+            <p>Certaines ressources techniques sont chargées depuis des serveurs tiers pour faire fonctionner le site, ce qui peut impliquer la transmission de votre adresse IP à ces services dans le cadre strictement technique de l'affichage de la page :</p>
+            <ul>
+              <li><strong>Lecteur radio RadioKing</strong> — le player intégré (iframe) est fourni par RadioKing, notre hébergeur de diffusion. Son usage peut être soumis à la politique de confidentialité propre de RadioKing.</li>
+              <li><strong>Polices Google Fonts</strong> et <strong>bibliothèques CDN (jsDelivr)</strong> — utilisées pour l'affichage (typographies, icônes, mise en page), chargées depuis les serveurs de Google et de jsDelivr.</li>
+            </ul>
+            <p style="margin-bottom:0;">Aucune de ces ressources n'est utilisée par Radio Odyssey à des fins de profilage ou de publicité ciblée.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Hébergement</h2>
+            <p style="margin-bottom:0;">Le site est hébergé par <strong>Vercel Inc.</strong> (340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis), qui peut conserver des journaux techniques standards (adresse IP, date et heure des requêtes) à des fins de sécurité et de bon fonctionnement du service, indépendamment de toute action de Radio Odyssey.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Vos droits</h2>
+            <p style="margin-bottom:0;">Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification et de suppression des données vous concernant. Radio Odyssey ne collectant pas de données personnelles en dehors de ce que vous envoyez volontairement par e-mail, ce droit s'exerce simplement en nous écrivant à <a href="mailto:odysseylaradio@gmail.com" style="color:var(--ro-purple);font-weight:700;">odysseylaradio@gmail.com</a>.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Mise à jour de cette politique</h2>
+            <p style="margin-bottom:0;">Cette politique de confidentialité peut être amenée à évoluer, notamment si de nouveaux outils (mesure d'audience, formulaire) venaient à être ajoutés au site. Dernière mise à jour : juillet 2026.</p>
+          </div>
+
+          <div class="page-cta-bar">
+            <h3>Une question sur vos données ?</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="mailto:odysseylaradio@gmail.com" class="btn-hero">
+                <i class="bi bi-envelope"></i> Nous écrire
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

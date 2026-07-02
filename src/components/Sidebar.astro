@@ -11,7 +11,7 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
   <hr style="border-color:rgba(123,47,190,.1);"/>
   <p style="font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--ro-muted);margin:.8rem 0 .4rem;">Explorer le site</p>
   <div style="display:flex;flex-direction:column;gap:.28rem;font-size:.82rem;">
-    <a href="/index.html" style="color:var(--ro-purple);text-decoration:none;">🏠 Accueil</a>
+    <a href="/" style="color:var(--ro-purple);text-decoration:none;">🏠 Accueil</a>
     {NAV_CATEGORIES.map((cat) => (
       <a href={cat.hub} style="color:var(--ro-purple);text-decoration:none;">{cat.emoji} {cat.label}</a>
     ))}
