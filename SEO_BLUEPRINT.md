@@ -179,7 +179,15 @@ Total live à ce jour : 31 pages (24 pages de contenu + 6 hubs + accueil).
 | `/artiste-dj-snake.html` | dj snake radio odyssey | Live (Lot 6) |
 | `/artiste-pierre-garnier.html` | pierre garnier radio odyssey | Live (Lot 6) |
 | `/artiste-dario-g.html` | dario g radio odyssey | Live (Lot 6) |
-| `/artiste-[slug].html` (×9 restants) | [nom artiste] radio odyssey | Planifié, par lots de 15-20 (§6) |
+| `/artiste-jain.html` | jain radio odyssey | Live (Lot 7) |
+| `/artiste-lewis-capaldi.html` | lewis capaldi radio odyssey | Live (Lot 7) |
+| `/artiste-beyonce.html` | beyoncé radio odyssey | Live (Lot 7) |
+| `/artiste-amy-winehouse.html` | amy winehouse radio odyssey | Live (Lot 7) |
+| `/artiste-julien-dore.html` | julien doré radio odyssey | Live (Lot 7) |
+| `/artiste-craig-david.html` | craig david radio odyssey | Live (Lot 7) |
+| `/artiste-the-avener.html` | the avener radio odyssey | Live (Lot 7) |
+| `/artiste-shawn-mendes.html` | shawn mendes radio odyssey | Live (Lot 7) |
+| `/artiste-bob-marley.html` | bob marley radio odyssey | Live (Lot 7) |
 
 ### Conseils d'Écoute
 | URL | Mot-clé cible | Statut |
@@ -247,7 +255,7 @@ Shakira (105), Madonna (100), David Guetta (97), Gims (96), Ed Sheeran (92), Bru
 
 **Lot 6 (15 fiches) livré le 2026-07-02** : Ridsa, Doja Cat, Adele, Avicii, Christina Aguilera, Jamiroquai, Lizzo, The Black Eyed Peas, Bob Sinclar, Kylie Minogue, Moby, Laurent Voulzy, DJ Snake, Pierre Garnier, Dario G — classement réel poursuivi, mêmes règles d'écartement des identités ambiguës (Santa, Styleto, "Justé, Jaxstyle, Jon" écartés ce tour-ci pour la même raison).
 
-Reste 9 fiches à produire (probablement un dernier petit lot).
+**Lot 7 (9 fiches) livré le 2026-07-02** : Jain, Lewis Capaldi, Beyoncé, Amy Winehouse, Julien Doré, Craig David, The Avener, Shawn Mendes, Bob Marley. **Ce lot boucle le lot initial de 69 fiches annoncé par le propriétaire** — total cocon Artistes : 84 fiches (16 + 15 + 15 + 15 + 15 + 15 + 9, moins les 5 identités écartées faute de fiabilité). Une nouvelle vague pourra être planifiée ultérieurement si le propriétaire le souhaite, en repartant du classement CSV au-delà du seuil de ~24 passages/mois atteint ici.
 
 **⚠️ Piège grammatical à éviter sur toutes les futures fiches :** ne jamais accorder un adjectif/participe passé ("diffusé/diffusée") directement sur le nom de l'artiste dans un template générique — un artiste peut être un homme, une femme ou un groupe, et le genre n'est pas dans les données. Toujours formuler pour que l'accord se fasse sur "Radio Odyssey" (féminin, invariable dans le contexte) plutôt que sur l'artiste, ex. "Radio Odyssey diffuse-t-elle souvent [Artiste] ?" plutôt que "[Artiste] est-il/elle diffusé(e) ?". Bug repéré et corrigé le 2026-07-02 par le propriétaire du site sur la fiche Madonna.
 
@@ -269,4 +277,4 @@ Reste 9 fiches à produire (probablement un dernier petit lot).
 
 ---
 
-*Dernière mise à jour : 2026-07-02, lors de la création du Lot 6 du cocon Artistes (15 fiches).*
+*Dernière mise à jour : 2026-07-02, lors de la création du Lot 7 du cocon Artistes (9 fiches) — clôture du lot initial de 69 fiches.*
