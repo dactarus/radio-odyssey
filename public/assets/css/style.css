@@ -132,12 +132,6 @@ img { max-width: 100%; }
   align-self: flex-start;
   display: block;
 }
-/* L'iframe mobile est cachée par défaut sur desktop */
-#topRadioBar iframe.rk-mobile {
-  display: none;
-}
-
-
 .rk-mobile-btn { display: none; }
 
 /* Wave visualiser */
@@ -594,11 +588,10 @@ img { max-width: 100%; }
   .bar-logo { display: flex !important; margin-left: 0 !important; }
   .bar-logo-img { width: 44px !important; height: 44px !important; }
 
-  /* Cacher badge, wave et les deux iframes */
+  /* Cacher badge, wave et l'iframe desktop */
   .live-badge { display: none !important; }
   .bar-wave   { display: none !important; }
   #topRadioBar iframe.rk-desktop { display: none !important; }
-  #topRadioBar iframe.rk-mobile  { display: none !important; }
 
   /* Bouton écoute mobile : grand, facile à taper */
   .rk-mobile-btn {
