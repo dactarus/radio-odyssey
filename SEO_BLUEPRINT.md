@@ -478,4 +478,16 @@ Elle a vu la page en ligne et fait trois retours au propriétaire :
 
 ---
 
-*Dernière mise à jour : 2026-07-03, retours partenaire post-publication (§15).*
+## 16. Chantier "site plus pro" (2026-07-03) — faux avis, performance, images sociales
+
+Le propriétaire a demandé, en tant que challenge, comment rendre le site plus attractif/professionnel. Punch list proposée (5 points), traitée dans l'ordre de priorité :
+
+1. **Faux témoignages retirés** — voir commit `698fbc4`. Remplacés par une invitation honnête à partager de vrais avis (homepage + `/avis-radio-odyssey-bien-etre.html`).
+2. **Audit de performance réel (Lighthouse)** — API PageSpeed Insights indisponible (quota), Lighthouse lancé en local via Chrome headless contre le site en production. Résultat initial : 30/100 mobile, dû à 3 feuilles de style bloquantes chargées depuis des CDN externes (Bootstrap, Google Fonts, Bootstrap Icons — cette dernière avec `font-display: block`, jusqu'à 3s perdues). Corrigé en auto-hébergeant polices/Bootstrap/icônes (`7a412e3`), testé sur branche séparée avant fusion. **Résultat mesuré en production : 30 → 52/100**, LCP 8,4s → 5,1s. Un facteur plus lourd (travail de rendu/mise en page) reste non traité — chantier distinct, pas couvert ici.
+3. **Images de partage social (OG)** — voir commit `6b83006`. 8 visuels 1200×630 générés via un template HTML rendu par Chrome headless (pas de dépendance à un outil de design externe), pour la homepage et les 7 hubs de cocon. Le reste des pages garde un visuel par défaut cohérent (`og/home.jpg`) plutôt que le logo carré brut utilisé partout avant.
+4. **Mettre en avant la présence multi-plateforme** — proposé, pas encore traité.
+5. **Audit du maillage interne** — proposé, pas encore traité.
+
+---
+
+*Dernière mise à jour : 2026-07-03, chantier "site plus pro" — faux avis, performance, images OG (§16).*
