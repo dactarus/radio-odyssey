@@ -6,7 +6,7 @@ import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
 
 const faq = [
-  { q: 'Qui est Elisabeth Bélot-Grimaud ?', a: "Docteure en psychologie cognitive, elle est chercheuse et enseignante en psychologie, présidente de l'Association Française et francophone de Psychologie Positive (AFfPP), autrice de « Programmez votre cerveau pour le bonheur » et conférencière TEDx à deux reprises. Elle anime aussi le podcast « L'instant Beau Bien Bon »." },
+  { q: 'Qui est Elisabeth Bélot-Grimaud ?', a: "Docteure en psychologie cognitive, elle est chercheuse et enseignante en psychologie, spécialisée en santé mentale positive, autrice de « Programmez votre cerveau pour le bonheur » et conférencière TEDx à deux reprises. Elle anime aussi le podcast « L'instant Beau Bien Bon »." },
   { q: 'Quel est son rôle exact sur Radio Odyssey ?', a: "Elle est la partenaire exclusive de Radio Odyssey. Les séquences de cohérence cardiaque diffusées sur l'antenne ont été conçues avec elle, et c'est sa voix qui guide les auditeurs pour respirer et se mettre en rythme sinusoïdal, plusieurs fois par jour." },
   { q: "Qu'est-ce que le rythme sinusoïdal en cohérence cardiaque ?", a: "C'est l'effet recherché par la respiration lente et régulière (environ 6 respirations par minute) : la variabilité du rythme cardiaque adopte une courbe régulière, en forme de sinusoïde, associée à un état de calme physiologique." },
   { q: 'Où retrouver son travail en dehors de Radio Odyssey ?', a: "Sur son site santementalepositive.fr, elle propose des ressources gratuites sur la santé mentale positive : sommeil, respiration, émotions, pleine conscience et bien d'autres sujets, organisés en ressources biologiques, cognitives et psychologiques." },
@@ -17,10 +17,7 @@ const personSchema = {
   '@type': 'Person',
   name: 'Elisabeth Bélot-Grimaud',
   jobTitle: 'Docteure en psychologie cognitive',
-  affiliation: {
-    '@type': 'Organization',
-    name: 'Association Française et francophone de Psychologie Positive (AFfPP)',
-  },
+  knowsAbout: 'Santé mentale positive',
   url: 'https://santementalepositive.fr/',
   sameAs: ['https://santementalepositive.fr/'],
 };
@@ -28,7 +25,7 @@ const personSchema = {
 <Layout
   lang="fr"
   title="Elisabeth Bélot-Grimaud, Partenaire de Radio Odyssey | Radio Odyssey"
-  description="Elisabeth Bélot-Grimaud, Docteure en psychologie cognitive et présidente de l'AFfPP, est la partenaire exclusive de Radio Odyssey. Sa voix guide les séquences de cohérence cardiaque de l'antenne."
+  description="Elisabeth Bélot-Grimaud, Docteure en psychologie cognitive spécialisée en santé mentale positive, est la partenaire exclusive de Radio Odyssey. Sa voix guide les séquences de cohérence cardiaque de l'antenne."
 >
   <PageHero
     gradientFrom="#7B2FBE"
@@ -57,8 +54,7 @@ const personSchema = {
             <h2>Qui est Elisabeth Bélot-Grimaud ?</h2>
             <ul>
               <li>Docteure en psychologie cognitive</li>
-              <li>Chercheuse et enseignante en psychologie</li>
-              <li>Présidente de l'Association Française et francophone de Psychologie Positive (AFfPP)</li>
+              <li>Chercheuse et enseignante en psychologie, spécialisée en santé mentale positive</li>
               <li>Deux diplômes universitaires en micronutrition et prévention santé</li>
               <li>Diplôme universitaire en méditation et pratiques respiratoires</li>
               <li>Autrice de <em>« Programmez votre cerveau pour le bonheur »</em></li>

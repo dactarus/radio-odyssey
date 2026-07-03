@@ -466,4 +466,16 @@ Ajoutée au cocon Bien-être & Santé (13e page) dans `src/data/navigation.js`, 
 
 ---
 
-*Dernière mise à jour : 2026-07-03, page partenaire Elisabeth Bélot-Grimaud (§14).*
+## 15. Retours d'Elisabeth Bélot-Grimaud sur la page partenaire (2026-07-03)
+
+Elle a vu la page en ligne et fait trois retours au propriétaire :
+
+1. **"Peut-être dire que Odyssey a choisi de mettre une voix humaine"** — ajouté sur la page partenaire : Radio Odyssey a délibérément choisi une voix humaine plutôt qu'une voix de synthèse pour les séquences de cohérence cardiaque.
+2. **Badge du hero peu visible** — le badge de confiance (§ précédent) réutilisait le style `.hero-eyebrow`, identique au badge "EN DIRECT · LIVE NOW" juste au-dessus, donc il se fondait dans le décor. Recoloré en doré (`var(--ro-gold)`, texte foncé, icône violette) pour se démarquer.
+3. **"AFfPP ne parle à personne"** — retour d'Elisabeth elle-même. Toute mention de l'AFfPP (Association Française et francophone de Psychologie Positive) remplacée par "spécialisée en santé mentale positive", plus lisible pour un public grand public qui ne connaît pas le sigle. Fait réel toujours vrai (elle en est présidente), simplement pas mis en avant dans la copie publique — retiré aussi du schema.org `Person` (champ `affiliation` supprimé, remplacé par `knowsAbout`).
+
+**Demande complémentaire du propriétaire** : la page partenaire est désormais en tête de liste du cocon Bien-être & Santé dans `src/data/navigation.js` (menu, offcanvas, footer, hub) — "c'est notre caution scientifique", elle doit être la plus visible du cocon plutôt que la dernière.
+
+---
+
+*Dernière mise à jour : 2026-07-03, retours partenaire post-publication (§15).*
