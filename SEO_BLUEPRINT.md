@@ -37,7 +37,7 @@ Chaque nouvelle page doit répondre à une intention de recherche **réellement 
 | Cocon | Hub | Pages live | Pages prévues (non créées) |
 |---|---|---|---|
 | Bien-être & Santé | `/bien-etre-et-sante.html` | 13 | — |
-| Musique & Énergie | `/musique-et-energie.html` | 12 | — |
+| Musique & Énergie | `/musique-et-energie.html` | 13 | — |
 | Playlists du Jour | `/playlists-du-jour.html` | 6 | — |
 | Artistes & Styles | `/artistes-et-styles.html` | 104 (2 hubs + 100 fiches artistes + 4 fiches Découvertes) | — (objectif 100 fiches atteint, §6) |
 | Conseils d'Écoute | `/conseils-ecoute.html` | 3 | — |
@@ -82,6 +82,7 @@ Total live à ce jour : 156 pages (voir `git log` pour la valeur exacte, ce nomb
 | `/musique-pour-etudier.html` | musique pour étudier | Lot 001 |
 | `/musique-odyssey-pour-aller-mieux.html` | musique pour aller mieux | Lot 001 |
 | `/musique-odyssey-en-vacances.html` | musique pour les vacances | Lot 001 |
+| `/musique-pour-faire-le-menage.html` | musique pour faire le ménage | Lot 004 |
 
 ### Playlists du Jour
 | URL | Mot-clé cible | Statut |
@@ -490,4 +491,14 @@ Le propriétaire a demandé, en tant que challenge, comment rendre le site plus 
 
 ---
 
-*Dernière mise à jour : 2026-07-03, chantier "site plus pro" — faux avis, performance, images OG (§16).*
+## 17. Lot 004 — Retour sur "musique et ménage" (2026-07-04)
+
+L'angle "musique pour faire le ménage" avait été écarté par le propriétaire lors du Lot 001 (§13), jugé peu qualitatif pour l'image de la radio. Revalidé et créé suite à deux éléments nouveaux apportés par le propriétaire :
+- **L'avis de la partenaire scientifique** : consultée directement, Elisabeth Bélot-Grimaud confirme que la musique positive peut rendre une tâche perçue comme corvée plus agréable — cité en toutes lettres sur la page, avec lien vers sa fiche.
+- **Une intention de recherche réelle côté professionnels** : agents d'entretien et aides à domicile cherchent activement ce type de contenu, pas seulement le grand public du week-end.
+
+Page créée : `/musique-pour-faire-le-menage.html`, ajoutée au cocon Musique & Énergie (13e page), à `src/data/navigation.js`, au sitemap et au registre (§4).
+
+---
+
+*Dernière mise à jour : 2026-07-04, retour sur "musique et ménage" avec validation partenaire (§17).*

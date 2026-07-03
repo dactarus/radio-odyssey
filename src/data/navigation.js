@@ -52,6 +52,7 @@ export const NAV_CATEGORIES = [
       { href: '/musique-pour-etudier.html', bi: 'mortarboard', label: 'Pour Étudier et Réviser', desc: 'Le flux continu pour les sessions de révisions' },
       { href: '/musique-odyssey-pour-aller-mieux.html', bi: 'heart', label: 'Pour Aller Mieux', desc: 'La musique positive qui accompagne les journées sans énergie' },
       { href: '/musique-odyssey-en-vacances.html', bi: 'airplane', label: 'En Vacances', desc: "Du trajet de départ jusqu'à votre lieu de vacances" },
+      { href: '/musique-pour-faire-le-menage.html', bi: 'brush', label: 'Pour Faire le Ménage', desc: 'Le flux positif qui rend les corvées plus légères' },
     ],
   },
   {

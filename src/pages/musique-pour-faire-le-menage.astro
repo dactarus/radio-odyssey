@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'Est-ce vraiment utile d\'écouter de la musique pour faire le ménage ?', a: "Beaucoup de personnes trouvent que oui : une musique positive et rythmée aide à rendre une tâche répétitive plus agréable, sans exiger d'attention particulière — on peut la suivre ou l'ignorer selon le moment." },
+  { q: 'Cette musique convient-elle aussi pour un usage professionnel ?', a: "Oui — agents d'entretien, aides à domicile et professionnels du nettoyage cherchent souvent ce type de flux pour accompagner leurs journées de travail. Radio Odyssey s'y prête bien : continue, gratuite et sans coupure publicitaire." },
+  { q: 'Comment l\'écouter les mains prises pendant le ménage ?', a: "Le plus simple est de lancer l'application ou le site sur votre téléphone avant de commencer, posé à proximité ou connecté à une enceinte Bluetooth — pas besoin d'y retoucher ensuite." },
+];
+---
+<Layout
+  lang="fr"
+  title="Musique pour Faire le Ménage | Radio Odyssey"
+  description="Quelle musique pour faire le ménage ? Radio Odyssey diffuse un flux positif et énergisant qui rend les tâches ménagères plus agréables, à la maison comme au travail."
+>
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#FFD700"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Musique pour faire le ménage"
+    title="Musique pour Faire le Ménage"
+    text="Un flux positif et énergisant qui rend les corvées plus légères — à la maison comme au travail."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M28 6L14 34" stroke="white" stroke-width="2.3" stroke-linecap="round"/><path d="M14 34L8 42L11 43L18 37" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M22 20L34 8" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round"/><path d="M27 25L39 13" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Quelle musique pour faire le ménage ?</h2>
+            <p>Passer l'aspirateur, ranger, faire la vaisselle : ces tâches répétitives passent beaucoup mieux en musique. Radio Odyssey propose un flux positif et rythmé — dance, hits remixés, énergie continue — qui accompagne le ménage sans jamais devenir monotone.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>L'avis de notre partenaire psychologue</h2>
+            <p>Nous avons posé la question à <strong>Elisabeth Bélot-Grimaud</strong>, Docteure en psychologie cognitive et partenaire exclusive de Radio Odyssey : associer musique et ménage, est-ce une bonne idée ? Sa réponse est claire — cela ne pose aucun souci, bien au contraire. Une musique positive comme celle de Radio Odyssey peut rendre une tâche perçue comme corvée nettement plus plaisante à accomplir.</p>
+            <p><a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">En savoir plus sur notre partenaire <i class="bi bi-arrow-right"></i></a></p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une vraie recherche, y compris chez les professionnels</h2>
+            <p>Ce n'est pas qu'un usage occasionnel du week-end : les agents d'entretien, aides à domicile et professionnels du nettoyage sont nombreux à chercher une radio ou un style de musique énergisant pour accompagner leurs journées de travail. Radio Odyssey répond bien à ce besoin — un flux continu, gratuit et sans coupure publicitaire, qui ne demande aucune attention particulière.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Idéale pour…</h2>
+            <ul>
+              <li>Le grand ménage du week-end</li>
+              <li>Les tâches ménagères du quotidien</li>
+              <li>Un usage professionnel (agents d'entretien, aide à domicile)</li>
+              <li>Ranger, plier, nettoyer — tout ce qui se fait "les mains occupées"</li>
+            </ul>
+            <p>Une énergie continue et positive, du début à la fin de la tâche.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="menage" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/musique-odyssey-pour-aller-mieux.html', label: "La Musique d'Odyssey pour Aller Mieux", desc: "L'angle positif de notre programmation" },
+              { href: '/musique-pour-faire-du-sport.html', label: 'Musique pour Faire du Sport', desc: 'Le flux énergisant pour vos séances' },
+            ]}
+            associated={[
+              { href: '/radio-sans-publicite.html', label: 'Radio sans publicité' },
+              { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Notre partenaire Elisabeth Bélot-Grimaud' },
+              { href: '/ecouter-radio-odyssey-sur-mobile.html', label: 'Écouter sur mobile' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Lancez la musique, le ménage suivra</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Écouter en Direct
+              </a>
+              <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <i class="bi bi-phone"></i> Télécharger l'application
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
