@@ -16,8 +16,27 @@ export function getStaticPaths() {
 const { artist, index } = Astro.props;
 const [gradientFrom, gradientTo] = GRADIENTS[index % GRADIENTS.length];
 
-const others = ARTISTS.filter((a) => a.slug !== artist.slug);
-const related = [0, 1, 2].map((offset) => others[(index + offset) % others.length]);
+// Suggestions "Vous aimerez aussi" basées sur le genre réel plutôt que
+// sur la position dans le tableau (ancien code : décalage séquentiel,
+// qui recommandait par exemple Daft Punk -> U2/Queen sans rapport de style).
+function genreTokens(genre) {
+  return new Set(genre.toLowerCase().split(/[/\s]+/).filter((t) => t.length > 2));
+}
+const myTokens = genreTokens(artist.genre);
+// Départage des égalités de genre par rotation (pas par playCount) pour
+// répartir les liens entrants entre plusieurs fiches d'un même genre,
+// plutôt que de toujours pointer vers les 2-3 artistes les plus diffusés.
+const others = ARTISTS.map((a, i) => ({ a, i }))
+  .filter(({ a }) => a.slug !== artist.slug)
+  .map(({ a, i }) => {
+    const tokens = genreTokens(a.genre);
+    let overlap = 0;
+    for (const t of myTokens) if (tokens.has(t)) overlap++;
+    const rotation = (i - index + ARTISTS.length) % ARTISTS.length;
+    return { a, overlap, rotation };
+  })
+  .sort((x, y) => y.overlap - x.overlap || x.rotation - y.rotation);
+const related = others.slice(0, 3).map((s) => s.a);
 
 const title = `${artist.name} : Remix & Titres en Radio Gratuite — Radio Odyssey`;
 const description = `${artist.name} (${artist.genre}) sur Radio Odyssey : remix diffusés sur l'antenne, titres réellement joués, et une radio 100% gratuite, sans pub, à écouter en direct sur mobile ou ordinateur.`;
