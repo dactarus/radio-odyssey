@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'Radio Odyssey a-t-elle un programme dédié aux enfants ?', a: "Non, Radio Odyssey n'a pas de créneau spécifiquement pensé pour les enfants — c'est une radio généraliste positive, diffusant des hits grand public (dance, pop, années 80 remixées) qui conviennent bien à une écoute en famille, sans être une programmation jeunesse à proprement parler." },
+  { q: 'La musique diffusée est-elle adaptée aux enfants ?', a: "La sélection privilégie des tubes grand public et une ambiance positive, sans contenu explicite. Comme pour toute radio généraliste, un accompagnement parental reste recommandé, notamment pour les plus jeunes." },
+  { q: 'Peut-on l\'écouter en voiture avec les enfants ?', a: "Oui, c'est un des usages les plus courants — voir notre guide dédié à l'écoute en voiture pour la connecter facilement via Bluetooth, CarPlay ou Android Auto." },
+  { q: 'Y a-t-il des coupures publicitaires pendant les trajets ?', a: "Non, la diffusion est gratuite et sans coupure publicitaire, ce qui évite les interruptions pendant un trajet ou un moment en famille." },
+];
+---
+<Layout
+  lang="fr"
+  title="Musique pour les Enfants et la Famille | Radio Odyssey"
+  description="Quelle musique écouter en famille ? Radio Odyssey diffuse un flux positif et grand public — dance, pop et tubes 80 remixés — adapté aux trajets et moments partagés avec les enfants."
+>
+  <PageHero
+    gradientFrom="#FFD700"
+    gradientTo="#FF9A3C"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Musique pour les enfants et la famille"
+    title="Musique pour les Enfants et la Famille"
+    text="Un flux positif et grand public, sans coupure publicitaire, pour les trajets et les moments partagés en famille."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="18" cy="20" r="7" stroke="white" stroke-width="2.3"/><circle cx="32" cy="16" r="5" stroke="rgba(255,255,255,.7)" stroke-width="2.1"/><path d="M8 40C8 32 12 28 18 28C24 28 28 32 28 40" stroke="white" stroke-width="2.3" stroke-linecap="round" fill="none"/><path d="M26 30C30 29 36 30 38 36" stroke="rgba(255,255,255,.7)" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Quelle musique pour les enfants et la famille ?</h2>
+            <p>Trouver une musique qui convient à toute la famille — parents comme enfants — pendant un trajet en voiture ou un moment du week-end n'est pas toujours simple. Radio Odyssey, sans être une radio jeunesse, propose un flux résolument grand public : des tubes connus, positifs et entraînants, qui passent bien en famille sans jamais tomber dans un registre trop pointu ou inadapté.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une radio généraliste positive, pas un programme jeunesse</h2>
+            <p>Pour être honnête d'entrée : Radio Odyssey n'a pas de créneau ni de sélection spécifiquement pensée pour les enfants. C'est une radio généraliste — dance, pop, années 80 remixées — dont l'ambiance résolument positive et les tubes largement connus en font une option naturelle pour une écoute partagée en famille, notamment en voiture ou le week-end.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Des moments où ça fonctionne bien</h2>
+            <ul>
+              <li>Les trajets en voiture, pour un fond musical fédérateur</li>
+              <li>Le petit-déjeuner ou le goûter du week-end</li>
+              <li>Les moments de jeu ou de dessin à la maison</li>
+              <li>Les temps calmes, grâce aux séquences de respiration guidée intégrées au flux</li>
+            </ul>
+            <p>Comme pour toute radio généraliste, un accompagnement parental reste recommandé — la sélection n'étant pas spécifiquement filtrée pour un jeune public.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="enfants" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/musique-odyssey-en-vacances.html', label: "La Musique d'Odyssey en Vacances", desc: 'Pour le trajet et sur place' },
+              { href: '/radio-detente-moderne.html', label: 'Radio Détente Moderne', desc: 'Musique apaisante pour vous ressourcer' },
+            ]}
+            associated={[
+              { href: '/ecouter-radio-odyssey-en-voiture.html', label: 'Écouter en voiture' },
+              { href: '/radio-annees-80-en-ligne.html', label: 'Radio années 80 en ligne' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Lancez une ambiance positive en famille</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Écouter en Direct
+              </a>
+              <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <i class="bi bi-phone"></i> Télécharger l'application
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -37,14 +37,14 @@ Chaque nouvelle page doit répondre à une intention de recherche **réellement 
 | Cocon | Hub | Pages live | Pages prévues (non créées) |
 |---|---|---|---|
 | Bien-être & Santé | `/bien-etre-et-sante.html` | 12 | — |
-| Musique & Énergie | `/musique-et-energie.html` | 4 | — |
+| Musique & Énergie | `/musique-et-energie.html` | 12 | — |
 | Playlists du Jour | `/playlists-du-jour.html` | 6 | — |
 | Artistes & Styles | `/artistes-et-styles.html` | 104 (2 hubs + 100 fiches artistes + 4 fiches Découvertes) | — (objectif 100 fiches atteint, §6) |
 | Conseils d'Écoute | `/conseils-ecoute.html` | 3 | — |
 | Les Coulisses | `/coulisses-de-radio-odyssey.html` | 1 | **Prévu : mécanique des jingles et autres coulisses éditoriales (demande du propriétaire, 2026-07-02)** |
 | International (EN) | `/international.html` | 4 | — |
 
-Total live à ce jour : 145 pages (voir `git log` pour la valeur exacte, ce nombre évolue vite — ne pas se fier à ce total sans revérifier).
+Total live à ce jour : 153 pages (voir `git log` pour la valeur exacte, ce nombre évolue vite — ne pas se fier à ce total sans revérifier).
 
 ---
 
@@ -73,6 +73,14 @@ Total live à ce jour : 145 pages (voir `git log` pour la valeur exacte, ce nomb
 | `/radio-dance-energisante.html` | radio dance énergisante | Live |
 | `/musique-pour-se-concentrer.html` | musique pour se concentrer | Live |
 | `/radio-pour-travailler.html` | radio pour travailler | Live |
+| `/musique-pour-faire-du-sport.html` | musique pour faire du sport | Lot 001 |
+| `/musique-pour-courir.html` | musique pour courir | Lot 001 |
+| `/musique-pour-une-soiree-entre-amis.html` | musique pour une soirée entre amis | Lot 001 |
+| `/les-tubes-dance-incontournables.html` | tubes dance incontournables | Lot 001 |
+| `/musique-pour-les-enfants.html` | musique pour les enfants | Lot 001 |
+| `/musique-pour-etudier.html` | musique pour étudier | Lot 001 |
+| `/musique-odyssey-pour-aller-mieux.html` | musique pour aller mieux | Lot 001 |
+| `/musique-odyssey-en-vacances.html` | musique pour les vacances | Lot 001 |
 
 ### Playlists du Jour
 | URL | Mot-clé cible | Statut |
@@ -414,4 +422,25 @@ Le propriétaire a créé une propriété GA4 (compte Google existant, plusieurs
 
 ---
 
-*Dernière mise à jour : 2026-07-02, mise en place de Google Analytics avec bandeau de consentement (§12).*
+## 13. Lot 001 — Extension du cocon Musique & Énergie (2026-07-03)
+
+Le cocon ne comptait que 4 pages (années 80, dance énergisante, concentration, travailler), contre 12 pour Bien-être & Santé. Extension demandée par le propriétaire, sur le même principe que le Lot 002 Bien-être : des angles ancrés sur de vraies intentions de recherche non couvertes, avec exigence explicite du propriétaire que **les URLs et le contenu attirent des internautes qui ne connaissent pas encore Radio Odyssey** (mots-clés génériques d'intention, la marque arrive comme réponse dans le contenu, jamais dans l'URL).
+
+Proposition initiale rejetée en partie par le propriétaire : "musique pour faire le ménage" jugée peu qualitative pour l'image de la radio. Remplacée par ses propres pistes (famille/enfants, étudiants, émotions positives, vacances), avec fusion de deux pistes trop proches ("aller mieux" et "bonnes émotions") en une seule page pour éviter le contenu redondant.
+
+| # | URL | Angle | Distinction / anti-cannibalisation |
+|---|---|---|---|
+| 1 | `musique-pour-faire-du-sport.html` | Muscu, cardio, échauffement | Distinct de "courir" (contexte salle vs extérieur) |
+| 2 | `musique-pour-courir.html` | Running, playlist rythmée | Distinct de "sport" (allure/tempo course, conseils sécurité extérieur) |
+| 3 | `musique-pour-une-soiree-entre-amis.html` | Ambiance festive, apéro, soirée | Angle social, aucune page existante ne le couvre |
+| 4 | `les-tubes-dance-incontournables.html` | Classement "best of" dance basé sur les vraies données de programmation (`src/data/artists.js`, tri par `playCount`) | Format liste inédit, gros maillage vers les fiches artistes déjà live |
+| 5 | `musique-pour-les-enfants.html` | Écoute en famille (voiture, week-end) | Honnête : pas de créneau jeunesse réel, positionné comme radio généraliste positive adaptée en famille, avec rappel d'accompagnement parental |
+| 6 | `musique-pour-etudier.html` | Étudiants, révisions, examens | Distinct de `musique-pour-se-concentrer.html` (contexte bureau/télétravail) — renvoie vers `musique-sans-parole-pour-se-concentrer.html` pour la mémorisation |
+| 7 | `musique-odyssey-pour-aller-mieux.html` | Musique positive Odyssey, bonnes émotions, coup de moins bien | Volontairement centré sur l'identité "La Positive Radio" (demande du propriétaire), sans allégation santé — mention explicite que ce n'est pas un substitut à un accompagnement professionnel |
+| 8 | `musique-odyssey-en-vacances.html` | Trajet de départ + écoute sur place | Renvoie vers les pages voiture/enceinte connectée existantes plutôt que de dupliquer leur contenu |
+
+Statut : Live, ajoutées à `src/data/navigation.js` (menu, footer, sidebar, hub), `public/sitemap.xml`, et au registre (§4).
+
+---
+
+*Dernière mise à jour : 2026-07-03, extension du cocon Musique & Énergie (§13).*

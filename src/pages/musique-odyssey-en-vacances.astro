@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'Peut-on écouter Radio Odyssey depuis l\'étranger ?', a: "Oui, le flux est accessible partout où vous avez une connexion internet, via le site ou l'application — aucune restriction géographique." },
+  { q: 'Ça consomme beaucoup de données mobiles en itinérance ?', a: "Le streaming audio reste modéré en consommation de données, mais si vous êtes hors forfait Europe, mieux vaut privilégier le Wi-Fi de votre hébergement pour éviter les frais d'itinérance." },
+  { q: 'Comment l\'écouter dans la voiture pendant le trajet ?', a: "Via Bluetooth, CarPlay ou Android Auto depuis votre smartphone — voir notre guide dédié à l'écoute en voiture pour la marche à suivre complète." },
+  { q: 'Et sur une enceinte à la location de vacances ?', a: "Si l'hébergement dispose d'une enceinte Bluetooth ou connectée, Radio Odyssey s'y diffuse aussi facilement qu'à la maison — voir notre guide enceinte connectée." },
+];
+---
+<Layout
+  lang="fr"
+  title="La Musique d'Odyssey en Vacances | Radio Odyssey"
+  description="Radio Odyssey vous accompagne du trajet de départ jusqu'à votre lieu de vacances : playlist de route, écoute à l'étranger et diffusion sur enceinte connectée."
+>
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#FFD700"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="La musique d'Odyssey en vacances"
+    title="La Musique d'Odyssey en Vacances"
+    text="Du trajet de départ jusqu'à votre lieu de vacances — la même ambiance positive vous suit partout."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 6C24 6 14 18 14 27C14 32.5 18.5 37 24 37C29.5 37 34 32.5 34 27C34 18 24 6 24 6Z" stroke="white" stroke-width="2.3" stroke-linejoin="round" fill="none"/><path d="M18 30C18 30 20 33 24 33C28 33 30 30 30 30" stroke="rgba(255,255,255,.7)" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>La musique d'Odyssey pour partir en vacances</h2>
+            <p>Les grands trajets de départ en vacances méritent une bonne bande-son : Radio Odyssey diffuse un flux continu et positif, idéal pour les longues routes, sans coupure publicitaire pour casser l'ambiance ni playlist à préparer avant de prendre la route.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Sur la route</h2>
+            <p>Connectez votre smartphone en Bluetooth, CarPlay ou Android Auto pour diffuser Radio Odyssey directement dans l'habitacle — voir notre guide <a href="/ecouter-radio-odyssey-en-voiture.html" style="color:var(--ro-purple);font-weight:700;">écouter Radio Odyssey en voiture</a> pour la configuration complète.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une fois sur place</h2>
+            <p>Que vous soyez en France ou à l'étranger, le flux reste accessible partout avec une connexion internet — aucune restriction géographique. Sur votre lieu de vacances :</p>
+            <ul>
+              <li>Diffusez-la sur une enceinte Bluetooth ou connectée en terrasse</li>
+              <li>Gardez la même ambiance qu'à la maison, où que vous soyez</li>
+              <li>Utilisez le Wi-Fi de votre hébergement pour économiser vos données en itinérance</li>
+            </ul>
+          </div>
+
+          <div class="content-card">
+            <h2>Idéale pour…</h2>
+            <ul>
+              <li>Les longs trajets en voiture vers votre destination</li>
+              <li>Les apéros et repas en terrasse sur votre lieu de vacances</li>
+              <li>Les moments de détente au bord de l'eau ou à la piscine</li>
+              <li>Garder un fil positif entre deux activités de vacances</li>
+            </ul>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="vacances" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/ecouter-radio-odyssey-en-voiture.html', label: 'Écouter en Voiture', desc: 'Bluetooth, CarPlay et Android Auto' },
+              { href: '/ecouter-radio-odyssey-enceinte-connectee.html', label: 'Écouter sur Enceinte Connectée', desc: 'Alexa, Google Home, Sonos...' },
+            ]}
+            associated={[
+              { href: '/musique-pour-une-soiree-entre-amis.html', label: 'Musique pour une soirée entre amis' },
+              { href: '/ecouter-radio-odyssey-sur-mobile.html', label: 'Écouter sur mobile' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Emmenez Radio Odyssey en vacances</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Écouter en Direct
+              </a>
+              <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <i class="bi bi-phone"></i> Télécharger l'application
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'Quelle est la meilleure musique pour courir ?', a: 'Un tempo régulier, ni trop lent ni trop saturé, aide à caler sa foulée naturellement. Beaucoup de coureurs préfèrent un flux qui varie légèrement plutôt qu\'un tempo unique répété en boucle, pour éviter la monotonie sur une sortie longue.' },
+  { q: 'Radio Odyssey est-elle adaptée à un footing de plus d\'une heure ?', a: "Oui, la diffusion est en flux continu sans playlist figée : la sélection évolue sur toute la durée de la sortie, ce qui aide à ne pas décrocher mentalement sur les longues distances." },
+  { q: 'Peut-on courir avec un seul écouteur pour rester attentif à la circulation ?', a: "C'est une bonne pratique en ville ou sur route ouverte — un seul écouteur suffit pour profiter du flux tout en gardant une oreille sur son environnement." },
+  { q: 'L\'application fonctionne-t-elle en extérieur sans Wi-Fi ?', a: "Oui, via les données mobiles. Pensez à vérifier votre forfait data si vous partez pour une sortie longue en zone peu couverte." },
+];
+---
+<Layout
+  lang="fr"
+  title="Musique pour Courir en Ligne | Radio Odyssey"
+  description="Quelle musique pour courir ? Radio Odyssey diffuse un flux au tempo soutenu et varié, sans coupure publicitaire, pour accompagner vos sorties running du début à la fin."
+>
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#FF9A3C"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Musique pour courir"
+    title="Musique pour Courir"
+    text="Un tempo soutenu et varié, en flux continu, pour accompagner vos sorties running du premier au dernier kilomètre."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="17" stroke="white" stroke-width="2.3"/><path d="M24 24L24 13" stroke="white" stroke-width="2.3" stroke-linecap="round"/><path d="M24 24L31 29" stroke="white" stroke-width="2.3" stroke-linecap="round"/><circle cx="24" cy="24" r="2.5" fill="white"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Quelle musique pour courir ?</h2>
+            <p>Que ce soit pour un footing tranquille ou une sortie fractionnée, la musique change vraiment la perception de l'effort. Radio Odyssey diffuse un flux au tempo globalement soutenu — dance, pop énergique, hits 80 remixés — pensé pour tenir une cadence sans avoir à préparer sa propre playlist avant de lacer ses baskets.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pourquoi un flux continu plutôt qu'une playlist "running"</h2>
+            <p>Les playlists de course toutes faites ont un défaut : au bout de quelques sorties, on les connaît par cœur, et l'effet d'entraînement s'émousse. Une radio en flux règle ce problème :</p>
+            <ul>
+              <li>Sélection différente à chaque sortie</li>
+              <li>Zéro coupure publicitaire pendant l'effort</li>
+              <li>Pas de préparation en amont — on lance et on court</li>
+              <li>Gratuit, sans abonnement</li>
+            </ul>
+          </div>
+
+          <div class="content-card">
+            <h2>Adapter son écoute selon le type de sortie</h2>
+            <h3>Footing tranquille</h3>
+            <p>Un rythme modéré et régulier suffit à structurer l'allure sans pousser à accélérer inutilement.</p>
+            <h3>Fractionné ou sortie rapide</h3>
+            <p>La partie dance/électro du flux (voir <a href="/radio-dance-energisante.html" style="color:var(--ro-purple);font-weight:700;">radio dance énergisante</a>) donne l'impulsion pour tenir les allures soutenues.</p>
+            <h3>Sortie longue</h3>
+            <p>Sur une distance longue, la variété du flux continu aide à ne pas décrocher mentalement sur la durée — contrairement à une playlist courte qui boucle.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Sécurité et bon sens en extérieur</h2>
+            <p>Quelques réflexes simples pour courir en musique sans danger : privilégier un volume modéré, garder un écouteur libre en ville ou près de la circulation, et vérifier son forfait data pour les sorties longues loin du Wi-Fi.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="courir" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/musique-pour-faire-du-sport.html', label: 'Musique pour Faire du Sport', desc: 'La sélection énergisante pour vos séances' },
+              { href: '/radio-dance-energisante.html', label: 'Radio Dance Énergisante', desc: "L'énergie dance pour faire bouger votre corps" },
+            ]}
+            associated={[
+              { href: '/ecouter-radio-odyssey-sur-mobile.html', label: 'Écouter sur mobile' },
+              { href: '/les-tubes-dance-incontournables.html', label: 'Les tubes dance incontournables' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Lacez vos baskets, lancez la radio</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Écouter en Direct
+              </a>
+              <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <i class="bi bi-phone"></i> Télécharger l'application
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

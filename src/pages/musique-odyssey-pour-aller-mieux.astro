@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'La musique peut-elle vraiment aider à aller mieux ?', a: "La musique ne soigne rien, mais beaucoup de personnes témoignent qu'elle accompagne bien les journées difficiles — elle peut changer l'ambiance d'un moment, sans remplacer un accompagnement adapté en cas de mal-être installé." },
+  { q: 'Pourquoi la musique de Radio Odyssey en particulier ?', a: "Radio Odyssey est pensée dès le départ comme \"la positive radio\" : une sélection volontairement tournée vers l'énergie et l'entrain plutôt que vers la nostalgie ou la mélancolie, avec des séquences de respiration guidée intégrées au flux." },
+  { q: 'Que faire si la musique ne suffit pas ?', a: "Si un mal-être persiste ou s'installe dans la durée, il est important d'en parler à un professionnel de santé plutôt que de compter uniquement sur la musique. Radio Odyssey reste un compagnon d'ambiance, pas un substitut à un suivi." },
+  { q: 'À quel moment de la journée l\'écouter pour se remonter le moral ?', a: "N'importe quand — c'est justement l'intérêt d'un flux en direct 24h/24. Beaucoup l'utilisent le matin pour bien démarrer la journée, ou en fin d'après-midi pour retrouver de l'énergie." },
+];
+---
+<Layout
+  lang="fr"
+  title="Musique pour Aller Mieux | Radio Odyssey"
+  description="Quelle musique écouter pour aller mieux ? Découvrez pourquoi la musique positive de Radio Odyssey, La Positive Radio, accompagne bien les journées qui manquent d'énergie."
+>
+  <PageHero
+    gradientFrom="#FF3CAC"
+    gradientTo="#FFD700"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Musique pour aller mieux"
+    title="Musique pour Aller Mieux"
+    text="Pourquoi la musique positive de Radio Odyssey accompagne bien les journées qui manquent d'énergie."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 38C24 38 8 28 8 17C8 11 12.5 7 18 7C21 7 23.5 8.5 24 11C24.5 8.5 27 7 30 7C35.5 7 40 11 40 17C40 28 24 38 24 38Z" stroke="white" stroke-width="2.3" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Quelle musique écouter pour aller mieux ?</h2>
+            <p>Il y a des journées où l'énergie manque, où le moral est en berne, où l'on cherche simplement quelque chose qui change l'ambiance du moment. La musique ne résout rien à elle seule, mais elle peut vraiment accompagner ces moments-là — et c'est exactement la philosophie de Radio Odyssey depuis le départ : une radio pensée pour diffuser des ondes positives, pas pour appuyer sur la mélancolie.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pourquoi la musique d'Odyssey en particulier</h2>
+            <p>Radio Odyssey se présente comme <strong>"La Positive Radio"</strong> — ce n'est pas qu'un slogan, ça guide vraiment le choix des titres diffusés : des tubes entraînants, des hits remixés qui donnent de l'entrain, une programmation volontairement orientée vers l'énergie plutôt que vers les ambiances tristes ou nostalgiques. L'idée est simple : proposer un fond sonore qui tire vers le haut plutôt que d'accompagner un coup de moins bien vers le bas.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Un compagnon d'ambiance, pas un traitement</h2>
+            <p>Il est important d'être honnête sur ce point : la musique n'est pas un soin et Radio Odyssey ne prétend pas remplacer un accompagnement professionnel. C'est un compagnon d'ambiance — utile pour égayer une journée grise, retrouver un peu d'énergie ou changer d'état d'esprit sur un trajet — mais si un mal-être s'installe dans la durée, la meilleure chose à faire reste d'en parler à un professionnel de santé.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Des moments où ça peut aider</h2>
+            <ul>
+              <li>Un réveil difficile, pour démarrer la journée sur une note positive</li>
+              <li>Un moment de fatigue ou de baisse de moral dans l'après-midi</li>
+              <li>Un trajet ou une tâche répétitive, pour changer d'état d'esprit</li>
+              <li>Une pause respiration, grâce aux séquences de cohérence cardiaque intégrées au flux</li>
+            </ul>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="allermieux" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/radio-bien-etre-en-ligne.html', label: 'Radio Bien-être en Ligne', desc: 'Votre dose quotidienne de positivité et de sérénité' },
+              { href: '/radio-anti-stress-gratuite.html', label: 'Radio Anti-Stress Gratuite', desc: 'Relâchez la pression avec notre sélection anti-stress' },
+            ]}
+            associated={[
+              { href: '/radio-coherence-cardiaque.html', label: 'Cohérence cardiaque' },
+              { href: '/avis-radio-odyssey-bien-etre.html', label: 'Avis sur Radio Odyssey' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez la positive radio en direct</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Écouter en Direct
+              </a>
+              <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <i class="bi bi-phone"></i> Télécharger l'application
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

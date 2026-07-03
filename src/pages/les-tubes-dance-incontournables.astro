@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const topDance = [
+  { slug: 'david-guetta', name: 'David Guetta', track: 'Titanium (feat. Sia)' },
+  { slug: 'jennifer-lopez', name: 'Jennifer Lopez', track: 'On The Floor' },
+  { slug: 'sound-of-legend', name: 'Sound Of Legend', track: 'San Francisco' },
+  { slug: 'ofenbach', name: 'Ofenbach', track: 'Miles Away' },
+  { slug: 'calvin-harris', name: 'Calvin Harris', track: 'This Is What You Came For' },
+  { slug: 'dua-lipa', name: 'Dua Lipa', track: "Don't Start Now" },
+  { slug: 'clean-bandit', name: 'Clean Bandit', track: 'Rockabye' },
+  { slug: 'r3hab', name: 'R3HAB', track: 'In My Head (BRYZZ Remix)' },
+  { slug: 'kungs', name: 'Kungs', track: 'Be Right Here (feat. GOLDN)' },
+  { slug: 'lost-frequencies', name: 'Lost Frequencies', track: 'Reality (feat. Janieck Devy)' },
+];
+
+const faq = [
+  { q: 'Comment ce classement est-il établi ?', a: "Sur le nombre réel de passages à l'antenne (export de la programmation Radio Odyssey), pas sur un classement de charts externes — c'est un reflet direct de ce qui tourne vraiment sur la radio." },
+  { q: 'Ce classement change-t-il dans le temps ?', a: "Oui, la programmation évolue avec l'arrivée de nouveautés qui deviennent ensuite récurrentes. Ce top reflète la photo actuelle de l'antenne." },
+  { q: 'Où écouter ces titres en continu ?', a: "Directement sur Radio Odyssey, en direct — le flux mêle ces incontournables dance à d'autres styles (années 80, pop, ballades) tout au long de la journée." },
+];
+---
+<Layout
+  lang="fr"
+  title="Les Tubes Dance Incontournables | Radio Odyssey"
+  description="Le classement des artistes dance les plus diffusés sur Radio Odyssey, basé sur les vrais passages à l'antenne : David Guetta, Jennifer Lopez, Ofenbach, Calvin Harris et plus."
+>
+  <PageHero
+    gradientFrom="#7B2FBE"
+    gradientTo="#00C6FF"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Les tubes dance incontournables"
+    title="Les Tubes Dance Incontournables"
+    text="Le classement des artistes dance les plus diffusés sur Radio Odyssey, basé sur les vrais passages à l'antenne."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 8L28 20L40 20L30 27L34 39L24 31L14 39L18 27L8 20L20 20Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Le top 10 dance de Radio Odyssey</h2>
+            <p>Plutôt qu'un classement basé sur des charts externes, voici les artistes dance et électro réellement les plus diffusés sur l'antenne de Radio Odyssey, dans l'ordre du nombre de passages recensés dans notre programmation.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Classement</h2>
+            <div style="display:flex;flex-direction:column;gap:.7rem;">
+              {topDance.map((a, i) => (
+                <a href={`/artiste-${a.slug}.html`} style="display:flex;justify-content:space-between;align-items:center;gap:1rem;text-decoration:none;color:var(--ro-dark);padding:.7rem .9rem;border-radius:12px;background:rgba(123,47,190,.04);">
+                  <span style="display:flex;align-items:center;gap:.8rem;">
+                    <span style="font-weight:900;color:var(--ro-purple);font-size:1.1rem;min-width:1.6rem;">{i + 1}</span>
+                    <span>
+                      <strong style="color:var(--ro-purple);">{a.name}</strong><br/>
+                      <span style="font-size:.82rem;color:var(--ro-muted);">{a.track}</span>
+                    </span>
+                  </span>
+                  <i class="bi bi-arrow-right" style="color:var(--ro-purple);flex-shrink:0;"></i>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Un flux qui va au-delà du top 10</h2>
+            <p>Ce classement n'est qu'un aperçu : l'antenne diffuse bien plus large, avec des artistes dance/électro comme Daft Punk, Avicii, Robin Schulz, DJ Snake, Bob Sinclar ou Kylie Minogue, mais aussi des influences synthpop années 80 qui nourrissent régulièrement les remix dance. Retrouvez l'ensemble sur notre page <a href="/styles-musicaux-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">styles musicaux diffusés sur Radio Odyssey</a>.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="tubesdance" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/radio-dance-energisante.html', label: 'Radio Dance Énergisante', desc: "L'énergie dance pour faire bouger votre corps" },
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les Artistes Diffusés', desc: 'Le classement complet, tous styles confondus' },
+            ]}
+            associated={[
+              { href: '/musique-pour-une-soiree-entre-amis.html', label: 'Musique pour une soirée entre amis' },
+              { href: '/styles-musicaux-radio-odyssey.html', label: 'Styles musicaux sur Radio Odyssey' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez ces tubes en direct</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <i class="bi bi-broadcast-pin"></i> Écouter Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

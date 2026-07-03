@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'Quelle musique pour étudier et réviser ?', a: "Pour la mémorisation et la lecture, l'instrumental sans parole aide généralement à limiter les distractions — voir notre sélection dédiée. Pour des tâches plus répétitives (fiches, exercices), un flux avec voix comme Radio Odyssey passe mieux." },
+  { q: 'Musique pour étudier ou musique pour travailler, quelle différence sur ce site ?', a: "Cette page cible spécifiquement le contexte étudiant : révisions, examens, devoirs à la maison. Notre page musique pour travailler vise plutôt le contexte professionnel/télétravail — les deux flux sont les mêmes, seul le contexte d'usage change." },
+  { q: 'Est-ce adapté pour une session de révision de plusieurs heures ?', a: "Oui, le flux continu évite d'avoir à changer de playlist toutes les 40 minutes, et les séquences de cohérence cardiaque intégrées aident à faire des pauses naturelles entre deux sessions." },
+  { q: 'Y a-t-il des coupures publicitaires pendant les révisions ?', a: "Non, Radio Odyssey est gratuite et sans coupure publicitaire — aucune interruption ne vient casser la concentration en pleine session." },
+];
+---
+<Layout
+  lang="fr"
+  title="Musique pour Étudier et Réviser | Radio Odyssey"
+  description="Quelle musique pour étudier ? Radio Odyssey accompagne les sessions de révisions et de devoirs avec un flux continu, sans coupure publicitaire, et une version sans parole pour la mémorisation."
+>
+  <PageHero
+    gradientFrom="#1e7fcb"
+    gradientTo="#00C6FF"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Musique pour étudier et réviser"
+    title="Musique pour Étudier et Réviser"
+    text="Un flux continu, sans coupure publicitaire, pensé pour accompagner vos sessions de révisions et de devoirs."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M6 16L24 8L42 16L24 24Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/><path d="M14 20V32C14 32 18 36 24 36C30 36 34 32 34 32V20" stroke="rgba(255,255,255,.75)" stroke-width="2" stroke-linecap="round" fill="none"/><line x1="42" y1="16" x2="42" y2="28" stroke="white" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Quelle musique pour étudier ?</h2>
+            <p>Réviser un examen, avancer sur un devoir ou tenir une session de révision longue demande un fond sonore qui aide à rester concentré sans lasser. Radio Odyssey propose un flux continu — pas besoin de gérer sa playlist entre deux chapitres — pensé pour les élèves, lycéens et étudiants autant que pour n'importe quelle session de travail.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Instrumental ou avec voix, selon la tâche</h2>
+            <p>Toutes les tâches d'étude ne demandent pas la même chose :</p>
+            <ul>
+              <li><strong>Lecture et mémorisation</strong> : privilégiez l'instrumental, voir notre sélection <a href="/musique-sans-parole-pour-se-concentrer.html" style="color:var(--ro-purple);font-weight:700;">musique sans parole pour se concentrer</a>, pour éviter que les paroles n'interfèrent avec le texte lu.</li>
+              <li><strong>Exercices répétitifs, fiches, mise au propre</strong> : le flux classique de Radio Odyssey, avec ses tubes dance et pop, passe très bien et aide à garder le rythme sur une tâche mécanique.</li>
+            </ul>
+          </div>
+
+          <div class="content-card">
+            <h2>Structurer une session de révision</h2>
+            <p>Les séquences de cohérence cardiaque intégrées au flux (chaque début d'heure, de 7h à 19h) peuvent servir de repère naturel pour ponctuer une session longue : une pause de quelques minutes toutes les heures, sans avoir à programmer soi-même un minuteur.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Idéale pour…</h2>
+            <ul>
+              <li>Les révisions d'examens et de partiels</li>
+              <li>Les devoirs à la maison</li>
+              <li>Les longues sessions à la bibliothèque ou en chambre</li>
+              <li>Le travail scolaire en autonomie</li>
+            </ul>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="etudier" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/musique-sans-parole-pour-se-concentrer.html', label: 'Musique Sans Parole pour se Concentrer', desc: "L'instrumental pour rester concentré" },
+              { href: '/musique-pour-se-concentrer.html', label: 'Musique pour se Concentrer', desc: 'Radio en ligne pour travailler efficacement' },
+            ]}
+            associated={[
+              { href: '/radio-pour-travailler.html', label: 'Radio pour travailler' },
+              { href: '/radio-coherence-cardiaque.html', label: 'Cohérence cardiaque' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Lancez votre session de révisions</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Écouter en Direct
+              </a>
+              <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <i class="bi bi-phone"></i> Télécharger l'application
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

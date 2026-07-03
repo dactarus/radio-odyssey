@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'Quelle musique mettre pour une soirée entre amis ?', a: "Un mélange qui plaît au plus grand nombre fonctionne mieux qu'une sélection de niche : des tubes connus, dance et années 80 remixées, qui donnent envie de danser sans surprendre personne." },
+  { q: 'Peut-on diffuser Radio Odyssey sur une enceinte connectée pendant la soirée ?', a: "Oui — c'est justement l'un des usages les plus pratiques : lancez le flux sur une enceinte Bluetooth, Sonos ou Google Home et il tourne toute la soirée sans intervention. Voir notre page dédiée aux enceintes connectées." },
+  { q: 'Y a-t-il des coupures publicitaires qui gâchent l\'ambiance ?', a: "Non, la diffusion est 100% gratuite et sans coupure publicitaire — l'ambiance reste continue toute la soirée." },
+  { q: 'Combien de temps peut-on laisser tourner le flux ?', a: "Aussi longtemps que vous voulez : c'est une radio en direct, pas une playlist limitée. Elle peut tourner toute la soirée sans se répéter." },
+];
+---
+<Layout
+  lang="fr"
+  title="Musique pour une Soirée entre Amis | Radio Odyssey"
+  description="Quelle musique pour une soirée entre amis ? Radio Odyssey diffuse un flux festif non-stop — dance, tubes 80 remixés et hits connus — pour animer la soirée du début à la fin."
+>
+  <PageHero
+    gradientFrom="#FF3CAC"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Musique pour une soirée entre amis"
+    title="Musique pour une Soirée entre Amis"
+    text="Un flux festif non-stop — dance, tubes 80 remixés et hits connus — pour animer la soirée sans y penser."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="16" cy="26" r="5" stroke="white" stroke-width="2.3"/><circle cx="32" cy="18" r="5" stroke="white" stroke-width="2.3"/><path d="M21 26L27 18" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round"/><path d="M8 12L11 9M6 16L9 16" stroke="rgba(255,255,255,.55)" stroke-width="1.8" stroke-linecap="round"/><path d="M38 30L41 27M36 34L39 34" stroke="rgba(255,255,255,.55)" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Quelle musique pour une soirée entre amis ?</h2>
+            <p>Trouver la bonne ambiance musicale pour un apéro ou une soirée qui s'éternise n'est pas toujours simple : trop pointue, la sélection perd une partie des invités ; trop générique, elle manque de peps. Radio Odyssey propose un compromis naturel — un flux festif mêlant dance actuelle et tubes 80 remixés, connus de tous, qui donne envie de danser sans jamais tomber dans la playlist d'ascenseur.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pourquoi une radio plutôt qu'une playlist "soirée"</h2>
+            <ul>
+              <li>Aucune préparation en amont — on lance et ça tourne</li>
+              <li>Une sélection qui évolue toute la soirée, sans jamais boucler</li>
+              <li>Zéro coupure publicitaire pour ne pas casser l'ambiance</li>
+              <li>Un flux fédérateur qui parle à toutes les générations présentes</li>
+            </ul>
+          </div>
+
+          <div class="content-card">
+            <h2>Sur quel appareil diffuser la soirée</h2>
+            <p>Radio Odyssey se lance aussi bien sur un smartphone connecté à une enceinte Bluetooth que sur une enceinte connectée (Sonos, Google Home, Alexa) ou une TV. Pour un salon ou une terrasse, voir notre guide <a href="/ecouter-radio-odyssey-enceinte-connectee.html" style="color:var(--ro-purple);font-weight:700;">écouter Radio Odyssey sur enceinte connectée</a>.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Idéale pour…</h2>
+            <ul>
+              <li>Un apéro entre amis</li>
+              <li>Une soirée qui se prolonge</li>
+              <li>Un dîner qui monte progressivement en énergie</li>
+              <li>Une fête sans DJ ni playlist à gérer</li>
+            </ul>
+            <p>Une bande-son continue et positive, du premier invité au dernier verre.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="soiree" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/les-tubes-dance-incontournables.html', label: 'Les Tubes Dance Incontournables', desc: 'Les artistes dance les plus diffusés' },
+              { href: '/radio-annees-80-en-ligne.html', label: 'Radio Années 80 en Ligne', desc: 'Les hits cultes remixés' },
+            ]}
+            associated={[
+              { href: '/radio-dance-energisante.html', label: 'Radio dance énergisante' },
+              { href: '/ecouter-radio-odyssey-enceinte-connectee.html', label: 'Écouter sur enceinte connectée' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Lancez l'ambiance pour la soirée</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Écouter en Direct
+              </a>
+              <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <i class="bi bi-phone"></i> Télécharger l'application
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
