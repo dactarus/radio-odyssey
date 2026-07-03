@@ -27,6 +27,7 @@ export const NAV_CATEGORIES = [
       { href: '/musique-sans-parole-pour-se-concentrer.html', bi: 'music-note-list', label: 'Musique Sans Parole pour se Concentrer', desc: "L'instrumental pour rester concentré" },
       { href: '/difference-musicotherapie-radio-bien-etre.html', bi: 'info-circle', label: 'Musicothérapie ou Radio Bien-être ?', desc: 'Une clarification honnête' },
       { href: '/avis-radio-odyssey-bien-etre.html', bi: 'chat-dots', label: 'Avis sur Radio Odyssey', desc: 'Ce que nos auditeurs en disent' },
+      { href: '/elisabeth-belot-grimaud-radio-odyssey.html', bi: 'person-badge', label: 'Notre Partenaire Elisabeth Bélot-Grimaud', desc: 'La voix derrière nos séquences de cohérence cardiaque' },
     ],
   },
   {

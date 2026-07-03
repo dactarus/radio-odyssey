@@ -36,7 +36,7 @@ Chaque nouvelle page doit répondre à une intention de recherche **réellement 
 
 | Cocon | Hub | Pages live | Pages prévues (non créées) |
 |---|---|---|---|
-| Bien-être & Santé | `/bien-etre-et-sante.html` | 12 | — |
+| Bien-être & Santé | `/bien-etre-et-sante.html` | 13 | — |
 | Musique & Énergie | `/musique-et-energie.html` | 12 | — |
 | Playlists du Jour | `/playlists-du-jour.html` | 6 | — |
 | Artistes & Styles | `/artistes-et-styles.html` | 104 (2 hubs + 100 fiches artistes + 4 fiches Découvertes) | — (objectif 100 fiches atteint, §6) |
@@ -44,7 +44,7 @@ Chaque nouvelle page doit répondre à une intention de recherche **réellement 
 | Les Coulisses | `/coulisses-de-radio-odyssey.html` | 1 | **Prévu : mécanique des jingles et autres coulisses éditoriales (demande du propriétaire, 2026-07-02)** |
 | International (EN) | `/international.html` | 4 | — |
 
-Total live à ce jour : 153 pages (voir `git log` pour la valeur exacte, ce nombre évolue vite — ne pas se fier à ce total sans revérifier).
+Total live à ce jour : 156 pages (voir `git log` pour la valeur exacte, ce nombre évolue vite — ne pas se fier à ce total sans revérifier).
 
 ---
 
@@ -65,6 +65,7 @@ Total live à ce jour : 153 pages (voir `git log` pour la valeur exacte, ce nomb
 | `/musique-sans-parole-pour-se-concentrer.html` | musique sans parole pour se concentrer | Lot 002 |
 | `/difference-musicotherapie-radio-bien-etre.html` | musicothérapie vs radio bien-être | Lot 002 |
 | `/avis-radio-odyssey-bien-etre.html` | avis radio odyssey bien-être | Lot 002 |
+| `/elisabeth-belot-grimaud-radio-odyssey.html` | elisabeth bélot-grimaud | Lot 003 |
 
 ### Musique & Énergie
 | URL | Mot-clé cible | Statut |
@@ -443,4 +444,26 @@ Statut : Live, ajoutées à `src/data/navigation.js` (menu, footer, sidebar, hub
 
 ---
 
-*Dernière mise à jour : 2026-07-03, extension du cocon Musique & Énergie (§13).*
+## 14. Lot 003 — Page partenaire Elisabeth Bélot-Grimaud (2026-07-03)
+
+Le propriétaire a confirmé qu'Elisabeth Bélot-Grimaud (santementalepositive.fr) accepte de partager des éléments de son site avec Radio Odyssey. Vérification préalable de son site réel (via WebFetch) avant toute rédaction, pour ne pas inventer de crédentials :
+
+- **Crédentials réelles trouvées** : Docteure en psychologie cognitive, chercheuse et enseignante en psychologie, présidente de l'AFfPP (Association Française et francophone de Psychologie Positive), 2 DU micronutrition et prévention santé, DU méditation et pratiques respiratoires, autrice de *« Programmez votre cerveau pour le bonheur »*, conférencière TEDx (x2), podcast *« L'instant Beau Bien Bon »*. Nettement plus fort que le texte précédent ("Créatrice de programmes en ligne de bien-être") — mis à jour partout.
+- **Fait exclusif exploité** : le propriétaire a précisé que les séquences de cohérence cardiaque diffusées à l'antenne ont été produites avec elle, et que c'est sa voix qui guide les auditeurs. Cette information n'existe nulle part ailleurs (ni sur son site, ni publiée avant ce lot) — c'est le meilleur actif SEO du lot : personne d'autre ne peut publier ce fait.
+- **Principe anti-duplication** (demande explicite du propriétaire) : on ne republie jamais ses fiches ou méthodes propriétaires (D.O.S.E.®, ENCÉFAL®, Beau Bien-Bon®, questionnaire bien-être) — on résume en une phrase et on renvoie systématiquement vers santementalepositive.fr en lien externe (`target="_blank" rel="noopener"`).
+
+**Pages créées/modifiées :**
+| Page | Changement |
+|---|---|
+| `/elisabeth-belot-grimaud-radio-odyssey.html` | Nouvelle page dédiée : bio complète, fait exclusif (voix/co-production), lien vers son site, schema.org `Person` |
+| `index.astro` (bloc partenaire homepage) | Crédentials réelles + lien vers la nouvelle page dédiée |
+| `radio-coherence-cardiaque.html` | Encart "Conçues avec une véritable experte" |
+| `bienfaits-coherence-cardiaque.html` | Encart "Ce qu'en dit notre partenaire", citation réelle de son site |
+| `comment-pratiquer-la-coherence-cardiaque.html` | Encart "La voix qui vous guide" |
+| `coherence-cardiaque-au-bureau.html` | Encart "Une voix experte, pas un enregistrement générique" |
+
+Ajoutée au cocon Bien-être & Santé (13e page) dans `src/data/navigation.js`, au sitemap, et au registre (§4).
+
+---
+
+*Dernière mise à jour : 2026-07-03, page partenaire Elisabeth Bélot-Grimaud (§14).*
