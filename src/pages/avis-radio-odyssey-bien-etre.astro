@@ -4,6 +4,7 @@ import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
 
 const faq = [
   { q: 'Pourquoi il n\'y a pas encore d\'avis affichés sur cette page ?', a: "Par honnêteté : nous préférons ne rien afficher plutôt que de publier des témoignages inventés. Cette page se remplira au fil des retours réels que nous recevons de nos auditeurs." },
@@ -47,6 +48,12 @@ const faq = [
             <h3>Une radio qui accompagne sans exiger d'attention</h3>
             <p>Contrairement à une application de méditation qui demande de s'arrêter pour l'utiliser, Radio Odyssey reste un fond sonore que l'on peut suivre ou non, selon le moment.</p>
           </div>
+
+          <ContentIllustration gradientFrom="#FF3CAC" gradientTo="#FFD700" caption="Une radio indépendante qui écoute vraiment ses auditeurs.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><path d="M24 6L28.5 18.5L42 20L31.5 28.5L34.5 42L24 34.5L13.5 42L16.5 28.5L6 20L19.5 18.5Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg>
+            </Fragment>
+          </ContentIllustration>
 
           <div class="content-card">
             <h2>Ce que Radio Odyssey n'est pas (pour rester honnête)</h2>

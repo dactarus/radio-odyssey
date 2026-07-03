@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
 ---
 <Layout lang="fr" title="Radio Anti-Stress Gratuite en Ligne | Radio Odyssey" description="Radio anti-stress gratuite en ligne sur Radio Odyssey : musique équilibrée, respiration guidée et cohérence cardiaque pour réduire le stress.">
   <PageHero
@@ -69,6 +70,12 @@ import Sidebar from '../components/Sidebar.astro';
           </div>
 
           </div>
+
+          <ContentIllustration gradientFrom="#00C6FF" gradientTo="#1e7fcb" caption="Relâcher la pression, une respiration à la fois.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><path d="M24 8C17 8 12 13 12 19C12 26 17 30 24 33C31 30 36 26 36 19C36 13 31 8 24 8Z" stroke="white" stroke-width="2.5"/><path d="M24 33V42" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M17 42H31" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M19 17C19 17 21 22 24 22C27 22 29 17 29 17" stroke="rgba(255,255,255,.65)" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+            </Fragment>
+          </ContentIllustration>
 
           <div class="content-card">
             <h2>Une radio anti-stress accessible partout</h2>

@@ -4,6 +4,7 @@ import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
 
 const faq = [
   { q: 'La cohérence cardiaque est-elle scientifiquement reconnue ?', a: "La cohérence cardiaque s'appuie sur des travaux autour de la variabilité de la fréquence cardiaque, étudiée depuis plusieurs décennies. Comme toute technique de respiration, ses effets varient d'une personne à l'autre — elle est généralement présentée comme un complément à un mode de vie équilibré, pas comme un traitement." },
@@ -61,6 +62,12 @@ const faq = [
             <h3>Une transition entre deux activités</h3>
             <p>Quelques minutes de cohérence cardiaque entre deux tâches peuvent aider à "réinitialiser" l'attention avant de passer à autre chose.</p>
           </div>
+
+          <ContentIllustration gradientFrom="#FF3CAC" gradientTo="#7B2FBE" caption="Stress, concentration, sommeil, émotions — un seul geste, plusieurs effets.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><path d="M24 40C24 40 6 28 6 16C6 10.5 10 6 15 6C18 6 24 9 24 9C24 9 30 6 33 6C38 6 42 10.5 42 16C42 28 24 40 24 40Z" stroke="white" stroke-width="2.5"/><path d="M17 22L21 26L31 16" stroke="rgba(255,255,255,.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </Fragment>
+          </ContentIllustration>
 
           <div class="content-card">
             <h2>Sur le sommeil</h2>

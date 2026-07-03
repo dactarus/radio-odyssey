@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
 ---
 <Layout lang="fr" title="Radio Années 80 en Ligne, Hits & Remix | Radio Odyssey" description="Radio années 80 en ligne gratuite sur Radio Odyssey : hits cultes, remix modernes et cohérence cardiaque. Écouter maintenant.">
   <PageHero
@@ -69,6 +70,12 @@ import Sidebar from '../components/Sidebar.astro';
             </ul>
             <p>Associ&#233;e &#224; des moments de coh&#233;rence cardiaque, elle cr&#233;e une exp&#233;rience unique&#160;: &#233;nergisante mais ma&#238;tris&#233;e.</p>
           </div>
+
+          <ContentIllustration gradientFrom="#FF9A3C" gradientTo="#FF3CAC" caption="Les tubes qui ne vieillissent jamais, remixés pour aujourd'hui.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.5"/><circle cx="24" cy="24" r="8" stroke="rgba(255,255,255,.7)" stroke-width="2"/><circle cx="24" cy="24" r="2.5" fill="white" opacity=".8"/><path d="M8 24C8 15.2 15.2 8 24 8" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round"/><path d="M40 24C40 32.8 32.8 40 24 40" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round"/></svg>
+            </Fragment>
+          </ContentIllustration>
 
           <div class="content-card">
             <h2>&#201;couter une radio 80s en ligne partout</h2>

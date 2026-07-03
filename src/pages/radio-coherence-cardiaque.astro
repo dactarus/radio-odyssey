@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import CoherenceExercise from '../components/CoherenceExercise.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
 ---
 <Layout lang="fr" title="Radio Cohérence Cardiaque en Ligne Gratuite | Radio Odyssey" description="Radio Odyssey propose une radio de cohérence cardiaque en ligne gratuite : musique positive, séquences de respiration guidée et bien-être, 24h/24.">
   <PageHero
@@ -126,6 +127,12 @@ import CoherenceExercise from '../components/CoherenceExercise.astro';
             <p>Les séquences que vous entendez à l'antenne ne sont pas génériques : elles ont été conçues avec <strong>Elisabeth Bélot-Grimaud</strong>, Docteure en psychologie cognitive et partenaire exclusive de Radio Odyssey — c'est sa voix qui vous guide pour respirer et retrouver un rythme cardiaque régulier, dit sinusoïdal.</p>
             <p><a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">En savoir plus sur notre partenaire <i class="bi bi-arrow-right"></i></a></p>
           </div>
+
+          <ContentIllustration gradientFrom="#00C6FF" gradientTo="#7B2FBE" caption="Une respiration, une note de musique — le cœur retrouve son rythme.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><path d="M24 40C24 40 6 28 6 16C6 10.5 10 6 15 6C18 6 24 9 24 9C24 9 30 6 33 6C38 6 42 10.5 42 16C42 28 24 40 24 40Z" stroke="white" stroke-width="2.5"/><path d="M10 20C13 16 16 24 19 20C22 16 25 24 28 20C31 16 34 24 37 20" stroke="rgba(255,255,255,.65)" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+            </Fragment>
+          </ContentIllustration>
 
           <div class="content-card">
             <h2>Pourquoi &#233;couter une radio avec de la coh&#233;rence cardiaque&#160;?</h2>

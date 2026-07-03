@@ -4,6 +4,7 @@ import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
 
 const faq = [
   {
@@ -72,6 +73,12 @@ const faq = [
             <p>S'il s'agissait plutôt d'une mise en avant ponctuelle — un partenariat, un choix éditorial du moment — sans être un titre particulièrement fort, il quitte simplement l'antenne une fois sa période de diffusion terminée.</p>
             <p style="margin-bottom:0;">Pour trancher, le programmateur surveille les classements officiels et les plateformes musicales : le titre se maintient-il ? Progresse-t-il, ou commence-t-il à reculer ? Il n'y a pas de durée fixe avant cette bascule — elle dépend à la fois de ces indicateurs externes et d'un ressenti plus subjectif, celui du moment où la lassitude des auditeurs commence à poindre. La décision finale revient au programmateur et à la direction de la radio, toujours resituée dans son plan stratégique.</p>
           </div>
+
+          <ContentIllustration gradientFrom="#0b1c2d" gradientTo="#7B2FBE" caption="Composer une grille radio, jour après jour, sans logiciel professionnel.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="32" height="28" rx="4" stroke="white" stroke-width="2.2"/><line x1="8" y1="19" x2="40" y2="19" stroke="white" stroke-width="2"/><circle cx="16" cy="14.5" r="1.6" fill="white"/><circle cx="22" cy="14.5" r="1.6" fill="white"/><line x1="14" y1="26" x2="34" y2="26" stroke="rgba(255,255,255,.7)" stroke-width="1.8" stroke-linecap="round"/><line x1="14" y1="32" x2="26" y2="32" stroke="rgba(255,255,255,.7)" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </Fragment>
+          </ContentIllustration>
 
           <div class="content-card">
             <h2>Des proportions pensées pour un public précis</h2>

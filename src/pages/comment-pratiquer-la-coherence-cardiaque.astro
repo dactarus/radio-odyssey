@@ -5,6 +5,7 @@ import Sidebar from '../components/Sidebar.astro';
 import CoherenceExercise from '../components/CoherenceExercise.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
 
 const howToSchema = {
   '@context': 'https://schema.org',
@@ -100,6 +101,12 @@ const faq = [
               </div>
             </div>
           </div>
+
+          <ContentIllustration gradientFrom="#00C6FF" gradientTo="#1e7fcb" caption="5 secondes pour inspirer, 5 secondes pour expirer — tout est là.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="17" stroke="white" stroke-width="2.3"/><path d="M24 15V24L30 28" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </Fragment>
+          </ContentIllustration>
 
           <div class="content-card">
             <h2>Les erreurs fréquentes à éviter</h2>
