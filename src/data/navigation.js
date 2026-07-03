@@ -15,6 +15,7 @@ export const NAV_CATEGORIES = [
     hubTitle: 'Bien-être & Santé',
     hubIntro: "Musique positive, respiration guidée et cohérence cardiaque : toutes nos pages pensées pour votre bien-être au quotidien.",
     pages: [
+      { href: '/elisabeth-belot-grimaud-radio-odyssey.html', bi: 'person-badge', label: 'Notre Partenaire Elisabeth Bélot-Grimaud', desc: 'Notre caution scientifique — la voix derrière nos séquences de cohérence cardiaque' },
       { href: '/radio-coherence-cardiaque.html', bi: 'activity', label: 'Cohérence Cardiaque', desc: 'Radio & musique guidée pour respirer et vous recentrer' },
       { href: '/radio-bien-etre-en-ligne.html', bi: 'flower1', label: 'Bien-être en Ligne', desc: 'Votre dose quotidienne de positivité et de sérénité' },
       { href: '/radio-anti-stress-gratuite.html', bi: 'peace', label: 'Anti-Stress Gratuite', desc: 'Relâchez la pression avec notre sélection anti-stress' },
@@ -27,7 +28,6 @@ export const NAV_CATEGORIES = [
       { href: '/musique-sans-parole-pour-se-concentrer.html', bi: 'music-note-list', label: 'Musique Sans Parole pour se Concentrer', desc: "L'instrumental pour rester concentré" },
       { href: '/difference-musicotherapie-radio-bien-etre.html', bi: 'info-circle', label: 'Musicothérapie ou Radio Bien-être ?', desc: 'Une clarification honnête' },
       { href: '/avis-radio-odyssey-bien-etre.html', bi: 'chat-dots', label: 'Avis sur Radio Odyssey', desc: 'Ce que nos auditeurs en disent' },
-      { href: '/elisabeth-belot-grimaud-radio-odyssey.html', bi: 'person-badge', label: 'Notre Partenaire Elisabeth Bélot-Grimaud', desc: 'La voix derrière nos séquences de cohérence cardiaque' },
     ],
   },
   {
