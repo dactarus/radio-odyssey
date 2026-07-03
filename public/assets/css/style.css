@@ -378,22 +378,6 @@ img { max-width: 100%; }
   font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .82rem;
 }
 
-/* ── TESTIMONIALS ────────────────────────────────────────────── */
-.testimonial-card {
-  background: #fff; border-radius: 22px; padding: 1.8rem;
-  box-shadow: var(--ro-shadow-sm); height: 100%; position: relative;
-}
-.testimonial-card::before {
-  content: '"'; position: absolute; top: .3rem; left: 1.1rem;
-  font-family: 'Nunito', sans-serif; font-size: 4.5rem; font-weight: 900;
-  color: rgba(123,47,190,.1); line-height: 1; pointer-events: none;
-}
-/* Couleurs garanties desktop ET mobile */
-.testimonial-card p { font-size: .9rem; font-style: italic; margin-bottom: 1rem; padding-top: .5rem; color: #3a3a4a !important; }
-.t-name { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .88rem; color: var(--ro-dark) !important; }
-.t-role { font-size: .76rem; color: var(--ro-muted) !important; }
-.stars  { color: var(--ro-gold) !important; font-size: .88rem; letter-spacing: 1px; }
-
 /* ── PLATFORMS ───────────────────────────────────────────────── */
 .platform-pill {
   display: inline-flex; align-items: center; gap: .45rem;
@@ -695,16 +679,6 @@ img { max-width: 100%; }
   .ro-section { padding: 3.5rem 0; }
   .hero-stats { gap: 1.2rem; }
   .hero-stat  { font-size: 1.5rem; }
-
-  /* ── Témoignages : forcer couleurs lisibles sur mobile ── */
-  .testimonial-card {
-    background: #fff !important;
-    color: #2D2D3A !important;
-  }
-  .testimonial-card p { color: #3a3a4a !important; }
-  .t-name { color: #2D2D3A !important; }
-  .t-role { color: #6c6c80 !important; }
-  .stars  { color: #FFD700 !important; }
 
   /* ── Feature cards "100% positive" : textes lisibles ── */
   .feature-card {
