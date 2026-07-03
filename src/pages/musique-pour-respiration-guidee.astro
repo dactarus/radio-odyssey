@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import CoherenceExercise from '../components/CoherenceExercise.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
 ---
 <Layout lang="fr" title="Musique pour Respiration Guidée | Radio Odyssey" description="Musique pour respiration guidée sur Radio Odyssey : cohérence cardiaque, méthode 365, exercices guidés et bien-être toute la journée.">
   <PageHero
@@ -101,6 +102,12 @@ import CoherenceExercise from '../components/CoherenceExercise.astro';
           </div>
 
 
+
+          <ContentIllustration gradientFrom="#00C6FF" gradientTo="#7B2FBE" caption="20 000 respirations par jour — quelques-unes, guidées, suffisent à tout changer.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><ellipse cx="24" cy="16" rx="7" ry="11" stroke="white" stroke-width="2.5"/><path d="M12 27C12 27 7 31 7 37C7 37 14 39 24 39C34 39 41 37 41 37C41 31 36 27 36 27" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M8 16C4 16 3 22 6 24" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M40 16C44 16 45 22 42 24" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+            </Fragment>
+          </ContentIllustration>
 
           <div class="content-card">
             <h2>Rappel&#160;: pourquoi la respiration est essentielle</h2>
