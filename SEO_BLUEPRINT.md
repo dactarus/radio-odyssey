@@ -358,7 +358,9 @@ Le propriétaire a fait auditer le site par claude.ai avant de poursuivre l'enri
 - Liens internes `/index.html` normalisés vers `/` dans les composants partagés.
 - **Emojis retirés du méga-menu, de l'offcanvas mobile, de la sidebar et des cartes de hub** — remplacés par des icônes Bootstrap Icons monochromes (déjà chargées sitewide), choisies au cas par cas pour matcher le sujet de chaque page (ex. `bi-activity` pour cohérence cardiaque, `bi-lungs` pour respiration guidée, `bi-peace` pour anti-stress). Demande du propriétaire : "c'est vrai que les emojis ce n'est pas top... que ça fasse classe."
 
-**Non traité, hors périmètre technique de Claude Code :** iframe RadioKing sans `loading="lazy"` (risque UX sur le "écouter en direct" si mal fait — à discuter avant d'y toucher), mise en place d'un analytics respectueux de la vie privée (Matomo/Plausible — outil à choisir avec le propriétaire).
+**Non traité, hors périmètre technique de Claude Code :** iframe RadioKing sans `loading="lazy"` (risque UX sur le "écouter en direct" si mal fait — à discuter avant d'y toucher).
+
+**Analytics : fait le 2026-07-02, mais pas Plausible.** Le propriétaire a refusé Plausible et choisi **Google Analytics** (GA4, id `G-6CXEFXNH97`, propriété créée dans un compte GA existant du propriétaire — plusieurs sites peuvent cohabiter dans un même compte GA sans conflit). Voir §12 pour le détail de l'implémentation (bandeau de consentement obligatoire, GA ne charge qu'après accord).
 
 ---
 
@@ -397,4 +399,19 @@ Widget "en cours de lecture", partenaire EBG et FAQ non retouchés : aucune rég
 
 ---
 
-*Dernière mise à jour : 2026-07-02, changement de partenaire (Santé Mentale Positive) + livraison complète du Tier 1 post-audit (hreflang, logo, BreadcrumbList).*
+## 12. Google Analytics + bandeau de consentement (2026-07-02)
+
+Le propriétaire a créé une propriété GA4 (compte Google existant, plusieurs sites dans le même compte — pas de conflit) et fourni l'identifiant `G-6CXEFXNH97`. Implémentation :
+
+- **`src/components/CookieConsent.astro`** : bandeau affiché au premier chargement, tant qu'aucun choix n'est enregistré. Le script `gtag.js` fourni par Google **n'est jamais collé tel quel dans `Layout.astro`** — il n'est injecté dans le DOM que via JS, uniquement après clic sur "Accepter". Choix mémorisé dans `localStorage` (`ro-cookie-consent` = `accepted`/`declined`), donc pas de re-demande à chaque page tant que le choix n'est pas changé.
+- **Équité visuelle des boutons** : "Refuser" et "Accepter" ont exactement le même gabarit (taille, police, padding), seule la couleur change — exigence CNIL contre les designs qui biaisent le choix (bouton "accepter" en évidence, "refuser" en petit lien discret).
+- **Lien "Gérer les cookies"** ajouté dans le footer (`window.roOpenCookiePreferences()`) pour permettre de revenir sur son choix à tout moment.
+- **Politique de confidentialité réécrite** (section "Cookies et mesure d'audience") : décrit honnêtement l'usage de GA, les données collectées, le transfert vers Google LLC (États-Unis), et le droit de retrait — l'ancienne version affirmait "aucun cookie, aucun analytics", ce qui serait devenu faux sans cette mise à jour.
+- **Bug rencontré et corrigé pendant l'implémentation** : le script attachait les listeners des boutons via `document.addEventListener('DOMContentLoaded', ...)`, qui ne se déclenche jamais si l'événement a déjà eu lieu avant l'exécution du script (le cas ici, puisque le composant est en fin de `<body>`). Corrigé en attachant les listeners directement, sans attendre cet événement.
+- **Vérifié de bout en bout** : GA absent du DOM avant consentement, se charge et envoie un vrai hit `page_view` vers `region1.google-analytics.com` après "Accepter", reste absent après "Refuser".
+
+**Rejeté par le propriétaire au préalable :** Plausible (proposé initialement comme alternative respectueuse de la vie privée sans bandeau cookie nécessaire) — le propriétaire a explicitement demandé Google Analytics à la place.
+
+---
+
+*Dernière mise à jour : 2026-07-02, mise en place de Google Analytics avec bandeau de consentement (§12).*
