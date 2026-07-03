@@ -122,6 +122,7 @@ img { max-width: 100%; }
    margin-top:35px est le décalage natif de RadioKing
    qui positionne son UI dans une barre de 105px.
    ── */
+/* Règle appliquée UNIQUEMENT à l'iframe desktop */
 #topRadioBar iframe.rk-desktop {
   flex: 1;
   min-width: 0;
@@ -130,6 +131,10 @@ img { max-width: 100%; }
   margin-top: 35px;     /* CODE ORIGINAL RADIOKING — ne pas modifier */
   align-self: flex-start;
   display: block;
+}
+/* L'iframe mobile est cachée par défaut sur desktop */
+#topRadioBar iframe.rk-mobile {
+  display: none;
 }
 
 
@@ -589,10 +594,11 @@ img { max-width: 100%; }
   .bar-logo { display: flex !important; margin-left: 0 !important; }
   .bar-logo-img { width: 44px !important; height: 44px !important; }
 
-  /* Cacher badge, wave et le lecteur desktop */
+  /* Cacher badge, wave et les deux iframes */
   .live-badge { display: none !important; }
   .bar-wave   { display: none !important; }
   #topRadioBar iframe.rk-desktop { display: none !important; }
+  #topRadioBar iframe.rk-mobile  { display: none !important; }
 
   /* Bouton écoute mobile : grand, facile à taper */
   .rk-mobile-btn {

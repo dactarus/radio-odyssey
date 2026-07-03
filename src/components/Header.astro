@@ -17,14 +17,14 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
     EN DIRECT
   </div>
 
-  <!-- CENTRE desktop : player RadioKing h=90 (original).
-       src différé (data-src) : chargé juste après l'événement "load"
-       de la page, pour ne pas concurrencer l'affichage du contenu
-       principal (hero, texte) au tout premier rendu. Le lecteur reste
-       visible et fonctionnel en quelques centaines de ms, sans clic
-       requis — voir le script de chargement différé en bas de page. -->
+  <!-- CENTRE desktop : player RadioKing h=90 (original) -->
   <iframe class="rk-desktop"
-    data-src="https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90"
+    src="https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90"
+    allow="autoplay" title="Radio Odyssey — Lecteur en direct"></iframe>
+
+  <!-- CENTRE mobile : player RadioKing h=50 compact -->
+  <iframe class="rk-mobile"
+    src="https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=50"
     allow="autoplay" title="Radio Odyssey — Lecteur en direct"></iframe>
 
   <!-- BOUTON mobile alternatif (affiché si iframe trop petite) -->
@@ -53,33 +53,8 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
 
 </div>
 
-<!-- Script RadioKing (original) — "defer" : ne s'exécute qu'une fois le
-     HTML de la page entièrement analysé, pour ne pas retarder le rendu
-     du contenu principal. -->
-<script is:inline defer src="https://player.radioking.io/scripts/iframe.bundle.js"></script>
-
-<!-- Chargement différé du lecteur desktop : le src réel n'est assigné
-     qu'après l'événement "load" de la page (ou immédiatement si la
-     page est déjà chargée au moment où ce script s'exécute), pour que
-     le lecteur RadioKing ne concurrence jamais l'affichage du contenu
-     principal. roPlayNow() (bouton "Écouter en direct") continue de
-     fonctionner à l'identique : il réassigne .src explicitement, donc
-     peu importe que le chargement différé ait déjà eu lieu ou non. -->
-<script is:inline>
-(function () {
-  function loadDesktopPlayer() {
-    var iframe = document.querySelector('#topRadioBar iframe.rk-desktop');
-    if (iframe && !iframe.src && iframe.dataset.src) {
-      iframe.src = iframe.dataset.src;
-    }
-  }
-  if (document.readyState === 'complete') {
-    loadDesktopPlayer();
-  } else {
-    window.addEventListener('load', loadDesktopPlayer);
-  }
-})();
-</script>
+<!-- Script RadioKing (original) -->
+<script is:inline src="https://player.radioking.io/scripts/iframe.bundle.js"></script>
 
 <!-- ============================================================
      MEGA-MENU (desktop)
