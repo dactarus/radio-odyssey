@@ -527,3 +527,16 @@ Ajoutées à `src/data/navigation.js` (cocon International, 4 → 8 pages), au s
 ---
 
 *Dernière mise à jour : 2026-07-04, extension du cocon International avec 4 pages non-traduites (§18).*
+
+---
+
+## 19. Vidéo YouTube de la partenaire (2026-07-04)
+
+Elisabeth Bélot-Grimaud a publié sur sa chaîne YouTube une séance de cohérence cardiaque en musique — le même exercice que celui diffusé sur l'antenne. Vérifié via l'API oEmbed YouTube avant intégration (titre exact, chaîne, thumbnail).
+
+- **Intégration principale** : `elisabeth-belot-grimaud-radio-odyssey.html`, iframe `loading="lazy"` (pour ne pas régresser les gains de performance du §16) + schema.org `VideoObject`.
+- **Pas de deuxième intégration redondante** : `radio-coherence-cardiaque.html` renvoie vers l'ancre `#video` de la page partenaire plutôt que de dupliquer l'iframe.
+
+---
+
+*Dernière mise à jour : 2026-07-04, intégration de la vidéo YouTube de la partenaire (§19).*
