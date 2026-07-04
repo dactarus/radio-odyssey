@@ -4,6 +4,7 @@ import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
+import PartnerVideo from '../components/PartnerVideo.astro';
 
 const faq = [
   { q: 'Qui est Elisabeth Bélot-Grimaud ?', a: "Docteure en psychologie cognitive, elle est chercheuse et enseignante en psychologie, spécialisée en santé mentale positive, autrice de « Programmez votre cerveau pour le bonheur » et conférencière TEDx à deux reprises. Elle anime aussi le podcast « L'instant Beau Bien Bon »." },
@@ -20,19 +21,6 @@ const personSchema = {
   knowsAbout: 'Santé mentale positive',
   url: 'https://santementalepositive.fr/',
   sameAs: ['https://santementalepositive.fr/'],
-};
-
-const videoSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoObject',
-  name: 'Instant Nature 5/5 | Cohérence cardiaque en musique – Dr. Élisabeth Bélot, PhD.',
-  description: "Une séance guidée de cohérence cardiaque en musique, présentée par Elisabeth Bélot-Grimaud — le même exercice que celui diffusé sur l'antenne de Radio Odyssey.",
-  thumbnailUrl: 'https://i.ytimg.com/vi/2ULLb_D82VA/hqdefault.jpg',
-  embedUrl: 'https://www.youtube.com/embed/2ULLb_D82VA',
-  publisher: {
-    '@type': 'Person',
-    name: 'Elisabeth Bélot-Grimaud',
-  },
 };
 ---
 <Layout
@@ -88,20 +76,7 @@ const videoSchema = {
             </div>
           </div>
 
-          <div class="content-card" id="video" style="scroll-margin-top:200px;">
-            <h2>Écoutez sa voix, en vidéo</h2>
-            <p>Elisabeth Bélot-Grimaud a mis en ligne sur sa chaîne YouTube une séance de cohérence cardiaque en musique — le même exercice, la même voix que celle diffusée sur l'antenne de Radio Odyssey.</p>
-            <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:16px;margin-top:1rem;">
-              <iframe
-                src="https://www.youtube.com/embed/2ULLb_D82VA"
-                title="Instant Nature 5/5 | Cohérence cardiaque en musique – Dr. Élisabeth Bélot, PhD."
-                style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                loading="lazy"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
+          <PartnerVideo />
 
           <div class="content-card">
             <h2>Son travail au-delà de Radio Odyssey</h2>
@@ -138,5 +113,4 @@ const videoSchema = {
   </main>
 
   <script type="application/ld+json" is:inline set:html={JSON.stringify(personSchema)} />
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(videoSchema)} />
 </Layout>
