@@ -21,6 +21,19 @@ const personSchema = {
   url: 'https://santementalepositive.fr/',
   sameAs: ['https://santementalepositive.fr/'],
 };
+
+const videoSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: 'Instant Nature 5/5 | Cohérence cardiaque en musique – Dr. Élisabeth Bélot, PhD.',
+  description: "Une séance guidée de cohérence cardiaque en musique, présentée par Elisabeth Bélot-Grimaud — le même exercice que celui diffusé sur l'antenne de Radio Odyssey.",
+  thumbnailUrl: 'https://i.ytimg.com/vi/2ULLb_D82VA/hqdefault.jpg',
+  embedUrl: 'https://www.youtube.com/embed/2ULLb_D82VA',
+  publisher: {
+    '@type': 'Person',
+    name: 'Elisabeth Bélot-Grimaud',
+  },
+};
 ---
 <Layout
   lang="fr"
@@ -75,6 +88,21 @@ const personSchema = {
             </div>
           </div>
 
+          <div class="content-card" id="video" style="scroll-margin-top:200px;">
+            <h2>Écoutez sa voix, en vidéo</h2>
+            <p>Elisabeth Bélot-Grimaud a mis en ligne sur sa chaîne YouTube une séance de cohérence cardiaque en musique — le même exercice, la même voix que celle diffusée sur l'antenne de Radio Odyssey.</p>
+            <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:16px;margin-top:1rem;">
+              <iframe
+                src="https://www.youtube.com/embed/2ULLb_D82VA"
+                title="Instant Nature 5/5 | Cohérence cardiaque en musique – Dr. Élisabeth Bélot, PhD."
+                style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                loading="lazy"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
           <div class="content-card">
             <h2>Son travail au-delà de Radio Odyssey</h2>
             <p>Sur son site <a href="https://santementalepositive.fr/" target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">santementalepositive.fr</a>, Elisabeth Bélot-Grimaud propose des ressources gratuites organisées autour de trois piliers : les ressources biologiques (sommeil, mouvement, alimentation, respiration), cognitives (mémoire, attention, apprentissage) et psychologiques (émotions, relations, sens). Elle y décrit notamment la cohérence cardiaque comme <em>« l'un des outils les plus simples et les mieux documentés pour réguler le stress »</em>.</p>
@@ -110,4 +138,5 @@ const personSchema = {
   </main>
 
   <script type="application/ld+json" is:inline set:html={JSON.stringify(personSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(videoSchema)} />
 </Layout>
