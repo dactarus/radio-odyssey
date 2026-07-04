@@ -42,7 +42,7 @@ Chaque nouvelle page doit répondre à une intention de recherche **réellement 
 | Artistes & Styles | `/artistes-et-styles.html` | 104 (2 hubs + 100 fiches artistes + 4 fiches Découvertes) | — (objectif 100 fiches atteint, §6) |
 | Conseils d'Écoute | `/conseils-ecoute.html` | 3 | — |
 | Les Coulisses | `/coulisses-de-radio-odyssey.html` | 1 | **Prévu : mécanique des jingles et autres coulisses éditoriales (demande du propriétaire, 2026-07-02)** |
-| International (EN) | `/international.html` | 4 | — |
+| International (EN) | `/international.html` | 8 | — |
 
 Total live à ce jour : 156 pages (voir `git log` pour la valeur exacte, ce nombre évolue vite — ne pas se fier à ce total sans revérifier).
 
@@ -225,6 +225,10 @@ Total live à ce jour : 156 pages (voir `git log` pour la valeur exacte, ce nomb
 | `/european-chill-radio.html` | european chill radio | Live |
 | `/feel-good-music-radio.html` | feel good music radio | Live |
 | `/keep-listening-radio-odyssey.html` | keep listening radio odyssey | Live |
+| `/heart-coherence-breathing-radio.html` | heart coherence breathing | Lot 005 |
+| `/80s-throwback-radio-online.html` | 80s throwback radio online | Lot 005 |
+| `/music-for-a-better-mood.html` | music for a better mood | Lot 005 |
+| `/listen-on-tunein.html` | listen to radio on tunein | Lot 005 |
 
 ---
 
@@ -502,3 +506,24 @@ Page créée : `/musique-pour-faire-le-menage.html`, ajoutée au cocon Musique &
 ---
 
 *Dernière mise à jour : 2026-07-04, retour sur "musique et ménage" avec validation partenaire (§17).*
+
+---
+
+## 18. Lot 005 — Extension du cocon International (2026-07-04)
+
+Le propriétaire a demandé d'étoffer le cocon International (EN), jusque-là limité à 4 pages assez génériques, en s'inspirant du cœur du site français (bien-être, cohérence cardiaque, musique) — **explicitement sans faire de simples traductions**. Rappel du canal réel de diffusion à l'international : TuneIn.
+
+Quatre pages créées, chacune avec un angle de recherche anglophone distinct, pas la traduction d'une page française :
+
+| # | URL | Angle | Pourquoi ce n'est pas une traduction |
+|---|---|---|---|
+| 1 | `heart-coherence-breathing-radio.html` | "Heart coherence breathing" — le concept anglophone existe déjà (HeartMath Institute aux États-Unis), avec sa propre terminologie et son propre volume de recherche, distinct de la "cohérence cardiaque" française | Rédigé sur cette terminologie propre, avec mention de la voix humaine (Elisabeth Bélot-Grimaud) — pas un calque du texte français |
+| 2 | `80s-throwback-radio-online.html` | "80s radio online" — recherche massive dans les pays anglophones (nostalgie US/UK), angle absent du cocon EN jusqu'ici alors que c'est l'identité de marque du site | Contenu neuf sur le remix vs. original, pas de page française "années 80" traduite |
+| 3 | `music-for-a-better-mood.html` | Angle mood/positive psychology, drainant sur "La Positive Radio" et la caution scientifique de la partenaire | Ton et structure réécrits pour un public anglophone, pas une traduction de `musique-odyssey-pour-aller-mieux.html` |
+| 4 | `listen-on-tunein.html` | Guide pratique dédié à TuneIn, le vrai canal d'écoute international confirmé par le propriétaire | Pas d'équivalent français direct (les pages françaises "conseils d'écoute" couvrent mobile/voiture/enceinte, pas TuneIn spécifiquement) |
+
+Ajoutées à `src/data/navigation.js` (cocon International, 4 → 8 pages), au sitemap, et au registre (§4).
+
+---
+
+*Dernière mise à jour : 2026-07-04, extension du cocon International avec 4 pages non-traduites (§18).*

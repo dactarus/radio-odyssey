@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'What is heart coherence breathing?', a: "It's a slow, rhythmic breathing pattern — about 5 to 6 breaths per minute — that brings heart rate variability into a smoother, more regular pattern often called \"coherence.\" It's been studied and promoted by organizations such as the HeartMath Institute, and is known in France as \"cohérence cardiaque.\"" },
+  { q: 'Do I need an app for this?', a: "No. Radio Odyssey weaves short guided sequences directly into its music broadcast throughout the day — just keep listening, no separate app or sign-up required." },
+  { q: 'Is this a medical treatment?', a: "No. Heart coherence breathing is a wellness practice, not a medical treatment, and it doesn't replace professional care. If you have a health concern, please consult a qualified professional." },
+  { q: 'How often do these sequences play?', a: "Several times a day, woven naturally into the music flow — short enough that you don't need to set aside dedicated time for them." },
+];
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to practice heart coherence breathing',
+  description: 'A simple guided breathing pattern integrated into Radio Odyssey\'s live broadcast.',
+  step: [
+    { '@type': 'HowToStep', name: 'Get comfortable', text: 'Sit comfortably, back straight, shoulders relaxed.' },
+    { '@type': 'HowToStep', name: 'Breathe in', text: 'Breathe in slowly through your nose for about 5 seconds.' },
+    { '@type': 'HowToStep', name: 'Breathe out', text: 'Breathe out gently through your mouth for about 5 seconds.' },
+    { '@type': 'HowToStep', name: 'Repeat', text: 'Repeat this cycle for a few minutes, following the sequence as it plays.' },
+  ],
+};
+---
+<Layout
+  lang="en"
+  title="Heart Coherence Breathing Radio | Radio Odyssey"
+  description="Discover heart coherence breathing with Radio Odyssey — guided breathing sequences woven into a free, ad-free positive music radio, streaming live worldwide on TuneIn."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(howToSchema)} />
+  </Fragment>
+
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Home"
+    breadcrumbCurrent="Heart coherence breathing radio"
+    title="Heart Coherence Breathing Radio"
+    text="Guided breathing sequences woven right into the music — no app, no sign-up, just listen."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 40C24 40 6 28 6 16C6 10.5 10 6 15 6C18 6 24 9 24 9C24 9 30 6 33 6C38 6 42 10.5 42 16C42 28 24 40 24 40Z" stroke="white" stroke-width="2.5"/><path d="M10 20C13 16 16 24 19 20C22 16 25 24 28 20C31 16 34 24 37 20" stroke="rgba(255,255,255,.65)" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>What Is Heart Coherence Breathing?</h2>
+            <p>Heart coherence breathing is a slow, rhythmic breathing pattern — roughly 5 to 6 breaths per minute — that helps bring heart rate variability into a smoother, more regular rhythm often described as "coherence." The concept has been studied and popularized by organizations such as the HeartMath Institute, and is widely known in France under the name <em>"cohérence cardiaque."</em></p>
+            <p>Radio Odyssey brings this practice to a global audience by integrating short guided sequences directly into its live broadcast, several times a day.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>A Human Voice, Not a Recording</h2>
+            <p>Radio Odyssey made a deliberate choice: a real human voice guides these breathing sequences, rather than a synthetic one. That voice belongs to <strong>Elisabeth Bélot-Grimaud</strong>, a cognitive psychologist and Radio Odyssey's exclusive partner — not an AI, not a generic voiceover.</p>
+            <p><a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Learn more about our partner <i class="bi bi-arrow-right"></i></a></p>
+          </div>
+
+          <div class="content-card">
+            <h2>Woven Into the Music, Not a Separate App</h2>
+            <p>Unlike a meditation app that asks you to stop what you're doing, these sequences arrive naturally within the music you're already listening to. There's nothing to open, schedule or remember — just keep the radio on.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Try It Right Now</h2>
+            <p>Get comfortable, relax your shoulders, and follow this simple rhythm:</p>
+            <div class="highlight-box">
+              <strong>Breathe in</strong> slowly through your nose for 5 seconds…<br/>
+              <strong>Breathe out</strong> gently through your mouth for 5 seconds…<br/><br/>
+              Repeat this cycle for a few minutes.
+            </div>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="hcb" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/music-for-a-better-mood.html', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
+              { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Our Partner Elisabeth Bélot-Grimaud', desc: 'The voice behind our breathing sequences' },
+            ]}
+            associated={[
+              { href: '/feel-good-music-radio.html', label: 'Feel Good Music Radio' },
+              { href: '/listen-on-tunein.html', label: 'How to Listen on TuneIn' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Listen live and breathe along</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Listen Live
+              </a>
+              <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <i class="bi bi-box-arrow-up-right"></i> Listen on TuneIn
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

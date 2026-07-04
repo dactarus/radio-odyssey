@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'Can music really improve my mood?', a: "Music doesn't cure anything, but many people find it genuinely helps change the tone of a moment — from a slow morning to a stressful commute. Radio Odyssey is built around that idea from the ground up." },
+  { q: 'Why does Radio Odyssey call itself \"the positive radio\"?', a: "Because the song selection is deliberately steered toward upbeat, energizing tracks rather than melancholic or nostalgic ones — a conscious editorial choice, not just a slogan." },
+  { q: 'What if music isn\'t enough?', a: "If low mood settles in and persists, the best step is to talk to a healthcare professional rather than relying on music alone. Radio Odyssey is a mood companion, not a substitute for care." },
+];
+---
+<Layout
+  lang="en"
+  title="Music for a Better Mood | Radio Odyssey"
+  description="Looking for music to lift your mood? Radio Odyssey is a free, positive radio station built around feel-good energy, with input from a real psychologist."
+>
+  <PageHero
+    gradientFrom="#FF3CAC"
+    gradientTo="#FFD700"
+    homeLabel="🏠 Home"
+    breadcrumbCurrent="Music for a better mood"
+    title="Music for a Better Mood"
+    text="Why Radio Odyssey's positive playlist is built to lift a low-energy day, one song at a time."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 38C24 38 8 28 8 17C8 11 12.5 7 18 7C21 7 23.5 8.5 24 11C24.5 8.5 27 7 30 7C35.5 7 40 11 40 17C40 28 24 38 24 38Z" stroke="white" stroke-width="2.3" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Why Positive Music Matters</h2>
+            <p>Some days just feel heavier than others — low energy, a flat mood, or simply a need for something to shift the tone. Music can't fix everything, but it can genuinely help in that moment. That idea sits at the core of Radio Odyssey, which brands itself as <strong>"The Positive Radio."</strong></p>
+          </div>
+
+          <div class="content-card">
+            <h2>Designed With a Real Psychologist</h2>
+            <p>Radio Odyssey's positive-radio philosophy isn't just marketing language. It's shaped in partnership with <strong>Elisabeth Bélot-Grimaud</strong>, a cognitive psychologist, researcher, author of <em>"Programmez votre cerveau pour le bonheur"</em> and two-time TEDx speaker — the station's exclusive partner.</p>
+            <p><a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Learn more about our partner <i class="bi bi-arrow-right"></i></a></p>
+          </div>
+
+          <div class="content-card">
+            <h2>A Companion, Not a Cure</h2>
+            <p>To be clear: music is not a treatment, and Radio Odyssey doesn't claim otherwise. It's a companion for the everyday — a lighter start to the morning, a boost through a dull afternoon, a way to shift focus during a stressful commute. If a low mood settles in and doesn't lift, the right next step is a conversation with a healthcare professional, not more music.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Moments When It Helps</h2>
+            <ul>
+              <li>A slow or difficult start to the day</li>
+              <li>An afternoon energy dip</li>
+              <li>A commute or repetitive task</li>
+              <li>A short breathing pause, thanks to the heart coherence sequences woven into the broadcast</li>
+            </ul>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="mood" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/heart-coherence-breathing-radio.html', label: 'Heart Coherence Breathing Radio', desc: 'Guided breathing woven into the music' },
+              { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Our Partner Elisabeth Bélot-Grimaud', desc: 'The psychologist behind our positive-radio philosophy' },
+            ]}
+            associated={[
+              { href: '/feel-good-music-radio.html', label: 'Feel Good Music Radio' },
+              { href: '/80s-throwback-radio-online.html', label: '80s Throwback Radio Online' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Lift the mood, right now</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Listen Live
+              </a>
+              <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <i class="bi bi-box-arrow-up-right"></i> Listen on TuneIn
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -130,6 +130,10 @@ export const NAV_CATEGORIES = [
       { href: '/european-chill-radio.html', bi: 'cloud', label: 'European Chill', desc: 'Laid-back European chill vibes' },
       { href: '/feel-good-music-radio.html', bi: 'emoji-smile', label: 'Feel Good Radio', desc: 'Pure feel-good music' },
       { href: '/keep-listening-radio-odyssey.html', bi: 'play-circle', label: 'Keep Listening', desc: "Can't stop, won't stop" },
+      { href: '/heart-coherence-breathing-radio.html', bi: 'activity', label: 'Heart Coherence Breathing', desc: 'Guided breathing woven into the music' },
+      { href: '/80s-throwback-radio-online.html', bi: 'clock-history', label: '80s Throwback Radio', desc: 'Classic hits, reimagined' },
+      { href: '/music-for-a-better-mood.html', bi: 'heart', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
+      { href: '/listen-on-tunein.html', bi: 'phone', label: 'How to Listen on TuneIn', desc: 'The easiest way to tune in worldwide' },
     ],
   },
 ];

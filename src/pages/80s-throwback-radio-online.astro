@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'Is Radio Odyssey only 80s music?', a: "No — the 80s throwback sound is one part of a wider mix that also includes current dance hits, feel-good pop and easy listening. It's blended in, not the only thing you'll hear." },
+  { q: 'Are the songs original versions or remixes?', a: "Both. Radio Odyssey mixes original 80s classics with modern remixed versions, so the sound stays fresh rather than purely nostalgic." },
+  { q: 'Is it free?', a: "Yes, 100% free with no ads and no sign-up, streaming live 24/7." },
+];
+---
+<Layout
+  lang="en"
+  title="80s Throwback Radio Online | Radio Odyssey"
+  description="Stream 80s throwback hits online with Radio Odyssey — classic songs reimagined with a modern touch, free and ad-free, streaming live worldwide on TuneIn."
+>
+  <PageHero
+    gradientFrom="#FF9A3C"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Home"
+    breadcrumbCurrent="80s throwback radio online"
+    title="80s Throwback Radio Online"
+    text="Classic 80s hits reimagined with a modern touch — free, ad-free, streaming live worldwide."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.5"/><circle cx="24" cy="24" r="8" stroke="rgba(255,255,255,.7)" stroke-width="2"/><circle cx="24" cy="24" r="2.5" fill="white" opacity=".8"/><path d="M8 24C8 15.2 15.2 8 24 8" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round"/><path d="M40 24C40 32.8 32.8 40 24 40" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Why the 80s Still Sound So Good</h2>
+            <p>Synth-pop hooks, unforgettable melodies, and an energy that never quite goes out of style — the 80s left a mark on music that's still felt today. Radio Odyssey taps into that feel-good energy as one of the core sounds of its broadcast.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Not Just Replays — Modern Remixes</h2>
+            <p>Rather than looping the same original recordings, Radio Odyssey blends classic 80s tracks with modern remixed versions — keeping the sound feeling current rather than purely nostalgic. Same iconic melodies, a fresher edge.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Part of a Bigger, Positive Mix</h2>
+            <p>The 80s throwback sound doesn't play in isolation — it's woven into a wider flow of dance hits, feel-good pop, and even short wellness-oriented breathing sequences throughout the day. Think of it as one flavor within Radio Odyssey's larger positive mix, not a dedicated 80s-only station.</p>
+            <p>See our <a href="/music-for-a-better-mood.html" style="color:var(--ro-purple);font-weight:700;">Music for a Better Mood</a> page for more on that broader philosophy.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="80s" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/feel-good-music-radio.html', label: 'Feel Good Music Radio', desc: "Radio Odyssey's positive mix" },
+              { href: '/listen-on-tunein.html', label: 'How to Listen on TuneIn', desc: 'The easiest way to tune in worldwide' },
+            ]}
+            associated={[
+              { href: '/positive-european-music-station.html', label: 'Positive European Music Station' },
+              { href: '/heart-coherence-breathing-radio.html', label: 'Heart Coherence Breathing Radio' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Turn up the throwback hits</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Listen Live
+              </a>
+              <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <i class="bi bi-box-arrow-up-right"></i> Listen on TuneIn
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
