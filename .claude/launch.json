@@ -12,6 +12,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "preview"],
       "port": 4322
+    },
+    {
+      "name": "appli-v8",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--yes", "serve", "-l", "4323", "/Users/fredericbelot/Downloads/Appli Radio Odyssey V8"],
+      "port": 4323
     }
   ]
 }
