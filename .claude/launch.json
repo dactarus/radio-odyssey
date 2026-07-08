@@ -18,6 +18,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["--yes", "serve", "-l", "4323", "/Users/fredericbelot/Downloads/Appli Radio Odyssey V8"],
       "port": 4323
+    },
+    {
+      "name": "admin-console",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "console"],
+      "port": 4400
     }
   ]
 }

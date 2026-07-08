@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Console Radio Odyssey</title>
+<style>
+  :root {
+    --purple: #7B2FBE; --pink: #FF3CAC; --orange: #FF9A3C; --sky: #00C6FF;
+    --navy: #0b1c2d; --panel: #13202f; --panel2: #1a2d40;
+    --border: rgba(30,127,203,.25); --text: #e2eaf4; --muted: #7a9bb5;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, 'Segoe UI', sans-serif; background: var(--navy); color: var(--text); height: 100vh; overflow: hidden; }
+  #app { display: grid; grid-template-columns: 360px 320px 1fr; grid-template-rows: 56px 1fr; height: 100vh; }
+
+  #topbar { grid-column: 1/-1; background: var(--panel); border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px; padding: 0 18px; }
+  .tb-logo { font-weight: 900; font-size: 1.05rem;
+    background: linear-gradient(135deg, var(--purple), var(--pink)); -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; background-clip: text; }
+  #status-badge { font-size: .78rem; font-weight: 700; padding: .3rem .8rem; border-radius: 999px;
+    background: rgba(255,255,255,.06); border: 1px solid var(--border); }
+  #status-badge.dirty { background: rgba(255,154,60,.15); color: var(--orange); border-color: rgba(255,154,60,.3); }
+  #status-badge.published { background: rgba(34,197,94,.15); color: #22c55e; border-color: rgba(34,197,94,.3); }
+
+  #sidebar { background: var(--panel); border-right: 1px solid var(--border); overflow-y: auto; padding: 14px; }
+  #sidebar label { display: block; font-size: .72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; color: var(--muted); margin-bottom: 6px; }
+  select, input[type="text"], textarea {
+    width: 100%; background: var(--panel2); border: 1px solid var(--border); color: var(--text);
+    border-radius: 8px; padding: .5rem .7rem; font-size: .88rem; font-family: inherit; resize: vertical;
+  }
+  select:focus, input:focus, textarea:focus { outline: none; border-color: var(--sky); }
+  .field { margin-bottom: 14px; }
+  .field .hint { font-size: .72rem; color: var(--muted); margin-top: 4px; }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  input[type="color"] { width: 100%; height: 38px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--panel2); cursor: pointer; padding: 2px; }
+  #grad-preview { height: 26px; border-radius: 8px; margin-top: 6px; }
+
+  .section-title { font-size: .82rem; font-weight: 800; color: var(--sky); margin: 18px 0 10px;
+    padding-bottom: 6px; border-bottom: 1px solid rgba(30,127,203,.15); }
+  .section-title:first-child { margin-top: 4px; }
+
+  button { cursor: pointer; border: none; border-radius: 8px; font-weight: 700; font-size: .85rem;
+    padding: .55rem 1rem; font-family: inherit; transition: opacity .15s; }
+  button:hover { opacity: .85; }
+  button:disabled { opacity: .35; cursor: not-allowed; }
+  .btn-save { width: 100%; background: linear-gradient(135deg, var(--purple), #1e7fcb); color: #fff; margin-top: 4px; }
+  .btn-row { display: flex; gap: 8px; margin-top: 10px; }
+  .btn-publish { flex: 1; background: linear-gradient(135deg, #22c55e, #16a34a); color: #fff; }
+  .btn-discard { flex: 1; background: rgba(239,68,68,.15); color: #f87171; border: 1px solid rgba(239,68,68,.3); }
+
+  #preview-zone { display: flex; flex-direction: column; background: #000; }
+  #preview-toolbar { background: var(--panel2); border-bottom: 1px solid var(--border); padding: 8px 14px;
+    display: flex; align-items: center; gap: 10px; font-size: .8rem; }
+  #preview-toolbar a { color: var(--sky); text-decoration: none; }
+  #preview-note { padding: 2px 8px; border-radius: 6px; background: rgba(255,154,60,.15); color: var(--orange); font-size: .74rem; }
+  #preview-frame { flex: 1; width: 100%; border: none; background: #fff; }
+
+  #blocks-panel { background: var(--panel); border-right: 1px solid var(--border); overflow-y: auto; padding: 14px;
+    display: flex; flex-direction: column; }
+  #block-list { flex-shrink: 0; max-height: 45vh; overflow-y: auto; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 12px; }
+  .block-row { padding: .5rem .7rem; font-size: .8rem; border-bottom: 1px solid rgba(30,127,203,.12); cursor: pointer; }
+  .block-row:last-child { border-bottom: none; }
+  .block-row:hover { background: rgba(30,127,203,.1); }
+  .block-row.selected { background: rgba(123,47,190,.22); }
+  .block-row .tag { display: inline-block; font-size: .65rem; font-weight: 800; color: var(--sky);
+    text-transform: uppercase; margin-right: 6px; }
+  .block-row .preview { color: var(--text); opacity: .85; }
+  #block-editor { display: none; flex-direction: column; flex: 1; min-height: 0; }
+  #f-block-text { flex: 1; min-height: 120px; font-size: .85rem; }
+  .btn-save-block { width: 100%; background: linear-gradient(135deg, var(--purple), #1e7fcb); color: #fff; margin-top: 10px; }
+  #block-empty { color: var(--muted); font-size: .82rem; }
+
+  .mode-tabs { display: flex; gap: 6px; }
+  .mode-tab { background: rgba(255,255,255,.06); border: 1px solid var(--border); color: var(--muted);
+    border-radius: 8px; padding: .4rem .9rem; font-size: .82rem; font-weight: 700; }
+  .mode-tab.active { background: linear-gradient(135deg, var(--purple), var(--pink)); color: #fff; border-color: transparent; }
+
+  .section-list { border: 1px solid var(--border); border-radius: 8px; padding: 10px; margin-bottom: 10px; }
+  .section-list + .section-list { margin-top: -2px; }
+  .btn-create { width: 100%; background: linear-gradient(135deg, var(--purple), var(--pink)); color: #fff; margin-top: 6px; }
+  #create-status-box { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+
+  #toast { position: fixed; bottom: 18px; left: 692px; background: var(--panel2); border: 1px solid var(--border);
+    color: var(--text); padding: .6rem 1rem; border-radius: 8px; font-size: .82rem; box-shadow: 0 4px 20px rgba(0,0,0,.4);
+    opacity: 0; transform: translateY(10px); transition: all .25s; pointer-events: none; }
+  #toast.show { opacity: 1; transform: translateY(0); }
+  #toast.error { border-color: rgba(239,68,68,.4); color: #f87171; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="topbar">
+    <span class="tb-logo">Radio Odyssey — Console</span>
+    <div class="mode-tabs">
+      <button class="mode-tab active" id="tab-existing">Pages existantes</button>
+      <button class="mode-tab" id="tab-create">➕ Nouvelle page</button>
+    </div>
+    <div style="flex:1"></div>
+    <span id="status-badge">Choisissez une page</span>
+  </div>
+
+  <div id="sidebar">
+    <div id="panel-existing-fields">
+      <div class="field">
+        <label>Page à modifier</label>
+        <select id="sel-page"></select>
+      </div>
+
+      <div class="section-title">Référencement (SEO)</div>
+      <div class="field">
+        <label>Titre de la page (onglet du navigateur / Google)</label>
+        <input type="text" id="f-title"/>
+        <div class="hint">Idéalement 50 à 60 caractères.</div>
+      </div>
+      <div class="field">
+        <label>Description (affichée sous le titre dans Google)</label>
+        <textarea id="f-description" rows="3"></textarea>
+        <div class="hint"><span id="desc-count">0</span> / 155 caractères</div>
+      </div>
+
+      <div id="hero-section">
+        <div class="section-title">Bandeau d'en-tête (Hero)</div>
+        <div class="field">
+          <label>Titre principal affiché sur la page</label>
+          <input type="text" id="f-hero-title"/>
+        </div>
+        <div class="field">
+          <label>Sous-titre</label>
+          <textarea id="f-hero-text" rows="2"></textarea>
+        </div>
+        <div class="field">
+          <label>Couleurs du dégradé</label>
+          <div class="row-2">
+            <input type="color" id="f-grad-from"/>
+            <input type="color" id="f-grad-to"/>
+          </div>
+          <div id="grad-preview"></div>
+        </div>
+      </div>
+      <div id="hero-unavailable" class="hint" style="display:none;margin-top:10px;">
+        Cette page n'a pas de bandeau d'en-tête modifiable pour l'instant.
+      </div>
+
+      <button class="btn-save" id="btn-save">Enregistrer</button>
+      <div class="btn-row">
+        <button class="btn-publish" id="btn-publish">Publier en ligne</button>
+        <button class="btn-discard" id="btn-discard">Annuler</button>
+      </div>
+      <div class="hint" style="margin-top:10px;">
+        « Enregistrer » sauvegarde sur votre ordinateur et met à jour l'aperçu à droite.<br/>
+        « Publier en ligne » envoie la modification sur le site (visible en quelques minutes).<br/>
+        « Annuler » efface les modifications non publiées de cette page.
+      </div>
+    </div>
+
+    <div id="panel-create-fields" style="display:none;">
+      <div class="field">
+        <label>Catégorie</label>
+        <select id="c-category"></select>
+      </div>
+      <div class="field">
+        <label>Nom affiché dans le menu</label>
+        <input type="text" id="c-label" placeholder="Ex : Pour Jardiner"/>
+      </div>
+      <div class="field">
+        <label>Adresse de la page (URL)</label>
+        <div style="display:flex;align-items:center;gap:4px;">
+          <span class="hint" style="margin:0;">/</span>
+          <input type="text" id="c-slug" placeholder="pour-jardiner"/>
+          <span class="hint" style="margin:0;">.html</span>
+        </div>
+        <div class="hint" id="c-slug-hint">Se remplit automatiquement à partir du nom ci-dessus.</div>
+      </div>
+      <div class="field">
+        <label>Description courte (menu / catégorie)</label>
+        <textarea id="c-desc" rows="2" placeholder="Une phrase qui donne envie de cliquer"></textarea>
+      </div>
+
+      <div class="section-title">Référencement (SEO)</div>
+      <div class="field">
+        <label>Titre de la page</label>
+        <input type="text" id="c-seo-title"/>
+      </div>
+      <div class="field">
+        <label>Description (Google)</label>
+        <textarea id="c-seo-description" rows="3"></textarea>
+      </div>
+
+      <div class="section-title">Bandeau d'en-tête (Hero)</div>
+      <div class="field">
+        <label>Titre principal</label>
+        <input type="text" id="c-hero-title"/>
+      </div>
+      <div class="field">
+        <label>Sous-titre</label>
+        <textarea id="c-hero-text" rows="2"></textarea>
+      </div>
+      <div class="field">
+        <label>Couleurs du dégradé</label>
+        <div class="row-2">
+          <input type="color" id="c-grad-from" value="#7B2FBE"/>
+          <input type="color" id="c-grad-to" value="#FF3CAC"/>
+        </div>
+        <div id="c-grad-preview" style="height:26px;border-radius:8px;margin-top:6px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="blocks-panel">
+    <div id="panel-existing-blocks" style="display:flex;flex-direction:column;flex:1;min-height:0;">
+      <div class="section-title" style="margin-top:0;">Texte du corps de page</div>
+      <div class="hint" style="margin-bottom:10px;">Cliquez sur un titre, un paragraphe ou une puce ci-dessous pour le modifier.</div>
+      <div id="block-list"></div>
+      <div id="block-empty">Sélectionnez un bloc dans la liste ci-dessus.</div>
+      <div id="block-editor">
+        <label>Contenu du bloc sélectionné</label>
+        <textarea id="f-block-text"></textarea>
+        <div class="hint">Texte simple autorisé, avec éventuellement &lt;strong&gt; ou &lt;em&gt;. N'ajoutez pas de nouvelles balises de titre/section.</div>
+        <button class="btn-save-block" id="btn-save-block">Enregistrer ce texte</button>
+      </div>
+    </div>
+
+    <div id="panel-create-sections" style="display:none;">
+      <div class="section-title" style="margin-top:0;">Contenu de la page</div>
+      <div class="hint" style="margin-bottom:10px;">Au moins un paragraphe est nécessaire. Vous pourrez modifier ou compléter ces textes plus tard.</div>
+
+      <div class="section-list">
+        <div class="field"><label>Titre de section 1</label><input type="text" id="c-sec1-h" placeholder="Optionnel"/></div>
+        <div class="field"><label>Paragraphe 1</label><textarea id="c-sec1-p" rows="3"></textarea></div>
+      </div>
+      <div class="section-list">
+        <div class="field"><label>Titre de section 2</label><input type="text" id="c-sec2-h" placeholder="Optionnel"/></div>
+        <div class="field"><label>Paragraphe 2</label><textarea id="c-sec2-p" rows="3"></textarea></div>
+      </div>
+      <div class="section-list">
+        <div class="field"><label>Titre de section 3</label><input type="text" id="c-sec3-h" placeholder="Optionnel"/></div>
+        <div class="field"><label>Paragraphe 3</label><textarea id="c-sec3-p" rows="3"></textarea></div>
+      </div>
+
+      <button class="btn-create" id="btn-create-page">Créer la page (brouillon)</button>
+
+      <div id="create-status-box">
+        <div class="hint" style="margin-bottom:8px;">Brouillon créé : <strong id="create-status-file"></strong></div>
+        <div class="btn-row">
+          <button class="btn-publish" id="btn-publish-creation">Publier en ligne</button>
+          <button class="btn-discard" id="btn-discard-creation">Supprimer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="preview-zone">
+    <div id="preview-toolbar">
+      <span>Aperçu en direct</span>
+      <span id="preview-note" style="display:none;"></span>
+      <div style="flex:1"></div>
+      <a id="preview-open" href="#" target="_blank">Ouvrir dans un onglet ↗</a>
+    </div>
+    <iframe id="preview-frame"></iframe>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+const ASTRO_ORIGIN = 'http://localhost:4321';
+let currentFile = null;
+let currentHref = null;
+
+function toast(msg, isError) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = isError ? 'error show' : 'show';
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+function setBadge(text, kind) {
+  const b = document.getElementById('status-badge');
+  b.textContent = text;
+  b.className = kind || '';
+}
+
+async function api(path, opts) {
+  const res = await fetch(path, opts);
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Erreur inconnue');
+  return data;
+}
+
+async function loadPageList() {
+  const groups = await api('/api/pages');
+  const sel = document.getElementById('sel-page');
+  sel.innerHTML = '';
+  for (const group of groups) {
+    const og = document.createElement('optgroup');
+    og.label = group.label;
+    for (const entry of group.entries) {
+      const opt = document.createElement('option');
+      opt.value = entry.file;
+      opt.dataset.href = entry.href;
+      opt.textContent = entry.label;
+      og.appendChild(opt);
+    }
+    sel.appendChild(og);
+  }
+  await selectPage(sel.value);
+}
+
+function updateGradPreview() {
+  const c1 = document.getElementById('f-grad-from').value;
+  const c2 = document.getElementById('f-grad-to').value;
+  document.getElementById('grad-preview').style.background = `linear-gradient(135deg,${c1},${c2})`;
+}
+
+async function selectPage(file) {
+  currentFile = file;
+  const sel = document.getElementById('sel-page');
+  const opt = sel.querySelector(`option[value="${CSS.escape(file)}"]`);
+  currentHref = opt ? opt.dataset.href : '/index.html';
+
+  const { fields, gitStatus } = await api(`/api/page?file=${encodeURIComponent(file)}`);
+  document.getElementById('f-title').value = fields.title || '';
+  document.getElementById('f-description').value = fields.description || '';
+  document.getElementById('f-description').dispatchEvent(new Event('input'));
+
+  const heroSection = document.getElementById('hero-section');
+  const heroUnavailable = document.getElementById('hero-unavailable');
+  if (fields.heroAvailable) {
+    heroSection.style.display = '';
+    heroUnavailable.style.display = 'none';
+    document.getElementById('f-hero-title').value = fields.heroTitle || '';
+    document.getElementById('f-hero-text').value = fields.heroText || '';
+    document.getElementById('f-grad-from').value = fields.gradientFrom || '#7B2FBE';
+    document.getElementById('f-grad-to').value = fields.gradientTo || '#FF3CAC';
+    updateGradPreview();
+  } else {
+    heroSection.style.display = 'none';
+    heroUnavailable.style.display = '';
+  }
+
+  applyGitStatus(gitStatus);
+  refreshPreview();
+  await loadBlocks(file);
+}
+
+let currentBlockId = null;
+
+async function loadBlocks(file) {
+  const blocks = await api(`/api/blocks?file=${encodeURIComponent(file)}`);
+  const list = document.getElementById('block-list');
+  list.innerHTML = '';
+  currentBlockId = null;
+  document.getElementById('block-editor').style.display = 'none';
+  document.getElementById('block-empty').style.display = '';
+
+  if (!blocks.length) {
+    list.innerHTML = '<div class="hint" style="padding:.6rem;">Aucun bloc de texte détecté sur cette page.</div>';
+    return;
+  }
+  for (const block of blocks) {
+    const row = document.createElement('div');
+    row.className = 'block-row';
+    row.dataset.id = block.id;
+    row.innerHTML = `<span class="tag">${block.tag}</span><span class="preview">${escapeHtml(decodeEntities(block.preview)) || '(vide)'}</span>`;
+    row.addEventListener('click', () => selectBlock(block.id, decodeEntities(block.text)));
+    list.appendChild(row);
+  }
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// Astuce classique : affecter à innerHTML d'un <textarea> décode les entités
+// HTML sans jamais interpréter les balises (content model "texte brut").
+function decodeEntities(str) {
+  const ta = document.createElement('textarea');
+  ta.innerHTML = str;
+  return ta.value;
+}
+
+function selectBlock(id, text) {
+  currentBlockId = id;
+  document.querySelectorAll('.block-row').forEach((r) => r.classList.toggle('selected', Number(r.dataset.id) === id));
+  document.getElementById('f-block-text').value = text;
+  document.getElementById('block-editor').style.display = 'flex';
+  document.getElementById('block-empty').style.display = 'none';
+}
+
+function applyGitStatus(gitStatus) {
+  if (gitStatus === 'modified') {
+    setBadge('Modifié — non publié en ligne', 'dirty');
+    document.getElementById('btn-publish').disabled = false;
+    document.getElementById('btn-discard').disabled = false;
+  } else {
+    setBadge('Publié / à jour', 'published');
+    document.getElementById('btn-publish').disabled = true;
+    document.getElementById('btn-discard').disabled = true;
+  }
+}
+
+function refreshPreview() {
+  const frame = document.getElementById('preview-frame');
+  frame.src = ASTRO_ORIGIN + currentHref;
+  document.getElementById('preview-open').href = ASTRO_ORIGIN + currentHref;
+}
+
+async function checkAstroStatus() {
+  const note = document.getElementById('preview-note');
+  try {
+    const { running } = await api('/api/astro-status');
+    if (!running) {
+      note.style.display = '';
+      note.textContent = 'Lancement de l\'aperçu du site en cours…';
+      setTimeout(checkAstroStatus, 2000);
+    } else {
+      note.style.display = 'none';
+    }
+  } catch {
+    note.style.display = '';
+    note.textContent = 'Aperçu indisponible.';
+  }
+}
+
+document.getElementById('sel-page').addEventListener('change', (e) => selectPage(e.target.value));
+document.getElementById('f-description').addEventListener('input', (e) => {
+  document.getElementById('desc-count').textContent = e.target.value.length;
+});
+document.getElementById('f-grad-from').addEventListener('input', updateGradPreview);
+document.getElementById('f-grad-to').addEventListener('input', updateGradPreview);
+
+document.getElementById('btn-save').addEventListener('click', async () => {
+  const fields = {
+    title: document.getElementById('f-title').value,
+    description: document.getElementById('f-description').value,
+  };
+  if (document.getElementById('hero-section').style.display !== 'none') {
+    fields.heroTitle = document.getElementById('f-hero-title').value;
+    fields.heroText = document.getElementById('f-hero-text').value;
+    fields.gradientFrom = document.getElementById('f-grad-from').value;
+    fields.gradientTo = document.getElementById('f-grad-to').value;
+  }
+  try {
+    const { gitStatus } = await api(`/api/page?file=${encodeURIComponent(currentFile)}`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(fields),
+    });
+    applyGitStatus(gitStatus);
+    refreshPreview();
+    toast('Enregistré — regardez l\'aperçu à droite.');
+  } catch (err) {
+    toast(err.message, true);
+  }
+});
+
+document.getElementById('btn-save-block').addEventListener('click', async () => {
+  if (currentBlockId === null) return;
+  const savedId = currentBlockId;
+  const text = document.getElementById('f-block-text').value;
+  try {
+    const { gitStatus } = await api(`/api/block?file=${encodeURIComponent(currentFile)}&id=${savedId}`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text }),
+    });
+    applyGitStatus(gitStatus);
+    refreshPreview();
+    await loadBlocks(currentFile);
+    selectBlock(savedId, text);
+    toast('Texte enregistré — regardez l\'aperçu à droite.');
+  } catch (err) {
+    toast(err.message, true);
+  }
+});
+
+document.getElementById('btn-publish').addEventListener('click', async () => {
+  if (!confirm('Publier cette page en ligne sur radio-odyssey.com maintenant ?')) return;
+  try {
+    const { gitStatus } = await api(`/api/publish?file=${encodeURIComponent(currentFile)}`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: `Modifier ${currentFile} via la console` }),
+    });
+    applyGitStatus(gitStatus);
+    toast('Publié ! Visible en ligne dans quelques minutes.');
+  } catch (err) {
+    toast(err.message, true);
+  }
+});
+
+document.getElementById('btn-discard').addEventListener('click', async () => {
+  if (!confirm('Annuler les modifications non publiées de cette page ? Ce qui n\'a pas été publié sera perdu.')) return;
+  try {
+    await api(`/api/discard?file=${encodeURIComponent(currentFile)}`, { method: 'POST' });
+    await selectPage(currentFile);
+    toast('Modifications annulées.');
+  } catch (err) {
+    toast(err.message, true);
+  }
+});
+
+loadPageList().catch((err) => toast(err.message, true));
+checkAstroStatus();
+
+// ── Mode "Nouvelle page" ─────────────────────────────────────────────────
+let pendingCreationFile = null;
+let slugManuallyEdited = false;
+let categoriesLoaded = false;
+
+function setMode(mode) {
+  const isCreate = mode === 'create';
+  document.getElementById('tab-existing').classList.toggle('active', !isCreate);
+  document.getElementById('tab-create').classList.toggle('active', isCreate);
+  document.getElementById('panel-existing-fields').style.display = isCreate ? 'none' : '';
+  document.getElementById('panel-create-fields').style.display = isCreate ? '' : 'none';
+  document.getElementById('panel-existing-blocks').style.display = isCreate ? 'none' : 'flex';
+  document.getElementById('panel-create-sections').style.display = isCreate ? '' : 'none';
+  if (isCreate && !categoriesLoaded) loadCategories();
+  if (!isCreate) loadPageList().catch((err) => toast(err.message, true));
+}
+
+document.getElementById('tab-existing').addEventListener('click', () => setMode('existing'));
+document.getElementById('tab-create').addEventListener('click', () => setMode('create'));
+
+async function loadCategories() {
+  categoriesLoaded = true;
+  const categories = await api('/api/categories');
+  const sel = document.getElementById('c-category');
+  sel.innerHTML = categories.map((c) => `<option value="${c.id}">${escapeHtml(c.label)}</option>`).join('');
+}
+
+function updateCreateGradPreview() {
+  const c1 = document.getElementById('c-grad-from').value;
+  const c2 = document.getElementById('c-grad-to').value;
+  document.getElementById('c-grad-preview').style.background = `linear-gradient(135deg,${c1},${c2})`;
+}
+document.getElementById('c-grad-from').addEventListener('input', updateCreateGradPreview);
+document.getElementById('c-grad-to').addEventListener('input', updateCreateGradPreview);
+updateCreateGradPreview();
+
+document.getElementById('c-slug').addEventListener('input', () => { slugManuallyEdited = true; });
+document.getElementById('c-label').addEventListener('input', async (e) => {
+  if (slugManuallyEdited) return;
+  const { slug } = await api(`/api/slugify?label=${encodeURIComponent(e.target.value)}`);
+  document.getElementById('c-slug').value = slug;
+});
+
+document.getElementById('btn-create-page').addEventListener('click', async () => {
+  const sections = [
+    { heading: document.getElementById('c-sec1-h').value, text: document.getElementById('c-sec1-p').value },
+    { heading: document.getElementById('c-sec2-h').value, text: document.getElementById('c-sec2-p').value },
+    { heading: document.getElementById('c-sec3-h').value, text: document.getElementById('c-sec3-p').value },
+  ].filter((s) => s.text.trim());
+
+  const fields = {
+    categoryId: document.getElementById('c-category').value,
+    slug: document.getElementById('c-slug').value.trim(),
+    label: document.getElementById('c-label').value.trim(),
+    desc: document.getElementById('c-desc').value.trim(),
+    seoTitle: document.getElementById('c-seo-title').value.trim(),
+    seoDescription: document.getElementById('c-seo-description').value.trim(),
+    heroTitle: document.getElementById('c-hero-title').value.trim(),
+    heroText: document.getElementById('c-hero-text').value.trim(),
+    gradientFrom: document.getElementById('c-grad-from').value,
+    gradientTo: document.getElementById('c-grad-to').value,
+    sections,
+  };
+
+  try {
+    const { file, href } = await api('/api/create-page', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(fields),
+    });
+    pendingCreationFile = file;
+    document.getElementById('create-status-file').textContent = href;
+    document.getElementById('create-status-box').style.display = '';
+    currentHref = href;
+    refreshPreview();
+    // Astro dev met parfois une seconde à repérer un tout nouveau fichier ;
+    // un rechargement automatique évite un faux 404 le temps que ce soit fait.
+    setTimeout(refreshPreview, 1500);
+    toast('Page créée en brouillon — regardez l\'aperçu à droite.');
+  } catch (err) {
+    toast(err.message, true);
+  }
+});
+
+document.getElementById('btn-publish-creation').addEventListener('click', async () => {
+  if (!pendingCreationFile) return;
+  if (!confirm('Publier cette nouvelle page en ligne sur radio-odyssey.com maintenant ?')) return;
+  try {
+    await api(`/api/publish-creation?file=${encodeURIComponent(pendingCreationFile)}`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: `Créer la page ${pendingCreationFile} via la console` }),
+    });
+    toast('Page publiée ! Visible en ligne dans quelques minutes.');
+    document.getElementById('create-status-box').style.display = 'none';
+    pendingCreationFile = null;
+    setMode('existing');
+  } catch (err) {
+    toast(err.message, true);
+  }
+});
+
+document.getElementById('btn-discard-creation').addEventListener('click', async () => {
+  if (!pendingCreationFile) return;
+  if (!confirm('Supprimer ce brouillon de page ? Il n\'a pas été publié, rien ne sera perdu en ligne.')) return;
+  try {
+    await api(`/api/discard-creation?file=${encodeURIComponent(pendingCreationFile)}`, { method: 'POST' });
+    toast('Brouillon supprimé.');
+    document.getElementById('create-status-box').style.display = 'none';
+    pendingCreationFile = null;
+  } catch (err) {
+    toast(err.message, true);
+  }
+});
+</script>
+</body>
+</html>
