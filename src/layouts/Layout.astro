@@ -12,6 +12,8 @@ interface Props {
   ogType?: string;
   ogImage?: string;
   robots?: string;
+  articleDatePublished?: string;
+  articleAuthorName?: string;
 }
 
 const {
@@ -23,6 +25,8 @@ const {
   ogType = 'website',
   ogImage = '/assets/images/og/home.jpg',
   robots = 'index, follow',
+  articleDatePublished,
+  articleAuthorName,
 } = Astro.props;
 
 const ogImageURL = new URL(ogImage, Astro.site);
@@ -58,6 +62,23 @@ const breadcrumbSchema = isHome ? null : {
     { '@type': 'ListItem', position: 2, name: breadcrumbLabel || title, item: canonicalURL.toString() },
   ],
 };
+
+// Article schema : uniquement sur les pages qui passent articleDatePublished
+// (les articles éditoriaux type "Coulisses"), pas sur les pages produit/hub.
+const articleSchema = articleDatePublished ? {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: breadcrumbLabel || title,
+  description,
+  datePublished: articleDatePublished,
+  dateModified: articleDatePublished,
+  author: articleAuthorName
+    ? { '@type': 'Person', name: articleAuthorName }
+    : { '@type': 'Organization', name: 'Radio Odyssey' },
+  publisher: { '@type': 'Organization', name: 'Radio Odyssey', logo: { '@type': 'ImageObject', url: 'https://www.radio-odyssey.com/assets/images/logo.png' } },
+  image: ogImageURL.toString(),
+  mainEntityOfPage: canonicalURL.toString(),
+} : null;
 ---
 <!DOCTYPE html>
 <html lang={lang}>
@@ -96,6 +117,9 @@ const breadcrumbSchema = isHome ? null : {
   <script type="application/ld+json" is:inline set:html={JSON.stringify(organizationSchema)} />
   {breadcrumbSchema && (
     <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+  )}
+  {articleSchema && (
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} />
   )}
 
   <slot name="head" />
