@@ -41,7 +41,7 @@ Chaque nouvelle page doit répondre à une intention de recherche **réellement 
 | Playlists du Jour | `/playlists-du-jour.html` | 6 | — |
 | Artistes & Styles | `/artistes-et-styles.html` | 104 (2 hubs + 100 fiches artistes + 4 fiches Découvertes) | — (objectif 100 fiches atteint, §6) |
 | Conseils d'Écoute | `/conseils-ecoute.html` | 3 | — |
-| Les Coulisses | `/coulisses-de-radio-odyssey.html` | 2 | **Restent prévus : le jingle Top Horaire (identité de la radio) et la programmation des titres "surprises"** |
+| Les Coulisses | `/coulisses-de-radio-odyssey.html` | 3 | **Reste prévu : le jingle Top Horaire (identité de la radio)** |
 | International (EN) | `/international.html` | 8 | — |
 
 Total live à ce jour : 156 pages (voir `git log` pour la valeur exacte, ce nombre évolue vite — ne pas se fier à ce total sans revérifier).
@@ -217,7 +217,8 @@ Total live à ce jour : 156 pages (voir `git log` pour la valeur exacte, ce nomb
 |---|---|---|
 | `/coulisses-de-radio-odyssey.html` | coulisses radio odyssey | Live (hub) |
 | `/comment-radio-odyssey-choisit-sa-musique.html` | comment radio odyssey choisit sa musique | Live (déplacé depuis Playlists du Jour) |
-| `/comment-radio-odyssey-fabrique-ses-jingles.html` | comment radio odyssey fabrique ses jingles | Publié le 2026-07-06, en attente de mise en ligne (voir §6bis suite) |
+| `/comment-radio-odyssey-fabrique-ses-jingles.html` | comment radio odyssey fabrique ses jingles | Live (publié le 2026-07-06) |
+| `/comment-radio-odyssey-programme-ses-titres-surprises.html` | titres surprises radio odyssey | Live (publié le 2026-07-11) |
 
 ### International
 | URL | Mot-clé cible | Statut |
@@ -307,7 +308,9 @@ Le propriétaire a expliqué son métier de programmateur radio, contexte import
 - **Réorganisation du 2026-07-02** : le propriétaire a demandé de sortir cet article de "Playlists du Jour" pour créer un cocon dédié, **"Les Coulisses de Radio Odyssey"** (nouvel onglet du méga-menu, positionné entre "Conseils d'Écoute" et "International"), avec l'intention explicite d'y ajouter plus tard d'autres contenus coulisses (ex. la mécanique de fabrication des jingles et leur rôle dans le flux musical). Hub : `/coulisses-de-radio-odyssey.html`.
 
 ✅ **Deuxième article publié le 2026-07-06** : `/comment-radio-odyssey-fabrique-ses-jingles.html`, construit en interview comme le précédent. Contenu réel du propriétaire : mélodie de base créée puis déclinée en ~50 jingles chantés, famille de jingles courts (<5s, acapella ou "virgule musicale") enregistrés avec sa propre voix et celle d'Elisabeth Bélot-Grimaud (solo ou duo), cinq familles de jingles qui s'alternent pour ne pas lasser et introduire certaines catégories (nouveautés, Découvertes, Noël, séquences de cohérence cardiaque), mise à jour annuelle (objectif : que les auditeurs les fredonnent), positionnement éditorial contre les jingles trop longs (années 80) ou trop courts (tendance récente) au profit de jingles chantés d'environ 15 secondes. **Point de confidentialité tranché avec le propriétaire** : les jingles chantés sont en réalité composés avec un outil IA (Suno) — décision explicite de rester vague dans l'article public (ni le nom de l'outil, ni le mot "IA" n'apparaissent ; formulé comme "produits en studio"). À retenir pour tout contenu futur sur la fabrication des jingles. L'article tease aussi le prochain sujet (jingle Top Horaire) sans lien, la page n'existant pas encore.
-- Trois sujets "coulisses" au total notés par le propriétaire (2026-07-06) : fabrication des jingles (✅ fait), **le jingle Top Horaire, "véritable identité d'une radio"** (prévu ensuite), et **la programmation des titres "surprises"** (prévu après). Note technique : le libellé complet "Les Coulisses de Radio Odyssey" est utilisé comme titre de page/H1, mais l'onglet du méga-menu affiche la forme courte "Les Coulisses" (cohérent avec la longueur des autres onglets et pour éviter que la barre de navigation ne passe à la ligne sur les résolutions d'ordinateur portable ~1280-1366px).
+- Trois sujets "coulisses" au total notés par le propriétaire (2026-07-06) : fabrication des jingles (✅ fait), la programmation des titres "surprises" (✅ fait le 2026-07-11), et **le jingle Top Horaire, "véritable identité d'une radio"** (reste à faire). Note technique : le libellé complet "Les Coulisses de Radio Odyssey" est utilisé comme titre de page/H1, mais l'onglet du méga-menu affiche la forme courte "Les Coulisses" (cohérent avec la longueur des autres onglets et pour éviter que la barre de navigation ne passe à la ligne sur les résolutions d'ordinateur portable ~1280-1366px).
+
+✅ **Troisième article publié le 2026-07-11** : `/comment-radio-odyssey-programme-ses-titres-surprises.html`. Contenu réel du propriétaire : titre "surprise" = morceau à forte notoriété (B.O. de film/série, indicatif culte, classique remixé) diffusé de façon homéopathique (1-2 tranches horaires sur une dizaine), sans jingle dédié pour un effet de surprise total, choisi par curation personnelle du programmateur (différenciateur vs radios formatées), avec deux exemples concrets (thème Harry Potter, "Louxor J'Adore" de Katerine) et le concept de "platooning" (rotation périodique des titres dans la catégorie). **Point stratégique soulevé par le propriétaire, à retenir pour la suite** : ce type de page "coulisses" ne capte pas de trafic sur son propre titre (personne ne cherche "titres surprises radio odyssey") — son rôle est de construire l'autorité globale du site, utile pour Google ET pour la citation par les IA génératives. Ajustement appliqué : FAQ enrichie de questions à intention de recherche réelle que le contenu répond déjà ("pourquoi les radios repassent toujours les mêmes chansons", "qu'est-ce que le platooning", "musiques de films/séries à la radio") — à reproduire sur les futurs articles Coulisses, dont le Top Horaire.
 
 ### 6ter. Cocon "Découvertes Radio Odyssey" (créé le 2026-07-02)
 
@@ -358,7 +361,7 @@ Bios fournies directement par le propriétaire (dossiers de presse / connaissanc
 - Articles de type magazine (nombre et cadence à définir — mentionné une fois, pas encore priorisé)
 - Extension du cocon Artistes & Styles au-delà de 100 fiches
 - Sous-cocon dédié entreprise/bien-être au travail si `coherence-cardiaque-au-bureau.html` performe bien
-- Contenu supplémentaire pour "Les Coulisses" : jingle Top Horaire, programmation des titres "surprises" (mécanique des jingles ✅ faite le 2026-07-06 — voir §6bis suite)
+- Contenu supplémentaire pour "Les Coulisses" : jingle Top Horaire (mécanique des jingles ✅ faite le 2026-07-06, titres "surprises" ✅ faits le 2026-07-11 — voir §6bis suite)
 
 ---
 
@@ -412,7 +415,7 @@ Widget "en cours de lecture", partenaire EBG et FAQ non retouchés : aucune rég
 - Lazy-loading de l'iframe RadioKing — tradeoff UX à trancher avant d'y toucher.
 - Vraies images de partage social (1200×630 par catégorie) — nécessite du travail graphique.
 - Google Search Console — **le propriétaire s'en charge lui-même** (2026-07-02), sitemap déjà prêt côté code.
-- Extension du cocon "Les Coulisses" : jingle Top Horaire, programmation des titres "surprises" (mécanique des jingles ✅ faite le 2026-07-06).
+- Extension du cocon "Les Coulisses" : jingle Top Horaire (mécanique des jingles ✅ faite le 2026-07-06, titres "surprises" ✅ faits le 2026-07-11).
 - Témoignages homepage toujours illustratifs (rendus discrets le 2026-07-02, §10) — à remplacer par de vrais avis au fil du temps si le propriétaire en reçoit.
 
 ---
