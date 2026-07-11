@@ -39,13 +39,58 @@ const organizationSchema = {
   '@type': 'RadioStation',
   name: 'Radio Odyssey',
   alternateName: 'La Positive Radio',
+  slogan: 'La Positive Radio',
+  description: "Radio Odyssey est une web radio associative française, gratuite et sans publicité, qui allie musique et bien-être : elle diffuse 24h/24 un mélange de hits des années 80 revisités, de dance énergisante et de nouveautés, avec des séquences de cohérence cardiaque intégrées à l'antenne pour accompagner la détente et la respiration de ses auditeurs.",
+  keywords: 'radio bien-être, cohérence cardiaque, radio positive, musique et bien-être, web radio gratuite',
+  inLanguage: 'fr',
+  foundingDate: '2025-01-19',
+  areaServed: {
+    '@type': 'Country',
+    name: 'France',
+  },
   url: 'https://www.radio-odyssey.com',
-  logo: 'https://www.radio-odyssey.com/assets/images/logo.png',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://www.radio-odyssey.com/assets/images/logo.png',
+    width: 512,
+    height: 512,
+  },
+  image: 'https://www.radio-odyssey.com/assets/images/og/home.jpg',
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'FR',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: 'odysseylaradio@gmail.com',
+    contactType: 'customer support',
+  },
+  potentialAction: {
+    '@type': 'ListenAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://play.radioking.io/radio-odyssey',
+      actionPlatform: [
+        'https://schema.org/DesktopWebPlatform',
+        'https://schema.org/MobileWebPlatform',
+        'https://schema.org/IOSPlatform',
+        'https://schema.org/AndroidPlatform',
+      ],
+    },
+    expectsAcceptanceOf: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'EUR',
+      availability: 'https://schema.org/InStock',
+    },
+  },
   sameAs: [
     'https://www.facebook.com/profile.php?id=61588289230589',
     'https://www.instagram.com/radio_odyssey_france/',
     'https://x.com/Odysseylaradio',
     'https://www.youtube.com/channel/UCodzZ_dhFdJwQ90nZzVHluw',
+    'https://tunein.com/radio/RADIO-ODYSSEY-s339104/',
+    'https://link.radioking.com/radio-odyssey',
   ],
 };
 
