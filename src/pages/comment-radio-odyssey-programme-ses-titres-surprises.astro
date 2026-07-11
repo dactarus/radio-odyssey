@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  {
+    q: "Pourquoi les radios repassent-elles toujours les mêmes chansons ?",
+    a: "C'est un vrai défi de la programmation musicale : une rotation trop resserrée finit par lasser l'auditeur. Radio Odyssey y répond notamment avec sa stratégie de titres surprises — des morceaux très connus mais rarement diffusés, glissés avec parcimonie pour casser la routine sans jamais perdre l'identité de l'antenne.",
+  },
+  {
+    q: "Qu'est-ce qu'un titre \"surprise\" sur Radio Odyssey ?",
+    a: "Un titre très connu (bande originale de film ou série, indicatif instrumental culte, ou grand classique remixé au goût du jour), agréable à réentendre une fois mais qui deviendrait vite lassant s'il tournait régulièrement — et volontairement en léger décalage avec la stratégie musicale habituelle de la radio.",
+  },
+  {
+    q: "Les radios diffusent-elles des musiques de films ou de séries télévisées ?",
+    a: "Certaines, oui, avec parcimonie. Sur Radio Odyssey, les bandes originales de films ou séries très connues font partie de la catégorie des titres surprises : des morceaux à forte notoriété, glissés ponctuellement dans la programmation pour créer un effet de surprise et d'émotion positive.",
+  },
+  {
+    q: "À quelle fréquence Radio Odyssey diffuse-t-elle des titres surprises ?",
+    a: "Très rarement, de façon presque homéopathique : sur la dizaine de tranches horaires en rotation, une ou deux seulement en intègrent. Le risque, sinon, est de lasser l'auditeur et de perdre l'effet de surprise recherché.",
+  },
+  {
+    q: "Pourquoi les titres surprises ne sont-ils pas annoncés par un jingle ?",
+    a: "C'est volontaire : contrairement aux titres Découvertes, précédés d'un jingle dédié, les titres surprises arrivent sans prévenir, pour un effet de surprise total.",
+  },
+  {
+    q: "Qu'est-ce que le \"platooning\" en radio ?",
+    a: "Un terme du jargon radio qui désigne le fait de faire entrer et sortir régulièrement des titres ou artistes d'une catégorie de programmation, pour la garder vivante dans la durée. Les titres surprises restent dans leur catégorie par nature, mais leur contenu est renouvelé périodiquement selon ce principe.",
+  },
+];
+---
+<Layout
+  lang="fr"
+  title="Les Titres Surprises de Radio Odyssey — Les Coulisses de l'Antenne"
+  description="B.O. cultes, indicatifs connus, classiques remixés : comment Radio Odyssey glisse des titres surprises dans sa programmation, avec parcimonie."
+  articleDatePublished="2026-07-11"
+>
+  <PageHero
+    gradientFrom="#0b1c2d"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Les titres surprises de Radio Odyssey"
+    title="Les Titres Surprises de Radio Odyssey"
+    text="Bandes originales cultes, indicatifs connus, classiques remixés — le programmateur de la radio explique comment il glisse, avec parcimonie, des titres surprises dans le flux musical."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 6L27 17L38 14L30 22L38 30L27 27L24 38L21 27L10 30L18 22L10 14L21 17Z" stroke="white" stroke-width="2" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Il y a les titres qu'on attend, ceux qui reviennent régulièrement, et puis il y a les titres surprises : des morceaux très connus, presque jamais diffusés ailleurs sur les radios musicales, glissés avec parcimonie dans la programmation de Radio Odyssey pour surprendre l'auditeur sans jamais le perdre. Le programmateur de la radio nous explique cette stratégie, jusque dans ses pièges à éviter.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Un titre connu, mais volontairement rare</h2>
+            <p>Un titre surprise, c'est un morceau qu'on aime réentendre une fois — parce que ça fait longtemps qu'on ne l'a pas croisé — mais qui, au bout de quelques répétitions, deviendrait vite ringard. Il peut être légèrement en marge de la stratégie musicale habituelle de la radio, mais il fait toujours plaisir à entendre : condition indispensable, il doit être <strong>connu</strong>, avec un taux de notoriété élevé.</p>
+            <p style="margin-bottom:0;">Radio Odyssey a choisi de jouer la carte de l'émotion : des <strong>bandes originales très connues</strong> de films ou de séries télévisées, des <strong>indicatifs instrumentaux cultes</strong>, et même de grands <strong>classiques de la musique classique remixés</strong> au goût du jour.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une stratégie homéopathique, pour ne jamais lasser</h2>
+            <p style="margin-bottom:0;">Sur la dizaine de tranches horaires en rotation sur l'antenne, <strong>une ou deux seulement</strong> intègrent ce genre de titres. Le piège à éviter est clair : lasser l'écoute des auditeurs, au point que la surprise n'en soit plus une et fasse fuir l'auditeur — l'exact inverse de l'effet recherché.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Trouver la pépite : un vrai travail de curation</h2>
+            <p>Le choix se fait par le programmateur, selon sa sensibilité et sa connaissance musicale et culturelle — parfois un simple coup de cœur. Mais ça demande surtout un vrai travail de recherche : un titre entendu dans une émission de télé ou de radio, repéré sur les réseaux, retrouvé sur une plateforme musicale. L'idée est de dénicher une pépite.</p>
+            <p style="margin-bottom:0;">C'est précisément ce qui fait la différence avec des radios plus formatées, comme l'expliquait déjà le programmateur dans notre article sur <a href="/comment-radio-odyssey-choisit-sa-musique.html" style="color:var(--ro-purple);font-weight:700;">comment Radio Odyssey choisit sa musique</a>.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Sans jingle, pour un effet de surprise total</h2>
+            <p>Contrairement aux titres <a href="/decouvertes-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Découvertes</a>, précédés d'un jingle dédié, un titre surprise arrive <strong>sans prévenir</strong> — l'effet de surprise doit rester total. Comme une fenêtre qu'on ouvre pour rafraîchir la programmation.</p>
+            <p style="margin-bottom:0;">L'objectif, au fond, est d'augmenter la durée d'écoute, avec en tête une réaction espérée : <em>« Ah oui, c'était bien ça ! »</em> — un titre que personne d'autre ne diffuse, au milieu de toutes les autres radios.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Deux exemples bien différents</h2>
+            <p>Le thème principal de <strong>« Harry Potter à l'école des sorciers »</strong> : au milieu du flux musical, cette bande originale surprend, sa notoriété n'est plus à faire, elle rappelle des souvenirs, des moments partagés — et même si ce n'est pas dans les habitudes d'écoute classiques de la radio, on reste, et on écoute.</p>
+            <p style="margin-bottom:0;">Autre exemple, complètement différent, pour bien cerner la définition selon Radio Odyssey : <strong>« Louxor J'Adore »</strong> de Philippe Katerine. Une fois, c'est un plaisir. Mais trois fois par jour, des années après sa sortie, non — sauf actualité forte autour du titre ou de l'artiste à ce moment-là.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Casser la routine, sans trahir l'habitude</h2>
+            <p>Un des fondamentaux de la radio, c'est que c'est un média d'habitude. L'objectif des titres surprises est donc de donner, de temps à autre, un coup de frais à une programmation qui finit par jouer les mêmes titres au bout de quelques jours — sans jamais donner à l'auditeur l'impression de changer de station.</p>
+            <p style="margin-bottom:0;">Si l'auditeur repère de lui-même ces titres surprises, il les intègre à son tour dans ses propres habitudes d'écoute. L'autre objectif, tout aussi important : créer de l'émotion positive, et de bons souvenirs.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Le « platooning » : faire vivre la catégorie dans la durée</h2>
+            <p style="margin-bottom:0;">Pour que la stratégie continue de fonctionner, il faut sans cesse introduire de nouveaux titres et en mettre d'autres au repos — ce que le jargon radio appelle le <strong>platooning</strong> : faire entrer ou sortir des titres ou des artistes d'une catégorie pendant un certain temps, en réétudiant périodiquement qui sort et qui reste. Les titres surprises, eux, restent dans leur catégorie : c'est leur nature.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="surprises" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/comment-radio-odyssey-choisit-sa-musique.html', label: 'Comment Radio Odyssey choisit sa musique', desc: "L'autre pan des coulisses : la programmation musicale" },
+              { href: '/comment-radio-odyssey-fabrique-ses-jingles.html', label: 'Comment Radio Odyssey fabrique ses jingles', desc: 'Familles de jingles et voix de la radio' },
+            ]}
+            associated={[
+              { href: '/decouvertes-radio-odyssey.html', label: 'Découvertes Radio Odyssey' },
+              { href: '/styles-musicaux-radio-odyssey.html', label: 'Tous les styles musicaux' },
+              { href: '/playlists-du-jour.html', label: 'Playlists du Jour' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez, vous surprendrez peut-être un titre surprise</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Écouter Radio Odyssey
+              </a>
+              <a href="/coulisses-de-radio-odyssey.html" class="btn-hero-ghost">
+                <i class="bi bi-film"></i> Toutes les Coulisses
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
