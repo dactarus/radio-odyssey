@@ -267,7 +267,7 @@
 <div id="toast"></div>
 
 <script>
-const ASTRO_ORIGIN = 'http://localhost:4321';
+let ASTRO_ORIGIN = null;
 let currentFile = null;
 let currentHref = null;
 
@@ -407,21 +407,27 @@ function applyGitStatus(gitStatus) {
 }
 
 function refreshPreview() {
+  if (!ASTRO_ORIGIN || !currentHref) return;
   const frame = document.getElementById('preview-frame');
   frame.src = ASTRO_ORIGIN + currentHref;
   document.getElementById('preview-open').href = ASTRO_ORIGIN + currentHref;
 }
 
+let astroWasRunning = false;
+
 async function checkAstroStatus() {
   const note = document.getElementById('preview-note');
   try {
-    const { running } = await api('/api/astro-status');
+    const { running, url } = await api('/api/astro-status');
+    ASTRO_ORIGIN = url;
     if (!running) {
       note.style.display = '';
       note.textContent = 'Lancement de l\'aperçu du site en cours…';
       setTimeout(checkAstroStatus, 2000);
     } else {
       note.style.display = 'none';
+      if (!astroWasRunning) refreshPreview();
+      astroWasRunning = true;
     }
   } catch {
     note.style.display = '';
