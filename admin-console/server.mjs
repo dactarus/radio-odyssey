@@ -16,7 +16,14 @@ import { slugify } from './lib/util.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = 4400;
-const ASTRO_URL = 'http://127.0.0.1:4321';
+const DEFAULT_ASTRO_URL = 'http://localhost:4321';
+const FALLBACK_ASTRO_PORT = 4326;
+
+// Le port 4321 est le port par défaut d'Astro : sur une machine avec
+// plusieurs projets Astro, un AUTRE projet peut déjà l'occuper. Un simple
+// "ça répond" ne suffit donc pas — on vérifie que c'est bien Radio Odyssey
+// qui répond (présence du domaine dans le HTML) avant de réutiliser ce port.
+let astroUrl = DEFAULT_ASTRO_URL;
 
 function creationPaths(file) {
   return [
@@ -26,22 +33,30 @@ function creationPaths(file) {
   ];
 }
 
-async function isAstroDevRunning() {
+async function isRadioOdysseyRunningAt(url) {
   try {
-    const res = await fetch(ASTRO_URL, { signal: AbortSignal.timeout(800) });
-    return res.ok || res.status < 500;
+    const res = await fetch(url, { signal: AbortSignal.timeout(800) });
+    if (!res.ok) return false;
+    const text = await res.text();
+    return text.includes('radio-odyssey.com');
   } catch {
     return false;
   }
 }
 
+async function isAstroDevRunning() {
+  return isRadioOdysseyRunningAt(astroUrl);
+}
+
 async function ensureAstroDev() {
-  if (await isAstroDevRunning()) {
-    console.log('→ Aperçu du site déjà lancé sur', ASTRO_URL);
+  if (await isRadioOdysseyRunningAt(DEFAULT_ASTRO_URL)) {
+    astroUrl = DEFAULT_ASTRO_URL;
+    console.log('→ Aperçu du site déjà lancé sur', astroUrl);
     return;
   }
-  console.log('→ Lancement automatique de l\'aperçu du site (npm run dev)…');
-  const child = spawn('npm', ['run', 'dev'], { cwd: REPO_ROOT, stdio: 'inherit' });
+  astroUrl = `http://localhost:${FALLBACK_ASTRO_PORT}`;
+  console.log(`→ Port 4321 indisponible ou occupé par un autre projet — lancement de l'aperçu Radio Odyssey sur le port ${FALLBACK_ASTRO_PORT}…`);
+  const child = spawn('npx', ['astro', 'dev', '--port', String(FALLBACK_ASTRO_PORT)], { cwd: REPO_ROOT, stdio: 'inherit' });
   child.on('exit', (code) => {
     if (code) console.error(`L'aperçu du site s'est arrêté (code ${code}).`);
   });
@@ -79,7 +94,7 @@ const server = http.createServer(async (req, res) => {
     }
 
     if (req.method === 'GET' && url.pathname === '/api/astro-status') {
-      return sendJSON(res, 200, { running: await isAstroDevRunning(), url: ASTRO_URL });
+      return sendJSON(res, 200, { running: await isAstroDevRunning(), url: astroUrl });
     }
 
     if (url.pathname === '/api/page') {
