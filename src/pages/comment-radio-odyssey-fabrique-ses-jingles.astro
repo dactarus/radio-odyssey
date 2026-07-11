@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  {
+    q: "Les jingles chantés de Radio Odyssey sont-ils interprétés par de vrais chanteurs ?",
+    a: "Les jingles chantés sont produits en studio pour coller précisément à l'identité sonore de la radio. Les jingles courts et acapella, eux, sont enregistrés avec de vraies voix : celle du programmateur de la radio et celle d'Elisabeth Bélot-Grimaud, en solo ou en duo.",
+  },
+  {
+    q: "À quelle fréquence les jingles de Radio Odyssey changent-ils ?",
+    a: "Plutôt une fois par an. Une identité sonore a besoin de répétition pour s'installer durablement dans la mémoire des auditeurs — jusqu'à ce qu'ils la fredonnent.",
+  },
+  {
+    q: "Pourquoi Radio Odyssey a-t-elle plusieurs familles de jingles différentes ?",
+    a: 'Acapella, courts, longs, chantés, non chantés : ces familles s\'alternent pour ne jamais lasser l\'oreille, mieux enchaîner des morceaux d\'intensités différentes, et parfois introduire une catégorie musicale précise (nouveautés, Découvertes, Noël) ou encadrer les séquences de cohérence cardiaque.',
+  },
+  {
+    q: "Pourquoi Radio Odyssey a-t-elle choisi des jingles chantés plutôt que des jingles très courts ?",
+    a: "Dans les années 80, les jingles étaient souvent trop longs ; aujourd'hui, beaucoup de radios diffusent des jingles trop courts pour installer une vraie identité. Radio Odyssey a choisi un entre-deux : des jingles chantés d'environ 15 secondes, diffusés sans excès.",
+  },
+];
+---
+<Layout
+  lang="fr"
+  title="Comment Radio Odyssey Fabrique ses Jingles — Les Coulisses de l'Antenne"
+  description="Mélodie sur mesure, jingles courts en duo, familles qui s'alternent à l'antenne : comment Radio Odyssey fabrique et pense ses jingles."
+>
+  <PageHero
+    gradientFrom="#0b1c2d"
+    gradientTo="#FF9A3C"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Comment Radio Odyssey fabrique ses jingles"
+    title="Comment Radio Odyssey Fabrique ses Jingles"
+    text="Mélodie sur mesure, jingles courts en duo, familles qui s'alternent — le programmateur de la radio explique comment naissent les jingles de l'antenne, et pourquoi ils ne changent presque jamais."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><rect x="9" y="20" width="4" height="8" rx="2" fill="white"/><rect x="18" y="13" width="4" height="22" rx="2" fill="white"/><rect x="27" y="6" width="4" height="36" rx="2" fill="white"/><rect x="36" y="16" width="4" height="16" rx="2" fill="rgba(255,255,255,.65)"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Un jingle, ce n'est jamais un simple bruitage entre deux morceaux. Chez Radio Odyssey, c'est une vraie fabrication — une mélodie pensée pour rester en tête, des voix choisies avec soin, et plusieurs familles de jingles qui s'alternent pour ne jamais lasser l'oreille. Le programmateur de la radio nous explique comment tout cela se construit.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une mélodie de base, déclinée en près de 50 jingles chantés</h2>
+            <p>Tout est parti d'un texte pensé pour incarner l'identité de Radio Odyssey, associé à une ambiance et un rythme choisis pour coller à la couleur de l'antenne. Plusieurs essais ont été nécessaires avant de trouver la bonne mélodie — celle qui allait devenir la base de toute une famille de jingles.</p>
+            <p style="margin-bottom:0;">Cette mélodie originale a ensuite été déclinée en <strong>près de 50 jingles chantés</strong>, chacun avec ses propres variations, pour habiller différents moments de la programmation sans jamais se répéter à l'identique.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une deuxième famille : les jingles courts, en voix humaines</h2>
+            <p>À côté des jingles chantés, Radio Odyssey diffuse toute une série de <strong>jingles courts</strong>, de moins de 5 secondes : des jingles acapella, ou construits sur ce que le métier appelle une « virgule musicale » — un motif sonore très identifiable, répété d'un jingle à l'autre. Plusieurs montages et mixages en déclinent des variantes.</p>
+            <p style="margin-bottom:0;">Pour cette famille-là, ce sont de vraies voix humaines : celle du programmateur de la radio, et celle d'<a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Elisabeth Bélot-Grimaud</a>, sa partenaire pour les séquences de cohérence cardiaque — en solo, ou en duo. Mélanger une voix masculine et une voix féminine donne du relief aux jingles, et permet de varier les versions pour ne jamais lasser l'auditeur.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Cinq familles de jingles, pour rythmer l'antenne sans lasser</h2>
+            <p>Acapella, courts, longs, chantés, non chantés : ces familles de jingles s'alternent dans la programmation musicale. L'idée est de ne jamais lasser l'auditeur — de le surprendre, même — et de mieux enchaîner des morceaux qui n'ont pas toujours la même intensité ou la même couleur.</p>
+            <p style="margin-bottom:0;">Certains jingles servent aussi à <strong>introduire une catégorie musicale</strong> : la playlist des nouveautés, les <a href="/decouvertes-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Découvertes</a>, ou une sélection spécifique comme Noël ou les remix. D'autres encore ont été conçus spécifiquement pour encadrer les séquences de <a href="/radio-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque</a> — un moment que le programmateur juge essentiel d'accompagner pour l'auditeur.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une identité qu'on ne change pas tous les quatre matins</h2>
+            <p>Les jingles de Radio Odyssey sont mis à jour <strong>plutôt une fois par an</strong>. Une identité sonore forte a besoin de répétition pour s'installer dans la mémoire des auditeurs — et l'objectif ultime, pour le programmateur, c'est que les auditeurs finissent par les fredonner.</p>
+            <p style="margin-bottom:0;">C'est d'ailleurs le cas pour les jingles chantés de Radio Odyssey : ils sont pensés dès leur conception pour être <strong>fredonnants</strong>, avec une mélodie positive qui reste en tête. Un des fondamentaux de la radio, selon son programmateur.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Des jingles chantés, mais sans en abuser</h2>
+            <p>Dans les années 80, les jingles de radio étaient souvent longs — parfois trop. Depuis quelques années, la tendance s'est inversée : beaucoup de radios diffusent des jingles très courts, parfois trop courts pour installer une vraie identité sonore.</p>
+            <p style="margin-bottom:0;">Le choix de Radio Odyssey : revenir à des <strong>jingles chantés d'environ 15 secondes</strong>, sans en exagérer la fréquence de diffusion. Une antenne fluide avant tout — jamais surchargée, mais jamais anonyme non plus.</p>
+          </div>
+
+          <div class="content-card">
+            <p style="margin:0;">Et la signature sonore ultime de la radio ? C'est son <strong>jingle Top Horaire</strong>, diffusé systématiquement à l'heure pile — celui dont s'inspirent toutes les autres familles de jingles, par cohérence d'antenne. Un sujet suffisamment important pour mériter son propre article, à venir prochainement dans ces mêmes Coulisses.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="jingles" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/comment-radio-odyssey-choisit-sa-musique.html', label: 'Comment Radio Odyssey choisit sa musique', desc: "L'autre pan des coulisses : la programmation musicale" },
+              { href: '/decouvertes-radio-odyssey.html', label: 'Découvertes Radio Odyssey', desc: 'Le jingle dédié qui annonce nos artistes émergents' },
+            ]}
+            associated={[
+              { href: '/playlists-du-jour.html', label: 'Playlists du Jour' },
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les artistes diffusés' },
+              { href: '/radio-anti-stress-gratuite.html', label: 'Radio Anti-Stress Gratuite' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez nos jingles en direct</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Écouter Radio Odyssey
+              </a>
+              <a href="/coulisses-de-radio-odyssey.html" class="btn-hero-ghost">
+                <i class="bi bi-film"></i> Toutes les Coulisses
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -114,6 +114,7 @@ export const NAV_CATEGORIES = [
     hubIntro: "Programmation, jingles, choix éditoriaux... la fabrication de l'antenne expliquée par l'équipe de Radio Odyssey.",
     pages: [
       { href: '/comment-radio-odyssey-choisit-sa-musique.html', bi: 'sliders2', label: 'Comment on Choisit la Musique', desc: 'Les coulisses de la programmation, expliquées par le programmateur' },
+      { href: '/comment-radio-odyssey-fabrique-ses-jingles.html', bi: 'soundwave', label: 'Comment on Fabrique nos Jingles', desc: 'Mélodie sur mesure, voix en duo, familles qui s\'alternent à l\'antenne' },
     ],
   },
   {
