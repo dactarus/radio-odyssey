@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  {
+    q: "Pourquoi les radios diffusent-elles un jingle à chaque heure pile ?",
+    a: "C'est une tradition née aux États-Unis, où des studios de production ont créé des \"Top Horaire\" qui ont fait le succès de nombreuses radios. En France, des stations comme RTL, Europe 1 ou NRJ en ont fait une vraie force. Diffusé à heure pile, ce jingle est la signature sonore de la radio : reconnaissable dès la première seconde.",
+  },
+  {
+    q: "Qu'est-ce qu'un jingle Top Horaire ?",
+    a: "Le jingle diffusé systématiquement à chaque heure pile, contenant obligatoirement le nom de la radio. C'est, selon le programmateur de Radio Odyssey, la véritable identité d'une station — bien plus travaillé, en montage comme en mixage, que les autres jingles.",
+  },
+  {
+    q: "Pourquoi le Top Horaire de Radio Odyssey est-il presque acapella, sans batterie ?",
+    a: "C'est un choix volontaire : chanté en chœurs, sans rythme de batterie, pour lui donner un ton solennel qui déclenche l'idée \"une nouvelle heure commence\" sans qu'un animateur ait besoin de le dire. L'absence de rythme le distingue aussi du reste de la programmation musicale.",
+  },
+  {
+    q: "Comment une radio diffuse-t-elle son jingle exactement à l'heure pile ?",
+    a: "Via une fonction d'interruption de programme sur la plateforme de diffusion. Chez Radio Odyssey, quelques secondes de marge sont conservées pour ajuster la programmation proposée par le logiciel et éviter de couper un titre en plein milieu — les auditeurs ne le supportent pas.",
+  },
+  {
+    q: "Un jingle radio peut-il évoluer sans que les auditeurs s'en aperçoivent ?",
+    a: "Oui, et c'est même l'objectif. Les grandes radios françaises historiques n'ont, en apparence, jamais changé leur Top Horaire — pourtant il a évolué au fil des années. Toujours le même, sans être le même.",
+  },
+];
+---
+<Layout
+  lang="fr"
+  title="Le Jingle Top Horaire de Radio Odyssey — Véritable Identité d'une Radio"
+  description="Signature sonore diffusée à l'heure pile : le programmateur de Radio Odyssey explique ce qui fait du Top Horaire la vraie identité d'une radio."
+  articleDatePublished="2026-07-11"
+>
+  <PageHero
+    gradientFrom="#0b1c2d"
+    gradientTo="#FFD700"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Le jingle Top Horaire de Radio Odyssey"
+    title="Le Jingle Top Horaire, Véritable Identité d'une Radio"
+    text="Signature sonore, quatre notes qui s'imposent, diffusion à l'heure pile — le programmateur de Radio Odyssey explique pourquoi ce jingle-là compte plus que tous les autres."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="17" stroke="white" stroke-width="2.2"/><line x1="24" y1="24" x2="24" y2="13" stroke="white" stroke-width="2.2" stroke-linecap="round"/><line x1="24" y1="24" x2="31" y2="28" stroke="rgba(255,255,255,.75)" stroke-width="2" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Il y a un son que tout auditeur régulier reconnaît en une fraction de seconde, même sans y prêter attention : le jingle Top Horaire, diffusé pile à chaque heure. Ce n'est pas un jingle comme les autres — c'est, selon le programmateur de Radio Odyssey, la véritable identité d'une radio. Il nous explique pourquoi.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une tradition venue des États-Unis, devenue une signature</h2>
+            <p>Le Top Horaire, c'est la signature audio de chaque radio — il contient donc obligatoirement le nom de la station. C'est aux États-Unis que la pratique s'est industrialisée : dès la fin des années 1940 à Dallas, des studios de production ont commencé à produire des jingles musicaux d'identification, puis en ont fait tout un art, décliné et vendu à des centaines de stations à travers le pays — avec des voix graves et des chœurs devenus emblématiques. Dès la quasi-première seconde, on reconnaît la station. En production, il est extrêmement travaillé, en montage comme en mixage et traitement du son.</p>
+            <p style="margin-bottom:0;">En France, des radios comme <strong>RTL</strong>, <strong>Europe 1</strong> ou <strong>NRJ</strong> en ont fait une vraie force. Radio Odyssey, bien que radio associative, s'appuie sur une expertise professionnelle de la radio — c'est pour cela que son Top Horaire a été conçu sur ces mêmes fondations qui font le succès d'une station.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Sans rythme, pour marquer solennellement l'heure</h2>
+            <p style="margin-bottom:0;">Au-delà de la technique de production et d'écriture, ce qui rend ce jingle essentiel, c'est un choix précis : celui de Radio Odyssey est chanté en chœurs, volontairement <strong>sans rythme de batterie</strong>, presque acapella — pour lui donner un ton solennel qui déclenche l'idée « une nouvelle heure commence », sans qu'un animateur ait besoin de le dire. Sans rythme, il se distingue naturellement du reste de la programmation musicale.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une mélodie de quatre notes, pensée pour s'imposer</h2>
+            <p>Le Top Horaire de Radio Odyssey « sonne » pro, et se fredonne facilement grâce à sa mélodie, généralement construite sur <strong>quatre notes</strong>. Il dure une dizaine de secondes. Énergique, positif, il « pose les choses » : il donne l'impression d'écouter une radio puissante, professionnelle, à qui on peut faire confiance — et à laquelle on s'identifie.</p>
+            <p style="margin-bottom:0;">Il est unique, et n'évolue que très peu d'une saison à l'autre : les auditeurs sont habitués à l'entendre plusieurs fois par jour, à heure pile.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Diffusé à l'heure pile, au prix d'un vrai travail d'ajustage</h2>
+            <p style="margin-bottom:0;">La plateforme de diffusion RadioKing permet de programmer des « interruptions de programme » — c'est là qu'on glisse le Top Horaire, à heure pile, à quelques secondes près. Chez Radio Odyssey, on garde une marge de manœuvre pour lisser la programmation proposée par le logiciel : on échange ou on intervertit des titres pour tomber le plus juste possible. Car les auditeurs ne supportent pas qu'on leur coupe un disque en plein milieu — un autre fondamental du métier.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Le même, sans être le même</h2>
+            <p style="margin-bottom:0;">Les grandes radios citées plus haut n'ont, en apparence, jamais changé leur Top Horaire depuis leur création — et pourtant, il a évolué sans jamais vraiment changer. Parmi elles, NRJ est celle qui a le plus fait bouger le sien : l'esprit est resté, mais on est loin de l'original qui a fait son succès. Chez RTL et Europe 1, un néophyte ne remarquerait sans doute pas les évolutions. Toujours le même, sans être le même.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>La colonne vertébrale de toutes les autres familles de jingles</h2>
+            <p style="margin-bottom:0;">Comme évoqué dans notre article sur <a href="/comment-radio-odyssey-fabrique-ses-jingles.html" style="color:var(--ro-purple);font-weight:700;">la fabrication des jingles de Radio Odyssey</a>, toutes les autres familles de jingles chantés s'appuient sur cette signature : même refrain, même texte — mais avec des instruments ajoutés, comme les percussions.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Le vrai signe de réussite ? Quand les auditeurs le chantent pour vous</h2>
+            <p style="margin-bottom:0;">Comment sait-on qu'on a réussi son habillage d'antenne, et particulièrement son Top Horaire ? Quand on croise quelqu'un — en voiture floquée aux couleurs de la radio, ou lors d'un événement en partenariat — et que cette personne, en vous reconnaissant, se met à chanter votre Top Horaire.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="top-horaire" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/comment-radio-odyssey-fabrique-ses-jingles.html', label: 'Comment Radio Odyssey fabrique ses jingles', desc: 'Familles de jingles et voix de la radio' },
+              { href: '/comment-radio-odyssey-programme-ses-titres-surprises.html', label: 'Les Titres Surprises de Radio Odyssey', desc: 'Une autre stratégie éditoriale de la programmation' },
+            ]}
+            associated={[
+              { href: '/comment-radio-odyssey-choisit-sa-musique.html', label: 'Comment Radio Odyssey choisit sa musique' },
+              { href: '/decouvertes-radio-odyssey.html', label: 'Découvertes Radio Odyssey' },
+              { href: '/playlists-du-jour.html', label: 'Playlists du Jour' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez notre Top Horaire à la prochaine heure pile</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <i class="bi bi-broadcast-pin"></i> Écouter Radio Odyssey
+              </a>
+              <a href="/coulisses-de-radio-odyssey.html" class="btn-hero-ghost">
+                <i class="bi bi-film"></i> Toutes les Coulisses
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
