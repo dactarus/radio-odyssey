@@ -6,8 +6,8 @@ import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
 
 const playlistMenage = [
+  { slug: 'queen', name: 'Queen', track: 'I Want To Break Free' },
   { slug: 'bruno-mars', name: 'Bruno Mars', track: 'Uptown Funk' },
-  { slug: 'queen', name: 'Queen', track: 'We Are The Champions' },
   { slug: 'michael-jackson', name: 'Michael Jackson', track: "Don't Stop 'Til You Get Enough" },
   { slug: 'shakira', name: 'Shakira', track: "Hips Don't Lie (Remix)" },
   { slug: 'david-guetta', name: 'David Guetta', track: 'Titanium (feat. Sia)' },
@@ -20,7 +20,7 @@ const faq = [
   { q: 'Est-ce vraiment utile d\'écouter de la musique pour faire le ménage ?', a: "Beaucoup de personnes trouvent que oui : une musique positive et rythmée aide à rendre une tâche répétitive plus agréable, sans exiger d'attention particulière — on peut la suivre ou l'ignorer selon le moment." },
   { q: 'Cette musique convient-elle aussi pour un usage professionnel ?', a: "Oui — agents d'entretien, aides à domicile et professionnels du nettoyage cherchent souvent ce type de flux pour accompagner leurs journées de travail. Radio Odyssey s'y prête bien : continue, gratuite et sans coupure publicitaire." },
   { q: 'Comment l\'écouter les mains prises pendant le ménage ?', a: "Le plus simple est de lancer l'application ou le site sur votre téléphone avant de commencer, posé à proximité ou connecté à une enceinte Bluetooth — pas besoin d'y retoucher ensuite." },
-  { q: 'Quelle est la playlist ménage de Radio Odyssey ?', a: "Plutôt qu'une sélection figée, notre playlist ménage reflète les titres réellement les plus diffusés à l'antenne — de Bruno Mars à Dua Lipa en passant par Queen. Elle évolue avec la programmation, mais reste toujours dans cet esprit énergique et fédérateur." },
+  { q: 'Quelle est la playlist ménage de Radio Odyssey ?', a: "Elle s'ouvre avec le classique <em>I Want To Break Free</em> de Queen — dont le clip culte scelle définitivement le lien entre musique et ménage — puis reflète les titres réellement les plus diffusés à l'antenne, de Bruno Mars à Dua Lipa. Elle évolue avec la programmation, mais reste toujours dans cet esprit énergique et fédérateur." },
 ];
 ---
 <Layout
@@ -75,7 +75,7 @@ const faq = [
 
           <div class="content-card">
             <h2>Notre playlist ménage : la vraie programmation de l'antenne</h2>
-            <p>Beaucoup de sites proposent une "playlist spéciale ménage" toujours composée des mêmes classiques piochés au hasard sur le web. Chez Radio Odyssey, on a préféré une autre approche : voici les titres qui reviennent le plus souvent, réellement, sur notre antenne — un aperçu direct de la programmation plutôt qu'une liste générique.</p>
+            <p>Impossible de parler musique et ménage sans citer <strong>Queen — I Want To Break Free</strong> : dans le clip culte de 1984, Freddie Mercury enfile un tablier et passe l'aspirateur, ce qui en fait le choix numéro un sur la plupart des playlists ménage du web. Bonne nouvelle : il fait bien partie de la programmation de Radio Odyssey. Et au-delà de ce classique, voici les titres qui reviennent le plus souvent, réellement, sur notre antenne — un aperçu direct de la programmation plutôt qu'une liste générique.</p>
             <div style="display:flex;flex-direction:column;gap:.7rem;">
               {playlistMenage.map((a, i) => (
                 <a href={`/artiste-${a.slug}.html`} style="display:flex;justify-content:space-between;align-items:center;gap:1rem;text-decoration:none;color:var(--ro-dark);padding:.7rem .9rem;border-radius:12px;background:rgba(123,47,190,.04);">
