@@ -18,7 +18,7 @@ const { artist } = Astro.props;
 const others = DISCOVERIES.filter((a) => a.slug !== artist.slug);
 const isScarce = artist.scarcity !== 'partielle';
 
-const title = `${artist.name} : Biographie, Titres et Actualité — Radio Odyssey`;
+const title = `${artist.name} : Biographie & Actualité — Radio Odyssey`;
 const description = isScarce
   ? `Qui est ${artist.name} ? Biographie, titres diffusés et actualité — Radio Odyssey est l'une des rares sources en français à s'intéresser à cet artiste (${artist.genre}).`
   : `${artist.name} (${artist.genre}) : biographie, titres diffusés sur Radio Odyssey, et les données réelles de diffusion que la radio est l'une des seules à publier.`;
