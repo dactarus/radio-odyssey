@@ -38,7 +38,7 @@ const others = ARTISTS.map((a, i) => ({ a, i }))
   .sort((x, y) => y.overlap - x.overlap || x.rotation - y.rotation);
 const related = others.slice(0, 3).map((s) => s.a);
 
-const title = `${artist.name} : Remix & Titres en Radio Gratuite — Radio Odyssey`;
+const title = `${artist.name} : Remix Gratuit — Radio Odyssey`;
 const description = `${artist.name} (${artist.genre}) sur Radio Odyssey : remix diffusés sur l'antenne, titres réellement joués, et une radio 100% gratuite, sans pub, à écouter en direct sur mobile ou ordinateur.`;
 
 const schema = {
