@@ -1,4 +1,5 @@
 ---
+import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
@@ -71,7 +72,7 @@ const personSchema = {
             <p>Plutôt que de diffuser une séquence générique, Radio Odyssey a choisi de la faire concevoir et enregistrer avec une véritable experte du sujet : Elisabeth Bélot-Grimaud, dont le diplôme universitaire en méditation et pratiques respiratoires et l'expertise en psychologie positive garantissent une pratique fondée, pas approximative.</p>
             <p>Radio Odyssey a aussi fait un choix simple mais rare : celui d'une <strong>voix humaine</strong> plutôt qu'une voix de synthèse. Pas d'intelligence artificielle ni de robot pour vous guider à respirer — une vraie personne, avec sa propre respiration, ses intonations, son rythme naturel.</p>
             <div class="highlight-box">
-              <p><i class="bi bi-broadcast"></i> <strong>À l'antenne</strong><br/>
+              <p><Icon name="broadcast" /> <strong>À l'antenne</strong><br/>
               Retrouvez ces séquences dans le flux de Radio Odyssey, plusieurs fois par jour — voir le détail des horaires sur notre page <a href="/radio-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque</a>.</p>
             </div>
           </div>
@@ -81,7 +82,7 @@ const personSchema = {
           <div class="content-card">
             <h2>Son travail au-delà de Radio Odyssey</h2>
             <p>Sur son site <a href="https://santementalepositive.fr/" target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">santementalepositive.fr</a>, Elisabeth Bélot-Grimaud propose des ressources gratuites organisées autour de trois piliers : les ressources biologiques (sommeil, mouvement, alimentation, respiration), cognitives (mémoire, attention, apprentissage) et psychologiques (émotions, relations, sens). Elle y décrit notamment la cohérence cardiaque comme <em>« l'un des outils les plus simples et les mieux documentés pour réguler le stress »</em>.</p>
-            <p><a href="https://santementalepositive.fr/" target="_blank" rel="noopener" class="btn-ro" style="margin-top:.5rem;"><i class="bi bi-box-arrow-up-right"></i>&nbsp;Découvrir santementalepositive.fr</a></p>
+            <p><a href="https://santementalepositive.fr/" target="_blank" rel="noopener" class="btn-ro" style="margin-top:.5rem;"><Icon name="box-arrow-up-right" />&nbsp;Découvrir santementalepositive.fr</a></p>
           </div>
 
           <FAQBlock items={faq} idPrefix="ebg" />
@@ -100,7 +101,7 @@ const personSchema = {
           <div class="page-cta-bar">
             <h3>Écoutez les séquences en direct</h3>
             <a href="#" onclick="roPlayNow(event)" class="btn-hero">
-              <i class="bi bi-broadcast-pin"></i> Écouter Radio Odyssey
+              <Icon name="broadcast-pin" /> Écouter Radio Odyssey
             </a>
           </div>
 

@@ -1,4 +1,5 @@
 ---
+import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
@@ -84,10 +85,10 @@ const faq = [
             <h3>Tune in now</h3>
             <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
               <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener" class="btn-hero">
-                <i class="bi bi-box-arrow-up-right"></i> Open on TuneIn
+                <Icon name="box-arrow-up-right" /> Open on TuneIn
               </a>
               <a href="#" onclick="roPlayNow(event)" class="btn-hero-ghost">
-                <i class="bi bi-broadcast-pin"></i> Listen Live Here
+                <Icon name="broadcast-pin" /> Listen Live Here
               </a>
             </div>
           </div>

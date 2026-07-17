@@ -1,4 +1,5 @@
 ---
+import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
@@ -28,7 +29,7 @@ import Sidebar from '../components/Sidebar.astro';
             <p>Whether you are working, studying, driving, relaxing at home or enjoying time with friends, Radio Odyssey brings positive energy and smooth music anytime, anywhere.</p>
             <div class="highlight-box">
               <a href="#" onclick="roPlayNow(event)" class="btn-ro" style="background:linear-gradient(135deg,#FFD700,#FF9A3C);">
-                <i class="bi bi-broadcast-pin"></i>&nbsp;&#127911; Listen Live Now
+                <Icon name="broadcast-pin" />&nbsp;&#127911; Listen Live Now
               </a>
               <p style="margin-top:.75rem;font-size:.84rem;opacity:.85;">Streaming worldwide from France with positive European vibes.</p>
             </div>
@@ -60,7 +61,7 @@ import Sidebar from '../components/Sidebar.astro';
           <div class="page-cta-bar" style="background:linear-gradient(135deg,#1e3a5c,#0b1c2d);">
             <h3>Feel good, right now!</h3>
             <a href="#" onclick="roPlayNow(event)" class="btn-hero">
-              <i class="bi bi-broadcast-pin"></i> Listen to Feel Good Radio
+              <Icon name="broadcast-pin" /> Listen to Feel Good Radio
             </a>
           </div>
         </div>

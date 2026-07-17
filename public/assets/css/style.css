@@ -47,6 +47,16 @@ h1,h2,h3,h4,h5,h6 {
   font-family: 'Nunito', sans-serif;
   font-weight: 800;
 }
+
+/* Icônes SVG inline (composant Icon.astro) — reproduit le comportement
+   de l'ancienne police d'icônes : taille = 1em du contexte parent. */
+svg.ico {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
+}
 p { line-height: 1.75; }
 a { transition: color .2s; }
 img { max-width: 100%; }

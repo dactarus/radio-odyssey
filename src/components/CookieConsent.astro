@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 // Bandeau de consentement cookies — Google Analytics n'est chargé
 // qu'après acceptation explicite. Choix mémorisé en localStorage.
 // "Refuser" a la même importance visuelle qu'"Accepter" (exigence CNIL).
@@ -7,7 +8,7 @@ const GA_MEASUREMENT_ID = 'G-6CXEFXNH97';
 <div id="ro-cookie-banner" class="ro-cookie-banner" role="dialog" aria-live="polite" aria-label="Consentement aux cookies" hidden>
   <div class="ro-cookie-inner">
     <p class="ro-cookie-text">
-      <i class="bi bi-cookie" style="color:var(--ro-purple);margin-right:.4rem;"></i>
+      <Icon name="cookie" style="color:var(--ro-purple);margin-right:.4rem;" />
       Radio Odyssey utilise Google Analytics pour mesurer l'audience du site (statistiques anonymes, pages visitées, provenance). Aucun cookie n'est déposé sans votre accord.
       <a href="/politique-de-confidentialite.html" style="color:var(--ro-purple);font-weight:700;text-decoration:underline;">En savoir plus</a>
     </p>

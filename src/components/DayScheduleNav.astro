@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 interface Props {
   current: string;
 }
@@ -20,13 +21,13 @@ const slots = [
     {slots.map((s) => (
       s.href === current ? (
         <div style="display:flex;align-items:center;gap:.7rem;padding:.6rem .9rem;border-radius:12px;background:rgba(123,47,190,.08);border:1.5px solid rgba(123,47,190,.25);">
-          <span style="font-size:1.1rem;color:var(--ro-purple);"><i class={`bi bi-${s.bi}`}></i></span>
+          <span style="font-size:1.1rem;color:var(--ro-purple);"><Icon name={s.bi} /></span>
           <strong style="color:var(--ro-purple);flex:1;">{s.label}</strong>
           <span class="tag-pill" style="margin:0;">{s.time}</span>
         </div>
       ) : (
         <a href={s.href} style="display:flex;align-items:center;gap:.7rem;padding:.6rem .9rem;border-radius:12px;text-decoration:none;color:var(--ro-dark);transition:background .2s;">
-          <span style="font-size:1.1rem;color:var(--ro-purple);"><i class={`bi bi-${s.bi}`}></i></span>
+          <span style="font-size:1.1rem;color:var(--ro-purple);"><Icon name={s.bi} /></span>
           <strong style="flex:1;font-weight:700;">{s.label}</strong>
           <span class="tag-pill" style="margin:0;">{s.time}</span>
         </a>

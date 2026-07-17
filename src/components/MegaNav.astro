@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 import { NAV_CATEGORIES } from '../data/navigation.js';
 ---
 <style is:global>
@@ -76,13 +77,13 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
     <ul class="ro-mega-nav-list">
       <li>
         <a class="ro-mega-nav-toggle" href="/">
-          <i class="bi bi-house-door-fill" style="font-size:.85rem;"></i> Accueil
+          <Icon name="house-door-fill" style="font-size:.85rem;" /> Accueil
         </a>
       </li>
       {NAV_CATEGORIES.map((cat) => (
         <li class="dropdown">
           <button class="ro-mega-nav-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            {cat.label} <i class="bi bi-chevron-down" style="font-size:.65rem;"></i>
+            {cat.label} <Icon name="chevron-down" style="font-size:.65rem;" />
           </button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item ro-hub-link" href={cat.hub}>Voir toute la catégorie →</a></li>
@@ -90,7 +91,7 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
             {cat.pages.map((p) => (
               <li>
                 <a class="dropdown-item" href={p.href}>
-                  <strong><i class={`bi bi-${p.bi}`} style="color:var(--ro-purple);font-size:.85rem;margin-right:.35rem;"></i>{p.label}</strong>
+                  <strong><Icon name={p.bi} style="color:var(--ro-purple);font-size:.85rem;margin-right:.35rem;" />{p.label}</strong>
                   <small>{p.desc}</small>
                 </a>
               </li>

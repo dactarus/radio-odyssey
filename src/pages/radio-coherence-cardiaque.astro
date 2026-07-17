@@ -1,4 +1,5 @@
 ---
+import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
@@ -126,7 +127,7 @@ import PartnerVideo from '../components/PartnerVideo.astro';
           <div class="content-card">
             <h2>Conçues avec une véritable experte</h2>
             <p>Les séquences que vous entendez à l'antenne ne sont pas génériques : elles ont été conçues avec <strong>Elisabeth Bélot-Grimaud</strong>, Docteure en psychologie cognitive et partenaire exclusive de Radio Odyssey — c'est sa voix qui vous guide pour respirer et retrouver un rythme cardiaque régulier, dit sinusoïdal.</p>
-            <p><a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">En savoir plus sur notre partenaire <i class="bi bi-arrow-right"></i></a></p>
+            <p><a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">En savoir plus sur notre partenaire <Icon name="arrow-right" /></a></p>
           </div>
 
           <PartnerVideo />
@@ -176,7 +177,7 @@ import PartnerVideo from '../components/PartnerVideo.astro';
           <div class="page-cta-bar">
             <h3>Commencez votre s&#233;ance maintenant</h3>
             <a href="#" onclick="roPlayNow(event)" class="btn-hero">
-              <i class="bi bi-broadcast-pin"></i> &#201;couter Radio Odyssey
+              <Icon name="broadcast-pin" /> &#201;couter Radio Odyssey
             </a>
           </div>
         </div>

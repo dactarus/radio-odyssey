@@ -1,19 +1,20 @@
 ---
+import Icon from './Icon.astro';
 import { NAV_CATEGORIES } from '../data/navigation.js';
 ---
 <div class="content-card" style="position:sticky;top:calc(var(--bar-h) + 1.5rem);">
-  <h3 style="color:var(--ro-purple);font-size:1rem;"><i class="bi bi-music-note-beamed"></i> Ecouter maintenant</h3>
+  <h3 style="color:var(--ro-purple);font-size:1rem;"><Icon name="music-note-beamed" /> Ecouter maintenant</h3>
   <p style="font-size:.85rem;">Radio Odyssey en direct, 24h/24, gratuit et sans pub !</p>
   <a href="#" onclick="roPlayNow(event)"
      class="btn-ro w-100 justify-content-center mb-3" style="font-size:.88rem;cursor:pointer;">
-    <i class="bi bi-broadcast-pin"></i>&nbsp;Lancer la radio
+    <Icon name="broadcast-pin" />&nbsp;Lancer la radio
   </a>
   <hr style="border-color:rgba(123,47,190,.1);"/>
   <p style="font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--ro-muted);margin:.8rem 0 .4rem;">Explorer le site</p>
   <div style="display:flex;flex-direction:column;gap:.28rem;font-size:.82rem;">
-    <a href="/" style="color:var(--ro-purple);text-decoration:none;"><i class="bi bi-house-door-fill"></i> Accueil</a>
+    <a href="/" style="color:var(--ro-purple);text-decoration:none;"><Icon name="house-door-fill" /> Accueil</a>
     {NAV_CATEGORIES.map((cat) => (
-      <a href={cat.hub} style="color:var(--ro-purple);text-decoration:none;"><i class={`bi bi-${cat.bi}`}></i> {cat.label}</a>
+      <a href={cat.hub} style="color:var(--ro-purple);text-decoration:none;"><Icon name={cat.bi} /> {cat.label}</a>
     ))}
   </div>
 </div>

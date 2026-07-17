@@ -1,4 +1,5 @@
 ---
+import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 import { NAV_CATEGORIES } from '../data/navigation.js';
 
@@ -148,7 +149,7 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
           <div class="hero-stat">0<span>Publicités</span></div>
         </div>
         <a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="display:inline-flex;align-items:center;gap:.5rem;margin-top:1.4rem;text-decoration:none;background:var(--ro-gold);border:1px solid rgba(0,0,0,.06);border-radius:999px;padding:.42rem 1.2rem;font-family:'Nunito',sans-serif;font-weight:800;font-size:.82rem;letter-spacing:.02em;color:#2D2D3A;box-shadow:0 6px 20px rgba(0,0,0,.18);">
-          <i class="bi bi-patch-check-fill" style="color:var(--ro-purple);"></i>
+          <Icon name="patch-check-fill" style="color:var(--ro-purple);" />
           Cohérence cardiaque conçue avec une Docteure en psychologie
         </a>
         <p class="hero-seo-text">
@@ -515,15 +516,15 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
         <span class="section-eyebrow">Exclusivité Radio Odyssey</span>
         <h2 style="margin:.3rem 0 .5rem;">Cohérence Cardiaque <span class="highlight">chaque heure !</span></h2>
         <p style="margin:0;font-size:.92rem;opacity:.92;">
-          <i class="bi bi-lungs"></i> Inspirez 5 secondes, expirez 5 secondes, au rythme de la musique — des séquences courtes toute la journée.
+          <Icon name="lungs" /> Inspirez 5 secondes, expirez 5 secondes, au rythme de la musique — des séquences courtes toute la journée.
         </p>
         <a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="display:inline-flex;align-items:center;gap:.5rem;margin-top:.9rem;background:var(--ro-gold);color:#2D2D3A;padding:.45rem 1.1rem;border-radius:999px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.82rem;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.18);">
-          <i class="bi bi-patch-check-fill" style="color:var(--ro-purple);"></i>
+          <Icon name="patch-check-fill" style="color:var(--ro-purple);" />
           Conçues avec Elisabeth Bélot-Grimaud, Docteure en psychologie — notre partenaire exclusive
         </a>
       </div>
       <a href="radio-coherence-cardiaque.html" class="btn-ro" style="flex-shrink:0;">
-        <i class="bi bi-arrow-right-circle-fill"></i>&nbsp;En savoir plus
+        <Icon name="arrow-right-circle-fill" />&nbsp;En savoir plus
       </a>
     </div>
   </div>
@@ -552,7 +553,7 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
               <h3 style="font-size:1.05rem;">{cat.label}</h3>
               <p>{cat.hubIntro}</p>
               <p style="color:var(--ro-purple);font-weight:700;font-size:.82rem;margin-top:.6rem;">
-                {cat.pages.length} page{cat.pages.length > 1 ? 's' : ''} <i class="bi bi-arrow-right"></i>
+                {cat.pages.length} page{cat.pages.length > 1 ? 's' : ''} <Icon name="arrow-right" />
               </p>
             </div>
           </a>
@@ -573,27 +574,27 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
     </div>
     <div class="d-flex flex-wrap justify-content-center gap-2">
       <a class="schedule-row" href="/musique-pour-le-reveil.html" style="flex:0 1 auto;padding:.6rem 1rem;border-radius:999px;background:rgba(255,255,255,.6);">
-        <strong style="color:var(--ro-purple);">6–9H</strong> La Matinale <i class="bi bi-chevron-right schedule-arrow"></i>
+        <strong style="color:var(--ro-purple);">6–9H</strong> La Matinale <Icon name="chevron-right" class="schedule-arrow" />
       </a>
       <a class="schedule-row" href="/playlist-pour-la-matinee.html" style="flex:0 1 auto;padding:.6rem 1rem;border-radius:999px;background:rgba(255,255,255,.6);">
-        <strong style="color:var(--ro-purple);">9–12H</strong> Hits Non-Stop <i class="bi bi-chevron-right schedule-arrow"></i>
+        <strong style="color:var(--ro-purple);">9–12H</strong> Hits Non-Stop <Icon name="chevron-right" class="schedule-arrow" />
       </a>
       <a class="schedule-row" href="/musique-pour-la-pause-dejeuner.html" style="flex:0 1 auto;padding:.6rem 1rem;border-radius:999px;background:rgba(255,255,255,.6);">
-        <strong style="color:var(--ro-purple);">12–14H</strong> Respirez en Musique <i class="bi bi-chevron-right schedule-arrow"></i>
+        <strong style="color:var(--ro-purple);">12–14H</strong> Respirez en Musique <Icon name="chevron-right" class="schedule-arrow" />
       </a>
       <a class="schedule-row" href="/musique-pour-lapres-midi.html" style="flex:0 1 auto;padding:.6rem 1rem;border-radius:999px;background:rgba(255,255,255,.6);">
-        <strong style="color:var(--ro-purple);">14–18H</strong> Easy Listening <i class="bi bi-chevron-right schedule-arrow"></i>
+        <strong style="color:var(--ro-purple);">14–18H</strong> Easy Listening <Icon name="chevron-right" class="schedule-arrow" />
       </a>
       <a class="schedule-row" href="/musique-pour-laperitif.html" style="flex:0 1 auto;padding:.6rem 1rem;border-radius:999px;background:rgba(255,255,255,.6);">
-        <strong style="color:var(--ro-purple);">18–21H</strong> Mix du Soir <i class="bi bi-chevron-right schedule-arrow"></i>
+        <strong style="color:var(--ro-purple);">18–21H</strong> Mix du Soir <Icon name="chevron-right" class="schedule-arrow" />
       </a>
       <a class="schedule-row" href="/musique-pour-la-nuit.html" style="flex:0 1 auto;padding:.6rem 1rem;border-radius:999px;background:rgba(255,255,255,.6);">
-        <strong style="color:var(--ro-purple);">21H–6H</strong> Nuit <i class="bi bi-chevron-right schedule-arrow"></i>
+        <strong style="color:var(--ro-purple);">21H–6H</strong> Nuit <Icon name="chevron-right" class="schedule-arrow" />
       </a>
     </div>
     <p class="text-center mt-3" style="margin-bottom:0;">
       <a href="/playlists-du-jour.html" style="color:var(--ro-purple);font-weight:700;font-size:.88rem;text-decoration:none;">
-        Voir la grille détaillée <i class="bi bi-arrow-right"></i>
+        Voir la grille détaillée <Icon name="arrow-right" />
       </a>
     </p>
   </div>
@@ -610,7 +611,7 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
       Radio Odyssey est une radio indépendante — vos retours nous aident directement à améliorer la programmation.
     </p>
     <a href="/avis-radio-odyssey-bien-etre.html" style="color:var(--ro-purple);font-weight:700;font-size:.82rem;text-decoration:none;">
-      Partager mon avis <i class="bi bi-arrow-right"></i>
+      Partager mon avis <Icon name="arrow-right" />
     </a>
   </div>
 </section>
@@ -648,11 +649,11 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
       Aussi sur Streema, GetMeRadio, RadioFM et bien d'autres — et sur <strong>Alexa</strong> : <em>"Alexa, lance Radio Odyssey sur TuneIn"</em>.
       <br/>
       <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;text-decoration:none;">
-        <i class="bi bi-phone"></i> Installer l'app mobile
+        <Icon name="phone" /> Installer l'app mobile
       </a>
       &nbsp;·&nbsp;
       <a href="/ecouter-radio-odyssey-sur-mobile.html" style="color:var(--ro-purple);font-weight:700;text-decoration:none;">
-        Voir le guide d'installation <i class="bi bi-arrow-right"></i>
+        Voir le guide d'installation <Icon name="arrow-right" />
       </a>
     </p>
   </div>
@@ -689,10 +690,10 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
           </p>
           <div style="display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-top:.5rem;">
             <a href="https://santementalepositive.fr/" target="_blank" rel="noopener" class="btn-ro">
-              <i class="bi bi-box-arrow-up-right"></i>&nbsp;Découvrir son site
+              <Icon name="box-arrow-up-right" />&nbsp;Découvrir son site
             </a>
             <a href="/elisabeth-belot-grimaud-radio-odyssey.html" class="btn-ro-outline">
-              <i class="bi bi-person-badge"></i>&nbsp;En savoir plus sur elle
+              <Icon name="person-badge" />&nbsp;En savoir plus sur elle
             </a>
           </div>
           <p class="mt-3" style="font-size:.78rem;color:var(--ro-muted);">

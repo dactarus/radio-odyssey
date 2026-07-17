@@ -1,4 +1,5 @@
 ---
+import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
@@ -28,7 +29,7 @@ import Sidebar from '../components/Sidebar.astro';
             <p>Perfect for&#160;: work, study, driving, caf&#233;s, restaurants and relaxing evenings.</p>
             <div class="highlight-box">
               <a href="#" onclick="roPlayNow(event)" class="btn-ro">
-                <i class="bi bi-broadcast-pin"></i>&nbsp;&#9654; Listen Live Now
+                <Icon name="broadcast-pin" />&nbsp;&#9654; Listen Live Now
               </a>
             </div>
           </div>
@@ -47,7 +48,7 @@ import Sidebar from '../components/Sidebar.astro';
           <div class="page-cta-bar">
             <h3>Chill out with the best of Europe</h3>
             <a href="#" onclick="roPlayNow(event)" class="btn-hero">
-              <i class="bi bi-broadcast-pin"></i> Listen to European Chill
+              <Icon name="broadcast-pin" /> Listen to European Chill
             </a>
           </div>
         </div>
