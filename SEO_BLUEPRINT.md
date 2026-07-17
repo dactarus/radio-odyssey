@@ -609,6 +609,14 @@ Suite au §20, chantier annoncé comme prioritaire : mesure réelle via Lighthou
 
 Avec ce correctif, tous les points identifiés dans l'audit Grok du §20 et l'audit Lighthouse du §21 sont traités : Performances 79/100 (mobile) et 98/100 (bureau), Accessibilité en passe d'être parfaite, Bonnes pratiques 96/100, SEO 100/100.
 
+**Rebondissement le même jour : le correctif de cache n'a pas suffi.** Le propriétaire a signalé, capture d'écran à l'appui (mobile ET bureau), le logo et l'image partenaire visiblement étirés/déformés, et des icônes toujours géantes sur l'ensemble des pages — *après* avoir vidé le cache de son téléphone et de son ordinateur. Ça a écarté la première explication (cache navigateur) : ça voulait dire que le CDN de Vercel lui-même avait mis en cache l'ancienne version de `style.css` à un moment où l'en-tête disait encore "immutable" — vider son propre cache ne peut rien faire contre une copie périmée détenue *par le CDN*, entre le site et l'internaute.
+
+**Corrigé :** ajout d'un paramètre `?v=...` sur `style.css` et `fonts.css` dans `Layout.astro`, à incrémenter à chaque modification future de ces deux fichiers. Une nouvelle URL force une vraie relecture depuis l'origine, aussi bien pour le navigateur que pour le CDN — plus fiable que d'attendre l'expiration d'un cache qui a été empoisonné avec la mauvaise consigne.
+
+**Deuxième bug trouvé au passage, réel et indépendant du cache :** le logo et l'image partenaire étaient bien déformés en vrai, sur toutes les pages en mobile — pas un problème d'affichage lié au cache. Cause : les attributs `width="512" height="512"` ajoutés au §21 (pour éviter le CLS) donnent au navigateur un ratio de référence, mais seulement si le CSS ne fixe qu'*une* dimension et laisse l'autre sur `auto`. Or `.hero-logo-img` et le style inline de l'image partenaire ne fixaient que `width` (`min(300px,86%)` et `max-width:200px`), sans jamais écrire `height:auto` — le navigateur gardait alors la hauteur brute de l'attribut HTML (512 px, 480 px) au lieu de la recalculer, écrasant le ratio. Corrigé en ajoutant `height:auto` aux deux endroits. Vérifié : ratio 1:1 et 0,842 (le vrai ratio du fichier) retrouvés.
+
+**Leçon supplémentaire :** un attribut `width`/`height` HTML ne suffit à préserver le ratio que si le CSS laisse l'autre dimension sur `auto` — si le CSS fixe une seule dimension explicitement (comme ici `width: min(...)`), il faut écrire `height: auto` à la main, sans compter sur le calcul automatique du navigateur.
+
 ---
 
 *Dernière mise à jour : 2026-07-17, audit Core Web Vitals et premiers correctifs (§21).*

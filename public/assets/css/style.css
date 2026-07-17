@@ -502,6 +502,7 @@ img { max-width: 100%; }
 
 .hero-logo-img {
   width: min(300px, 86%);
+  height: auto;
   filter: drop-shadow(0 24px 52px rgba(0,0,0,.38));
   animation: float 4s ease-in-out infinite;
 }
