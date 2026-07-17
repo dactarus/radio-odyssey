@@ -568,4 +568,24 @@ Même démarche qu'au §9 : le propriétaire a fait auditer le site par une autr
 
 ---
 
-*Dernière mise à jour : 2026-07-04, intégration de la vidéo YouTube de la partenaire (§19).*
+## 21. Core Web Vitals — audit réel et premiers correctifs (2026-07-17)
+
+Suite au §20, chantier annoncé comme prioritaire : mesure réelle via Lighthouse (PageSpeed Insights, mobile, 4G lente) sur la homepage en production plutôt que des suppositions.
+
+**Résultat mesuré avant correctifs :** Performances 68/100, Accessibilité 94/100, Bonnes pratiques 100/100, SEO 100/100. LCP 5,7 s (le vrai problème, cible < 2,5 s), FCP 3,6 s, Speed Index 5,3 s, CLS 0, TBT 40 ms.
+
+**Cause racine identifiée dans le code** (`Layout.astro`) : 5 feuilles de style chargées de façon bloquante dans le `<head>` avant le premier rendu (`fonts.css`, `bootstrap.min.css`, `bootstrap-icons.min.css`, `style.css`, CSS généré par Astro) — correspond aux "830 ms de requêtes bloquantes" relevés par Lighthouse. Le poste le plus disproportionné, quantifié précisément : **`bootstrap-icons.min.css` (86 Ko) + sa police woff2 (130 Ko) = 216 Ko chargés pour 27 icônes réellement utilisées sur tout le site**, sur les 1800+ que contient la bibliothèque.
+
+**Corrigé dans ce lot (faible risque, déjà publié) :**
+- **`vercel.json` créé** — cache longue durée (`Cache-Control: public, max-age=31536000, immutable`) sur `/assets/*` (CSS/JS vendor, polices, images), qui n'avait aucun en-tête explicite jusqu'ici. Répond au signal Lighthouse "durées de mise en cache" (142 Ko estimés sur navigation répétée).
+- **`width`/`height` explicites** ajoutés aux 4 usages `<img>` du logo et de l'image partenaire (déjà passés en WebP au §20) — prévention du décalage visuel (CLS), qui était déjà à 0 mais sans garantie pour l'avenir.
+- **Ordre des titres corrigé** sur l'accueil : deux `<h4>` qui suivaient directement un `<h2>` (sans `<h3>` intermédiaire) passés en `<h3>` — "Toutes nos thématiques" (grille de catégories) et "Ils soutiennent Radio Odyssey" (bloc partenaire). Vérifié qu'aucune règle CSS ne différencie `h3`/`h4` (une seule règle commune `h1,h2,h3,h4,h5,h6`), donc aucun changement visuel.
+
+**Non corrigé, à faire dans un lot séparé (diff plus large, plus risqué) :**
+- **Remplacement des 27 icônes Bootstrap Icons par du SVG inline**, pour supprimer entièrement les 216 Ko de CSS/police — le plus gros levier restant, mais touche potentiellement des dizaines de fichiers `.astro`, donc à traiter et vérifier comme son propre commit.
+- **Contraste de couleur** (seul point manquant des 94/100 en accessibilité) — non identifié avec certitude : le rapport Lighthouse en ligne est resté bloqué en re-chargement lors de la tentative d'obtenir le sélecteur exact. Une vérification par script maison (couleurs de texte vs. fond uni) n'a trouvé aucune violation réelle, ce qui pointe vers un élément à fond dégradé (non testable simplement en JS) — a priori un texte blanc semi-transparent quelque part sur le dégradé du hero. À revérifier avec les DevTools Chrome (onglet Accessibilité) plutôt qu'en devinant un correctif.
+- Signal Lighthouse "477 Ko d'images à améliorer" — probablement la pochette d'album chargée *dans* l'iframe RadioKing (contenu tiers, hors de notre contrôle), à confirmer si le score ne bouge pas après ce lot.
+
+---
+
+*Dernière mise à jour : 2026-07-17, audit Core Web Vitals et premiers correctifs (§21).*

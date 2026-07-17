@@ -168,7 +168,7 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
           <source srcset="/assets/images/logo.webp" type="image/webp"/>
           <img class="hero-logo-img"
                src="/assets/images/logo.png"
-               alt="Radio Odyssey"/>
+               alt="Radio Odyssey" width="512" height="512"/>
         </picture>
       </div>
     </div>
@@ -549,7 +549,7 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
             <div class="pg-icon svg-icon" style={`width:64px;height:64px;background:${cat.iconBg};margin-bottom:1rem;`} set:html={cat.icon}>
             </div>
             <div>
-              <h4 style="font-size:1.05rem;">{cat.label}</h4>
+              <h3 style="font-size:1.05rem;">{cat.label}</h3>
               <p>{cat.hubIntro}</p>
               <p style="color:var(--ro-purple);font-weight:700;font-size:.82rem;margin-top:.6rem;">
                 {cat.pages.length} page{cat.pages.length > 1 ? 's' : ''} <i class="bi bi-arrow-right"></i>
@@ -676,11 +676,12 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
               <source srcset="/assets/images/partenaire-sante-mentale-positive.webp" type="image/webp"/>
               <img src="/assets/images/partenaire-sante-mentale-positive.png"
                    alt="Santé Mentale Positive"
+                   width="404" height="480"
                    style="max-width:200px;"
                    onerror="this.style.display='none'"/>
             </picture>
           </a>
-          <h4 class="mt-3 mb-1">Santé Mentale Positive</h4>
+          <h3 class="mt-3 mb-1">Santé Mentale Positive</h3>
           <p style="color:var(--ro-muted);font-size:.9rem;">
             <strong>Elisabeth Bélot-Grimaud</strong> — Docteure en psychologie cognitive<br/>
             Spécialisée en santé mentale positive, autrice de « Programmez votre cerveau pour le bonheur », conférencière TEDx.<br/>
@@ -755,6 +756,7 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
     <picture>
       <source srcset="/assets/images/logo.webp" type="image/webp"/>
       <img src="/assets/images/logo.png" alt="Radio Odyssey"
+           width="512" height="512"
            style="height:90px;width:90px;border-radius:50%;margin-bottom:1.5rem;
                   border:3px solid rgba(255,255,255,.3);
                   box-shadow:0 0 0 6px rgba(30,127,203,.25), 0 0 40px rgba(30,127,203,.4);"/>
