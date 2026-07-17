@@ -548,4 +548,24 @@ Elisabeth Bélot-Grimaud a publié sur sa chaîne YouTube une séance de cohére
 
 ---
 
+## 20. Benchmark externe du 2026-07-17 (Grok) — vérifié et trié
+
+Même démarche qu'au §9 : le propriétaire a fait auditer le site par une autre IA (Grok) avant de poursuivre. Le rapport décrivait un site sous Mobirise, sans schema.org, sans canonical, sans GA4, avec un sitemap de ~1000 URLs et des témoignages non sourcés — **entièrement obsolète, ignoré** : tout ça a déjà été traité aux §9-19 (le site est sur Astro depuis début juillet, schema `Organization`/`WebSite`/`RadioStation`/`BreadcrumbList`/`FAQPage`/`Article` en place, canonical + hreflang partout, GA4 actif depuis le §12, sitemap réel à 164 URLs, `llms.txt` déjà créé au §12bis/AEO, faux témoignages déjà retirés au §16).
+
+**Ce qui restait réel et traité le 2026-07-17 :**
+- **Images converties en WebP** avec fallback `<picture>` (navigateurs anciens non affectés) : `logo.png` (297 Ko → 19 Ko, 6 usages : barre sticky, offcanvas mobile, footer, accueil ×3) et `partenaire-sante-mentale-positive.png` (390 Ko → 14 Ko — était servie en 1920×2280 px pour un affichage à 200 px de large, recadrée à la bonne taille en plus du changement de format). Fichiers touchés : `Header.astro`, `Footer.astro`, `index.astro`. Images de partage social (`og/*.jpg`) et favicon/apple-touch-icon volontairement laissés en JPG/PNG — compatibilité des crawlers sociaux (WhatsApp, LinkedIn, iMessage) et d'iOS pour les icônes pas garantie en WebP.
+- `hero-visual.jpg` (181 Ko) repéré comme fichier orphelin dans `public/assets/images/` — non référencé nulle part dans le code, à supprimer si le propriétaire confirme.
+
+**Étudié et volontairement pas appliqué :** `loading="lazy"` sur l'iframe RadioKing (suggéré aux §9 et par l'audit Grok). Vérification faite : il n'y a qu'une seule iframe RadioKing sur le site, celle de la barre sticky en haut de chaque page — toujours visible immédiatement au chargement. Le lazy-loading ne sert qu'à différer des éléments hors écran ; sur un élément déjà visible, ça n'apporte aucun gain et risque de retarder le lecteur qui doit prouver l'antenne en direct instantanément. Point fermé, pas un report.
+
+**Hors périmètre code, à faire par le propriétaire :**
+- **Google Business Profile** déjà créé et vérifié (267 vues) — deux améliorations repérées sur la capture fournie : le repère sur la carte pointe en pleine mer près du Venezuela (aucune adresse précise renseignée, ce qui est le bon choix vu la confidentialité de l'adresse — mais mieux vaut configurer la fiche en "zone de service" pour ne pas avoir de repère du tout, plutôt qu'un pin qui semble aléatoire) ; catégorie actuelle "Producteur de musique", à vérifier s'il existe une catégorie "Station de radio" plus pertinente.
+- **Backlinks / annuaires radio** — reconnu comme le vrai chantier manquant, entièrement à la main du propriétaire (les annuaires n'attendent pas une petite structure associative).
+
+**Vérification directe dans Google Search Console (accès du propriétaire, compte `dactarus@gmail.com`, déjà connecté dans Chrome — pas besoin de partage d'onglet) :**
+- Les "22 pages non indexées" signalées par l'outil ne sont pas un vrai problème : 3 sont les variantes `http://`/`https://`/sans-`www.` du domaine qui redirigent normalement vers le canonique, 1 est une page avec balise canonique correcte vers ailleurs (normal), et **18 sont des fantômes de l'ancien sitemap cassé d'avant la migration** — des URLs du type `radio-odyssey.com/sitemap.xml/radio-coherence-cardiaque.html` (le mot "sitemap.xml" collé dans le chemin, domaine sans `www.`), jamais réellement explorées par Google ("sans objet"), correspondant aux 14 anciennes pages HTML plates. Elles s'effaceront d'elles-mêmes avec le temps, rien à corriger côté site actuel.
+- **Le vrai signal** : 16 clics pour 185 impressions sur 3 mois, position moyenne 11,3, et sur les 7 requêtes qui génèrent ces impressions, la quasi-totalité est de la recherche de marque ("radio odyssey", "odyssey radio") — presque rien sur "cohérence cardiaque", "bien-être" ou "années 80", les thématiques du contenu construit aux §5-18. Le graphique d'indexation montre que la montée en charge n'a vraiment démarré que mi-juin 2026 — Google n'a donc que quelques semaines de recul sur ce contenu, ce n'est pas alarmant. Ça confirme le point le plus juste de l'audit Grok : la partie technique est saine, il manque du temps + de l'autorité externe (backlinks) pour que les pages thématiques sortent sur autre chose que le nom de la radio.
+
+---
+
 *Dernière mise à jour : 2026-07-04, intégration de la vidéo YouTube de la partenaire (§19).*

@@ -9,8 +9,11 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
 
   <!-- GAUCHE : logo + badge -->
   <a class="bar-logo" href="/" aria-label="Radio Odyssey — Accueil">
-    <img class="bar-logo-img" src="/assets/images/logo.png" alt="Radio Odyssey"
-         onerror="this.style.opacity='0'"/>
+    <picture>
+      <source srcset="/assets/images/logo.webp" type="image/webp"/>
+      <img class="bar-logo-img" src="/assets/images/logo.png" alt="Radio Odyssey"
+           onerror="this.style.opacity='0'"/>
+    </picture>
   </a>
   <div class="live-badge">
     <span class="live-dot"></span>
@@ -62,7 +65,10 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
 <div class="offcanvas offcanvas-start" id="site-nav" tabindex="-1" aria-labelledby="nav-label">
   <div class="offcanvas-header">
     <div class="offcanvas-title" id="nav-label">
-      <img src="/assets/images/logo.png" alt="Logo Radio Odyssey"/>
+      <picture>
+        <source srcset="/assets/images/logo.webp" type="image/webp"/>
+        <img src="/assets/images/logo.png" alt="Logo Radio Odyssey"/>
+      </picture>
       Radio Odyssey
     </div>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fermer"></button>
