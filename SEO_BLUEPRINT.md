@@ -617,6 +617,8 @@ Avec ce correctif, tous les points identifiés dans l'audit Grok du §20 et l'au
 
 **Leçon supplémentaire :** un attribut `width`/`height` HTML ne suffit à préserver le ratio que si le CSS laisse l'autre dimension sur `auto` — si le CSS fixe une seule dimension explicitement (comme ici `width: min(...)`), il faut écrire `height: auto` à la main, sans compter sur le calcul automatique du navigateur.
 
+**Dernier point du plan initial du §20 : `hero-visual.jpg` supprimé** (confirmé par le propriétaire) — fichier orphelin de 181 Ko jamais référencé dans le code, repéré lors du benchmark Grok. Avec ça, tout ce qui restait dans le plan initial et qui dépendait du code est traité ; ne restent que les deux points côté propriétaire (Google Business Profile, backlinks).
+
 ---
 
 *Dernière mise à jour : 2026-07-17, audit Core Web Vitals et premiers correctifs (§21).*
