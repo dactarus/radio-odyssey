@@ -605,6 +605,10 @@ Suite au §20, chantier annoncé comme prioritaire : mesure réelle via Lighthou
 
 **Leçon pour la suite :** ne jamais appliquer de cache `immutable` longue durée à un fichier modifié en place (CSS/JS de ce projet) sans mécanisme de renommage/hash — uniquement aux fichiers dont le nom change quand le contenu change.
 
+**Dernier point d'accessibilité corrigé : contraste du footer.** Le propriétaire a fourni un deuxième rapport PageSpeed (vue Bureau, même audit) montrant 95/100 en accessibilité. Élément exact retrouvé en lisant le JSON Lighthouse embarqué dans la page (`window.__LIGHTHOUSE_DESKTOP_JSON__`, audit `color-contrast`) plutôt qu'en devinant : `.footer-bottom` (la ligne de copyright et ses 3 liens — mentions légales, confidentialité, cookies) en `rgba(255,255,255,.32)` sur fond `#0b1c2d`, soit un ratio réel de 2,88:1 — sous le seuil WCAG AA de 4,5:1. Calcul fait pour choisir la valeur : passage à `rgba(255,255,255,.5)` → 5,15:1, marge confortable sans rendre ce texte de bas de page trop visible par rapport à l'intention de design (texte discret).
+
+Avec ce correctif, tous les points identifiés dans l'audit Grok du §20 et l'audit Lighthouse du §21 sont traités : Performances 79/100 (mobile) et 98/100 (bureau), Accessibilité en passe d'être parfaite, Bonnes pratiques 96/100, SEO 100/100.
+
 ---
 
 *Dernière mise à jour : 2026-07-17, audit Core Web Vitals et premiers correctifs (§21).*

@@ -455,7 +455,7 @@ img { max-width: 100%; }
 .footer-brand { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.2rem; color: #fff; line-height: 1.2; }
 .footer-brand small { display: block; font-size: .68rem; font-weight: 600; color: var(--ro-sky); letter-spacing: .06em; }
 #site-footer hr { border-color: rgba(255,255,255,.08); margin: 2rem 0 1rem; }
-.footer-bottom { font-size: .79rem; color: rgba(255,255,255,.32); }
+.footer-bottom { font-size: .79rem; color: rgba(255,255,255,.5); }
 .footer-social a { display: inline-block !important; font-size: 1.2rem; color: rgba(255,255,255,.4) !important; transition: color .2s !important; }
 .footer-social a:hover { color: var(--ro-sky) !important; }
 
