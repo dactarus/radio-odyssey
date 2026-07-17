@@ -193,9 +193,13 @@ const articleSchema = articleDatePublished ? {
 
   <link rel="preload" href="/assets/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin/>
   <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="stylesheet" href="/assets/css/fonts.css"/>
+  <!-- ?v=... : incrémenter à chaque modification de fonts.css/style.css.
+       Ces fichiers sont modifiés en place (pas de renommage) ; le paramètre
+       force un nouveau cache (navigateur + CDN Vercel) à chaque changement,
+       au lieu de compter sur l'expiration du cache existant. -->
+  <link rel="stylesheet" href="/assets/css/fonts.css?v=20260717b"/>
   <link rel="stylesheet" href="/assets/vendor/bootstrap/bootstrap.min.css"/>
-  <link rel="stylesheet" href="/assets/css/style.css"/>
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260717b"/>
 
   <script type="application/ld+json" is:inline set:html={JSON.stringify(associationSchema)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify(websiteSchema)} />
