@@ -599,6 +599,12 @@ Suite au §20, chantier annoncé comme prioritaire : mesure réelle via Lighthou
 - Vérifié : build sans erreur (164 pages), aucune icône introuvable, tailles correctes en conditions réelles (méga-menu ouvert au clic, menu mobile offcanvas, breadcrumb, footer) — les lectures à 0×0 rencontrées pendant les tests venaient uniquement de menus fermés/non affichés, pas d'un bug.
 - `public/console.html` (l'ancien outil d'édition, obsolète et non indexé) référence encore Bootstrap Icons via un CDN externe — non touché, hors périmètre du site public.
 
+**Bug corrigé le jour même : cache trop agressif sur les fichiers CSS/JS.** Repéré grâce à un rapport PageSpeed obtenu directement par le propriétaire (le nôtre restait bloqué par un quota d'API) : le CLS était remonté à 0,107, exactement sur l'icône "Cohérence cardiaque..." du hero, mesurée à 204 px de haut au lieu de 13 px. Cause identifiée en inspectant les feuilles de style réellement chargées par le navigateur : la règle `svg.ico { width:1em; ... }` du §21 (premier lot) était absente de la version de `style.css` servie — le `vercel.json` du même lot avait mis `style.css` en cache **immutable pendant un an**, alors que ce fichier est justement modifié en place à chaque session (pas de renommage comme pour les images). Tout navigateur ayant chargé la page entre les deux déploiements gardait donc l'ancienne version indéfiniment, sans jamais revoir la mise à jour.
+
+**Corrigé :** le cache longue durée immuable est désormais réservé à `/assets/images`, `/assets/fonts` et `/assets/vendor` (fichiers versionnés par renommage ou bibliothèques figées, jamais modifiés en place). `/assets/css` et `/assets/js` passent à 1h de cache avec revalidation obligatoire (`must-revalidate`) — toujours un vrai gain sur la navigation entre les ~160 pages d'une même visite, mais sans risque de servir une version obsolète pendant un an à chaque futur changement de style.css ou main.js.
+
+**Leçon pour la suite :** ne jamais appliquer de cache `immutable` longue durée à un fichier modifié en place (CSS/JS de ce projet) sans mécanisme de renommage/hash — uniquement aux fichiers dont le nom change quand le contenu change.
+
 ---
 
 *Dernière mise à jour : 2026-07-17, audit Core Web Vitals et premiers correctifs (§21).*
