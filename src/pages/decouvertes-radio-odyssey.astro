@@ -1,4 +1,5 @@
 ---
+import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
@@ -60,7 +61,7 @@ const faq = [
               {active.map((a) => (
                 <div class="col-md-6">
                   <a href={`/decouverte-${a.slug}.html`} style="display:block;text-decoration:none;color:inherit;background:linear-gradient(135deg,rgba(255,215,0,.1),rgba(0,198,255,.08));border-radius:14px;padding:1rem 1.2rem;height:100%;">
-                    <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--ro-dark);">✨ {a.name} <i class="bi bi-arrow-right" style="font-size:.75rem;color:var(--ro-purple);"></i></div>
+                    <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--ro-dark);">✨ {a.name} <Icon name="arrow-right" style="font-size:.75rem;color:var(--ro-purple);" /></div>
                     <div style="font-size:.82rem;color:var(--ro-muted);margin-top:.2rem;">{a.genre} — {a.origin}</div>
                     <div style="font-size:.76rem;color:var(--ro-purple);margin-top:.5rem;font-style:italic;">♪ {a.tracks[0]}</div>
                   </a>
@@ -75,7 +76,7 @@ const faq = [
               {past.map((a) => (
                 <div class="col-md-6">
                   <a href={`/decouverte-${a.slug}.html`} style="display:block;text-decoration:none;color:inherit;background:rgba(123,47,190,.05);border-radius:14px;padding:1rem 1.2rem;height:100%;">
-                    <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--ro-dark);">{a.name} <i class="bi bi-arrow-right" style="font-size:.75rem;color:var(--ro-purple);"></i></div>
+                    <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--ro-dark);">{a.name} <Icon name="arrow-right" style="font-size:.75rem;color:var(--ro-purple);" /></div>
                     <div style="font-size:.82rem;color:var(--ro-muted);margin-top:.2rem;">{a.genre} — {a.origin}</div>
                     <div style="font-size:.76rem;color:var(--ro-purple);margin-top:.5rem;font-style:italic;">♪ {a.tracks[0]}</div>
                   </a>
@@ -100,7 +101,7 @@ const faq = [
           <div class="page-cta-bar">
             <h3>Écoutez les Découvertes en direct</h3>
             <a href="#" onclick="roPlayNow(event)" class="btn-hero">
-              <i class="bi bi-broadcast-pin"></i> Écouter Radio Odyssey
+              <Icon name="broadcast-pin" /> Écouter Radio Odyssey
             </a>
           </div>
 

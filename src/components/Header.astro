@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 import MegaNav from './MegaNav.astro';
 import { NAV_CATEGORIES } from '../data/navigation.js';
 ---
@@ -46,7 +47,7 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
           aria-controls="site-nav"
           aria-label="Ouvrir le menu"
           style="margin-right:16px;">
-    <i class="bi bi-list"></i>
+    <Icon name="list" />
   </button>
 
 </div>
@@ -75,15 +76,15 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
   </div>
   <div class="offcanvas-body p-2">
 
-    <span class="nav-cat"><i class="bi bi-house-door-fill"></i> Accueil</span>
-    <a class="nav-link" href="/"><span class="ni"><i class="bi bi-house-door-fill"></i></span> Page d'accueil</a>
+    <span class="nav-cat"><Icon name="house-door-fill" /> Accueil</span>
+    <a class="nav-link" href="/"><span class="ni"><Icon name="house-door-fill" /></span> Page d'accueil</a>
 
     {NAV_CATEGORIES.map((cat) => (
       <>
-        <span class="nav-cat"><i class={`bi bi-${cat.bi}`}></i> {cat.label}</span>
-        <a class="nav-link" href={cat.hub}><span class="ni"><i class="bi bi-search"></i></span> <strong>Voir tout</strong></a>
+        <span class="nav-cat"><Icon name={cat.bi} /> {cat.label}</span>
+        <a class="nav-link" href={cat.hub}><span class="ni"><Icon name="search" /></span> <strong>Voir tout</strong></a>
         {cat.pages.map((p) => (
-          <a class="nav-link" href={p.href}><span class="ni"><i class={`bi bi-${p.bi}`}></i></span> {p.label}</a>
+          <a class="nav-link" href={p.href}><span class="ni"><Icon name={p.bi} /></span> {p.label}</a>
         ))}
       </>
     ))}
@@ -91,7 +92,7 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
     <div class="offcanvas-cta">
       <a class="btn-ro w-100 justify-content-center"
          href="https://link.radioking.com/radio-odyssey" target="_blank" rel="noopener">
-        <i class="bi bi-broadcast"></i>&nbsp; Écouter en Direct
+        <Icon name="broadcast" />&nbsp; Écouter en Direct
       </a>
     </div>
   </div>

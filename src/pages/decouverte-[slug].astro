@@ -1,4 +1,5 @@
 ---
+import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
@@ -81,11 +82,11 @@ const faq = [
 
           <div class="content-card" style="border-left:3px solid var(--ro-gold, #FFD700);">
             <p style="margin:0 0 .6rem;font-size:.86rem;color:var(--ro-muted);">
-              <i class="bi bi-stars" style="color:var(--ro-gold, #FFD700);"></i>
+              <Icon name="stars" style="color:var(--ro-gold, #FFD700);" />
               Cette fiche fait partie des <strong>Découvertes Radio Odyssey</strong> — des artistes émergents que la radio choisit de soutenir, en dehors de tout classement par audience. <a href="/decouvertes-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">En savoir plus sur la démarche →</a>
             </p>
             <p style="margin:0;font-size:.86rem;color:var(--ro-muted);">
-              <i class="bi bi-search" style="color:var(--ro-purple);"></i>
+              <Icon name="search" style="color:var(--ro-purple);" />
               {scarcityNote}
             </p>
           </div>
@@ -137,10 +138,10 @@ const faq = [
             <h3>Écoutez {artist.name} en direct sur Radio Odyssey</h3>
             <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
               <a href="#" onclick="roPlayNow(event)" class="btn-hero">
-                <i class="bi bi-broadcast-pin"></i> Écouter Radio Odyssey
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
               </a>
               <a href="/decouvertes-radio-odyssey.html" class="btn-hero-ghost">
-                <i class="bi bi-stars"></i> Toutes les Découvertes
+                <Icon name="stars" /> Toutes les Découvertes
               </a>
             </div>
           </div>

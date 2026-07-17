@@ -1,4 +1,5 @@
 ---
+import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
@@ -61,7 +62,7 @@ const howToSchema = {
           <div class="content-card">
             <h2>A Human Voice, Not a Recording</h2>
             <p>Radio Odyssey made a deliberate choice: a real human voice guides these breathing sequences, rather than a synthetic one. That voice belongs to <strong>Elisabeth Bélot-Grimaud</strong>, a cognitive psychologist and Radio Odyssey's exclusive partner — not an AI, not a generic voiceover.</p>
-            <p><a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Learn more about our partner <i class="bi bi-arrow-right"></i></a></p>
+            <p><a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Learn more about our partner <Icon name="arrow-right" /></a></p>
           </div>
 
           <div class="content-card">
@@ -96,10 +97,10 @@ const howToSchema = {
             <h3>Listen live and breathe along</h3>
             <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
               <a href="#" onclick="roPlayNow(event)" class="btn-hero">
-                <i class="bi bi-broadcast-pin"></i> Listen Live
+                <Icon name="broadcast-pin" /> Listen Live
               </a>
               <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener" class="btn-hero-ghost">
-                <i class="bi bi-box-arrow-up-right"></i> Listen on TuneIn
+                <Icon name="box-arrow-up-right" /> Listen on TuneIn
               </a>
             </div>
           </div>

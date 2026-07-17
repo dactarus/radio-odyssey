@@ -1,4 +1,5 @@
 ---
+import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
@@ -40,7 +41,7 @@ import Sidebar from '../components/Sidebar.astro';
             <div class="row g-3">
               <div class="col-md-6">
                 <div style="background:rgba(11,28,45,.04);border:1px solid rgba(123,47,190,.1);border-radius:16px;padding:1.2rem;height:100%;">
-                  <h5 style="font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;margin-bottom:.6rem;"><i class="bi bi-apple"></i>&nbsp; Sur iPhone</h5>
+                  <h5 style="font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;margin-bottom:.6rem;"><Icon name="apple" />&nbsp; Sur iPhone</h5>
                   <ol style="font-size:.88rem;color:var(--ro-muted);padding-left:1.1rem;">
                     <li>Ouvrez <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" style="color:var(--ro-purple);">l'app Radio Odyssey</a> dans <strong>Safari</strong></li>
                     <li>Appuyez sur l'icône <strong>Partager</strong></li>
@@ -51,7 +52,7 @@ import Sidebar from '../components/Sidebar.astro';
               </div>
               <div class="col-md-6">
                 <div style="background:rgba(11,28,45,.04);border:1px solid rgba(123,47,190,.1);border-radius:16px;padding:1.2rem;height:100%;">
-                  <h5 style="font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;margin-bottom:.6rem;"><i class="bi bi-android2"></i>&nbsp; Sur Android</h5>
+                  <h5 style="font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;margin-bottom:.6rem;"><Icon name="android2" />&nbsp; Sur Android</h5>
                   <ol style="font-size:.88rem;color:var(--ro-muted);padding-left:1.1rem;">
                     <li>Ouvrez <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" style="color:var(--ro-purple);">l'app Radio Odyssey</a> dans <strong>Chrome</strong></li>
                     <li>Appuyez sur <strong>Installer l'application</strong></li>
@@ -82,7 +83,7 @@ import Sidebar from '../components/Sidebar.astro';
           <div class="page-cta-bar">
             <h3>Lancez Radio Odyssey depuis votre mobile</h3>
             <a href="#" onclick="roPlayNow(event)" class="btn-hero">
-              <i class="bi bi-broadcast-pin"></i> Écouter en Direct
+              <Icon name="broadcast-pin" /> Écouter en Direct
             </a>
           </div>
 

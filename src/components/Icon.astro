@@ -1,0 +1,19 @@
+---
+import { ICONS } from '../data/icons.js';
+
+interface Props {
+  name: string;
+  class?: string;
+  style?: string;
+}
+
+const { name, class: className, style } = Astro.props;
+const icon = ICONS[name];
+
+if (!icon) {
+  throw new Error(`Icon.astro : icône inconnue "${name}"`);
+}
+const classes = ['ico', className].filter(Boolean).join(' ');
+---
+<svg xmlns="http://www.w3.org/2000/svg" viewBox={icon.viewBox} fill="currentColor"
+     class={classes} style={style} set:html={icon.svg} />

@@ -1,4 +1,5 @@
 ---
+import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
@@ -77,10 +78,10 @@ import Sidebar from '../components/Sidebar.astro';
             <h3>Une question sur vos données ?</h3>
             <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
               <a href="mailto:odysseylaradio@gmail.com" class="btn-hero">
-                <i class="bi bi-envelope"></i> Nous écrire
+                <Icon name="envelope" /> Nous écrire
               </a>
               <a href="/mentions-legales.html" class="btn-hero-ghost">
-                <i class="bi bi-file-text"></i> Mentions légales
+                <Icon name="file-text" /> Mentions légales
               </a>
             </div>
           </div>

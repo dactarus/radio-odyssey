@@ -1,4 +1,5 @@
 ---
+import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
@@ -54,7 +55,7 @@ const faq = [
           <div class="content-card">
             <h2>L'avis de notre partenaire psychologue</h2>
             <p>Nous avons posé la question à <strong>Elisabeth Bélot-Grimaud</strong>, Docteure en psychologie cognitive et partenaire exclusive de Radio Odyssey : associer musique et ménage, est-ce une bonne idée ? Sa réponse est claire — cela ne pose aucun souci, bien au contraire. Une musique positive comme celle de Radio Odyssey peut rendre une tâche perçue comme corvée nettement plus plaisante à accomplir.</p>
-            <p><a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">En savoir plus sur notre partenaire <i class="bi bi-arrow-right"></i></a></p>
+            <p><a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">En savoir plus sur notre partenaire <Icon name="arrow-right" /></a></p>
           </div>
 
           <div class="content-card">
@@ -86,7 +87,7 @@ const faq = [
                       <span style="font-size:.82rem;color:var(--ro-muted);">{a.track}</span>
                     </span>
                   </span>
-                  <i class="bi bi-arrow-right" style="color:var(--ro-purple);flex-shrink:0;"></i>
+                  <Icon name="arrow-right" style="color:var(--ro-purple);flex-shrink:0;" />
                 </a>
               ))}
             </div>
@@ -112,10 +113,10 @@ const faq = [
             <h3>Lancez la musique, le ménage suivra</h3>
             <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
               <a href="#" onclick="roPlayNow(event)" class="btn-hero">
-                <i class="bi bi-broadcast-pin"></i> Écouter en Direct
+                <Icon name="broadcast-pin" /> Écouter en Direct
               </a>
               <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" class="btn-hero-ghost">
-                <i class="bi bi-phone"></i> Télécharger l'application
+                <Icon name="phone" /> Télécharger l'application
               </a>
             </div>
           </div>

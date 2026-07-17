@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 import { NAV_CATEGORIES } from '../data/navigation.js';
 const FOOTER_PAGE_LIMIT = 4;
 ---
@@ -45,10 +46,10 @@ const FOOTER_PAGE_LIMIT = 4;
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
       <div class="footer-bottom">© 2026 Radio Odyssey. Tous droits réservés. | Depuis le 19 janvier 2025 · <a href="/mentions-legales.html" style="color:inherit;text-decoration:underline;">Mentions légales</a> · <a href="/politique-de-confidentialite.html" style="color:inherit;text-decoration:underline;">Confidentialité</a> · <a href="#" onclick="window.roOpenCookiePreferences && window.roOpenCookiePreferences(); return false;" style="color:inherit;text-decoration:underline;">Gérer les cookies</a></div>
       <div class="footer-social d-flex gap-3">
-        <a href="https://www.facebook.com/profile.php?id=61588289230589" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com/radio_odyssey_france/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-        <a href="https://x.com/Odysseylaradio" target="_blank" rel="noopener" aria-label="X"><i class="bi bi-twitter-x"></i></a>
-        <a href="https://www.youtube.com/channel/UCodzZ_dhFdJwQ90nZzVHluw" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61588289230589" target="_blank" rel="noopener" aria-label="Facebook"><Icon name="facebook" /></a>
+        <a href="https://www.instagram.com/radio_odyssey_france/" target="_blank" rel="noopener" aria-label="Instagram"><Icon name="instagram" /></a>
+        <a href="https://x.com/Odysseylaradio" target="_blank" rel="noopener" aria-label="X"><Icon name="twitter-x" /></a>
+        <a href="https://www.youtube.com/channel/UCodzZ_dhFdJwQ90nZzVHluw" target="_blank" rel="noopener" aria-label="YouTube"><Icon name="youtube" /></a>
       </div>
     </div>
   </div>
