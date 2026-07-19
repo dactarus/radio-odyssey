@@ -1,0 +1,23 @@
+{
+  "name": "Radio Odyssey — La Positive Radio",
+  "short_name": "Radio Odyssey",
+  "description": "Web radio positive gratuite et sans publicité : hits des années 80, dance, easy listening et cohérence cardiaque, 24h/24.",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "background_color": "#0b1c2d",
+  "theme_color": "#7B2FBE",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/assets/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
