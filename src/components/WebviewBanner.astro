@@ -1,0 +1,158 @@
+<div id="ro-webview-banner" class="ro-webview-banner" role="status" aria-live="polite" hidden
+     transition:persist transition:name="webview-banner">
+  <div class="ro-webview-inner">
+    <p class="ro-webview-text">
+      🎧 Pour une meilleure écoute (lecture en fond, sans coupure), ouvrez ce lien dans votre navigateur.
+    </p>
+    <div class="ro-webview-actions">
+      <button type="button" id="ro-webview-copy" class="ro-webview-btn">Copier le lien</button>
+      <button type="button" id="ro-webview-close" class="ro-webview-close" aria-label="Fermer">&times;</button>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .ro-webview-banner {
+    position: fixed;
+    left: 0; right: 0;
+    top: 0; /* recalculé en JS pour se caler sous la barre lecteur */
+    z-index: 999998;
+    background: #fff;
+    border-bottom: 2px solid rgba(123,47,190,.15);
+    box-shadow: 0 8px 24px rgba(11,28,45,.15);
+    padding: .7rem 1rem;
+  }
+  .ro-webview-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .7rem;
+    justify-content: space-between;
+  }
+  .ro-webview-text {
+    margin: 0;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--ro-dark);
+    flex: 1 1 260px;
+  }
+  .ro-webview-actions {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    flex-shrink: 0;
+  }
+  .ro-webview-btn {
+    padding: .5rem 1.1rem;
+    font-size: .8rem;
+    font-weight: 800;
+    font-family: 'Nunito', sans-serif;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--ro-purple), var(--ro-pink, #FF3CAC));
+    color: #fff;
+    white-space: nowrap;
+  }
+  .ro-webview-close {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: #eef0f4;
+    color: var(--ro-dark);
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+</style>
+
+<script is:inline>
+(function () {
+  var STORAGE_KEY = 'ro-webview-banner-dismissed';
+
+  function isInAppBrowser(ua) {
+    if (/FBAN|FBAV|Instagram|Line\//i.test(ua)) return true;
+    // Webview Android générique (Chrome custom tabs exclu volontairement)
+    if (/Android/i.test(ua) && /; ?wv\)/i.test(ua)) return true;
+    // Webview iOS générique : Mobile Safari inclut toujours "Safari" dans
+    // son UA, les navigateurs intégrés (WKWebView) ne l'incluent pas.
+    if (/iPhone|iPad|iPod/i.test(ua) && !/Safari/i.test(ua)) return true;
+    return false;
+  }
+
+  var ua = navigator.userAgent || navigator.vendor || '';
+  if (sessionStorage.getItem(STORAGE_KEY) === '1' || !isInAppBrowser(ua)) return;
+
+  var banner = document.getElementById('ro-webview-banner');
+  if (!banner) return;
+
+  var bar = document.getElementById('topRadioBar');
+
+  function positionBanner() {
+    if (!bar) { banner.style.top = '0px'; return; }
+    // Le widget RadioKing "en cours de lecture" déborde de la hauteur
+    // déclarée de la barre (~180px réels contre 105px, cf. commentaire
+    // dans index.astro) — on se cale sur le point le plus bas réellement
+    // visible (barre + iframe), pas sur la seule boîte de #topRadioBar.
+    var bottom = bar.getBoundingClientRect().bottom;
+    var iframe = bar.querySelector('iframe.rk-desktop');
+    if (iframe && iframe.offsetParent !== null) {
+      bottom = Math.max(bottom, iframe.getBoundingClientRect().bottom);
+    }
+    banner.style.top = Math.max(0, bottom) + 'px';
+  }
+
+  banner.hidden = false;
+  positionBanner();
+  window.addEventListener('resize', positionBanner);
+
+  // Le lecteur RadioKing (iframe) change de hauteur de façon asynchrone
+  // (chargement du widget "en cours de lecture") après ce premier calcul —
+  // on reste synchronisé avec sa taille réelle plutôt qu'une valeur figée.
+  if (bar && window.ResizeObserver) {
+    new ResizeObserver(positionBanner).observe(bar);
+  }
+
+  var copyBtn = document.getElementById('ro-webview-copy');
+  var closeBtn = document.getElementById('ro-webview-close');
+
+  copyBtn.addEventListener('click', function () {
+    var url = location.href;
+    var done = function () {
+      copyBtn.textContent = 'Lien copié !';
+      setTimeout(function () { copyBtn.textContent = 'Copier le lien'; }, 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(done, function () { fallbackCopy(url, done); });
+    } else {
+      fallbackCopy(url, done);
+    }
+    // Android uniquement : tente une ouverture forcée dans Chrome via
+    // intent:// — sans effet (ignoré) sur iOS et les autres webviews.
+    if (/Android/i.test(ua)) {
+      var intentUrl = 'intent://' + location.host + location.pathname + location.search
+        + '#Intent;scheme=https;package=com.android.chrome;end';
+      setTimeout(function () { window.location.href = intentUrl; }, 300);
+    }
+  });
+
+  function fallbackCopy(url, done) {
+    var input = document.createElement('input');
+    input.value = url;
+    input.style.position = 'fixed';
+    input.style.opacity = '0';
+    document.body.appendChild(input);
+    input.select();
+    try { document.execCommand('copy'); done(); } catch (e) {}
+    document.body.removeChild(input);
+  }
+
+  closeBtn.addEventListener('click', function () {
+    banner.hidden = true;
+    sessionStorage.setItem(STORAGE_KEY, '1');
+  });
+})();
+</script>

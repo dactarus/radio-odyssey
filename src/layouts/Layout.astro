@@ -1,7 +1,9 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieConsent from '../components/CookieConsent.astro';
+import WebviewBanner from '../components/WebviewBanner.astro';
 
 interface Props {
   lang?: 'fr' | 'en';
@@ -171,7 +173,12 @@ const articleSchema = articleDatePublished ? {
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png"/>
   <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48.png"/>
   <link rel="icon" type="image/png" href="/assets/images/logo.png"/>
-  <link rel="apple-touch-icon" href="/assets/images/logo.png"/>
+  <link rel="apple-touch-icon" href="/assets/images/icon-192.png"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#7B2FBE"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="Radio Odyssey"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{title}</title>
   <meta name="description" content={description}/>
@@ -201,6 +208,13 @@ const articleSchema = articleDatePublished ? {
   <link rel="stylesheet" href="/assets/vendor/bootstrap/bootstrap.min.css"/>
   <link rel="stylesheet" href="/assets/css/style.css?v=20260717c"/>
 
+  <!-- Umami : mesure d'audience sans cookie, pas de bandeau de consentement requis -->
+  <script defer src="https://eu.umami.is/script.js" data-website-id="93f685e2-de60-4635-855a-b07be4902808"></script>
+
+  <!-- Navigation client-side : garde le lecteur RadioKing (#topRadioBar,
+       transition:persist) en lecture continue quand on change de page. -->
+  <ClientRouter />
+
   <script type="application/ld+json" is:inline set:html={JSON.stringify(associationSchema)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify(websiteSchema)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify(organizationSchema)} />
@@ -215,6 +229,7 @@ const articleSchema = articleDatePublished ? {
 </head>
 <body>
   <Header />
+  <WebviewBanner />
   <slot />
   <Footer />
   <CookieConsent />
