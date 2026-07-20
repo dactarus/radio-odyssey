@@ -1,4 +1,12 @@
 {
+  "redirects": [
+    { "source": "/sitemap.xml/index.html", "destination": "/", "permanent": true },
+    { "source": "/sitemap.xml/page1.html", "destination": "/", "permanent": true },
+    { "source": "/sitemap.xml/plan-du-site.html", "destination": "/", "permanent": true },
+    { "source": "/sitemap.xml/radio-remix-annees-80.html", "destination": "/radio-annees-80-en-ligne.html", "permanent": true },
+    { "source": "/sitemap.xml/listen-to-radio-odyssey-on-alexa.html", "destination": "/ecouter-radio-odyssey-enceinte-connectee.html", "permanent": true },
+    { "source": "/sitemap.xml/:slug.html", "destination": "/:slug.html", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/assets/(images|fonts|vendor)/(.*)",

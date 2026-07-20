@@ -621,4 +621,20 @@ Avec ce correctif, tous les points identifiés dans l'audit Grok du §20 et l'au
 
 ---
 
+## 22. Investigation des 18 URLs fantômes "sitemap.xml/..." (2026-07-20)
+
+Le propriétaire a demandé une investigation précise (pas de correctif à l'aveugle) sur les 18 URLs malformées repérées dans Search Console au §20, du type `radio-odyssey.com/sitemap.xml/european-chill-radio.html`.
+
+**Cause racine confirmée :** un ancien `sitemap.xml` (avant la migration Astro) contenait des chemins **relatifs** au lieu d'absolus. Un lecteur de sitemap résout une URL relative par rapport à l'emplacement du fichier sitemap.xml lui-même — ce qui donne exactement ce motif fautif. Google a mémorisé ces références un jour sans jamais réussir à les explorer (confirmé au §20 : statut "sans objet" sur les 18).
+
+**Vérifié dans le code actuel** — le bug est déjà corrigé, aucune régression possible par ce mécanisme précis :
+- Pas de dépendance `@astrojs/sitemap` ; `public/sitemap.xml` est géré à la main par `admin-console/lib/sitemap.mjs` (`addSitemapUrl`), qui construit systématiquement une URL absolue (`https://www.radio-odyssey.com/${slug}`).
+- Les 164 entrées actuelles du sitemap sont 100% absolues (vérifié par script), zéro occurrence du motif `sitemap.xml/`.
+- 13 des 18 slugs correspondent à de vraies pages actuelles, présentes une seule fois, sans doublon.
+- Les 5 autres (`index`, `listen-to-radio-odyssey-on-alexa`, `page1`, `plan-du-site`, `radio-remix-annees-80`) n'ont jamais existé dans ce dépôt (vérifié via `git log --all --diff-filter=A`, aucune trace) — reliquats de l'ancien site pré-migration.
+
+**Corrigé :** ajout d'un bloc `redirects` dans `vercel.json` — 5 redirections précises (`index`/`page1`/`plan-du-site` → accueil ; `radio-remix-annees-80` → `radio-annees-80-en-ligne.html`, équivalent thématique ; `listen-to-radio-odyssey-on-alexa` → `ecouter-radio-odyssey-enceinte-connectee.html`, qui couvre Alexa explicitement) **+ une redirection générique** `/sitemap.xml/:slug.html → /:slug.html` qui couvre automatiquement les 13 pages réelles et sert de filet de sécurité si ce motif malformé réapparaissait un jour pour une page non listée ici. Aucun fichier supprimé.
+
+---
+
 *Dernière mise à jour : 2026-07-17, audit Core Web Vitals et premiers correctifs (§21).*
