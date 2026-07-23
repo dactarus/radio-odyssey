@@ -3,6 +3,7 @@
   <div class="ro-webview-inner">
     <p class="ro-webview-text">
       🎧 Pour une meilleure écoute (lecture en fond, sans coupure), ouvrez ce lien dans votre navigateur.
+      <span class="ro-webview-hint">Astuce : appuyez sur ⋯ en haut à droite, puis « Ouvrir dans le navigateur ».</span>
     </p>
     <div class="ro-webview-actions">
       <button type="button" id="ro-webview-copy" class="ro-webview-btn">Copier le lien</button>
@@ -37,6 +38,13 @@
     font-weight: 600;
     color: var(--ro-dark);
     flex: 1 1 260px;
+  }
+  .ro-webview-hint {
+    display: block;
+    margin-top: .2rem;
+    font-size: .74rem;
+    font-weight: 500;
+    color: var(--ro-muted);
   }
   .ro-webview-actions {
     display: flex;
@@ -74,7 +82,7 @@
   var STORAGE_KEY = 'ro-webview-banner-dismissed';
 
   function isInAppBrowser(ua) {
-    if (/FBAN|FBAV|Instagram|Line\//i.test(ua)) return true;
+    if (/FBAN|FBAV|Instagram|Line\/|TikTok|BytedanceWebview|musical_ly/i.test(ua)) return true;
     // Webview Android générique (Chrome custom tabs exclu volontairement)
     if (/Android/i.test(ua) && /; ?wv\)/i.test(ua)) return true;
     // Webview iOS générique : Mobile Safari inclut toujours "Safari" dans
@@ -82,6 +90,12 @@
     if (/iPhone|iPad|iPod/i.test(ua) && !/Safari/i.test(ua)) return true;
     return false;
   }
+
+  // Exposée globalement : réutilisée par le tracking Umami (Footer.astro)
+  // pour croiser le taux d'échec de lecture avec le type de navigateur.
+  window.roIsInAppBrowser = function () {
+    return isInAppBrowser(navigator.userAgent || navigator.vendor || '');
+  };
 
   var ua = navigator.userAgent || navigator.vendor || '';
   if (sessionStorage.getItem(STORAGE_KEY) === '1' || !isInAppBrowser(ua)) return;

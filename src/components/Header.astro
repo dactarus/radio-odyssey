@@ -29,7 +29,7 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
   <!-- BOUTON mobile alternatif (affiché si iframe trop petite) -->
   <a class="rk-mobile-btn" href="https://link.radioking.com/radio-odyssey" target="_blank" rel="noopener"
      aria-label="Écouter Radio Odyssey"
-     data-umami-event="play_click" data-umami-event-device="mobile" data-umami-event-source="bar-button">
+     onclick="if(typeof roUmamiTrack==='function')roUmamiTrack('play_click',{device:'mobile',source:'bar-button'});">
     <span class="rk-mobile-play">&#9654;</span>
     <span class="rk-mobile-label">
       <span class="rk-mobile-title" id="mobile-now-playing">Radio Odyssey</span>
@@ -93,7 +93,7 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
     <div class="offcanvas-cta">
       <a class="btn-ro w-100 justify-content-center"
          href="https://link.radioking.com/radio-odyssey" target="_blank" rel="noopener"
-         data-umami-event="play_click" data-umami-event-source="offcanvas-menu">
+         onclick="if(typeof roUmamiTrack==='function')roUmamiTrack('play_click',{source:'offcanvas-menu'});">
         <Icon name="broadcast" />&nbsp; Écouter en Direct
       </a>
     </div>
