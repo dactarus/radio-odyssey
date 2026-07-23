@@ -61,6 +61,11 @@ const FOOTER_PAGE_LIMIT = 4;
 <script is:inline>
 /* ── Radio Odyssey : lecture adaptée desktop/mobile ── */
 function roUmamiTrack(name, data){
+  data = data || {};
+  // Ajouté ici une seule fois plutôt que sur chaque appel : permet de
+  // croiser le taux d'échec/succès de lecture avec le type de navigateur
+  // (Instagram/Facebook bloquent souvent l'autoplay sans le signaler).
+  data.in_app_browser = (typeof window.roIsInAppBrowser === 'function') ? window.roIsInAppBrowser() : false;
   if(typeof umami !== 'undefined' && umami.track){
     try { umami.track(name, data); } catch(err){}
   }
