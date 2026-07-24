@@ -45,6 +45,8 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
     background: rgba(123,47,190,.06);
   }
   .ro-mega-nav-toggle::after { display: none; }
+  .ro-mega-nav-search-item { margin-left: auto; }
+  .ro-mega-nav-search-btn { font-size: 1rem; padding: .9rem .8rem; }
   .ro-mega-nav .dropdown-menu {
     border: none;
     border-radius: 16px;
@@ -99,6 +101,11 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
           </ul>
         </li>
       ))}
+      <li class="ro-mega-nav-search-item">
+        <button class="ro-mega-nav-toggle ro-mega-nav-search-btn ro-search-trigger" type="button" aria-label="Rechercher sur le site">
+          <Icon name="search" />
+        </button>
+      </li>
     </ul>
   </div>
 </nav>
