@@ -1,0 +1,147 @@
+---
+import Icon from './Icon.astro';
+---
+<div id="ro-search-modal" class="ro-search-modal" hidden aria-hidden="true">
+  <div class="ro-search-backdrop"></div>
+  <div class="ro-search-panel" role="dialog" aria-modal="true" aria-label="Rechercher sur le site">
+    <div class="ro-search-header">
+      <span class="ro-search-title"><Icon name="search" /> Rechercher sur Radio Odyssey</span>
+      <button type="button" id="ro-search-close" class="ro-search-close" aria-label="Fermer la recherche">&times;</button>
+    </div>
+    <div id="ro-search-ui"></div>
+  </div>
+</div>
+
+<style is:global>
+  .ro-search-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+  }
+  .ro-search-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(11, 28, 45, .55);
+  }
+  .ro-search-panel {
+    position: relative;
+    max-width: 640px;
+    margin: 8vh auto 0;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: var(--ro-shadow-lg, 0 20px 60px rgba(0,0,0,.3));
+    overflow: hidden;
+  }
+  .ro-search-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid rgba(123,47,190,.1);
+    flex-shrink: 0;
+  }
+  .ro-search-title {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: .95rem;
+    color: var(--ro-dark);
+  }
+  .ro-search-close {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: #eef0f4;
+    color: var(--ro-dark);
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  #ro-search-ui {
+    padding: 1rem 1.2rem 1.4rem;
+    overflow-y: auto;
+  }
+
+  /* Thème Pagefind aligné sur la charte Radio Odyssey */
+  .pagefind-ui {
+    --pagefind-ui-scale: 1;
+    --pagefind-ui-primary: var(--ro-purple);
+    --pagefind-ui-text: var(--ro-dark);
+    --pagefind-ui-background: #fff;
+    --pagefind-ui-border: rgba(123,47,190,.15);
+    --pagefind-ui-tag: rgba(123,47,190,.08);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 12px;
+    --pagefind-ui-font: 'Inter', sans-serif;
+  }
+
+  @media (max-width: 600px) {
+    .ro-search-panel { margin: 0; max-height: 100vh; height: 100vh; border-radius: 0; }
+  }
+</style>
+
+<script is:inline>
+(function () {
+  var modal = document.getElementById('ro-search-modal');
+  var closeBtn = document.getElementById('ro-search-close');
+  var backdrop = modal.querySelector('.ro-search-backdrop');
+  var uiLoaded = false;
+
+  function loadPagefindUI(callback) {
+    if (uiLoaded) { callback(); return; }
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/pagefind/pagefind-ui.css';
+    document.head.appendChild(link);
+
+    var script = document.createElement('script');
+    script.src = '/pagefind/pagefind-ui.js';
+    script.onload = function () {
+      uiLoaded = true;
+      new PagefindUI({
+        element: '#ro-search-ui',
+        showSubResults: true,
+        showImages: false,
+        excerptLength: 15,
+        translations: {
+          placeholder: 'Cohérence cardiaque, années 80, artiste...',
+          zero_results: 'Aucun résultat pour [SEARCH_TERM].'
+        }
+      });
+      callback();
+    };
+    document.body.appendChild(script);
+  }
+
+  function openSearch() {
+    modal.hidden = false;
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    loadPagefindUI(function () {
+      var input = document.querySelector('#ro-search-ui input');
+      if (input) input.focus();
+    });
+  }
+
+  function closeSearch() {
+    modal.hidden = true;
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.ro-search-trigger').forEach(function (btn) {
+    btn.addEventListener('click', openSearch);
+  });
+  closeBtn.addEventListener('click', closeSearch);
+  backdrop.addEventListener('click', closeSearch);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.hidden) closeSearch();
+  });
+})();
+</script>
