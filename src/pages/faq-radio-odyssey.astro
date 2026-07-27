@@ -1,0 +1,96 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'Radio Odyssey est-elle vraiment gratuite ?', a: "Oui, entièrement et sans limite de temps — aucun abonnement, aucune version payante. Radio Odyssey est portée par une association loi 1901 à but non lucratif, pas par un modèle commercial classique." },
+  { q: 'Y a-t-il de la publicité sur l\'antenne ?', a: "Non. Radio Odyssey est et reste sans coupure publicitaire — voir le détail sur notre page <a href='/radio-sans-publicite.html' style='color:var(--ro-purple);font-weight:700;'>radio sans publicité</a>." },
+  { q: 'Faut-il créer un compte pour écouter ?', a: "Non, aucune inscription n'est nécessaire. Il suffit de cliquer sur \"Écouter en Direct\" depuis n'importe quelle page du site." },
+  { q: 'Qui se cache derrière Radio Odyssey ?', a: "Radio Odyssey est éditée par une association loi 1901 à but non lucratif. Retrouvez les coulisses de sa fabrication sur notre page <a href='/comment-radio-odyssey-choisit-sa-musique.html' style='color:var(--ro-purple);font-weight:700;'>comment on choisit la musique</a>." },
+  { q: 'Peut-on écouter Radio Odyssey depuis l\'étranger ?', a: "Oui, la diffusion est accessible partout dans le monde avec une connexion internet — c'est aussi pour cela que Radio Odyssey propose des pages dédiées à son public international, comme notre <a href='/positive-european-music-station.html' style='color:var(--ro-purple);font-weight:700;'>version européenne en anglais</a>." },
+  { q: 'Comment soutenir Radio Odyssey ?', a: "Le plus simple : partagez la radio autour de vous, restez à l'écoute et suivez les réseaux sociaux. Chaque nouvel auditeur compte pour une radio associative indépendante." },
+  { q: 'Y a-t-il une application mobile ?', a: "Oui, une application est disponible sans passer par l'App Store ou le Google Play Store — voir le détail sur notre page <a href='/ecouter-radio-odyssey-sur-mobile.html' style='color:var(--ro-purple);font-weight:700;'>écouter sur mobile</a>." },
+  { q: 'Quelle est la différence entre Radio Odyssey et une playlist Spotify ?', a: "Une playlist reste figée jusqu'à ce qu'on la modifie soi-même ; Radio Odyssey est un flux en direct, qui change en permanence et intègre des séquences de cohérence cardiaque à heures fixes — une expérience de radio, pas une simple liste de titres." },
+  { q: 'Comment contacter Radio Odyssey ou proposer un titre ?', a: "Par email, à <a href='mailto:odysseylaradio@gmail.com' style='color:var(--ro-purple);font-weight:700;'>odysseylaradio@gmail.com</a> — toutes les demandes sont lues." },
+];
+---
+<Layout
+  lang="fr"
+  title="Questions Fréquentes sur Radio Odyssey | FAQ"
+  description="Toutes les réponses aux questions les plus posées sur Radio Odyssey : gratuité, publicité, application, écoute à l'étranger, et comment nous soutenir."
+>
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Questions Fréquentes sur Radio Odyssey"
+    title="Questions Fréquentes"
+    text="Tout ce que l'on nous demande le plus souvent sur Radio Odyssey — gratuité, publicité, application, et comment nous soutenir."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 6C14.6 6 8 12.5 8 20C8 26 11.5 30.8 17 33.3V41L25 34.9C34.2 34.4 40 28 40 20C40 12.5 33.4 6 24 6Z" stroke="white" stroke-width="2.3" stroke-linejoin="round" fill="none"/><circle cx="24" cy="21" r="1.4" fill="white"/><path d="M24 17.5C24 15 27 15 27 17.5C27 19.5 24 19.5 24 21" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Les questions qu'on nous pose le plus</h2>
+            <p>Cette page rassemble les questions les plus fréquentes sur Radio Odyssey — au-delà de ce qui est déjà répondu sur notre page d'accueil. Vous ne trouvez pas votre réponse ? Écrivez-nous directement à <a href="mailto:odysseylaradio@gmail.com" style="color:var(--ro-purple);font-weight:700;">odysseylaradio@gmail.com</a>.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="faqro" />
+
+          <div class="content-card">
+            <h2>Où écouter Radio Odyssey ?</h2>
+            <p style="margin-bottom:1rem;">Un guide dédié pour chaque appareil :</p>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+              <a href="/ecouter-radio-odyssey-sur-mobile.html" class="tag-pill" style="text-decoration:none;">Sur mobile</a>
+              <a href="/ecouter-radio-odyssey-en-voiture.html" class="tag-pill" style="text-decoration:none;">En voiture</a>
+              <a href="/ecouter-radio-odyssey-enceinte-connectee.html" class="tag-pill" style="text-decoration:none;">Sur enceinte connectée</a>
+              <a href="/ecouter-radio-odyssey-sur-tv.html" class="tag-pill" style="text-decoration:none;">Sur TV connectée</a>
+              <a href="/ecouter-radio-odyssey-sur-ordinateur.html" class="tag-pill" style="text-decoration:none;">Sur ordinateur</a>
+              <a href="/ecouter-radio-odyssey-montre-connectee.html" class="tag-pill" style="text-decoration:none;">Sur montre connectée</a>
+            </div>
+          </div>
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/comment-radio-odyssey-choisit-sa-musique.html', label: 'Comment on Choisit la Musique', desc: 'Les coulisses de la programmation' },
+              { href: '/radio-sans-publicite.html', label: 'Radio Sans Publicité', desc: 'Pourquoi Radio Odyssey reste gratuite' },
+              { href: '/avis-radio-odyssey-bien-etre.html', label: 'Avis sur Radio Odyssey', desc: 'Ce que nos auditeurs en disent' },
+            ]}
+            associated={[
+              { href: '/conseils-ecoute.html', label: "Tout le cocon Conseils d'Écoute" },
+              { href: '/coulisses-de-radio-odyssey.html', label: 'Toutes les coulisses' },
+              { href: '/', label: "Page d'accueil" },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Une dernière question ? Écoutez, tout simplement</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="mailto:odysseylaradio@gmail.com" class="btn-hero-ghost">
+                <Icon name="envelope" /> Nous contacter
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

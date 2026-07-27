@@ -1,0 +1,69 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<Layout
+  lang="fr"
+  title="Écouter Radio Odyssey sur Montre Connectée | Radio Odyssey"
+  description="Contrôler Radio Odyssey depuis votre montre connectée : Apple Watch et Wear OS, pour ajuster le volume sans sortir votre téléphone."
+>
+  <PageHero
+    gradientFrom="#FF3CAC"
+    gradientTo="#1e7fcb"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Comment écouter Radio Odyssey sur montre connectée"
+    title="Écouter Radio Odyssey sur Montre Connectée"
+    text="Gardez le contrôle de la lecture au poignet, sans sortir votre téléphone — pratique en courant ou en marchant."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="13" stroke="white" stroke-width="2.5"/><path d="M24 17V24L29 27" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M19 11H29V6H19V11Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/><path d="M19 37H29V42H19V37Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Pas d'application dédiée, mais un vrai confort d'usage</h2>
+            <p>Par honnêteté : Radio Odyssey n'a pas d'application spécifique pour Apple Watch ou Wear OS. En revanche, une fois la lecture lancée depuis votre téléphone, votre montre connectée peut afficher les commandes de lecture en cours et vous permettre d'ajuster le volume ou de mettre en pause sans ressortir votre téléphone — pratique en courant, en marchant ou les mains occupées.</p>
+          </div>
+
+          <div class="content-card">
+            <h3 style="font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#FF3CAC;margin-bottom:1rem;">⌚ APPLE WATCH</h3>
+            <p>Lancez Radio Odyssey depuis votre iPhone (navigateur, application, ou TuneIn), puis ouvrez l'application <strong>Musique</strong> ou le centre de contrôle sur votre Apple Watch : la lecture en cours s'affiche automatiquement, avec le volume et la pause accessibles directement au poignet.</p>
+          </div>
+
+          <div class="content-card">
+            <h3 style="font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#1e7fcb;margin-bottom:1rem;">⌚ WEAR OS (ANDROID)</h3>
+            <p>Même principe sur une montre Wear OS : une fois Radio Odyssey lancée sur votre téléphone Android, les commandes multimédias apparaissent sur la montre. Si vous utilisez l'application <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">TuneIn</a>, elle propose aussi ses propres commandes compatibles Wear OS.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Un usage qui a du sens surtout en mouvement</h2>
+            <p>C'est en courant ou en marchant que le contrôle au poignet prend tout son intérêt — sans avoir à ressortir le téléphone d'une poche ou d'un brassard. Retrouvez aussi notre page <a href="/musique-pour-courir.html" style="color:var(--ro-purple);font-weight:700;">musique pour courir</a> et notre sélection <a href="/coherence-cardiaque-et-sport.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque et sport</a>, pour la respiration avant et après l'effort.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pour aller plus loin</h2>
+            <p>Retrouvez nos guides pour écouter sur <a href="/ecouter-radio-odyssey-sur-mobile.html" style="color:var(--ro-purple);font-weight:700;">mobile</a> ou <a href="/ecouter-radio-odyssey-en-voiture.html" style="color:var(--ro-purple);font-weight:700;">en voiture</a>.</p>
+          </div>
+
+          <div class="page-cta-bar">
+            <h3>Gardez le contrôle au poignet</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Écouter en Direct
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
