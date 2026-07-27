@@ -1,0 +1,127 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  {
+    q: "Le traitement de son est-il le même pour toute la programmation ?",
+    a: "Oui. Chez Radio Odyssey, chaque titre est traité en amont, dès son import sur la plateforme, avec la même chaîne de traitement — plutôt qu'un traitement générique appliqué en direct par l'hébergeur. C'est plus contraignant, mais ça permet de garder la main sur le son de la radio, titre par titre.",
+  },
+  {
+    q: "Pourquoi ne pas traiter le son en direct, comme certaines radios FM ?",
+    a: "Un traitement de son logiciel demande du temps de calcul, ce qui crée un léger différé — gênant en direct pour un animateur qui s'entend parler dans son casque avec retard. Une web radio comme Radio Odyssey diffusant des titres pré-enregistrés plutôt qu'une antenne parlée en continu, ce différé n'est pas un problème : le traitement peut se faire tranquillement en amont, sur chaque titre.",
+  },
+  {
+    q: "Peut-on savoir quels logiciels ou plugins sont utilisés ?",
+    a: "Non, et c'est volontaire. Comme la plupart des radios, Radio Odyssey garde sa recette de traitement de son secrète — c'est elle qui donne sa personnalité reconnaissable à l'antenne, un peu comme le \"son NRJ\" ou le \"son Skyrock\" à une époque.",
+  },
+  {
+    q: "Que se passe-t-il quand un titre ne sonne pas bien malgré le traitement ?",
+    a: "Il est retravaillé spécifiquement en production pour s'ajuster au son général de l'antenne — on ne change pas toute une chaîne de traitement pour un seul titre récalcitrant. Si aucun réglage ne fonctionne, la solution la plus radicale reste de ne pas le diffuser, plutôt que de prendre le risque de faire fuir un auditeur.",
+  },
+];
+---
+<Layout
+  lang="fr"
+  title="Comment Radio Odyssey Traite le Son de son Antenne"
+  description="Compression, normalisation, égalisation : comment Radio Odyssey traite le son de son antenne pour harmoniser 45 ans de musique sans fatiguer l'oreille."
+  articleDatePublished="2026-07-27"
+>
+  <PageHero
+    gradientFrom="#7B2FBE"
+    gradientTo="#00C6FF"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Comment Radio Odyssey traite le son de son antenne"
+    title="Comment Radio Odyssey Traite le Son"
+    text="La partie invisible qui donne son ambiance à l'antenne — le programmateur de la radio explique ses choix, et pourquoi ce n'est jamais qu'une question de curseurs poussés au maximum."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><line x1="14" y1="8" x2="14" y2="40" stroke="white" stroke-width="2.2"/><rect x="9" y="14" width="10" height="6" rx="2" fill="white"/><line x1="24" y1="8" x2="24" y2="40" stroke="white" stroke-width="2.2"/><rect x="19" y="26" width="10" height="6" rx="2" fill="white"/><line x1="34" y1="8" x2="34" y2="40" stroke="rgba(255,255,255,.7)" stroke-width="2.2"/><rect x="29" y="19" width="10" height="6" rx="2" fill="rgba(255,255,255,.7)"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Une radio, ce n'est pas seulement une question de bons morceaux bien choisis. C'est aussi — et peut-être surtout — une question de <strong>traitement du son</strong> : cette étape invisible qui donne à une antenne son ambiance, sa personnalité, et qui influence directement le confort d'écoute. Le programmateur de Radio Odyssey nous explique les choix qui se cachent derrière le son de la radio.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Logiciel ou matériel : deux façons de traiter le son</h2>
+            <p>Avec l'essor de l'informatique, il existe aujourd'hui deux grandes familles de traitement du son : les suites logicielles entièrement dématérialisées (comme StereoTool), et les appareils physiques dédiés — le plus connu étant l'Optimod FM d'Orban, qui embarque désormais lui aussi une partie logicielle.</p>
+            <p style="margin-bottom:0;">Pour une radio FM, le matériel physique reste souvent préférable : son temps de traitement est beaucoup plus court qu'un traitement logiciel, qui demande du temps de calcul. C'est une problématique bien connue des animateurs et journalistes, qui s'entendent parler dans leur casque avec un léger différé une fois le son traité — au point, si le délai est trop important, de buter sur leurs propres mots. Une astuce du métier consiste à recréer dans le casque de l'animateur un son proche de l'antenne, sans passer par la chaîne de traitement complète.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Le choix de Radio Odyssey : un traitement en amont, pas en direct</h2>
+            <p>Pour une web radio comme Radio Odyssey, cette contrainte de latence ne se pose pas de la même façon : la solution est logicielle. L'hébergeur peut proposer un traitement de son professionnel, généralement payant — l'avantage, c'est un son calibré qui "sonne" comme une radio pro ; l'inconvénient, c'est que ce sont les critères de la plateforme qui s'appliquent, pas ceux de la radio.</p>
+            <p style="margin-bottom:0;">Radio Odyssey a fait un autre choix : <strong>chaque titre uploadé sur la plateforme est traité en amont</strong>, avec une chaîne de traitement de son choisie par la radio elle-même. C'est plus contraignant qu'un traitement automatique en direct, mais ça permet de garder la main sur le son de l'antenne, titre par titre.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Faire cohabiter 45 ans de musique, sans rupture</h2>
+            <p>Sans traitement de son, un auditeur perçoit vite des différences de puissance ou de couleur sonore (l'équilibre graves/médiums/aigus) d'un titre à l'autre — une expérience d'écoute inconfortable. C'est d'ailleurs ce qui fait qu'une radio "sonne" pro à l'oreille, et une autre non ; un critère qui compte beaucoup dans le choix d'une station plutôt qu'une autre.</p>
+            <p>La difficulté est réelle pour une radio comme Radio Odyssey, qui diffuse des titres des années 80 à aujourd'hui : chaque époque, chaque style, a sa propre signature sonore. Les traitements de son professionnels s'appuient généralement sur une <strong>compression multibande</strong> (graves, médiums, aigus traités séparément) pour harmoniser tout cela — et l'intelligence artificielle s'annonce comme la prochaine étape, avec des systèmes capables d'analyser et d'adapter le traitement en temps réel, titre par titre.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Le piège de la "guerre du volume"</h2>
+            <p>La compression est le traitement phare d'une radio — elle agit sur les niveaux sonores, mais aussi sur la couleur du son diffusé. Un son trop compressé peut sembler plus fort et plus dense, mais il fatigue l'oreille : au bout d'un moment, l'auditeur se sent presque agacé sans savoir pourquoi. Poussé trop loin, l'effet devient contre-productif — le son devient, pour reprendre les mots du programmateur, de la "bouillie".</p>
+            <p style="margin-bottom:0;">Pour une radio qui prône le bien-être et diffuse des séquences de <a href="/radio-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque</a>, rester raisonnable sur la compression est presque une évidence — tout en répondant aux habitudes d'écoute des auditeurs, et à ce que propose la concurrence. Un vrai compromis, pas un réglage figé.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une voix traitée à part, mais jamais en rupture</h2>
+            <p>Compresser fortement la musique utilisée pendant les séquences de cohérence cardiaque serait complètement contre-productif. Le niveau de la musique y est donc volontairement plus bas que celui de la voix d'<a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Elisabeth Bélot-Grimaud</a>, qui guide la séquence — mais sa voix, elle, reste traitée avec le même "son Radio Odyssey" que le reste de l'antenne. Résultat : aucune rupture auditive entre une séquence de respiration et le titre qui la précède ou la suit.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une recette gardée secrète</h2>
+            <p>Le traitement de son d'une radio, c'est une chaîne d'étapes précises — normalisation, égalisation, élargissement stéréo, compression — assemblées dans un ordre et des réglages propres à chaque station. Une vraie recette, jalousement gardée : à une époque, on pouvait presque reconnaître une radio à l'oreille, au "son NRJ" ou au "son Skyrock". Le son de Radio Odyssey est, lui aussi, personnalisé — et pour cette raison, ni les logiciels ni les plugins utilisés ne seront dévoilés ici.</p>
+          </div>
+
+          <div class="content-card">
+            <p style="margin:0;">Même la meilleure chaîne de traitement ne répond pas à toutes les situations : il arrive qu'un titre ne sonne pas comme prévu à l'antenne. Plutôt que de tout reconfigurer pour un seul morceau récalcitrant, la solution consiste à le retravailler individuellement en production — ou, dans les cas les plus radicaux, à simplement ne pas le diffuser. Les bases de ce travail — normalisation, égalisation, compression d'un titre avant diffusion — méritent d'ailleurs leur propre article, à venir prochainement dans ces mêmes Coulisses.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="son" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/comment-radio-odyssey-fabrique-ses-jingles.html', label: 'Comment Radio Odyssey Fabrique ses Jingles', desc: "L'autre pan sonore de l'antenne" },
+              { href: '/comment-radio-odyssey-choisit-sa-musique.html', label: 'Comment Radio Odyssey Choisit sa Musique', desc: 'Les coulisses de la programmation' },
+            ]}
+            associated={[
+              { href: '/radio-coherence-cardiaque.html', label: 'Radio Cohérence Cardiaque' },
+              { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Notre Partenaire Elisabeth Bélot-Grimaud' },
+              { href: '/radio-sans-publicite.html', label: 'Radio Sans Publicité' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez le résultat, en direct</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="/coulisses-de-radio-odyssey.html" class="btn-hero-ghost">
+                <Icon name="film" /> Toutes les Coulisses
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
