@@ -775,4 +775,24 @@ Nouvel article du cocon Les Coulisses (4 → 5 pages), suggéré par Claude puis
 
 ---
 
-*Dernière mise à jour : 2026-07-27, Coulisses — comment Radio Odyssey traite le son (§28).*
+## 29. Coulisses : les rudiments du traitement de son (2026-07-27)
+
+Suite directe du §28, annoncée en teaser dans cet article. Même méthode : questions ciblées au propriétaire (programmateur radio), réponses détaillées, mise en forme éditoriale en préservant le sens et une formule marquante fournie telle quelle : *"Les pros contrôlent, ajustent ; les amateurs laissent le hasard choisir."*
+
+**Contenu, tiré des réponses du propriétaire :**
+- **Normalisation** : remise à niveau par rapport à 0 dB en crête, sur l'ensemble du titre — mais elle ne répare pas : un son trop fort est irrécupérable sans altération (écrêtage), un son trop faible ne peut être remonté sans augmenter le bruit de fond (rapport signal/bruit). Ne doit jamais changer la dynamique ou la qualité d'origine.
+- **Égalisation** : contrainte physique propre à la FM (pré-accentuation des fréquences atténuées par la diffusion, coupe des très basses fréquences pour ne pas déstabiliser la porteuse, normes internationales) vs liberté bien plus grande pour une web radio comme Radio Odyssey, dans la limite des contraintes techniques du streaming.
+- **Compression** : explication simple (niveaux bas remontés, niveaux forts abaissés, densité du son) puis les deux paramètres clés (seuil de déclenchement, temps de maintien) et le risque de dénaturer le son si mal réglés. Appliquée en fin de chaîne chez Radio Odyssey, avec un nombre de bandes non dévoilé.
+- **Ordre des opérations chez Radio Odyssey** : normalisation → image stéréo → égalisation → compression → réverbération finale si besoin. La normalisation en premier car elle offre "une base saine" ; l'ordre choisi affecte le résultat car certains effets peuvent masquer des éléments dont d'autres ont besoin.
+- **Exemple concret** : remise à niveau d'un titre années 80 (privilégier une version remastérisée, ajuster pour compenser les techniques d'époque — synthétiseurs, mixage analogique fait à la main), avec les plugins modernes à analyse IA cités comme aide (proposition de réglages, acceptés ou non).
+- **Erreur de débutant** : vouloir copier le son des grosses radios plutôt que construire sa propre identité, et pousser les réglages trop loin plutôt que chercher un juste milieu entre la limite basse et la limite haute de l'effet désiré.
+
+**Teaser en fin d'article** (thème fourni par le propriétaire) : un futur article sur les enchaînements — titres, jingles, chroniques — et les bases à respecter pour réussir l'antenne avec peu de moyens.
+
+**Maillage croisé** : lien ajouté dans les deux sens avec `comment-radio-odyssey-traite-le-son.html` (qui pointait déjà vers cet article en teaser).
+
+**Vérifié après build (181 pages, aucune erreur) :** JSON-LD valide (`Article` + `FAQPage`), la citation préservée telle que fournie, rendu testé dans le navigateur, `navigation.js` et `sitemap.xml` mis à jour (Les Coulisses : 5 → 6 pages).
+
+---
+
+*Dernière mise à jour : 2026-07-27, Coulisses — les rudiments du traitement de son (§29).*
