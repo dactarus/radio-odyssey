@@ -702,4 +702,20 @@ Le propriétaire a fait remarquer que l'objectif "~100 pages" du projet initial 
 
 ---
 
-*Dernière mise à jour : 2026-07-27, 5 pages de genre musical croisées avec les fiches artistes (§24).*
+## 25. 3 pages au cluster Bien-être : sommeil, sport, enfants/ados (2026-07-27)
+
+Deuxième proposition retenue après les pages de genre (§24) : trois angles de la cohérence cardiaque encore absents du cluster Bien-être & Santé (13 pages) — le sommeil, le sport, et une version enfants/ados. Slugs choisis pour prolonger la même sous-famille que `coherence-cardiaque-au-bureau.html` (contexte d'application de la même méthode plutôt que nouveau sujet).
+
+**Point de vigilance factuel vérifié avant d'écrire** : `musique-pour-la-nuit.astro` précise explicitement qu'aucune séquence de cohérence cardiaque n'est diffusée à l'antenne entre 21h et 6h (dernière séquence à 19h, détaillée sur `comment-pratiquer-la-coherence-cardiaque.html`). La nouvelle page sommeil devait donc rester honnête sur ce point plutôt que de laisser croire à une diffusion nocturne inexistante.
+
+- **`coherence-cardiaque-pour-dormir.html`** — dit clairement qu'aucune séquence n'est diffusée la nuit, et propose le composant `CoherenceExercise` (outil interactif déjà utilisé sur `comment-pratiquer-la-coherence-cardiaque.html`) pour pratiquer au moment précis du coucher, sans dépendre d'un horaire de diffusion. Pas de JSON-LD `HowTo` ajouté ici (les mêmes 5 étapes existent déjà en `HowTo` sur la page guide — éviter la donnée structurée dupliquée).
+- **`coherence-cardiaque-et-sport.html`** — deux moments distincts : avant l'effort pour canaliser le stress de compétition, après pour accompagner la récupération du rythme cardiaque. Différencié de `musique-pour-faire-du-sport.html` (énergie pendant l'effort) plutôt que redondant avec elle.
+- **`coherence-cardiaque-enfants-ados.html`** — même positionnement honnête que `musique-pour-les-enfants.html` : Radio Odyssey n'a pas de programmation jeunesse dédiée, mais la technique elle-même (même outil interactif, présenté de façon plus ludique) est praticable en famille. FAQ avec un repère d'âge (7-8 ans) et un rappel explicite qu'un accompagnement professionnel reste la démarche à privilégier en cas de trouble installé, pas juste une réponse ponctuelle.
+
+**Maillage croisé dans les deux sens**, comme pour le §24 : chaque nouvelle page renvoie vers la page existante dont elle se différencie, et les 3 pages existantes (`musique-pour-les-enfants.html`, `musique-pour-faire-du-sport.html`, `musique-pour-la-nuit.html`) ont reçu en retour un lien vers la nouvelle page correspondante — vérifié présent dans le HTML généré.
+
+**Vérifié après build (172 pages, aucune erreur) :** JSON-LD valide sur les 3 pages (`FAQPage` auto-généré par `FAQBlock`, plus les blocs habituels du `Layout`), rendu et outil interactif testés dans le navigateur, hub `bien-etre-et-sante.html` listant automatiquement les 3 nouvelles pages (cluster désormais à 16 pages). `navigation.js` et `sitemap.xml` mis à jour (`priority: 0.75`, cohérent avec `coherence-cardiaque-au-bureau.html`).
+
+---
+
+*Dernière mise à jour : 2026-07-27, 3 pages ajoutées au cluster Bien-être — sommeil, sport, enfants/ados (§25).*
