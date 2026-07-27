@@ -735,4 +735,23 @@ Troisième et dernier axe de la liste de propositions du 2026-07-27 (après §24
 
 ---
 
-*Dernière mise à jour : 2026-07-27, 3 guides d'écoute (TV/PC/montre) et FAQ transverse (§26).*
+## 27. 3 pages au cocon International (EN) + correctif de langue FAQBlock/RelatedPages (2026-07-27)
+
+Dernier axe du 2026-07-27 : enrichir le cocon International (8 pages en anglais) plutôt que traduire le site en arabe pour l'Algérie — décision prise après l'analyse Umami/Meta Ads du même jour (voir mémoire de session) qui a montré que le trafic algérien vient d'une campagne payante, convertit aussi mal que le trafic francophone, et ne justifie donc pas un chantier RTL/traduction. Le propriétaire a demandé trois nouvelles pages EN sur l'attrait de la musique positive, du bien-être et de la cohérence cardiaque pour un public anglophone.
+
+**Audit préalable des 8 pages EN existantes** pour ne pas dupliquer : `heart-coherence-breathing-radio.html` couvre déjà le principe général de la cohérence cardiaque (avec HowTo), `music-for-a-better-mood.html` et `feel-good-music-radio.html` couvrent déjà "pourquoi une musique positive", `positive-european-music-station.html`/`european-chill-radio.html`/`80s-throwback-radio-online.html` couvrent l'angle nostalgie/euro-dance, et `keep-listening-radio-odyssey.html`/`listen-on-tunein.html` sont des guides d'appareils.
+
+**3 pages ajoutées, un angle par thème demandé, chacun absent des 8 existantes :**
+- **`why-positive-radio-is-trending.html`** (musique positive) — angle culturel : lassitude du doomscroll et backlash contre les "sad girl playlists", pourquoi le format "positive radio" séduit maintenant. Les pages existantes décrivent la station ; celle-ci explique la tendance derrière l'intérêt.
+- **`radio-odyssey-vs-meditation-apps.html`** (bien-être) — comparaison avec Calm/Headspace plutôt qu'avec la "musicothérapie" (équivalent anglais du distinguo `difference-musicotherapie-radio-bien-etre.html`, mais avec un point de comparaison culturellement plus parlant pour ce public).
+- **`heart-coherence-breathing-at-work.html`** (cohérence cardiaque) — usage au bureau, équivalent anglais de `coherence-cardiaque-au-bureau.html`. Pas de nouveau JSON-LD `HowTo` : les mêmes 4 étapes existent déjà en `HowTo` sur `heart-coherence-breathing-radio.html`, cette page s'y lie plutôt que de dupliquer le balisage (même principe qu'au §25 pour `coherence-cardiaque-pour-dormir.html`).
+
+**Bug de langue trouvé et corrigé au passage** (préexistant, pas causé par ce lot, mais touchait déjà les 2 pages EN qui utilisaient `FAQBlock`/`RelatedPages` avant aujourd'hui) : ces deux composants partagés affichaient leurs titres ("Questions fréquentes", "Vous aimerez aussi", "Pages associées") toujours en français, y compris sur les pages `lang="en"`. Corrigé en ajoutant un prop `lang` optionnel à chaque composant (`'fr' | 'en'`, défaut `'fr'` — donc aucun changement sur les ~60 pages françaises), puis en passant `lang="en"` sur les 7 pages anglaises qui utilisent l'un des deux composants (`80s-throwback-radio-online`, `listen-on-tunein`, `heart-coherence-breathing-radio`, `music-for-a-better-mood`, et les 3 nouvelles pages).
+
+**Maillage croisé dans les deux sens** : les 3 nouvelles pages se renvoient mutuellement et vers `heart-coherence-breathing-radio.html`/`music-for-a-better-mood.html`, qui reçoivent en retour un lien vers les nouvelles pages — vérifié présent dans le HTML généré.
+
+**Vérifié après build (179 pages, aucune erreur) :** JSON-LD valide sur les 3 nouvelles pages (`FAQPage` + les blocs habituels), `lang="en"` et `hreflang="en"` corrects, les 7 pages anglaises affichent désormais leurs titres de section en anglais, un échantillon de pages françaises confirmé inchangé. `navigation.js` et `sitemap.xml` mis à jour (cocon International : 8 → 11 pages).
+
+---
+
+*Dernière mise à jour : 2026-07-27, 3 pages au cocon International (EN) + correctif de langue FAQBlock/RelatedPages (§27).*
