@@ -6,8 +6,10 @@ interface QA {
 interface Props {
   items: QA[];
   idPrefix: string;
+  lang?: 'fr' | 'en';
 }
-const { items, idPrefix } = Astro.props;
+const { items, idPrefix, lang = 'fr' } = Astro.props;
+const heading = lang === 'en' ? 'Frequently Asked Questions' : 'Questions fréquentes';
 
 const schema = {
   '@context': 'https://schema.org',
@@ -23,7 +25,7 @@ const schema = {
 };
 ---
 <div class="content-card">
-  <h2>Questions fréquentes</h2>
+  <h2>{heading}</h2>
   <div class="accordion ro-accordion" id={`faq-${idPrefix}`}>
     {items.map((item, i) => (
       <div class="accordion-item">
