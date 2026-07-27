@@ -669,4 +669,37 @@ Contexte donné par le propriétaire : le site se classe bien sur "radio cohére
 
 ---
 
-*Dernière mise à jour : 2026-07-27, chantier "radio bien-être" — données structurées et maillage interne (§23).*
+## 24. 5 pages de genre musical, croisées avec les fiches artistes (2026-07-27)
+
+Le propriétaire a fait remarquer que l'objectif "~100 pages" du projet initial ne comptait pas les 100 fiches artistes (`artiste-[slug].astro`) ni les 4 fiches découvertes — le site a donc en réalité 62 pages de contenu thématique, pas 164. Proposition retenue : exploiter les fiches artistes existantes pour créer des pages de genre musical, avec un vrai croisement de données plutôt que du texte générique.
+
+**Approche :** plutôt que de recopier des listes d'artistes à la main (risque de dérive avec le temps, déjà constaté sur les listes figées de `styles-musicaux-radio-odyssey.astro`, qui citent des artistes absents du catalogue réel comme Duran Duran ou Kygo), les 5 nouvelles pages filtrent dynamiquement le champ `genre` réel des 100 fiches artistes (`src/data/genres.js`, source unique) :
+- **Radio Pop en Ligne** — 22 artistes (genre exact `Pop`)
+- **Radio Pop Française** — 14 artistes (`Pop française`, `Variété française`, `Pop / R&B français`)
+- **Radio Dance & Électro** — 17 artistes (`Dance / Électro`, `Électro`, `Dance / House`, `Deep house`...)
+- **Radio Pop/Rock** — 14 artistes (`Pop / Rock`, `Rock / Pop`, `Rock`...)
+- **Radio Pop/R&B** — 14 artistes (`Pop / R&B`, `R&B / Pop`, `Pop urbaine`...)
+
+81 des 100 artistes sont couverts. Les 19 restants (reggae, deep house à un seul représentant, soul/jazz isolé...) n'ont pas de famille dédiée — volontairement laissés hors de ces pages plutôt que forcés dans un regroupement incohérent ; ils restent visibles sur la page hub `styles-musicaux-radio-odyssey.html` et sur leur propre fiche.
+
+**Maillage croisé dans les deux sens** (l'objectif explicite du propriétaire) :
+- Chaque page de genre liste ses artistes réels avec un lien direct vers `/artiste-{slug}.html`.
+- Chaque fiche artiste concernée (81/100, vérifié) reçoit en retour un lien vers sa page de genre, dans le corps de texte et dans les "Pages associées" (`familyForArtist()` dans `genres.js`).
+- La page hub `styles-musicaux-radio-odyssey.html` a été enrichie : liens ajoutés vers les nouvelles pages depuis ses blocs "Dance & Électro" et "Pop Française" existants, plus un nouveau bloc listant les 5 pages.
+
+**Structure de chaque page :** identique aux pages du cluster Bien-être & Santé (PageHero, grille d'artistes en `tag-pill` cliquables triés par fréquence de passage réelle, `ContentIllustration`, `FAQBlock` avec 3 questions distinctes par page, `RelatedPages` vers les autres pages de genre et les pages hub). JSON-LD : `FAQPage` auto-généré par `FAQBlock` (même caveat qu'au §23 sur la dépréciation Google), en plus des blocs `Organization`/`WebSite`/`RadioStation`/`BreadcrumbList` déjà présents sur toutes les pages via `Layout.astro`.
+
+**Vérifié après build (169 pages, aucune erreur) :**
+- JSON-LD valide sur les 5 pages (5 blocs chacune, `json.loads` sans erreur).
+- Aucun lien cassé vers une fiche artiste inexistante.
+- 81/100 fiches artistes pointent bien vers leur page de genre (vérifié par script sur le HTML généré, pas juste sur le code source).
+- Rendu vérifié dans le navigateur : contenu, grille d'artistes cliquable, FAQ, aller-retour Madonna ↔ Radio Pop en Ligne fonctionnel des deux côtés.
+- Les 5 pages apparaissent automatiquement dans le menu, le hub "Artistes & Styles" et le compteur de pages de l'accueil (tout est piloté par `navigation.js`, rien à modifier ailleurs).
+
+**Ajouté au sitemap :** 5 nouvelles URLs (`priority: 0.8`, `lastmod: 2026-07-27`), plus rafraîchissement du `lastmod` de la page hub `styles-musicaux-radio-odyssey.html`.
+
+**Non traité, signalé mais hors périmètre de ce lot :** les listes d'artistes codées en dur dans `styles-musicaux-radio-odyssey.astro` (buckets "Synthpop & Années 80", "Ballades & Voix Puissantes", "Funk & Disco") citent plusieurs artistes absents des 100 fiches réelles (Duran Duran, Eurythmics, Kygo, Whitney Houston, Chic...) — une dérive antérieure à ce lot, non corrigée ici pour ne pas mélanger deux chantiers différents dans le même commit.
+
+---
+
+*Dernière mise à jour : 2026-07-27, 5 pages de genre musical croisées avec les fiches artistes (§24).*
