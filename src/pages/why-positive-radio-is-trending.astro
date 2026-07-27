@@ -1,0 +1,96 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
+
+const faq = [
+  { q: 'Is "positive radio" an official music genre?', a: "Not really — it's more of an editorial stance than a genre. It describes stations that deliberately curate uplifting, feel-good tracks and avoid melancholic or aggressive content, regardless of the underlying style (pop, dance, 80s remixes...)." },
+  { q: 'Why not just build a playlist instead?', a: "A playlist is static — you hear the same tracks until you update it yourself. A live positive radio keeps the selection moving and adds things a playlist can't, like Radio Odyssey's guided breathing sequences woven into the broadcast." },
+  { q: 'Is this trend backed by anything, or just marketing?', a: "It's genuinely visible in listening habits: doomscrolling fatigue and \"sad girl playlist\" burnout have pushed more listeners toward deliberately upbeat, ad-free stations. Radio Odyssey was built around that same instinct, not as a reaction to a trend but as a founding idea." },
+];
+---
+<Layout
+  lang="en"
+  title="Why Positive Radio Is Trending | Radio Odyssey"
+  description="Doomscrolling fatigue and playlist burnout are pushing more listeners toward positive, ad-free radio. Here's why the format is resonating — and how Radio Odyssey fits in."
+>
+  <PageHero
+    gradientFrom="#FF9A3C"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Home"
+    breadcrumbCurrent="Why positive radio is trending"
+    title="Why Positive Radio Is Trending"
+    text="Doomscrolling fatigue and playlist burnout are pushing more listeners toward deliberately upbeat, ad-free radio."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 6L28.5 18.5L42 20L31.5 28.5L34.5 42L24 34.5L13.5 42L16.5 28.5L6 20L19.5 18.5Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>A Quiet Backlash Against "Sad Girl" Playlists</h2>
+            <p>For years, algorithmic playlists leaned into melancholy — moody, low-energy tracks that matched a scroll-heavy, low-attention mood. Lately, that's shifted. More listeners are actively looking for the opposite: music that's deliberately upbeat, without being manic or overproduced. "Positive radio" is the term that's emerged to describe stations built around that idea from the ground up, rather than as one mood setting among many.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Doomscrolling Fatigue, in Audio Form</h2>
+            <p>The same fatigue that's driving people to delete social apps or set screen-time limits shows up in listening habits too. A live, ad-free station that simply stays positive — no notifications, no algorithm optimizing for outrage, no need to curate anything yourself — has become a genuinely appealing alternative to another scroll.</p>
+          </div>
+
+          <ContentIllustration gradientFrom="#FF9A3C" gradientTo="#FF3CAC" caption="No feed to manage. No mood to fake. Just music that stays upbeat.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><path d="M24 6L28.5 18.5L42 20L31.5 28.5L34.5 42L24 34.5L13.5 42L16.5 28.5L6 20L19.5 18.5Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg>
+            </Fragment>
+          </ContentIllustration>
+
+          <div class="content-card">
+            <h2>Where Radio Odyssey Fits</h2>
+            <p>Radio Odyssey didn't launch to chase this trend — the station has always been built around "The Positive Radio" as its core identity, mixing 80s hits remixed for today, current dance and pop, and <a href="/heart-coherence-breathing-radio.html" style="color:var(--ro-purple);font-weight:700;">guided breathing sequences</a> woven directly into the broadcast. What's changed is that more listeners outside France are now actively looking for exactly this kind of station.</p>
+            <p>Curious what actually shaped that philosophy? See <a href="/music-for-a-better-mood.html" style="color:var(--ro-purple);font-weight:700;">Music for a Better Mood</a>, built in partnership with a cognitive psychologist.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="trend" lang="en" />
+
+          <RelatedPages
+            lang="en"
+            alsoLike={[
+              { href: '/music-for-a-better-mood.html', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
+              { href: '/feel-good-music-radio.html', label: 'Feel Good Music Radio', desc: 'The station, in a nutshell' },
+              { href: '/radio-odyssey-vs-meditation-apps.html', label: 'Radio Odyssey vs. Meditation Apps', desc: 'A no-pressure way to unwind' },
+            ]}
+            associated={[
+              { href: '/heart-coherence-breathing-radio.html', label: 'Heart Coherence Breathing Radio' },
+              { href: '/positive-european-music-station.html', label: 'Positive European Music Station' },
+              { href: '/', label: 'Home Page' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Try the positive radio for yourself</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Listen Live
+              </a>
+              <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <Icon name="box-arrow-up-right" /> Listen on TuneIn
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

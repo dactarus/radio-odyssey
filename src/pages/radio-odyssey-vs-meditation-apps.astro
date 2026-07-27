@@ -1,0 +1,111 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
+
+const faq = [
+  { q: 'Is Radio Odyssey a replacement for a meditation app?', a: "Not exactly — they solve different problems. A meditation app is built for a dedicated, quiet session. Radio Odyssey is built to run in the background of an ordinary day, with breathing sequences woven into the music rather than requiring a separate sit-down session." },
+  { q: 'Do I need to stop what I\'m doing to benefit?', a: "No. That's the core difference — the guided breathing sequences arrive naturally within the music you're already listening to, so you can keep working, cooking or commuting." },
+  { q: 'Is one approach better than the other?', a: "Neither replaces the other. Many people use both: a dedicated app for a deeper, quiet session, and Radio Odyssey as a lighter, always-on companion for the rest of the day." },
+];
+---
+<Layout
+  lang="en"
+  title="Radio Odyssey vs. Meditation Apps | Radio Odyssey"
+  description="How does a positive radio station compare to a meditation app like Calm or Headspace? A honest look at what each is actually built for."
+>
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Home"
+    breadcrumbCurrent="Radio Odyssey vs meditation apps"
+    title="Radio Odyssey vs. Meditation Apps"
+    text="A no-pressure way to unwind — no session to schedule, no app to open, no streak to keep."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="16" cy="24" r="10" stroke="white" stroke-width="2.3"/><circle cx="32" cy="24" r="10" stroke="rgba(255,255,255,.65)" stroke-width="2.3"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Two Different Tools for the Same Instinct</h2>
+            <p>Meditation apps like Calm or Headspace and a positive radio station like Radio Odyssey both respond to the same underlying instinct — wanting a calmer, more intentional moment in the day. But they're built for genuinely different situations, not competing versions of the same thing.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>What a Meditation App Is Built For</h2>
+            <ul>
+              <li>A dedicated session, usually a few minutes to half an hour</li>
+              <li>Quiet, focused attention — most work best away from other tasks</li>
+              <li>Structured programs, streaks, and progress tracking</li>
+              <li>Often subscription-based after a free trial</li>
+            </ul>
+          </div>
+
+          <div class="content-card">
+            <h2>What Radio Odyssey Is Built For</h2>
+            <ul>
+              <li>Running in the background of an ordinary day — no dedicated session required</li>
+              <li><a href="/heart-coherence-breathing-radio.html" style="color:var(--ro-purple);font-weight:700;">Guided breathing sequences</a> woven directly into the live broadcast, several times a day</li>
+              <li>Free, ad-free, and available instantly — no account, no subscription, no streak to maintain</li>
+              <li>Designed by a cognitive psychologist as a companion for the day, not a replacement for focused practice</li>
+            </ul>
+          </div>
+
+          <ContentIllustration gradientFrom="#00C6FF" gradientTo="#7B2FBE" caption="No session to schedule. Just keep the radio on.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><circle cx="16" cy="24" r="10" stroke="white" stroke-width="2.3"/><circle cx="32" cy="24" r="10" stroke="rgba(255,255,255,.65)" stroke-width="2.3"/></svg>
+            </Fragment>
+          </ContentIllustration>
+
+          <div class="content-card">
+            <h2>Why Not Both?</h2>
+            <p>The two genuinely complement each other. A meditation app can be the deeper, quiet practice — a dedicated ten minutes, eyes closed, full attention. Radio Odyssey is what plays the rest of the day, in the background, with no pressure to "do it right" or keep a streak going.</p>
+            <p>See <a href="/music-for-a-better-mood.html" style="color:var(--ro-purple);font-weight:700;">Music for a Better Mood</a> for more on the thinking behind Radio Odyssey's approach.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="vsapps" lang="en" />
+
+          <RelatedPages
+            lang="en"
+            alsoLike={[
+              { href: '/heart-coherence-breathing-radio.html', label: 'Heart Coherence Breathing Radio', desc: 'Guided breathing woven into the music' },
+              { href: '/music-for-a-better-mood.html', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
+              { href: '/why-positive-radio-is-trending.html', label: 'Why Positive Radio Is Trending', desc: 'The bigger picture behind this shift' },
+            ]}
+            associated={[
+              { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Our Partner Elisabeth Bélot-Grimaud' },
+              { href: '/feel-good-music-radio.html', label: 'Feel Good Music Radio' },
+              { href: '/', label: 'Home Page' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>No session to schedule — just press play</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Listen Live
+              </a>
+              <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <Icon name="box-arrow-up-right" /> Listen on TuneIn
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

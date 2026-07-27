@@ -8,12 +8,15 @@ interface LinkItem {
 interface Props {
   alsoLike: LinkItem[];
   associated: LinkItem[];
+  lang?: 'fr' | 'en';
 }
-const { alsoLike, associated } = Astro.props;
+const { alsoLike, associated, lang = 'fr' } = Astro.props;
+const alsoLikeHeading = lang === 'en' ? 'You Might Also Like' : 'Vous aimerez aussi';
+const associatedHeading = lang === 'en' ? 'Related Pages' : 'Pages associées';
 ---
 {alsoLike.length > 0 && (
   <div class="content-card">
-    <h2>Vous aimerez aussi</h2>
+    <h2>{alsoLikeHeading}</h2>
     <div style="display:flex;flex-direction:column;gap:.7rem;">
       {alsoLike.map((p) => (
         <a href={p.href} style="display:flex;justify-content:space-between;align-items:center;gap:1rem;text-decoration:none;color:var(--ro-dark);padding:.7rem .9rem;border-radius:12px;background:rgba(123,47,190,.04);">
@@ -30,7 +33,7 @@ const { alsoLike, associated } = Astro.props;
 
 {associated.length > 0 && (
   <div class="content-card">
-    <h2>Pages associées</h2>
+    <h2>{associatedHeading}</h2>
     <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
       {associated.map((p) => (
         <a href={p.href} class="tag-pill" style="text-decoration:none;">{p.label}</a>

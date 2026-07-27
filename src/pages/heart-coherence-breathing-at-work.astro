@@ -1,0 +1,105 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
+
+const faq = [
+  { q: 'Can I practice heart coherence breathing without leaving my desk?', a: "Yes — that's the point of having it woven into a music broadcast rather than a standalone app. Keep working, keep your eyes open, and just follow the rhythm when a sequence plays." },
+  { q: 'Will my coworkers notice?', a: "Not if you're wearing headphones — it's entirely discreet. Nothing to explain, nothing to schedule on a shared calendar." },
+  { q: 'Does my employer need to set anything up?', a: "No — there's nothing to install or approve. Anyone can stream Radio Odyssey in a browser tab, and teams sometimes choose to play it as shared background music in an open office." },
+];
+---
+<Layout
+  lang="en"
+  title="Heart Coherence Breathing at Work | Radio Odyssey"
+  description="Bring heart coherence breathing into your workday without leaving your desk — guided sequences woven into Radio Odyssey's live broadcast, no app required."
+>
+  <PageHero
+    gradientFrom="#1e7fcb"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Home"
+    breadcrumbCurrent="Heart coherence breathing at work"
+    title="Heart Coherence Breathing at Work"
+    text="Bring a few calm minutes into your workday, without leaving your desk or opening a separate app."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="32" height="22" rx="3" stroke="white" stroke-width="2.3"/><line x1="18" y1="38" x2="30" y2="38" stroke="white" stroke-width="2.3" stroke-linecap="round"/><line x1="24" y1="32" x2="24" y2="38" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Why the Workday Is a Good Time to Practice</h2>
+            <p>Back-to-back meetings, deadlines and constant notifications make the workday one of the most common sources of daily tension — and one of the best places for a short breathing reset to actually make a difference. <a href="/heart-coherence-breathing-radio.html" style="color:var(--ro-purple);font-weight:700;">Heart coherence breathing</a> only takes a few minutes, which is exactly why it fits so naturally into a workday that rarely offers a longer break.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>No App to Open, No Meeting to Explain</h2>
+            <p>Unlike a meditation app that asks you to stop and close your eyes, Radio Odyssey's guided sequences are woven directly into the music you're already listening to. Put on headphones, keep working, and follow the rhythm when a sequence plays — nothing to schedule, nothing to explain to a coworker walking by.</p>
+          </div>
+
+          <ContentIllustration gradientFrom="#1e7fcb" gradientTo="#7B2FBE" caption="A few calm breaths between two meetings, without leaving your desk.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="32" height="22" rx="3" stroke="white" stroke-width="2.3"/><line x1="18" y1="38" x2="30" y2="38" stroke="white" stroke-width="2.3" stroke-linecap="round"/><line x1="24" y1="32" x2="24" y2="38" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+            </Fragment>
+          </ContentIllustration>
+
+          <div class="content-card">
+            <h2>Good Moments to Use It</h2>
+            <ul>
+              <li>Right before a stressful meeting or presentation</li>
+              <li>Between two back-to-back calls, as a short reset</li>
+              <li>During a quiet stretch of focused work, as background music</li>
+              <li>At the very end of the day, to mark a clear line between work and the evening</li>
+            </ul>
+          </div>
+
+          <div class="content-card">
+            <h2>A Shared Option for Open Offices</h2>
+            <p>Some teams choose to play Radio Odyssey as shared background music in an open office — there's nothing to install or configure, just a browser tab. It won't suit every team, but for one that already enjoys music together, the breathing sequences come along for free.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="workcc" lang="en" />
+
+          <RelatedPages
+            lang="en"
+            alsoLike={[
+              { href: '/heart-coherence-breathing-radio.html', label: 'Heart Coherence Breathing Radio', desc: 'What it is, and how to try it right now' },
+              { href: '/radio-odyssey-vs-meditation-apps.html', label: 'Radio Odyssey vs. Meditation Apps', desc: 'A no-pressure way to unwind' },
+              { href: '/music-for-a-better-mood.html', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
+            ]}
+            associated={[
+              { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Our Partner Elisabeth Bélot-Grimaud' },
+              { href: '/feel-good-music-radio.html', label: 'Feel Good Music Radio' },
+              { href: '/', label: 'Home Page' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Bring a calmer rhythm to your workday</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Listen Live
+              </a>
+              <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <Icon name="box-arrow-up-right" /> Listen on TuneIn
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
