@@ -6,6 +6,7 @@ import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
 import { ARTISTS, GRADIENTS } from '../data/artists.js';
+import { familyForArtist } from '../data/genres.js';
 
 export function getStaticPaths() {
   return ARTISTS.map((artist, index) => ({
@@ -38,6 +39,7 @@ const others = ARTISTS.map((a, i) => ({ a, i }))
   })
   .sort((x, y) => y.overlap - x.overlap || x.rotation - y.rotation);
 const related = others.slice(0, 3).map((s) => s.a);
+const genreFamily = familyForArtist(artist);
 
 const title = `${artist.name} : Remix Gratuit — Radio Odyssey`;
 const description = `${artist.name} (${artist.genre}) sur Radio Odyssey : remix diffusés sur l'antenne, titres réellement joués, et une radio 100% gratuite, sans pub, à écouter en direct sur mobile ou ordinateur.`;
@@ -108,7 +110,10 @@ const faq = [
           <div class="content-card">
             <h2>Pourquoi Radio Odyssey diffuse {artist.name}</h2>
             <p set:html={artist.why} />
-            <p>Retrouvez cet univers musical sur notre page <a href={artist.linkHref} style="color:var(--ro-purple);font-weight:700;">{artist.linkLabel}</a>.</p>
+            <p>Retrouvez cet univers musical sur notre page <a href={artist.linkHref} style="color:var(--ro-purple);font-weight:700;">{artist.linkLabel}</a>.
+            {genreFamily && (
+              <> Ou découvrez tous les artistes <a href={`/${genreFamily.slug}.html`} style="color:var(--ro-purple);font-weight:700;">{genreFamily.label}</a> diffusés sur Radio Odyssey.</>
+            )}</p>
           </div>
 
           <FAQBlock items={faq} idPrefix={`artiste-${artist.slug}`} />
@@ -120,6 +125,7 @@ const faq = [
               desc: `${a.genre} — ${a.origin}`,
             }))}
             associated={[
+              ...(genreFamily ? [{ href: `/${genreFamily.slug}.html`, label: `Radio ${genreFamily.label}` }] : []),
               { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les artistes diffusés' },
               { href: '/styles-musicaux-radio-odyssey.html', label: 'Tous les styles musicaux' },
               { href: '/artistes-et-styles.html', label: 'Le cocon Artistes & Styles' },

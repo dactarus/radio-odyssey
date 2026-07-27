@@ -1,0 +1,107 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
+import { ARTISTS } from '../data/artists.js';
+import { GENRE_FAMILIES, artistsForFamily } from '../data/genres.js';
+
+const family = GENRE_FAMILIES.find((f) => f.slug === 'radio-pop-rnb-en-ligne');
+const artists = artistsForFamily(family, ARTISTS).sort((a, b) => b.playCount - a.playCount);
+
+const faq = [
+  { q: 'Radio Odyssey diffuse-t-elle du R&B ?', a: `Oui, sous un angle pop/R&B accessible : ${artists.length} artistes de notre catalogue mélangent groove, soul et refrains pop, de Michael Jackson à The Weeknd.` },
+  { q: 'Y a-t-il de la pop urbaine francophone ?', a: "Oui, Gims et Aya Nakamura font partie de cette sélection, aux côtés des grandes voix R&B internationales comme Beyoncé, Rihanna ou Alicia Keys." },
+  { q: 'Cette sélection est-elle proche du hip-hop ?', a: "Non, Radio Odyssey ne diffuse pas de rap urbain à proprement parler — cette page réunit des artistes pop/R&B et pop/funk, avec des refrains chantés plutôt que du rap." },
+];
+---
+<Layout
+  lang="fr"
+  title="Radio Pop/R&B en Ligne Gratuite | Radio Odyssey"
+  description={`Une radio pop/R&B en ligne, gratuite et sans publicité : ${artists.length} artistes réellement diffusés sur Radio Odyssey, de Michael Jackson à Beyoncé.`}
+>
+  <PageHero
+    gradientFrom="#FF9A3C"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Radio Pop/R&B en Ligne Gratuite"
+    title="Radio Pop/R&B en Ligne"
+    text={`${artists.length} artistes pop/R&B réellement diffusés, sur une radio associative gratuite et sans publicité.`}
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 40C24 40 6 28 6 16C6 10.5 10 6 15 6C18 6 24 9 24 9C24 9 30 6 33 6C38 6 42 10.5 42 16C42 28 24 40 24 40Z" stroke="white" stroke-width="2.3" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Groove, soul et refrains pop</h2>
+            <p>Entre héritage de la soul et pop actuelle, {artists.length} artistes pop/R&B font partie de la programmation de Radio Odyssey — de références absolues comme Michael Jackson ou Beyoncé à des voix plus urbaines comme Doja Cat ou The Weeknd.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Les artistes pop/R&B diffusés sur l'antenne</h2>
+            <p style="margin-bottom:1rem;">Classés par fréquence de passage réelle — cliquez sur un nom pour voir ses titres diffusés :</p>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+              {artists.map((a) => (
+                <a href={`/artiste-${a.slug}.html`} class="tag-pill" style="text-decoration:none;">{a.name}</a>
+              ))}
+            </div>
+          </div>
+
+          <ContentIllustration gradientFrom="#FF9A3C" gradientTo="#FF3CAC" caption="Groove et soul, entre héritage et voix d'aujourd'hui.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><path d="M24 40C24 40 6 28 6 16C6 10.5 10 6 15 6C18 6 24 9 24 9C24 9 30 6 33 6C38 6 42 10.5 42 16C42 28 24 40 24 40Z" stroke="white" stroke-width="2.3" fill="none"/></svg>
+            </Fragment>
+          </ContentIllustration>
+
+          <div class="content-card">
+            <h2>Une pop groove, jamais loin de la fête</h2>
+            <p>Le pop/R&B et le pop/funk apportent du rythme et de la chaleur à l'antenne — un bon compromis entre énergie dansante et refrains chantés. Découvrez aussi notre <a href="/radio-pop-rock-en-ligne.html" style="color:var(--ro-purple);font-weight:700;">radio pop/rock</a> ou notre sélection <a href="/radio-dance-electro-en-ligne.html" style="color:var(--ro-purple);font-weight:700;">dance & électro</a>.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="rprnb" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/radio-pop-rock-en-ligne.html', label: 'Radio Pop/Rock en Ligne', desc: 'Quand la pop rencontre les guitares' },
+              { href: '/radio-pop-en-ligne.html', label: 'Radio Pop en Ligne', desc: 'La pop internationale sur Radio Odyssey' },
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les artistes diffusés', desc: "L'ensemble du catalogue, tous styles confondus" },
+            ]}
+            associated={[
+              { href: '/styles-musicaux-radio-odyssey.html', label: 'Tous les styles musicaux' },
+              { href: '/artistes-et-styles.html', label: 'Le cocon Artistes & Styles' },
+              { href: '/radio-dance-electro-en-ligne.html', label: 'Radio Dance & Électro' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez le pop/R&B sans publicité</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <Icon name="phone" /> Télécharger l'application
+              </a>
+              <a href="/artistes-et-styles.html" class="btn-hero-ghost">
+                <Icon name="grid" /> Découvrir les autres thèmes
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

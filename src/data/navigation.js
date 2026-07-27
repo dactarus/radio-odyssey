@@ -85,6 +85,11 @@ export const NAV_CATEGORIES = [
     pages: [
       { href: '/artistes-diffuses-radio-odyssey.html', bi: 'mic-fill', label: 'Artistes Diffusés', desc: "Madonna, Shakira, Daft Punk... qui passe sur l'antenne" },
       { href: '/styles-musicaux-radio-odyssey.html', bi: 'sliders', label: 'Styles Musicaux', desc: 'Synthpop, dance, pop française, ballades...' },
+      { href: '/radio-pop-en-ligne.html', bi: 'mic-fill', label: 'Radio Pop en Ligne', desc: 'Les artistes pop réellement diffusés sur l\'antenne' },
+      { href: '/radio-pop-francaise-en-ligne.html', bi: 'music-note-beamed', label: 'Radio Pop Française', desc: 'La chanson française, entre classiques et voix actuelles' },
+      { href: '/radio-dance-electro-en-ligne.html', bi: 'disc', label: 'Radio Dance & Électro', desc: 'De la French Touch à la dance actuelle' },
+      { href: '/radio-pop-rock-en-ligne.html', bi: 'lightning-charge', label: 'Radio Pop/Rock', desc: 'Quand la pop rencontre les guitares' },
+      { href: '/radio-pop-rnb-en-ligne.html', bi: 'heart', label: 'Radio Pop/R&B', desc: 'Groove, soul et refrains pop' },
       { href: '/decouvertes-radio-odyssey.html', bi: 'stars', label: 'Découvertes Radio Odyssey', desc: 'Les artistes émergents soutenus par la radio' },
     ],
   },

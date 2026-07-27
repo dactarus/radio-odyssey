@@ -18,13 +18,14 @@ const styles = [
     desc: "Des beats énergiques pour toute la journée, entre gros noms de la dance actuelle et remixes électro des classiques.",
     artists: ['David Guetta', 'Ofenbach', 'Calvin Harris', 'Clean Bandit', 'Kungs', 'R3HAB', 'Robin Schulz', 'Lost Frequencies', 'Avicii', 'Kygo'],
     link: { href: '/radio-dance-energisante.html', label: 'Voir la page Dance Énergisante' },
+    link2: { href: '/radio-dance-electro-en-ligne.html', label: 'Voir tous les artistes Dance & Électro' },
   },
   {
     name: 'Pop Française',
     color: '#7B2FBE',
     desc: "Une place importante pour la chanson française, des références installées aux voix plus récentes.",
     artists: ['Mylène Farmer', 'Angèle', 'Zazie', 'Pascal Obispo', 'Indochine', 'Christophe Willem', 'Christophe Maé', 'Stromae', 'Clara Luciani', 'Soprano'],
-    link: null,
+    link: { href: '/radio-pop-francaise-en-ligne.html', label: 'Voir tous les artistes Pop Française' },
   },
   {
     name: 'Ballades & Voix Puissantes',
@@ -81,12 +82,29 @@ const styles = [
                 ))}
               </div>
               {s.link && (
-                <p style="margin-top:1rem;">
+                <p style="margin-top:1rem;margin-bottom:0;">
                   <a href={s.link.href} style="color:var(--ro-purple);font-weight:700;">→ {s.link.label}</a>
+                </p>
+              )}
+              {s.link2 && (
+                <p style="margin-top:.4rem;">
+                  <a href={s.link2.href} style="color:var(--ro-purple);font-weight:700;">→ {s.link2.label}</a>
                 </p>
               )}
             </div>
           ))}
+
+          <div class="content-card">
+            <h2>Une page dédiée pour chaque grande famille</h2>
+            <p>Pour aller plus loin, chaque grande famille de genre a désormais sa propre page, avec la liste complète des artistes réellement diffusés et un lien direct vers chaque fiche :</p>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem;">
+              <a href="/radio-pop-en-ligne.html" class="tag-pill" style="text-decoration:none;">Radio Pop en Ligne</a>
+              <a href="/radio-pop-francaise-en-ligne.html" class="tag-pill" style="text-decoration:none;">Radio Pop Française</a>
+              <a href="/radio-dance-electro-en-ligne.html" class="tag-pill" style="text-decoration:none;">Radio Dance & Électro</a>
+              <a href="/radio-pop-rock-en-ligne.html" class="tag-pill" style="text-decoration:none;">Radio Pop/Rock</a>
+              <a href="/radio-pop-rnb-en-ligne.html" class="tag-pill" style="text-decoration:none;">Radio Pop/R&B</a>
+            </div>
+          </div>
 
           <div class="content-card">
             <h2>Envie de savoir qui passe le plus souvent ?</h2>
