@@ -1,0 +1,130 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  {
+    q: "La normalisation peut-elle rattraper un titre enregistré trop fort ou trop faible ?",
+    a: "Non, pas sans le dénaturer. Un son trop fort à la base sera écrêté (tout ce qui dépasse 0 dB est coupé, et ça s'entend), et un son trop faible ne peut pas être remonté indéfiniment sans augmenter aussi le bruit de fond — c'est ce qu'on appelle le rapport signal/bruit. La normalisation ajuste le niveau, elle ne doit jamais changer la qualité ni la dynamique d'origine du son.",
+  },
+  {
+    q: "Pourquoi l'égalisation d'une radio FM diffère-t-elle de celle d'une web radio ?",
+    a: "La diffusion FM impose des contraintes physiques : certaines fréquences sont atténuées par le mode de diffusion et doivent être pré-accentuées pour ne pas perdre en brillance, et les fréquences très basses sont coupées pour ne pas déstabiliser la porteuse de l'émetteur — le tout encadré par des normes internationales. Une web radio a beaucoup plus de liberté, mais reste soumise aux limites techniques du streaming.",
+  },
+  {
+    q: "Que se passe-t-il si on change l'ordre des étapes (égaliser avant de normaliser, par exemple) ?",
+    a: "Le résultat n'est pas le même. Certains effets peuvent masquer des éléments dont d'autres effets ont besoin pour bien fonctionner — l'ordre choisi dépend aussi des réglages propres à chaque étape. C'est une des raisons pour lesquelles la normalisation, qui offre une base saine, est presque toujours la première étape.",
+  },
+  {
+    q: "Quelle est l'erreur la plus fréquente chez un débutant ?",
+    a: "Vouloir copier le son des grosses radios plutôt que construire sa propre identité — la copie ne vaut jamais l'original. Et surtout, pousser les réglages trop loin : mieux vaut chercher la limite basse de l'effet désiré, puis sa limite haute, et choisir un juste milieu entre les deux.",
+  },
+];
+---
+<Layout
+  lang="fr"
+  title="Les Rudiments du Traitement de Son"
+  description="Normalisation, égalisation, compression : le programmateur de Radio Odyssey explique pas à pas comment un titre est préparé avant de rejoindre l'antenne."
+  articleDatePublished="2026-07-27"
+>
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Les rudiments du traitement de son"
+    title="Les Rudiments du Traitement de Son"
+    text="Normalisation, égalisation, compression — les trois étapes qui préparent un titre avant qu'il ne rejoigne l'antenne, expliquées pas à pas."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M8 20L24 12L40 20L24 28L8 20Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/><path d="M16 24V32C16 34 19.5 36.5 24 36.5C28.5 36.5 32 34 32 32V24" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line x1="40" y1="20" x2="40" y2="30" stroke="rgba(255,255,255,.7)" stroke-width="2" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Normaliser, égaliser, compresser : trois mots qu'on croise souvent sans forcément savoir ce qu'ils changent vraiment sur un titre. Après avoir expliqué la philosophie générale du <a href="/comment-radio-odyssey-traite-le-son.html" style="color:var(--ro-purple);font-weight:700;">traitement du son de l'antenne</a>, le programmateur de Radio Odyssey revient sur les rudiments — les gestes concrets, étape par étape, qu'il applique à un titre avant qu'il ne rejoigne la diffusion.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>La normalisation : une base saine, avant tout le reste</h2>
+            <p>Comme dans beaucoup de domaines, il y a des fondamentaux. Sur la table de montage d'un logiciel audio, la première chose à regarder, c'est la forme d'onde — donc les niveaux. La norme de référence, pour simplifier, c'est 0 dB en crête. Au-delà, le son est trop fort, voire écrêté : tout ce qui dépasse est coupé, et ça s'entend. En dessous, à faible niveau, il faut le remettre à niveau — c'est le rôle de la <strong>normalisation</strong>, appliquée sur l'ensemble du titre.</p>
+            <p style="margin-bottom:0;">Attention toutefois : un son beaucoup trop fort à la base ne pourra pas être récupéré sans altération, et un son trop faible ne peut pas être remonté sans augmenter aussi le bruit parasite — c'est le rapport signal/bruit. La normalisation ne doit jamais changer la qualité ni la dynamique d'origine du son ; elle ajuste, elle ne répare pas.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>L'égalisation : composer avec les contraintes de la diffusion</h2>
+            <p>Un titre arrive déjà mastérisé par son label ou son studio d'origine — pourquoi le réégaliser côté radio ? Pour une diffusion FM professionnelle, il faut pré-accentuer certaines fréquences qui sont atténuées par le mode de diffusion, sous peine de perdre en brillance ; on coupe aussi les fréquences très basses, pour ne pas déstabiliser la porteuse de l'émetteur. Ces réglages obéissent à des normes internationales, de véritables lois de la physique auxquelles on ne peut pas se soustraire.</p>
+            <p style="margin-bottom:0;">Un traitement de son haut de gamme permet de repousser ces limites techniques — des basses profondes, des aigus ciselés, sans dégrader le signal, la portée de l'émetteur ni les normes de diffusion. C'est souvent ce qui distingue une radio de ses concurrentes. Pour une web radio comme Radio Odyssey, la liberté est bien plus grande, sans pour autant s'affranchir des limites techniques propres au streaming.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>La compression : de la densité, sans écraser le son</h2>
+            <p>Simplement dit, la compression rend un son plus dense : les niveaux bas sont remontés, les niveaux forts sont abaissés. L'enveloppe du son se nivelle, les amplitudes moyennes montent et fluctuent moins — d'où cette sensation de "remplissage" du spectre sonore. En réalité, c'est plus subtil : un des réglages définit le niveau à partir duquel l'effet se déclenche, un autre définit combien de temps il se maintient. Le maintenir trop longtemps, ou pas assez, et l'effet recherché n'est pas atteint — le son original peut même s'en trouver dénaturé.</p>
+            <p style="margin-bottom:0;">Chez Radio Odyssey, la compression est généralement appliquée en fin de chaîne — avec plus ou moins de bandes de compression suivant les besoins, mais chut, ça reste la recette de la maison.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>L'ordre des opérations, aussi important que les réglages</h2>
+            <p>Il existe plusieurs façons de faire, mais pour Radio Odyssey, l'ordre est le suivant : normalisation, image stéréo, égalisation, compression, puis réverbération si besoin sur les toutes dernières secondes du titre. La normalisation reste l'étape essentielle à faire en premier — on part d'une base saine.</p>
+            <p style="margin-bottom:0;">L'ordre choisi change vraiment le résultat final : certains effets peuvent masquer des éléments dont d'autres effets ont besoin pour bien fonctionner, et tout dépend aussi des réglages propres à chaque étape. Ce n'est pas toujours simple à expliquer — mais ce n'est jamais anodin.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Un exemple concret : remettre à niveau un titre des années 80</h2>
+            <p>Avant tout traitement, il faut une version de bonne qualité au départ — pour les titres les plus anciens, il est malin de se procurer une version remastérisée plutôt que l'original brut. Un titre des années 80 sonne très "années 80", c'est peu dire : les instruments de l'époque n'étaient pas les mêmes (beaucoup de synthétiseurs), les traitements de son étaient analogiques, et le mixage final se faisait presque à la main — là où on peut aujourd'hui automatiser et retoucher point par point.</p>
+            <p style="margin-bottom:0;">Pour ce genre de titre, il faut souvent ajuster les réglages de la chaîne : ajouter plus de basses, voire d'infra-basses (la tendance du moment), ou retirer certains médiums. Il faut avoir l'oreille, et un son de référence pour s'en approcher au mieux — c'est aussi le secret des radios professionnelles : se transformer, un peu, en ingénieur du son. Les plugins actuels aident beaucoup, avec de l'analyse par IA qui propose des réglages qu'on choisit d'accepter ou non.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>L'erreur classique du débutant</h2>
+            <p>Vouloir copier le son des "grosses radios". S'en inspirer, oui — mais la copie ne vaudra jamais l'original. Le mieux reste de s'entourer de quelqu'un d'expérimenté pour construire sa propre stratégie de traitement de son : choix des logiciels, des plugins, etc.</p>
+            <p>L'erreur la plus courante, cela dit, c'est de pousser trop loin les réglages — le trop est l'ennemi du bien. La bonne méthode : chercher la limite basse de l'effet désiré, puis sa limite haute, et choisir un juste milieu entre les deux. Et surtout, écouter longtemps sa propre radio, en position d'auditeur, pour repérer les titres qui se démarquent des autres. Il faut viser une vraie homogénéité à l'écoute.</p>
+            <p style="margin-bottom:0;"><strong>Les pros contrôlent, ajustent ; les amateurs laissent le hasard choisir.</strong></p>
+          </div>
+
+          <div class="content-card">
+            <p style="margin:0;">Une fois le son de chaque titre maîtrisé, reste une autre question tout aussi déterminante pour l'audience d'une radio musicale : comment enchaîner les titres, les jingles et les chroniques sans casser le rythme de l'antenne ? Quelles bases respecter, et quelles astuces adopter quand on a peu de moyens mais pas mal d'idées ? Un sujet à part entière, à venir prochainement dans ces mêmes Coulisses.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="rudiments" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/comment-radio-odyssey-traite-le-son.html', label: 'Comment Radio Odyssey Traite le Son', desc: "La philosophie générale du traitement de l'antenne" },
+              { href: '/comment-radio-odyssey-fabrique-ses-jingles.html', label: 'Comment Radio Odyssey Fabrique ses Jingles', desc: "L'autre pan sonore de l'antenne" },
+            ]}
+            associated={[
+              { href: '/comment-radio-odyssey-choisit-sa-musique.html', label: 'Comment Radio Odyssey Choisit sa Musique' },
+              { href: '/radio-coherence-cardiaque.html', label: 'Radio Cohérence Cardiaque' },
+              { href: '/radio-sans-publicite.html', label: 'Radio Sans Publicité' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez le résultat, en direct</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="/coulisses-de-radio-odyssey.html" class="btn-hero-ghost">
+                <Icon name="film" /> Toutes les Coulisses
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

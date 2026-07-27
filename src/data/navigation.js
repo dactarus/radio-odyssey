@@ -129,6 +129,7 @@ export const NAV_CATEGORIES = [
       { href: '/comment-radio-odyssey-programme-ses-titres-surprises.html', bi: 'stars', label: 'Les Titres Surprises', desc: "B.O. cultes, indicatifs connus, classiques remixés — glissés avec parcimonie dans l'antenne" },
       { href: '/le-jingle-top-horaire-de-radio-odyssey.html', bi: 'clock-history', label: 'Le Jingle Top Horaire', desc: "La signature sonore diffusée à chaque heure pile, véritable identité d'une radio" },
       { href: '/comment-radio-odyssey-traite-le-son.html', bi: 'sliders', label: 'Comment on Traite le Son', desc: "Compression, égalisation : ce qui donne son ambiance à l'antenne" },
+      { href: '/les-rudiments-du-traitement-de-son.html', bi: 'mortarboard', label: 'Les Rudiments du Traitement de Son', desc: 'Normalisation, égalisation, compression, pas à pas' },
       { href: '/faq-radio-odyssey.html', bi: 'chat-dots', label: 'Questions Fréquentes', desc: 'Gratuité, publicité, application, écoute à l\'étranger...' },
     ],
   },
