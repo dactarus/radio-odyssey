@@ -104,11 +104,14 @@ export const NAV_CATEGORIES = [
     label: "Conseils d'Écoute",
     hub: '/conseils-ecoute.html',
     hubTitle: "Bien Écouter Radio Odyssey",
-    hubIntro: "Sur mobile, en voiture ou sur une enceinte connectée : tous nos guides pour ne jamais perdre le fil.",
+    hubIntro: "Sur mobile, en voiture, à la maison ou au bureau : tous nos guides pour ne jamais perdre le fil, quel que soit l'appareil.",
     pages: [
       { href: '/ecouter-radio-odyssey-sur-mobile.html', bi: 'phone', label: 'Sur Mobile', desc: 'App, lecture en direct et applications tierces' },
       { href: '/ecouter-radio-odyssey-en-voiture.html', bi: 'car-front', label: 'En Voiture', desc: 'Bluetooth, CarPlay et Android Auto' },
       { href: '/ecouter-radio-odyssey-enceinte-connectee.html', bi: 'volume-up', label: 'Enceinte Connectée', desc: 'Alexa, Google Home, Sonos...' },
+      { href: '/ecouter-radio-odyssey-sur-tv.html', bi: 'play-circle', label: 'Sur TV Connectée', desc: 'Chromecast, Apple TV, Fire TV, Android TV' },
+      { href: '/ecouter-radio-odyssey-sur-ordinateur.html', bi: 'laptop', label: 'Sur Ordinateur', desc: 'Au bureau ou en télétravail, sans rien installer' },
+      { href: '/ecouter-radio-odyssey-montre-connectee.html', bi: 'clock', label: 'Sur Montre Connectée', desc: 'Apple Watch et Wear OS, le contrôle au poignet' },
     ],
   },
   {
@@ -125,6 +128,7 @@ export const NAV_CATEGORIES = [
       { href: '/comment-radio-odyssey-fabrique-ses-jingles.html', bi: 'soundwave', label: 'Comment on Fabrique nos Jingles', desc: 'Mélodie sur mesure, voix en duo, familles qui s\'alternent à l\'antenne' },
       { href: '/comment-radio-odyssey-programme-ses-titres-surprises.html', bi: 'stars', label: 'Les Titres Surprises', desc: "B.O. cultes, indicatifs connus, classiques remixés — glissés avec parcimonie dans l'antenne" },
       { href: '/le-jingle-top-horaire-de-radio-odyssey.html', bi: 'clock-history', label: 'Le Jingle Top Horaire', desc: "La signature sonore diffusée à chaque heure pile, véritable identité d'une radio" },
+      { href: '/faq-radio-odyssey.html', bi: 'chat-dots', label: 'Questions Fréquentes', desc: 'Gratuité, publicité, application, écoute à l\'étranger...' },
     ],
   },
   {

@@ -1,0 +1,77 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<Layout
+  lang="fr"
+  title="Écouter Radio Odyssey sur Ordinateur | Radio Odyssey"
+  description="Le guide pour écouter Radio Odyssey sur PC ou Mac, au bureau ou en télétravail, directement depuis le navigateur sans rien installer."
+>
+  <PageHero
+    gradientFrom="#1e7fcb"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Comment écouter Radio Odyssey sur ordinateur"
+    title="Écouter Radio Odyssey sur Ordinateur"
+    text="Au bureau ou en télétravail, lancez Radio Odyssey directement depuis votre navigateur, sans rien installer."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="8" width="36" height="24" rx="2" stroke="white" stroke-width="2.5"/><line x1="18" y1="40" x2="30" y2="40" stroke="white" stroke-width="2.3" stroke-linecap="round"/><line x1="24" y1="32" x2="24" y2="40" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>La solution la plus simple : le navigateur</h2>
+            <p>Sur ordinateur, pas besoin d'application ni de compte : cliquez sur le bouton <strong>"Écouter en Direct"</strong> présent en haut de chaque page du site, et la lecture démarre immédiatement dans votre navigateur.</p>
+          </div>
+
+          <div class="content-card">
+            <h3 style="font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#1e7fcb;margin-bottom:1rem;">GARDER LA RADIO EN FOND TOUTE LA JOURNÉE</h3>
+            <p>Pour ne pas perdre l'onglet parmi d'autres pages ouvertes, la plupart des navigateurs (Chrome, Firefox, Edge) permettent d'<strong>épingler l'onglet</strong> : clic droit sur l'onglet, puis "Épingler l'onglet". Il reste alors réduit à une petite icône, toujours accessible, pendant que vous travaillez sur d'autres pages.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Via une application tierce sur PC ou Mac</h2>
+            <p>Radio Odyssey est aussi disponible via <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">TuneIn</a> ou <a href="https://www.deezer.com/search/radio%20odyssey/livestream" target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">Deezer</a>, si vous préférez une application de bureau plutôt qu'un onglet de navigateur.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une bonne compagnie au bureau</h2>
+            <p>Radio Odyssey s'écoute particulièrement bien en fond de travail : voir notre page <a href="/radio-pour-travailler.html" style="color:var(--ro-purple);font-weight:700;">radio pour travailler</a> pour la sélection adaptée à la concentration, et notre guide <a href="/coherence-cardiaque-au-bureau.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque au bureau</a> pour intégrer une pause respiration à votre journée, sans quitter votre poste.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Bon à savoir</h2>
+            <ul>
+              <li>Certains réseaux professionnels bloquent le streaming audio — si la lecture ne démarre pas au bureau, essayez depuis votre connexion mobile ou l'application smartphone</li>
+              <li>Aucune installation ni création de compte n'est nécessaire pour écouter depuis un navigateur</li>
+            </ul>
+          </div>
+
+          <div class="content-card">
+            <h2>Pour aller plus loin</h2>
+            <p>Retrouvez nos guides pour écouter sur <a href="/ecouter-radio-odyssey-sur-mobile.html" style="color:var(--ro-purple);font-weight:700;">mobile</a> ou sur <a href="/ecouter-radio-odyssey-enceinte-connectee.html" style="color:var(--ro-purple);font-weight:700;">enceinte connectée</a>.</p>
+          </div>
+
+          <div class="page-cta-bar">
+            <h3>Lancez Radio Odyssey depuis votre navigateur</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Écouter en Direct
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
