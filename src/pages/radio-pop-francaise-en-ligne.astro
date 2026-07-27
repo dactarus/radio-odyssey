@@ -1,0 +1,108 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
+import { ARTISTS } from '../data/artists.js';
+import { GENRE_FAMILIES, artistsForFamily } from '../data/genres.js';
+
+const family = GENRE_FAMILIES.find((f) => f.slug === 'radio-pop-francaise-en-ligne');
+const artists = artistsForFamily(family, ARTISTS).sort((a, b) => b.playCount - a.playCount);
+
+const faq = [
+  { q: 'Radio Odyssey diffuse-t-elle beaucoup de chanson française ?', a: `Oui, la chanson et la pop française occupent une vraie place dans notre programmation : ${artists.length} artistes francophones sont réellement diffusés sur l'antenne, entre valeurs installées et voix plus récentes.` },
+  { q: 'Quels artistes français passent le plus souvent ?', a: "Voir la liste ci-dessous, classée par fréquence de passage réelle sur l'antenne — chaque nom renvoie vers sa fiche, avec des exemples de titres diffusés." },
+  { q: 'Cette page couvre-t-elle tous les styles français de Radio Odyssey ?', a: "Elle réunit la pop et la chanson française au sens large. Certains artistes francophones plus rock ou plus urbains (Indochine, Gims, Aya Nakamura...) sont classés sur nos pages Pop/Rock et Pop/R&B, selon leur style dominant." },
+];
+---
+<Layout
+  lang="fr"
+  title="Radio Pop Française en Ligne Gratuite | Radio Odyssey"
+  description={`Une radio pop française en ligne, gratuite et sans publicité : ${artists.length} artistes francophones réellement diffusés sur Radio Odyssey.`}
+>
+  <PageHero
+    gradientFrom="#7B2FBE"
+    gradientTo="#FF9A3C"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Radio Pop Française en Ligne Gratuite"
+    title="Radio Pop Française en Ligne"
+    text={`${artists.length} artistes francophones réellement diffusés, d'hier et d'aujourd'hui, sur une radio associative gratuite.`}
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M10 40V10C10 8.3 11.3 7 13 7H32L38 13V40" stroke="white" stroke-width="2.3" stroke-linejoin="round" fill="none"/><path d="M16 20H30" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M16 27H30" stroke="rgba(255,255,255,.65)" stroke-width="2" stroke-linecap="round"/><path d="M16 34H24" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>La chanson française, une place à part sur l'antenne</h2>
+            <p>Radio Odyssey ne se limite pas aux hits anglophones : {artists.length} artistes francophones font partie de la programmation régulière, entre valeurs sûres de la variété française et voix plus contemporaines. Une manière de rester proche de nos auditeurs francophones, sans jamais tomber dans la nostalgie pure.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Les artistes francophones diffusés sur l'antenne</h2>
+            <p style="margin-bottom:1rem;">Classés par fréquence de passage réelle — cliquez sur un nom pour voir ses titres diffusés :</p>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+              {artists.map((a) => (
+                <a href={`/artiste-${a.slug}.html`} class="tag-pill" style="text-decoration:none;">{a.name}</a>
+              ))}
+            </div>
+          </div>
+
+          <ContentIllustration gradientFrom="#7B2FBE" gradientTo="#FF9A3C" caption="La chanson française, du répertoire installé aux voix d'aujourd'hui.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><path d="M10 40V10C10 8.3 11.3 7 13 7H32L38 13V40" stroke="white" stroke-width="2.3" stroke-linejoin="round" fill="none"/><path d="M16 20H30" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M16 27H30" stroke="rgba(255,255,255,.65)" stroke-width="2" stroke-linecap="round"/><path d="M16 34H24" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round"/></svg>
+            </Fragment>
+          </ContentIllustration>
+
+          <div class="content-card">
+            <h2>Une programmation qui traverse les générations</h2>
+            <p>De Jean-Jacques Goldman à Pierre Garnier, cette sélection mélange volontairement plusieurs générations d'artistes francophones — à l'image du reste de Radio Odyssey, qui alterne nouveautés, "golds" remixés et classiques toute la journée. Retrouvez le détail de cette logique sur notre page <a href="/comment-radio-odyssey-choisit-sa-musique.html" style="color:var(--ro-purple);font-weight:700;">comment on choisit la musique</a>.</p>
+            <p>Envie d'autres styles ? Découvrez notre <a href="/radio-pop-en-ligne.html" style="color:var(--ro-purple);font-weight:700;">radio pop</a>, notre sélection <a href="/radio-dance-electro-en-ligne.html" style="color:var(--ro-purple);font-weight:700;">dance & électro</a> ou notre page <a href="/radio-pop-rock-en-ligne.html" style="color:var(--ro-purple);font-weight:700;">pop/rock</a>.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="rpf" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/radio-pop-en-ligne.html', label: 'Radio Pop en Ligne', desc: 'La pop internationale sur Radio Odyssey' },
+              { href: '/radio-annees-80-en-ligne.html', label: 'Radio Années 80 en Ligne', desc: 'Les tubes remixés, français et internationaux' },
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les artistes diffusés', desc: "L'ensemble du catalogue, tous styles confondus" },
+            ]}
+            associated={[
+              { href: '/styles-musicaux-radio-odyssey.html', label: 'Tous les styles musicaux' },
+              { href: '/artistes-et-styles.html', label: 'Le cocon Artistes & Styles' },
+              { href: '/comment-radio-odyssey-choisit-sa-musique.html', label: 'Comment on choisit la musique' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez la chanson française sans publicité</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <Icon name="phone" /> Télécharger l'application
+              </a>
+              <a href="/artistes-et-styles.html" class="btn-hero-ghost">
+                <Icon name="grid" /> Découvrir les autres thèmes
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

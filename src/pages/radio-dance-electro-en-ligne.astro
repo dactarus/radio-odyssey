@@ -1,0 +1,108 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
+import { ARTISTS } from '../data/artists.js';
+import { GENRE_FAMILIES, artistsForFamily } from '../data/genres.js';
+
+const family = GENRE_FAMILIES.find((f) => f.slug === 'radio-dance-electro-en-ligne');
+const artists = artistsForFamily(family, ARTISTS).sort((a, b) => b.playCount - a.playCount);
+
+const faq = [
+  { q: 'Quels DJ et artistes électro passent sur Radio Odyssey ?', a: `${artists.length} artistes dance et électro sont réellement diffusés sur l'antenne, de David Guetta à des noms plus pointus comme The Avener ou Lost Frequencies — voir la liste complète ci-dessous.` },
+  { q: "La dance de Radio Odyssey est-elle différente d'une radio dance classique ?", a: "Oui : plutôt qu'un mix ininterrompu et saturé, Radio Odyssey alterne dance/électro avec d'autres styles et des séquences de cohérence cardiaque, pour garder l'énergie sans la fatigue auditive — voir notre page radio dance énergisante pour cet angle plus spécifiquement axé sur l'énergie." },
+  { q: 'Retrouve-t-on aussi des remixes électro de classiques ?', a: "Oui, Daft Punk, Moby ou Stromae côtoient des productions plus récentes — un mélange d'électro patrimoniale et de dance actuelle, assumé par la programmation." },
+];
+---
+<Layout
+  lang="fr"
+  title="Radio Dance & Électro en Ligne Gratuite | Radio Odyssey"
+  description={`Radio dance et électro en ligne, gratuite et sans publicité : ${artists.length} artistes réellement diffusés sur Radio Odyssey, de David Guetta à Daft Punk.`}
+>
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Radio Dance & Électro en Ligne Gratuite"
+    title="Radio Dance & Électro en Ligne"
+    text={`${artists.length} artistes dance et électro réellement diffusés, sur une radio associative gratuite et sans publicité.`}
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="17" stroke="white" stroke-width="2.3"/><circle cx="24" cy="24" r="4" fill="white"/><path d="M24 7V13" stroke="rgba(255,255,255,.7)" stroke-width="2" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>De la French Touch à la dance actuelle</h2>
+            <p>La dance et l'électro forment une des familles les plus riches du catalogue de Radio Odyssey : {artists.length} artistes, entre pionniers de la French Touch (Daft Punk, Moby), grands noms de la dance internationale (David Guetta, Calvin Harris) et productions plus récentes (Kungs, R3HAB, Lost Frequencies).</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Les artistes dance & électro diffusés sur l'antenne</h2>
+            <p style="margin-bottom:1rem;">Classés par fréquence de passage réelle — cliquez sur un nom pour voir ses titres diffusés :</p>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+              {artists.map((a) => (
+                <a href={`/artiste-${a.slug}.html`} class="tag-pill" style="text-decoration:none;">{a.name}</a>
+              ))}
+            </div>
+          </div>
+
+          <ContentIllustration gradientFrom="#00C6FF" gradientTo="#FF3CAC" caption="De la French Touch aux productions dance les plus récentes.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="17" stroke="white" stroke-width="2.3"/><circle cx="24" cy="24" r="4" fill="white"/><path d="M24 7V13" stroke="rgba(255,255,255,.7)" stroke-width="2" stroke-linecap="round"/></svg>
+            </Fragment>
+          </ContentIllustration>
+
+          <div class="content-card">
+            <h2>De l'énergie, mais jamais sans respirer</h2>
+            <p>Contrairement à une radio dance classique, souvent saturée en continu, Radio Odyssey alterne cette énergie avec d'autres styles et des séquences de <a href="/radio-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque</a> intégrées à l'antenne. Pour un angle plus centré sur l'énergie et le rythme, retrouvez aussi notre page <a href="/radio-dance-energisante.html" style="color:var(--ro-purple);font-weight:700;">radio dance énergisante</a>.</p>
+            <p>Envie d'autres styles ? Découvrez notre <a href="/radio-pop-en-ligne.html" style="color:var(--ro-purple);font-weight:700;">radio pop</a> ou notre sélection <a href="/radio-pop-rock-en-ligne.html" style="color:var(--ro-purple);font-weight:700;">pop/rock</a>.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="rde" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/radio-dance-energisante.html', label: 'Radio Dance Énergisante', desc: "L'angle énergie et rythme de cette sélection" },
+              { href: '/radio-pop-en-ligne.html', label: 'Radio Pop en Ligne', desc: 'La pop internationale sur Radio Odyssey' },
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les artistes diffusés', desc: "L'ensemble du catalogue, tous styles confondus" },
+            ]}
+            associated={[
+              { href: '/styles-musicaux-radio-odyssey.html', label: 'Tous les styles musicaux' },
+              { href: '/artistes-et-styles.html', label: 'Le cocon Artistes & Styles' },
+              { href: '/musique-pour-faire-du-sport.html', label: 'Musique pour faire du sport' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez la dance & l'électro sans publicité</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <Icon name="phone" /> Télécharger l'application
+              </a>
+              <a href="/artistes-et-styles.html" class="btn-hero-ghost">
+                <Icon name="grid" /> Découvrir les autres thèmes
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
