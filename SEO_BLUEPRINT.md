@@ -718,4 +718,21 @@ Deuxième proposition retenue après les pages de genre (§24) : trois angles de
 
 ---
 
-*Dernière mise à jour : 2026-07-27, 3 pages ajoutées au cluster Bien-être — sommeil, sport, enfants/ados (§25).*
+## 26. 3 guides d'écoute (TV/PC/montre) et FAQ transverse (2026-07-27)
+
+Troisième et dernier axe de la liste de propositions du 2026-07-27 (après §24 et §25) : compléter le cocon Conseils d'Écoute, qui n'avait que 3 pages (mobile, voiture, enceinte connectée) alors que 3 supports courants n'étaient couverts nulle part sur le site (vérifié par recherche texte avant d'écrire : aucune mention de Chromecast, Apple TV, Fire TV, Android TV, Apple Watch, Wear OS, ni de guide dédié à l'écoute sur ordinateur). Ajout aussi d'une FAQ générale, absente sous forme de page indexable — seul un mini-FAQ existait, en dur dans `index.astro`, sans balisage `FAQPage` ni URL propre.
+
+- **`ecouter-radio-odyssey-sur-tv.html`** — Chromecast/Google TV, Apple TV (AirPlay), Fire TV et Android TV (app TuneIn).
+- **`ecouter-radio-odyssey-sur-ordinateur.html`** — écoute navigateur au bureau, astuce "épingler l'onglet", croisée avec `coherence-cardiaque-au-bureau.html` et `radio-pour-travailler.html`.
+- **`ecouter-radio-odyssey-montre-connectee.html`** — reste honnête sur l'absence d'application dédiée Apple Watch/Wear OS (pas de survente), mais décrit l'usage réel via les commandes multimédias au poignet ; croisée avec `musique-pour-courir.html` et `coherence-cardiaque-et-sport.html` (§25).
+- **`faq-radio-odyssey.html`** — 9 questions avec `FAQPage` (balisage automatique via `FAQBlock`), volontairement différentes du mini-FAQ de l'accueil (gratuité et statut associatif, écoute à l'étranger, différence avec une playlist Spotify, comment contacter/soutenir) pour éviter tout contenu dupliqué entre les deux. Contient aussi un bloc qui consolide les liens vers les 6 pages du cocon Conseils d'Écoute — un point d'entrée unique vers "où écouter".
+
+**Sur le statut associatif mentionné dans la FAQ :** reste au niveau déjà utilisé dans le JSON-LD `Organization` existant ("association loi 1901 à but non lucratif", `addressCountry: FR` uniquement) — aucune adresse précise, conformément à la consigne de confidentialité déjà en place sur ce projet.
+
+**Maillage croisé dans les deux sens**, même principe qu'aux §24-25 : `ecouter-radio-odyssey-enceinte-connectee.html`, `coherence-cardiaque-au-bureau.html`, `musique-pour-courir.html` et `ecouter-radio-odyssey-sur-mobile.html` ont chacune reçu un lien vers la page correspondante, vérifié présent dans le HTML généré. Le `hubIntro` de la catégorie Conseils d'Écoute (`navigation.js`) a aussi été mis à jour — il ne citait que les 3 anciens supports.
+
+**Vérifié après build (176 pages, aucune erreur) :** JSON-LD valide sur les 4 pages, rendu testé dans le navigateur (FAQ et hub Conseils d'Écoute), `navigation.js` et `sitemap.xml` mis à jour.
+
+---
+
+*Dernière mise à jour : 2026-07-27, 3 guides d'écoute (TV/PC/montre) et FAQ transverse (§26).*
