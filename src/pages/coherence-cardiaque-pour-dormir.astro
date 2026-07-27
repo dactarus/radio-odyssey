@@ -1,0 +1,111 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import CoherenceExercise from '../components/CoherenceExercise.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
+
+const faq = [
+  { q: 'Y a-t-il des séquences de cohérence cardiaque la nuit sur Radio Odyssey ?', a: "Non, et nous préférons le dire clairement : entre 21h et 6h, l'antenne diffuse le fil <em>Good Feeling</em>, une musique positive et non-stop, sans séquence de cohérence cardiaque intégrée. La dernière séquence de la journée passe à 19h. Voir notre page <a href='/musique-pour-la-nuit.html' style='color:var(--ro-purple);font-weight:700;'>musique pour la nuit</a> pour le détail." },
+  { q: 'Comment pratiquer la cohérence cardiaque au coucher, alors ?', a: "Avec l'outil interactif ci-dessus, disponible à toute heure — vous n'avez pas besoin d'attendre une séquence programmée sur l'antenne pour pratiquer avant de dormir." },
+  { q: 'La cohérence cardiaque garantit-elle un meilleur sommeil ?', a: "Non, ce n'est pas une garantie ni un traitement contre l'insomnie — c'est une technique de respiration qui peut aider à relâcher les tensions accumulées dans la journée. En cas de trouble du sommeil installé, un avis médical reste la démarche à privilégier." },
+];
+---
+<Layout
+  lang="fr"
+  title="Cohérence Cardiaque pour Dormir | Radio Odyssey"
+  description="Pratiquer la cohérence cardiaque avant de dormir pour favoriser l'endormissement, avec l'outil interactif de Radio Odyssey — et la vérité sur ce qui est diffusé la nuit."
+>
+  <PageHero
+    gradientFrom="#1e7fcb"
+    gradientTo="#0b1c2d"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Cohérence Cardiaque pour Dormir"
+    title="Cohérence Cardiaque pour Dormir"
+    text="Une respiration lente avant de dormir, pour relâcher les tensions de la journée — avec un outil pour pratiquer, même sans l'antenne."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M32 10C24 10 18 16.5 18 24C18 31.5 24 38 32 38C29 40 25.5 41 22 41C12.6 41 5 33.4 5 24C5 14.6 12.6 7 22 7C25.5 7 29 8 32 10Z" stroke="white" stroke-width="2.3" fill="none"/><circle cx="38" cy="16" r="1.4" fill="white" opacity=".7"/><circle cx="41" cy="21" r="1" fill="white" opacity=".5"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Pourquoi pratiquer avant de dormir</h2>
+            <p>La fin de journée concentre souvent les pensées qui tournent en boucle et les tensions accumulées depuis le matin. Une respiration lente et régulière, quelques minutes avant de se coucher, est une des utilisations les plus citées de la <a href="/comment-pratiquer-la-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque</a> — pour marquer une vraie coupure avant la nuit.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Ce que diffuse (et ne diffuse pas) l'antenne le soir</h2>
+            <p>Par transparence : la dernière séquence de cohérence cardiaque intégrée à l'antenne passe à <strong>19h</strong> (voir le détail sur notre page <a href="/radio-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">radio cohérence cardiaque</a>). Entre 21h et 6h, Radio Odyssey diffuse le fil <em>Good Feeling</em> — une musique positive et non-stop, mais sans séquence de respiration guidée.</p>
+            <p>C'est pour cette raison que l'outil ci-dessous existe : pour pratiquer au moment précis du coucher, sans dépendre d'un horaire de diffusion.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pratiquez maintenant, avant de dormir</h2>
+            <p style="margin-bottom:1.5rem;">Suivez le disque : quand il grandit, inspirez. Quand il rétrécit, expirez. Quelques minutes suffisent.</p>
+          </div>
+
+          <CoherenceExercise />
+
+          <ContentIllustration gradientFrom="#1e7fcb" gradientTo="#0b1c2d" caption="Quelques respirations lentes, pour clore la journée en douceur.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><path d="M32 10C24 10 18 16.5 18 24C18 31.5 24 38 32 38C29 40 25.5 41 22 41C12.6 41 5 33.4 5 24C5 14.6 12.6 7 22 7C25.5 7 29 8 32 10Z" stroke="white" stroke-width="2.3" fill="none"/><circle cx="38" cy="16" r="1.4" fill="white" opacity=".7"/><circle cx="41" cy="21" r="1" fill="white" opacity=".5"/></svg>
+            </Fragment>
+          </ContentIllustration>
+
+          <div class="content-card">
+            <h2>Construire un vrai rituel du soir</h2>
+            <h3>Avant d'éteindre les écrans</h3>
+            <p>Pratiquer quelques minutes avant de poser le téléphone, plutôt qu'en le tenant, aide à marquer une vraie transition vers le sommeil.</p>
+            <h3>Toujours au même moment</h3>
+            <p>Comme pour la pratique en journée, la régularité compte plus que la durée — pratiquer chaque soir au même moment aide à en faire un vrai repère.</p>
+            <h3>En fond sonore calme</h3>
+            <p>Rien n'empêche de garder Radio Odyssey en fond pendant l'exercice, avant de basculer sur le silence pour la nuit — voir aussi notre <a href="/radio-detente-moderne.html" style="color:var(--ro-purple);font-weight:700;">radio détente moderne</a> pour une ambiance plus posée en soirée.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="ccdormir" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/comment-pratiquer-la-coherence-cardiaque.html', label: 'Comment Pratiquer la Cohérence Cardiaque', desc: 'Le guide pas à pas complet' },
+              { href: '/musique-pour-la-nuit.html', label: 'Musique pour la Nuit', desc: 'Ce qui joue vraiment entre 21h et 6h' },
+              { href: '/radio-detente-moderne.html', label: 'Radio Détente Moderne', desc: 'Une ambiance plus posée en soirée' },
+            ]}
+            associated={[
+              { href: '/bienfaits-coherence-cardiaque.html', label: 'Les bienfaits de la cohérence cardiaque' },
+              { href: '/coherence-cardiaque-au-bureau.html', label: 'Cohérence cardiaque au bureau' },
+              { href: '/bien-etre-et-sante.html', label: 'Tout le cocon Bien-être' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Terminez votre journée en douceur</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <Icon name="phone" /> Télécharger l'application
+              </a>
+              <a href="/bien-etre-et-sante.html" class="btn-hero-ghost">
+                <Icon name="grid" /> Découvrir les autres thèmes
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

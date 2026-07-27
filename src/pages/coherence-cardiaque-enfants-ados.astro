@@ -1,0 +1,116 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import CoherenceExercise from '../components/CoherenceExercise.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
+
+const faq = [
+  { q: 'À partir de quel âge un enfant peut-il pratiquer la cohérence cardiaque ?', a: "Il n'y a pas d'âge minimum strict, mais la plupart des repères cités évoquent plutôt les enfants à partir de 7-8 ans, capables de suivre consciemment un rythme de respiration — avec un accompagnement d'un adulte pour les plus jeunes." },
+  { q: "Faut-il adapter la méthode pour les enfants et les ados ?", a: "Le principe reste le même (inspirer et expirer lentement), mais une durée plus courte et un ton plus ludique — \"suivre le disque comme un jeu\" — aide souvent à capter l'attention plus longtemps qu'une consigne formelle." },
+  { q: 'Est-ce utile avant un examen ou un contrôle ?', a: "C'est un des usages les plus cités chez les adolescents : quelques minutes de respiration lente avant une épreuve peuvent aider à canaliser le stress, au même titre que pour un adulte avant une réunion importante." },
+  { q: 'Radio Odyssey remplace-t-elle un accompagnement psychologique pour un enfant en difficulté ?', a: "Non. En cas de stress ou d'anxiété qui dépasse le cadre ponctuel d'un examen ou d'une journée difficile, l'avis d'un professionnel de santé reste la démarche à privilégier." },
+];
+---
+<Layout
+  lang="fr"
+  title="Cohérence Cardiaque pour Enfants et Ados | Radio Odyssey"
+  description="La cohérence cardiaque expliquée aux enfants et aux ados : gérer le stress scolaire, les examens et les émotions, avec l'outil interactif de Radio Odyssey."
+>
+  <PageHero
+    gradientFrom="#FFD700"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Cohérence Cardiaque pour Enfants et Ados"
+    title="Cohérence Cardiaque pour Enfants et Ados"
+    text="Une respiration simple à apprendre, utile face au stress scolaire, aux examens ou à une journée difficile."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="16" cy="18" r="6" stroke="white" stroke-width="2.3"/><circle cx="32" cy="15" r="8" stroke="rgba(255,255,255,.7)" stroke-width="2.1"/><path d="M6 40C6 32 10 27 16 27C22 27 26 32 26 40" stroke="white" stroke-width="2.3" stroke-linecap="round" fill="none"/><path d="M24 29C29 27.5 37 29 40 38" stroke="rgba(255,255,255,.7)" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Une technique simple, aussi pour les plus jeunes</h2>
+            <p>La <a href="/comment-pratiquer-la-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque</a> repose sur un principe facile à comprendre à tout âge : respirer lentement, en suivant un rythme régulier. Pour un enfant ou un adolescent, c'est souvent plus simple à expliquer comme un jeu — "suis le disque qui grandit et qui rétrécit" — plutôt que comme une consigne de respiration formelle.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Radio Odyssey n'est pas une radio jeunesse, mais...</h2>
+            <p>Par honnêteté, comme nous le précisons sur notre page <a href="/musique-pour-les-enfants.html" style="color:var(--ro-purple);font-weight:700;">musique pour les enfants et la famille</a> : Radio Odyssey n'a pas de programmation spécifiquement pensée pour les enfants. En revanche, la technique de respiration diffusée à l'antenne — conçue avec <strong>Elisabeth Bélot-Grimaud</strong>, Docteure en psychologie cognitive — est suffisamment simple pour être pratiquée en famille, avec l'accompagnement d'un adulte. <a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">En savoir plus sur notre partenaire <Icon name="arrow-right" /></a></p>
+          </div>
+
+          <div class="content-card">
+            <h2>Essayez ensemble, dès maintenant</h2>
+            <p style="margin-bottom:1.5rem;">Le principe reste simple pour un enfant : suivre le disque du regard. Quand il grandit, on inspire. Quand il rétrécit, on souffle.</p>
+          </div>
+
+          <CoherenceExercise />
+
+          <ContentIllustration gradientFrom="#FFD700" gradientTo="#FF3CAC" caption="Suivre le disque, comme un jeu — pour apprendre à respirer calmement.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><circle cx="16" cy="18" r="6" stroke="white" stroke-width="2.3"/><circle cx="32" cy="15" r="8" stroke="rgba(255,255,255,.7)" stroke-width="2.1"/><path d="M6 40C6 32 10 27 16 27C22 27 26 32 26 40" stroke="white" stroke-width="2.3" stroke-linecap="round" fill="none"/><path d="M24 29C29 27.5 37 29 40 38" stroke="rgba(255,255,255,.7)" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+            </Fragment>
+          </ContentIllustration>
+
+          <div class="content-card">
+            <h2>Des situations où ça peut aider</h2>
+            <h3>Avant un contrôle ou un examen</h3>
+            <p>Quelques minutes de respiration lente avant d'entrer en salle d'examen peuvent aider à canaliser le stress du moment — un usage très proche de celui décrit pour les adultes avant une réunion importante.</p>
+            <h3>Après une journée difficile à l'école</h3>
+            <p>Un moment calme en rentrant, pour redescendre avant de passer aux devoirs ou au reste de la soirée.</p>
+            <h3>Avant de dormir</h3>
+            <p>Comme pour les adultes, quelques respirations lentes avant le coucher peuvent aider à relâcher les tensions de la journée — voir aussi notre page <a href="/coherence-cardiaque-pour-dormir.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque pour dormir</a>.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Un moment à faire en famille</h2>
+            <p>Pratiquer ensemble, parent et enfant, rend l'exercice plus naturel qu'une consigne donnée seule à l'enfant — et c'est aussi l'occasion d'un moment calme partagé, loin des écrans.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="ccenfants" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/comment-pratiquer-la-coherence-cardiaque.html', label: 'Comment Pratiquer la Cohérence Cardiaque', desc: 'Le guide pas à pas complet' },
+              { href: '/musique-pour-les-enfants.html', label: 'Musique pour les Enfants et la Famille', desc: 'Notre positionnement honnête sur ce point' },
+              { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Notre Partenaire Elisabeth Bélot-Grimaud', desc: 'La voix derrière nos séquences' },
+            ]}
+            associated={[
+              { href: '/bienfaits-coherence-cardiaque.html', label: 'Les bienfaits de la cohérence cardiaque' },
+              { href: '/coherence-cardiaque-pour-dormir.html', label: 'Cohérence cardiaque pour dormir' },
+              { href: '/bien-etre-et-sante.html', label: 'Tout le cocon Bien-être' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Un moment calme à partager en famille</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <Icon name="phone" /> Télécharger l'application
+              </a>
+              <a href="/bien-etre-et-sante.html" class="btn-hero-ghost">
+                <Icon name="grid" /> Découvrir les autres thèmes
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,116 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import CoherenceExercise from '../components/CoherenceExercise.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
+
+const faq = [
+  { q: 'Faut-il pratiquer avant ou après le sport ?', a: "Les deux usages sont cités : avant l'effort pour canaliser le stress de compétition ou d'échauffement, après l'effort pour accompagner le retour au calme et la récupération du rythme cardiaque." },
+  { q: 'La cohérence cardiaque remplace-t-elle un échauffement classique ?', a: "Non, elle s'ajoute à l'échauffement musculaire habituel — c'est un complément respiratoire, pas un substitut à la préparation physique elle-même." },
+  { q: 'Radio Odyssey diffuse-t-elle des séquences pendant le sport ?', a: "Les séquences intégrées à l'antenne suivent les horaires généraux (voir notre page radio cohérence cardiaque), pas un créneau spécial sport. Pour une pratique ciblée avant ou après une séance, l'outil interactif ci-dessus est disponible à tout moment." },
+];
+---
+<Layout
+  lang="fr"
+  title="Cohérence Cardiaque et Sport | Radio Odyssey"
+  description="Pratiquer la cohérence cardiaque avant et après le sport : canaliser le stress de compétition, accompagner la récupération, avec l'outil interactif de Radio Odyssey."
+>
+  <PageHero
+    gradientFrom="#FF9A3C"
+    gradientTo="#1e7fcb"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Cohérence Cardiaque et Sport"
+    title="Cohérence Cardiaque et Sport"
+    text="Canaliser le stress avant l'effort, accompagner la récupération après — la respiration comme complément à l'entraînement."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M6 26H14L18 14L26 34L30 22L34 26H42" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>La respiration, un complément à l'entraînement</h2>
+            <p>Le sport n'est pas seulement une question d'effort musculaire : la respiration joue un rôle avant, pendant et après l'effort. La <a href="/comment-pratiquer-la-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque</a> — une respiration lente et régulière — trouve naturellement sa place à deux moments clés d'une séance : l'échauffement mental avant l'effort, et le retour au calme après.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Avant l'effort : canaliser le stress de compétition</h2>
+            <p>Avant une course, un match ou une compétition, le stress peut jouer contre la performance plutôt que pour elle. Quelques minutes de respiration lente aident à redescendre d'un pic de tension avant de rentrer dans l'effort — un usage proche de celui décrit sur notre page <a href="/coherence-cardiaque-au-bureau.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque au bureau</a> avant une réunion importante.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pratiquez maintenant</h2>
+            <p style="margin-bottom:1.5rem;">Avant une séance ou juste après l'effort, suivez le disque : quand il grandit, inspirez. Quand il rétrécit, expirez.</p>
+          </div>
+
+          <CoherenceExercise />
+
+          <ContentIllustration gradientFrom="#FF9A3C" gradientTo="#1e7fcb" caption="Avant l'effort pour canaliser, après pour récupérer.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><path d="M6 26H14L18 14L26 34L30 22L34 26H42" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </Fragment>
+          </ContentIllustration>
+
+          <div class="content-card">
+            <h2>Après l'effort : accompagner la récupération</h2>
+            <p>Juste après une séance intense, le rythme cardiaque reste élevé plusieurs minutes. Une respiration lente et guidée peut accompagner cette phase de retour au calme, en complément des étirements classiques. C'est aussi le moment où <a href="/musique-pour-faire-du-sport.html" style="color:var(--ro-purple);font-weight:700;">notre page musique pour faire du sport</a> évoque déjà les séquences de cohérence cardiaque intégrées au flux, pour qui écoute Radio Odyssey pendant sa séance.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pour quels sports</h2>
+            <ul>
+              <li>Course à pied et trail, avant le départ ou après l'arrivée</li>
+              <li>Sports de combat et de compétition, pour canaliser la tension avant l'épreuve</li>
+              <li>Musculation et cardio-training, en fin de séance</li>
+              <li>Yoga et étirements, pour prolonger le calme déjà recherché</li>
+            </ul>
+            <p>Retrouvez aussi notre sélection <a href="/musique-pour-courir.html" style="color:var(--ro-purple);font-weight:700;">musique pour courir</a> pour l'énergie pendant l'effort.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="ccsport" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/musique-pour-faire-du-sport.html', label: 'Musique pour Faire du Sport', desc: "L'énergie pendant l'effort" },
+              { href: '/musique-pour-courir.html', label: 'Musique pour Courir', desc: 'La sélection spéciale running' },
+              { href: '/comment-pratiquer-la-coherence-cardiaque.html', label: 'Comment Pratiquer la Cohérence Cardiaque', desc: 'Le guide pas à pas complet' },
+            ]}
+            associated={[
+              { href: '/bienfaits-coherence-cardiaque.html', label: 'Les bienfaits de la cohérence cardiaque' },
+              { href: '/coherence-cardiaque-au-bureau.html', label: 'Cohérence cardiaque au bureau' },
+              { href: '/bien-etre-et-sante.html', label: 'Tout le cocon Bien-être' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Avant ou après l'effort, respirez avec Radio Odyssey</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <Icon name="phone" /> Télécharger l'application
+              </a>
+              <a href="/bien-etre-et-sante.html" class="btn-hero-ghost">
+                <Icon name="grid" /> Découvrir les autres thèmes
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
