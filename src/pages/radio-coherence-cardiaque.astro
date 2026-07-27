@@ -6,8 +6,25 @@ import Sidebar from '../components/Sidebar.astro';
 import CoherenceExercise from '../components/CoherenceExercise.astro';
 import ContentIllustration from '../components/ContentIllustration.astro';
 import PartnerVideo from '../components/PartnerVideo.astro';
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Comment pratiquer la cohérence cardiaque en écoutant Radio Odyssey',
+  description: "Guide pas à pas pour suivre l'exercice de cohérence cardiaque (respiration 5 secondes / 5 secondes) diffusé chaque heure sur Radio Odyssey.",
+  step: [
+    { '@type': 'HowToStep', name: 'Installez-vous', text: 'Installez-vous confortablement, dos droit, épaules relâchées.' },
+    { '@type': 'HowToStep', name: 'Inspirez', text: 'Inspirez lentement par le nez pendant 5 secondes en gonflant le ventre.' },
+    { '@type': 'HowToStep', name: 'Expirez', text: 'Expirez doucement par la bouche pendant 5 secondes, ventre qui rentre.' },
+    { '@type': 'HowToStep', name: 'Suivez le disque', text: 'Suivez le disque : quand il grandit, inspirez ; quand il rétrécit, expirez.' },
+  ],
+};
 ---
 <Layout lang="fr" title="Radio Cohérence Cardiaque en Ligne Gratuite | Radio Odyssey" description="Radio Odyssey propose une radio de cohérence cardiaque en ligne gratuite : musique positive, séquences de respiration guidée et bien-être, 24h/24.">
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(howToSchema)} />
+  </Fragment>
+
   <PageHero
     gradientFrom="#00C6FF"
     gradientTo="#7B2FBE"
@@ -116,6 +133,7 @@ import PartnerVideo from '../components/PartnerVideo.astro';
               <li>Favoriser un meilleur sommeil</li>
             </ul>
             <p>Associ&#233;e &#224; la musique, elle devient encore plus immersive et efficace. Les musiques utilis&#233;es pour les s&#233;quences de coh&#233;rence cardiaque ont &#233;t&#233; sp&#233;cialement cr&#233;&#233;es pour optimiser l&#8217;efficacit&#233; de ces s&#233;quences.</p>
+            <p>Au-del&#224; de ces s&#233;quences d&#233;di&#233;es, Radio Odyssey reste avant tout une <a href="/radio-bien-etre-en-ligne.html" style="color:var(--ro-purple);font-weight:700;">radio bien-&#234;tre en ligne</a> : toute la programmation musicale, pas seulement les moments de coh&#233;rence cardiaque, est pens&#233;e pour accompagner la d&#233;tente au fil de la journ&#233;e.</p>
   
           <div class="highlight-box" style="margin-top:1rem;">
             <strong>S&#233;ances de 3 minutes :</strong> 7h, 8h, 9h, 12h, 13h, 18h, 19h.<br/>
@@ -128,6 +146,7 @@ import PartnerVideo from '../components/PartnerVideo.astro';
             <h2>Conçues avec une véritable experte</h2>
             <p>Les séquences que vous entendez à l'antenne ne sont pas génériques : elles ont été conçues avec <strong>Elisabeth Bélot-Grimaud</strong>, Docteure en psychologie cognitive et partenaire exclusive de Radio Odyssey — c'est sa voix qui vous guide pour respirer et retrouver un rythme cardiaque régulier, dit sinusoïdal.</p>
             <p><a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">En savoir plus sur notre partenaire <Icon name="arrow-right" /></a></p>
+            <p>Pour aller plus loin, retrouvez <a href="/comment-pratiquer-la-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">le guide pas &agrave; pas pour pratiquer la coh&eacute;rence cardiaque</a> ou d&eacute;couvrez <a href="/bienfaits-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">les bienfaits d&eacute;taill&eacute;s de la m&eacute;thode</a>.</p>
           </div>
 
           <PartnerVideo />

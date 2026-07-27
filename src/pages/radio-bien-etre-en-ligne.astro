@@ -5,8 +5,25 @@ import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import CoherenceExercise from '../components/CoherenceExercise.astro';
 import ContentIllustration from '../components/ContentIllustration.astro';
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Comment pratiquer la respiration guidée avec Radio Odyssey',
+  description: "Guide pas à pas pour suivre l'exercice de respiration guidée en cohérence cardiaque (5 secondes / 5 secondes) proposé sur la radio bien-être Radio Odyssey.",
+  step: [
+    { '@type': 'HowToStep', name: 'Installez-vous', text: 'Installez-vous confortablement, dos droit, épaules relâchées.' },
+    { '@type': 'HowToStep', name: 'Inspirez', text: 'Inspirez lentement par le nez pendant 5 secondes en gonflant le ventre.' },
+    { '@type': 'HowToStep', name: 'Expirez', text: 'Expirez doucement par la bouche pendant 5 secondes, ventre qui rentre.' },
+    { '@type': 'HowToStep', name: 'Suivez le disque', text: 'Suivez le disque : quand il grandit, inspirez ; quand il rétrécit, expirez.' },
+  ],
+};
 ---
 <Layout lang="fr" title="Radio Bien-Être en Ligne Gratuite | Radio Odyssey" description="Radio Odyssey, votre radio bien-être en ligne gratuite. Musique positive, cohérence cardiaque et bonne humeur 24h/24.">
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(howToSchema)} />
+  </Fragment>
+
   <PageHero
     gradientFrom="#7B2FBE"
     gradientTo="#00C6FF"
@@ -112,7 +129,7 @@ import ContentIllustration from '../components/ContentIllustration.astro';
           <div class="content-card">
             <h2>Radio Odyssey, une radio bien-&#234;tre qui fait du bien &#127925;</h2>
             <p>Dans un monde o&#249; tout va toujours plus vite, prendre quelques minutes pour respirer et &#233;couter de la musique positive peut changer une journ&#233;e enti&#232;re.</p>
-            <p>Radio Odyssey diffuse 24h/24 une s&#233;lection de titres entra&#238;nants, positifs et inspirants, associ&#233;e &#224; des s&#233;quences de coh&#233;rence cardiaque.</p>
+            <p>Radio Odyssey diffuse 24h/24 une s&#233;lection de titres entra&#238;nants, positifs et inspirants, associ&#233;e &#224; des s&#233;quences de <a href="/radio-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">coh&#233;rence cardiaque</a> diffus&#233;es chaque heure.</p>
   
           <div class="highlight-box" style="margin-top:1rem;">
             <strong>S&#233;ances de 3 minutes :</strong> 7h, 8h, 9h, 12h, 13h, 18h, 19h.<br/>
@@ -159,7 +176,7 @@ import ContentIllustration from '../components/ContentIllustration.astro';
               <li>Pendant la lecture</li>
               <li>Lors d&#8217;un moment de d&#233;tente</li>
             </ul>
-            <p>Radio Odyssey vous accompagne partout.</p>
+            <p>Radio Odyssey vous accompagne partout, y compris <a href="/coherence-cardiaque-au-bureau.html" style="color:var(--ro-purple);font-weight:700;">au bureau pendant votre journ&#233;e de travail</a>, ou pour une pause <a href="/radio-anti-stress-gratuite.html" style="color:var(--ro-purple);font-weight:700;">anti-stress gratuite</a> quand vous en avez besoin.</p>
 
             <h3 style="margin-top:1.2rem;">Pourquoi choisir Radio Odyssey&#160;?</h3>
             <ul>
