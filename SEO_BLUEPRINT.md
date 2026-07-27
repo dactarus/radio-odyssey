@@ -754,4 +754,25 @@ Dernier axe du 2026-07-27 : enrichir le cocon International (8 pages en anglais)
 
 ---
 
-*Dernière mise à jour : 2026-07-27, 3 pages au cocon International (EN) + correctif de langue FAQBlock/RelatedPages (§27).*
+## 28. Coulisses : comment Radio Odyssey traite le son (2026-07-27)
+
+Nouvel article du cocon Les Coulisses (4 → 5 pages), suggéré par Claude puis rédigé à partir des réponses directes du propriétaire (programmateur radio) à une série de questions ciblées — même méthode que les articles jingles/programmation déjà en ligne.
+
+**Contenu, tiré des réponses du propriétaire :**
+- Deux familles de traitement du son : logiciel (StereoTool cité en exemple générique) vs matériel dédié (Optimod FM Orban) — et pourquoi le matériel physique reste préférable en FM (latence du "retour antenne" pour un animateur), une contrainte qui ne s'applique pas à une web radio diffusant des titres pré-enregistrés.
+- Le choix de Radio Odyssey : traiter chaque titre **en amont**, dès l'upload sur la plateforme, avec sa propre chaîne de traitement — plutôt que de dépendre du traitement générique (souvent payant) fourni par l'hébergeur.
+- La difficulté propre à Radio Odyssey : harmoniser des titres des années 80 à aujourd'hui, chaque époque ayant sa propre signature sonore — résolu via la compression multibande (graves/médiums/aigus traités séparément), avec l'IA citée comme prochaine étape du secteur.
+- Un compromis assumé sur la "guerre du volume" : trop de compression fatigue l'oreille et devient contre-productif ("de la bouillie", dans les mots du propriétaire) — d'autant plus incohérent pour une radio qui prône le bien-être.
+- Traitement différencié pendant les séquences de cohérence cardiaque : musique volontairement plus basse que la voix d'Elisabeth Bélot-Grimaud, mais la voix reste traitée avec le même "son Radio Odyssey" pour éviter toute rupture auditive avec le reste de l'antenne.
+- Recette (logiciels/plugins exacts) explicitement non dévoilée — décision du propriétaire, respectée dans l'article, par analogie avec le "son NRJ"/"son Skyrock" reconnaissable à l'oreille sans être documenté publiquement.
+- Anecdote sur les titres récalcitrants : retravaillés individuellement en production plutôt que de reconfigurer toute la chaîne, ou déprogrammés si aucun réglage ne fonctionne.
+
+**Teaser en fin d'article** (thème fourni par le propriétaire) : un futur article sur les rudiments du traitement — normalisation, égalisation, compression d'un titre avant diffusion — même mécanique que le teaser du Jingle Top Horaire dans l'article sur les jingles (§ antérieur), qui avait effectivement débouché sur sa propre page par la suite.
+
+**Maillage croisé** : liens ajoutés dans les deux sens avec `comment-radio-odyssey-choisit-sa-musique.html` et `comment-radio-odyssey-fabrique-ses-jingles.html`.
+
+**Vérifié après build (180 pages, aucune erreur) :** JSON-LD valide (`Article` daté via `articleDatePublished`, `FAQPage` via `FAQBlock`), rendu testé dans le navigateur, `navigation.js` et `sitemap.xml` mis à jour.
+
+---
+
+*Dernière mise à jour : 2026-07-27, Coulisses — comment Radio Odyssey traite le son (§28).*
