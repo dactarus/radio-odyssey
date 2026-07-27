@@ -637,4 +637,36 @@ Le propriétaire a demandé une investigation précise (pas de correctif à l'av
 
 ---
 
-*Dernière mise à jour : 2026-07-17, audit Core Web Vitals et premiers correctifs (§21).*
+## 23. Chantier "radio bien-être" — données structurées et maillage interne (2026-07-27)
+
+Contexte donné par le propriétaire : le site se classe bien sur "radio cohérence cardiaque" mais mal sur "radio bien-être", malgré un soin éditorial comparable sur les deux pages. Diagnostic déjà établi par le propriétaire (hors périmètre de ce chantier) : un ancien site Mobirise, non lié à ce dépôt, cannibalise le terme "radio bien-être" — **à corriger par le propriétaire directement dans l'interface Mobirise** (noindex ou canonical vers le site actuel), pas quelque chose que ce dépôt peut résoudre. Mission confiée sur ce dépôt : traiter tout ce qui est du côté du code, sans conclure que ça réglera le problème de classement à lui seul.
+
+**Vérifié avant d'écrire quoi que ce soit (Google Search Central, syntaxe à jour au 2026-07-27) :** les résultats enrichis **HowTo** ont été retirés de la recherche Google en septembre 2023, et les résultats enrichis **FAQPage** ont été totalement retirés en juin 2026 (ils étaient déjà restreints depuis septembre 2023 aux sites gouvernementaux/santé reconnus). Les deux types restent valides pour schema.org et "sans impact négatif" selon Google — mais n'apportent plus aucun gain de visibilité *dans Google* aujourd'hui. Implémentés malgré tout pour la cohérence avec le reste du site (qui utilise déjà `FAQPage` sur 8 pages du cluster) et pour les autres moteurs/IA qui peuvent encore s'en servir.
+
+**Audit du JSON-LD existant (avant toute modification) :**
+- `Organization` + `WebSite` + `RadioStation` + `BreadcrumbList` + `Article` : déjà présents et corrects dans `Layout.astro`, appliqués aux 164 pages — rien à dupliquer.
+- `FAQPage` : déjà présent sur 8 des 13 pages du cluster Bien-être & Santé via le composant partagé `FAQBlock.astro` (génère à la fois l'accordéon visible et le balisage). 4 pages n'ont simplement aucun bloc question/réponse dans leur contenu (rien à baliser, normal). 1 page (`musique-pour-respiration-guidee.html`) avait un FAQ en HTML brut, non balisé.
+- `HowTo` : absent partout, alors que `radio-bien-etre-en-ligne.html` et `radio-coherence-cardiaque.html` contiennent chacune un bloc "Comment pratiquer" en 4 étapes numérotées.
+
+**Ajouté :**
+- `HowTo` sur les 2 pages ci-dessus (`howToSchema` + `<script type="application/ld+json">` dans `<Fragment slot="head">`), reprenant exactement les 4 étapes déjà publiées dans chaque page — nom, description et `HowToStep` par étape.
+- `FAQPage` sur `musique-pour-respiration-guidee.html` : les 4 questions/réponses existantes migrées vers `<FAQBlock items={faq} idPrefix="mprg" />`, pour obtenir à la fois le même rendu visuel que les 8 autres pages et le balisage automatique.
+- Validité JSON-LD des 3 pages modifiées vérifiée après build (`JSON.parse` sur chaque script généré) — aucune erreur de syntaxe.
+
+**Maillage interne renforcé sur les 13 pages du cluster Bien-être & Santé :** 2 à 3 liens contextuels ajoutés dans le corps de texte de chaque page (`avis-radio-odyssey-bien-etre`, `bienfaits-coherence-cardiaque`, `coherence-cardiaque-au-bureau`, `comment-pratiquer-la-coherence-cardiaque`, `difference-musicotherapie-radio-bien-etre`, `elisabeth-belot-grimaud-radio-odyssey`, `musique-pour-respiration-guidee`, `musique-sans-parole-pour-se-concentrer`, `radio-anti-stress-gratuite`, `radio-bien-etre-en-ligne`, `radio-coherence-cardiaque`, `radio-detente-moderne`, `radio-sans-publicite`), avec des ancres variées contenant naturellement "radio bien-être" ("radio bien-être en ligne", "cette radio bien-être", "radio bien-être" tout court) qui pointent vers `/radio-bien-etre-en-ligne.html` — objectif : en faire le pivot d'ancrage clair de l'expression pour Google, `radio-bien-etre-en-ligne.html` elle-même ne pouvant pas se lier à elle-même et recevant donc des liens entrants plutôt qu'en émettant vers sa propre URL.
+
+**Sitemap et robots.txt :** `<lastmod>` des 13 URLs du cluster mis à jour à la date de ce lot dans `public/sitemap.xml` (164 URLs au total, confirmé égal au nombre de pages construites par Astro). `robots.txt` vérifié : seule `/console.html` est bloquée, aucune exclusion accidentelle du cluster, la ligne `Sitemap:` reste correcte. Le sitemap n'est pas généré par un plugin Astro — il est géré à la main par `admin-console/lib/sitemap.mjs` (déjà vérifié au §22).
+
+**Attributs alt :** rien à corriger sur `radio-bien-etre-en-ligne.html` — la page ne contient aucune balise `<img>` propre (uniquement des SVG décoratifs inline et le logo du `Layout`, déjà correctement balisé ailleurs).
+
+**Comparaison Lighthouse (PageSpeed Insights, mobile, 4G lente, production) :** deux mesures indépendantes sur chaque page pour distinguer un vrai écart du bruit de mesure habituel d'un rapport lab unique.
+- `radio-coherence-cardiaque.html` : Performances 94/100, Accessibilité 95/100, **Bonnes pratiques 77/100**, SEO 100/100. LCP 2,9 s.
+- `radio-bien-etre-en-ligne.html` : première mesure Performances 84/100 (LCP 3,9 s), deuxième mesure quelques minutes plus tard **95/100 (LCP 2,9 s)** — l'écart de la première mesure était du bruit de réseau lab, pas un problème réel du code (même CSS/JS bloquant partagé par les deux pages via `Layout.astro`, même absence de décalage de mise en page CLS=0 sur toutes les mesures).
+- **Aucun écart significatif et reproductible trouvé** entre les deux pages une fois le bruit écarté — rien à corriger côté Core Web Vitals pour cette page précise.
+- Le seul écart réel et constant est inversé par rapport à l'hypothèse de départ : `radio-coherence-cardiaque.html` est à 77/100 en "Bonnes pratiques" (cookies tiers) à cause de la vidéo YouTube intégrée (`PartnerVideo.astro`), absente de `radio-bien-etre-en-ligne.html` qui reste donc à 100/100 sur ce point — pas une correction à faire, juste une différence de contenu entre les deux pages.
+
+**Ce que ce chantier ne prouve pas :** aucune de ces actions ne garantit un meilleur classement sur "radio bien-être" — seule une nouvelle vérification de position dans Search Console, plusieurs semaines après la mise en ligne, pourra le confirmer. Le facteur le plus probable identifié par le propriétaire (l'ancien site Mobirise) reste entièrement hors du périmètre de ce dépôt et à traiter séparément.
+
+---
+
+*Dernière mise à jour : 2026-07-27, chantier "radio bien-être" — données structurées et maillage interne (§23).*
