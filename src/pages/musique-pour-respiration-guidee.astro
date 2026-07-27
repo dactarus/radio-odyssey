@@ -6,6 +6,14 @@ import Sidebar from '../components/Sidebar.astro';
 import CoherenceExercise from '../components/CoherenceExercise.astro';
 import ContentIllustration from '../components/ContentIllustration.astro';
 import PartnerVideo from '../components/PartnerVideo.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+
+const faq = [
+  { q: 'Combien de temps dure une séance ?', a: "Une séance classique dure environ 5 minutes. Sur Radio Odyssey, nous proposons des séances de 1 ou 3 minutes, répétées toutes les heures." },
+  { q: 'Faut-il fermer les yeux ?', a: "Non. Vous pouvez pratiquer les yeux ouverts ou fermés." },
+  { q: 'Peut-on pratiquer au travail ?', a: "Oui. Trois minutes suffisent souvent et aucun équipement n'est nécessaire." },
+  { q: 'La respiration guidée remplace-t-elle un traitement médical ?', a: "Non. Elle constitue une pratique de bien-être et ne remplace jamais l'avis d'un professionnel de santé." },
+];
 ---
 <Layout lang="fr" title="Musique pour Respiration Guidée | Radio Odyssey" description="Musique pour respiration guidée sur Radio Odyssey : cohérence cardiaque, méthode 365, exercices guidés et bien-être toute la journée.">
   <PageHero
@@ -29,7 +37,7 @@ import PartnerVideo from '../components/PartnerVideo.astro';
           <div class="content-card">
             <h2>Comment pratiquer la m&#233;thode de respiration guid&#233;e de Radio Odyssey&#160;?</h2>
             <p>Cette respiration guid&#233;e permet d&#8217;installer un rythme naturel entre le corps et l&#8217;esprit. En associant un tempo adapt&#233; &#224; une technique respiratoire pr&#233;cise, il devient plus facile de ralentir, se recentrer et retrouver un &#233;quilibre int&#233;rieur.</p>
-            <p>Radio Odyssey propose une approche originale&#160;: int&#233;grer des s&#233;quences de coh&#233;rence cardiaque directement dans un flux musical vivant et moderne.</p>
+            <p>Radio Odyssey propose une approche originale&#160;: int&#233;grer des s&#233;quences de coh&#233;rence cardiaque directement dans un flux musical vivant et moderne, au sein d&#8217;une v&#233;ritable <a href="/radio-bien-etre-en-ligne.html" style="color:var(--ro-purple);font-weight:700;">radio bien-&#234;tre en ligne</a>.</p>
           </div>
 
           <CoherenceExercise />
@@ -174,38 +182,21 @@ import PartnerVideo from '../components/PartnerVideo.astro';
               <li><strong>Sommeil</strong>&#160;: facilite la transition vers la d&#233;tente favorable &#224; l&#8217;endormissement.</li>
               <li><strong>Bien-&#234;tre g&#233;n&#233;ral</strong>&#160;: un moment de pause int&#233;gr&#233; dans la routine quotidienne.</li>
             </ul>
+            <p>Envie de conjuguer respiration guid&#233;e et concentration&#160;? D&#233;couvrez notre <a href="/musique-sans-parole-pour-se-concentrer.html" style="color:var(--ro-purple);font-weight:700;">musique sans parole pour se concentrer</a>.</p>
           </div>
 
           <div class="content-card">
             <h2>Comment int&#233;grer la respiration guid&#233;e dans son quotidien&#160;?</h2>
             <ul>
               <li><strong>Au r&#233;veil&#160;:</strong> avant de consulter votre t&#233;l&#233;phone, branchez-vous sur Radio Odyssey d&#232;s votre r&#233;veil &#224; heure pile.</li>
-              <li><strong>Au bureau&#160;:</strong> d&#232;s que vous en ressentez le besoin, branchez-vous en fin d&#8217;heure pour ne pas manquer la s&#233;ance.</li>
+              <li><strong>Au bureau&#160;:</strong> d&#232;s que vous en ressentez le besoin, branchez-vous en fin d&#8217;heure pour ne pas manquer la s&#233;ance &#8212; voir notre page d&#233;di&#233;e &agrave; la <a href="/coherence-cardiaque-au-bureau.html" style="color:var(--ro-purple);font-weight:700;">coh&#233;rence cardiaque au bureau</a>.</li>
               <li><strong>Apr&#232;s une journ&#233;e charg&#233;e&#160;:</strong> il y a une s&#233;ance de 3 minutes &#224; 18h et 19h sur Radio Odyssey.</li>
             </ul>
           </div>
 
           <PartnerVideo />
 
-          <div class="content-card">
-            <h2>Questions fr&#233;quentes</h2>
-            <div style="border-bottom:1px solid rgba(123,47,190,.08);padding:.8rem 0;">
-              <strong>Combien de temps dure une s&#233;ance&#160;?</strong><br/>
-              <span style="font-size:.88rem;color:var(--ro-muted);">Une s&#233;ance classique dure environ 5 minutes. Sur Radio Odyssey, nous proposons des s&#233;ances de 1 ou 3 minutes, r&#233;p&#233;t&#233;es toutes les heures.</span>
-            </div>
-            <div style="border-bottom:1px solid rgba(123,47,190,.08);padding:.8rem 0;">
-              <strong>Faut-il fermer les yeux&#160;?</strong><br/>
-              <span style="font-size:.88rem;color:var(--ro-muted);">Non. Vous pouvez pratiquer les yeux ouverts ou ferm&#233;s.</span>
-            </div>
-            <div style="border-bottom:1px solid rgba(123,47,190,.08);padding:.8rem 0;">
-              <strong>Peut-on pratiquer au travail&#160;?</strong><br/>
-              <span style="font-size:.88rem;color:var(--ro-muted);">Oui. Trois minutes suffisent souvent et aucun &#233;quipement n&#8217;est n&#233;cessaire.</span>
-            </div>
-            <div style="padding:.8rem 0;">
-              <strong>La respiration guid&#233;e remplace-t-elle un traitement m&#233;dical&#160;?</strong><br/>
-              <span style="font-size:.88rem;color:var(--ro-muted);">Non. Elle constitue une pratique de bien-&#234;tre et ne remplace jamais l&#8217;avis d&#8217;un professionnel de sant&#233;.</span>
-            </div>
-          </div>
+          <FAQBlock items={faq} idPrefix="mprg" />
 
           <div class="page-cta-bar">
             <h3>Commencez &#224; respirer mieux maintenant</h3>
