@@ -831,4 +831,22 @@ Avant de construire l'article teasé sur les remix, le propriétaire a proposé 
 
 ---
 
-*Dernière mise à jour : 2026-07-27, le manifeste "Pourquoi Radio Odyssey est différente" (§31).*
+## 32. "Suivez le Guide" — parcours de découverte par intention (2026-07-27)
+
+Le propriétaire a proposé un article "Suivez le guide" pour tout comprendre de Radio Odyssey en quelques minutes. Réflexion faite en amont (angle marketing/créatif, sans construire tout de suite) : un simple récapitulatif exhaustif ferait doublon avec le hub Les Coulisses et le mega-menu. La proposition retenue : un parcours organisé **par intention du visiteur plutôt que par catégorie du site** — le seul format qui traverse plusieurs univers du site en une seule page, ce qu'aucune page existante ne fait (chaque hub de catégorie ne couvre que sa propre catégorie).
+
+**6 profils choisis, chacun avec 3 liens qui croisent volontairement plusieurs cocons** :
+- 🌅 Calmer son rythme, du réveil au coucher — Playlists du Jour + Bien-être
+- 🕺 Nostalgique et envie de danser — Musique & Énergie + Artistes & Styles
+- 💪 De l'énergie pour bouger — Musique & Énergie + Bien-être
+- 💻 Se concentrer, au travail ou en révisant — Musique & Énergie + Bien-être + Conseils d'Écoute
+- 🎤 Curieux de ce qui passe à l'antenne — Artistes & Styles + Coulisses
+- 🎧 Écouter partout, sur n'importe quel appareil — Conseils d'Écoute
+
+**Positionnement par rapport au manifeste du §31** : le manifeste répond à "pourquoi nous choisir" (mission, conviction) ; ce guide répond à "par où commencer selon mon envie du moment" (orientation, découverte) — les deux se complètent sans se dupliquer, explicité dans une question de FAQ dédiée sur chacune des deux pages, avec lien croisé dans les deux sens.
+
+**Vérifié après build (184 pages, aucune erreur)** : JSON-LD valide (`Article` + `FAQPage`), meta description à 142 caractères, les 18 liens de profils vérifiés un par un contre les pages réellement générées (aucun lien cassé), rendu testé dans le navigateur. `navigation.js` et `sitemap.xml` mis à jour (Les Coulisses : 8 → 9 pages).
+
+---
+
+*Dernière mise à jour : 2026-07-27, "Suivez le Guide" — parcours de découverte par intention (§32).*
