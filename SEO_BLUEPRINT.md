@@ -795,4 +795,24 @@ Suite directe du §28, annoncée en teaser dans cet article. Même méthode : qu
 
 ---
 
-*Dernière mise à jour : 2026-07-27, Coulisses — les rudiments du traitement de son (§29).*
+## 30. Coulisses : les enchaînements + correctif "directeur des programmes" (2026-07-27)
+
+Suite directe du §29. Le propriétaire a aussi signalé, en répondant aux questions, une erreur factuelle répétée depuis le début du cocon Coulisses : sa fonction est **directeur des programmes**, pas "programmateur" comme rédigé jusqu'ici. Corrigé partout où le terme apparaissait : les 6 articles Coulisses existants, `navigation.js` (menu) et `public/llms.txt`.
+
+**Contenu du nouvel article, tiré des réponses du propriétaire :**
+- Les 3 types de fin de titre (shunt, cut, réso) et pourquoi le titre suivant doit s'y adapter — un chevauchement ne fonctionne que si les deux titres sont mixés au même tempo (BPM), un vrai travail de DJ que les radios musicales pratiquent rarement.
+- Le rôle des jingles : fabriquer beaucoup de variantes pour éviter la lassitude, les alterner, et au-delà, choisir un jingle en fonction de la texture du titre qu'il encadre ou pour transitionner entre deux niveaux d'énergie différents.
+- **Absence volontaire de chroniques parlées** : radio positive, pas d'actualités anxiogènes. Seule exception, le module 7h-9h05 (Top Horaire, météo, horoscope, séquence de cohérence cardiaque), produit par des pigistes RadioKing, toujours positif, placé en début d'heure pour ne jamais interférer avec la suite — et devenir un repère d'écoute.
+- Astuces à petit budget : une fin en cut suivie d'une réverbération bien dosée comme valeur sûre, un début de titre "pêchu" pour éviter le "trou d'air" d'un début faible après une fin forte.
+- Pourquoi une erreur d'enchaînement ne devrait jamais arriver avec un logiciel de programmation bien paramétré et une base musicale cohérente avec la stratégie éditoriale — le seul vrai risque venant d'un changement de titre en direct dans l'urgence.
+- **Anecdote concrète et récente** : le mixage des séquences de cohérence cardiaque a été retravaillé après une écoute répétée de l'antenne — la musique support démarre désormais sous la fin du propos explicatif d'Elisabeth Bélot-Grimaud, avant les injonctions "Inspire/Expire", pour mettre l'auditeur en condition plus tôt.
+
+**Teaser en fin d'article** (thème fourni par le propriétaire) : un futur article sur les titres remixés et leurs bons usages.
+
+**Maillage croisé** : lien ajouté dans les deux sens avec `les-rudiments-du-traitement-de-son.html` (qui pointait déjà vers cet article en teaser), plus liens vers `comment-radio-odyssey-fabrique-ses-jingles.html` et `comment-radio-odyssey-choisit-sa-musique.html`.
+
+**Vérifié après build (182 pages, aucune erreur) :** JSON-LD valide (`Article` + `FAQPage`), meta description sous 160 caractères, plus aucune occurrence de "programmateur" dans tout le site généré (vérifié par recherche sur `dist/`), rendu testé dans le navigateur, `navigation.js` et `sitemap.xml` mis à jour (Les Coulisses : 6 → 7 pages).
+
+---
+
+*Dernière mise à jour : 2026-07-27, Coulisses — les enchaînements + correctif "directeur des programmes" (§30).*
