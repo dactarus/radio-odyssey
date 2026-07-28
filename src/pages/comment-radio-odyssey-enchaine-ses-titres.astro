@@ -1,0 +1,130 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  {
+    q: "Pourquoi Radio Odyssey ne diffuse-t-elle pas de chroniques d'actualité ?",
+    a: "C'est un vrai choix éditorial : Radio Odyssey est une radio positive, pas d'infos ni d'actualités anxiogènes. Seule exception, entre 7h et 9h05 : Top Horaire, météo, horoscope et séquence de cohérence cardiaque — des modules toujours positifs.",
+  },
+  {
+    q: "Peut-on faire du crossfade entre deux titres sur une radio musicale ?",
+    a: "Techniquement oui, mais un chevauchement ne fonctionne bien que si les deux titres sont mixés au même tempo (même BPM) — un vrai travail de DJ, que les radios musicales pratiquent rarement : ça demanderait un travail de préparation considérable pour chaque titre de la base.",
+  },
+  {
+    q: "Comment éviter que les auditeurs se lassent des jingles ?",
+    a: "En fabriquant un bon nombre de variantes — acapella, presque instrumentales, débuts accrocheurs, fins en suspens — et en les alternant. C'est ce qui donne un sentiment de fraîcheur et de surprise à l'antenne, plutôt que d'entendre toujours le même jingle.",
+  },
+  {
+    q: "Comment repérer une erreur d'enchaînement avant qu'elle n'arrive à l'antenne ?",
+    a: "Les logiciels de programmation permettent d'écouter un enchaînement avant sa diffusion On Air, en positionnant correctement les points d'entrée et de sortie. Et une fois à l'antenne, rien ne remplace l'écoute régulière de sa propre radio en direct pour repérer ce qui ne sonne pas juste dans le flux général.",
+  },
+];
+---
+<Layout
+  lang="fr"
+  title="Comment Radio Odyssey Enchaîne ses Titres et ses Jingles"
+  description="Enchaînements, jingles, absence de chroniques : le directeur des programmes explique comment Radio Odyssey construit le rythme invisible de son antenne."
+  articleDatePublished="2026-07-27"
+>
+  <PageHero
+    gradientFrom="#FF3CAC"
+    gradientTo="#00C6FF"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Comment Radio Odyssey enchaîne ses titres et ses jingles"
+    title="Comment Radio Odyssey Enchaîne ses Titres"
+    text="Le rythme invisible d'une radio — le directeur des programmes explique comment un bon enchaînement se construit, titre après titre, jingle après jingle."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><rect x="5" y="18" width="14" height="12" rx="3" stroke="white" stroke-width="2.2"/><rect x="29" y="18" width="14" height="12" rx="3" stroke="rgba(255,255,255,.7)" stroke-width="2.2"/><path d="M19 24H29" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="1 4"/><path d="M25 20L29 24L25 28" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Après le <a href="/comment-radio-odyssey-traite-le-son.html" style="color:var(--ro-purple);font-weight:700;">traitement du son</a> de chaque titre, reste une question tout aussi déterminante pour l'ambiance d'une antenne : comment enchaîner les titres, les jingles, sans jamais casser le rythme ? Le directeur des programmes de Radio Odyssey nous explique sa méthode.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Un enchaînement, c'est un choix — même le silence</h2>
+            <p>Un enchaînement réussi, c'est un enchaînement "qui ne s'entend pas", ou qui au contraire surprend agréablement. Il doit couler de source. Un enchaînement, c'est un engagement, une intention : on le travaille par le rythme, par sa couleur, par son association artistique. Un silence entre deux titres est lui aussi un vrai enchaînement — un choix, une revendication.</p>
+            <p style="margin-bottom:0;">Les titres se terminent différemment : en <strong>shunt</strong> (le son diminue lentement), en <strong>cut</strong> (fin brusque), ou en <strong>réso</strong> (fin avec écho ou réverbération). Le titre qui suit doit respecter cette fin. Faire chevaucher un titre qui finit en shunt avec un titre dont le début monte en puissance ne fait généralement pas bon ménage — sauf à mixer au tempo (même BPM), un vrai travail de DJ que les radios musicales pratiquent rarement : ça demanderait beaucoup de préparation en amont, titre par titre. Pour s'en assurer, il faut écouter les enchaînements avant leur diffusion On Air, en positionnant correctement les points d'entrée et de sortie — ce que permettent les logiciels de programmation actuels.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Le rôle des jingles dans la mécanique</h2>
+            <p>Pour éviter d'entendre toujours les mêmes jingles, il faut d'abord en fabriquer un bon nombre, avec des variantes — ça donne un sentiment de fraîcheur, de surprise. On les alterne entre acapellas, versions presque instrumentales, débuts accrocheurs, fins en suspens. Cela rythme grandement une antenne.</p>
+            <p style="margin-bottom:0;">Pour aller plus loin, le choix d'un jingle se fait aussi en fonction des titres qu'il encadre — en accord avec leur texture, ou pour faire la transition entre un titre très rythmé et un titre beaucoup moins rythmé. Le temps de mixage entre les éléments compte pour garder l'oreille de l'auditeur ; les jingles très courts, eux, servent surtout à le retenir, pour qu'il ne zappe pas.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pas de chroniques parlées — un choix assumé</h2>
+            <p>Radio Odyssey ne diffuse aucune chronique parlée, à une exception près : entre 7h et 9h05, un module Top Horaire, météo, horoscope et séquence de <a href="/radio-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque</a>. C'est un vrai choix : une radio positive ne diffuse pas d'informations anxiogènes — la météo et l'horoscope, eux, restent toujours positifs.</p>
+            <p>Ces deux modules sont produits par RadioKing avec des pigistes, enregistrés, et d'une durée toujours identique. Seul petit bémol : leur son n'est pas traité tout à fait comme le reste de l'antenne — un compromis accepté, puisqu'ils sont mis à disposition gratuitement.</p>
+            <p style="margin-bottom:0;">Placés systématiquement en début d'heure, comme les séquences de cohérence cardiaque, ils n'interfèrent jamais avec la suite de la programmation musicale. Mieux : ils deviennent un vrai repère d'écoute — car la radio, on le sait, reste avant tout un média d'habitudes.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>À petit budget, tout se joue en production</h2>
+            <p>Pour qui débute avec peu de moyens, la clé est de "travailler" les titres en amont, pour les préparer à s'enchaîner entre eux. Une fin en cut suivie d'une réverbération bien dosée est presque toujours l'assurance d'un bon enchaînement — il suffit de trouver la bonne longueur de réverbération. À l'inverse, un début de titre pêchu, avec un niveau suffisamment fort pour relancer le rythme, fonctionne mieux qu'un début faible qui suit une fin forte — ce dernier cas crée une sorte de "trou d'air" à l'écoute.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Zéro place à l'improvisation</h2>
+            <p>Une erreur d'enchaînement ne devrait normalement jamais arriver, à condition que le logiciel de programmation automatique soit bien paramétré, et que la base musicale le soit tout autant. Ces réglages reflètent directement la stratégie choisie par la direction des programmes — configurer ce type de logiciel demande une très bonne connaissance de l'ensemble de la base musicale et de la ligne éditoriale de la radio.</p>
+            <p style="margin-bottom:0;">Le seul vrai risque : changer un titre en direct, par manque de temps, en prenant le premier venu — un cas qui ne doit tout simplement pas arriver. La radio, ça ne s'improvise pas. C'est un métier.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une amélioration récente, née de l'écoute</h2>
+            <p>En écoutant Radio Odyssey encore et encore, l'équipe a récemment revu le mixage des séquences de cohérence cardiaque : désormais, la musique support commence dès la fin du propos explicatif d'<a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Elisabeth Bélot-Grimaud</a> — sous sa voix, avant même que l'exercice ne débute vraiment avec les injonctions "Inspire, Expire". De quoi se mettre en condition un peu plus tôt, en douceur.</p>
+            <p style="margin-bottom:0;">C'est un exemple concret d'un principe plus large : un enchaînement isolé peut sembler correct pris hors du direct, et pourtant ne pas convenir une fois replacé dans le flux général de l'antenne. Il arrive régulièrement de corriger des points d'enchaînement après avoir simplement écouté la radio en live — rien ne remplace cette écoute-là.</p>
+          </div>
+
+          <div class="content-card">
+            <p style="margin:0;">Le son de chaque titre est maîtrisé, les enchaînements sont pensés — reste une dernière question, tout aussi centrale sur une radio comme Radio Odyssey : comment bien utiliser les titres remixés, sans en abuser ni les diffuser n'importe comment ? Un sujet à part entière, à venir prochainement dans ces mêmes Coulisses.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="enchainements" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/comment-radio-odyssey-traite-le-son.html', label: 'Comment Radio Odyssey Traite le Son', desc: "La philosophie générale du traitement de l'antenne" },
+              { href: '/comment-radio-odyssey-fabrique-ses-jingles.html', label: 'Comment Radio Odyssey Fabrique ses Jingles', desc: 'Les familles de jingles qui rythment l\'antenne' },
+              { href: '/comment-radio-odyssey-choisit-sa-musique.html', label: 'Comment Radio Odyssey Choisit sa Musique', desc: 'Les coulisses de la programmation' },
+            ]}
+            associated={[
+              { href: '/radio-coherence-cardiaque.html', label: 'Radio Cohérence Cardiaque' },
+              { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Notre Partenaire Elisabeth Bélot-Grimaud' },
+              { href: '/radio-sans-publicite.html', label: 'Radio Sans Publicité' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez le résultat, en direct</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="/coulisses-de-radio-odyssey.html" class="btn-hero-ghost">
+                <Icon name="film" /> Toutes les Coulisses
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
