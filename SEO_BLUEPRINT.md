@@ -815,4 +815,20 @@ Suite directe du §29. Le propriétaire a aussi signalé, en répondant aux ques
 
 ---
 
-*Dernière mise à jour : 2026-07-27, Coulisses — les enchaînements + correctif "directeur des programmes" (§30).*
+## 31. Le manifeste "Pourquoi Radio Odyssey est différente" (2026-07-27)
+
+Avant de construire l'article teasé sur les remix, le propriétaire a proposé une page "Pourquoi Radio Odyssey est différente des autres radios ?" avec 5 sections (mission, cohérence cardiaque, programmation positive, sélection des titres, bénéfices auditeur).
+
+**Analyse faite avant de construire** : 4 des 5 sections recoupaient presque exactement des pages déjà en place et qui se classent bien (`radio-coherence-cardiaque.html`, `bienfaits-coherence-cardiaque.html`, `music-for-a-better-mood.html`, `comment-radio-odyssey-choisit-sa-musique.html`, `avis-radio-odyssey-bien-etre.html`) — un vrai risque de cannibalisation si la nouvelle page les redéveloppait en profondeur. Vérifié aussi qu'il n'existe pas de page "à propos" actuelle sur le site (`/a-propos.html` renvoie une 404 en prod, reliquat de l'ancien site pré-migration).
+
+**Décision retenue avec le propriétaire** : construire un **manifeste court** plutôt qu'un article de fond — chaque section en 1-2 paragraphes qui résume la réponse, puis renvoie vers la page complète existante pour "en savoir plus". Objectif explicite du propriétaire : que les visiteurs comprennent la différence et l'apport de Radio Odyssey en quelques minutes, sans dupliquer le contenu déjà en place.
+
+**Page créée** : `pourquoi-radio-odyssey-est-differente.html`, placée en tête du hub Les Coulisses (Les Coulisses : 7 → 8 pages) — pièce maîtresse plutôt qu'article chronologique parmi les autres. FAQ volontairement distincte de `faq-radio-odyssey.html` (aucune question dupliquée), avec une question meta assumant explicitement le rôle de la page : "Cette page remplace-t-elle les articles plus détaillés du site ? Non, elle les résume."
+
+**Maillage** : lien ajouté depuis `comment-radio-odyssey-choisit-sa-musique.html` ; la nouvelle page pointe elle-même vers `radio-sans-publicite.html`, `radio-coherence-cardiaque.html`, `comment-pratiquer-la-coherence-cardiaque.html`, `music-for-a-better-mood.html`, `comment-radio-odyssey-choisit-sa-musique.html`, `bienfaits-coherence-cardiaque.html` et `avis-radio-odyssey-bien-etre.html`.
+
+**Vérifié après build (183 pages, aucune erreur) :** JSON-LD valide (`Article` + `FAQPage`), meta description à 136 caractères, rendu testé dans le navigateur (page + hub Coulisses), `navigation.js` et `sitemap.xml` mis à jour.
+
+---
+
+*Dernière mise à jour : 2026-07-27, le manifeste "Pourquoi Radio Odyssey est différente" (§31).*
