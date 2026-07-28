@@ -849,4 +849,14 @@ Le propriétaire a proposé un article "Suivez le guide" pour tout comprendre de
 
 ---
 
-*Dernière mise à jour : 2026-07-27, "Suivez le Guide" — parcours de découverte par intention (§32).*
+## 33. Mise en avant du manifeste sur l'accueil (2026-07-27)
+
+Le propriétaire a trouvé dommage que le manifeste du §31 ne soit visible que dans Les Coulisses, et a proposé un encart sur `index.astro`, entre les "4 derniers titres diffusés" et le bandeau cohérence cardiaque — position validée : ça respecte la narration de la page (preuve concrète de ce qui joue → pourquoi nous choisir → fonctionnalité phare → explorer).
+
+**Implémentation** : réutilise la classe `.coherence-banner` déjà existante (dégradé, coins arrondis, cercle décoratif) pour rester cohérent visuellement avec le reste de la page, mais avec un dégradé distinct (violet → or, repris de la page cible) pour ne pas se confondre avec le bandeau cohérence cardiaque juste en dessous, qui utilise le même composant visuel avec un dégradé bleu → violet.
+
+**Vérification** : la capture d'écran du navigateur a connu un incident d'affichage ponctuel (rendu vide) pendant la vérification — contourné en inspectant directement le DOM généré (`getComputedStyle`, `getBoundingClientRect`, `outerHTML`) : dégradé, position, opacité et texte tous confirmés corrects. Bug de l'outil de capture, pas du code.
+
+---
+
+*Dernière mise à jour : 2026-07-27, mise en avant du manifeste sur l'accueil (§33).*
