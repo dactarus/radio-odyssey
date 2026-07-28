@@ -1,0 +1,117 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  {
+    q: "Qui décide de la programmation musicale de Radio Odyssey ?",
+    a: 'Le directeur des programmes de la radio, avec une méthode maison plutôt qu\'un logiciel professionnel — voir en détail sur notre page <a href="/comment-radio-odyssey-choisit-sa-musique.html" style="color:var(--ro-purple);font-weight:700;">comment Radio Odyssey choisit sa musique</a>.',
+  },
+  {
+    q: "La cohérence cardiaque diffusée sur l'antenne remplace-t-elle un suivi médical ?",
+    a: "Non. C'est une technique de respiration qui peut accompagner une bonne hygiène de vie, pas un traitement. En cas de trouble de santé, l'avis d'un professionnel reste la démarche à privilégier.",
+  },
+  {
+    q: "Cette page remplace-t-elle les articles plus détaillés du site ?",
+    a: "Non, elle les résume. Chaque section ci-dessus renvoie vers l'article complet sur le sujet — cette page n'est qu'un point de départ pour comprendre, en quelques minutes, ce qui différencie Radio Odyssey.",
+  },
+];
+---
+<Layout
+  lang="fr"
+  title="Pourquoi Radio Odyssey est Différente des Autres Radios ?"
+  description="Notre mission, notre programmation positive, la cohérence cardiaque à l'antenne : ce qui différencie Radio Odyssey, en quelques minutes."
+  articleDatePublished="2026-07-27"
+>
+  <PageHero
+    gradientFrom="#7B2FBE"
+    gradientTo="#FFD700"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Pourquoi Radio Odyssey est différente des autres radios"
+    title="Pourquoi Radio Odyssey est Différente ?"
+    text="Notre mission, nos choix, et ce qu'ils vous apportent concrètement — en quelques minutes."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 5L36 11V22C36 32 30 39 24 42C18 39 12 32 12 22V11L24 5Z" stroke="white" stroke-width="2.3" stroke-linejoin="round" fill="none"/><path d="M17 23L22 28L32 17" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Radio Odyssey n'est pas une radio musicale comme les autres. Voici, en quelques minutes, ce qui nous différencie vraiment — et ce que ça vous apporte concrètement, au quotidien.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Notre mission</h2>
+            <p style="margin-bottom:0;">Radio Odyssey est une association loi 1901 à but non lucratif — pas un groupe média qui vise l'audience à tout prix. Notre mission : diffuser une musique positive, gratuite et <a href="/radio-sans-publicite.html" style="color:var(--ro-purple);font-weight:700;">sans publicité</a>, accompagnée d'un vrai geste de bien-être, accessible à toutes et tous, 24h/24.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pourquoi la cohérence cardiaque ?</h2>
+            <p style="margin-bottom:0;">Peu de web radios intègrent une vraie pratique de bien-être directement dans leur flux musical. La <a href="/radio-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque</a> — une respiration lente et guidée, conçue avec une vraie psychologue plutôt qu'une voix de synthèse — s'intègre plusieurs fois par jour à l'antenne, sans app à ouvrir ni séance à programmer. Le détail complet : <a href="/comment-pratiquer-la-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">comment la pratiquer</a>.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pourquoi une programmation musicale positive ?</h2>
+            <p style="margin-bottom:0;">C'est un choix éditorial assumé, pas un hasard de playlist : Radio Odyssey écarte volontairement les titres mélancoliques ou agressifs, au profit d'une énergie positive constante — des années 80 remixées aux nouveautés d'aujourd'hui. Pourquoi ce choix, et ce qu'il change vraiment : <a href="/music-for-a-better-mood.html" style="color:var(--ro-purple);font-weight:700;">notre philosophie de radio positive</a>.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Comment sont sélectionnés les titres ?</h2>
+            <p style="margin-bottom:0;">Sans logiciel de programmation professionnel, Radio Odyssey a construit sa propre méthode artisanale : des tranches horaires multiples, un cycle de vie précis pour chaque titre (nouveauté, récurrent, ou fin de diffusion), et un vrai travail de direction des programmes au quotidien. Le détail, sans jargon : <a href="/comment-radio-odyssey-choisit-sa-musique.html" style="color:var(--ro-purple);font-weight:700;">comment Radio Odyssey choisit sa musique</a>.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Les bénéfices pour l'auditeur</h2>
+            <ul style="margin-bottom:0;">
+              <li>Gratuite, sans publicité, sans compte ni abonnement</li>
+              <li>Une vraie respiration guidée intégrée à la musique, pas une app séparée</li>
+              <li>Une voix humaine pour vous guider, pas une intelligence artificielle</li>
+              <li>Une radio associative et indépendante, à l'écoute de ses auditeurs</li>
+            </ul>
+            <p>Pour aller plus loin : <a href="/bienfaits-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">les bienfaits rapportés de la cohérence cardiaque</a> et <a href="/avis-radio-odyssey-bien-etre.html" style="color:var(--ro-purple);font-weight:700;">ce que nos auditeurs en disent</a>.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="difference" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/comment-radio-odyssey-choisit-sa-musique.html', label: 'Comment Radio Odyssey Choisit sa Musique', desc: 'Les coulisses de la programmation' },
+              { href: '/radio-coherence-cardiaque.html', label: 'Radio Cohérence Cardiaque', desc: 'Les séquences diffusées à l\'antenne' },
+              { href: '/avis-radio-odyssey-bien-etre.html', label: 'Avis sur Radio Odyssey', desc: 'Ce que nos auditeurs en disent' },
+            ]}
+            associated={[
+              { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Notre Partenaire Elisabeth Bélot-Grimaud' },
+              { href: '/radio-sans-publicite.html', label: 'Radio Sans Publicité' },
+              { href: '/faq-radio-odyssey.html', label: 'Questions Fréquentes' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez la différence, en direct</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="/coulisses-de-radio-odyssey.html" class="btn-hero-ghost">
+                <Icon name="film" /> Toutes les Coulisses
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

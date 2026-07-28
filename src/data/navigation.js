@@ -124,6 +124,7 @@ export const NAV_CATEGORIES = [
     hubTitle: 'Les Coulisses de Radio Odyssey',
     hubIntro: "Programmation, jingles, choix éditoriaux... la fabrication de l'antenne expliquée par l'équipe de Radio Odyssey.",
     pages: [
+      { href: '/pourquoi-radio-odyssey-est-differente.html', bi: 'patch-check-fill', label: 'Pourquoi Radio Odyssey est Différente', desc: 'Notre mission, nos choix, et ce qu\'ils vous apportent — en quelques minutes' },
       { href: '/comment-radio-odyssey-choisit-sa-musique.html', bi: 'sliders2', label: 'Comment on Choisit la Musique', desc: 'Les coulisses de la programmation, expliquées par le directeur des programmes' },
       { href: '/comment-radio-odyssey-fabrique-ses-jingles.html', bi: 'soundwave', label: 'Comment on Fabrique nos Jingles', desc: 'Mélodie sur mesure, voix en duo, familles qui s\'alternent à l\'antenne' },
       { href: '/comment-radio-odyssey-programme-ses-titres-surprises.html', bi: 'stars', label: 'Les Titres Surprises', desc: "B.O. cultes, indicatifs connus, classiques remixés — glissés avec parcimonie dans l'antenne" },
