@@ -129,6 +129,7 @@ export const NAV_CATEGORIES = [
     hubTitle: 'Les Coulisses de Radio Odyssey',
     hubIntro: "Programmation, jingles, choix éditoriaux... la fabrication de l'antenne expliquée par l'équipe de Radio Odyssey.",
     pages: [
+      { href: '/histoire-de-radio-odyssey.html', bi: 'clock-history', label: 'L\'Histoire de Radio Odyssey', desc: 'De 1994 dans le Pas-de-Calais à la web radio d\'aujourd\'hui' },
       { href: '/suivez-le-guide-radio-odyssey.html', bi: 'list', label: 'Suivez le Guide', desc: 'Six façons de découvrir Radio Odyssey, selon votre envie du moment' },
       { href: '/pourquoi-radio-odyssey-est-differente.html', bi: 'patch-check-fill', label: 'Pourquoi Radio Odyssey est Différente', desc: 'Notre mission, nos choix, et ce qu\'ils vous apportent — en quelques minutes' },
       { href: '/comment-radio-odyssey-choisit-sa-musique.html', bi: 'sliders2', label: 'Comment on Choisit la Musique', desc: 'Les coulisses de la programmation, expliquées par le directeur des programmes' },
