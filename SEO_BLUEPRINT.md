@@ -877,4 +877,29 @@ Dernier volet de la mini-série Coulisses sur la fabrication de l'antenne (aprè
 
 ---
 
-*Dernière mise à jour : 2026-07-27, article Coulisses sur l'usage des titres remixés (§34).*
+## 35. Sept nouvelles pages vers l'objectif des 100 (2026-08-06)
+
+Le propriétaire a demandé un état des lieux vers l'objectif des ~100 pages thématiques du projet initial (hors fiches artistes/Découvertes). Compte exact vérifié à cette date : **81 pages thématiques live**, donc 19 restantes pour atteindre 100.
+
+**12 idées proposées, cocon par cocon, après vérification anti-cannibalisation** (registre §4 + relecture des pages existantes) — le propriétaire en a retenu 9, écartant explicitement "Comment Radio Odyssey gère les demandes des auditeurs" (aucune matière concrète pour l'instant), l'idée volontairement absurde "historique des jingles publicitaires" (la radio n'a pas de pub) et "Playlist du Week-end" (angle jugé pas assez distinct des 6 tranches horaires déjà en place). Parmi les 9 retenues, **8 ont été construites dans ce lot** ; la 9ᵉ, "L'histoire de Radio Odyssey", nécessite une interview avec le propriétaire (comme les articles Coulisses) et reste en attente.
+
+**Pivot fait pendant la construction** : l'idée initiale "Top 20 des artistes les plus diffusés" a été abandonnée en cours de route — vérification faite sur `artistes-diffuses-radio-odyssey.astro`, qui affiche déjà les 10 premiers artistes du tableau `ARTISTS` (trié par `playCount`) comme "artistes phares". Un vrai top 20 aurait donc dupliqué cette section existante. Remplacé par un angle réellement distinct : un classement par **titre** (pas par artiste), tous styles confondus — aucune page ne classait jusqu'ici au niveau du titre en dehors du style dance.
+
+**Les 8 pages construites** :
+1. `musique-pour-cuisiner.html` (Musique & Énergie) — playlist funk/feel-good (Jamiroquai, Earth Wind & Fire, Stromae, Craig David, Soprano, Kungs, Robin Schulz, Sade), maillée avec la page ménage déjà existante.
+2. `musique-pour-un-road-trip.html` (Musique & Énergie) — playlist énergique et variée (Coldplay, U2, Harry Styles, Ofenbach, Sound Of Legend, Avicii, Kylie Minogue, Indochine), avec conseils pratiques (réseau, Bluetooth), maillée avec `ecouter-radio-odyssey-en-voiture.html`.
+3. `titres-les-plus-diffuses-sur-radio-odyssey.html` (Musique & Énergie) — top 15 réel des titres, calculé directement à partir de l'export RadioKing janvier-juin 2026 (`Radio odyssey report musique et chroniques -from-2026-01-01-to-2026-06-30.csv`, agrégation par `Play frequency`) — voir méthodologie en mémoire `reference-radioking-programming-export`. Seuls les titres dont l'artiste dispose d'une fiche sont cliquables ; les autres (ex. le titre TikTok trend en tête de classement, ou "Les Enfoirés") restent affichés tels quels, par souci d'exactitude plutôt que de tout filtrer sur ce qui est cliquable.
+4. `coherence-cardiaque-pour-seniors.html` (Bien-être & Santé) — angle démographique non couvert jusqu'ici, avec rappel explicite que la méthode ne remplace pas un suivi médical (population plus susceptible d'avoir une pathologie cardiaque/respiratoire).
+5. `musique-positive-et-bonne-humeur.html` (Bien-être & Santé) — pendant FR de la page EN `music-for-a-better-mood.html`, jamais traduite jusqu'ici ; lien croisé ajouté dans les deux sens entre les deux langues.
+6. `radio-for-focus-and-productivity.html` (International, EN) — équivalent anglophone de `musique-pour-se-concentrer.html` / `radio-pour-travailler.html`, maillé avec `heart-coherence-breathing-at-work.html`.
+7. `free-radio-no-ads-no-sign-up.html` (International, EN) — équivalent anglophone de `radio-sans-publicite.html`, maillé avec `why-positive-radio-is-trending.html`.
+
+**Maillage systématique** : chaque nouvelle page reçoit un lien depuis la page existante la plus proche de son cocon (règle §2.5) — ajouté dans `musique-pour-faire-le-menage.astro`, `ecouter-radio-odyssey-en-voiture.astro`, `les-tubes-dance-incontournables.astro`, `comment-pratiquer-la-coherence-cardiaque.astro`, `radio-bien-etre-en-ligne.astro`, `heart-coherence-breathing-at-work.astro` et `why-positive-radio-is-trending.astro`.
+
+**Vérifié après build (192 pages, aucune erreur)** : meta descriptions toutes sous 160 caractères, canonical correct sur les 7 pages, `FAQPage` présent sur chacune, tous les liens vers les fiches artistes vérifiés contre les fichiers réellement générés (aucun lien cassé), rendu testé dans le navigateur sans erreur console sur un échantillon (classement titres, cohérence cardiaque seniors, page EN sans pub). `navigation.js` et `sitemap.xml` mis à jour (Musique & Énergie : 13 → 16 pages ; Bien-être & Santé : 16 → 18 pages ; International : 11 → 13 pages).
+
+Total après ce lot : **89 pages thématiques**, 11 restantes pour atteindre 100 (dont "L'histoire de Radio Odyssey", en attente d'interview).
+
+---
+
+*Dernière mise à jour : 2026-08-06, sept nouvelles pages vers l'objectif des 100 (§35).*
