@@ -859,4 +859,22 @@ Le propriétaire a trouvé dommage que le manifeste du §31 ne soit visible que 
 
 ---
 
-*Dernière mise à jour : 2026-07-27, mise en avant du manifeste sur l'accueil (§33).*
+## 34. "Comment Radio Odyssey utilise les remix" (2026-07-27)
+
+Dernier volet de la mini-série Coulisses sur la fabrication de l'antenne (après choix musical, jingles, traitement du son, enchaînements) : le teaser laissé en fin de l'article §30 sur les enchaînements est honoré avec un article sur les critères de diffusion des titres remixés. Contrainte explicite du propriétaire pour cet article : pas de teaser de fin vers un thème précis, faute d'idée pour la suite à ce stade.
+
+**Contenu, tiré directement des réponses détaillées du propriétaire (directeur des programmes)** :
+- Le critère central : un remix diffusé doit être "meilleur" que l'original, créer un effet "wahou", avec une qualité sonore professionnelle non négociable.
+- La règle de dosage : si l'original reste plus fort que sa version remixée, c'est l'original qui passe. Sinon, alternance des deux versions (une forme de *platooning*), en plus de la catégorie à part "Remix années 70-80".
+- Les types acceptés/refusés : couleur d'antenne stricte (pas trop dance/techno) ; mashups tolérés si "évidence à l'écoute", avec deux exemples exclusifs cités ("Feel Good" de Charlotte Cardin, "Get Lucky Vs Fresh" de Daft Punk) ; versions extended généralement trop longues.
+- Droits d'auteur : chaque remix diffusé est crédité (nom du remixeur + nom du remix) dans sa fiche, même si étiqueté "libre de droits" par son auteur — qui ne prime jamais sur les droits d'auteur du titre original.
+- Sourcing : YouTube, Spotify, labels et artistes.
+- L'erreur à éviter : la radio est un média d'habitude d'écoute, le remix n'en fait pas partie par défaut ; mention du genre "Slowed + Reverb" comme exemple de remix difficile à diffuser.
+
+**Maillage** : lien ajouté dans les deux sens avec `comment-radio-odyssey-enchaine-ses-titres.html` (dont le teaser de fin pointe maintenant vers ce nouvel article plutôt que vers un "à venir"), plus liens vers `comment-radio-odyssey-choisit-sa-musique.html`, `radio-annees-80-en-ligne.html` (catégorie remix années 70-80) et `comment-radio-odyssey-traite-le-son.html`.
+
+**Vérifié après build (185 pages, aucune erreur)** : JSON-LD valide (`Article` + `FAQPage`), meta description ramenée de 167 à 136 caractères après une première version trop longue, rendu testé dans le navigateur (aucune erreur console, aucun teaser de fin — conforme à la demande), `navigation.js` et `sitemap.xml` mis à jour (Les Coulisses : 9 → 10 pages).
+
+---
+
+*Dernière mise à jour : 2026-07-27, article Coulisses sur l'usage des titres remixés (§34).*
