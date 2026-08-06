@@ -1,0 +1,118 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const playlistCuisine = [
+  { slug: 'jamiroquai', name: 'Jamiroquai', track: 'Virtual Insanity (Remastered)' },
+  { slug: 'earth-wind-and-fire', name: 'Earth, Wind & Fire', track: 'September (JNATHYN Remix)' },
+  { slug: 'stromae', name: 'Stromae', track: 'Papaoutai (Francis Mercier Afro House Remix)' },
+  { slug: 'craig-david', name: 'Craig David', track: 'Fill Me In' },
+  { slug: 'soprano', name: 'Soprano', track: 'DJ' },
+  { slug: 'kungs', name: 'Kungs', track: 'Be Right Here (feat. GOLDN)' },
+  { slug: 'robin-schulz', name: 'Robin Schulz', track: 'World Gone Wild (feat. Sam Martin)' },
+  { slug: 'sade', name: 'Sade', track: 'The Sweetest Taboo' },
+];
+
+const faq = [
+  { q: 'Quelle musique pour cuisiner à plusieurs, en famille ou entre amis ?', a: "Une musique positive et fédératrice, qui ne demande pas d'attention particulière — c'est exactement l'esprit de Radio Odyssey, pensé pour accompagner sans jamais imposer." },
+  { q: 'Et pour cuisiner seul, en fin de journée ?', a: "Le flux reste le même, mais l'usage change : une présence sonore agréable pour décompresser, sans nécessité de choisir un titre précis." },
+  { q: 'Faut-il une playlist spécifique cuisine ?', a: "Pas besoin de playlist à construire soi-même : Radio Odyssey diffuse en continu, 24h/24, avec une programmation qui varie naturellement au fil de la journée." },
+  { q: 'Comment l\'écouter dans la cuisine ?', a: "Sur mobile posé à proximité, via une enceinte Bluetooth ou une enceinte connectée — voir notre guide <a href=\"/ecouter-radio-odyssey-enceinte-connectee.html\" style=\"color:var(--ro-purple);font-weight:700;\">écouter sur enceinte connectée</a> pour configurer ça en quelques minutes." },
+];
+---
+<Layout
+  lang="fr"
+  title="Musique pour Cuisiner | Radio Odyssey"
+  description="Quelle musique pour cuisiner ? Découvrez la sélection Radio Odyssey, funk et feel-good, pour accompagner vos préparations en cuisine."
+>
+  <PageHero
+    gradientFrom="#FF9A3C"
+    gradientTo="#FFD700"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Musique pour cuisiner"
+    title="Musique pour Cuisiner"
+    text="Une ambiance funk et feel-good pour accompagner vos préparations, seul ou entre proches."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="26" r="14" stroke="white" stroke-width="2.3"/><path d="M14 26C14 18.3 18.3 12 24 12C29.7 12 34 18.3 34 26" stroke="rgba(255,255,255,.6)" stroke-width="2" fill="none"/><line x1="24" y1="6" x2="24" y2="12" stroke="white" stroke-width="2.3" stroke-linecap="round"/><line x1="17" y1="7" x2="18.5" y2="12.5" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="31" y1="7" x2="29.5" y2="12.5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Cuisiner en musique, une habitude qui change tout</h2>
+            <p>Éplucher, mijoter, dresser un plat : autant de gestes répétitifs que la musique rend plus légers. Pas besoin d'une ambiance qui capte toute l'attention — juste un flux positif et rythmé qui accompagne, du premier ingrédient au dernier coup de fourchette.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>La playlist cuisine de Radio Odyssey</h2>
+            <p style="margin-bottom:1rem;">Funk, groove et titres feel-good — une sélection pensée pour donner de l'énergie sans jamais couvrir une conversation en cuisine :</p>
+            <div style="display:flex;flex-direction:column;gap:.7rem;">
+              {playlistCuisine.map((a, i) => (
+                <a href={`/artiste-${a.slug}.html`} style="display:flex;justify-content:space-between;align-items:center;gap:1rem;text-decoration:none;color:var(--ro-dark);padding:.7rem .9rem;border-radius:12px;background:rgba(255,154,60,.06);">
+                  <span style="display:flex;align-items:center;gap:.8rem;">
+                    <span style="font-weight:900;color:var(--ro-purple);font-size:1.1rem;min-width:1.6rem;">{i + 1}</span>
+                    <span>
+                      <strong style="color:var(--ro-purple);">{a.name}</strong><br/>
+                      <span style="font-size:.82rem;color:var(--ro-muted);">{a.track}</span>
+                    </span>
+                  </span>
+                  <Icon name="arrow-right" style="color:var(--ro-purple);flex-shrink:0;" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Pour toutes les cuisines</h2>
+            <ul>
+              <li>Un dîner à préparer en semaine, sans y passer sa soirée</li>
+              <li>Une préparation plus longue le week-end, à plusieurs mains</li>
+              <li>Une pâtisserie avec des enfants, portée par une ambiance familiale positive — voir aussi notre sélection <a href="/musique-pour-les-enfants.html" style="color:var(--ro-purple);font-weight:700;">musique pour les enfants et la famille</a></li>
+              <li>Un rangement de cuisine express, dans le même esprit que notre page <a href="/musique-pour-faire-le-menage.html" style="color:var(--ro-purple);font-weight:700;">musique pour faire le ménage</a></li>
+            </ul>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="cuisine" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/musique-pour-faire-le-menage.html', label: 'Musique pour Faire le Ménage', desc: 'Le même esprit positif, pour les corvées' },
+              { href: '/musique-pour-une-soiree-entre-amis.html', label: 'Musique pour une Soirée entre Amis', desc: "L'ambiance festive qui plaît à tout le monde" },
+              { href: '/musique-pour-les-enfants.html', label: 'Musique pour les Enfants et la Famille', desc: 'Un flux positif pour les moments en famille' },
+            ]}
+            associated={[
+              { href: '/ecouter-radio-odyssey-enceinte-connectee.html', label: 'Écouter sur enceinte connectée' },
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les artistes diffusés' },
+              { href: '/radio-sans-publicite.html', label: 'Radio Sans Publicité' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Lancez la playlist cuisine, en direct</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="/musique-et-energie.html" class="btn-hero-ghost">
+                <Icon name="grid" /> Découvrir d'autres ambiances
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -31,6 +31,8 @@ export const NAV_CATEGORIES = [
       { href: '/musique-sans-parole-pour-se-concentrer.html', bi: 'music-note-list', label: 'Musique Sans Parole pour se Concentrer', desc: "L'instrumental pour rester concentré" },
       { href: '/difference-musicotherapie-radio-bien-etre.html', bi: 'info-circle', label: 'Musicothérapie ou Radio Bien-être ?', desc: 'Une clarification honnête' },
       { href: '/avis-radio-odyssey-bien-etre.html', bi: 'chat-dots', label: 'Avis sur Radio Odyssey', desc: 'Ce que nos auditeurs en disent' },
+      { href: '/coherence-cardiaque-pour-seniors.html', bi: 'heart-pulse', label: 'Cohérence Cardiaque pour Seniors', desc: 'Une pratique sans effort ni application, à tout âge' },
+      { href: '/musique-positive-et-bonne-humeur.html', bi: 'emoji-smile', label: 'Musique Positive et Bonne Humeur', desc: 'Pourquoi une playlist positive aide à changer la tonalité du moment' },
     ],
   },
   {
@@ -56,6 +58,9 @@ export const NAV_CATEGORIES = [
       { href: '/musique-odyssey-pour-aller-mieux.html', bi: 'heart', label: 'Pour Aller Mieux', desc: 'La musique positive qui accompagne les journées sans énergie' },
       { href: '/musique-odyssey-en-vacances.html', bi: 'airplane', label: 'En Vacances', desc: "Du trajet de départ jusqu'à votre lieu de vacances" },
       { href: '/musique-pour-faire-le-menage.html', bi: 'brush', label: 'Pour Faire le Ménage', desc: 'Le flux positif qui rend les corvées plus légères' },
+      { href: '/musique-pour-cuisiner.html', bi: 'cup-hot', label: 'Pour Cuisiner', desc: 'Une ambiance funk et feel-good pour vos préparations' },
+      { href: '/musique-pour-un-road-trip.html', bi: 'car-front', label: 'Pour un Road Trip', desc: 'Une énergie positive et continue pour tenir la distance' },
+      { href: '/titres-les-plus-diffuses-sur-radio-odyssey.html', bi: 'stars', label: 'Les Titres les Plus Diffusés', desc: 'Le classement réel, tous styles confondus' },
     ],
   },
   {
@@ -158,6 +163,8 @@ export const NAV_CATEGORIES = [
       { href: '/80s-throwback-radio-online.html', bi: 'clock-history', label: '80s Throwback Radio', desc: 'Classic hits, reimagined' },
       { href: '/music-for-a-better-mood.html', bi: 'heart', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
       { href: '/listen-on-tunein.html', bi: 'phone', label: 'How to Listen on TuneIn', desc: 'The easiest way to tune in worldwide' },
+      { href: '/radio-for-focus-and-productivity.html', bi: 'bullseye', label: 'Radio for Focus and Productivity', desc: 'Steady energy and guided breathing breaks for your workday' },
+      { href: '/free-radio-no-ads-no-sign-up.html', bi: 'x-circle', label: 'Free Radio, No Ads, No Sign-Up', desc: '100% free, on every device' },
     ],
   },
 ];

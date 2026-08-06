@@ -1,0 +1,117 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const playlistRoadTrip = [
+  { slug: 'coldplay', name: 'Coldplay', track: 'Viva La Vida' },
+  { slug: 'u2', name: 'U2', track: 'Beautiful Day (ARTY Remix)' },
+  { slug: 'harry-styles', name: 'Harry Styles', track: 'As It Was' },
+  { slug: 'ofenbach', name: 'Ofenbach', track: 'Miles Away' },
+  { slug: 'sound-of-legend', name: 'Sound Of Legend', track: 'San Francisco' },
+  { slug: 'avicii', name: 'Avicii', track: 'Hey Brother (Kinni & Niquei Remix)' },
+  { slug: 'kylie-minogue', name: 'Kylie Minogue', track: 'Dance To The Music' },
+  { slug: 'indochine', name: 'Indochine', track: 'La Belle et la Bête' },
+];
+
+const faq = [
+  { q: 'Quelle musique pour un long trajet en voiture ?', a: "Un flux qui tient la distance sans lasser : ni trop calme (le risque de somnolence), ni trop agressif — l'énergie positive et continue de Radio Odyssey est pensée pour ça." },
+  { q: 'Comment écouter Radio Odyssey pendant un road trip ?', a: "Bluetooth, CarPlay, Android Auto ou simplement le son du téléphone — tout est détaillé sur notre page <a href=\"/ecouter-radio-odyssey-en-voiture.html\" style=\"color:var(--ro-purple);font-weight:700;\">écouter Radio Odyssey en voiture</a>." },
+  { q: 'Et si le réseau mobile devient faible pendant le trajet ?', a: "Le flux peut couper si la connexion internet est insuffisante — un risque classique de la radio en streaming, à anticiper sur les portions isolées du trajet." },
+  { q: 'Radio Odyssey est-elle adaptée aux longs trajets en famille ?', a: "Oui — le flux reste positif et grand public, sans rap urbain ni titres agressifs, ce qui en fait une option simple pour un trajet en famille sans négociation sur la playlist." },
+];
+---
+<Layout
+  lang="fr"
+  title="Musique pour un Road Trip | Radio Odyssey"
+  description="Quelle musique pour un road trip ou un long trajet en voiture ? La sélection énergique et positive de Radio Odyssey pour tenir la distance."
+>
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Musique pour un road trip"
+    title="Musique pour un Road Trip"
+    text="Une énergie positive et continue pour tenir la distance, kilomètre après kilomètre."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="24" width="36" height="12" rx="4" stroke="white" stroke-width="2.2"/><path d="M10 24L14 15H34L38 24" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/><circle cx="15" cy="37" r="3.5" stroke="white" stroke-width="2"/><circle cx="33" cy="37" r="3.5" stroke="white" stroke-width="2"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Le bon flux pour un long trajet</h2>
+            <p>Un road trip pose un défi musical particulier : tenir plusieurs heures sans que l'ambiance retombe, sans non plus fatiguer le conducteur avec un rythme trop soutenu en continu. Radio Odyssey coche les deux cases avec un flux positif, varié et constamment renouvelé — pas une seule playlist qui tourne en boucle.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>La sélection road trip de Radio Odyssey</h2>
+            <p style="margin-bottom:1rem;">Des titres qui donnent de l'élan sans jamais devenir monotones sur la durée :</p>
+            <div style="display:flex;flex-direction:column;gap:.7rem;">
+              {playlistRoadTrip.map((a, i) => (
+                <a href={`/artiste-${a.slug}.html`} style="display:flex;justify-content:space-between;align-items:center;gap:1rem;text-decoration:none;color:var(--ro-dark);padding:.7rem .9rem;border-radius:12px;background:rgba(0,198,255,.06);">
+                  <span style="display:flex;align-items:center;gap:.8rem;">
+                    <span style="font-weight:900;color:var(--ro-purple);font-size:1.1rem;min-width:1.6rem;">{i + 1}</span>
+                    <span>
+                      <strong style="color:var(--ro-purple);">{a.name}</strong><br/>
+                      <span style="font-size:.82rem;color:var(--ro-muted);">{a.track}</span>
+                    </span>
+                  </span>
+                  <Icon name="arrow-right" style="color:var(--ro-purple);flex-shrink:0;" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Avant de prendre la route</h2>
+            <ul>
+              <li>Vérifiez votre connexion Bluetooth ou CarPlay/Android Auto — voir notre guide <a href="/ecouter-radio-odyssey-en-voiture.html" style="color:var(--ro-purple);font-weight:700;">écouter en voiture</a></li>
+              <li>Anticipez les zones sans réseau mobile sur le trajet</li>
+              <li>Prévoyez une pause régulière — l'occasion, aussi, de <a href="/coherence-cardiaque-et-sport.html" style="color:var(--ro-purple);font-weight:700;">respirer quelques minutes</a> avant de reprendre la route</li>
+            </ul>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="roadtrip" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/ecouter-radio-odyssey-en-voiture.html', label: 'Écouter Radio Odyssey en Voiture', desc: 'Bluetooth, CarPlay et Android Auto' },
+              { href: '/radio-annees-80-en-ligne.html', label: 'Radio Années 80 en Ligne', desc: 'Les tubes cultes remixés, parfaits sur la route' },
+              { href: '/musique-odyssey-en-vacances.html', label: 'Musique Odyssey en Vacances', desc: 'Du trajet de départ jusqu\'à votre lieu de vacances' },
+            ]}
+            associated={[
+              { href: '/musique-pour-faire-du-sport.html', label: 'Musique pour Faire du Sport' },
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les artistes diffusés' },
+              { href: '/radio-sans-publicite.html', label: 'Radio Sans Publicité' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Prenez la route avec Radio Odyssey</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="/ecouter-radio-odyssey-en-voiture.html" class="btn-hero-ghost">
+                <Icon name="car-front" /> Configurer l'écoute en voiture
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

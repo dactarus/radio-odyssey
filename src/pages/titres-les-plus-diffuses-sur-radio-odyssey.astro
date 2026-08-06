@@ -1,0 +1,124 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const topTitres = [
+  { rank: 1, slug: null, name: 'Justė, Jaxstyle, Jon', track: 'Turn The Lights Off (Jon Hamm TikTok trend audio)' },
+  { rank: 2, slug: 'djo', name: 'Djo', track: 'End Of Beginning (Sadrican Remix)' },
+  { rank: 3, slug: 'bruno-mars', name: 'Bruno Mars', track: 'I Just Might' },
+  { rank: 4, slug: 'harry-styles', name: 'Harry Styles', track: 'Aperture (ft. Rihanna Remix Odyssey Edit)' },
+  { rank: 5, slug: null, name: 'Rosalía', track: "La Perla (ft. Yahritza Y Su Esencia) (A Different Taste Remix)" },
+  { rank: 6, slug: 'r3hab', name: 'R3HAB', track: 'In My Head (BRYZZ Remix)' },
+  { rank: 7, slug: 'mika', name: 'Mika', track: 'Immortal Love' },
+  { rank: 8, slug: 'vanessa-paradis', name: 'Vanessa Paradis', track: 'Les Épines du Cœur' },
+  { rank: 9, slug: null, name: 'Les Enfoirés', track: 'Tout se Casse' },
+  { rank: 10, slug: 'shakira', name: 'Shakira', track: 'Zoo (from Zootopia 2) Remix' },
+  { rank: 11, slug: 'christophe-mae', name: 'Christophe Maé', track: 'La Lune' },
+  { rank: 12, slug: 'bebe-rexha', name: 'Bebe Rexha', track: 'New Religion (Faithless)' },
+  { rank: 13, slug: 'miley-cyrus', name: 'Miley Cyrus', track: 'Dream As One (from Avatar: Fire and Ash)' },
+  { rank: 14, slug: null, name: 'Katseye', track: 'Gabriela (Young Miko Remix)' },
+  { rank: 15, slug: null, name: 'Groove Dude', track: 'Dance With Me' },
+];
+
+const faq = [
+  { q: 'Comment ce classement est-il établi ?', a: "Sur le nombre réel de passages à l'antenne, comptés sur notre relevé de programmation de janvier à juin 2026 — pas sur un classement de charts externes." },
+  { q: 'Ce classement diffère-t-il de celui des artistes dance ?', a: "Oui — cette page classe les titres individuels, tous styles confondus, alors que notre page <a href=\"/les-tubes-dance-incontournables.html\" style=\"color:var(--ro-purple);font-weight:700;\">tubes dance incontournables</a> se limite à un classement par artiste, sur le seul style dance." },
+  { q: 'Pourquoi certains titres du classement ne sont-ils pas cliquables ?', a: "Seuls les artistes disposant d'une fiche dédiée sur le site sont reliés directement ; les autres restent affichés tels qu'ils apparaissent dans notre programmation réelle, par souci d'exactitude." },
+  { q: 'Ce classement change-t-il dans le temps ?', a: "Oui, régulièrement — la programmation évolue avec l'arrivée de nouveautés qui deviennent ensuite récurrentes, puis remplacées à leur tour." },
+];
+---
+<Layout
+  lang="fr"
+  title="Les Titres les Plus Diffusés sur Radio Odyssey"
+  description="Le classement réel des titres les plus diffusés sur Radio Odyssey, tous styles confondus, basé sur notre relevé de programmation."
+>
+  <PageHero
+    gradientFrom="#FFD700"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Les titres les plus diffusés sur Radio Odyssey"
+    title="Les Titres les Plus Diffusés"
+    text="Le classement réel des titres les plus diffusés sur Radio Odyssey, tous styles confondus."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 6L28.5 18.5L41.5 19L31 27L34.5 40L24 32.5L13.5 40L17 27L6.5 19L19.5 18.5Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Un classement basé sur les vrais passages à l'antenne</h2>
+            <p>Plutôt qu'un classement de charts externes, voici les titres réellement les plus diffusés sur Radio Odyssey, tous styles confondus — pop, dance, variété française, R&B — dans l'ordre du nombre de passages recensés sur notre relevé de programmation.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Le classement</h2>
+            <div style="display:flex;flex-direction:column;gap:.7rem;">
+              {topTitres.map((t) => t.slug ? (
+                <a href={`/artiste-${t.slug}.html`} style="display:flex;justify-content:space-between;align-items:center;gap:1rem;text-decoration:none;color:var(--ro-dark);padding:.7rem .9rem;border-radius:12px;background:rgba(123,47,190,.04);">
+                  <span style="display:flex;align-items:center;gap:.8rem;">
+                    <span style="font-weight:900;color:var(--ro-purple);font-size:1.1rem;min-width:1.6rem;">{t.rank}</span>
+                    <span>
+                      <strong style="color:var(--ro-purple);">{t.name}</strong><br/>
+                      <span style="font-size:.82rem;color:var(--ro-muted);">{t.track}</span>
+                    </span>
+                  </span>
+                  <Icon name="arrow-right" style="color:var(--ro-purple);flex-shrink:0;" />
+                </a>
+              ) : (
+                <div style="display:flex;align-items:center;gap:1rem;padding:.7rem .9rem;border-radius:12px;background:rgba(123,47,190,.04);">
+                  <span style="display:flex;align-items:center;gap:.8rem;">
+                    <span style="font-weight:900;color:var(--ro-purple);font-size:1.1rem;min-width:1.6rem;">{t.rank}</span>
+                    <span>
+                      <strong style="color:var(--ro-dark);">{t.name}</strong><br/>
+                      <span style="font-size:.82rem;color:var(--ro-muted);">{t.track}</span>
+                    </span>
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Une programmation qui va bien au-delà de ce classement</h2>
+            <p style="margin-bottom:0;">Ce top 15 n'est qu'un aperçu d'un instant : la programmation de Radio Odyssey compte des centaines d'artistes différents, entre nouveautés, golds remixés et classiques années 80. Retrouvez l'ensemble sur nos pages <a href="/artistes-diffuses-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">artistes diffusés</a> et <a href="/styles-musicaux-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">styles musicaux</a>.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="toptitres" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/les-tubes-dance-incontournables.html', label: 'Les Tubes Dance Incontournables', desc: 'Le classement par artiste, sur le style dance' },
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les Artistes Diffusés', desc: 'La liste complète, tous styles confondus' },
+              { href: '/comment-radio-odyssey-choisit-sa-musique.html', label: 'Comment Radio Odyssey Choisit sa Musique', desc: 'Les coulisses de la programmation' },
+            ]}
+            associated={[
+              { href: '/styles-musicaux-radio-odyssey.html', label: 'Styles musicaux sur Radio Odyssey' },
+              { href: '/comment-radio-odyssey-utilise-les-remix.html', label: 'Comment Radio Odyssey utilise les remix' },
+              { href: '/radio-sans-publicite.html', label: 'Radio Sans Publicité' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez ces titres en direct</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
