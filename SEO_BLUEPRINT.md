@@ -902,4 +902,23 @@ Total après ce lot : **89 pages thématiques**, 11 restantes pour atteindre 100
 
 ---
 
-*Dernière mise à jour : 2026-08-06, sept nouvelles pages vers l'objectif des 100 (§35).*
+## 36. L'histoire de Radio Odyssey (2026-08-06)
+
+Dernière des 9 idées retenues au §35 : "L'histoire de Radio Odyssey" nécessitait une interview avec le propriétaire (comme les autres articles Coulisses), contrairement aux 8 pages déjà construites qui ne demandaient pas de matière personnelle nouvelle. 6 questions posées (origine, nom, débuts techniques, évolution, partenariat Elisabeth Bélot-Grimaud, fierté) ; réponses détaillées reçues et restructurées en article, en préservant les faits exacts.
+
+**Faits marquants révélés, jamais documentés sur le site jusqu'ici** :
+- Radio Odyssey n'est pas née en 2025 : l'association existe depuis le **12 août 1994**, fondée dans le Pas-de-Calais par deux passionnés de radio (technique HF et radio), qui ont obtenu une fréquence FM temporaire pour une quinzaine commerciale, avant une mise en sommeil de plus de 25 ans pour raisons de carrière professionnelle.
+- Le nom vient du groupe américain **Odyssey** et de son titre *"Going Back to My Roots"* (années 80).
+- Détails techniques d'époque : Winamp pour les mp3, logiciel de programmation **Raduga** (avec insertion d'écrans publicitaires, utile pour la période FM commerciale de 1994 — un modèle radicalement différent du positionnement "100% sans pub" d'aujourd'hui, bien précisé comme relevant d'une autre époque pour ne pas contredire `radio-sans-publicite.html`).
+- Le retour du 19 janvier 2025 n'est pas un hasard : il découle directement d'une rencontre antérieure avec Elisabeth Bélot-Grimaud et d'une discussion sur la cohérence cardiaque — "Et si on s'associait pour faire une radio avec de la cohérence cardiaque ?"
+- Dès les années 90, la programmation était déjà positive, avant que ce positionnement ne devienne une tendance (lien avec l'article EN `why-positive-radio-is-trending.html`).
+
+**Maillage** : lien ajouté dans les deux sens avec `elisabeth-belot-grimaud-radio-odyssey.html` et `pourquoi-radio-odyssey-est-differente.html` (dont la section "Notre mission" renvoie maintenant vers cette page pour la genèse), plus liens vers `comment-radio-odyssey-choisit-sa-musique.html`, `radio-coherence-cardiaque.html`, `radio-sans-publicite.html` et `suivez-le-guide-radio-odyssey.html`. Placée en tête de la liste Les Coulisses, avant "Suivez le Guide".
+
+**Vérifié après build (193 pages, aucune erreur)** : JSON-LD valide (`Article` + `FAQPage`), meta description à 151 caractères, aucun lien cassé, rendu testé dans le navigateur sans erreur console. `navigation.js` et `sitemap.xml` mis à jour (Les Coulisses : 10 → 11 pages).
+
+Total après ce lot : **90 pages thématiques**, 10 restantes pour atteindre 100.
+
+---
+
+*Dernière mise à jour : 2026-08-06, l'histoire de Radio Odyssey (§36).*
