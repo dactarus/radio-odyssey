@@ -1,0 +1,121 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  {
+    q: "Radio Odyssey diffuse-t-elle plus de remix que de titres originaux ?",
+    a: "Non — la règle est simple : si l'original est plus fort que son remix, c'est l'original qui est diffusé. Le reste du temps, Radio Odyssey alterne titre original et version remixée (une forme de \"platooning\"), en plus de la catégorie à part dédiée aux remix années 70-80.",
+  },
+  {
+    q: "Les mashups sont-ils autorisés à l'antenne ?",
+    a: 'Oui, à condition que l\'association soit "une évidence à l\'écoute". Radio Odyssey produit même des mashups exclusifs, comme "Feel Good" de Charlotte Cardin ou "Get Lucky Vs Fresh" de Daft Punk.',
+  },
+  {
+    q: "Un remix fait par un fan ou un DJ indépendant peut-il être diffusé légalement ?",
+    a: "Chaque titre remixé diffusé porte, dans sa fiche, le nom du créateur et l'appellation exacte du remix — même quand celui-ci est indiqué \"libre de droits\". Les droits d'auteur du titre original, eux, restent toujours acquis à ses créateurs.",
+  },
+  {
+    q: "Pourquoi certains remix ne sont-ils jamais diffusés ?",
+    a: "Parce qu'ils sortent de la couleur d'antenne de Radio Odyssey — trop dance, trop techno, ou des styles comme le \"Slowed + Reverb\" (rythme très ralenti, réverbération appuyée), difficiles à intégrer au flux. Les versions extended sont, elles, généralement trop longues pour une diffusion radio.",
+  },
+];
+---
+<Layout
+  lang="fr"
+  title="Comment Radio Odyssey Utilise les Remix"
+  description="Quand un remix est-il diffusable ? Le directeur des programmes explique ses critères, la juste dose, et le respect des droits d'auteur."
+  articleDatePublished="2026-07-27"
+>
+  <PageHero
+    gradientFrom="#FF9A3C"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Comment Radio Odyssey utilise les remix"
+    title="Comment Radio Odyssey Utilise les Remix"
+    text="Un bon usage plutôt qu'un usage systématique — le directeur des programmes explique ses critères, et pourquoi trop de remix tue le remix."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="17" stroke="white" stroke-width="2.3"/><circle cx="24" cy="24" r="5" stroke="white" stroke-width="2"/><path d="M24 7C31 8 36 13 37 20" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M24 41C17 40 12 35 11 28" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Un remix, ce n'est jamais une diffusion automatique. Après avoir vu <a href="/comment-radio-odyssey-enchaine-ses-titres.html" style="color:var(--ro-purple);font-weight:700;">comment enchaîner les titres</a>, place à une question plus fine : quand un remix mérite-t-il vraiment l'antenne ? Le directeur des programmes de Radio Odyssey nous explique ses critères.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Un bon remix doit être meilleur que l'original</h2>
+            <p style="margin-bottom:0;">L'idée de départ est simple : un remix diffusé sur Radio Odyssey doit être "mieux" que l'original, et s'intégrer parfaitement au flux musical. Un titre original a souvent déjà été écouté un nombre incalculable de fois — le remix doit redonner l'envie de le réécouter, créer un vrai effet "wahou". Condition non négociable : une qualité sonore professionnelle, sans quoi il ne passe pas.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>La règle simple : si l'original gagne, c'est l'original qui passe</h2>
+            <p>"Trop de remix tue le remix !" La règle appliquée est directe : si l'original reste plus fort que sa version remixée, c'est lui qui est diffusé. Pour le reste, Radio Odyssey alterne titre original et version remixée — une forme de <em>platooning</em>, ajustée à ce choix éditorial — en plus des créneaux "Remix années 70-80" qui reviennent selon la grille de programmation. Voir aussi notre page <a href="/radio-annees-80-en-ligne.html" style="color:var(--ro-purple);font-weight:700;">radio années 80 en ligne</a>.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Tous les types de remix ne sont pas les bienvenus</h2>
+            <p>Le choix se fait avant tout pour respecter la couleur d'antenne de Radio Odyssey : trop dance, trop techno, trop remixé, ça ne passe pas. Les mashups ont leur place, à condition que l'association soit "une évidence à l'écoute" — Radio Odyssey en produit même des exclusifs, comme <strong>"Feel Good" de Charlotte Cardin</strong> ou <strong>"Get Lucky Vs Fresh" de Daft Punk</strong>. Les versions extended, elles, sont sauf exception trop longues pour une diffusion radio.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Les droits d'auteur, une vigilance de tous les instants</h2>
+            <p style="margin-bottom:0;">Radio Odyssey tient au respect des droits d'auteur : chaque titre remixé diffusé porte, dans sa fiche, le nom du créateur et l'appellation exacte du remix — y compris quand celui-ci est indiqué "libre de droits" par son auteur. Les droits d'auteur du titre original, eux, restent dans tous les cas acquis à ses créateurs.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Où on déniche les bons remix</h2>
+            <p style="margin-bottom:0;">YouTube et Spotify restent les plateformes où la recherche est la plus simple ; certains labels ou artistes proposent aussi directement leurs propres remix. Il suffit, comme souvent en programmation musicale, de bien chercher.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>L'erreur à éviter : déstabiliser l'auditeur</h2>
+            <p>La radio est un média d'habitude — et notamment d'habitude d'écoute. Le remix n'en fait pas partie par défaut : en proposer trop serait une vraie erreur, sauf pour un auditeur qui recherche spécifiquement une radio exclusivement remix (certaines web radios le proposent aujourd'hui). Les auditeurs restent attachés aux versions originales, qui embarquent leurs souvenirs et leurs émotions.</p>
+            <p style="margin-bottom:0;">Certains remix, enfin, sont tout simplement difficiles à diffuser — trop de réverbération assumée, un rythme trop ralenti : c'est devenu un genre à part, le <em>Slowed + Reverb</em>. Remixer un titre, ça peut aller loin — parfois trop loin.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="remix" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/comment-radio-odyssey-enchaine-ses-titres.html', label: 'Comment Radio Odyssey Enchaîne ses Titres', desc: "Le rythme invisible de l'antenne" },
+              { href: '/comment-radio-odyssey-choisit-sa-musique.html', label: 'Comment Radio Odyssey Choisit sa Musique', desc: 'Les coulisses de la programmation' },
+              { href: '/radio-annees-80-en-ligne.html', label: 'Radio Années 80 en Ligne', desc: 'Les tubes cultes, remixés' },
+            ]}
+            associated={[
+              { href: '/comment-radio-odyssey-traite-le-son.html', label: 'Comment Radio Odyssey Traite le Son' },
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les artistes diffusés' },
+              { href: '/radio-sans-publicite.html', label: 'Radio Sans Publicité' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez le résultat, en direct</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="/coulisses-de-radio-odyssey.html" class="btn-hero-ghost">
+                <Icon name="film" /> Toutes les Coulisses
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
