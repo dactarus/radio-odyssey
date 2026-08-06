@@ -1,0 +1,95 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'Is Radio Odyssey really completely free?', a: "Yes. Live listening is free, with no account creation and no time limit, on every device — web, mobile, car, or connected speaker." },
+  { q: 'Are there any ad breaks in the music stream?', a: "No, the stream carries no advertising at all — no audio ads, no pop-ups. The only planned interruption is the heart coherence breathing sequence, woven in on purpose, not imposed by an advertiser." },
+  { q: 'How does Radio Odyssey fund itself without ads?', a: "Through the support of its exclusive partner, Elisabeth Bélot-Grimaud, a cognitive psychologist featured on the homepage — not through a traditional ad agency." },
+  { q: 'Do I need to create an account to listen?', a: "No sign-up is required. One click on \"Listen Live\" is enough." },
+  { q: 'Is there a paid version with extra features?', a: "No — there's only one version of Radio Odyssey, and it's free for every listener." },
+];
+---
+<Layout
+  lang="en"
+  title="Free Radio, No Ads, No Sign-Up | Radio Odyssey"
+  description="Radio Odyssey is 100% free, with no ad breaks and no account required — just music, at no cost, on any device."
+>
+  <PageHero
+    gradientFrom="#FFD700"
+    gradientTo="#FF9A3C"
+    homeLabel="🏠 Home"
+    breadcrumbCurrent="Free radio, no ads, no sign-up"
+    title="Free Radio, No Ads, No Sign-Up"
+    text="No interruptions, no subscription, no account to create — just music, for free."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.5"/><path d="M16 16L32 32M32 16L16 32" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Why Radio Odyssey Carries No Advertising</h2>
+            <p>Most online radio stations fund their broadcast through regular ad breaks, sometimes every 15 to 20 minutes. Radio Odyssey made a different choice from the start: a continuous stream, with no commercial interruption whatsoever, from the first track of the day to the last.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>What That Actually Means for You</h2>
+            <h3>Listening without interruption</h3>
+            <p>The music stream never stops for an ad. The only planned "pause" is the <a href="/heart-coherence-breathing-radio.html" style="color:var(--ro-purple);font-weight:700;">heart coherence breathing</a> sequence, woven in deliberately — not imposed by an advertiser.</p>
+            <h3>No hidden subscription</h3>
+            <p>There's no "premium, ad-free" tier to unlock: the free experience is already, by default, entirely free of ads.</p>
+            <h3>A different model from commercial radio</h3>
+            <p>Unlike a traditional FM station living off advertisers, Radio Odyssey relies on the support of partners aligned with its wellness-first positioning.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>How Radio Odyssey Funds Itself Without Ads</h2>
+            <p style="margin-bottom:0;">Radio Odyssey is notably supported by <a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Elisabeth Bélot-Grimaud</a>, a cognitive psychologist and the station's exclusive partner — a partnership consistent with a wellness-focused radio, rather than a traditional ad agency. No cost is ever passed on to the listener.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="freeads" lang="en" />
+
+          <RelatedPages
+            lang="en"
+            alsoLike={[
+              { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Our Partner Elisabeth Bélot-Grimaud', desc: 'How the station is funded, without ads' },
+              { href: '/music-for-a-better-mood.html', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
+              { href: '/listen-on-tunein.html', label: 'How to Listen on TuneIn', desc: 'The easiest way to tune in worldwide' },
+            ]}
+            associated={[
+              { href: '/radio-odyssey-vs-meditation-apps.html', label: 'Radio Odyssey vs. Meditation Apps' },
+              { href: '/why-positive-radio-is-trending.html', label: 'Why Positive Radio Is Trending' },
+              { href: '/radio-for-focus-and-productivity.html', label: 'Radio for Focus and Productivity' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Just press play — it's free</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Listen Live
+              </a>
+              <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <Icon name="box-arrow-up-right" /> Listen on TuneIn
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,108 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import CoherenceExercise from '../components/CoherenceExercise.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
+
+const faq = [
+  { q: 'La cohérence cardiaque est-elle adaptée aux personnes âgées ?', a: "C'est une respiration lente et guidée, sans effort physique — accessible à la plupart des personnes. En cas de doute lié à une pathologie cardiaque ou respiratoire, l'avis d'un médecin reste la démarche à privilégier avant de commencer." },
+  { q: 'Faut-il un matériel particulier ?', a: "Non — juste la radio ou l'outil interactif ci-dessus, sans application à installer ni appareil à porter." },
+  { q: 'La cohérence cardiaque remplace-t-elle un traitement médical ?', a: "Non. C'est une technique de respiration, pas un soin. Elle peut accompagner une bonne hygiène de vie, jamais se substituer à un suivi médical en cas de trouble de santé." },
+  { q: 'Peut-on la pratiquer plusieurs fois par jour ?', a: "Oui, sans risque particulier — c'est justement l'intérêt des séquences intégrées à l'antenne de Radio Odyssey, qui reviennent naturellement plusieurs fois dans la journée sans qu'il faille y penser." },
+];
+---
+<Layout
+  lang="fr"
+  title="Cohérence Cardiaque pour Seniors | Radio Odyssey"
+  description="La cohérence cardiaque pour les personnes âgées : une respiration simple, sans effort ni application, intégrée à l'antenne de Radio Odyssey."
+>
+  <PageHero
+    gradientFrom="#1e7fcb"
+    gradientTo="#FFD700"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Cohérence Cardiaque pour Seniors"
+    title="Cohérence Cardiaque pour Seniors"
+    text="Une respiration simple et sans effort, intégrée à l'antenne — pas d'application à installer, pas de geste technique à apprendre."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="8" stroke="white" stroke-width="2.3"/><path d="M10 40C10 30 16 26 24 26C32 26 38 30 38 40" stroke="white" stroke-width="2.3" stroke-linecap="round" fill="none"/><path d="M17 18C17 14.5 20 12 24 12" stroke="rgba(255,255,255,.5)" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Une technique simple, sans contrainte</h2>
+            <p>La <a href="/comment-pratiquer-la-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque</a> repose sur un principe accessible à tout âge : respirer lentement, en suivant un rythme régulier, sans aucun effort physique. Pas d'application à télécharger, pas d'appareil à configurer — juste la radio allumée, ou l'outil interactif de cette page.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une place naturelle dans la journée</h2>
+            <p>Après le repas, avant une sieste, en fin de journée : les séquences intégrées à l'antenne de Radio Odyssey reviennent plusieurs fois par jour, sans qu'il faille penser à les déclencher soi-même — un vrai avantage pour qui préfère une habitude simple à une application à ouvrir.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pratiquez maintenant</h2>
+            <p style="margin-bottom:1.5rem;">Suivez le disque du regard : quand il grandit, inspirez doucement par le nez. Quand il rétrécit, expirez par la bouche.</p>
+          </div>
+
+          <CoherenceExercise />
+
+          <ContentIllustration gradientFrom="#1e7fcb" gradientTo="#FFD700" caption="Une respiration lente et guidée, sans effort ni matériel.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="8" stroke="white" stroke-width="2.3"/><path d="M10 40C10 30 16 26 24 26C32 26 38 30 38 40" stroke="white" stroke-width="2.3" stroke-linecap="round" fill="none"/></svg>
+            </Fragment>
+          </ContentIllustration>
+
+          <div class="content-card">
+            <h2>Un rappel important</h2>
+            <p style="margin-bottom:0;">La cohérence cardiaque est une technique de respiration, pas un soin médical. En cas de pathologie cardiaque, respiratoire ou de tout autre trouble de santé, l'avis d'un professionnel de santé reste la démarche à privilégier avant toute pratique régulière.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Écouter, tout simplement</h2>
+            <p style="margin-bottom:0;">Pas besoin de matériel technique compliqué pour profiter de Radio Odyssey : un poste connecté, un ordinateur ou une simple radio internet suffisent. Voir notre guide <a href="/ecouter-radio-odyssey-sur-ordinateur.html" style="color:var(--ro-purple);font-weight:700;">écouter sur ordinateur</a> pour une configuration simple, sans rien installer.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="ccseniors" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/comment-pratiquer-la-coherence-cardiaque.html', label: 'Comment Pratiquer la Cohérence Cardiaque', desc: 'Le guide pas à pas complet' },
+              { href: '/coherence-cardiaque-pour-dormir.html', label: 'Cohérence Cardiaque pour Dormir', desc: "La pratiquer avant de dormir" },
+              { href: '/bienfaits-coherence-cardiaque.html', label: 'Les Bienfaits de la Cohérence Cardiaque', desc: 'Ce que dit la méthode sur ses effets' },
+            ]}
+            associated={[
+              { href: '/ecouter-radio-odyssey-sur-ordinateur.html', label: 'Écouter sur ordinateur' },
+              { href: '/radio-detente-moderne.html', label: 'Radio Détente Moderne' },
+              { href: '/bien-etre-et-sante.html', label: 'Tout le cocon Bien-être' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Respirez, en toute simplicité</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="/bien-etre-et-sante.html" class="btn-hero-ghost">
+                <Icon name="grid" /> Découvrir les autres thèmes
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

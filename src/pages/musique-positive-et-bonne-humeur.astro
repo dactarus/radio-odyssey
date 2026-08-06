@@ -1,0 +1,98 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'La musique peut-elle vraiment améliorer l\'humeur ?', a: "La musique ne soigne rien, mais beaucoup de personnes constatent qu'elle aide à changer la tonalité d'un moment — un matin difficile, un trajet stressant, un coup de mou dans l'après-midi. C'est l'idée fondatrice de Radio Odyssey." },
+  { q: 'Pourquoi Radio Odyssey se présente-t-elle comme \"la radio positive\" ?', a: "Parce que la sélection musicale est volontairement orientée vers des titres énergiques et positifs plutôt que mélancoliques ou nostalgiques — un vrai choix éditorial, pas juste un slogan." },
+  { q: 'Et si la musique ne suffit pas ?', a: "Si une baisse de moral s'installe et persiste, la meilleure démarche reste d'en parler à un professionnel de santé plutôt que de compter uniquement sur la musique. Radio Odyssey accompagne, elle ne remplace pas un suivi." },
+];
+---
+<Layout
+  lang="fr"
+  title="Musique Positive et Bonne Humeur | Radio Odyssey"
+  description="Pourquoi la musique positive aide à améliorer l'humeur : la philosophie de Radio Odyssey, conçue avec une psychologue cognitive."
+>
+  <PageHero
+    gradientFrom="#FF3CAC"
+    gradientTo="#FFD700"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Musique positive et bonne humeur"
+    title="Musique Positive et Bonne Humeur"
+    text="Pourquoi la playlist positive de Radio Odyssey est pensée pour redonner de l'énergie à une journée un peu terne."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 38C24 38 8 28 8 17C8 11 12.5 7 18 7C21 7 23.5 8.5 24 11C24.5 8.5 27 7 30 7C35.5 7 40 11 40 17C40 28 24 38 24 38Z" stroke="white" stroke-width="2.3" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Pourquoi la musique positive compte</h2>
+            <p>Certains jours pèsent plus que d'autres — un coup de fatigue, une humeur en berne, ou simplement l'envie que quelque chose change la tonalité du moment. La musique ne résout pas tout, mais elle peut vraiment aider dans l'instant. Cette idée est au cœur de Radio Odyssey, qui se présente comme <strong>"la radio positive"</strong>.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pensée avec une vraie psychologue</h2>
+            <p>Le positionnement "radio positive" de Radio Odyssey n'est pas qu'un argument marketing : il a été construit avec <strong>Elisabeth Bélot-Grimaud</strong>, Docteure en psychologie cognitive, chercheuse, auteure de <em>"Programmez votre cerveau pour le bonheur"</em> et deux fois conférencière TEDx — partenaire exclusive de la radio.</p>
+            <p><a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">En savoir plus sur notre partenaire <Icon name="arrow-right" /></a></p>
+          </div>
+
+          <div class="content-card">
+            <h2>Un compagnon, pas un remède</h2>
+            <p style="margin-bottom:0;">À préciser clairement : la musique n'est pas un traitement, et Radio Odyssey ne le prétend jamais. C'est un compagnon du quotidien — un matin plus léger, un coup de pouce dans un après-midi terne, une manière de décentrer l'attention pendant un trajet stressant. Si une baisse de moral s'installe et ne se dissipe pas, la bonne démarche est d'en parler à un professionnel de santé, pas de compter uniquement sur la musique.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Des moments où ça aide</h2>
+            <ul style="margin-bottom:0;">
+              <li>Un réveil difficile ou un début de journée poussif</li>
+              <li>Un coup de mou en milieu d'après-midi</li>
+              <li>Un trajet ou une tâche répétitive</li>
+              <li>Une courte pause respiration, grâce aux séquences de <a href="/radio-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque</a> intégrées à l'antenne</li>
+            </ul>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="humeur" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/radio-bien-etre-en-ligne.html', label: 'Radio Bien-être en Ligne', desc: 'Votre dose quotidienne de positivité' },
+              { href: '/bienfaits-coherence-cardiaque.html', label: 'Les Bienfaits de la Cohérence Cardiaque', desc: 'Ce que dit la méthode sur ses effets' },
+              { href: '/avis-radio-odyssey-bien-etre.html', label: 'Avis sur Radio Odyssey', desc: 'Ce que nos auditeurs en disent' },
+            ]}
+            associated={[
+              { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Notre Partenaire Elisabeth Bélot-Grimaud' },
+              { href: '/pourquoi-radio-odyssey-est-differente.html', label: 'Pourquoi Radio Odyssey est Différente' },
+              { href: '/music-for-a-better-mood.html', label: 'Music for a Better Mood (English)' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Changez la tonalité, tout de suite</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="/bien-etre-et-sante.html" class="btn-hero-ghost">
+                <Icon name="grid" /> Découvrir les autres thèmes
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
