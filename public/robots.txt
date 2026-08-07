@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /console.html
+Disallow: /sitemap.xml/
 
 # Robots des IA génératives — autorisés explicitement (déjà couverts par
 # la règle générale ci-dessus, mais listés nommément pour la clarté et
