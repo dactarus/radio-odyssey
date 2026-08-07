@@ -921,4 +921,20 @@ Total après ce lot : **90 pages thématiques**, 10 restantes pour atteindre 100
 
 ---
 
-*Dernière mise à jour : 2026-08-06, l'histoire de Radio Odyssey (§36).*
+## 37. 20 URLs fantômes "Détectée, non indexée" — diagnostic et robots.txt (2026-08-07)
+
+Le propriétaire a signalé 20 pages en "Détectée, actuellement non indexée" dans Google Search Console (validation en cours depuis le 09/07/2026, sans amélioration jusqu'au 05/08/2026). Inspection directe de l'onglet Search Console ouvert par le propriétaire (via Claude in Chrome, sa session Google déjà connectée).
+
+**Diagnostic** : les 20 URLs suivent toutes le même motif `https://radio-odyssey.com/sitemap.xml/<page>.html` (ex. `plan-du-site.html`, `page1.html`, `page18.html`, `listen-to-radio-odyssey-on-alexa.html`, `radio-remix-annees-80.html`) — un `/sitemap.xml/` au milieu de l'URL, avec des noms de pages qui n'ont jamais existé sur le site Astro actuel. Les noms génériques `page1.html`/`page18.html` sont la signature typique d'un export **Mobirise** (voir [[project_radio_bien_etre_ranking]] pour le contexte Mobirise déjà documenté) — ces URLs sont un résidu d'une version très ancienne du site, dont le `sitemap.xml` devait contenir des chemins relatifs mal formés ; Google les a autrefois résolus en les concaténant après l'URL du fichier sitemap lui-même.
+
+**Vérifications faites avant toute action** :
+- `curl -I https://www.radio-odyssey.com/sitemap.xml/plan-du-site.html` → redirection 308 propre vers `/` (pas d'erreur, pas de contenu dupliqué réellement servi)
+- `sitemap.xml` actuel : uniquement des URLs absolues `https://www.radio-odyssey.com/...html`, aucune trace du bug
+- Aucun fichier du code source ou du build (`src/`, `public/`, `dist/`) ne génère de lien vers ce format
+- Conclusion : **aucune des 90 pages thématiques réelles n'est concernée** — pur résidu historique, sans impact sur le contenu actuel.
+
+**Action appliquée** : ajout de `Disallow: /sitemap.xml/` dans `robots.txt` (sous la règle générale `User-agent: *`, avant les règles des robots IA), pour indiquer explicitement à Google de ne plus explorer ce chemin fantôme et accélérer sa sortie de la file d'attente. Vérifié après déploiement : `curl https://www.radio-odyssey.com/robots.txt` confirme la ligne en production.
+
+---
+
+*Dernière mise à jour : 2026-08-07, diagnostic et robots.txt pour les 20 URLs fantômes (§37).*
