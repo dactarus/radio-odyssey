@@ -1,0 +1,113 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const playlistArts = [
+  { slug: 'the-avener', name: 'The Avener', track: 'Fade Out Lines' },
+  { slug: 'moby', name: 'Moby', track: 'Go' },
+  { slug: 'charlie-winston', name: 'Charlie Winston', track: 'Like A Hobo' },
+  { slug: 'angele', name: 'Angèle', track: 'Bruxelles je t\'aime (Eddy Call Remix)' },
+  { slug: 'kungs', name: 'Kungs', track: 'Be Right Here (feat. GOLDN)' },
+  { slug: 'ofenbach', name: 'Ofenbach', track: 'Miles Away' },
+  { slug: 'christophe-willem', name: 'Christophe Willem', track: 'Systaime' },
+  { slug: 'damiano-david', name: 'Damiano David', track: 'The First Time' },
+];
+
+const faq = [
+  { q: 'Faut-il une musique sans paroles pour peindre ou dessiner avec précision ?', a: "Pour un travail minutieux (détails, calligraphie, modèle vivant), beaucoup préfèrent effectivement éviter les paroles trop présentes — voir notre page <a href='/musique-sans-parole-pour-se-concentrer.html' style='color:var(--ro-purple);font-weight:700;'>musique sans parole pour se concentrer</a>. Pour une création plus libre, les paroles ne posent généralement pas de problème." },
+  { q: 'Et pour une pratique plus expressive, comme la sculpture ou la peinture gestuelle ?', a: "Une énergie plus marquée peut au contraire aider à se libérer du geste et sortir d'une réflexion trop analytique — un flux positif et rythmé convient bien à ce type de pratique physique et spontanée." },
+  { q: 'Une pause cohérence cardiaque entre deux séances de création, une bonne idée ?', a: "Beaucoup d'artistes amateurs décrivent des phases de blocage créatif ou de fatigue visuelle après une longue séance. Une courte pause respiration peut aider à redémarrer avec un regard neuf — voir notre page <a href='/comment-pratiquer-la-coherence-cardiaque.html' style='color:var(--ro-purple);font-weight:700;'>comment pratiquer la cohérence cardiaque</a>." },
+  { q: 'La radio en fond risque-t-elle de casser la concentration créative ?', a: "Un flux continu, sans coupure publicitaire ni changement de titre à gérer soi-même, limite justement les interruptions — contrairement à une playlist qui s'arrête et qu'il faut relancer." },
+];
+---
+<Layout
+  lang="fr"
+  title="Musique pour les Arts Plastiques | Radio Odyssey"
+  description="Quelle musique pour peindre, dessiner ou sculpter ? Une sélection Radio Odyssey à adapter selon votre pratique, précise ou expressive."
+>
+  <PageHero
+    gradientFrom="#FF3CAC"
+    gradientTo="#00C6FF"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Musique pour les arts plastiques"
+    title="Musique pour les Arts Plastiques"
+    text="Peinture, dessin, sculpture, poterie — une ambiance à adapter selon votre pratique, précise ou expressive."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 6C13 6 6 14 6 23C6 30 11 34 17 34C19 34 20 32.5 20 31C20 29 18 28.5 18 26.5C18 24 20.5 23 23 23H27C34 23 40 20 40 14C40 9 33 6 24 6Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/><circle cx="15" cy="19" r="2" fill="white"/><circle cx="22" cy="14" r="2" fill="white"/><circle cx="31" cy="14" r="2" fill="rgba(255,255,255,.7)"/><circle cx="17" cy="30" r="3" stroke="white" stroke-width="2"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Une pratique, deux besoins différents</h2>
+            <p>Peinture, dessin, sculpture, poterie : les arts plastiques regroupent des pratiques très différentes, avec des besoins d'ambiance sonore qui ne se ressemblent pas forcément. Un travail minutieux et concentré n'appelle pas la même énergie qu'une création plus libre, gestuelle, où le corps est autant engagé que l'œil.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une sélection à adapter à votre pratique</h2>
+            <p style="margin-bottom:1rem;">Une ambiance variée, entre calme et énergie, à moduler selon le moment de votre séance :</p>
+            <div style="display:flex;flex-direction:column;gap:.7rem;">
+              {playlistArts.map((a, i) => (
+                <a href={`/artiste-${a.slug}.html`} style="display:flex;justify-content:space-between;align-items:center;gap:1rem;text-decoration:none;color:var(--ro-dark);padding:.7rem .9rem;border-radius:12px;background:rgba(255,60,172,.05);">
+                  <span style="display:flex;align-items:center;gap:.8rem;">
+                    <span style="font-weight:900;color:var(--ro-purple);font-size:1.1rem;min-width:1.6rem;">{i + 1}</span>
+                    <span>
+                      <strong style="color:var(--ro-purple);">{a.name}</strong><br/>
+                      <span style="font-size:.82rem;color:var(--ro-muted);">{a.track}</span>
+                    </span>
+                  </span>
+                  <Icon name="arrow-right" style="color:var(--ro-purple);flex-shrink:0;" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Précision ou expression : deux approches</h2>
+            <p>Pour un travail de détail — modèle vivant, calligraphie, miniature — un fond plus instrumental évite la distraction des paroles ; voir notre page <a href="/musique-sans-parole-pour-se-concentrer.html" style="color:var(--ro-purple);font-weight:700;">musique sans parole pour se concentrer</a>. Pour une pratique plus libre et gestuelle — peinture abstraite, sculpture, modelage — une énergie plus marquée peut au contraire aider à se détacher de l'analyse et à se laisser porter par le geste.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Entre deux séances, une pause qui compte</h2>
+            <p style="margin-bottom:0;">Le blocage créatif ou la fatigue visuelle après une longue séance sont courants. Une courte pause de respiration guidée peut aider à repartir avec un regard neuf — les séquences de <a href="/radio-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque</a> intégrées à l'antenne de Radio Odyssey s'y prêtent naturellement, sans rien à programmer soi-même.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="artsplastiques" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/musique-sans-parole-pour-se-concentrer.html', label: 'Musique Sans Parole pour se Concentrer', desc: "L'instrumental pour un travail de précision" },
+              { href: '/musique-pour-etudier.html', label: 'Musique pour Étudier et Réviser', desc: 'Le flux continu pour les sessions de travail' },
+              { href: '/radio-coherence-cardiaque.html', label: 'Radio Cohérence Cardiaque', desc: 'Les séquences diffusées à l\'antenne' },
+            ]}
+            associated={[
+              { href: '/musique-pour-cuisiner.html', label: 'Musique pour Cuisiner' },
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les artistes diffusés' },
+              { href: '/musique-et-energie.html', label: 'Tout le cocon Musique & Énergie' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Lancez votre séance en musique</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
