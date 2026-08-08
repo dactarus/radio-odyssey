@@ -115,13 +115,14 @@ const faq = [
                       class="quiz80-choice"
                       data-slug={c.slug}
                       data-correct={c.slug === q.correct ? 'true' : 'false'}
-                      style="text-align:left;padding:.8rem 1rem;border-radius:12px;border:1.5px solid rgba(123,47,190,.2);background:rgba(123,47,190,.03);font-family:'Nunito',sans-serif;font-weight:700;color:var(--ro-dark);cursor:pointer;transition:background .2s,border-color .2s;"
+                      style="text-align:left;padding:.8rem 1rem;border-radius:12px;border:1.5px solid rgba(123,47,190,.2);background:rgba(123,47,190,.03);font-family:'Nunito',sans-serif;font-weight:700;color:var(--ro-dark);cursor:pointer;transition:background .15s,border-color .15s;width:100%;"
                     >
-                      {c.name}
+                      <span class="quiz80-choice-icon"></span>{c.name}
                     </button>
                   ))}
                 </div>
-                <button type="button" class="quiz80-next btn-hero-ghost" style="margin-top:1.2rem;display:none;">Question suivante →</button>
+                <p class="quiz80-feedback" style="display:none;margin:.8rem 0 0;font-weight:800;"></p>
+                <button type="button" class="quiz80-next btn-hero-ghost" style="margin-top:.8rem;display:none;">Question suivante →</button>
               </div>
             ))}
 
@@ -172,23 +173,36 @@ const faq = [
   </style>
 
   <script is:inline>
-  (function () {
+  function quiz80Init() {
     var TOTAL = 10;
     var score = 0;
     var container = document.getElementById('quiz80');
     if (!container) return;
 
-    function showQuestion(index) {
-      var qs = container.querySelectorAll('.quiz80-q');
-      qs.forEach(function (q) { q.style.display = 'none'; });
-      var target = container.querySelector('.quiz80-q[data-index="' + index + '"]');
+    var allQuestions = Array.prototype.slice.call(container.querySelectorAll('.quiz80-q'));
+    // Ordre aléatoire à chaque chargement de la page.
+    var order = allQuestions.map(function (_, i) { return i; });
+    for (var i = order.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = order[i]; order[i] = order[j]; order[j] = tmp;
+    }
+    var pos = 0;
+    var pendingTimer = null;
+
+    function elAt(logicalPos) {
+      return allQuestions[order[logicalPos]];
+    }
+
+    function showQuestion(logicalPos) {
+      allQuestions.forEach(function (q) { q.style.display = 'none'; });
+      var target = elAt(logicalPos);
       if (target) target.style.display = '';
       var progress = document.getElementById('quiz80-progress');
-      if (progress) progress.textContent = 'Question ' + (index + 1) + '/' + TOTAL;
+      if (progress) progress.textContent = 'Question ' + (logicalPos + 1) + '/' + TOTAL;
     }
 
     function showResults() {
-      container.querySelectorAll('.quiz80-q').forEach(function (q) { q.style.display = 'none'; });
+      allQuestions.forEach(function (q) { q.style.display = 'none'; });
       var progress = document.getElementById('quiz80-progress');
       if (progress) progress.style.display = 'none';
       var results = document.getElementById('quiz80-results');
@@ -206,9 +220,20 @@ const faq = [
       if (results) results.style.display = '';
     }
 
-    container.querySelectorAll('.quiz80-q').forEach(function (qEl) {
-      var buttons = qEl.querySelectorAll('.quiz80-choice');
+    function advance() {
+      if (pendingTimer) { clearTimeout(pendingTimer); pendingTimer = null; }
+      pos += 1;
+      if (pos < TOTAL) {
+        showQuestion(pos);
+      } else {
+        showResults();
+      }
+    }
+
+    allQuestions.forEach(function (qEl) {
+      var buttons = Array.prototype.slice.call(qEl.querySelectorAll('.quiz80-choice'));
       var nextBtn = qEl.querySelector('.quiz80-next');
+      var feedback = qEl.querySelector('.quiz80-feedback');
       var answered = false;
 
       buttons.forEach(function (btn) {
@@ -216,29 +241,40 @@ const faq = [
           if (answered) return;
           answered = true;
           var isCorrect = btn.getAttribute('data-correct') === 'true';
+          var correctBtn = buttons.filter(function (b) { return b.getAttribute('data-correct') === 'true'; })[0];
+
           if (isCorrect) {
             score += 1;
             btn.classList.add('is-correct');
+            btn.querySelector('.quiz80-choice-icon').textContent = '✅ ';
+            if (feedback) {
+              feedback.textContent = '✅ Bonne réponse !';
+              feedback.style.color = '#38a169';
+            }
           } else {
             btn.classList.add('is-wrong');
-            buttons.forEach(function (b) {
-              if (b.getAttribute('data-correct') === 'true') b.classList.add('is-correct');
-            });
+            btn.querySelector('.quiz80-choice-icon').textContent = '❌ ';
+            if (correctBtn) {
+              correctBtn.classList.add('is-correct');
+              correctBtn.querySelector('.quiz80-choice-icon').textContent = '✅ ';
+            }
+            if (feedback) {
+              feedback.textContent = '❌ Raté, la bonne réponse était surlignée en vert.';
+              feedback.style.color = '#dc2626';
+            }
           }
+          if (feedback) feedback.style.display = '';
           buttons.forEach(function (b) { b.disabled = true; });
           if (nextBtn) nextBtn.style.display = 'inline-block';
+
+          // Avance automatiquement après un court délai — l'utilisateur
+          // peut aussi cliquer "Question suivante" pour ne pas attendre.
+          pendingTimer = setTimeout(advance, 1600);
         });
       });
 
       if (nextBtn) {
-        nextBtn.addEventListener('click', function () {
-          var index = parseInt(qEl.getAttribute('data-index'), 10);
-          if (index + 1 < TOTAL) {
-            showQuestion(index + 1);
-          } else {
-            showResults();
-          }
-        });
+        nextBtn.addEventListener('click', advance);
       }
     });
 
@@ -248,6 +284,14 @@ const faq = [
         window.location.reload();
       });
     }
-  })();
+
+    showQuestion(0);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', quiz80Init);
+  } else {
+    quiz80Init();
+  }
   </script>
 </Layout>
