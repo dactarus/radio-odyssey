@@ -1123,3 +1123,23 @@ Total après ce lot : **99 pages thématiques**, 1 restante pour atteindre 100.
 ---
 
 *Dernière mise à jour : 2026-08-08, correction du quiz + chansons les plus écoutées au monde (§46).*
+
+---
+
+## 47. Round bonus du quiz + correction Blinding Lights (2026-08-08)
+
+**Round bonus demandé par le propriétaire** : un score parfait de 10/10 sur le quiz années 80 (§45-46) débloque désormais 10 questions bonus, pour un score final possible sur 20. 10 nouveaux titres réels ajoutés, vérifiés individuellement pour leur exactitude historique (même rigueur que le round principal) : Indochine "La Belle et la Bête" (1986), Simple Minds "Alive And Kicking" (1985), Michael Jackson "The Way You Make Me Feel" (1987), Queen "Radio Ga Ga" (1984) et "A Kind Of Magic" (1986), Wham! "Everything She Wants" (1984), Bananarama "Shy Boy" (1982) et "Na Na Hey Hey" (1983), Sade "The Sweetest Taboo" (1985), Phil Collins "You Can't Hurry Love" (1982). Plusieurs titres candidats écartés pour manque de rigueur historique (Earth Wind & Fire "September" est 1978, pas 80s ; Jamiroquai "Virtual Insanity" est 1996 malgré le groupe formé en 1990 ; "Invisible Touch" est crédité Genesis, pas Phil Collins solo — évité pour ne pas introduire une question discutable).
+
+**Logique implémentée** : à la fin des 10 premières questions, si score = 10/10 exactement → écran "🎉 Score parfait !" avec deux boutons ("Tenter le bonus" / "Voir mon score") ; sinon → résultats directs sur 10 comme avant. Le round bonus utilise son propre ordre aléatoire (indépendant du round principal). Verdicts différenciés selon le score final est sur 10 ou sur 20.
+
+**Testé de bout en bout dans le navigateur (3 scénarios)** : round imparfait (9/10) → pas de proposition de bonus, résultats directs ; round parfait + bonus accepté + 1 erreur en bonus → 19/20, bon verdict ; round parfait + bonus refusé → 10/10 avec message dédié ("vous auriez pu tenter le bonus").
+
+---
+
+**Correction factuelle signalée par le propriétaire** : "Blinding Lights" (The Weeknd) est bien diffusée sur Radio Odyssey — la fiche artiste ne le mentionnait pas (seuls "Can't Feel My Face", "Starboy", "I Feel It Coming", "Sacrifice" y figuraient). Ajouté à `src/data/artists.js` (source unique) et corrigé sur `chansons-les-plus-ecoutees-au-monde.html` (§46) : 5 titres du classement mondial sur 8 sont désormais confirmés diffusés sur l'antenne, au lieu de 4.
+
+**Vérifié après build (202 pages, aucune erreur)** : tous les slugs d'artistes du quiz (19 au total, rounds principal + bonus) vérifiés contre les fiches réellement générées, comptage `data-correct` cohérent (20 vrai + 60 faux sur 20 questions × 4 choix), aucun lien cassé sur les deux pages modifiées.
+
+---
+
+*Dernière mise à jour : 2026-08-08, round bonus du quiz + correction Blinding Lights (§47).*
