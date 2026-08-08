@@ -937,4 +937,22 @@ Le propriétaire a signalé 20 pages en "Détectée, actuellement non indexée" 
 
 ---
 
-*Dernière mise à jour : 2026-08-07, diagnostic et robots.txt pour les 20 URLs fantômes (§37).*
+## 38. Musique pour les plantes et les animaux (2026-08-08)
+
+Deux idées proposées par le propriétaire : "cohérence cardiaque à partir de quel âge" et "musique pour les plantes/animaux, mais quelle musique ?".
+
+**Cannibalisation détectée sur la première idée** : la question "à partir de quel âge un enfant peut-il pratiquer la cohérence cardiaque ?" existe déjà, mot pour mot, dans la FAQ de `coherence-cardiaque-enfants-ados.html` (créée en amont de ce projet). Une page dédiée aurait dupliqué une intention de recherche déjà couverte, en violation de la règle §2.2. **Décision** : pas de nouvelle page — la question a plutôt été élargie et déplacée sur le guide de référence `comment-pratiquer-la-coherence-cardiaque.html` ("à tout âge, sans effort physique"), avec liens vers `coherence-cardiaque-enfants-ados.html` *et* `coherence-cardiaque-pour-seniors.html`, pour couvrir les deux extrêmes d'âge depuis la page la plus généraliste.
+
+**Deux nouvelles pages construites** pour la seconde idée (Musique & Énergie) :
+- `musique-pour-les-plantes.html` — sujet volontairement traité avec prudence : pas de consensus scientifique (les études des années 1970 les plus citées sont aujourd'hui jugées méthodologiquement fragiles), aucune promesse de résultat, argumentaire recentré sur le fait qu'un flux calme et continu est "sans inconvénient" plutôt que "efficace".
+- `musique-pour-les-animaux.html` — sujet mieux documenté : études réelles citées (Kogan et al. en refuge pour les chiens — musique calme préférée au silence/à l'agressif ; Charlton & Snowdon pour la sensibilité différente des chats), avec rappel explicite que ça ne remplace pas un avis vétérinaire en cas de trouble sévère.
+
+Les deux pages se renvoient l'une vers l'autre et reçoivent un lien depuis `radio-detente-moderne.html`.
+
+**Vérifié après build (195 pages, aucune erreur)** : meta descriptions sous 160 caractères (144 et 152), canonical correct, `FAQPage` présent, aucun lien cassé, rendu testé dans le navigateur sans erreur console. `navigation.js` et `sitemap.xml` mis à jour (Musique & Énergie : 16 → 18 pages).
+
+Total après ce lot : **92 pages thématiques**, 8 restantes pour atteindre 100.
+
+---
+
+*Dernière mise à jour : 2026-08-08, musique pour les plantes et les animaux (§38).*
