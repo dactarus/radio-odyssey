@@ -101,6 +101,7 @@ export const NAV_CATEGORIES = [
       { href: '/radio-pop-rock-en-ligne.html', bi: 'lightning-charge', label: 'Radio Pop/Rock', desc: 'Quand la pop rencontre les guitares' },
       { href: '/radio-pop-rnb-en-ligne.html', bi: 'heart', label: 'Radio Pop/R&B', desc: 'Groove, soul et refrains pop' },
       { href: '/decouvertes-radio-odyssey.html', bi: 'stars', label: 'Découvertes Radio Odyssey', desc: 'Les artistes émergents soutenus par la radio' },
+      { href: '/artistes-feminines-radio-odyssey.html', bi: 'person-badge', label: 'Artistes Féminines', desc: 'Chanteuses et artistes féminines réellement diffusées' },
     ],
   },
   {
@@ -119,6 +120,7 @@ export const NAV_CATEGORIES = [
       { href: '/ecouter-radio-odyssey-sur-tv.html', bi: 'play-circle', label: 'Sur TV Connectée', desc: 'Chromecast, Apple TV, Fire TV, Android TV' },
       { href: '/ecouter-radio-odyssey-sur-ordinateur.html', bi: 'laptop', label: 'Sur Ordinateur', desc: 'Au bureau ou en télétravail, sans rien installer' },
       { href: '/ecouter-radio-odyssey-montre-connectee.html', bi: 'clock', label: 'Sur Montre Connectée', desc: 'Apple Watch et Wear OS, le contrôle au poignet' },
+      { href: '/comment-creer-un-espace-decoute-chez-soi.html', bi: 'house-door-fill', label: 'Créer un Espace d\'Écoute chez Soi', desc: 'Enceintes, ampli, pièce dédiée, 5.1 ou pas' },
     ],
   },
   {

@@ -907,6 +907,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.radio-odyssey.com/artistes-feminines-radio-odyssey.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.radio-odyssey.com/decouverte-tom-york.html</loc>
     <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -963,6 +969,12 @@
   <url>
     <loc>https://www.radio-odyssey.com/ecouter-radio-odyssey-montre-connectee.html</loc>
     <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.radio-odyssey.com/comment-creer-un-espace-decoute-chez-soi.html</loc>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
