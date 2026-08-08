@@ -1031,3 +1031,21 @@ Total après ce lot : **96 pages thématiques**, 4 restantes pour atteindre 100.
 ---
 
 *Dernière mise à jour : 2026-08-08, style musical de la cohérence cardiaque (§42).*
+
+---
+
+## 43. Clarifier "Artistes & Styles" sur la page d'accueil (2026-08-08)
+
+Le propriétaire a trouvé le libellé "Artistes & Styles" trop vague, "Styles" seul ne faisant pas comprendre qu'il s'agit d'informations musicales. Discussion en plusieurs temps :
+1. Renommer en "Artistes & Musiques" ou "Artistes & Styles Musicaux" ? Recommandation retenue : **"Artistes & Styles Musicaux"**, cohérent avec le terme déjà utilisé sur `styles-musicaux-radio-odyssey.html`.
+2. Séparer en deux catégories "Artistes" et "Styles" ? Écarté : "Artistes" seul n'aurait eu que 3 pages hub (`artistes-diffusés`, `découvertes`, `artistes-féminines`, les 100 fiches étant hors menu), et ça aurait fait passer le mega-menu de 7 à 8 entrées — déjà sous contrainte de largeur (cf. le précédent "Les Coulisses").
+3. Vérification faite : le `hubTitle` de cette catégorie était déjà "Artistes & Styles Musicaux" (titre de `artistes-et-styles.html`) — donc rien à changer côté page hub elle-même.
+4. Le propriétaire a précisé que le vrai problème visible se situe sur la **tuile catégorie de l'accueil**, pas le menu — c'est là que "Styles" seul se lit sans contexte suffisant.
+
+**Solution implémentée** : nouveau champ optionnel `tileLabel` dans `src/data/navigation.js` (retombe sur `label` si absent), utilisé uniquement par la tuile catégorie de `index.astro`. Le menu méga desktop et l'offcanvas mobile partagent le même champ `label` (espace contraint dans les deux cas, pas de distinction possible sans ce nouveau champ) et gardent "Artistes & Styles" ; seule la tuile accueil affiche désormais "Artistes & Styles Musicaux".
+
+**Vérifié après build** : `document.querySelectorAll('.page-card h3')` confirme la tuile accueil à "Artistes & Styles Musicaux" (les 6 autres tuiles inchangées) ; `.ro-mega-nav-toggle` (desktop) et `.nav-cat` (mobile) confirment tous les deux "Artistes & Styles" inchangé.
+
+---
+
+*Dernière mise à jour : 2026-08-08, clarification de la tuile Artistes & Styles sur l'accueil (§43).*
