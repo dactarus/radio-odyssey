@@ -956,3 +956,23 @@ Total après ce lot : **92 pages thématiques**, 8 restantes pour atteindre 100.
 ---
 
 *Dernière mise à jour : 2026-08-08, musique pour les plantes et les animaux (§38).*
+
+---
+
+## 39. Artistes féminines et espace d'écoute dédié (2026-08-08)
+
+Deux idées proposées par le propriétaire : une page "artistes féminines" dans Artistes & Styles, et un guide "créer un espace d'écoute dédié chez soi" dans Conseils d'Écoute. Aucune cannibalisation détectée sur les deux (aucune page existante ne couvre ces angles).
+
+**`artistes-feminines-radio-odyssey.html`** — la liste a été établie en repartant du texte `facts[0]` déjà écrit pour chacune des 100 fiches artistes (`src/data/artists.js`), pas de mémoire générale, pour limiter le risque d'erreur sur l'identification de personnes réelles. **35 artistes féminines solo** identifiées explicitement (mention "Chanteuse..." ou biographie sans ambiguïté), + **Bananarama** comme seul groupe entièrement féminin ("l'un des groupes féminins les plus vendus des années 1980", texte de sa propre fiche). Exclusion volontaire des groupes mixtes ou menés par un chanteur, y compris les cas limites : **Sade** a été écartée bien que la chanteuse Sade Adu en soit la voix, car sa propre fiche la présente explicitement comme un "groupe britannique mené par..." — cohérent avec le critère annoncé au propriétaire avant construction. FAQ avec une précision explicite : "Radio Odyssey diffuse-t-il plus d'artistes féminines que masculins ? Non, la programmation ne suit aucune logique de quota par genre."
+
+**`comment-creer-un-espace-decoute-chez-soi.html`** — guide distinct de `ecouter-radio-odyssey-enceinte-connectee.html` (qui répond à "comment brancher une seule enceinte", pas "comment monter une vraie installation") : choix des enceintes stéréo, rôle de l'ampli, filaire vs sans fil, bases d'acoustique de la pièce, budget. Point traité avec honnêteté plutôt que survente : le son 5.1/home cinéma n'apporte rien pour une source stéréo comme une web radio — expliqué clairement en FAQ plutôt que de laisser croire l'inverse.
+
+**Maillage** : lien ajouté depuis `ecouter-radio-odyssey-enceinte-connectee.html` vers le nouveau guide ; la page féminines reçoit un lien nav direct et pointe vers `artistes-diffuses-radio-odyssey.html`, `styles-musicaux-radio-odyssey.html` et `titres-les-plus-diffuses-sur-radio-odyssey.html`.
+
+**Vérifié après build (197 pages, aucune erreur)** : meta descriptions sous 160 caractères, canonical correct, `FAQPage` présent, les 36 liens vers les fiches artistes vérifiés un par un contre les fichiers réellement générés (aucun lien cassé), rendu testé dans le navigateur sans erreur console. `navigation.js` et `sitemap.xml` mis à jour (Artistes & Styles : 8 → 9 pages ; Conseils d'Écoute : 6 → 7 pages).
+
+Total après ce lot : **94 pages thématiques**, 6 restantes pour atteindre 100.
+
+---
+
+*Dernière mise à jour : 2026-08-08, artistes féminines et espace d'écoute dédié (§39).*
