@@ -1143,3 +1143,19 @@ Total après ce lot : **99 pages thématiques**, 1 restante pour atteindre 100.
 ---
 
 *Dernière mise à jour : 2026-08-08, round bonus du quiz + correction Blinding Lights (§47).*
+
+---
+
+## 48. Quiz : un artiste = une question, dates entièrement revérifiées (2026-08-08)
+
+Le propriétaire a signalé deux problèmes sur le quiz du §47 : (1) Queen, Bananarama et Simple Minds revenaient trop souvent comme bonne réponse à travers les deux rounds ; (2) plus grave, "La Belle et la Bête" d'Indochine n'est **pas** un titre des années 80 — recherche web effectuée, confirmé : c'est un single sorti le 6 décembre 2024, extrait de l'album *Babel Babel* (composé par Nicola Sirkis et Olivier Gérard). Une vraie erreur factuelle, pas une approximation.
+
+**Réaction : revérification complète plutôt que correction ponctuelle.** Plutôt que de ne corriger que l'erreur signalée, chacun des 18 autres titres du quiz (rounds principal + bonus du §47) a été revérifié individuellement par recherche web (Wikipédia, Discogs, IMDb, Songfacts) : dates de sortie confirmées exactes pour Simple Minds, Queen (I Want To Break Free/Radio Ga Ga/A Kind Of Magic), Wham! (Wake Me Up Before You Go-Go/Everything She Wants), Madonna, Phil Collins (Two Hearts/You Can't Hurry Love), Bananarama (Cruel Summer/Shy Boy/Na Na Hey Hey), Vanessa Paradis, Jean-Jacques Goldman, Michael Jackson (Billie Jean/The Way You Make Me Feel), Kylie Minogue, Sade. Seul Indochine était faux.
+
+**Conséquence assumée sur la taille du quiz** : en appliquant strictement "un artiste = une question" (demande du propriétaire) sur les catalogues vérifiés 80s réels, le nombre d'artistes distincts disponibles dans les 100 fiches du site tombe à **11**, pas 20. Plutôt que de forcer un chiffre rond avec des répétitions ou en réintroduisant une date approximative, le quiz est passé de 20 à **11 questions** (6 en round principal + 5 en round bonus, débloqué sur score parfait). La FAQ explique ce choix explicitement et annonce que le quiz s'enrichira à mesure que le catalogue d'artistes années 80 grandira.
+
+**Vérifié après build (202 pages, aucune erreur)** : comptage des `data-correct="true"` par `data-slug` confirmant qu'aucun artiste n'apparaît deux fois (11 occurrences, 11 slugs distincts) ; parcours complet testé dans le navigateur pour le cas imparfait (5/6, pas de bonus proposé) et le cas parfait (bonus débloqué, 11/11 final) ; aucun lien cassé.
+
+---
+
+*Dernière mise à jour : 2026-08-08, quiz corrigé — un artiste par question, dates revérifiées (§48).*
