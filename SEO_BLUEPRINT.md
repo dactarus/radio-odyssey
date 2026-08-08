@@ -1186,3 +1186,23 @@ Le §48 avait réduit le quiz à 11 questions, faute d'assez d'artistes années 
 ---
 
 *Dernière mise à jour : 2026-08-08, 9 fiches artistes années 80 + quiz restauré à 10+10 (§49).*
+
+---
+
+## 50. Quiz musical années 90 (2026-08-09)
+
+Le propriétaire a demandé un second quiz sur le même modèle que celui des années 80 (§45-49), cette fois sur les années 90, en proposant de croiser "les 20 artistes marquants des années 90" avec le catalogue réel de Radio Odyssey.
+
+**Méthode appliquée, identique au processus validé pour les années 80** : passage en revue systématique des tracks déjà présents dans `src/data/artists.js` pour repérer des titres plausiblement 90s, puis **vérification individuelle par recherche web de chaque candidat avant toute inclusion** (leçon tirée de l'erreur Indochine du §48). Plusieurs pistes prometteuses écartées après vérification : "Je te donne" de Jean-Jacques Goldman est en réalité de 1985 (pas 1990), "I Heard a Rumour" de Bananarama est de 1987, tout le catalogue Craig David et Bob Sinclar disponible est des années 2000, "Bouquet Final" de Vanessa Paradis est un titre de 2025, et les autres titres d'Indochine listés sont tous très récents (2024-2026).
+
+**16 artistes trouvés et vérifiés dans le catalogue existant** ; le propriétaire a complété les 4 derniers avec Robert Miles (*Children*, 1995), Gala (*Freed From Desire*, 1996), M People (*Moving On Up*, 1993) et Corona (*The Rhythm Of The Night*, 1993) — les 4 également vérifiés par recherche web avant intégration.
+
+**Structure identique au quiz années 80** : `quiz-musical-annees-90.html` (Musique & Énergie), 10 questions en round principal (tubes très connus internationalement : Michael Jackson, Céline Dion, U2, Daft Punk, Elton John, Corona, Robert Miles, Christina Aguilera, Jennifer Lopez, Jamiroquai) + 10 questions bonus débloquées sur score parfait (titres plus difficiles à trouver : Mylène Farmer, Simply Red, Sade, Zazie, Sting, Moby, Robbie Williams, Dario G, Gala, M People) — toujours une seule question par artiste sur l'ensemble des 20. Note technique : pour Elton John et Sting, le catalogue ne crédite qu'une version remixée récente du titre (respectivement "Can You Feel The Love Tonight (Remix)" et "Fields Of Gold (Andrew Cerrone Remix)") — l'année vérifiée est celle de la composition originale par le même artiste, cohérent avec le traitement déjà appliqué à Phil Collins au §48.
+
+**4 nouvelles fiches artistes créées** (Robert Miles, Gala, M People, Corona) dans `src/data/artists.js`, générant automatiquement leurs pages `/artiste-X.html`. Lien réciproque ajouté avec `quiz-musical-annees-80.html`.
+
+**Vérifié après build (216 pages, +5 vs §49, aucune erreur)** : les 4 nouvelles fiches générées et vérifiées ; comptage des 20 `data-correct="true"` par `data-slug` confirmant zéro doublon ; aucun lien cassé ; parcours complet testé dans le navigateur en trois temps (contrainte de timeout) — round principal 10/10 → bonus proposé → round bonus 10/10 → score final 20/20, verdict "Score absolument parfait, sur les deux rounds !". `navigation.js` et `sitemap.xml` mis à jour (Musique & Énergie : +1 page).
+
+---
+
+*Dernière mise à jour : 2026-08-09, quiz musical années 90 (§50).*
