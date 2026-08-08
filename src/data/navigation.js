@@ -103,6 +103,7 @@ export const NAV_CATEGORIES = [
       { href: '/radio-pop-rnb-en-ligne.html', bi: 'heart', label: 'Radio Pop/R&B', desc: 'Groove, soul et refrains pop' },
       { href: '/decouvertes-radio-odyssey.html', bi: 'stars', label: 'Découvertes Radio Odyssey', desc: 'Les artistes émergents soutenus par la radio' },
       { href: '/artistes-feminines-radio-odyssey.html', bi: 'person-badge', label: 'Artistes Féminines', desc: 'Chanteuses et artistes féminines réellement diffusées' },
+      { href: '/quel-style-de-musique-pour-la-coherence-cardiaque.html', bi: 'cloud', label: 'Quel Style pour la Cohérence Cardiaque', desc: 'Piano, harpe, duduk, violon — pourquoi ce style chill' },
     ],
   },
   {

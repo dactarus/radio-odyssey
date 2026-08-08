@@ -1,0 +1,108 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: "Quel style de musique accompagne les séquences de cohérence cardiaque de Radio Odyssey ?", a: "Un style chill, porté par des instruments comme le piano, la harpe, le duduk ou le violon, avec des notes longues et enveloppantes — pensé pour ne jamais distraire de l'exercice de respiration." },
+  { q: "Pourquoi pas une musique plus rythmée ou plus énergique ?", a: "Un rythme trop élevé viendrait directement contredire l'esprit de détente recherché — le directeur des programmes de Radio Odyssey résume ça d'un mot : ce serait \"incohérent\" avec l'exercice lui-même." },
+  { q: "La musique est-elle calée sur le rythme de la respiration (5 secondes / 5 secondes) ?", a: "Autant que possible, oui. Mais l'essentiel reste de se concentrer sur la voix d'Elisabeth Bélot-Grimaud, qui guide le rythme — c'est elle qui rend l'exercice efficace, plus qu'une synchronisation parfaite avec la musique." },
+  { q: "Peut-on choisir soi-même une musique de cohérence cardiaque en dehors de Radio Odyssey ?", a: "Oui, en évitant tout ce qui est énergique et en privilégiant un instrument dominant plutôt qu'un habillage trop chargé — voir le détail plus bas sur cette page." },
+];
+---
+<Layout
+  lang="fr"
+  title="Quel Style de Musique pour la Cohérence Cardiaque ?"
+  description="Piano, harpe, duduk, violon : le style musical chill qui accompagne les séquences de cohérence cardiaque de Radio Odyssey, et pourquoi ce choix."
+  articleDatePublished="2026-08-08"
+>
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Quel style de musique pour la cohérence cardiaque"
+    title="Quel Style de Musique pour la Cohérence Cardiaque ?"
+    text="Piano, harpe, duduk, violon : pourquoi ce style chill accompagne les séquences diffusées à l'antenne."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M8 30C8 20 14 12 24 12C34 12 40 20 40 30" stroke="white" stroke-width="2.2" stroke-linecap="round" fill="none"/><path d="M8 30C10 34 14 36 24 36C34 36 38 34 40 30" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round" fill="none"/><circle cx="24" cy="24" r="3" fill="white"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Parmi les <a href="/styles-musicaux-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">styles musicaux</a> présents sur Radio Odyssey, un seul est pensé pour un usage précis plutôt que pour la diffusion générale : celui des séquences de <a href="/radio-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque</a>. Le directeur des programmes nous explique ce choix.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Un style chill, porté par quelques instruments précis</h2>
+            <p style="margin-bottom:0;">La musique des séquences de cohérence cardiaque s'apparente au style <strong>chill</strong> : piano, harpe, duduk, violon, avec des notes longues et enveloppantes plutôt qu'une mélodie chargée. Rien de comparable avec le reste de la programmation, volontairement plus enjouée et rythmée.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pourquoi un autre style serait "incohérent"</h2>
+            <p style="margin-bottom:0;">Un rythme trop élevé nuirait directement à l'exercice de respiration et à l'esprit de détente recherché par la cohérence cardiaque — au sens propre, ce serait <em>incohérent</em> avec l'exercice lui-même. C'est ce critère, plus que toute autre considération esthétique, qui a guidé le choix du style.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Un tempo pensé pour la respiration, sans rigidité</h2>
+            <p style="margin-bottom:0;">La musique suit autant que possible le rythme de la respiration recommandée (5 secondes d'inspiration, 5 secondes d'expiration, soit 6 respirations par minute). Mais l'essentiel reste ailleurs : rester concentré sur la voix d'<a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Elisabeth Bélot-Grimaud</a>, qui guide l'exercice, est ce qui en fait vraiment l'efficacité — plus qu'une synchronisation parfaite entre le tempo musical et la respiration.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Des musiques composées spécifiquement pour Radio Odyssey</h2>
+            <p style="margin-bottom:0;">Ces musiques ne sont pas empruntées à un catalogue de musique de méditation existant : elles ont été composées spécifiquement pour Radio Odyssey, selon un cahier des charges précis, pour maîtriser au mieux les besoins particuliers des séquences de cohérence cardiaque. Les séquences longues (3 minutes) et courtes (1 minute) de la <a href="/radio-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">grille horaire</a> partagent pour la plupart les mêmes musiques, ou des versions spécifiques selon un choix éditorial.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Le conseil de Radio Odyssey pour choisir sa propre musique</h2>
+            <p>Envie de pratiquer la cohérence cardiaque avec votre propre musique, en dehors de Radio Odyssey ? Quelques repères simples :</p>
+            <ul style="margin-bottom:0;">
+              <li>Évitez tout ce qui est énergique, même si cette musique vous plaît par ailleurs — c'est la règle numéro un, presque une évidence</li>
+              <li>Privilégiez un instrument dominant plutôt qu'un habillage chargé de plusieurs instruments, qui risque de distraire de l'exercice</li>
+              <li>Un instrument à la sonorité vibrante et apaisante, comme le duduk, favorise une plus grande concentration sur la respiration</li>
+            </ul>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="stylecc" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/radio-coherence-cardiaque.html', label: 'Radio Cohérence Cardiaque', desc: 'Les séquences diffusées à l\'antenne' },
+              { href: '/comment-pratiquer-la-coherence-cardiaque.html', label: 'Comment Pratiquer la Cohérence Cardiaque', desc: 'Le guide pas à pas complet' },
+              { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Notre Partenaire Elisabeth Bélot-Grimaud', desc: 'La voix derrière les séquences' },
+            ]}
+            associated={[
+              { href: '/styles-musicaux-radio-odyssey.html', label: 'Tous les styles musicaux diffusés' },
+              { href: '/comment-radio-odyssey-traite-le-son.html', label: 'Comment Radio Odyssey Traite le Son' },
+              { href: '/bienfaits-coherence-cardiaque.html', label: 'Les bienfaits de la cohérence cardiaque' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez ces séquences en direct</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="/artistes-et-styles.html" class="btn-hero-ghost">
+                <Icon name="grid" /> Découvrir les autres styles
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
