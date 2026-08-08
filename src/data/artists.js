@@ -469,7 +469,7 @@ export const ARTISTS = [
     genre: 'R&B / Pop',
     origin: 'Canada',
     playCount: 54,
-    tracks: ['Can’t Feel My Face', 'Starboy (feat. Daft Punk)', 'I Feel It Coming', 'Sacrifice'],
+    tracks: ['Blinding Lights', 'Can’t Feel My Face', 'Starboy (feat. Daft Punk)', 'I Feel It Coming', 'Sacrifice'],
     facts: [
       'Artiste canadien mêlant R&B, pop et influences electro.',
       'L’un des artistes les plus streamés au monde depuis le milieu des années 2010.',

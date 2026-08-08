@@ -6,7 +6,7 @@ import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
 
-const questions = [
+const mainQuestions = [
   { track: "Don't You (Forget About Me)", correct: 'simple-minds', choices: [
     { slug: 'wham', name: 'Wham!' },
     { slug: 'simple-minds', name: 'Simple Minds' },
@@ -69,16 +69,80 @@ const questions = [
   ]},
 ];
 
+const bonusQuestions = [
+  { track: "La Belle et la Bête", correct: 'indochine', choices: [
+    { slug: 'simple-minds', name: 'Simple Minds' },
+    { slug: 'queen', name: 'Queen' },
+    { slug: 'indochine', name: 'Indochine' },
+    { slug: 'wham', name: 'Wham!' },
+  ]},
+  { track: "Alive And Kicking", correct: 'simple-minds', choices: [
+    { slug: 'indochine', name: 'Indochine' },
+    { slug: 'phil-collins', name: 'Phil Collins' },
+    { slug: 'simple-minds', name: 'Simple Minds' },
+    { slug: 'queen', name: 'Queen' },
+  ]},
+  { track: "The Way You Make Me Feel", correct: 'michael-jackson', choices: [
+    { slug: 'wham', name: 'Wham!' },
+    { slug: 'michael-jackson', name: 'Michael Jackson' },
+    { slug: 'queen', name: 'Queen' },
+    { slug: 'phil-collins', name: 'Phil Collins' },
+  ]},
+  { track: "Radio Ga Ga", correct: 'queen', choices: [
+    { slug: 'wham', name: 'Wham!' },
+    { slug: 'simple-minds', name: 'Simple Minds' },
+    { slug: 'bananarama', name: 'Bananarama' },
+    { slug: 'queen', name: 'Queen' },
+  ]},
+  { track: "Everything She Wants", correct: 'wham', choices: [
+    { slug: 'queen', name: 'Queen' },
+    { slug: 'michael-jackson', name: 'Michael Jackson' },
+    { slug: 'madonna', name: 'Madonna' },
+    { slug: 'wham', name: 'Wham!' },
+  ]},
+  { track: "Shy Boy", correct: 'bananarama', choices: [
+    { slug: 'madonna', name: 'Madonna' },
+    { slug: 'kylie-minogue', name: 'Kylie Minogue' },
+    { slug: 'sade', name: 'Sade' },
+    { slug: 'bananarama', name: 'Bananarama' },
+  ]},
+  { track: "The Sweetest Taboo", correct: 'sade', choices: [
+    { slug: 'vanessa-paradis', name: 'Vanessa Paradis' },
+    { slug: 'bananarama', name: 'Bananarama' },
+    { slug: 'sade', name: 'Sade' },
+    { slug: 'kylie-minogue', name: 'Kylie Minogue' },
+  ]},
+  { track: "You Can't Hurry Love", correct: 'phil-collins', choices: [
+    { slug: 'sting', name: 'Sting' },
+    { slug: 'elton-john', name: 'Elton John' },
+    { slug: 'queen', name: 'Queen' },
+    { slug: 'phil-collins', name: 'Phil Collins' },
+  ]},
+  { track: "Na Na Hey Hey (Kiss Him Goodbye)", correct: 'bananarama', choices: [
+    { slug: 'kylie-minogue', name: 'Kylie Minogue' },
+    { slug: 'madonna', name: 'Madonna' },
+    { slug: 'sade', name: 'Sade' },
+    { slug: 'bananarama', name: 'Bananarama' },
+  ]},
+  { track: "A Kind Of Magic", correct: 'queen', choices: [
+    { slug: 'indochine', name: 'Indochine' },
+    { slug: 'simple-minds', name: 'Simple Minds' },
+    { slug: 'jean-jacques-goldman', name: 'Jean-Jacques Goldman' },
+    { slug: 'queen', name: 'Queen' },
+  ]},
+];
+
 const faq = [
-  { q: 'Les titres de ce quiz sont-ils vraiment diffusés sur Radio Odyssey ?', a: "Oui, les 10 titres et artistes de ce quiz font partie de notre catalogue réel de programmation, dans la catégorie \"années 80 remixées\" — voir notre page <a href='/radio-annees-80-en-ligne.html' style='color:var(--ro-purple);font-weight:700;'>radio années 80 en ligne</a>." },
+  { q: 'Les titres de ce quiz sont-ils vraiment diffusés sur Radio Odyssey ?', a: "Oui, tous les titres et artistes de ce quiz font partie de notre catalogue réel de programmation, dans la catégorie \"années 80 remixées\" — voir notre page <a href='/radio-annees-80-en-ligne.html' style='color:var(--ro-purple);font-weight:700;'>radio années 80 en ligne</a>." },
   { q: 'Le quiz a-t-il un niveau de difficulté ?', a: "Les propositions mélangent volontairement des artistes de la même époque, pour que le quiz reste un vrai défi même pour les amateurs des années 80." },
-  { q: 'Puis-je refaire le quiz ?', a: "Oui, un bouton \"Recommencer\" est disponible à la fin pour retenter votre chance." },
+  { q: 'Qu\'est-ce que le round bonus ?', a: "Réussir un score parfait de 10/10 sur les 10 premières questions débloque 10 questions bonus supplémentaires, pour un score final possible sur 20." },
+  { q: 'Puis-je refaire le quiz ?', a: "Oui, un bouton \"Recommencer\" est disponible à la fin pour retenter votre chance — l'ordre des questions change à chaque tentative." },
 ];
 ---
 <Layout
   lang="fr"
   title="Quiz Musical Années 80 | Radio Odyssey"
-  description="Testez vos connaissances avec ce quiz musical années 80, basé sur les vrais titres diffusés sur Radio Odyssey. 10 questions, un score à la fin."
+  description="Testez vos connaissances avec ce quiz musical années 80, basé sur les vrais titres diffusés sur Radio Odyssey. 10 questions, un round bonus si score parfait."
 >
   <PageHero
     gradientFrom="#FFD700"
@@ -86,7 +150,7 @@ const faq = [
     homeLabel="🏠 Accueil"
     breadcrumbCurrent="Quiz musical années 80"
     title="Quiz Musical Années 80"
-    text="10 questions, basées sur les vrais titres diffusés sur Radio Odyssey. Incollable ?"
+    text="10 questions, basées sur les vrais titres diffusés sur Radio Odyssey — et 10 de plus si vous faites un sans-faute."
   >
     <Fragment slot="icon">
       <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.3"/><path d="M24 14V24L31 28" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M17 8L12 13M31 8L36 13" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round"/></svg>
@@ -99,14 +163,14 @@ const faq = [
         <div class="col-lg-8">
 
           <div class="content-card">
-            <p style="margin:0;">Les années 80 sont, sans surprise, le thème préféré des amateurs de quiz musicaux. Voici 10 questions basées sur les vrais titres de notre <a href="/radio-annees-80-en-ligne.html" style="color:var(--ro-purple);font-weight:700;">catégorie années 80</a> — à vous de retrouver le bon artiste.</p>
+            <p style="margin:0;">Les années 80 sont, sans surprise, le thème préféré des amateurs de quiz musicaux. Voici 10 questions basées sur les vrais titres de notre <a href="/radio-annees-80-en-ligne.html" style="color:var(--ro-purple);font-weight:700;">catégorie années 80</a> — à vous de retrouver le bon artiste. Un sans-faute débloque 10 questions bonus supplémentaires !</p>
           </div>
 
           <div class="content-card" id="quiz80">
             <div id="quiz80-progress" style="font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#7B2FBE;margin-bottom:.8rem;">Question 1/10</div>
 
-            {questions.map((q, i) => (
-              <div class="quiz80-q" data-index={i} style={i === 0 ? '' : 'display:none;'}>
+            {mainQuestions.map((q, i) => (
+              <div class="quiz80-q" data-round="main" data-index={i} style={i === 0 ? '' : 'display:none;'}>
                 <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎵 "{q.track}"</p>
                 <div style="display:flex;flex-direction:column;gap:.6rem;">
                   {q.choices.map((c) => (
@@ -126,8 +190,38 @@ const faq = [
               </div>
             ))}
 
+            {bonusQuestions.map((q, i) => (
+              <div class="quiz80-q" data-round="bonus" data-index={i} style="display:none;">
+                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎁 🎵 "{q.track}"</p>
+                <div style="display:flex;flex-direction:column;gap:.6rem;">
+                  {q.choices.map((c) => (
+                    <button
+                      type="button"
+                      class="quiz80-choice"
+                      data-slug={c.slug}
+                      data-correct={c.slug === q.correct ? 'true' : 'false'}
+                      style="text-align:left;padding:.8rem 1rem;border-radius:12px;border:1.5px solid rgba(255,215,0,.35);background:rgba(255,215,0,.05);font-family:'Nunito',sans-serif;font-weight:700;color:var(--ro-dark);cursor:pointer;transition:background .15s,border-color .15s;width:100%;"
+                    >
+                      <span class="quiz80-choice-icon"></span>{c.name}
+                    </button>
+                  ))}
+                </div>
+                <p class="quiz80-feedback" style="display:none;margin:.8rem 0 0;font-weight:800;"></p>
+                <button type="button" class="quiz80-next btn-hero-ghost" style="margin-top:.8rem;display:none;">Question suivante →</button>
+              </div>
+            ))}
+
+            <div id="quiz80-bonus-offer" style="display:none;text-align:center;">
+              <p style="font-size:1.4rem;margin-bottom:.3rem;">🎉 10/10 — Score parfait !</p>
+              <p style="color:var(--ro-muted);margin-bottom:1.3rem;">Vous débloquez 10 questions bonus. Score final possible : 20/20.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;">
+                <button type="button" id="quiz80-bonus-start" class="btn-hero">🎁 Tenter le bonus</button>
+                <button type="button" id="quiz80-bonus-skip" class="btn-hero-ghost">Voir mon score</button>
+              </div>
+            </div>
+
             <div id="quiz80-results" style="display:none;">
-              <p style="font-size:1.3rem;font-weight:900;color:var(--ro-purple);text-align:center;margin-bottom:.3rem;">Votre score : <span id="quiz80-score">0</span>/10</p>
+              <p style="font-size:1.3rem;font-weight:900;color:var(--ro-purple);text-align:center;margin-bottom:.3rem;">Votre score : <span id="quiz80-score">0</span>/<span id="quiz80-max">10</span></p>
               <p id="quiz80-verdict" style="text-align:center;color:var(--ro-muted);margin-bottom:1.5rem;"></p>
               <div style="display:flex;justify-content:center;">
                 <button type="button" id="quiz80-restart" class="btn-hero">Recommencer</button>
@@ -174,47 +268,91 @@ const faq = [
 
   <script is:inline>
   function quiz80Init() {
-    var TOTAL = 10;
-    var score = 0;
     var container = document.getElementById('quiz80');
     if (!container) return;
 
-    var allQuestions = Array.prototype.slice.call(container.querySelectorAll('.quiz80-q'));
-    // Ordre aléatoire à chaque chargement de la page.
-    var order = allQuestions.map(function (_, i) { return i; });
-    for (var i = order.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var tmp = order[i]; order[i] = order[j]; order[j] = tmp;
+    var mainEls = Array.prototype.slice.call(container.querySelectorAll('.quiz80-q[data-round="main"]'));
+    var bonusEls = Array.prototype.slice.call(container.querySelectorAll('.quiz80-q[data-round="bonus"]'));
+
+    function shuffledOrder(n) {
+      var order = [];
+      for (var k = 0; k < n; k++) order.push(k);
+      for (var i = order.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = order[i]; order[i] = order[j]; order[j] = tmp;
+      }
+      return order;
     }
+
+    var mainOrder = shuffledOrder(mainEls.length);
+    var bonusOrder = shuffledOrder(bonusEls.length);
+
+    var phase = 'main'; // 'main' | 'bonus' | 'done'
     var pos = 0;
+    var score = 0;
     var pendingTimer = null;
 
-    function elAt(logicalPos) {
-      return allQuestions[order[logicalPos]];
+    function currentEls() { return phase === 'bonus' ? bonusEls : mainEls; }
+    function currentOrder() { return phase === 'bonus' ? bonusOrder : mainOrder; }
+
+    function hideAllScreens() {
+      mainEls.concat(bonusEls).forEach(function (q) { q.style.display = 'none'; });
+      var offer = document.getElementById('quiz80-bonus-offer');
+      if (offer) offer.style.display = 'none';
+      var results = document.getElementById('quiz80-results');
+      if (results) results.style.display = 'none';
     }
 
     function showQuestion(logicalPos) {
-      allQuestions.forEach(function (q) { q.style.display = 'none'; });
-      var target = elAt(logicalPos);
+      hideAllScreens();
+      var els = currentEls();
+      var order = currentOrder();
+      var target = els[order[logicalPos]];
       if (target) target.style.display = '';
       var progress = document.getElementById('quiz80-progress');
-      if (progress) progress.textContent = 'Question ' + (logicalPos + 1) + '/' + TOTAL;
+      if (progress) {
+        progress.style.display = '';
+        var label = phase === 'bonus' ? '🎁 Bonus — Question ' : 'Question ';
+        progress.textContent = label + (logicalPos + 1) + '/' + els.length;
+      }
+    }
+
+    function showBonusOffer() {
+      hideAllScreens();
+      var progress = document.getElementById('quiz80-progress');
+      if (progress) progress.style.display = 'none';
+      var offer = document.getElementById('quiz80-bonus-offer');
+      if (offer) offer.style.display = '';
     }
 
     function showResults() {
-      allQuestions.forEach(function (q) { q.style.display = 'none'; });
+      hideAllScreens();
       var progress = document.getElementById('quiz80-progress');
       if (progress) progress.style.display = 'none';
       var results = document.getElementById('quiz80-results');
       var scoreEl = document.getElementById('quiz80-score');
+      var maxEl = document.getElementById('quiz80-max');
       var verdictEl = document.getElementById('quiz80-verdict');
+      var max = phase === 'bonus' ? mainEls.length + bonusEls.length : mainEls.length;
       if (scoreEl) scoreEl.textContent = String(score);
+      if (maxEl) maxEl.textContent = String(max);
       if (verdictEl) {
-        var msg = score >= 8
-          ? "Incollable ! Les années 80 n'ont plus aucun secret pour vous."
-          : score >= 5
-          ? "Pas mal ! Une petite session sur notre page années 80 et ce sera parfait."
-          : "Il est temps de réviser en musique — direction notre page années 80.";
+        var msg;
+        if (max === 20) {
+          msg = score === 20
+            ? "20/20 — Score absolument parfait, sur les deux rounds !"
+            : score >= 15
+            ? "Très fort sur ce format long !"
+            : "Belle tentative sur ce format long — direction notre page années 80 pour réviser.";
+        } else if (score === 10) {
+          msg = "Score parfait ! (Vous avez choisi de ne pas tenter le bonus.)";
+        } else {
+          msg = score >= 8
+            ? "Incollable ! Les années 80 n'ont plus aucun secret pour vous."
+            : score >= 5
+            ? "Pas mal ! Une petite session sur notre page années 80 et ce sera parfait."
+            : "Il est temps de réviser en musique — direction notre page années 80.";
+        }
         verdictEl.textContent = msg;
       }
       if (results) results.style.display = '';
@@ -223,14 +361,24 @@ const faq = [
     function advance() {
       if (pendingTimer) { clearTimeout(pendingTimer); pendingTimer = null; }
       pos += 1;
-      if (pos < TOTAL) {
+      var els = currentEls();
+      if (pos < els.length) {
         showQuestion(pos);
+        return;
+      }
+      // Fin du round en cours.
+      if (phase === 'main') {
+        if (score === mainEls.length) {
+          showBonusOffer();
+        } else {
+          showResults();
+        }
       } else {
         showResults();
       }
     }
 
-    allQuestions.forEach(function (qEl) {
+    function wireQuestion(qEl) {
       var buttons = Array.prototype.slice.call(qEl.querySelectorAll('.quiz80-choice'));
       var nextBtn = qEl.querySelector('.quiz80-next');
       var feedback = qEl.querySelector('.quiz80-feedback');
@@ -276,7 +424,26 @@ const faq = [
       if (nextBtn) {
         nextBtn.addEventListener('click', advance);
       }
-    });
+    }
+
+    mainEls.forEach(wireQuestion);
+    bonusEls.forEach(wireQuestion);
+
+    var bonusStartBtn = document.getElementById('quiz80-bonus-start');
+    if (bonusStartBtn) {
+      bonusStartBtn.addEventListener('click', function () {
+        phase = 'bonus';
+        pos = 0;
+        showQuestion(0);
+      });
+    }
+
+    var bonusSkipBtn = document.getElementById('quiz80-bonus-skip');
+    if (bonusSkipBtn) {
+      bonusSkipBtn.addEventListener('click', function () {
+        showResults();
+      });
+    }
 
     var restartBtn = document.getElementById('quiz80-restart');
     if (restartBtn) {

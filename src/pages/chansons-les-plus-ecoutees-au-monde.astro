@@ -7,7 +7,7 @@ import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
 
 const topSongs = [
-  { rank: 1, track: 'Blinding Lights', artistName: 'The Weeknd', slug: 'the-weeknd', streams: '5,4+ milliards', onAir: false },
+  { rank: 1, track: 'Blinding Lights', artistName: 'The Weeknd', slug: 'the-weeknd', streams: '5,4+ milliards', onAir: true },
   { rank: 2, track: 'Shape of You', artistName: 'Ed Sheeran', slug: 'ed-sheeran', streams: '4,94 milliards', onAir: true },
   { rank: 3, track: 'Sweater Weather', artistName: 'The Neighbourhood', slug: null, streams: '4,64 milliards', onAir: false },
   { rank: 4, track: 'Starboy', artistName: 'The Weeknd (feat. Daft Punk)', slug: 'the-weeknd', streams: '4,57 milliards', onAir: true },
@@ -21,7 +21,7 @@ const faq = [
   { q: 'Quelles sont vraiment les 10 chansons les plus écoutées au monde ?', a: "Le classement au-delà de la 8e place bouge très souvent selon la source et la date consultées — les 8 premières places, elles, sont stables depuis plusieurs mois et largement documentées (Spotify, ChartMasters, Wikipédia)." },
   { q: 'Ce classement est-il basé sur Spotify uniquement ?', a: "Oui, ce sont les chiffres de streaming cumulé sur Spotify, la source la plus citée pour ce type de classement mondial — d'autres plateformes (YouTube, Apple Music) publient des classements distincts, parfois différents." },
   { q: 'Ce classement change-t-il souvent ?', a: "Les chiffres progressent chaque jour, mais l'ordre des toutes premières places reste stable sur plusieurs mois. \"Blinding Lights\" a par exemple détrôné \"Shape of You\" après plus de 5 ans à la première place." },
-  { q: 'Peut-on écouter ces titres sur Radio Odyssey ?', a: "4 des 8 titres de ce classement mondial font partie de notre catalogue réel de programmation — voir le détail ci-dessous." },
+  { q: 'Peut-on écouter ces titres sur Radio Odyssey ?', a: "5 des 8 titres de ce classement mondial font partie de notre catalogue réel de programmation — voir le détail ci-dessous." },
 ];
 ---
 <Layout
@@ -73,9 +73,10 @@ const faq = [
           </div>
 
           <div class="content-card">
-            <h2>4 de ces titres sont diffusés sur Radio Odyssey</h2>
-            <p style="margin-bottom:1rem;">Bonne nouvelle : la moitié de ce classement mondial fait partie de notre programmation réelle. Vous pouvez les écouter en direct :</p>
+            <h2>5 de ces titres sont diffusés sur Radio Odyssey</h2>
+            <p style="margin-bottom:1rem;">Bonne nouvelle : plus de la moitié de ce classement mondial fait partie de notre programmation réelle. Vous pouvez les écouter en direct :</p>
             <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+              <a href="/artiste-the-weeknd.html" class="tag-pill" style="text-decoration:none;">The Weeknd — Blinding Lights</a>
               <a href="/artiste-ed-sheeran.html" class="tag-pill" style="text-decoration:none;">Ed Sheeran — Shape of You</a>
               <a href="/artiste-the-weeknd.html" class="tag-pill" style="text-decoration:none;">The Weeknd — Starboy</a>
               <a href="/artiste-harry-styles.html" class="tag-pill" style="text-decoration:none;">Harry Styles — As It Was</a>
