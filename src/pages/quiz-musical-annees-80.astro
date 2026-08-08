@@ -1,0 +1,253 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const questions = [
+  { track: "Don't You (Forget About Me)", correct: 'simple-minds', choices: [
+    { slug: 'wham', name: 'Wham!' },
+    { slug: 'simple-minds', name: 'Simple Minds' },
+    { slug: 'queen', name: 'Queen' },
+    { slug: 'bananarama', name: 'Bananarama' },
+  ]},
+  { track: "I Want To Break Free", correct: 'queen', choices: [
+    { slug: 'wham', name: 'Wham!' },
+    { slug: 'phil-collins', name: 'Phil Collins' },
+    { slug: 'queen', name: 'Queen' },
+    { slug: 'simple-minds', name: 'Simple Minds' },
+  ]},
+  { track: "Wake Me Up Before You Go-Go", correct: 'wham', choices: [
+    { slug: 'michael-jackson', name: 'Michael Jackson' },
+    { slug: 'queen', name: 'Queen' },
+    { slug: 'phil-collins', name: 'Phil Collins' },
+    { slug: 'wham', name: 'Wham!' },
+  ]},
+  { track: "La Isla Bonita", correct: 'madonna', choices: [
+    { slug: 'madonna', name: 'Madonna' },
+    { slug: 'kylie-minogue', name: 'Kylie Minogue' },
+    { slug: 'bananarama', name: 'Bananarama' },
+    { slug: 'vanessa-paradis', name: 'Vanessa Paradis' },
+  ]},
+  { track: "Two Hearts", correct: 'phil-collins', choices: [
+    { slug: 'sting', name: 'Sting' },
+    { slug: 'elton-john', name: 'Elton John' },
+    { slug: 'phil-collins', name: 'Phil Collins' },
+    { slug: 'queen', name: 'Queen' },
+  ]},
+  { track: "Cruel Summer", correct: 'bananarama', choices: [
+    { slug: 'madonna', name: 'Madonna' },
+    { slug: 'mylene-farmer', name: 'Mylène Farmer' },
+    { slug: 'kylie-minogue', name: 'Kylie Minogue' },
+    { slug: 'bananarama', name: 'Bananarama' },
+  ]},
+  { track: "Joe Le Taxi", correct: 'vanessa-paradis', choices: [
+    { slug: 'mylene-farmer', name: 'Mylène Farmer' },
+    { slug: 'vanessa-paradis', name: 'Vanessa Paradis' },
+    { slug: 'zazie', name: 'Zazie' },
+    { slug: 'madonna', name: 'Madonna' },
+  ]},
+  { track: "Au Bout De Mes Rêves", correct: 'jean-jacques-goldman', choices: [
+    { slug: 'laurent-voulzy', name: 'Laurent Voulzy' },
+    { slug: 'christophe-mae', name: 'Christophe Maé' },
+    { slug: 'amir', name: 'Amir' },
+    { slug: 'jean-jacques-goldman', name: 'Jean-Jacques Goldman' },
+  ]},
+  { track: "Billie Jean", correct: 'michael-jackson', choices: [
+    { slug: 'wham', name: 'Wham!' },
+    { slug: 'michael-jackson', name: 'Michael Jackson' },
+    { slug: 'queen', name: 'Queen' },
+    { slug: 'phil-collins', name: 'Phil Collins' },
+  ]},
+  { track: "I Should Be So Lucky", correct: 'kylie-minogue', choices: [
+    { slug: 'madonna', name: 'Madonna' },
+    { slug: 'bananarama', name: 'Bananarama' },
+    { slug: 'kylie-minogue', name: 'Kylie Minogue' },
+    { slug: 'vanessa-paradis', name: 'Vanessa Paradis' },
+  ]},
+];
+
+const faq = [
+  { q: 'Les titres de ce quiz sont-ils vraiment diffusés sur Radio Odyssey ?', a: "Oui, les 10 titres et artistes de ce quiz font partie de notre catalogue réel de programmation, dans la catégorie \"années 80 remixées\" — voir notre page <a href='/radio-annees-80-en-ligne.html' style='color:var(--ro-purple);font-weight:700;'>radio années 80 en ligne</a>." },
+  { q: 'Le quiz a-t-il un niveau de difficulté ?', a: "Les propositions mélangent volontairement des artistes de la même époque, pour que le quiz reste un vrai défi même pour les amateurs des années 80." },
+  { q: 'Puis-je refaire le quiz ?', a: "Oui, un bouton \"Recommencer\" est disponible à la fin pour retenter votre chance." },
+];
+---
+<Layout
+  lang="fr"
+  title="Quiz Musical Années 80 | Radio Odyssey"
+  description="Testez vos connaissances avec ce quiz musical années 80, basé sur les vrais titres diffusés sur Radio Odyssey. 10 questions, un score à la fin."
+>
+  <PageHero
+    gradientFrom="#FFD700"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Quiz musical années 80"
+    title="Quiz Musical Années 80"
+    text="10 questions, basées sur les vrais titres diffusés sur Radio Odyssey. Incollable ?"
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.3"/><path d="M24 14V24L31 28" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M17 8L12 13M31 8L36 13" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Les années 80 sont, sans surprise, le thème préféré des amateurs de quiz musicaux. Voici 10 questions basées sur les vrais titres de notre <a href="/radio-annees-80-en-ligne.html" style="color:var(--ro-purple);font-weight:700;">catégorie années 80</a> — à vous de retrouver le bon artiste.</p>
+          </div>
+
+          <div class="content-card" id="quiz80">
+            <div id="quiz80-progress" style="font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#7B2FBE;margin-bottom:.8rem;">Question 1/10</div>
+
+            {questions.map((q, i) => (
+              <div class="quiz80-q" data-index={i} style={i === 0 ? '' : 'display:none;'}>
+                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎵 "{q.track}"</p>
+                <div style="display:flex;flex-direction:column;gap:.6rem;">
+                  {q.choices.map((c) => (
+                    <button
+                      type="button"
+                      class="quiz80-choice"
+                      data-slug={c.slug}
+                      data-correct={c.slug === q.correct ? 'true' : 'false'}
+                      style="text-align:left;padding:.8rem 1rem;border-radius:12px;border:1.5px solid rgba(123,47,190,.2);background:rgba(123,47,190,.03);font-family:'Nunito',sans-serif;font-weight:700;color:var(--ro-dark);cursor:pointer;transition:background .2s,border-color .2s;"
+                    >
+                      {c.name}
+                    </button>
+                  ))}
+                </div>
+                <button type="button" class="quiz80-next btn-hero-ghost" style="margin-top:1.2rem;display:none;">Question suivante →</button>
+              </div>
+            ))}
+
+            <div id="quiz80-results" style="display:none;">
+              <p style="font-size:1.3rem;font-weight:900;color:var(--ro-purple);text-align:center;margin-bottom:.3rem;">Votre score : <span id="quiz80-score">0</span>/10</p>
+              <p id="quiz80-verdict" style="text-align:center;color:var(--ro-muted);margin-bottom:1.5rem;"></p>
+              <div style="display:flex;justify-content:center;">
+                <button type="button" id="quiz80-restart" class="btn-hero">Recommencer</button>
+              </div>
+            </div>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="quiz80faq" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/radio-annees-80-en-ligne.html', label: 'Radio Années 80 en Ligne', desc: 'Les hits cultes remixés — nostalgie & énergie pure !' },
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les Artistes Diffusés', desc: 'La liste complète, tous styles confondus' },
+              { href: '/titres-les-plus-diffuses-sur-radio-odyssey.html', label: 'Les Titres les Plus Diffusés', desc: 'Le classement réel, tous styles confondus' },
+            ]}
+            associated={[
+              { href: '/comment-radio-odyssey-utilise-les-remix.html', label: 'Comment Radio Odyssey utilise les remix' },
+              { href: '/styles-musicaux-radio-odyssey.html', label: 'Styles musicaux sur Radio Odyssey' },
+              { href: '/musique-et-energie.html', label: 'Tout le cocon Musique & Énergie' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez ces titres en direct</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <style>
+    .quiz80-choice:hover { background: rgba(123,47,190,.08); }
+    .quiz80-choice.is-correct { background: rgba(56,161,105,.15) !important; border-color: #38a169 !important; }
+    .quiz80-choice.is-wrong { background: rgba(220,38,38,.1) !important; border-color: #dc2626 !important; }
+    .quiz80-choice:disabled { cursor: default; opacity: .85; }
+  </style>
+
+  <script is:inline>
+  (function () {
+    var TOTAL = 10;
+    var score = 0;
+    var container = document.getElementById('quiz80');
+    if (!container) return;
+
+    function showQuestion(index) {
+      var qs = container.querySelectorAll('.quiz80-q');
+      qs.forEach(function (q) { q.style.display = 'none'; });
+      var target = container.querySelector('.quiz80-q[data-index="' + index + '"]');
+      if (target) target.style.display = '';
+      var progress = document.getElementById('quiz80-progress');
+      if (progress) progress.textContent = 'Question ' + (index + 1) + '/' + TOTAL;
+    }
+
+    function showResults() {
+      container.querySelectorAll('.quiz80-q').forEach(function (q) { q.style.display = 'none'; });
+      var progress = document.getElementById('quiz80-progress');
+      if (progress) progress.style.display = 'none';
+      var results = document.getElementById('quiz80-results');
+      var scoreEl = document.getElementById('quiz80-score');
+      var verdictEl = document.getElementById('quiz80-verdict');
+      if (scoreEl) scoreEl.textContent = String(score);
+      if (verdictEl) {
+        var msg = score >= 8
+          ? "Incollable ! Les années 80 n'ont plus aucun secret pour vous."
+          : score >= 5
+          ? "Pas mal ! Une petite session sur notre page années 80 et ce sera parfait."
+          : "Il est temps de réviser en musique — direction notre page années 80.";
+        verdictEl.textContent = msg;
+      }
+      if (results) results.style.display = '';
+    }
+
+    container.querySelectorAll('.quiz80-q').forEach(function (qEl) {
+      var buttons = qEl.querySelectorAll('.quiz80-choice');
+      var nextBtn = qEl.querySelector('.quiz80-next');
+      var answered = false;
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          if (answered) return;
+          answered = true;
+          var isCorrect = btn.getAttribute('data-correct') === 'true';
+          if (isCorrect) {
+            score += 1;
+            btn.classList.add('is-correct');
+          } else {
+            btn.classList.add('is-wrong');
+            buttons.forEach(function (b) {
+              if (b.getAttribute('data-correct') === 'true') b.classList.add('is-correct');
+            });
+          }
+          buttons.forEach(function (b) { b.disabled = true; });
+          if (nextBtn) nextBtn.style.display = 'inline-block';
+        });
+      });
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function () {
+          var index = parseInt(qEl.getAttribute('data-index'), 10);
+          if (index + 1 < TOTAL) {
+            showQuestion(index + 1);
+          } else {
+            showResults();
+          }
+        });
+      }
+    });
+
+    var restartBtn = document.getElementById('quiz80-restart');
+    if (restartBtn) {
+      restartBtn.addEventListener('click', function () {
+        window.location.reload();
+      });
+    }
+  })();
+  </script>
+</Layout>
