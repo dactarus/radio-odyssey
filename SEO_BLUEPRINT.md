@@ -1093,3 +1093,33 @@ Total après ce lot : **98 pages thématiques**, 2 restantes pour atteindre 100.
 ---
 
 *Dernière mise à jour : 2026-08-08, quiz musical années 80 (§45).*
+
+---
+
+## 46. Correction du quiz années 80 + chansons les plus écoutées au monde (2026-08-08)
+
+**Bug signalé sur le quiz (§45)** : le propriétaire a testé la page et signalé qu'un clic sur une réponse à la question 1 ne semblait rien déclencher. Diagnostic : le code fonctionnait correctement (vérifié par exécution de script dans le navigateur — clic direct sur un bouton déclenche bien le changement de classe, la désactivation des boutons et l'affichage du bouton suivant), mais le seul retour visuel était une bordure/fond qui change de couleur, facilement manqué, sans avancée automatique — il fallait remarquer et cliquer un second bouton "Question suivante" apparu discrètement. Cause la plus probable : un problème de perception plutôt qu'un vrai bug JS.
+
+**Corrections apportées, qu'il s'agisse d'un vrai bug ou d'un problème de perception** :
+- Icône ✅/❌ + phrase de retour explicite ("Bonne réponse !" / "Raté, la bonne réponse était surlignée en vert.") sur chaque réponse, impossible à manquer.
+- Avancée automatique après 1,6 seconde (le bouton "Question suivante" reste disponible pour ne pas attendre, et annule bien le minuteur s'il est cliqué avant).
+- Script protégé par un `DOMContentLoaded` (garde-fou supplémentaire, coût nul).
+- **Amélioration demandée en même temps** : ordre des 10 questions mélangé aléatoirement à chaque chargement de la page (Fisher-Yates côté client), plutôt que toujours dans le même ordre.
+
+**Vérification approfondie avant republication** : parcours complet des 10 questions par exécution de script asynchrone (attente du délai d'avancée automatique entre chaque clic) → score 10/10 et verdict correct affichés ; test du bouton "suivant" manuel qui annule bien le minuteur (pas de double avancée) ; 3 rechargements successifs confirmant un ordre différent à chaque fois.
+
+---
+
+**Nouvelle page proposée par le propriétaire, capture d'écran à l'appui** : "les 10 chansons les plus écoutées au monde" apparaît en tête des résultats Google pour "musique" (Aperçu IA) — une vraie requête à fort volume. Angle retenu : ne pas se contenter de copier les chiffres de la capture fournie, mais les **vérifier indépendamment** par recherche web avant publication (3 recherches croisées : Wikipédia/liste des records Spotify, ChartMasters/RouteNote, VisualCapitalist — les trois sources convergent exactement sur le même top 8 et les mêmes chiffres, donnée fiable au 1er juin 2026).
+
+**`chansons-les-plus-ecoutees-au-monde.html`** (Musique & Énergie) — publie un **Top 8 confirmé** plutôt qu'un top 10 forcé : les positions 9-10 n'ont pas pu être vérifiées de façon fiable (classement trop volatile après la 8e place selon les sources), donc volontairement omises plutôt qu'inventées. Point fort de la page, vérifié titre par titre contre `src/data/artists.js` : **4 des 8 titres du classement mondial sont réellement diffusés sur Radio Odyssey** — Shape of You (Ed Sheeran), Starboy (The Weeknd), As It Was (Harry Styles), Someone You Loved (Lewis Capaldi), tous confirmés par correspondance exacte dans le tableau `tracks` de la fiche artiste correspondante. Note : The Weeknd est bien dans le catalogue mais son titre le plus streamé au monde ("Blinding Lights") n'y figure pas — seul "Starboy" y est présent ; la page ne prétend donc pas que "Blinding Lights" passe sur l'antenne.
+
+**Maillage** : lien réciproque avec `titres-les-plus-diffuses-sur-radio-odyssey.html` (classement mondial vs classement réel sur l'antenne, bien distingués).
+
+**Vérifié après build (202 pages, aucune erreur)** : meta description à 134 caractères, canonical correct, `Article` + `FAQPage` présents, aucun lien cassé, rendu testé dans le navigateur sans erreur console. `navigation.js` et `sitemap.xml` mis à jour (Musique & Énergie : 20 → 21 pages).
+
+Total après ce lot : **99 pages thématiques**, 1 restante pour atteindre 100.
+
+---
+
+*Dernière mise à jour : 2026-08-08, correction du quiz + chansons les plus écoutées au monde (§46).*
