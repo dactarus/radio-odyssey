@@ -67,6 +67,7 @@ export const NAV_CATEGORIES = [
       { href: '/musique-pour-un-road-trip.html', bi: 'car-front', label: 'Pour un Road Trip', desc: 'Une énergie positive et continue pour tenir la distance' },
       { href: '/musique-pour-les-arts-plastiques.html', bi: 'brush', label: 'Pour les Arts Plastiques', desc: 'Peinture, dessin, sculpture — une ambiance à adapter à votre pratique' },
       { href: '/quiz-musical-annees-80.html', bi: 'clock-history', label: 'Quiz Musical Années 80', desc: '10 questions basées sur les vrais titres diffusés' },
+      { href: '/chansons-les-plus-ecoutees-au-monde.html', bi: 'trophy', label: 'Les Chansons les Plus Écoutées au Monde', desc: 'Le classement mondial du streaming, et ce qui passe sur notre antenne' },
       { href: '/titres-les-plus-diffuses-sur-radio-odyssey.html', bi: 'stars', label: 'Les Titres les Plus Diffusés', desc: 'Le classement réel, tous styles confondus' },
       { href: '/musique-pour-les-plantes.html', bi: 'flower1', label: 'Pour les Plantes', desc: 'Une curiosité populaire, entre légende et science non tranchée' },
       { href: '/musique-pour-les-animaux.html', bi: 'heart', label: 'Pour les Animaux', desc: 'Ce que disent les études sur chiens et chats' },

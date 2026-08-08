@@ -1,0 +1,116 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const topSongs = [
+  { rank: 1, track: 'Blinding Lights', artistName: 'The Weeknd', slug: 'the-weeknd', streams: '5,4+ milliards', onAir: false },
+  { rank: 2, track: 'Shape of You', artistName: 'Ed Sheeran', slug: 'ed-sheeran', streams: '4,94 milliards', onAir: true },
+  { rank: 3, track: 'Sweater Weather', artistName: 'The Neighbourhood', slug: null, streams: '4,64 milliards', onAir: false },
+  { rank: 4, track: 'Starboy', artistName: 'The Weeknd (feat. Daft Punk)', slug: 'the-weeknd', streams: '4,57 milliards', onAir: true },
+  { rank: 5, track: 'As It Was', artistName: 'Harry Styles', slug: 'harry-styles', streams: '4,44 milliards', onAir: true },
+  { rank: 6, track: 'Someone You Loved', artistName: 'Lewis Capaldi', slug: 'lewis-capaldi', streams: '4,34 milliards', onAir: true },
+  { rank: 7, track: 'One Dance', artistName: 'Drake (feat. Wizkid & Kyla)', slug: null, streams: '4,27 milliards', onAir: false },
+  { rank: 8, track: 'Sunflower', artistName: 'Post Malone & Swae Lee', slug: null, streams: '4,26 milliards', onAir: false },
+];
+
+const faq = [
+  { q: 'Quelles sont vraiment les 10 chansons les plus écoutées au monde ?', a: "Le classement au-delà de la 8e place bouge très souvent selon la source et la date consultées — les 8 premières places, elles, sont stables depuis plusieurs mois et largement documentées (Spotify, ChartMasters, Wikipédia)." },
+  { q: 'Ce classement est-il basé sur Spotify uniquement ?', a: "Oui, ce sont les chiffres de streaming cumulé sur Spotify, la source la plus citée pour ce type de classement mondial — d'autres plateformes (YouTube, Apple Music) publient des classements distincts, parfois différents." },
+  { q: 'Ce classement change-t-il souvent ?', a: "Les chiffres progressent chaque jour, mais l'ordre des toutes premières places reste stable sur plusieurs mois. \"Blinding Lights\" a par exemple détrôné \"Shape of You\" après plus de 5 ans à la première place." },
+  { q: 'Peut-on écouter ces titres sur Radio Odyssey ?', a: "4 des 8 titres de ce classement mondial font partie de notre catalogue réel de programmation — voir le détail ci-dessous." },
+];
+---
+<Layout
+  lang="fr"
+  title="Les Chansons les Plus Écoutées au Monde | Radio Odyssey"
+  description="Le vrai classement des chansons les plus écoutées au monde (streams Spotify), et lesquelles sont aussi diffusées sur Radio Odyssey."
+  articleDatePublished="2026-08-08"
+>
+  <PageHero
+    gradientFrom="#7B2FBE"
+    gradientTo="#00C6FF"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Les chansons les plus écoutées au monde"
+    title="Les Chansons les Plus Écoutées au Monde"
+    text="Le vrai classement mondial du streaming — et ce qui, parmi ces titres, passe aussi sur notre antenne."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M8 34V16L34 10V28" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="8" cy="36" r="5" stroke="white" stroke-width="2.2"/><circle cx="34" cy="30" r="5" stroke="white" stroke-width="2.2"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">"Quelles sont les chansons les plus écoutées au monde ?" est l'une des questions musicales les plus recherchées sur Google. La réponse repose sur un chiffre concret et public : le nombre de streams cumulés sur Spotify, la plateforme la plus citée pour ce type de classement mondial.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Le classement confirmé</h2>
+            <p style="margin-bottom:1rem;">Les 8 premières places sont stables et largement documentées (données Spotify, juin 2026) :</p>
+            <div style="display:flex;flex-direction:column;gap:.6rem;">
+              {topSongs.map((s) => (
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.7rem .9rem;border-radius:12px;background:rgba(123,47,190,.04);">
+                  <span style="display:flex;align-items:center;gap:.8rem;">
+                    <span style="font-weight:900;color:var(--ro-purple);font-size:1.1rem;min-width:1.6rem;">{s.rank}</span>
+                    <span>
+                      <strong style="color:var(--ro-purple);">{s.track}</strong> — {s.artistName}<br/>
+                      <span style="font-size:.82rem;color:var(--ro-muted);">{s.streams} de streams</span>
+                    </span>
+                  </span>
+                  {s.onAir && <span class="tag-pill" style="flex-shrink:0;font-size:.72rem;">📻 Sur Radio Odyssey</span>}
+                </div>
+              ))}
+            </div>
+            <p style="margin-top:1rem;margin-bottom:0;font-size:.85rem;color:var(--ro-muted);">Au-delà de la 8e place, la compétition est trop serrée et volatile pour un classement fiable à un instant donné.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>4 de ces titres sont diffusés sur Radio Odyssey</h2>
+            <p style="margin-bottom:1rem;">Bonne nouvelle : la moitié de ce classement mondial fait partie de notre programmation réelle. Vous pouvez les écouter en direct :</p>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+              <a href="/artiste-ed-sheeran.html" class="tag-pill" style="text-decoration:none;">Ed Sheeran — Shape of You</a>
+              <a href="/artiste-the-weeknd.html" class="tag-pill" style="text-decoration:none;">The Weeknd — Starboy</a>
+              <a href="/artiste-harry-styles.html" class="tag-pill" style="text-decoration:none;">Harry Styles — As It Was</a>
+              <a href="/artiste-lewis-capaldi.html" class="tag-pill" style="text-decoration:none;">Lewis Capaldi — Someone You Loved</a>
+            </div>
+            <p style="margin-top:1rem;margin-bottom:0;">Retrouvez l'ensemble de notre catalogue sur notre page <a href="/artistes-diffuses-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">artistes diffusés</a>, ou notre propre classement <a href="/titres-les-plus-diffuses-sur-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">des titres les plus diffusés sur Radio Odyssey</a> — un classement différent, basé sur notre antenne plutôt que sur le streaming mondial.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="topmonde" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/titres-les-plus-diffuses-sur-radio-odyssey.html', label: 'Les Titres les Plus Diffusés sur Radio Odyssey', desc: 'Notre classement réel, basé sur notre antenne' },
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les Artistes Diffusés', desc: 'La liste complète, tous styles confondus' },
+              { href: '/quiz-musical-annees-80.html', label: 'Quiz Musical Années 80', desc: '10 questions basées sur les vrais titres diffusés' },
+            ]}
+            associated={[
+              { href: '/styles-musicaux-radio-odyssey.html', label: 'Styles musicaux sur Radio Odyssey' },
+              { href: '/comment-radio-odyssey-choisit-sa-musique.html', label: 'Comment Radio Odyssey Choisit sa Musique' },
+              { href: '/musique-et-energie.html', label: 'Tout le cocon Musique & Énergie' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez ces titres en direct</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

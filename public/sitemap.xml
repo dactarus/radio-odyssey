@@ -1087,6 +1087,12 @@
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://www.radio-odyssey.com/chansons-les-plus-ecoutees-au-monde.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.radio-odyssey.com/titres-les-plus-diffuses-sur-radio-odyssey.html</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>monthly</changefreq>
