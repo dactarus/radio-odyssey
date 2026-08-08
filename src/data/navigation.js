@@ -129,6 +129,7 @@ export const NAV_CATEGORIES = [
       { href: '/ecouter-radio-odyssey-sur-ordinateur.html', bi: 'laptop', label: 'Sur Ordinateur', desc: 'Au bureau ou en télétravail, sans rien installer' },
       { href: '/ecouter-radio-odyssey-montre-connectee.html', bi: 'clock', label: 'Sur Montre Connectée', desc: 'Apple Watch et Wear OS, le contrôle au poignet' },
       { href: '/comment-creer-un-espace-decoute-chez-soi.html', bi: 'house-door-fill', label: 'Créer un Espace d\'Écoute chez Soi', desc: 'Enceintes, ampli, pièce dédiée, 5.1 ou pas' },
+      { href: '/ecouter-radio-odyssey-sous-leau.html', bi: 'cloud', label: 'Écouter sous l\'Eau, c\'est Possible ?', desc: 'Ce qui fonctionne vraiment (et ce qui ne fonctionne pas encore)' },
     ],
   },
   {

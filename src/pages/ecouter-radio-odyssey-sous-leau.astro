@@ -1,0 +1,87 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: "Peut-on vraiment écouter une radio en streaming la tête sous l'eau ?", a: "Non, pas aujourd'hui, et pas seulement pour Radio Odyssey : l'eau bloque très rapidement les ondes Bluetooth et Wi-Fi (quelques centimètres suffisent), ce qui empêche tout streaming en direct dès qu'on est réellement immergé." },
+  { q: "Comment font les nageurs qui écoutent de la musique en faisant des longueurs ?", a: "Avec un lecteur MP3 étanche autonome, qui stocke des fichiers téléchargés à l'avance et les diffuse par conduction osseuse (à travers les os du crâne, pas par les oreilles). Ce n'est pas un flux en direct, mais une bibliothèque embarquée dans l'appareil." },
+  { q: "Radio Odyssey propose-t-elle des fichiers à télécharger pour ce type d'appareil ?", a: "Non, Radio Odyssey est un flux en direct, pas un catalogue téléchargeable — ce type d'usage n'est donc pas possible avec la radio pour l'instant." },
+  { q: "Quelle est la meilleure solution pour écouter Radio Odyssey près de l'eau ?", a: "Une enceinte flottante ou étanche, posée au bord du bassin ou de la douche plutôt que submergée : le signal Bluetooth ou Wi-Fi fonctionne parfaitement dès que l'appareil reste à la surface ou à proximité — voir notre guide enceinte connectée." },
+];
+---
+<Layout
+  lang="fr"
+  title="Écouter de la Musique sous l'Eau, c'est Possible ? | Radio Odyssey"
+  description="Peut-on écouter Radio Odyssey sous l'eau ? Ce qui fonctionne vraiment (et ce qui ne fonctionne pas encore) pour écouter en piscine ou en natation."
+>
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#1e7fcb"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Écouter de la musique sous l'eau"
+    title="Écouter sous l'Eau, c'est Possible ?"
+    text="Une question qui semble farfelue, mais qui a une vraie réponse technique."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M6 30C10 26 14 34 18 30C22 26 26 34 30 30C34 26 38 34 42 30" stroke="white" stroke-width="2.3" stroke-linecap="round" fill="none"/><path d="M6 38C10 34 14 42 18 38C22 34 26 42 30 38C34 34 38 42 42 38" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round" fill="none"/><circle cx="24" cy="14" r="6" stroke="white" stroke-width="2.2"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">"Écouter de la musique sous l'eau" peut sembler être une question un peu farfelue. Elle a pourtant une vraie réponse technique, et une distinction importante à faire entre <strong>sous l'eau</strong> et <strong>près de l'eau</strong> — deux réalités très différentes pour le son.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pourquoi une vraie immersion ne fonctionne pas avec une radio en streaming</h2>
+            <p style="margin-bottom:0;">L'eau absorbe très rapidement les ondes radio utilisées par le Bluetooth et le Wi-Fi — quelques centimètres d'immersion suffisent à couper le signal. Ce n'est pas une limite propre à Radio Odyssey : aucun service de streaming en direct ne peut fonctionner la tête sous l'eau avec la technologie actuelle.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Comment font vraiment les nageurs</h2>
+            <p style="margin-bottom:0;">La solution utilisée par les nageurs est un <strong>lecteur MP3 étanche autonome</strong>, qui stocke des fichiers audio téléchargés à l'avance et les restitue par <strong>conduction osseuse</strong> — le son passe par les os du crâne plutôt que par le conduit auditif, souvent occupé par l'eau ou un bouchon. C'est une bibliothèque embarquée dans l'appareil, pas un flux en direct : Radio Odyssey, qui ne propose pas de fichiers téléchargeables, ne peut donc pas être utilisée de cette façon aujourd'hui.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Ce qui fonctionne très bien : rester à la surface</h2>
+            <p style="margin-bottom:0;">Pour la grande majorité des usages réels — se détendre dans un bain, profiter d'une piscine, prendre sa douche — une enceinte flottante ou étanche posée à proximité fonctionne parfaitement : le signal Bluetooth ou Wi-Fi n'a besoin que de quelques dizaines de centimètres d'air pour circuler normalement. Voir notre guide <a href="/ecouter-radio-odyssey-enceinte-connectee.html" style="color:var(--ro-purple);font-weight:700;">écouter sur enceinte connectée</a>.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="sousleau" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/ecouter-radio-odyssey-enceinte-connectee.html', label: 'Écouter sur Enceinte Connectée', desc: 'Alexa, Google Home, Sonos, enceintes flottantes...' },
+              { href: '/ecouter-radio-odyssey-sur-mobile.html', label: 'Écouter sur Mobile', desc: 'App et lecture en direct' },
+              { href: '/comment-creer-un-espace-decoute-chez-soi.html', label: 'Créer un Espace d\'Écoute chez Soi', desc: 'Enceintes, ampli, pièce dédiée' },
+            ]}
+            associated={[
+              { href: '/musique-pour-faire-du-sport.html', label: 'Musique pour Faire du Sport' },
+              { href: '/radio-sans-publicite.html', label: 'Radio Sans Publicité' },
+              { href: '/conseils-ecoute.html', label: 'Tout le cocon Conseils d\'Écoute' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez, les pieds au sec ou presque</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
