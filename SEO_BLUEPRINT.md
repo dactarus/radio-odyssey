@@ -988,3 +988,21 @@ Le §39 présentait le son 5.1 comme sans intérêt pour une web radio en stér�
 ---
 
 *Dernière mise à jour : 2026-08-08, correction sur le 5.1 comme expérience immersive (§40).*
+
+---
+
+## 41. Musique pour les arts plastiques (2026-08-08)
+
+Idée proposée par le propriétaire : une page musique pour la peinture, le dessin, la sculpture. Aucune page existante ne couvre cet angle (le plus proche, `musique-sans-parole-pour-se-concentrer.html`, traite un besoin auditif précis — pas d'un contexte créatif) — pas de cannibalisation, construite comme complément plutôt que doublon.
+
+**`musique-pour-les-arts-plastiques.html`** (Musique & Énergie) — distingue deux besoins : un travail de précision (modèle vivant, calligraphie), pour lequel la page renvoie vers `musique-sans-parole-pour-se-concentrer.html` plutôt que de dupliquer l'argumentaire instrumental ; et une pratique plus expressive/gestuelle (sculpture, peinture abstraite), pour laquelle une énergie plus marquée est présentée comme un vrai atout. Playlist de 8 artistes réels mêlant les deux registres (The Avener, Moby, Charlie Winston côté calme ; Angèle, Kungs, Ofenbach, Christophe Willem, Damiano David côté énergique). Point additionnel sur la pause cohérence cardiaque entre deux séances, pour le blocage créatif / la fatigue visuelle.
+
+**Maillage** : lien réciproque ajouté avec `musique-sans-parole-pour-se-concentrer.html` (section "Tâches créatives").
+
+**Vérifié après build (198 pages, aucune erreur)** : meta description à 137 caractères, canonical correct, `FAQPage` présent, les 8 liens artistes vérifiés contre les fichiers réellement générés (aucun lien cassé), rendu testé dans le navigateur sans erreur console. `navigation.js` et `sitemap.xml` mis à jour (Musique & Énergie : 18 → 19 pages).
+
+Total après ce lot : **95 pages thématiques**, 5 restantes pour atteindre 100.
+
+---
+
+*Dernière mise à jour : 2026-08-08, musique pour les arts plastiques (§41).*
