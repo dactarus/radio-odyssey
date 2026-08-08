@@ -1,0 +1,88 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'Quelle musique pour calmer un chien anxieux ?', a: "Plusieurs études menées en refuge suggèrent qu'une musique calme (classique, reggae, soft rock) réduit les signes de stress comparée au silence ou à une musique agressive (rock, métal). Un flux positif et sans excès reste un choix raisonnable pour un chien seul à la maison." },
+  { q: 'Et pour les chats ?', a: "Les chats sont moins étudiés, et certains chercheurs (Charlton & Snowdon notamment) suggèrent qu'une musique pensée pour l'oreille humaine ne les concerne pas forcément de la même façon — il existe même des morceaux composés spécifiquement pour eux, avec des fréquences proches de leurs propres vocalisations. Une musique humaine calme reste néanmoins sans risque à essayer." },
+  { q: 'Faut-il laisser la radio allumée toute la journée pour un animal seul ?', a: "C'est un usage courant pour rompre le silence complet, en particulier contre l'anxiété de séparation chez le chien. Un flux continu, sans coupure publicitaire ni pic sonore soudain, évite les à-coups qui pourraient au contraire l'inquiéter." },
+  { q: 'La musique remplace-t-elle un avis vétérinaire en cas d\'anxiété sévère ?', a: "Non. En cas de troubles du comportement marqués, l'avis d'un vétérinaire ou d'un comportementaliste reste la démarche à privilégier — la musique n'est qu'un complément d'ambiance, pas un traitement." },
+];
+---
+<Layout
+  lang="fr"
+  title="Musique pour les Animaux | Radio Odyssey"
+  description="Quelle musique pour calmer un chien ou un chat ? Ce que disent les études, et pourquoi un flux calme et continu peut aider un animal seul à la maison."
+>
+  <PageHero
+    gradientFrom="#FF9A3C"
+    gradientTo="#00C6FF"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Musique pour les animaux"
+    title="Musique pour les Animaux"
+    text="Ce que disent les études sur la musique et le comportement des chiens et des chats."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><ellipse cx="24" cy="30" rx="11" ry="9" stroke="white" stroke-width="2.2"/><ellipse cx="12" cy="16" rx="4" ry="5.5" stroke="rgba(255,255,255,.7)" stroke-width="2"/><ellipse cx="20" cy="10" rx="4" ry="5.5" stroke="rgba(255,255,255,.7)" stroke-width="2"/><ellipse cx="28" cy="10" rx="4" ry="5.5" stroke="rgba(255,255,255,.7)" stroke-width="2"/><ellipse cx="36" cy="16" rx="4" ry="5.5" stroke="rgba(255,255,255,.7)" stroke-width="2"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Un sujet mieux documenté qu'on ne le pense</h2>
+            <p>Contrairement à la musique pour les plantes, l'effet de la musique sur le comportement des animaux domestiques a fait l'objet de plusieurs études sérieuses, notamment en refuge — un terrain d'observation où le stress est facile à mesurer.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Le chien : plutôt calme que silence</h2>
+            <p style="margin-bottom:0;">Plusieurs études (dont celle de Kogan et ses collègues, menée en refuge) montrent qu'une musique calme — classique, reggae, soft rock — est associée à moins de signes de stress chez le chien que le silence complet ou qu'une musique agressive comme le rock ou le métal. Un flux positif et sans à-coups, comme celui de Radio Odyssey, se rapproche de ce type d'ambiance recommandée.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Le chat : une sensibilité différente</h2>
+            <p style="margin-bottom:0;">Les chats sont moins étudiés, et les résultats disponibles (notamment les travaux de Charlton et Snowdon) suggèrent qu'une musique composée pour l'oreille humaine ne les touche pas nécessairement de la même façon qu'un chien. Il existe même des morceaux conçus spécifiquement pour les chats, avec des fréquences et des rythmes proches de leurs propres vocalisations. Cela dit, une musique calme reste un choix sans risque à tester.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pourquoi un flux continu peut aider un animal seul</h2>
+            <p style="margin-bottom:0;">Laisser une présence sonore douce en votre absence est une pratique courante contre l'anxiété de séparation, en particulier chez le chien. L'intérêt d'un flux radio continu, sans coupure publicitaire ni pic sonore brutal, est justement d'éviter les à-coups qui pourraient inquiéter un animal seul à la maison — voir aussi notre page <a href="/radio-sans-publicite.html" style="color:var(--ro-purple);font-weight:700;">radio sans publicité</a>.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="animaux" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/musique-pour-les-plantes.html', label: 'Musique pour les Plantes', desc: 'Une question voisine, moins documentée scientifiquement' },
+              { href: '/radio-detente-moderne.html', label: 'Radio Détente Moderne', desc: 'Musique apaisante pour vous ressourcer' },
+              { href: '/radio-sans-publicite.html', label: 'Radio Sans Publicité', desc: 'Un flux continu, sans coupure' },
+            ]}
+            associated={[
+              { href: '/radio-anti-stress-gratuite.html', label: 'Radio Anti-Stress Gratuite' },
+              { href: '/musique-odyssey-pour-aller-mieux.html', label: 'Musique Odyssey pour Aller Mieux' },
+              { href: '/musique-et-energie.html', label: 'Tout le cocon Musique & Énergie' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Laissez tourner un flux calme et continu</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

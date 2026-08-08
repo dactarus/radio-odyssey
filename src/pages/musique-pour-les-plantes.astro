@@ -1,0 +1,83 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'La musique fait-elle vraiment pousser les plantes plus vite ?', a: "Il n'existe pas de consensus scientifique solide sur ce point. Les expériences les plus citées, menées dans les années 1970, sont aujourd'hui considérées comme méthodologiquement fragiles et n'ont jamais été confirmées de façon rigoureuse." },
+  { q: 'Certains styles de musique seraient-ils meilleurs que d\'autres ?', a: "Certaines hypothèses non prouvées évoquent l'effet des vibrations plutôt que du style musical en lui-même — dans ce cadre, un flux calme et continu serait, en théorie, un choix aussi défendable qu'un autre." },
+  { q: 'Y a-t-il un risque à laisser la radio près de mes plantes ?', a: "Aucun, à condition de garder un volume raisonnable. La musique ne remplace jamais les besoins de base d'une plante : lumière, eau et terreau adapté restent les facteurs qui comptent réellement." },
+  { q: 'Pourquoi Radio Odyssey plutôt qu\'une autre radio ?', a: "Pour la continuité : un flux positif diffusé 24h/24, sans coupure publicitaire ni pic sonore brutal — pratique si vous laissez la radio allumée en fond, près de vos plantes, toute la journée." },
+];
+---
+<Layout
+  lang="fr"
+  title="Musique pour les Plantes | Radio Odyssey"
+  description="La musique aide-t-elle les plantes à pousser ? Ce que dit vraiment la science, et pourquoi un flux calme et continu reste un choix sans risque."
+>
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Musique pour les plantes"
+    title="Musique pour les Plantes"
+    text="Une curiosité populaire, entre légende et hypothèse scientifique non tranchée."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 40V20" stroke="white" stroke-width="2.3" stroke-linecap="round"/><path d="M24 22C24 22 12 22 12 10C24 10 24 22 24 22Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/><path d="M24 26C24 26 36 26 36 14C24 14 24 26 24 26Z" stroke="rgba(255,255,255,.7)" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Une idée populaire, jamais vraiment confirmée</h2>
+            <p>"Parler à ses plantes" ou leur passer de la musique fait partie de ces habitudes attendrissantes que beaucoup de jardiniers amateurs pratiquent, un peu par curiosité, un peu par superstition. L'idée est ancienne, mais la science ne l'a jamais tranchée clairement dans un sens ou dans l'autre.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Ce que disent (vraiment) les études</h2>
+            <p style="margin-bottom:0;">Les expériences les plus souvent citées sur le sujet remontent aux années 1970 et sont aujourd'hui considérées par la communauté scientifique comme méthodologiquement fragiles — échantillons trop petits, absence de conditions contrôlées. Depuis, aucune étude rigoureuse n'a confirmé qu'un style de musique précis ferait pousser une plante plus vite ou plus fort. Ce qui est mieux documenté, en revanche, c'est la sensibilité de certaines plantes aux vibrations sonores en général — sans lien prouvé avec la notion de "musique" telle qu'on l'entend.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Alors, pourquoi continuer ?</h2>
+            <p style="margin-bottom:0;">Parce que ça ne coûte rien d'essayer, et que ce n'est jamais la musique qui décide de la santé d'une plante : la lumière, l'arrosage et le terreau restent, eux, parfaitement documentés comme déterminants. Si vous aimez l'idée de laisser un fond musical près de vos plantes, un flux calme, positif et continu — sans coupure publicitaire ni pic sonore brutal — reste un choix sans inconvénient.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="plantes" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/musique-pour-les-animaux.html', label: 'Musique pour les Animaux', desc: 'Une question voisine, mais mieux documentée' },
+              { href: '/radio-detente-moderne.html', label: 'Radio Détente Moderne', desc: 'Musique apaisante pour vous ressourcer' },
+              { href: '/radio-sans-publicite.html', label: 'Radio Sans Publicité', desc: 'Un flux continu, sans coupure' },
+            ]}
+            associated={[
+              { href: '/musique-pour-faire-le-menage.html', label: 'Musique pour Faire le Ménage' },
+              { href: '/musique-pour-cuisiner.html', label: 'Musique pour Cuisiner' },
+              { href: '/musique-et-energie.html', label: 'Tout le cocon Musique & Énergie' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Laissez tourner un flux calme et continu</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
