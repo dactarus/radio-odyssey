@@ -1006,3 +1006,28 @@ Total après ce lot : **95 pages thématiques**, 5 restantes pour atteindre 100.
 ---
 
 *Dernière mise à jour : 2026-08-08, musique pour les arts plastiques (§41).*
+
+---
+
+## 42. Quel style de musique pour la cohérence cardiaque (2026-08-08)
+
+Idée proposée par le propriétaire, explicitement pour le cocon **Artistes & Styles** plutôt que Les Coulisses : une page sur le style musical des séquences de cohérence cardiaque elles-mêmes — distinct des 5 pages de style déjà en place, qui couvrent les genres du catalogue diffusé (pop, dance, etc.), jamais la musique spécifique composée pour cet usage précis. Aucune cannibalisation détectée.
+
+**Interview menée comme pour les articles Coulisses** (6 questions posées, réponses détaillées reçues). **Point de confidentialité revalidé avant rédaction** : le propriétaire a confirmé que ces musiques sont créées avec l'appui de l'IA — même décision que pour les jingles chantés ([[project_radio_odyssey_programming_methodology]] §jingles) : **ne jamais mentionner l'IA dans le contenu public**, formulé comme "composées spécifiquement pour Radio Odyssey, selon un cahier des charges précis". Vérifié après build : aucune occurrence de "IA"/"intelligence artificielle"/"Suno" dans le HTML généré.
+
+**Contenu réel, tiré des réponses du propriétaire** :
+- Style **chill** : piano, harpe, **duduk**, violon, notes longues et enveloppantes.
+- Un rythme trop élevé serait "incohérent" avec l'exercice — mot du propriétaire, repris tel quel comme angle FAQ.
+- Tempo aligné autant que possible sur la respiration (5s/5s), mais l'efficacité réelle vient surtout de la concentration sur la voix d'Elisabeth Bélot-Grimaud, pas d'une synchronisation parfaite.
+- Séquences longues (3 min) et courtes (1 min) : mêmes musiques ou versions spécifiques, choix éditorial.
+- Conseil pour qui veut choisir sa propre musique de cohérence cardiaque hors Radio Odyssey : éviter l'énergique, préférer un instrument dominant plutôt qu'un habillage chargé (exemple donné : le duduk).
+
+**Maillage** : liens ajoutés depuis `radio-coherence-cardiaque.html` et `styles-musicaux-radio-odyssey.html` ; la nouvelle page pointe vers ces deux pages plus `comment-pratiquer-la-coherence-cardiaque.html`, `elisabeth-belot-grimaud-radio-odyssey.html`, `comment-radio-odyssey-traite-le-son.html` et `bienfaits-coherence-cardiaque.html`.
+
+**Vérifié après build (199 pages, aucune erreur)** : JSON-LD valide (`Article` + `FAQPage`), meta description à 146 caractères, aucune fuite du terme IA, aucun lien cassé, rendu testé dans le navigateur sans erreur console. `navigation.js` et `sitemap.xml` mis à jour (Artistes & Styles : 9 → 10 pages).
+
+Total après ce lot : **96 pages thématiques**, 4 restantes pour atteindre 100.
+
+---
+
+*Dernière mise à jour : 2026-08-08, style musical de la cohérence cardiaque (§42).*
