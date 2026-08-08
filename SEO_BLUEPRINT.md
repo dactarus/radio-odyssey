@@ -1071,3 +1071,25 @@ Total après ce lot : **97 pages thématiques**, 3 restantes pour atteindre 100.
 ---
 
 *Dernière mise à jour : 2026-08-08, écouter de la musique sous l'eau (§44).*
+
+---
+
+## 45. Quiz musical années 80 (2026-08-08)
+
+Le propriétaire a fait remarquer que les quiz musicaux sont très populaires, et que les années 80 y sont particulièrement plébiscitées. Angle retenu : plutôt qu'un quiz générique, s'appuyer sur les vrais artistes/titres années 80 déjà présents dans le catalogue de programmation (cohérent avec la philosophie §1 "le long traîne défendable" — données réelles et vérifiables plutôt que trivia générique).
+
+**`quiz-musical-annees-80.html`** (Musique & Énergie) — premier contenu **interactif** du site hors outil de cohérence cardiaque. 10 questions "qui chante ce titre", chacune avec 4 choix réels du catalogue (Simple Minds, Queen, Wham!, Madonna, Phil Collins, Bananarama, Vanessa Paradis, Jean-Jacques Goldman, Michael Jackson, Kylie Minogue, plus des distracteurs de la même époque). Chaque titre/artiste vérifié individuellement pour son exactitude historique (année de sortie réellement années 80) avant inclusion — plusieurs titres du catalogue écartés du quiz car hors-période malgré l'artiste "années 80" (ex. Michael Jackson "Don't Stop 'Til You Get Enough" est 1979, pas retenu ; Sting "Fields of Gold" est un remix d'un titre 1993, pas retenu comme titre correct).
+
+**Implémentation technique** : JS vanille autonome (`<script is:inline>`, IIFE), pas de dépendance externe ni de framework. Flux question par question avec bouton "Question suivante", feedback visuel immédiat (vert/rouge), score et verdict personnalisé à la fin, bouton "Recommencer" (rechargement de page).
+
+**Vérification approfondie, au-delà du build habituel** : les 17 slugs d'artistes référencés dans le quiz (corrects + distracteurs) vérifiés un par un contre les fiches réellement générées. Logique JS testée en conditions réelles dans le navigateur via exécution de script : parcours complet des 10 questions avec réponses correctes → score 10/10 et bon message de verdict affichés ; test d'une réponse fausse → bouton rouge sur le choix erroné, vert sur le bon choix, tous les boutons désactivés, bouton suivant révélé. Les deux chemins fonctionnent comme attendu.
+
+**Maillage** : lien réciproque avec `radio-annees-80-en-ligne.html`.
+
+**Vérifié après build (201 pages, aucune erreur)** : meta description à 147 caractères, canonical correct, `FAQPage` présent, aucun lien cassé. `navigation.js` et `sitemap.xml` mis à jour (Musique & Énergie : 19 → 20 pages).
+
+Total après ce lot : **98 pages thématiques**, 2 restantes pour atteindre 100.
+
+---
+
+*Dernière mise à jour : 2026-08-08, quiz musical années 80 (§45).*
