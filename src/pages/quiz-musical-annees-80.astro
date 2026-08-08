@@ -8,76 +8,131 @@ import RelatedPages from '../components/RelatedPages.astro';
 
 // Chaque artiste/groupe n'apparaît qu'une seule fois comme bonne réponse
 // dans tout le quiz (round principal + round bonus confondus), et chaque
-// titre a été vérifié individuellement (année de sortie réelle, années 80).
+// titre a été vérifié individuellement par recherche web pour confirmer
+// une sortie réelle dans les années 80.
 const mainQuestions = [
-  { track: "Billie Jean", correct: 'michael-jackson', year: 1983, choices: [
+  { track: "Billie Jean", correct: 'michael-jackson', choices: [
     { slug: 'wham', name: 'Wham!' },
     { slug: 'michael-jackson', name: 'Michael Jackson' },
     { slug: 'queen', name: 'Queen' },
-    { slug: 'phil-collins', name: 'Phil Collins' },
+    { slug: 'modern-talking', name: 'Modern Talking' },
   ]},
-  { track: "I Want To Break Free", correct: 'queen', year: 1984, choices: [
+  { track: "I Want To Break Free", correct: 'queen', choices: [
     { slug: 'wham', name: 'Wham!' },
     { slug: 'simple-minds', name: 'Simple Minds' },
+    { slug: 'a-ha', name: 'A-ha' },
     { slug: 'queen', name: 'Queen' },
-    { slug: 'phil-collins', name: 'Phil Collins' },
   ]},
-  { track: "Wake Me Up Before You Go-Go", correct: 'wham', year: 1984, choices: [
+  { track: "Wake Me Up Before You Go-Go", correct: 'wham', choices: [
     { slug: 'michael-jackson', name: 'Michael Jackson' },
     { slug: 'queen', name: 'Queen' },
-    { slug: 'bananarama', name: 'Bananarama' },
+    { slug: 'modern-talking', name: 'Modern Talking' },
     { slug: 'wham', name: 'Wham!' },
   ]},
-  { track: "La Isla Bonita", correct: 'madonna', year: 1987, choices: [
+  { track: "La Isla Bonita", correct: 'madonna', choices: [
     { slug: 'madonna', name: 'Madonna' },
     { slug: 'kylie-minogue', name: 'Kylie Minogue' },
     { slug: 'bananarama', name: 'Bananarama' },
-    { slug: 'vanessa-paradis', name: 'Vanessa Paradis' },
+    { slug: 'kim-wilde', name: 'Kim Wilde' },
   ]},
-  { track: "Cruel Summer", correct: 'bananarama', year: 1983, choices: [
+  { track: "Take On Me", correct: 'a-ha', choices: [
+    { slug: 'modern-talking', name: 'Modern Talking' },
+    { slug: 'kim-wilde', name: 'Kim Wilde' },
+    { slug: 'simple-minds', name: 'Simple Minds' },
+    { slug: 'a-ha', name: 'A-ha' },
+  ]},
+  { track: "You're My Heart, You're My Soul", correct: 'modern-talking', choices: [
+    { slug: 'a-ha', name: 'A-ha' },
+    { slug: 'kim-wilde', name: 'Kim Wilde' },
+    { slug: 'baltimora', name: 'Baltimora' },
+    { slug: 'modern-talking', name: 'Modern Talking' },
+  ]},
+  { track: "Cambodia", correct: 'kim-wilde', choices: [
+    { slug: 'madonna', name: 'Madonna' },
+    { slug: 'bananarama', name: 'Bananarama' },
+    { slug: 'kylie-minogue', name: 'Kylie Minogue' },
+    { slug: 'kim-wilde', name: 'Kim Wilde' },
+  ]},
+  { track: "Cruel Summer", correct: 'bananarama', choices: [
     { slug: 'madonna', name: 'Madonna' },
     { slug: 'kylie-minogue', name: 'Kylie Minogue' },
     { slug: 'sade', name: 'Sade' },
     { slug: 'bananarama', name: 'Bananarama' },
   ]},
-  { track: "I Should Be So Lucky", correct: 'kylie-minogue', year: 1987, choices: [
+  { track: "I Should Be So Lucky", correct: 'kylie-minogue', choices: [
     { slug: 'madonna', name: 'Madonna' },
     { slug: 'bananarama', name: 'Bananarama' },
+    { slug: 'kim-wilde', name: 'Kim Wilde' },
     { slug: 'kylie-minogue', name: 'Kylie Minogue' },
-    { slug: 'vanessa-paradis', name: 'Vanessa Paradis' },
+  ]},
+  { track: "Don't You (Forget About Me)", correct: 'simple-minds', choices: [
+    { slug: 'queen', name: 'Queen' },
+    { slug: 'wham', name: 'Wham!' },
+    { slug: 'a-ha', name: 'A-ha' },
+    { slug: 'simple-minds', name: 'Simple Minds' },
   ]},
 ];
 
 const bonusQuestions = [
-  { track: "Don't You (Forget About Me)", correct: 'simple-minds', year: 1985, choices: [
-    { slug: 'wham', name: 'Wham!' },
-    { slug: 'queen', name: 'Queen' },
-    { slug: 'phil-collins', name: 'Phil Collins' },
-    { slug: 'simple-minds', name: 'Simple Minds' },
-  ]},
-  { track: "Two Hearts", correct: 'phil-collins', year: 1988, choices: [
+  { track: "Two Hearts", correct: 'phil-collins', choices: [
     { slug: 'sting', name: 'Sting' },
     { slug: 'elton-john', name: 'Elton John' },
     { slug: 'queen', name: 'Queen' },
     { slug: 'phil-collins', name: 'Phil Collins' },
   ]},
-  { track: "Joe Le Taxi", correct: 'vanessa-paradis', year: 1987, choices: [
+  { track: "Joe Le Taxi", correct: 'vanessa-paradis', choices: [
+    { slug: 'muriel-dacq', name: 'Muriel Dacq' },
+    { slug: 'elegance', name: 'Élégance' },
     { slug: 'madonna', name: 'Madonna' },
-    { slug: 'sade', name: 'Sade' },
-    { slug: 'bananarama', name: 'Bananarama' },
     { slug: 'vanessa-paradis', name: 'Vanessa Paradis' },
   ]},
-  { track: "Au Bout De Mes Rêves", correct: 'jean-jacques-goldman', year: 1982, choices: [
+  { track: "Au Bout De Mes Rêves", correct: 'jean-jacques-goldman', choices: [
     { slug: 'laurent-voulzy', name: 'Laurent Voulzy' },
     { slug: 'christophe-mae', name: 'Christophe Maé' },
     { slug: 'amir', name: 'Amir' },
     { slug: 'jean-jacques-goldman', name: 'Jean-Jacques Goldman' },
   ]},
-  { track: "The Sweetest Taboo", correct: 'sade', year: 1985, choices: [
+  { track: "The Sweetest Taboo", correct: 'sade', choices: [
     { slug: 'vanessa-paradis', name: 'Vanessa Paradis' },
-    { slug: 'bananarama', name: 'Bananarama' },
-    { slug: 'sade', name: 'Sade' },
+    { slug: 'shalamar', name: 'Shalamar' },
     { slug: 'kylie-minogue', name: 'Kylie Minogue' },
+    { slug: 'sade', name: 'Sade' },
+  ]},
+  { track: "Tropique", correct: 'muriel-dacq', choices: [
+    { slug: 'elegance', name: 'Élégance' },
+    { slug: 'vanessa-paradis', name: 'Vanessa Paradis' },
+    { slug: 'sade', name: 'Sade' },
+    { slug: 'muriel-dacq', name: 'Muriel Dacq' },
+  ]},
+  { track: "Vacances j'oublie tout", correct: 'elegance', choices: [
+    { slug: 'muriel-dacq', name: 'Muriel Dacq' },
+    { slug: 'baltimora', name: 'Baltimora' },
+    { slug: 'fun-fun', name: 'Fun Fun' },
+    { slug: 'elegance', name: 'Élégance' },
+  ]},
+  { track: "Tarzan Boy", correct: 'baltimora', choices: [
+    { slug: 'fun-fun', name: 'Fun Fun' },
+    { slug: 'scotch', name: 'Scotch' },
+    { slug: 'elegance', name: 'Élégance' },
+    { slug: 'baltimora', name: 'Baltimora' },
+  ]},
+  { track: "Colour My Love", correct: 'fun-fun', choices: [
+    { slug: 'baltimora', name: 'Baltimora' },
+    { slug: 'scotch', name: 'Scotch' },
+    { slug: 'modern-talking', name: 'Modern Talking' },
+    { slug: 'fun-fun', name: 'Fun Fun' },
+  ]},
+  { track: "Take Me Up", correct: 'scotch', choices: [
+    { slug: 'fun-fun', name: 'Fun Fun' },
+    { slug: 'baltimora', name: 'Baltimora' },
+    { slug: 'modern-talking', name: 'Modern Talking' },
+    { slug: 'scotch', name: 'Scotch' },
+  ]},
+  { track: "A Night To Remember", correct: 'shalamar', choices: [
+    { slug: 'sade', name: 'Sade' },
+    { slug: 'phil-collins', name: 'Phil Collins' },
+    { slug: 'jean-jacques-goldman', name: 'Jean-Jacques Goldman' },
+    { slug: 'shalamar', name: 'Shalamar' },
   ]},
 ];
 
@@ -85,15 +140,15 @@ const TOTAL_ARTISTS = mainQuestions.length + bonusQuestions.length;
 
 const faq = [
   { q: 'Les titres de ce quiz sont-ils vraiment diffusés sur Radio Odyssey ?', a: "Oui, tous les titres et artistes de ce quiz font partie de notre catalogue réel de programmation, dans la catégorie \"années 80 remixées\" — voir notre page <a href='/radio-annees-80-en-ligne.html' style='color:var(--ro-purple);font-weight:700;'>radio années 80 en ligne</a>." },
-  { q: 'Pourquoi seulement 11 questions, et pas plus ?', a: "Par souci d'exactitude : chaque artiste ou groupe n'apparaît qu'une seule fois comme bonne réponse, et chaque titre est vérifié individuellement pour confirmer qu'il est bien sorti dans les années 80 (pas une réédition ou un remix plus récent). Le quiz s'enrichira à mesure que de nouvelles fiches artistes années 80 rejoindront notre catalogue." },
-  { q: 'Qu\'est-ce que le round bonus ?', a: "Réussir un score parfait sur le round principal débloque un round bonus, pour un score final possible sur 11." },
+  { q: 'Le quiz a-t-il un niveau de difficulté ?', a: "Le round principal réunit des tubes très connus internationalement ; le round bonus va chercher des titres plus difficiles à trouver, y compris des pépites italo-disco et quelques tubes français d'un seul été." },
+  { q: 'Qu\'est-ce que le round bonus ?', a: "Réussir un score parfait sur les 10 questions du round principal débloque 10 questions bonus supplémentaires, pour un score final possible sur 20." },
   { q: 'Puis-je refaire le quiz ?', a: "Oui, un bouton \"Recommencer\" est disponible à la fin pour retenter votre chance — l'ordre des questions change à chaque tentative." },
 ];
 ---
 <Layout
   lang="fr"
   title="Quiz Musical Années 80 | Radio Odyssey"
-  description="Testez vos connaissances avec ce quiz musical années 80, basé sur les vrais titres diffusés sur Radio Odyssey. Un round bonus si score parfait."
+  description="Testez vos connaissances avec ce quiz musical années 80, basé sur les vrais titres diffusés sur Radio Odyssey. 10 questions, un round bonus si score parfait."
 >
   <PageHero
     gradientFrom="#FFD700"
@@ -101,7 +156,7 @@ const faq = [
     homeLabel="🏠 Accueil"
     breadcrumbCurrent="Quiz musical années 80"
     title="Quiz Musical Années 80"
-    text="Basé sur les vrais titres diffusés sur Radio Odyssey — et un round bonus si vous faites un sans-faute."
+    text="10 questions, basées sur les vrais titres diffusés sur Radio Odyssey — et 10 de plus si vous faites un sans-faute."
   >
     <Fragment slot="icon">
       <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.3"/><path d="M24 14V24L31 28" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M17 8L12 13M31 8L36 13" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round"/></svg>
@@ -114,7 +169,7 @@ const faq = [
         <div class="col-lg-8">
 
           <div class="content-card">
-            <p style="margin:0;">Les années 80 sont, sans surprise, le thème préféré des amateurs de quiz musicaux. Voici {mainQuestions.length} questions basées sur les vrais titres de notre <a href="/radio-annees-80-en-ligne.html" style="color:var(--ro-purple);font-weight:700;">catégorie années 80</a> — chaque artiste n'apparaît qu'une seule fois, et chaque titre est vérifié comme étant réellement sorti dans les années 80. Un sans-faute débloque {bonusQuestions.length} questions bonus !</p>
+            <p style="margin:0;">Les années 80 sont, sans surprise, le thème préféré des amateurs de quiz musicaux. Voici {mainQuestions.length} questions basées sur les vrais titres de notre <a href="/radio-annees-80-en-ligne.html" style="color:var(--ro-purple);font-weight:700;">catégorie années 80</a> — chaque artiste n'apparaît qu'une seule fois, et chaque titre est vérifié comme étant réellement sorti dans les années 80. Un sans-faute débloque {bonusQuestions.length} questions bonus, avec quelques pépites plus difficiles à trouver !</p>
           </div>
 
           <div class="content-card" id="quiz80">
