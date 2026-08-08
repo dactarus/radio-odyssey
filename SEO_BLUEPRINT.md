@@ -976,3 +976,15 @@ Total après ce lot : **94 pages thématiques**, 6 restantes pour atteindre 100.
 ---
 
 *Dernière mise à jour : 2026-08-08, artistes féminines et espace d'écoute dédié (§39).*
+
+---
+
+## 40. Correction : le 5.1 comme expérience immersive, pas un rejet (2026-08-08)
+
+Le §39 présentait le son 5.1 comme sans intérêt pour une web radio en stéréo. Le propriétaire a corrigé ce point : de nombreux systèmes 5.1 savent "upmixer" intelligemment une source stéréo pour reconstituer une image sonore immersive et enveloppante — un effet qu'il qualifie lui-même de "bluffant". Contenu et FAQ de `comment-creer-un-espace-decoute-chez-soi.html` réécrits en conséquence : le 5.1 y est désormais présenté comme une vraie option à considérer pour l'écoute quotidienne, pas un gadget réservé aux films.
+
+À retenir pour tout futur contenu technique audio : le propriétaire a une vraie expertise (voir §28/§29 sur le traitement du son) — éviter d'affirmer qu'une technologie audio "ne sert à rien" sans vérifier avec lui au préalable.
+
+---
+
+*Dernière mise à jour : 2026-08-08, correction sur le 5.1 comme expérience immersive (§40).*
