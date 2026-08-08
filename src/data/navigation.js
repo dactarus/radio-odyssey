@@ -4,6 +4,11 @@
 //
 // `bi` = suffixe de classe Bootstrap Icons (ex. 'heart-pulse' -> bi bi-heart-pulse),
 // utilisé à la place des emojis dans le menu et le footer pour un rendu plus sobre.
+//
+// `label` = intitulé court, utilisé dans la barre méga-menu desktop et le
+// menu offcanvas mobile (espace limité dans les deux cas).
+// `tileLabel` (optionnel) = intitulé plus explicite pour la tuile catégorie
+// de l'accueil uniquement (espace large) ; retombe sur `label` si absent.
 export const NAV_CATEGORIES = [
   {
     id: 'bien-etre',
@@ -90,6 +95,7 @@ export const NAV_CATEGORIES = [
     icon: '<svg viewBox="0 0 48 48" fill="none"><circle cx="19" cy="27" r="14" stroke="#7B2FBE" stroke-width="2.2"/><circle cx="19" cy="27" r="4.5" stroke="#7B2FBE" stroke-width="1.8"/><circle cx="19" cy="27" r="1.2" fill="#7B2FBE"/><path d="M27 13L37 9V21L27 25Z" stroke="#FF3CAC" stroke-width="1.8" stroke-linejoin="round" fill="none"/></svg>',
     iconBg: 'linear-gradient(135deg,rgba(123,47,190,.1),rgba(255,60,172,.1))',
     label: 'Artistes & Styles',
+    tileLabel: 'Artistes & Styles Musicaux',
     hub: '/artistes-et-styles.html',
     hubTitle: 'Artistes & Styles Musicaux',
     hubIntro: "Qui passe sur l'antenne, et dans quels styles — découvrez les artistes et les familles musicales de Radio Odyssey.",
