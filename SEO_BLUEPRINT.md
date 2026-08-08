@@ -1159,3 +1159,30 @@ Le propriétaire a signalé deux problèmes sur le quiz du §47 : (1) Queen, Ban
 ---
 
 *Dernière mise à jour : 2026-08-08, quiz corrigé — un artiste par question, dates revérifiées (§48).*
+
+---
+
+## 49. 9 fiches artistes années 80 supplémentaires, quiz restauré à 10+10 (2026-08-08)
+
+Le §48 avait réduit le quiz à 11 questions, faute d'assez d'artistes années 80 vérifiés dans le catalogue de 100 fiches pour respecter la règle "un artiste = une question". Le propriétaire (expert radio) a fourni 9 artistes/titres supplémentaires réellement diffusés sur l'antenne, en précisant que certains sont "plus difficiles à trouver" — matière idéale pour le round bonus.
+
+**Vérification systématique avant intégration** (même rigueur qu'au §48, après l'erreur Indochine) : les 9 titres ont été vérifiés un par un par recherche web (Wikipédia, Discogs, IMDb) avant toute création de fiche. Tous confirmés authentiquement années 80 :
+- Muriel Dacq — *Tropique* (1986, chanteuse belge, disque d'argent en France)
+- Élégance — *Vacances j'oublie tout* (1982, plus d'un million d'exemplaires vendus)
+- Baltimora — *Tarzan Boy* (1985, italo-disco, chanteur Jimmy McShane)
+- Fun Fun — *Colour My Love* (1984, duo italo-disco italien)
+- Modern Talking — *You're My Heart, You're My Soul* (1984, duo allemand)
+- Kim Wilde — *Cambodia* (1981, Royaume-Uni — orthographe correcte "Kim", pas "Kym" comme suggéré)
+- Scotch — *Take Me Up* (1985, italo-disco)
+- A-ha — *Take On Me* (1984/85, Norvège)
+- Shalamar — *A Night To Remember* (1982, funk/R&B américain)
+
+**9 nouvelles fiches créées dans `src/data/artists.js`** (source unique) — génèrent automatiquement 9 pages `/artiste-X.html` via la route dynamique `artiste-[slug].astro` existante, sans autre code à toucher. `sitemap.xml` mis à jour en conséquence (+9 URLs).
+
+**Quiz restauré à sa taille prévue** : avec ces 9 nouveaux artistes + les 11 déjà vérifiés au §48, le catalogue compte maintenant 20 artistes années 80 distincts vérifiés — le quiz repasse à **10 questions en round principal** (tubes très connus internationalement : Michael Jackson, Queen, Wham!, Madonna, A-ha, Modern Talking, Kim Wilde, Bananarama, Kylie Minogue, Simple Minds) **+ 10 questions bonus** (titres plus difficiles à trouver : Phil Collins, Vanessa Paradis, Jean-Jacques Goldman, Sade, Muriel Dacq, Élégance, Baltimora, Fun Fun, Scotch, Shalamar), toujours strictement une question par artiste sur l'ensemble.
+
+**Vérifié après build (211 pages, +9 vs §48, aucune erreur)** : les 9 nouvelles fiches artistes générées et vérifiées individuellement ; comptage des 20 `data-correct="true"` par `data-slug` confirmant zéro doublon ; aucun lien cassé sur la page quiz ; parcours complet testé dans le navigateur en deux temps (contrainte de timeout du test) — round principal 10/10 → offre de bonus affichée → round bonus 10/10 → score final 20/20 avec le verdict "Score absolument parfait, sur les deux rounds !".
+
+---
+
+*Dernière mise à jour : 2026-08-08, 9 fiches artistes années 80 + quiz restauré à 10+10 (§49).*
