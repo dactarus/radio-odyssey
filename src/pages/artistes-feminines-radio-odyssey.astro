@@ -1,0 +1,114 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import ContentIllustration from '../components/ContentIllustration.astro';
+import { ARTISTS } from '../data/artists.js';
+
+const feminineSlugs = [
+  'madonna', 'dua-lipa', 'shakira', 'lady-gaga', 'mylene-farmer', 'angele',
+  'aya-nakamura', 'jennifer-lopez', 'taylor-swift', 'zazie', 'bebe-rexha',
+  'ariana-grande', 'alicia-keys', 'sia', 'sabrina-carpenter', 'katy-perry',
+  'miley-cyrus', 'celine-dion', 'karol-g', 'vanessa-paradis', 'tove-lo',
+  'zaho', 'bananarama', 'clara-luciani', 'amy-macdonald', 'charlotte-cardin',
+  'ava-max', 'rihanna', 'doja-cat', 'adele', 'christina-aguilera', 'lizzo',
+  'kylie-minogue', 'jain', 'beyonce', 'amy-winehouse',
+];
+const artists = feminineSlugs
+  .map((slug) => ARTISTS.find((a) => a.slug === slug))
+  .filter(Boolean)
+  .sort((a, b) => b.playCount - a.playCount);
+
+const faq = [
+  { q: 'Comment cette liste a-t-elle été établie ?', a: `À partir des ${artists.length} artistes féminines solo (et de Bananarama, seul groupe entièrement féminin) présentes dans notre catalogue de 100 fiches artistes — les groupes mixtes ou menés par un chanteur en sont volontairement exclus, pour rester rigoureux sur qui est réellement mis en avant.` },
+  { q: 'Radio Odyssey diffuse-t-il plus d\'artistes féminines que masculins ?', a: "Non, la programmation ne suit aucune logique de quota par genre des artistes — c'est un savant mélange qui dépend uniquement du style musical et de la qualité du titre. Cette page réunit simplement les voix féminines de notre catalogue, classées par fréquence de passage réelle." },
+  { q: 'Cette page remplace-t-elle celle des artistes diffusés ?', a: "Non, elle en est un extrait thématique. Retrouvez la liste complète, tous genres confondus, sur notre page <a href='/artistes-diffuses-radio-odyssey.html' style='color:var(--ro-purple);font-weight:700;'>artistes diffusés</a>." },
+];
+---
+<Layout
+  lang="fr"
+  title="Artistes Féminines sur Radio Odyssey"
+  description={`Madonna, Shakira, Rihanna, Adele... ${artists.length} artistes féminines réellement diffusées sur Radio Odyssey, classées par fréquence de passage.`}
+>
+  <PageHero
+    gradientFrom="#FF3CAC"
+    gradientTo="#FFD700"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Artistes féminines sur Radio Odyssey"
+    title="Artistes Féminines"
+    text={`${artists.length} chanteuses et artistes féminines réellement diffusées sur l'antenne, de Madonna à Sabrina Carpenter.`}
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="9" stroke="white" stroke-width="2.3"/><path d="M24 25V34" stroke="white" stroke-width="2.3" stroke-linecap="round"/><line x1="18" y1="30" x2="30" y2="30" stroke="white" stroke-width="2.3" stroke-linecap="round"/><path d="M17 12C17 12 20 9 24 9" stroke="rgba(255,255,255,.6)" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Une place de choix dans la programmation</h2>
+            <p>Sur {artists.length} artistes, notre catalogue compte une part importante de voix féminines, des incontournables installées depuis les années 80 aux révélations les plus récentes. Radio Odyssey reste une web radio associative — gratuite, sans publicité, financée par ses seuls auditeurs.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Les artistes féminines diffusées sur l'antenne</h2>
+            <p style="margin-bottom:1rem;">Classées par fréquence de passage réelle sur l'antenne (données de programmation) — cliquez sur un nom pour voir ses titres diffusés :</p>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+              {artists.map((a) => (
+                <a href={`/artiste-${a.slug}.html`} class="tag-pill" style="text-decoration:none;">{a.name}</a>
+              ))}
+            </div>
+          </div>
+
+          <ContentIllustration gradientFrom="#FF3CAC" gradientTo="#FFD700" caption="Des voix installées aux révélations récentes, sans coupures pub.">
+            <Fragment slot="icon">
+              <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="9" stroke="white" stroke-width="2.3"/><path d="M24 25V34" stroke="white" stroke-width="2.3" stroke-linecap="round"/><line x1="18" y1="30" x2="30" y2="30" stroke="white" stroke-width="2.3" stroke-linecap="round"/></svg>
+            </Fragment>
+          </ContentIllustration>
+
+          <div class="content-card">
+            <h2>Aucune logique de quota, juste un vrai mélange</h2>
+            <p style="margin-bottom:0;">La programmation de Radio Odyssey ne suit aucune règle de parité imposée : le choix des titres dépend du style musical et de la qualité de chaque morceau, pas du genre de l'artiste. Cette diversité de voix féminines est le reflet naturel d'une sélection large, entre pop, dance, variété française et R&B. Retrouvez l'ensemble du catalogue sur notre page <a href="/artistes-diffuses-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">artistes diffusés</a>, ou par style sur notre page <a href="/styles-musicaux-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">styles musicaux</a>.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="feminines" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les Artistes Diffusés', desc: 'La liste complète, tous genres confondus' },
+              { href: '/styles-musicaux-radio-odyssey.html', label: 'Styles Musicaux sur Radio Odyssey', desc: 'Synthpop, dance, pop française, ballades...' },
+              { href: '/titres-les-plus-diffuses-sur-radio-odyssey.html', label: 'Les Titres les Plus Diffusés', desc: 'Le classement réel, tous styles confondus' },
+            ]}
+            associated={[
+              { href: '/radio-pop-en-ligne.html', label: 'Radio Pop en Ligne' },
+              { href: '/decouvertes-radio-odyssey.html', label: 'Découvertes Radio Odyssey' },
+              { href: '/artistes-et-styles.html', label: 'Le cocon Artistes & Styles' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez ces voix en direct</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href="/artistes-et-styles.html" class="btn-hero-ghost">
+                <Icon name="grid" /> Découvrir les autres thèmes
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

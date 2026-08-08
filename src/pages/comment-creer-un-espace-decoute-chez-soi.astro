@@ -1,0 +1,107 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'Le son 5.1 apporte-t-il quelque chose pour écouter la radio ?', a: "Non — une web radio comme Radio Odyssey diffuse en stéréo (2 canaux), pas en son multicanal. Un système 5.1 ne fera pas mieux qu'une bonne paire d'enceintes stéréo pour ce type de source ; il devient utile surtout pour les films et certains jeux vidéo." },
+  { q: 'Faut-il un ampli haut de gamme pour bien profiter de la radio ?', a: "Non. Un ampli-tuner ou une enceinte connectée correcte suffit largement : la qualité perçue d'une radio en streaming dépend surtout de la qualité des enceintes et de leur emplacement dans la pièce, plus que du prix de l'électronique." },
+  { q: 'Wi-Fi ou Bluetooth, quelle différence pour écouter Radio Odyssey ?', a: "Le Wi-Fi (via une enceinte connectée ou un streamer réseau) offre en général une meilleure stabilité et évite de dépendre de la portée Bluetooth ; le Bluetooth reste plus simple à mettre en place et suffisant pour un usage quotidien standard." },
+  { q: 'Quel budget prévoir pour débuter ?', a: "Une simple enceinte connectée (voir notre guide dédié) permet de démarrer pour un budget modeste. Une vraie chaîne stéréo (ampli + paire d'enceintes) demande un investissement plus large, mais reste optionnelle : le format radio ne réclame pas la même exigence qu'une écoute audiophile de vinyles." },
+];
+---
+<Layout
+  lang="fr"
+  title="Créer un Espace d'Écoute Dédié chez Soi | Radio Odyssey"
+  description="Enceintes, ampli, pièce dédiée, 5.1 ou pas : le guide pour créer chez vous un vrai espace d'écoute et profiter au mieux de Radio Odyssey."
+>
+  <PageHero
+    gradientFrom="#7B2FBE"
+    gradientTo="#1e7fcb"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Comment créer un espace d'écoute dédié chez soi"
+    title="Créer un Espace d'Écoute chez Soi"
+    text="Enceintes, ampli, acoustique de la pièce : de quoi profiter au mieux de Radio Odyssey à la maison, sans se ruiner."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="10" height="28" rx="3" stroke="white" stroke-width="2.2"/><circle cx="13" cy="18" r="2.5" stroke="rgba(255,255,255,.7)" stroke-width="1.6"/><circle cx="13" cy="30" r="3.5" stroke="rgba(255,255,255,.7)" stroke-width="1.6"/><rect x="30" y="10" width="10" height="28" rx="3" stroke="white" stroke-width="2.2"/><circle cx="35" cy="18" r="2.5" stroke="rgba(255,255,255,.7)" stroke-width="1.6"/><circle cx="35" cy="30" r="3.5" stroke="rgba(255,255,255,.7)" stroke-width="1.6"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Une <a href="/ecouter-radio-odyssey-enceinte-connectee.html" style="color:var(--ro-purple);font-weight:700;">enceinte connectée</a> suffit pour bien commencer. Mais si vous voulez aller plus loin et profiter de Radio Odyssey comme d'une vraie chaîne hi-fi, voici les bases pour créer un espace d'écoute dédié chez vous — sans dépenses inutiles.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Le choix des enceintes</h2>
+            <p style="margin-bottom:0;">Une paire d'enceintes stéréo — bibliothèque (compactes, posées sur un support) ou colonnes (plus imposantes, plus de basses) — suffit amplement pour une écoute radio. Pas besoin de multiplier les enceintes : la diffusion est en stéréo, deux canaux, pas plus.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>L'ampli : le cœur du système</h2>
+            <p style="margin-bottom:0;">Un ampli-tuner (ou un ampli connecté intégrant le Wi-Fi/Bluetooth) reste la pièce centrale. Il existe aujourd'hui des amplis compacts avec streaming intégré, capables de recevoir directement une web radio comme Radio Odyssey via <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">TuneIn</a>, sans passer par un smartphone ou un ordinateur.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Filaire ou sans fil</h2>
+            <p style="margin-bottom:0;">Le Wi-Fi (enceinte connectée, streamer réseau) offre une meilleure stabilité qu'une connexion Bluetooth classique, surtout à distance ou avec des murs entre l'appareil et l'ampli. Le Bluetooth reste néanmoins la solution la plus simple pour un usage quotidien, sans configuration réseau à gérer.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>5.1, home cinéma : utile pour la radio ?</h2>
+            <p style="margin-bottom:0;">Honnêtement, non. Le son 5.1 (ou tout système multicanal) est pensé pour les films et certains jeux vidéo, où la source audio exploite plusieurs canaux séparés. Une web radio comme Radio Odyssey diffuse en stéréo classique : un système 5.1 ne l'enrichira pas, il se contentera de reproduire les deux canaux stéréo sur l'ensemble des enceintes, sans réel gain. Autrement dit, pas besoin d'investir dans le home cinéma pour "juste" la radio.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Un mot sur la pièce elle-même</h2>
+            <ul style="margin-bottom:0;">
+              <li>Évitez de coller les enceintes contre un mur ou dans un angle — un peu d'espace autour améliore le rendu</li>
+              <li>Un tapis, des rideaux ou une bibliothèque bien remplie limitent les échos dans une pièce trop nue</li>
+              <li>Positionnez les enceintes à hauteur d'oreille si possible, plutôt qu'au sol</li>
+              <li>Pas besoin de traitement acoustique professionnel pour une écoute radio du quotidien — ces quelques ajustements suffisent largement</li>
+            </ul>
+          </div>
+
+          <div class="content-card">
+            <h2>Quel budget, pour quel usage</h2>
+            <p style="margin-bottom:0;">Pour une écoute simple et efficace, une enceinte connectée reste le choix le plus rapide et le plus économique — voir notre guide <a href="/ecouter-radio-odyssey-enceinte-connectee.html" style="color:var(--ro-purple);font-weight:700;">écouter sur enceinte connectée</a>. Pour un vrai espace dédié, une chaîne stéréo (ampli + paire d'enceintes) demande un budget plus large, mais reste un choix optionnel : le format radio ne réclame pas la même exigence qu'une écoute audiophile de vinyles ou de fichiers haute résolution.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="espaceecoute" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/ecouter-radio-odyssey-enceinte-connectee.html', label: 'Écouter sur Enceinte Connectée', desc: 'Alexa, Google Home, Sonos...' },
+              { href: '/ecouter-radio-odyssey-sur-ordinateur.html', label: 'Écouter sur Ordinateur', desc: 'Au bureau ou en télétravail' },
+              { href: '/ecouter-radio-odyssey-sur-tv.html', label: 'Écouter sur TV Connectée', desc: 'Chromecast, Apple TV, Fire TV' },
+            ]}
+            associated={[
+              { href: '/radio-detente-moderne.html', label: 'Radio Détente Moderne' },
+              { href: '/radio-sans-publicite.html', label: 'Radio Sans Publicité' },
+              { href: '/conseils-ecoute.html', label: 'Tout le cocon Conseils d\'Écoute' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Installez l'ambiance positive chez vous</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Écouter en Direct
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
