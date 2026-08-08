@@ -1049,3 +1049,25 @@ Le propriétaire a trouvé le libellé "Artistes & Styles" trop vague, "Styles" 
 ---
 
 *Dernière mise à jour : 2026-08-08, clarification de la tuile Artistes & Styles sur l'accueil (§43).*
+
+---
+
+## 44. Écouter de la musique sous l'eau (2026-08-08)
+
+Idée volontairement "farfelue" du propriétaire, traitée sérieusement plutôt qu'écartée. Aucune page existante ne couvre cet angle dans Conseils d'Écoute — pas de cannibalisation.
+
+**Choix éditorial important : honnêteté plutôt que survente.** Contrairement à la correction sur le 5.1 (§40, où la technologie apportait vraiment quelque chose), la réponse technique honnête ici est négative pour l'usage le plus littéral : l'eau bloque les ondes Bluetooth/Wi-Fi en quelques centimètres, donc **aucun streaming en direct ne fonctionne réellement tête sous l'eau**, Radio Odyssey ou n'importe quel autre service. La page l'assume clairement plutôt que de prétendre le contraire (cohérent avec la règle §2.3 "aucune promesse produit non vérifiée").
+
+**Contenu, avec la nuance qui rend la page utile plutôt que juste négative** :
+- Comment les nageurs font vraiment : lecteur MP3 étanche autonome, fichiers téléchargés à l'avance, restitution par conduction osseuse — pas un flux en direct, donc structurellement incompatible avec Radio Odyssey qui ne propose pas de fichiers téléchargeables.
+- Ce qui fonctionne très bien en pratique : une enceinte flottante/étanche à la surface (piscine, douche, bain) — le vrai besoin derrière la plupart des recherches sur ce sujet, redirigé vers `ecouter-radio-odyssey-enceinte-connectee.html`.
+
+**Maillage** : lien ajouté depuis `ecouter-radio-odyssey-enceinte-connectee.html`.
+
+**Vérifié après build (200 pages, aucune erreur)** : meta description ramenée de 162 à 148 caractères après une première version trop longue, canonical correct, `FAQPage` présent, aucun lien cassé, rendu testé dans le navigateur sans erreur console. `navigation.js` et `sitemap.xml` mis à jour (Conseils d'Écoute : 7 → 8 pages).
+
+Total après ce lot : **97 pages thématiques**, 3 restantes pour atteindre 100.
+
+---
+
+*Dernière mise à jour : 2026-08-08, écouter de la musique sous l'eau (§44).*
