@@ -1246,3 +1246,25 @@ Troisième quiz de la série. Cette fois, **les 20 artistes existaient déjà da
 ---
 
 *Dernière mise à jour : 2026-08-09, quiz musical années 2010 (§52).*
+
+---
+
+## 53. Quiz musical années 2020 — série des 5 décennies complète (2026-08-09)
+
+Cinquième et dernier quiz de la série (proposée par le propriétaire comme jeu gratuit sans enjeu, cohérent avec l'esprit bien-être de la radio — voir §51). Avec ce quiz, la série couvre désormais les années 80, 90, 2000, 2010 et 2020, soit 100 questions vérifiées au total (5 × 20).
+
+**Piège confirmé, symétrique à celui du §52** : "As It Was" de Harry Styles, écarté du quiz années 2010 après vérification (sorti en 2022), trouve ici sa place naturelle.
+
+**20 artistes vérifiés, tous déjà présents dans le catalogue** — aucune nouvelle fiche nécessaire. Point notable : plusieurs titres écartés des quiz précédents pour être "trop récents" (M. Pokora *Reflet*, Ridsa *Me Enamore*, R3HAB *In My Head*, tous 2025 ; Sound Of Legend *Some Kind Of Kiss*, 2023) retrouvent ici un usage légitime, la décennie 2020 étant justement en cours.
+
+Round principal (tubes très connus internationalement) : Harry Styles (As It Was, 2022), Sabrina Carpenter (Espresso, 2024), Teddy Swims (Lose Control, 2023), Miley Cyrus (Flowers, 2023), Bruno Mars (Die With A Smile, 2024), The Weeknd (Sacrifice, 2022), Doja Cat (Paint The Town Red, 2023), Benson Boone (In The Stars, 2022), Karol G (Si Antes Te Hubiera Conocido, 2024), Ed Sheeran (Azizam, 2025). Round bonus (nouveautés francophones et scène dance/électro, plus discrètes) : Ava Max (Kings & Queens, 2020), Damiano David (The First Time, 2025), Djo (End Of Beginning, 2022/2024), Aya Nakamura (Baddies, 2025), Angèle (Bruxelles je t'aime, 2021), Alex Warren (Ordinary, 2025), M. Pokora (Reflet, 2025), Ridsa (Me Enamore, 2025), R3HAB (In My Head, 2025), Sound Of Legend (Some Kind Of Kiss, 2023).
+
+**Maillage** : lien réciproque ajouté avec `quiz-musical-annees-2010.html`, complétant la chaîne de navigation 80 → 90 → 2000 → 2010 → 2020.
+
+**Vérifié après build (221 pages, +1 vs §52, aucune erreur)** : comptage des 20 `data-correct="true"` par `data-slug` confirmant zéro doublon, tous les slugs vérifiés contre les fiches réellement générées, aucun lien cassé, parcours complet testé dans le navigateur — score final 20/20 confirmé.
+
+**Bilan de la série (§45-53)** : 5 quiz, 100 questions vérifiées individuellement par recherche web (2 erreurs détectées et corrigées en cours de route : Indochine "La Belle et la Bête" à tort daté années 80 alors que sorti en 2024 ; Bananarama "I Heard A Rumour" initialement daté 1991 alors que sorti en 1987), 13 nouvelles fiches artistes créées au total sur l'ensemble de la série (Baltimora, Fun Fun, Modern Talking, Kim Wilde, Scotch, A-ha, Shalamar, Muriel Dacq, Élégance, Robert Miles, Gala, M People, Corona, Anastacia, Modjo — soit 15 noms, dont 2 doublons de comptage : Muriel Dacq et Élégance appartiennent au même lot que Baltimora etc. au §49).
+
+---
+
+*Dernière mise à jour : 2026-08-09, quiz musical années 2020 — série complète (§53).*
