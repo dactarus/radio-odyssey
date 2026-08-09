@@ -1206,3 +1206,25 @@ Le propriétaire a demandé un second quiz sur le même modèle que celui des an
 ---
 
 *Dernière mise à jour : 2026-08-09, quiz musical années 90 (§50).*
+
+---
+
+## 51. Quiz musical années 2000, et série complète prévue jusqu'aux années 2020 (2026-08-09)
+
+Le propriétaire a proposé d'étendre la série de quiz à toutes les décennies restantes (2000, 2010, 2020), en la présentant explicitement comme un jeu gratuit sans enjeu ("juste pour jouer, pas de gain à part l'amusement"), cohérent avec l'esprit bien-être de la radio. Plan retenu : une décennie à la fois, même méthode de vérification systématique que pour les années 80/90.
+
+**Même méthode, même rigueur** : passage en revue du catalogue pour repérer des titres plausiblement sortis dans les années 2000, vérification individuelle par recherche web de chaque candidat. Pistes écartées après vérification : "Reflet" de M. Pokora et "Me Enamore" de Ridsa sont tous deux de 2025, "Some Kind Of Kiss" de Sound Of Legend est de 2023, "Paris-Seychelles" de Julien Doré est en réalité de 2013 (candidat noté pour le futur quiz années 2010).
+
+**18 artistes trouvés et vérifiés dans le catalogue existant** ; le propriétaire a complété les 2 derniers avec Anastacia (*I'm Outta Love*, 2000) et Modjo (*Lady (Hear Me Tonight)*, 2000) — également vérifiés par recherche web.
+
+**Structure identique aux deux quiz précédents** : `quiz-musical-annees-2000.html` (Musique & Énergie), 10 questions en round principal (tubes très connus internationalement : Beyoncé, Rihanna, Lady Gaga, Christina Aguilera, Shakira, Alicia Keys, Amy Winehouse, The Black Eyed Peas, Kylie Minogue, Maroon 5) + 10 questions bonus débloquées sur score parfait (titres plus difficiles à trouver : Craig David, Robbie Williams, Sting, Amy Macdonald, Charlie Winston, Christophe Willem, Moby, Bob Sinclar, Anastacia, Modjo) — toujours une seule question par artiste sur l'ensemble des 20.
+
+**2 nouvelles fiches artistes créées** (Anastacia, Modjo) dans `src/data/artists.js`. Lien réciproque ajouté avec `quiz-musical-annees-90.html`.
+
+**Fausse alerte pendant la vérification** : le script de contrôle "aucun artiste ne revient deux fois" signalait 19 slugs au lieu de 20 — cause : la regex de vérification (`[a-z-]+`) excluait les chiffres, ratant "maroon-5". Corrigé (`[a-z0-9-]+`), confirmé 20 slugs distincts. Bug de la vérification elle-même, pas du quiz — noté pour éviter de le reproduire sur les prochains quiz de la série.
+
+**Vérifié après build (219 pages, +3 vs §50, aucune erreur)** : meta description ramenée de 162 à 148 caractères, aucun lien cassé, parcours complet testé dans le navigateur en trois temps — score final 20/20 confirmé.
+
+---
+
+*Dernière mise à jour : 2026-08-09, quiz musical années 2000 (§51).*
