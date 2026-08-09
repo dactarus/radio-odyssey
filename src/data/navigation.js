@@ -87,12 +87,12 @@ export const NAV_CATEGORIES = [
     hubTitle: 'Playlists selon le Moment de la Journée',
     hubIntro: "Une ambiance différente à chaque heure — retrouvez la sélection de Radio Odyssey, tranche horaire par tranche horaire.",
     pages: [
-      { href: '/musique-pour-le-reveil.html', bi: 'sunrise', label: 'Le Réveil (6H-9H)', desc: 'Bien démarrer sa matinée en douceur' },
+      { href: '/musique-pour-le-reveil.html', bi: 'sunrise', label: 'Le Réveil (7H-9H)', desc: 'Bien démarrer sa matinée en douceur' },
       { href: '/playlist-pour-la-matinee.html', bi: 'sun', label: 'La Matinée (9H-12H)', desc: 'Hits non-stop pour rester dynamique' },
       { href: '/musique-pour-la-pause-dejeuner.html', bi: 'cup-hot', label: 'La Pause Déjeuner (12H-14H)', desc: 'Respirez en musique' },
       { href: '/musique-pour-lapres-midi.html', bi: 'headphones', label: "L'Après-midi (14H-18H)", desc: 'Easy listening pour tenir la distance' },
       { href: '/musique-pour-laperitif.html', bi: 'cup-straw', label: "L'Apéritif (18H-21H)", desc: 'Mix du soir pour lancer la soirée' },
-      { href: '/musique-pour-la-nuit.html', bi: 'moon-stars', label: 'La Nuit (21H-6H)', desc: 'Le fil Good Feeling non-stop' },
+      { href: '/musique-pour-la-nuit.html', bi: 'moon-stars', label: 'La Nuit (21H-7H)', desc: 'Le fil Good Feeling non-stop' },
     ],
   },
   {
