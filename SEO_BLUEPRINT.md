@@ -1228,3 +1228,21 @@ Le propriétaire a proposé d'étendre la série de quiz à toutes les décennie
 ---
 
 *Dernière mise à jour : 2026-08-09, quiz musical années 2000 (§51).*
+
+---
+
+## 52. Quiz musical années 2010 (2026-08-09)
+
+Troisième quiz de la série. Cette fois, **les 20 artistes existaient déjà dans le catalogue** — aucune nouvelle fiche artiste nécessaire, contrairement aux trois quiz précédents.
+
+**Piège évité par la vérification systématique** : "As It Was" de Harry Styles semblait un candidat naturel pour ce quiz (l'artiste et sa fiche sont bien dans le catalogue), mais la recherche web a montré que le titre est sorti le 1ᵃᵉʳ avril **2022** — réservé au futur quiz années 2020, pas utilisé ici.
+
+**20 artistes trouvés et vérifiés directement dans le catalogue existant**, sans besoin de solliciter le propriétaire cette fois. Round principal (tubes très connus internationalement) : Ed Sheeran (Shape of You, 2017), Sia (Chandelier, 2014), Rihanna (We Found Love, 2011), David Guetta (Titanium, 2011), Taylor Swift (Cruel Summer, 2019), Dua Lipa (Don't Start Now, 2019), Calvin Harris (This Is What You Came For, 2016), Avicii (Wake Me Up, 2013), Shawn Mendes (There's Nothing Holdin' Me Back, 2017), Lewis Capaldi (Someone You Loved, 2018). Round bonus (scène dance/électro franco-belge, plus discrète) : Robin Schulz (Sugar, 2015), Stromae (Papaoutai, 2013), Ofenbach (Be Mine, 2016), Kungs (This Girl, 2016), Jain (Makeba, 2015), The Avener (Fade Out Lines, 2014), Clean Bandit (Rockabye, 2016), Ava Max (Sweet But Psycho, 2018), Lost Frequencies (Are You With Me, 2014), DJ Snake (Loco Contigo, 2019).
+
+**Maillage** : lien réciproque ajouté avec `quiz-musical-annees-2000.html`.
+
+**Vérifié après build (220 pages, +1 vs §51, aucune erreur)** : comptage des 20 `data-correct="true"` par `data-slug` (regex corrigée) confirmant zéro doublon, tous les slugs vérifiés contre les fiches réellement générées, aucun lien cassé, parcours complet testé dans le navigateur — score final 20/20 confirmé.
+
+---
+
+*Dernière mise à jour : 2026-08-09, quiz musical années 2010 (§52).*
