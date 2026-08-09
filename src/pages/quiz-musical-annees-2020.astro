@@ -386,7 +386,20 @@ const faq = [
       }
     }
 
+    function shuffleChoices(qEl) {
+      var wrap = qEl.querySelector('.quiz2020-choice');
+      wrap = wrap && wrap.parentElement;
+      if (!wrap) return;
+      var buttons = Array.prototype.slice.call(wrap.children);
+      for (var i = buttons.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = buttons[i]; buttons[i] = buttons[j]; buttons[j] = tmp;
+      }
+      buttons.forEach(function (b) { wrap.appendChild(b); });
+    }
+
     function wireQuestion(qEl) {
+      shuffleChoices(qEl);
       var buttons = Array.prototype.slice.call(qEl.querySelectorAll('.quiz2020-choice'));
       var nextBtn = qEl.querySelector('.quiz2020-next');
       var feedback = qEl.querySelector('.quiz2020-feedback');

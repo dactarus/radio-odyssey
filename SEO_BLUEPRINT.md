@@ -1267,4 +1267,16 @@ Round principal (tubes très connus internationalement) : Harry Styles (As It Wa
 
 ---
 
-*Dernière mise à jour : 2026-08-09, quiz musical années 2020 — série complète (§53).*
+## 54. Correction d'un bug général sur les 5 quiz : la bonne réponse revenait toujours à la même position (2026-08-09)
+
+Le propriétaire a signalé que, dans le round bonus du quiz années 90, la bonne réponse était systématiquement la 4ᵉ proposition — et a demandé de vérifier les autres quiz (80, 2010).
+
+**Diagnostic** : le bug touchait bien les 5 quiz de la série, pas seulement celui signalé. Cause — le script mélange aléatoirement (Fisher-Yates) l'**ordre des questions** à chaque chargement, mais jamais l'ordre des 4 réponses *à l'intérieur* d'une question ; or les fiches `mainQuestions`/`bonusQuestions` ont quasi systématiquement été rédigées avec la bonne réponse écrite en dernier dans le tableau `choices`. Vérification par script sur les 5 fichiers : le round bonus est à **100% en position 4** sur les 5 quiz (80, 90, 2000, 2010, 2020) ; le round principal est également biaisé, moins uniformément (ex. années 80 : 2,4,4,1,4,4,4,4,4,4).
+
+**Correctif appliqué identiquement sur les 5 fichiers** (`quiz-musical-annees-80/90/2000/2010/2020.astro`) : une fonction `shuffleChoices(qEl)` mélange désormais l'ordre des boutons de réponse dans le DOM (Fisher-Yates, ré-append en ordre mélangé) au moment où chaque question est câblée (`wireQuestion`), donc à chaque chargement de page, indépendamment du mélange déjà existant sur l'ordre des questions. Le clic reste basé sur l'attribut `data-correct` de chaque bouton, donc totalement indépendant de sa position — aucun autre changement de logique nécessaire.
+
+**Vérifié après build (221 pages, aucune erreur)** : script de contrôle sur le quiz années 90 confirmant une distribution variée des positions à chaque rechargement (ex. bonus : 3,4,3,1,4,2,4,4,3,3 sur un rechargement, 1,1,4,2,4,1,1,4,3,2 sur un autre) ; parcours réel testé dans le navigateur (build statique servi localement) — clic sur la bonne réponse en position 4 déclenche bien l'avancée automatique avec le bon retour visuel, clic sur une mauvaise réponse déclenche bien le retour rouge + surlignage vert de la bonne réponse, quelle que soit sa position.
+
+---
+
+*Dernière mise à jour : 2026-08-09, correction du bug de position des bonnes réponses sur les 5 quiz (§54).*
