@@ -41,8 +41,12 @@ const others = ARTISTS.map((a, i) => ({ a, i }))
 const related = others.slice(0, 3).map((s) => s.a);
 const genreFamily = familyForArtist(artist);
 
-const title = `${artist.name} : Remix Gratuit — Radio Odyssey`;
-const description = `${artist.name} (${artist.genre}) sur Radio Odyssey : remix diffusés sur l'antenne, titres réellement joués, et une radio 100% gratuite, sans pub, à écouter en direct sur mobile ou ordinateur.`;
+// Le title annonce ce que la page contient réellement (la liste des titres
+// diffusés). L'ancien gabarit « X : Remix Gratuit » promettait un
+// téléchargement inexistant : intention de recherche non satisfaite,
+// rebond immédiat, et ce sur les 115 fiches artistes.
+const title = `${artist.name} : les titres diffusés — Radio Odyssey`;
+const description = `${artist.name} (${artist.genre}) sur Radio Odyssey : les titres et remix réellement diffusés sur l'antenne, sur une radio 100% gratuite et sans pub, à écouter en direct sur mobile ou ordinateur.`;
 
 const schema = {
   '@context': 'https://schema.org',

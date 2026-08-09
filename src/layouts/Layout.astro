@@ -42,6 +42,26 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
 // station (RadioStation, la marque antenne). RadioStation.publisher et
 // WebSite.publisher pointent tous les deux vers l'Organization plutôt que
 // de dupliquer ses informations.
+// Profils officiels, partagés entre l'Organization (l'entité légale, sur
+// laquelle Google consolide le Knowledge Graph) et la RadioStation (la
+// marque antenne). Une seule source pour les deux : pas de dérive.
+// NOTE : l'URL Facebook devra être remplacée par la forme
+// https://www.facebook.com/RadioOdysseyFrance dès qu'un nom
+// d'utilisateur aura été réclamé sur la Page.
+const SAME_AS = [
+  'https://www.facebook.com/profile.php?id=61588289230589',
+  'https://www.instagram.com/radio_odyssey_france/',
+  'https://x.com/Odysseylaradio',
+  'https://www.youtube.com/channel/UCodzZ_dhFdJwQ90nZzVHluw',
+  'https://tunein.com/radio/RADIO-ODYSSEY-s339104/',
+  'https://link.radioking.com/radio-odyssey',
+  'https://www.deezer.com/search/radio%20odyssey/livestream',
+  'https://radio.orange.com/radios/radio_odyssey',
+  'https://www.radioline.co/fr/radios/radio_odyssey',
+  'https://fr.welove.radio/radio/radio-odyssey/',
+  'https://mytuner-radio.com/fr/radio/radio-odyssey-512057/',
+];
+
 const associationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -61,6 +81,7 @@ const associationSchema = {
     '@type': 'PostalAddress',
     addressCountry: 'FR',
   },
+  sameAs: SAME_AS,
 };
 
 const websiteSchema = {
@@ -126,14 +147,7 @@ const organizationSchema = {
       availability: 'https://schema.org/InStock',
     },
   },
-  sameAs: [
-    'https://www.facebook.com/profile.php?id=61588289230589',
-    'https://www.instagram.com/radio_odyssey_france/',
-    'https://x.com/Odysseylaradio',
-    'https://www.youtube.com/channel/UCodzZ_dhFdJwQ90nZzVHluw',
-    'https://tunein.com/radio/RADIO-ODYSSEY-s339104/',
-    'https://link.radioking.com/radio-odyssey',
-  ],
+  sameAs: SAME_AS,
 };
 
 // BreadcrumbList : dérivé du <title> (déjà unique par page), pas besoin
