@@ -70,6 +70,7 @@ export const NAV_CATEGORIES = [
       { href: '/quiz-musical-annees-90.html', bi: 'disc', label: 'Quiz Musical Années 90', desc: 'Le même défi, une décennie plus tard' },
       { href: '/quiz-musical-annees-2000.html', bi: 'stars', label: 'Quiz Musical Années 2000', desc: 'Le même défi, deux décennies plus tard' },
       { href: '/quiz-musical-annees-2010.html', bi: 'soundwave', label: 'Quiz Musical Années 2010', desc: 'Le même défi, trois décennies plus tard' },
+      { href: '/quiz-musical-annees-2020.html', bi: 'lightning-charge', label: 'Quiz Musical Années 2020', desc: 'Le dernier de la série, jusqu\'à aujourd\'hui' },
       { href: '/chansons-les-plus-ecoutees-au-monde.html', bi: 'trophy', label: 'Les Chansons les Plus Écoutées au Monde', desc: 'Le classement mondial du streaming, et ce qui passe sur notre antenne' },
       { href: '/titres-les-plus-diffuses-sur-radio-odyssey.html', bi: 'stars', label: 'Les Titres les Plus Diffusés', desc: 'Le classement réel, tous styles confondus' },
       { href: '/musique-pour-les-plantes.html', bi: 'flower1', label: 'Pour les Plantes', desc: 'Une curiosité populaire, entre légende et science non tranchée' },
