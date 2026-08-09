@@ -1279,4 +1279,89 @@ Le propriétaire a signalé que, dans le round bonus du quiz années 90, la bonn
 
 ---
 
-*Dernière mise à jour : 2026-08-09, correction du bug de position des bonnes réponses sur les 5 quiz (§54).*
+## 55. Audit externe à 360°, et le lot de corrections qui en découle (2026-08-09)
+
+Le propriétaire a demandé un audit complet du dispositif (site, PWA, réseaux, distribution) sous forme de comité d'experts — marketing, community management, design, SEO senior, médias. Rapport livré en deux versions : une première établie par mesure externe, une seconde corrigée après lecture du code source et réception des données d'audience.
+
+**Quatre constats de la v1 se sont révélés faux** et méritent d'être consignés, parce qu'ils illustrent des pièges de méthode :
+
+- « GA4 chargé sans consentement » — **faux**. `CookieConsent.astro` ne charge `gtag.js` qu'après acceptation explicite, avec « Refuser » à parité visuelle. L'erreur venait d'une mesure faite dans un navigateur où le consentement était déjà mémorisé, doublée d'une confusion entre la *définition* de la fonction `gtag` dans le source et son *exécution*.
+- « Page Facebook = profil personnel » — **faux**. L'URL en `profile.php?id=` est aussi celle des Pages professionnelles depuis la « nouvelle expérience Pages » de Meta.
+- « `sameAs` absent » — **faux**, il existait sur `RadioStation` ; il manquait seulement sur `Organization`.
+- « Aucun événement mesuré » — **faux**, `play_click`, `play_started` et `play_error` existaient déjà.
+
+**Deux préconisations irrecevables**, signalées par le propriétaire : Radioplayer France est réservé aux radios professionnelles disposant d'une fréquence FM ; Radio Garden ne répond plus depuis des mois. Remplacées par **Radio Browser** (`api.radio-browser.info`), base communautaire libre qui alimente des dizaines d'applications tierces — inscription faite le jour même. Un doublon a été créé au passage (la base ne dédoublonne pas par URL de flux, contrairement à l'hypothèse retenue) : un ticket GitLab demande la suppression de `ad2349a3-eaec-4065-a624-0845e03f48e9`, la fiche à conserver étant `c3d37147-cc64-4f54-b8b3-b7b6b8b099f5`.
+
+**Migration Mobirise achevée.** L'ancien site `radio-odyssey.mobirisesite.com` était toujours en ligne, sa page d'accueil en `index, follow` avec un canonical auto-référent, et occupait la position n°1 sur « radio cohérence cardiaque en ligne gratuite » — devant le vrai site. Elle contenait aussi six faux témoignages (dont un nommé « Perferendis Animi », du lorem ipsum resté en place), du texte de gabarit Mobirise, et une date de création erronée (2024 au lieu de 2025). La version gratuite de Mobirise n'autorisant pas les redirections 301, la solution retenue est un `meta refresh` instantané doublé d'un `canonical` pointant vers la page équivalente — traité par Google quasiment comme une 301, à condition de **ne pas y ajouter de `noindex`**, qui annulerait le transfert de signaux. **15 URL sur 16 redirigent** ; la seizième (`/Radio-annees-80-en-ligne.html`, avec un R majuscule) est un fichier orphelin devenu inaccessible dans l'éditeur.
+
+**Corrections de code appliquées** (commit `f314a64`) :
+
+- **Titles des 115 fiches artistes** : le gabarit `« [Artiste] : Remix Gratuit — Radio Odyssey »` promettait un téléchargement inexistant, sur des artistes comme Zazie ou Teddy Swims. Remplacé par `« [Artiste] : les titres diffusés — Radio Odyssey »`.
+- **Lecteur RadioKing en charte** : `c=%231e7fcb` (bleu hérité de Mobirise) → `c=%237B2FBE`.
+- **`sameAs` factorisé** dans une constante partagée, porté sur `Organization` en plus de `RadioStation`, et complété de 6 à 11 profils (ajout de Deezer, Orange, RadioLine, WeLoveRadio, MyTuner).
+- **Grille horaire alignée sur 7 h** en sept endroits : le site annonçait « 6–9H La Matinale » et « 21H–6H Nuit », l'application « 7H–9H » et « 21H–7H ». Le site a été aligné sur l'application (`index.astro`, `navigation.js`, `DayScheduleNav.astro`, `musique-pour-le-reveil.astro`, `musique-pour-la-nuit.astro`).
+- **4 redirections héritées** ajoutées à `vercel.json` : `/radio-bien-etre.html` (404 depuis des mois, pointée par l'ancien site), la variante à R majuscule, `/radio-remix-annees-80.html`, `/plan-du-site.html`.
+
+**Données d'écoute obtenues** (RadioKing, 11 juillet – 9 août 2026) — elles manquaient totalement au pilotage jusqu'ici :
+
+| Indicateur | Valeur |
+|---|---|
+| Durée totale | 725 h (− 36 % vs 30 j précédents) |
+| Écoutes | 3 782 (− 26 %) |
+| Durée moyenne | 11,5 min |
+| Écoutes < 30 s | **35 %** — 58 % durent moins de 2 min |
+| Par plateforme | site 8 min · appli **16 min** · Alexa 12 min · TuneIn 23 min · Welove 32 min |
+| Supports | 60 % mobile · 10 % enceinte · 4 % bureau · **0 % voiture** |
+| Fidélité | Algérie 5,8 écoutes/auditeur · France 2,6 · États-Unis 1,5 |
+
+Le recul s'explique par la fin de campagnes Facebook (l'audience web s'effondre le 26 juillet). Umami montre par ailleurs que Google envoie 436 visiteurs sur 30 jours, mais que **toutes les pages éditoriales cumulées en reçoivent une vingtaine** — le trafic de recherche est un trafic de marque qui atterrit sur l'accueil. Les 221 pages n'ont pas encore commencé à travailler.
+
+**Vérifié en production** : titles des fiches artistes, couleur du lecteur, `sameAs` à 11 profils, grille à 7 h, et redirection effective des 15 URL Mobirise, contrôlées une par une dans le navigateur.
+
+---
+
+## 56. Le site devient installable : service worker, hors-ligne, manifeste (2026-08-09)
+
+Constat de l'audit : `www.radio-odyssey.com` n'enregistrait **aucun service worker**. Les trois conditions d'installabilité sont le manifeste, les icônes et un service worker — les deux premières étaient réunies, pas la troisième. Conséquence : un visiteur arrivé par Google sur une page thématique ne pouvait pas installer l'application ; il devait repérer un lien et changer de domaine. D'où l'écart entre 593 auditeurs sur le site et 81 sur l'appli.
+
+**Fichiers créés** (commit `7008d53`) :
+
+- **`public/sw.js`** — stratégies délibérément conservatrices. *Network-first* sur le HTML : la console d'édition publie souvent, une page en cache qui primerait sur la version en ligne serait un bug, pas une optimisation ; le cache ne sert que de filet. *Cache-first* sur les ressources à empreinte (`/_astro/`, polices, images) dont le nom change à chaque modification. *Stale-while-revalidate* sur le reste. **Aucune interception du cross-origin** : flux RadioKing, lecteur, Umami et GTM passent directement — les toucher ne pourrait que casser la lecture ou fausser la mesure. `CACHE_VERSION` à incrémenter manuellement.
+- **`public/hors-ligne.html`** — page de repli entièrement autonome : CSS en ligne, aucune police ni image externe, pour s'afficher sans le moindre réseau. Se recharge seule au retour de la connexion.
+- **`icon-192-maskable.png` / `icon-512-maskable.png`** — générées depuis le logo, replacé dans la zone de sécurité Android de 78 %, sur un fond dérivé du logo lui-même (agrandi puis flouté) pour éviter une bordure sombre disgracieuse.
+
+**Fichiers modifiés** : `manifest.json` (ajout de `scope`, `display_override`, catégories, icônes maskables, 3 raccourcis) ; `Layout.astro` (enregistrement après l'événement `load`, pour ne pas concurrencer le démarrage du lecteur — avec 35 % d'écoutes sous 30 secondes, rien ne doit s'ajouter au chemin critique) ; `vercel.json` (`sw.js` en `max-age=0`, sinon une nouvelle version du worker ne parviendrait jamais aux navigateurs déjà installés) ; `robots.txt`.
+
+**Vérifié en production** : service worker actif depuis une page profonde (`/radio-coherence-cardiaque.html`) et non seulement depuis l'accueil, cache `ro-v1-static` créé, page de repli en cache et lisible, lecteur et exercice de cohérence cardiaque intacts. **Testé sur iPhone** par le propriétaire : lancement en plein écran sans barre Safari, et page de repli affichée en mode avion avec wifi coupé.
+
+**Limite connue** : la page de repli est plus pauvre que celle de `app.radio-odyssey.com`, qui garde l'exercice de cohérence cardiaque et le programme accessibles hors ligne. À rattraper avant la fusion.
+
+---
+
+## 57. Lecteur audio natif avec Media Session, en remplacement de l'iframe RadioKing (2026-08-09)
+
+Le chantier identifié par l'audit comme le vrai déblocage d'audience. Deux raisons, dont une découverte en lisant le code.
+
+**Une iframe ne peut pas déclarer de MediaSession.** C'est un document tiers : aucune commande sur l'écran verrouillé, en voiture via Bluetooth ou CarPlay, ni sur montre connectée. Pour une radio dont 60 % de l'écoute est mobile, c'est la fonction la plus structurante qui manquait.
+
+**Et sur mobile, le site ne diffusait aucun son.** `roPlayNow` détectait le mobile et faisait `window.open('https://link.radioking.com/radio-odyssey')` : l'auditeur **quittait le site** pour une page RadioKing externe. Il ne lisait plus les pages, ne voyait plus le menu, ne pouvait plus être invité à installer quoi que ce soit.
+
+**Créé** : `src/components/RadioPlayer.astro` — balise `<audio>` sur le flux direct (`listen.radioking.com/radio/706859/stream/772319`), bouton lecture/pause unifié mobile et ordinateur, titre en cours affiché **même à l'arrêt** (la barre annonce ce qui passe, ce qui est en soi une invitation), Media Session avec pochette, réinterrogation de l'API calée sur la fin réelle du morceau plutôt qu'à intervalle fixe. L'égaliseur décoratif ne s'anime plus que pendant la lecture — une onde qui bouge alors que rien ne joue était un mensonge visuel.
+
+**Garde-fou indispensable** : `roPlayNow(event)` est appelée en `onclick` depuis **95 pages** et depuis `Sidebar.astro`. Son nom et sa signature sont donc conservés à l'identique ; seul le moteur change, la fonction déléguant à `window.roPlayerToggle`. Si le composant ne s'initialise pas, elle retombe sur l'ancien comportement plutôt que de laisser l'auditeur sans rien. De même, si la lecture native échoue (navigateurs intégrés Facebook et Instagram), le lecteur passe en mode secours et le clic suivant ouvre `link.radioking.com` — sans tentative d'ouverture immédiate, qu'un bloqueur de pop-up refuserait puisque le rejet arrive après le geste.
+
+**Trois effets de bord corrigés dans le même lot** :
+
+- `index.astro` et `PageHero.astro` réservaient **190 px** en haut de page pour compenser le débordement de l'iframe (35 px de `margin-top` + 145 px de hauteur réelle, contre 105 px déclarés). Sans iframe, cela aurait laissé un vide de 85 px sous la barre. Passés à `calc(var(--bar-h) + 20px)`.
+- `WebviewBanner.astro` calculait sa position en mesurant l'iframe. Le code se dégradait correctement sans elle, mais son commentaire mentait : simplifié.
+- Le script tiers `player.radioking.io/scripts/iframe.bundle.js` est supprimé — une dépendance de moins sur le chemin de rendu.
+
+**Corrigé au passage** (commit `959e08a`, séparé) : la couleur du lecteur avait été mise en charte dans `Header.astro` au §55, mais pas dans l'URL de rechargement de `Footer.astro`. Le lecteur s'affichait en violet, puis **repassait au bleu dès le premier clic** sur ordinateur. La vérification du §55 regardait la page au repos, pas après interaction.
+
+**Bilan de code** : 92 lignes supprimées pour 44 ajoutées, hors nouveau composant.
+
+**Vérifié avant livraison** : syntaxe des trois scripts modifiés validée par `node --check`, aucune référence orpheline à l'iframe dans `src/`, cohérence CSS aux deux points de rupture. Le flux accepte un paramètre anti-cache et renvoie bien `audio/mpeg` ; l'API des titres est appelable depuis le domaine. La lecture réelle n'est pas testable en automatisation — elle exige un geste utilisateur authentique — d'où un test manuel indispensable après déploiement, et un `git revert` possible en une minute.
+
+---
+
+*Dernière mise à jour : 2026-08-09, lecteur audio natif avec Media Session (§57).*
