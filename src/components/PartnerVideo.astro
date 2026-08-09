@@ -10,6 +10,11 @@ const {
   intro = "Elisabeth Bélot-Grimaud a mis en ligne sur sa chaîne YouTube une séance de cohérence cardiaque en musique — le même exercice, la même voix que celle diffusée sur l'antenne de Radio Odyssey.",
 } = Astro.props;
 
+// uploadDate et duration sont relevés sur la fiche YouTube de la vidéo
+// (balises itemprop de la page). uploadDate est OBLIGATOIRE pour Google :
+// sans elle, la Search Console signale « 1 élément non valide » et la page
+// est privée de résultat enrichi vidéo. duration et contentUrl sont
+// recommandés — ils enrichissent l'aperçu dans les résultats.
 const videoSchema = {
   '@context': 'https://schema.org',
   '@type': 'VideoObject',
@@ -17,6 +22,10 @@ const videoSchema = {
   description: "Une séance guidée de cohérence cardiaque en musique, présentée par Elisabeth Bélot-Grimaud — le même exercice que celui diffusé sur l'antenne de Radio Odyssey.",
   thumbnailUrl: 'https://i.ytimg.com/vi/2ULLb_D82VA/hqdefault.jpg',
   embedUrl: 'https://www.youtube.com/embed/2ULLb_D82VA',
+  contentUrl: 'https://www.youtube.com/watch?v=2ULLb_D82VA',
+  uploadDate: '2026-06-29T05:34:44-07:00',
+  duration: 'PT3M21S',
+  inLanguage: 'fr',
   publisher: {
     '@type': 'Person',
     name: 'Elisabeth Bélot-Grimaud',

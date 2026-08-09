@@ -1364,4 +1364,61 @@ Le chantier identifié par l'audit comme le vrai déblocage d'audience. Deux rai
 
 ---
 
-*Dernière mise à jour : 2026-08-09, lecteur audio natif avec Media Session (§57).*
+## 58. Première analyse d'audience horaire : deux publics, et le creux de midi expliqué (2026-08-09)
+
+Premier travail d'analyse mené sur les données d'écoute réelles plutôt que sur le site. Point de départ : la question restée sans réponse depuis dix-neuf mois — **les séquences de cohérence cardiaque font-elles fuir les auditeurs ?** Dix-huit pages du site et toute la différenciation de la radio reposent sur l'hypothèse inverse, jamais vérifiée.
+
+**Matière analysée** : 26 journées heure par heure (4 juillet – 8 août 2026), relevées sur les graphiques RadioKing, précision ±1 à 2 auditeurs. Les exports CSV de RadioKing ne descendent qu'au jour ; la granularité horaire n'est disponible qu'à l'écran, sur une journée à la fois.
+
+### Ce que l'analyse ne pouvait pas prouver
+
+Le premier croisement — heures avec séquence de 3 min contre heures avec séquence de 1 min contre heures sans — s'est révélé inexploitable : les trois groupes correspondent à des moments de journée différents (matin, après-midi, nuit), le confondant est total. Les comparaisons d'heures voisines montraient bien un motif (11h → 12h : −36 % ; 17h → 18h : −30 %), mais 12h et 18h sont les heures de repas, et trois minutes de séquence se diluent à 95 % dans un seau de soixante minutes.
+
+### Ce qui a tranché : la comparaison semaine / week-end
+
+Hypothèse proposée par le propriétaire : **les auditeurs écoutent au travail**. Testable, et testée en séparant les 15 jours ouvrés des 11 jours de week-end (médianes, robustes aux journées exceptionnelles comme le samedi 8 août et ses 63 auditeurs à 15h).
+
+| | Semaine | Week-end |
+|---|---|---|
+| **Creux de midi** (11h+14h vs 12h+13h) | **+44 %** | **−12 %** |
+| Matin 7h–8h | 3,5 | 2,5 |
+| Midi 12h–13h | 5 | 9 |
+| Après-midi 14h–17h | 9,2 | 6,5 |
+| Soirée 18h–23h | 4,2 | 5 |
+
+**Le creux de midi n'existe qu'en semaine — il s'inverse en pic le week-end.** Or les séquences tournent à l'identique sept jours sur sept. Si elles provoquaient ce creux, il apparaîtrait aussi le samedi.
+
+**Conclusion : le creux de 12h–13h est la pause déjeuner, pas les séquences de cohérence cardiaque.** Cela ne démontre pas qu'elles sont sans effet, mais cela retire la seule pièce à conviction qui le suggérait. L'hypothèse du propriétaire est validée sur le matin (7h–8h nettement plus fort en semaine : rythme de trajet et de prise de poste) et sur le dimanche, plus mauvais jour de la semaine à 9,1 min par session contre 13,0 le samedi.
+
+**Deux profils, deux publics.** En semaine : arrivée au bureau vers 8h, montée jusqu'à 11h, décrochage au déjeuner, longue plage d'après-midi jusqu'à 17h — le vrai pic —, chute à 18h au moment de rentrer. Le week-end : réveil tardif, midi en pic parce qu'on est chez soi, après-midi plus plat, soirée nettement plus soutenue. Écoute domestique, de fond.
+
+### Le vendredi soir se comporte comme un week-end
+
+Le propriétaire a précisé que la tranche **18h–minuit du vendredi, samedi et dimanche** suit déjà une grille distincte : rythme plus soutenu, suppression de la catégorie « Ça s'écoute » (easy listening), base de nouveautés renforcée avec d'anciennes nouveautés des décennies précédentes et des récurrents (nouveautés d'il y a quelques mois). Le vendredi était rangé en « semaine » dans le premier découpage, ce qui masquait l'effet.
+
+| | Soirée 18h–minuit | Après-midi 14h–17h | Ratio soirée/après-midi |
+|---|---|---|---|
+| Lundi–jeudi (grille standard) | 3,8 | 9,6 | **0,40** |
+| Vendredi (grille musclée) | 5,2 | 7,8 | **0,67** |
+| Samedi–dimanche (grille musclée) | 5,0 | 6,5 | **0,77** |
+
+Le ratio neutralise le niveau général de la journée. Le vendredi se place à mi-chemin, très loin des lundi-jeudi. **Deux explications indiscernables en l'état** : soit la grille musclée retient mieux, soit le vendredi soir est culturellement un soir de week-end quoi qu'on diffuse. Trois vendredis seulement dans l'échantillon — prudence.
+
+### Trois enseignements pour la programmation
+
+1. **La Matinale est mal calée.** Elle démarre à 7h (3 auditeurs) alors que l'audience de bureau arrive à 8h–9h et culmine à 11h (10 auditeurs). Météo, horoscope et trois séquences de 3 minutes sont investis sur l'heure la plus creuse de la journée éveillée.
+2. **Le trou éditorial est à 15h–17h en semaine** — 9 à 11 auditeurs, le socle, et aucun rendez-vous nommé. Créer un format là plutôt que le matin toucherait cinq fois plus de monde pour le même travail.
+3. **Le week-end mérite une grille complète, pas seulement le soir.** Midi y est le meilleur moment (9 contre 5 en semaine) et reçoit la programmation standard.
+
+### Deux expériences proposées
+
+- **Grille musclée le jeudi soir pendant un mois.** Si le ratio soirée/après-midi du jeudi passe de 0,40 vers 0,67, c'est la programmation qui agit ; s'il ne bouge pas, c'est le jour. Une seule variable change.
+- **Retrait de la séquence de 13h pendant trois semaines**, en comparant l'évolution de 13h à celle de 14h restée inchangée. Seule méthode qui neutralise l'heure du repas, la saison et le jour de la semaine.
+
+**Livrables** : `Radio-Odyssey-Note-Audience-2026-08-09.pdf` (note deux pages), deux graphiques PNG 200 dpi, et le CSV des 26 journées heure par heure avec les médianes — conservés hors dépôt, dans le dossier de travail du propriétaire.
+
+**Limite assumée** : les valeurs horaires proviennent de relevés visuels sur les graphiques RadioKing. Les médianes sur 26 journées absorbent l'essentiel de l'imprécision, mais aucune conclusion ne doit reposer sur un écart de moins de deux auditeurs.
+
+---
+
+*Dernière mise à jour : 2026-08-09, première analyse d'audience horaire (§58).*
