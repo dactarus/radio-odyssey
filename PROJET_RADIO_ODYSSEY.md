@@ -1,4 +1,19 @@
 # 📻 RADIO ODYSSEY — Résumé du Projet Web
+
+> ⚠️ **Document historique (état au 1er juillet 2026).** Il reste la référence
+> pour la **charte graphique** (couleurs, dégradés, typographies) et les
+> **horaires de cohérence cardiaque**, qui n'ont pas changé.
+>
+> En revanche, plusieurs sections sont **périmées** :
+> - la structure du site (14 pages → **221 URL**) ;
+> - le **player RadioKing en iframe**, remplacé le 2026-08-09 par un lecteur
+>   audio natif avec Media Session (voir `RadioPlayer.astro` et §57) ;
+> - le `padding-top` de 190px, lié au débordement de cette iframe ;
+> - la section « État du projet », antérieure à la PWA et à la migration
+>   de l'ancien site Mobirise.
+>
+> **Pour l'état courant du projet, lire `CLAUDE.md`. Pour l'historique
+> détaillé des travaux, lire `SEO_BLUEPRINT.md` (§1 à §57).**
 **Fichier de référence — À conserver dans le dossier du site**
 Dernière mise à jour : 1er juillet 2026
 
