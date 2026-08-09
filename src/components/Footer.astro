@@ -71,55 +71,28 @@ function roUmamiTrack(name, data){
   }
 }
 
+/* Point d'entrée historique de la lecture. Il est appelé en onclick depuis
+   95 pages et depuis la barre latérale : son nom et sa signature ne doivent
+   pas changer. Seul le moteur a été remplacé — l'iframe RadioKing a laissé
+   place au lecteur natif (voir RadioPlayer.astro).
+
+   L'appel reste synchrone dans le geste de l'utilisateur, condition
+   indispensable pour que les navigateurs autorisent la lecture audio. */
 function roPlayNow(e){
   if(e){ e.preventDefault(); e.stopPropagation(); }
 
-  var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
-                 || window.innerWidth <= 767;
-
-  roUmamiTrack('play_click', { device: isMobile ? 'mobile' : 'desktop', page: location.pathname });
-
-  if(isMobile){
-    // Mobile : les navigateurs bloquent l'autoplay iframe.
-    // On ouvre le player RadioKing dans un nouvel onglet —
-    // il démarre immédiatement car c'est une action utilisateur directe.
-    var win = window.open('https://link.radioking.com/radio-odyssey', '_blank');
-    if(win){
-      // Onglet externe : on ne peut pas observer la lecture réelle,
-      // l'ouverture réussie (déclenchée par un geste utilisateur direct)
-      // sert de proxy pour "lecture démarrée".
-      roUmamiTrack('play_started', { device: 'mobile', method: 'external-tab' });
-    } else {
-      roUmamiTrack('play_error', { device: 'mobile', reason: 'popup_blocked' });
-    }
+  if(typeof window.roPlayerToggle === 'function'){
+    window.roPlayerToggle(e);
     return;
   }
 
-  // Desktop : recharger l'iframe avec autoplay
-  var iframe = document.querySelector('#topRadioBar iframe.rk-desktop')
-            || document.querySelector('#topRadioBar iframe');
-
-  if(iframe){
-    // c=%237B2FBE : même violet de charte que l'iframe initiale du Header.
-    // Cette URL-ci avait été oubliée lors du passage en charte : le lecteur
-    // s'affichait en violet, puis repassait au bleu Mobirise dès le clic.
-    var src = 'https://player.radioking.io/radio-odyssey/?c=%237B2FBE&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90&a=1';
-    iframe.addEventListener('load', function onLoad(){
-      // Iframe cross-origin : on ne peut pas confirmer que l'audio joue
-      // réellement (pas d'API postMessage exposée par RadioKing), le
-      // chargement du lecteur avec le paramètre autoplay sert de proxy.
-      roUmamiTrack('play_started', { device: 'desktop', method: 'iframe-reload' });
-      iframe.removeEventListener('load', onLoad);
-    });
-    iframe.addEventListener('error', function onError(){
-      roUmamiTrack('play_error', { device: 'desktop', reason: 'iframe_load_error' });
-      iframe.removeEventListener('error', onError);
-    }, { once: true });
-    iframe.src = '';
-    setTimeout(function(){ iframe.src = src; }, 50);
-  } else {
-    roUmamiTrack('play_error', { device: 'desktop', reason: 'iframe_not_found' });
-  }
-  window.scrollTo({top: 0, behavior: 'smooth'});
+  // Secours : le composant lecteur ne s'est pas initialisé (script bloqué,
+  // erreur JS en amont). On retombe sur le comportement d'avant plutôt que
+  // de laisser l'auditeur sans rien.
+  var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+                 || window.innerWidth <= 767;
+  roUmamiTrack('play_click', { device: isMobile ? 'mobile' : 'desktop', method: 'secours-lecteur-absent' });
+  var win = window.open('https://link.radioking.com/radio-odyssey', '_blank');
+  if(!win) roUmamiTrack('play_error', { device: isMobile ? 'mobile' : 'desktop', reason: 'popup_blocked' });
 }
 </script>

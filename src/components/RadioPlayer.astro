@@ -1,0 +1,336 @@
+---
+/*
+  Lecteur natif Radio Odyssey
+  ---------------------------
+  Remplace l'iframe RadioKing par une balise <audio> pilotée par le site.
+
+  Pourquoi : l'iframe est un document tiers, donc incapable de déclarer une
+  MediaSession. Résultat, aucune commande sur l'écran verrouillé, en voiture
+  ni sur montre connectée. Et sur mobile, l'ancien parcours ouvrait
+  link.radioking.com dans un onglet externe : l'auditeur quittait le site.
+
+  Avec une balise <audio> servie par nos propres pages :
+    - les commandes système apparaissent (Media Session) ;
+    - la lecture se poursuit d'une page à l'autre (transition:persist) ;
+    - l'auditeur reste sur radio-odyssey.com ;
+    - on peut enfin mesurer si la lecture démarre vraiment.
+
+  Garde-fou : si la lecture native échoue (navigateurs intégrés Facebook ou
+  Instagram, politiques restrictives), le lecteur bascule en mode « secours »
+  et le clic suivant ouvre link.radioking.com — comportement d'avant.
+*/
+---
+
+<audio id="ro-audio" preload="none" playsinline></audio>
+
+<button type="button" id="ro-player" class="ro-player"
+        aria-label="Écouter Radio Odyssey en direct">
+  <span class="ro-player-btn" aria-hidden="true">
+    <svg class="ro-ico ro-ico-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.54.84l10-6.5a1 1 0 0 0 0-1.68l-10-6.5A1 1 0 0 0 8 5.5z"/></svg>
+    <svg class="ro-ico ro-ico-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6.5" y="5" width="4" height="14" rx="1.3"/><rect x="13.5" y="5" width="4" height="14" rx="1.3"/></svg>
+    <span class="ro-ico ro-ico-load" role="status" aria-label="Connexion en cours"></span>
+  </span>
+  <span class="ro-player-label">
+    <span class="ro-player-title" id="ro-np-title">Radio Odyssey</span>
+    <span class="ro-player-sub" id="ro-np-sub">Appuyer pour écouter</span>
+  </span>
+</button>
+
+<style is:global>
+  #ro-audio { display: none; }
+
+  .ro-player {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 620px;
+    margin: 0 14px;
+    padding: 8px 16px 8px 8px;
+    background: rgba(255, 255, 255, .10);
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Nunito', sans-serif;
+    color: #fff;
+    transition: background .18s ease, border-color .18s ease;
+  }
+  .ro-player:hover   { background: rgba(255, 255, 255, .16); border-color: rgba(255, 255, 255, .34); }
+  .ro-player:focus-visible { outline: 2px solid #FFD700; outline-offset: 2px; }
+
+  .ro-player-btn {
+    position: relative;
+    flex-shrink: 0;
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FF3CAC, #7B2FBE);
+    box-shadow: 0 3px 14px rgba(123, 47, 190, .45);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+  }
+  .ro-ico { width: 22px; height: 22px; display: none; }
+  .ro-ico-play { display: block; margin-left: 2px; }
+
+  /* Anneau de chargement : pur CSS, aucune image à charger. */
+  .ro-ico-load {
+    width: 20px; height: 20px;
+    border: 2.5px solid rgba(255, 255, 255, .35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: ro-spin .8s linear infinite;
+  }
+  @keyframes ro-spin { to { transform: rotate(360deg); } }
+
+  #topRadioBar.is-loading .ro-ico-play,
+  #topRadioBar.is-loading .ro-ico-pause { display: none; }
+  #topRadioBar.is-loading .ro-ico-load  { display: block; }
+
+  #topRadioBar.is-playing .ro-ico-play,
+  #topRadioBar.is-playing .ro-ico-load  { display: none; }
+  #topRadioBar.is-playing .ro-ico-pause { display: block; }
+
+  .ro-player-label {
+    display: flex; flex-direction: column;
+    min-width: 0; line-height: 1.2;
+  }
+  .ro-player-title {
+    font-weight: 900; font-size: 1rem; color: #fff;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .ro-player-sub {
+    font-weight: 600; font-size: .72rem; color: rgba(255, 255, 255, .78);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
+  /* L'égaliseur décoratif de la barre ne s'anime que pendant la lecture :
+     une onde qui bouge alors que rien ne joue est un mensonge visuel. */
+  #topRadioBar .bar-wave span { animation-play-state: paused; opacity: .35; }
+  #topRadioBar.is-playing .bar-wave span { animation-play-state: running; opacity: 1; }
+
+  @media (max-width: 767px) {
+    .ro-player {
+      margin: 0 8px;
+      padding: 5px 10px 5px 5px;
+      gap: 9px;
+      border-radius: 10px;
+    }
+    .ro-player-btn { width: 36px; height: 36px; }
+    .ro-ico { width: 17px; height: 17px; }
+    .ro-ico-load { width: 16px; height: 16px; border-width: 2px; }
+    .ro-player-title { font-size: .92rem; }
+    .ro-player-sub   { font-size: .6rem; }
+  }
+</style>
+
+<script is:inline>
+(function () {
+  // La barre du lecteur porte transition:persist : le nœud DOM survit aux
+  // navigations Astro, donc les écouteurs aussi. Ce garde-fou évite de les
+  // attacher une seconde fois quand le script est réévalué.
+  if (window.__roPlayerInit) return;
+  window.__roPlayerInit = true;
+
+  var FLUX    = 'https://listen.radioking.com/radio/706859/stream/772319';
+  var API     = 'https://api.radioking.io/widget/radio/radio-odyssey/track/current';
+  var SECOURS = 'https://link.radioking.com/radio-odyssey';
+
+  var audio, bouton, barre, elTitre, elSous;
+  var minuteurTitre = null;
+  var modeSecours = false;   // passe à true si la lecture native a échoué
+  var titreCourant = '';
+
+  function suivre(nom, donnees) {
+    if (typeof roUmamiTrack === 'function') roUmamiTrack(nom, donnees || {});
+  }
+
+  function etat(nom) {
+    if (!barre) return;
+    barre.classList.toggle('is-loading', nom === 'chargement');
+    barre.classList.toggle('is-playing', nom === 'lecture');
+    if (bouton) {
+      bouton.setAttribute('aria-label',
+        nom === 'lecture' ? 'Mettre la radio en pause' : 'Écouter Radio Odyssey en direct');
+    }
+  }
+
+  function afficher(titre, sous) {
+    if (elTitre && titre) elTitre.textContent = titre;
+    if (elSous)  elSous.textContent = sous;
+  }
+
+  /* ── Titre en cours ─────────────────────────────────────────────────── */
+
+  function majMediaSession(t) {
+    if (!('mediaSession' in navigator) || typeof MediaMetadata === 'undefined') return;
+    try {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title:  t && t.title  ? t.title  : 'Radio Odyssey',
+        artist: t && t.artist ? t.artist : 'La Positive Radio',
+        album:  'Radio Odyssey — En direct',
+        artwork: [{
+          src: (t && t.cover) ? t.cover : '/assets/images/icon-512.png',
+          sizes: '512x512',
+          type: 'image/png'
+        }]
+      });
+    } catch (e) {}
+  }
+
+  function lireTitre() {
+    fetch(API, { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (t) {
+        if (!t) return;
+        var titre = (t.artist && t.title) ? (t.artist + ' — ' + t.title) : 'Radio Odyssey';
+        titreCourant = titre;
+        if (barre && barre.classList.contains('is-playing')) {
+          afficher(titre, 'En direct · appuyer pour arrêter');
+        }
+        majMediaSession(t);
+
+        // On se recale sur la fin réelle du morceau plutôt que d'interroger
+        // toutes les 20 s à l'aveugle : moins d'appels, titre plus juste.
+        var attente = 20000;
+        if (t.end_at) {
+          var reste = new Date(t.end_at).getTime() - Date.now();
+          if (reste > 3000 && reste < 600000) attente = reste + 1500;
+        }
+        planifierTitre(attente);
+      })
+      .catch(function () { planifierTitre(30000); });
+  }
+
+  function planifierTitre(delai) {
+    clearTimeout(minuteurTitre);
+    if (!barre || !barre.classList.contains('is-playing')) return;
+    minuteurTitre = setTimeout(lireTitre, delai);
+  }
+
+  /* ── Lecture ────────────────────────────────────────────────────────── */
+
+  function lire() {
+    if (!audio) return;
+
+    // Un flux live ne se « reprend » pas : on rouvre une connexion pour
+    // repartir sur le direct, avec un paramètre anti-cache.
+    audio.src = FLUX + '?t=' + Date.now();
+    etat('chargement');
+    afficher(null, 'Connexion…');
+
+    var p = audio.play();
+    if (p && typeof p.catch === 'function') {
+      p.catch(function (err) { echec(err && err.name ? err.name : 'play_rejected'); });
+    }
+  }
+
+  function arreter() {
+    if (!audio) return;
+    audio.pause();
+    // Libère la connexion : sans cela, le flux continue d'être téléchargé
+    // en arrière-plan et consomme les données de l'auditeur.
+    audio.removeAttribute('src');
+    audio.load();
+    clearTimeout(minuteurTitre);
+    etat('arret');
+    afficher('Radio Odyssey', 'Appuyer pour écouter');
+    if ('mediaSession' in navigator) {
+      try { navigator.mediaSession.playbackState = 'paused'; } catch (e) {}
+    }
+  }
+
+  function echec(raison) {
+    etat('arret');
+    modeSecours = true;
+    afficher('Radio Odyssey', 'Appuyer pour ouvrir le lecteur');
+    suivre('play_error', { device: estMobile() ? 'mobile' : 'desktop', reason: raison });
+    // On n'ouvre PAS de fenêtre ici : le rejet arrive après le geste de
+    // l'utilisateur, donc le bloqueur de pop-up la refuserait. Le prochain
+    // clic, lui, sera bien un geste direct.
+  }
+
+  function estMobile() {
+    return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 767;
+  }
+
+  function basculer(e) {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+
+    if (modeSecours) {
+      suivre('play_click', { device: estMobile() ? 'mobile' : 'desktop', method: 'secours-radioking' });
+      window.open(SECOURS, '_blank', 'noopener');
+      return;
+    }
+
+    if (!audio) return;
+
+    if (audio.paused) {
+      suivre('play_click', { device: estMobile() ? 'mobile' : 'desktop', page: location.pathname });
+      lire();
+    } else {
+      suivre('play_stop', { device: estMobile() ? 'mobile' : 'desktop' });
+      arreter();
+    }
+  }
+
+  // Exposé pour les 95 pages qui appellent roPlayNow(event) en onclick,
+  // et pour la barre latérale.
+  window.roPlayerToggle = basculer;
+  window.roPlayerLire = function () { if (!modeSecours && audio && audio.paused) basculer(); };
+
+  /* ── Initialisation ─────────────────────────────────────────────────── */
+
+  function init() {
+    audio   = document.getElementById('ro-audio');
+    bouton  = document.getElementById('ro-player');
+    barre   = document.getElementById('topRadioBar');
+    elTitre = document.getElementById('ro-np-title');
+    elSous  = document.getElementById('ro-np-sub');
+    if (!audio || !bouton) return;
+
+    bouton.addEventListener('click', basculer);
+
+    audio.addEventListener('playing', function () {
+      etat('lecture');
+      afficher(titreCourant || 'Radio Odyssey', 'En direct · appuyer pour arrêter');
+      suivre('play_started', { device: estMobile() ? 'mobile' : 'desktop', method: 'audio-natif' });
+      if ('mediaSession' in navigator) {
+        try {
+          navigator.mediaSession.playbackState = 'playing';
+          navigator.mediaSession.setActionHandler('play',  function () { if (audio.paused) lire(); });
+          navigator.mediaSession.setActionHandler('pause', arreter);
+          navigator.mediaSession.setActionHandler('stop',  arreter);
+        } catch (e) {}
+      }
+      lireTitre();
+    });
+
+    audio.addEventListener('waiting', function () {
+      if (!audio.paused) { etat('chargement'); afficher(null, 'Mise en mémoire…'); }
+    });
+    audio.addEventListener('pause', function () { if (audio.src) etat('arret'); });
+    audio.addEventListener('error', function () { if (audio.src) echec('media_error'); });
+    audio.addEventListener('stalled', function () { suivre('play_stalled', {}); });
+
+    // Titre affiché dès l'arrivée, même sans lecture : la barre annonce ce
+    // qui passe à l'antenne, ce qui est en soi une invitation à écouter.
+    fetch(API, { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (t) {
+        if (t && t.artist && t.title) {
+          titreCourant = t.artist + ' — ' + t.title;
+          afficher(titreCourant, 'Appuyer pour écouter');
+          majMediaSession(t);
+        }
+      })
+      .catch(function () {});
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
