@@ -142,8 +142,15 @@ Chiffres réels, utiles pour arbitrer les priorités — le détail figure au §
 - **35 % des écoutes durent moins de 30 secondes**, 58 % moins de deux minutes. C'est la fragilité n°1.
 - Durée moyenne **par plateforme** : site 8 min · appli 16 min · Alexa 12 min · TuneIn 23 min · Welove 32 min.
 - Supports : 60 % mobile, 10 % enceinte connectée, 4 % bureau, **0 % voiture**.
-- Google envoie **436 visiteurs/mois** ; toutes les pages éditoriales cumulées en reçoivent **~22**. Le trafic de recherche est un trafic de marque qui atterrit sur l'accueil.
+- **Hors campagne publicitaire, le site reçoit ~15 visiteurs par semaine** (relevé 1er-7 août, filtre Umami sur le nom d'hôte). Les 436 visiteurs Google du mois étaient contaminés par les campagnes Facebook. 1,17 page par visiteur : aucune navigation interne.
 - Réseaux : Instagram 40 abonnés, Facebook 15, YouTube 2.
+
+### Profil d'écoute (§58)
+
+- **Deux publics distincts.** En semaine, rythme de bureau : montée jusqu'à 11h, creux au déjeuner (+44 %), plage d'après-midi jusqu'à 17h — le vrai pic —, chute à 18h. Le week-end, rythme domestique : réveil tardif, midi en pic, soirée plus soutenue.
+- **Le creux de midi n'existe qu'en semaine.** Les séquences de cohérence cardiaque tournant 7 j/7, elles n'en sont pas la cause. C'est la pause déjeuner.
+- La tranche **18h–minuit vendredi, samedi et dimanche** suit déjà une grille distincte (rythme soutenu, sans la catégorie « Ça s'écoute », nouveautés renforcées + anciennes nouveautés + récurrents). Le vendredi soir se comporte comme un soir de week-end.
+- **La Matinale (7h) est calée sur l'heure la plus creuse** ; le socle réel est 15h–17h en semaine, sans rendez-vous nommé.
 
 ## Prochaines étapes
 
