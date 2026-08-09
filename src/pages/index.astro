@@ -63,21 +63,20 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
     a.schedule-row .schedule-arrow { margin-left: auto; color: var(--ro-purple); opacity: .45; transition: opacity .2s, transform .2s; flex-shrink: 0; }
     a.schedule-row:hover .schedule-arrow { opacity: 1; transform: translateX(3px); }
 
-    /* ── ESPACE SOUS LE PLAYER (desktop) ────────────────────────────
-       Le player RadioKing déployé (avec pochette) dépasse la hauteur
-       déclarée de la barre (~180px réels contre 105px). Même besoin
-       que sur les pages secondaires (170px) pour que le méga-menu ne
-       soit pas caché derrière le lecteur.
+    /* ── ESPACE SOUS LA BARRE LECTEUR (desktop) ─────────────────────
+       Le lecteur natif tient dans --bar-h (105px). L'ancienne valeur
+       de 190px compensait le débordement de l'iframe RadioKing ; elle
+       laisserait aujourd'hui un vide de 85px sous la barre.
     ─────────────────────────────────────────────────────────────── */
     body {
-      padding-top: 190px;
+      padding-top: calc(var(--bar-h) + 20px);
     }
     html {
-      scroll-padding-top: 190px;
+      scroll-padding-top: calc(var(--bar-h) + 20px);
     }
 
-    /* ── PLAYER MOBILE COMPACT ─────────────────────────────────────
-       Géré dans style.css via .rk-desktop / .rk-mobile-btn
+    /* ── BARRE LECTEUR MOBILE COMPACTE ─────────────────────────────
+       Le lecteur lui-même est stylé dans RadioPlayer.astro.
        Ici : uniquement les overrides propres à la page d'accueil
     ─────────────────────────────────────────────────────────────── */
     @media (max-width: 767px) {

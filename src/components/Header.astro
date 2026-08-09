@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import MegaNav from './MegaNav.astro';
+import RadioPlayer from './RadioPlayer.astro';
 import { NAV_CATEGORIES } from '../data/navigation.js';
 ---
 <!-- ============================================================
@@ -21,24 +22,10 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
     EN DIRECT
   </div>
 
-  <!-- CENTRE desktop : player RadioKing h=90 (original)
-       c=%237B2FBE : violet de la charte (--ro-purple). L'ancienne valeur
-       %231e7fcb était un bleu hérité du site Mobirise, hors charte sur
-       l'élément le plus regardé de la page. -->
-  <iframe class="rk-desktop"
-    src="https://player.radioking.io/radio-odyssey/?c=%237B2FBE&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90"
-    allow="autoplay" title="Radio Odyssey — Lecteur en direct"></iframe>
-
-  <!-- BOUTON mobile alternatif (affiché si iframe trop petite) -->
-  <a class="rk-mobile-btn" href="https://link.radioking.com/radio-odyssey" target="_blank" rel="noopener"
-     aria-label="Écouter Radio Odyssey"
-     onclick="if(typeof roUmamiTrack==='function')roUmamiTrack('play_click',{device:'mobile',source:'bar-button'});">
-    <span class="rk-mobile-play">&#9654;</span>
-    <span class="rk-mobile-label">
-      <span class="rk-mobile-title" id="mobile-now-playing">Radio Odyssey</span>
-      <span class="rk-mobile-sub">Appuyer pour écouter</span>
-    </span>
-  </a>
+  <!-- CENTRE : lecteur natif, identique sur mobile et ordinateur.
+       Remplace l'iframe RadioKing et le bouton mobile qui ouvrait un onglet
+       externe. Voir RadioPlayer.astro pour le détail du choix. -->
+  <RadioPlayer />
 
   <!-- DROITE : wave + burger -->
   <div class="bar-wave" aria-hidden="true">
@@ -56,8 +43,9 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
 
 </div>
 
-<!-- Script RadioKing (original) -->
-<script is:inline src="https://player.radioking.io/scripts/iframe.bundle.js"></script>
+<!-- Le script d'iframe RadioKing a été retiré avec l'iframe : il ne servait
+     qu'à dimensionner le lecteur embarqué. Une dépendance tierce en moins
+     sur le chemin de rendu. -->
 
 <!-- ============================================================
      MEGA-MENU (desktop)

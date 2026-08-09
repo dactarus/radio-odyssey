@@ -107,16 +107,10 @@
 
   function positionBanner() {
     if (!bar) { banner.style.top = '0px'; return; }
-    // Le widget RadioKing "en cours de lecture" déborde de la hauteur
-    // déclarée de la barre (~180px réels contre 105px, cf. commentaire
-    // dans index.astro) — on se cale sur le point le plus bas réellement
-    // visible (barre + iframe), pas sur la seule boîte de #topRadioBar.
-    var bottom = bar.getBoundingClientRect().bottom;
-    var iframe = bar.querySelector('iframe.rk-desktop');
-    if (iframe && iframe.offsetParent !== null) {
-      bottom = Math.max(bottom, iframe.getBoundingClientRect().bottom);
-    }
-    banner.style.top = Math.max(0, bottom) + 'px';
+    // Depuis le passage au lecteur natif, la barre ne déborde plus : sa
+    // hauteur déclarée est sa hauteur réelle. L'ancien calcul devait
+    // composer avec l'iframe RadioKing, qui dépassait sa boîte.
+    banner.style.top = Math.max(0, bar.getBoundingClientRect().bottom) + 'px';
   }
 
   banner.hidden = false;
