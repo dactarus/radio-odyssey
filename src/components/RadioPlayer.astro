@@ -138,7 +138,9 @@
 
   var audio, bouton, barre, elTitre, elSous;
   var minuteurTitre = null;
+  var minuteurDemarrage = null;
   var modeSecours = false;   // passe à true si la lecture native a échoué
+  var enArret = false;       // vrai pendant le démontage du flux (voir arreter)
   var titreCourant = '';
 
   function suivre(nom, donnees) {
@@ -213,28 +215,53 @@
   function lire() {
     if (!audio) return;
 
+    // Le démontage du flux précédent est terminé : on peut réattaquer.
+    enArret = false;
+
     // Un flux live ne se « reprend » pas : on rouvre une connexion pour
     // repartir sur le direct, avec un paramètre anti-cache.
     audio.src = FLUX + '?t=' + Date.now();
     etat('chargement');
     afficher(null, 'Connexion…');
 
+    // Filet : si aucun son n'est sorti au bout de 12 s, on revient au repos
+    // sans basculer en mode secours — l'auditeur peut simplement réessayer.
+    clearTimeout(minuteurDemarrage);
+    minuteurDemarrage = setTimeout(function () {
+      if (audio && audio.paused === false) return;
+      etat('arret');
+      afficher(titreCourant || 'Radio Odyssey', 'Connexion trop lente — réessayer');
+      suivre('play_timeout', { device: estMobile() ? 'mobile' : 'desktop' });
+    }, 12000);
+
     var p = audio.play();
     if (p && typeof p.catch === 'function') {
-      p.catch(function (err) { echec(err && err.name ? err.name : 'play_rejected'); });
+      p.catch(function (err) {
+        var nom = err && err.name ? err.name : 'play_rejected';
+        // AbortError : la lecture a été interrompue par un nouveau
+        // chargement — typiquement iOS quand on relance juste après un
+        // arrêt. Ce n'est PAS une panne : basculer en mode secours ici
+        // condamnait le lecteur jusqu'au rechargement de la page.
+        if (nom === 'AbortError') return;
+        echec(nom);
+      });
     }
   }
 
   function arreter() {
     if (!audio) return;
+    // Le démontage ci-dessous émet un événement 'error' en différé
+    // (source vide). Ce drapeau permet de l'ignorer, sans quoi il serait
+    // pris pour une vraie panne de lecture.
+    enArret = true;
+    clearTimeout(minuteurDemarrage);
     audio.pause();
     // Libère la connexion : sans cela, le flux continue d'être téléchargé
     // en arrière-plan et consomme les données de l'auditeur.
-    audio.removeAttribute('src');
-    audio.load();
+    try { audio.removeAttribute('src'); audio.load(); } catch (e) {}
     clearTimeout(minuteurTitre);
     etat('arret');
-    afficher('Radio Odyssey', 'Appuyer pour écouter');
+    afficher(titreCourant || 'Radio Odyssey', 'Appuyer pour écouter');
     if ('mediaSession' in navigator) {
       try { navigator.mediaSession.playbackState = 'paused'; } catch (e) {}
     }
@@ -242,8 +269,13 @@
 
   function echec(raison) {
     etat('arret');
+    clearTimeout(minuteurDemarrage);
     modeSecours = true;
-    afficher('Radio Odyssey', 'Appuyer pour ouvrir le lecteur');
+    // Le mode secours expire au bout d'une minute : une panne passagère
+    // (réseau instable, changement de wifi) ne doit pas condamner le lecteur
+    // natif pour toute la session.
+    setTimeout(function () { modeSecours = false; }, 60000);
+    afficher(titreCourant || 'Radio Odyssey', 'Appuyer pour ouvrir le lecteur');
     suivre('play_error', { device: estMobile() ? 'mobile' : 'desktop', reason: raison });
     // On n'ouvre PAS de fenêtre ici : le rejet arrive après le geste de
     // l'utilisateur, donc le bloqueur de pop-up la refuserait. Le prochain
@@ -292,6 +324,10 @@
     bouton.addEventListener('click', basculer);
 
     audio.addEventListener('playing', function () {
+      clearTimeout(minuteurDemarrage);
+      // Une lecture qui aboutit annule un éventuel mode secours : le lecteur
+      // natif fonctionne, il n'y a plus de raison de renvoyer vers RadioKing.
+      modeSecours = false;
       etat('lecture');
       afficher(titreCourant || 'Radio Odyssey', 'En direct · appuyer pour arrêter');
       suivre('play_started', { device: estMobile() ? 'mobile' : 'desktop', method: 'audio-natif' });
@@ -309,8 +345,13 @@
     audio.addEventListener('waiting', function () {
       if (!audio.paused) { etat('chargement'); afficher(null, 'Mise en mémoire…'); }
     });
-    audio.addEventListener('pause', function () { if (audio.src) etat('arret'); });
-    audio.addEventListener('error', function () { if (audio.src) echec('media_error'); });
+    audio.addEventListener('pause', function () { if (audio.getAttribute('src')) etat('arret'); });
+    audio.addEventListener('error', function () {
+      // On ignore l'erreur émise par le démontage volontaire du flux, et
+      // celle d'un élément sans source — ni l'une ni l'autre n'est une panne.
+      if (enArret || !audio.getAttribute('src')) return;
+      echec('media_error');
+    });
     audio.addEventListener('stalled', function () { suivre('play_stalled', {}); });
 
     // Titre affiché dès l'arrivée, même sans lecture : la barre annonce ce
