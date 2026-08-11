@@ -18,6 +18,24 @@ Radio Odyssey est éditée par une association loi 1901 à but non lucratif. La 
 - [Dance énergisante](https://www.radio-odyssey.com/radio-dance-energisante.html): sélection dance pour l'énergie.
 - [Pour travailler / se concentrer](https://www.radio-odyssey.com/musique-pour-se-concentrer.html): playlist pour rester productif.
 
+## Quiz musicaux
+
+Série de cinq quiz interactifs, une décennie chacun. Les questions portent sur des titres réellement diffusés sur l'antenne de Radio Odyssey ; chaque date de sortie a été vérifiée individuellement. Chaque quiz comporte 10 questions et un round bonus de 10 questions supplémentaires en cas de score parfait.
+
+- [Quiz musical années 80](https://www.radio-odyssey.com/quiz-musical-annees-80.html): 10 questions sur les tubes des années 80, plus un round bonus.
+- [Quiz musical années 90](https://www.radio-odyssey.com/quiz-musical-annees-90.html): 10 questions sur les tubes des années 90, plus un round bonus.
+- [Quiz musical années 2000](https://www.radio-odyssey.com/quiz-musical-annees-2000.html): 10 questions sur les tubes des années 2000, plus un round bonus.
+- [Quiz musical années 2010](https://www.radio-odyssey.com/quiz-musical-annees-2010.html): 10 questions sur les tubes des années 2010, plus un round bonus.
+- [Quiz musical années 2020](https://www.radio-odyssey.com/quiz-musical-annees-2020.html): 10 questions sur les tubes des années 2020, plus un round bonus.
+
+## Classements et données d'antenne
+
+Données de première main, établies à partir de la programmation réelle de la radio.
+
+- [Les titres les plus diffusés sur Radio Odyssey](https://www.radio-odyssey.com/titres-les-plus-diffuses-sur-radio-odyssey.html): le classement réel de l'antenne, tous styles confondus.
+- [Les tubes dance incontournables](https://www.radio-odyssey.com/les-tubes-dance-incontournables.html): classement des artistes dance les plus diffusés.
+- [Les chansons les plus écoutées au monde](https://www.radio-odyssey.com/chansons-les-plus-ecoutees-au-monde.html): classement mondial du streaming, croisé avec ce qui passe sur l'antenne.
+
 ## Playlists du Jour
 
 - [Playlists selon le moment de la journée](https://www.radio-odyssey.com/playlists-du-jour.html): la sélection de Radio Odyssey heure par heure, du réveil à la nuit.
