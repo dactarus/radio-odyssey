@@ -66,6 +66,7 @@ export const NAV_CATEGORIES = [
       { href: '/musique-pour-cuisiner.html', bi: 'cup-hot', label: 'Pour Cuisiner', desc: 'Une ambiance funk et feel-good pour vos préparations' },
       { href: '/musique-pour-un-road-trip.html', bi: 'car-front', label: 'Pour un Road Trip', desc: 'Une énergie positive et continue pour tenir la distance' },
       { href: '/musique-pour-les-arts-plastiques.html', bi: 'brush', label: 'Pour les Arts Plastiques', desc: 'Peinture, dessin, sculpture — une ambiance à adapter à votre pratique' },
+      { href: '/quiz-musicaux-radio-odyssey.html', bi: 'trophy', label: 'Tous nos Quiz Musicaux', desc: 'Cinq décennies, 100 questions, basées sur les titres réellement diffusés' },
       { href: '/quiz-musical-annees-80.html', bi: 'clock-history', label: 'Quiz Musical Années 80', desc: 'Basé sur les vrais titres diffusés, un round bonus si score parfait' },
       { href: '/quiz-musical-annees-90.html', bi: 'disc', label: 'Quiz Musical Années 90', desc: 'Le même défi, une décennie plus tard' },
       { href: '/quiz-musical-annees-2000.html', bi: 'stars', label: 'Quiz Musical Années 2000', desc: 'Le même défi, deux décennies plus tard' },

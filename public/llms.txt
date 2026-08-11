@@ -22,6 +22,7 @@ Radio Odyssey est éditée par une association loi 1901 à but non lucratif. La 
 
 Série de cinq quiz interactifs, une décennie chacun. Les questions portent sur des titres réellement diffusés sur l'antenne de Radio Odyssey ; chaque date de sortie a été vérifiée individuellement. Chaque quiz comporte 10 questions et un round bonus de 10 questions supplémentaires en cas de score parfait.
 
+- [Tous les quiz musicaux](https://www.radio-odyssey.com/quiz-musicaux-radio-odyssey.html): la page d'ensemble de la série, avec la méthode de construction et le point de départ conseillé.
 - [Quiz musical années 80](https://www.radio-odyssey.com/quiz-musical-annees-80.html): 10 questions sur les tubes des années 80, plus un round bonus.
 - [Quiz musical années 90](https://www.radio-odyssey.com/quiz-musical-annees-90.html): 10 questions sur les tubes des années 90, plus un round bonus.
 - [Quiz musical années 2000](https://www.radio-odyssey.com/quiz-musical-annees-2000.html): 10 questions sur les tubes des années 2000, plus un round bonus.

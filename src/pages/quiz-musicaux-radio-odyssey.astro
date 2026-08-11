@@ -1,0 +1,206 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+// Page de série : elle répond à la question « quels quiz existent ? »,
+// que les cinq pages de quiz, prises isolément, ne traitent pas — chacune
+// répondant plutôt à « teste-moi ». Cette distinction compte pour les
+// moteurs comme pour les IA génératives, qui citent volontiers une page
+// d'inventaire quand la question porte sur l'offre plutôt que sur l'usage.
+
+const QUIZ = [
+  {
+    href: '/quiz-musical-annees-80.html',
+    decennie: 'Années 80',
+    titre: 'Quiz musical années 80',
+    exemples: 'Baltimora, Modern Talking, Kim Wilde, A-ha',
+    accroche: "Les tubes qui ont fait la décennie, et quelques pépites moins évidentes dans le round bonus.",
+    from: '#FF3CAC', to: '#7B2FBE',
+  },
+  {
+    href: '/quiz-musical-annees-90.html',
+    decennie: 'Années 90',
+    titre: 'Quiz musical années 90',
+    exemples: 'Daft Punk, Céline Dion, U2, Corona',
+    accroche: "Eurodance, ballades et French Touch — la décennie la plus éclectique de la série.",
+    from: '#00C6FF', to: '#7B2FBE',
+  },
+  {
+    href: '/quiz-musical-annees-2000.html',
+    decennie: 'Années 2000',
+    titre: 'Quiz musical années 2000',
+    exemples: 'Modjo, Anastacia, Coldplay, Alicia Keys',
+    accroche: "Le tournant des années 2000, entre pop internationale et électro naissante.",
+    from: '#FF9A3C', to: '#FF3CAC',
+  },
+  {
+    href: '/quiz-musical-annees-2010.html',
+    decennie: 'Années 2010',
+    titre: 'Quiz musical années 2010',
+    exemples: 'Dua Lipa, Calvin Harris, Sia, Angèle',
+    accroche: "La décennie du streaming, où la dance et la pop se confondent.",
+    from: '#7B2FBE', to: '#00C6FF',
+  },
+  {
+    href: '/quiz-musical-annees-2020.html',
+    decennie: 'Années 2020',
+    titre: 'Quiz musical années 2020',
+    exemples: 'Teddy Swims, Sabrina Carpenter, Harry Styles, Aya Nakamura',
+    accroche: "La décennie en cours — le seul quiz de la série qui continuera de s'enrichir.",
+    from: '#FFD700', to: '#FF9A3C',
+  },
+];
+
+// ItemList : décrit explicitement la série comme un ensemble ordonné de
+// cinq éléments. C'est ce balisage qui permet à un moteur de comprendre
+// qu'il s'agit d'une collection, et non de cinq pages sans rapport.
+const serieSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Les quiz musicaux de Radio Odyssey',
+  description: "Série de cinq quiz musicaux, une décennie chacun, construits à partir des titres réellement diffusés sur l'antenne de Radio Odyssey.",
+  numberOfItems: QUIZ.length,
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
+  itemListElement: QUIZ.map((q, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: q.titre,
+    url: `https://www.radio-odyssey.com${q.href}`,
+  })),
+};
+
+const faq = [
+  {
+    q: 'Combien de quiz musicaux propose Radio Odyssey ?',
+    a: "Cinq quiz, un par décennie : années 80, 90, 2000, 2010 et 2020. Chacun comporte 10 questions, plus un round bonus de 10 questions supplémentaires débloqué en cas de sans-faute — soit 100 questions au total sur l'ensemble de la série.",
+  },
+  {
+    q: "D'où viennent les titres utilisés dans les questions ?",
+    a: "De la programmation réelle de Radio Odyssey. Chaque titre cité est effectivement diffusé sur l'antenne : ce ne sont pas des listes génériques trouvées ailleurs, mais un extrait de ce que vous entendez en écoutant la radio.",
+  },
+  {
+    q: 'Les dates de sortie sont-elles fiables ?',
+    a: "Chaque date a été vérifiée individuellement avant d'être retenue. Deux erreurs ont d'ailleurs été détectées et corrigées en cours de route : un titre d'Indochine daté à tort des années 80 alors qu'il est sorti en 2024, et un titre de Bananarama initialement placé en 1991 alors qu'il date de 1987.",
+  },
+  {
+    q: 'Faut-il créer un compte ou installer quelque chose ?',
+    a: "Non. Les quiz se jouent directement dans le navigateur, gratuitement, sans inscription ni application. Rien n'est enregistré : votre score reste sur votre appareil.",
+  },
+  {
+    q: 'Peut-on refaire un quiz plusieurs fois ?',
+    a: "Oui. L'ordre des questions et celui des réponses changent à chaque tentative, ce qui évite d'apprendre les positions par cœur. Un bouton « Recommencer » est proposé à la fin de chaque quiz.",
+  },
+  {
+    q: 'Par lequel commencer ?',
+    a: "Les années 80 et 90 sont les plus abordables si vous connaissez les grands tubes. Les années 2020 sont paradoxalement les plus difficiles : la décennie est en cours, et certains titres du round bonus sont sortis il y a quelques mois à peine.",
+  },
+];
+---
+<Layout
+  lang="fr"
+  title="Les Quiz Musicaux de Radio Odyssey — 5 décennies, 100 questions"
+  description="Cinq quiz musicaux gratuits, une décennie chacun : années 80, 90, 2000, 2010 et 2020. 100 questions basées sur les titres réellement diffusés sur Radio Odyssey."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(serieSchema)} />
+  </Fragment>
+
+  <PageHero
+    gradientFrom="#7B2FBE"
+    gradientTo="#FF9A3C"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Les quiz musicaux de Radio Odyssey"
+    title="Les Quiz Musicaux de Radio Odyssey"
+    text="Cinq quiz, une décennie chacun, 100 questions — toutes construites à partir des titres réellement diffusés sur l'antenne."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.3"/><path d="M19 18C19 15.8 21 14 24 14C27 14 29 15.8 29 18C29 21 24 21.5 24 25" stroke="white" stroke-width="2.4" stroke-linecap="round" fill="none"/><circle cx="24" cy="31" r="1.8" fill="white"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Radio Odyssey propose <strong>cinq quiz musicaux gratuits</strong>, un par décennie, des années 80 aux années 2020. Chacun comporte 10 questions, et un round bonus de 10 questions supplémentaires se débloque si vous réalisez un sans-faute — soit <strong>100 questions au total</strong>. Aucune inscription, aucune application : tout se joue dans le navigateur.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Les cinq quiz</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.2rem;">
+              {QUIZ.map((q) => (
+                <a href={q.href} style="text-decoration:none;color:inherit;display:block;border:1.5px solid rgba(123,47,190,.15);border-radius:16px;overflow:hidden;background:#fff;">
+                  <div style={`background:linear-gradient(135deg,${q.from},${q.to});padding:1rem 1.2rem;`}>
+                    <span style="display:block;font-family:'Nunito',sans-serif;font-weight:900;font-size:1.25rem;color:#fff;">{q.decennie}</span>
+                    <span style="display:block;font-size:.76rem;color:rgba(255,255,255,.85);font-weight:600;">10 questions + round bonus</span>
+                  </div>
+                  <div style="padding:1rem 1.2rem;">
+                    <p style="margin:0 0 .6rem;font-size:.92rem;line-height:1.55;">{q.accroche}</p>
+                    <p style="margin:0 0 .8rem;font-size:.8rem;color:var(--ro-muted);"><strong>Artistes possibles :</strong> {q.exemples}…</p>
+                    <span style="font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;color:var(--ro-purple);">Jouer <Icon name="chevron-right" /></span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Ce qui distingue ces quiz</h2>
+            <p>Il existe beaucoup de quiz musicaux en ligne. Celui-ci a une particularité : <strong>les questions ne sortent pas d'une liste générique</strong>, mais de la programmation réelle de la radio.</p>
+            <p>Quand une question porte sur « Around The World » de Daft Punk ou sur « Lose Control » de Teddy Swims, c'est parce que ces titres passent effectivement sur l'antenne de Radio Odyssey. Jouer au quiz revient donc à parcourir la playlist de la station — et si un titre vous plaît, vous pouvez l'entendre en écoutant la radio.</p>
+
+            <h3>Chaque date a été vérifiée une par une</h3>
+            <p>Un quiz musical ne vaut que par l'exactitude de ses réponses. Les 100 titres de la série ont donc été contrôlés individuellement avant d'être retenus, et deux erreurs ont été détectées puis corrigées en cours de construction : un titre d'Indochine attribué aux années 80 alors qu'il est sorti en 2024, et un titre de Bananarama daté de 1991 alors qu'il remonte à 1987.</p>
+            <p>Ce travail est invisible quand on joue. Il fait pourtant toute la différence entre un quiz amusant et un quiz juste.</p>
+
+            <h3>Un artiste, une seule bonne réponse</h3>
+            <p>À l'intérieur d'un même quiz, chaque artiste n'apparaît qu'une fois comme bonne réponse — round principal et round bonus confondus. Sans cette règle, un joueur attentif finirait par deviner par élimination plutôt que par connaissance.</p>
+
+            <h3>L'ordre change à chaque partie</h3>
+            <p>L'ordre des questions et celui des quatre propositions sont mélangés à chaque chargement. Rejouer un quiz n'est donc pas un simple exercice de mémoire des positions.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Par lequel commencer ?</h2>
+            <p>Si vous connaissez les grands tubes, <a href="/quiz-musical-annees-80.html">les années 80</a> et <a href="/quiz-musical-annees-90.html">les années 90</a> sont les plus accessibles — ce sont aussi les décennies les plus présentes sur l'antenne de Radio Odyssey.</p>
+            <p><a href="/quiz-musical-annees-2020.html">Les années 2020</a> sont, paradoxalement, les plus difficiles. La décennie est en cours : certains titres du round bonus sont sortis il y a quelques mois à peine, et n'ont pas encore eu le temps de devenir des évidences.</p>
+            <p>Les cinq quiz se répondent : à la fin de chacun, un lien mène à la décennie suivante. Rien n'empêche de les enchaîner.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="quizseriefaq" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les Artistes Diffusés', desc: 'Les 115 artistes qui passent sur l\'antenne' },
+              { href: '/titres-les-plus-diffuses-sur-radio-odyssey.html', label: 'Les Titres les Plus Diffusés', desc: 'Le classement réel de la programmation' },
+              { href: '/radio-annees-80-en-ligne.html', label: 'Radio Années 80 en Ligne', desc: 'Écouter les hits cultes remixés' },
+            ]}
+            associated={[
+              { href: '/comment-radio-odyssey-choisit-sa-musique.html', label: 'Comment Radio Odyssey choisit sa musique' },
+              { href: '/styles-musicaux-radio-odyssey.html', label: 'Styles musicaux sur Radio Odyssey' },
+              { href: '/musique-et-energie.html', label: 'Tout le cocon Musique & Énergie' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez les titres des quiz en direct</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
