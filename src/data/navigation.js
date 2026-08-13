@@ -9,6 +9,22 @@
 // menu offcanvas mobile (espace limité dans les deux cas).
 // `tileLabel` (optionnel) = intitulé plus explicite pour la tuile catégorie
 // de l'accueil uniquement (espace large) ; retombe sur `label` si absent.
+// Nombre de pages affichées en aperçu sous chaque catégorie, dans le
+// méga-menu desktop comme dans le panneau latéral mobile.
+//
+// Avant août 2026, les deux menus déroulaient l'intégralité des 91 pages,
+// soit 182 entrées par page HTML une fois le doublon desktop/mobile compté.
+// Résultat : 217 à 278 Ko de HTML pour 259 à 1 013 mots de contenu utile,
+// et une distribution du maillage interne à parts égales entre ~270 liens,
+// qui empêchait toute hiérarchie d'émerger.
+//
+// Les pages non affichées restent atteignables par le lien « Voir toute la
+// catégorie » et par /plan-du-site.html, lié depuis le pied de page.
+//
+// Pour changer ce qui apparaît en aperçu : réordonner le tableau `pages`
+// de la catégorie concernée — les premières sont les mises en avant.
+export const MENU_APERCU = 5;
+
 export const NAV_CATEGORIES = [
   {
     id: 'bien-etre',
