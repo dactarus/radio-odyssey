@@ -1,6 +1,27 @@
 // Fiches artistes — source unique de données.
-// Priorisation : nombre de passages réels sur l'antenne (export RadioKing,
-// juin 2026). Voir SEO_BLUEPRINT.md §6 pour la méthodologie complète.
+//
+// `playCount` et `tracks` sont **dérivés du rapport de diffusion RadioKing**
+// (Planification → Historique → Rapport des titres joués), sur une fenêtre
+// de trois mois glissants : **du 14 mai au 13 août 2026**, soit 14 117
+// passages retenus sur les 170 655 lignes du rapport (juillet 2025 → août 2026).
+//
+// Pourquoi trois mois et non douze : sur douze mois, un artiste entré en
+// rotation récemment est écrasé par ceux qui tournent depuis un an. Tame
+// Impala, 6e artiste le plus diffusé aujourd'hui, ressortait 92e sur 115 —
+// exact, mais faux comme description de l'antenne. Trois mois donnent
+// presque autant de titres (439 contre 466) et un classement fidèle au direct.
+//
+// Règles de dépouillement (§63) :
+//   - une collaboration officielle (« feat. », « & ») compte pour chacun
+//     des artistes crédités : c'est un vrai disque ;
+//   - un mashup (« vs », « X », monté par un DJ) ne compte pour personne :
+//     ce n'est le disque d'aucun des artistes cités ;
+//   - au plus 8 titres par fiche, les plus diffusés d'abord.
+//
+// ⚠️ Ces deux champs ne se saisissent pas à la main. Pour les rafraîchir :
+// réexporter le rapport et relancer le dépouillement — méthode au §63 de
+// SEO_BLUEPRINT.md. Les champs `facts`, `why`, `genre`, `origin` et les
+// liens, eux, sont rédigés et se modifient bien ici.
 //
 // Pour ajouter un artiste : ajouter une entrée ici (aucune autre édition
 // nécessaire — la route dynamique artiste-[slug].astro s'en charge).
@@ -19,10 +40,16 @@
 // restent accessibles aux visiteurs depuis /plan-du-site.html et les pages
 // d'agrégation.
 //
-// Répartition observée (août 2026) : 23 fiches à 1 titre, 15 à 2, 43 à 3,
-// 32 à 4, 2 à 5. Le seuil à 2 ne désindexe donc que les 23 plus pauvres.
+// Répartition réelle sur trois mois (§63) : 18 fiches à 1 titre, 15 à 2,
+// 26 à 3, 20 à 4, 12 à 5, 6 à 6, 7 à 7, 11 à 8. Le seuil à 2 ne désindexe
+// donc que les 18 plus pauvres.
 //
-// Pour ajuster : passer ce seuil à 3 désindexerait 38 fiches, à 1 aucune.
+// ⚠️ Ces 18 fiches ne sont pas incomplètes : le rapport de diffusion
+// confirme qu'un seul titre de ces artistes passe à l'antenne. Tame Impala
+// totalise 272 passages, tous de « Dracula ». Aucune saisie ne les fera
+// sortir du seuil — seule une évolution de la programmation le pourrait.
+//
+// Pour ajuster : passer ce seuil à 3 désindexerait 33 fiches, à 1 aucune.
 // ⚠️ En cas de changement, penser à mettre public/sitemap.xml en cohérence —
 // une page en noindex n'a rien à faire dans un sitemap.
 export const SEUIL_INDEXATION_TITRES = 2;
@@ -41,8 +68,8 @@ export const ARTISTS = [
     name: 'Madonna',
     genre: 'Pop',
     origin: 'États-Unis',
-    playCount: 100,
-    tracks: ['La Isla Bonita', 'Papa Don’t Preach', 'Into The Groove (You Can Dance Remix Edit 2022 Remaster)', 'I Feel So Free'],
+    playCount: 312,
+    tracks: ["Bring Your Love (DJ Giac Ft Sabrina Carpenter)", "I Feel So Free", "Frozen (Slap House Remix Albert Vishi)", "Sorry", "Express Yourself (Sakgra Never Stop Remix)", "Hung Up", "Love Profusion (432Hz)", "Papa Don't Preach"],
     facts: [
       'Active depuis le début des années 1980, surnommée "Queen of Pop".',
       'Parmi les artistes féminines les plus vendues de l’histoire de la musique.',
@@ -57,8 +84,8 @@ export const ARTISTS = [
     name: 'Dua Lipa',
     genre: 'Pop / Dance',
     origin: 'Royaume-Uni',
-    playCount: 58,
-    tracks: ['Don’t Start Now', 'Love Again', 'Dance The Night (Barbie The Album)', 'Houdini (Discock Bootleg)'],
+    playCount: 171,
+    tracks: ["Don't Start Now", "These Walls feat Pierre de Maere", "Training Season (Dj Dark Remix)", "Fever (SEVENTH Remix) [Afro House] (Ft Angele)", "Houdini (Discock Bootleg)", "Illusion", "One Kiss", "Love again"],
     facts: [
       'Chanteuse britannique d’origine kosovare, révélée à la fin des années 2010.',
       'Reconnue pour un style dance-pop très identifiable.',
@@ -73,8 +100,8 @@ export const ARTISTS = [
     name: 'Shakira',
     genre: 'Pop latine',
     origin: 'Colombie',
-    playCount: 105,
-    tracks: ['Hips Don’t Lie (Remix)', 'Whenever, Wherever', 'Te Felicito (& Rauw Alejandro)'],
+    playCount: 308,
+    tracks: ["Dai Dai (Word foot cup 2026 Ft Burna Boy)", "Algo Tù (Ft Beéle - Shimza Remix)", "Zoo (from Zootopia 2) Remix", "Te Felicito (& Rauw Alejandro)", "Whenever Wherever", "Hips Dont Lie (REMIX)", "Waka Waka (This Time for Africa)(Freshlyground)"],
     facts: [
       'Chanteuse colombienne, l’une des artistes latines les plus écoutées au monde.',
       'Connue pour un mélange singulier de pop latine, rock et sonorités du Moyen-Orient.',
@@ -89,8 +116,8 @@ export const ARTISTS = [
     name: 'Michael Jackson',
     genre: 'Pop / R&B',
     origin: 'États-Unis',
-    playCount: 47,
-    tracks: ['Billie Jean', 'Earth Song (Jason Parker 2023 Remix)', 'The Way You Make Me Feel', 'Don’t Stop ’Til You Get Enough'],
+    playCount: 151,
+    tracks: ["Don't Stop Til You Get Enough", "Wanna Be Startin' Somethin' (Official Lyric Video)", "Say Say Say [Ft Paul McCartney 2015 Remix]", "Thriller (Album Version)", "Earth Song (Jason Parker 2023 Remix)", "Billie Jean", "Rock With You", "Beat it [Ajax's multitrack mix)"],
     facts: [
       'Surnommé le "King of Pop", son album Thriller reste l’un des plus vendus de l’histoire.',
       'Artiste central de la pop des années 80, entre danse, groove et ballades.',
@@ -105,8 +132,8 @@ export const ARTISTS = [
     name: 'Ed Sheeran',
     genre: 'Pop / Folk',
     origin: 'Royaume-Uni',
-    playCount: 92,
-    tracks: ['Shape of You', 'Perfect (Mike Perry Remix)', 'Azizam', 'Sapphire (Enseven Remix)'],
+    playCount: 231,
+    tracks: ["I Love You", "Sapphire (Enseven Remix)", "Camera (CYRIL Remix)", "Perfect (Mike Perry Remix)", "Azizam (Pink Heart Video)", "Shape of You"],
     facts: [
       'Auteur-compositeur-interprète britannique, l’un des artistes les plus streamés au monde.',
       'Connu pour des ballades pop accessibles et des mélodies immédiatement identifiables.',
@@ -121,8 +148,8 @@ export const ARTISTS = [
     name: 'Mika',
     genre: 'Pop',
     origin: 'Liban / Royaume-Uni',
-    playCount: 54,
-    tracks: ['Grace Kelly (Slam Version)', 'Relax, Take It Easy', 'Love Today', 'Immortal Love'],
+    playCount: 155,
+    tracks: ["Immortal Love", "Love Today", "Grace Kelly (Slam Version) (Dj Beats)", "Relax, Take It Easy", "Relax Take It Easy (Maxim Andreev Nu Disco Mix)"],
     facts: [
       'Né au Liban, révélé en 2007 par le tube "Grace Kelly".',
       'Reconnu pour une pop colorée, joyeuse et théâtrale.',
@@ -137,8 +164,8 @@ export const ARTISTS = [
     name: 'Daft Punk',
     genre: 'Électro',
     origin: 'France',
-    playCount: 30,
-    tracks: ['Get Lucky Vs Fresh (Odyssey Mashup)', 'One More Time (Odyssey Drums ’n more Edit)', 'Around The World (Edit)', 'Instant Crush (Jack Benjamin Remix)'],
+    playCount: 104,
+    tracks: ["Get Lucky Vs Fresh (ODYSSEY MASHUP)", "Around the World (Edit)", "Instant Crush (ft. Julian Casablancas - Jack Benjamin Remix)", "One More Time (Odyssey Drums more Edit)"],
     facts: [
       'Duo français formé à Paris, pionnier de la "French Touch" dans les années 1990-2000.',
       'Connu pour des tubes devenus des classiques de la dance mondiale.',
@@ -153,8 +180,8 @@ export const ARTISTS = [
     name: 'David Guetta',
     genre: 'Dance / Électro',
     origin: 'France',
-    playCount: 97,
-    tracks: ['Titanium (feat. Sia)', 'Awake Tonight (Ft Sia)', 'Crazy What Love Can Do', 'Forever Young'],
+    playCount: 333,
+    tracks: ["Awake Tonight (Ft Sia)", "Together (Ft Hypaton & Bonnie Tyler)", "I Don't Wanna Wait (Official Video)", "Walked Away (Ft Hypaton)", "Flames", "The World Is Mine", "Yo and Akon-Play Hard", "Cuentale (feat Willy William & Nicky Jam)"],
     facts: [
       'DJ et producteur français, l’un des plus streamés et diffusés au monde.',
       'Référence incontournable de la dance et de l’électro grand public.',
@@ -169,8 +196,8 @@ export const ARTISTS = [
     name: 'U2',
     genre: 'Rock',
     origin: 'Irlande',
-    playCount: 30,
-    tracks: ['Beautiful Day (ARTY Remix)', 'With Or Without You (Les Bisous Remix)', 'One', 'I Still Haven’t Found What I’m Looking For'],
+    playCount: 88,
+    tracks: ["Beautiful Day (ARTY Remix)", "One", "I Still Haven't Found What I'm Looking For", "New Year's Day (USA Remix / Kevorkian Remix)", "With Or Without You (Les Bisous Remix)"],
     facts: [
       'Groupe irlandais formé à Dublin en 1976, l’un des plus grands groupes de rock au monde.',
       'Connu pour des hymnes rock devenus intemporels.',
@@ -185,8 +212,8 @@ export const ARTISTS = [
     name: 'Queen',
     genre: 'Rock',
     origin: 'Royaume-Uni',
-    playCount: 37,
-    tracks: ['I Want To Break Free', 'Bohemian Rhapsody', 'We Are The Champions', 'Radio Ga Ga (2019 Remix)', 'A Kind Of Magic'],
+    playCount: 122,
+    tracks: ["A Kind Of Magic", "Living On My Own (remix)", "Radio Ga Ga (2019 Remix)", "I Want to Break Free (The Ultimate Mix)", "We Are The Champions", "You Don't Fool Me", "Bohemian Rhapsody"],
     facts: [
       'Groupe britannique formé en 1970, l’un des plus influents de l’histoire du rock.',
       'Connu pour des hymnes devenus des classiques intergénérationnels.',
@@ -201,8 +228,8 @@ export const ARTISTS = [
     name: 'Gims',
     genre: 'Pop urbaine',
     origin: 'France',
-    playCount: 96,
-    tracks: ['Reste (Ft Sting)', 'La Même (Ft. Vianney)', 'Sois pas timide', 'Soleil (Remix)'],
+    playCount: 288,
+    tracks: ["Soleil (Remix)", "Incognito (Denkaa Remix (feat R2))", "Sentimental (Odyssey Mix)", "Parisienne (Remix - ft. La Mano 1.9 & Aya Nakamura)", "Ciel", "Reste (Ft Sting)", "La Même (Ft. Vianney)", "Ninao x Gandagana (YANISS Remix)"],
     facts: [
       'Ancien membre du groupe Sexion d’Assaut, en carrière solo depuis 2013.',
       'L’un des artistes francophones les plus streamés de la dernière décennie.',
@@ -217,8 +244,8 @@ export const ARTISTS = [
     name: 'Bruno Mars',
     genre: 'Pop / Funk',
     origin: 'États-Unis (Hawaï)',
-    playCount: 90,
-    tracks: ['Uptown Funk', 'Just The Way You Are', 'The Lazy Song', 'Die With A Smile (feat. Lady Gaga)'],
+    playCount: 288,
+    tracks: ["I Just Might", "Die With A Smile (Discock) (Lady Gaga)", "24K Magic", "Uptown Funk", "Treasure", "I Just Might (Austin Millz Remix)", "The Lazy Song", "Leave the Door Open"],
     facts: [
       'Originaire d’Hawaï, reconnu pour un style mêlant pop, funk et soul.',
       'Plusieurs de ses titres comptent parmi les plus streamés de l’histoire du streaming.',
@@ -233,8 +260,8 @@ export const ARTISTS = [
     name: 'Lady Gaga',
     genre: 'Pop',
     origin: 'États-Unis',
-    playCount: 87,
-    tracks: ['Bad Romance', 'Poker Face', 'Shallow', 'Always Remember Us This Way (Odyssey Remix)'],
+    playCount: 224,
+    tracks: ["Runway (Ft Doechii - Remix Dark Fashion)", "Shallow (Bradley Cooper)", "Always Remember Us This Way (Deep House) - Odyssey Remix", "The Dead Dance", "Abracadabra (Dj Dark Remix)", "Bad Romance", "Poker Face"],
     facts: [
       'Artiste américaine connue pour une pop spectaculaire et théâtrale.',
       'Également actrice, révélée au cinéma dans "A Star Is Born".',
@@ -249,8 +276,8 @@ export const ARTISTS = [
     name: 'Teddy Swims',
     genre: 'Pop / Soul',
     origin: 'États-Unis (Géorgie)',
-    playCount: 87,
-    tracks: ['Lose Control (Dj Dark Remix)', 'Mr. Know It All', 'The Door (CYRIL Remix)'],
+    playCount: 269,
+    tracks: ["Mr. Know It All", "Lose Control (Dj Dark Remix)", "The Door (CYRIL Remix)"],
     facts: [
       'Artiste américain révélé récemment grâce au succès mondial de "Lose Control".',
       'Voix soul puissante, à la croisée de la pop et de la musique rétro.',
@@ -265,8 +292,8 @@ export const ARTISTS = [
     name: 'Mylène Farmer',
     genre: 'Pop / Rock',
     origin: 'France (née au Québec)',
-    playCount: 86,
-    tracks: ['Désenchantée (Upsilone Remix)', 'Libertine (Remix 2023)', 'Tristana (IKS Remix Radio Odyssey Edit)'],
+    playCount: 245,
+    tracks: ["C'est à qui le tour (Odyssey Version)", "Pourvu qu'elles soient douces (2.0 remix by Kick-i) (Odyssey Edit)", "Maman a tort (Polyedre Remix)", "Tristana (IKS REMIX 2023 Edit Radio Odyssey)", "Libertine (Remix 2023)", "Désenchantée (Upsilone Remix)"],
     facts: [
       'L’une des artistes francophones les plus vendues de tous les temps.',
       'Carrière lancée dans les années 1980, toujours très présente dans les rediffusions et remixes.',
@@ -281,8 +308,8 @@ export const ARTISTS = [
     name: 'Angèle',
     genre: 'Pop',
     origin: 'Belgique',
-    playCount: 86,
-    tracks: ['Bruxelles je t’aime (Eddy Call Remix)', 'Tout Oublier (Charles J Rework)', 'What You Want (feat. Justice)'],
+    playCount: 201,
+    tracks: ["What You Want (feat. Justice)", "Tout Oublier (Charles J Rework)", "Bruxelles je t'aime (Eddy call remix)", "Flou (Alex Under Remix)", "Démons (live orchestral)"],
     facts: [
       'Chanteuse belge révélée en 2018 avec l’album "Brol".',
       'Figure majeure de la nouvelle scène pop francophone.',
@@ -297,8 +324,8 @@ export const ARTISTS = [
     name: 'Aya Nakamura',
     genre: 'Pop urbaine',
     origin: 'France',
-    playCount: 19,
-    tracks: ['Baddies (Radio Odyssey Edit ft. Joé Dwèt Filé)'],
+    playCount: 56,
+    tracks: ["Baddies (Radio Odyssey Edit ft. Joé Dwèt Filé)"],
     facts: [
       'Artiste française, l’une des chanteuses francophones les plus écoutées au monde.',
       'Incontournable de la scène pop française et internationale de ces dernières années.',
@@ -314,8 +341,8 @@ export const ARTISTS = [
     name: 'Jennifer Lopez',
     genre: 'Pop / Dance',
     origin: 'États-Unis',
-    playCount: 86,
-    tracks: ['On The Floor', 'Waiting For Tonight', 'Save Me Tonight (Ft David Guetta)', 'If You Had My Love (Heyder Remix)'],
+    playCount: 203,
+    tracks: ["Save Me Tonight (Ft David Guetta)", "On The Floor", "If You Had My Love (Heyder remix)", "Waiting For Tonight"],
     facts: [
       'Chanteuse, danseuse et actrice américaine, surnommée "JLo".',
       'Carrière musicale lancée à la fin des années 1990, toujours active.',
@@ -330,8 +357,8 @@ export const ARTISTS = [
     name: 'Taylor Swift',
     genre: 'Pop',
     origin: 'États-Unis',
-    playCount: 86,
-    tracks: ['Cruel Summer', 'Elizabeth Taylor', 'Opalite (Johnyy J Remix)'],
+    playCount: 204,
+    tracks: ["Elizabeth Taylor", "Opalite (Johnyy J Remix)", "The Fate of Ophelia (DJ Starlight D.I.X.I.E Remix)", "Cruel Summer"],
     facts: [
       'L’une des artistes les plus vendues et streamées au monde.',
       'Passée de la country à la pop au fil d’une carrière commencée en 2006.',
@@ -346,8 +373,8 @@ export const ARTISTS = [
     name: 'Zazie',
     genre: 'Pop française',
     origin: 'France',
-    playCount: 85,
-    tracks: ['J’envoie valser (Version 432 Hertz)', 'Peu importe', 'Zen (Mumbaï Remix)'],
+    playCount: 244,
+    tracks: ["Peu importe", "J'envoie valser (Version 432 hertz)", "Zen (Mumbaï Remix)", "Rue de la paix (Iks Remix 2021)"],
     facts: [
       'Chanteuse française reconnue pour ses textes travaillés depuis les années 1990.',
       'Une des voix féminines marquantes de la chanson française contemporaine.',
@@ -362,8 +389,8 @@ export const ARTISTS = [
     name: 'Pascal Obispo',
     genre: 'Pop française',
     origin: 'France',
-    playCount: 85,
-    tracks: ['Il faudrait que pleuve l’amour (Ft Francis Cabrel)', 'Reste-t-il du bonheur (Ft Bénabar, 432Hz)'],
+    playCount: 212,
+    tracks: ["Il faudrait que pleuve l'amour (Ft Francis Cabrel)", "Reste-t-il du bonheur (Ft Bénabar) (432Hz)"],
     facts: [
       'Auteur-compositeur-interprète français, actif depuis le début des années 1990.',
       'Connu aussi bien pour ses propres titres que pour ses collaborations.',
@@ -378,8 +405,8 @@ export const ARTISTS = [
     name: 'Justin Bieber',
     genre: 'Pop',
     origin: 'Canada',
-    playCount: 83,
-    tracks: ['Sorry', 'Stay', 'Let Me Love You (DJ Snake)', 'Beauty And A Beat (Fletz Remix)'],
+    playCount: 253,
+    tracks: ["Beauty And A Beat (feat. Nicky Minaj (Fletz Remix))", "Let Me Love You (DJ Snake)", "Sorry", "Daisies (Dj Dark Remix)", "Stay"],
     facts: [
       'Artiste canadien révélé très jeune grâce à internet à la fin des années 2000.',
       'L’un des artistes pop les plus streamés de sa génération.',
@@ -394,8 +421,8 @@ export const ARTISTS = [
     name: 'Indochine',
     genre: 'Rock / Pop',
     origin: 'France',
-    playCount: 77,
-    tracks: ['La Belle et la Bête', 'Le Chant des Cygnes', 'Les Nouveaux Soleils', 'L’Amour Fou (Angus Wingless Remix)'],
+    playCount: 191,
+    tracks: ["Les nouveaux soleils", "No Name [Fdieu ElectroVibes RmiX] (Odyssey Edit)", "L'amour fou (Angus Wingless Remix) #IndochineOfficiel #babelbabel #clip #nicolasirkis", "Le chant des cygnes", "J'ai demandé à la lune (Mix 2020)", "La belle et la bête", "L' Aventurier (Extended Remix)"],
     facts: [
       'Groupe français formé en 1981, l’un des plus anciens groupes de rock français encore en activité.',
       'Une carrière traversant plusieurs générations d’auditeurs.',
@@ -410,8 +437,8 @@ export const ARTISTS = [
     name: 'Bebe Rexha',
     genre: 'Pop',
     origin: 'États-Unis',
-    playCount: 74,
-    tracks: ['New Religion (Faithless)'],
+    playCount: 158,
+    tracks: ["New Religion (Faithless)"],
     facts: [
       'Chanteuse et autrice-compositrice américaine d’origine albanaise.',
       'Connue pour de nombreuses collaborations dance et pop à succès.',
@@ -426,8 +453,8 @@ export const ARTISTS = [
     name: 'Ariana Grande',
     genre: 'Pop',
     origin: 'États-Unis',
-    playCount: 72,
-    tracks: ['No Tears Left To Cry', 'One Last Time', 'Hate That I Made You Love Me (Remix)'],
+    playCount: 230,
+    tracks: ["Hate That I Made You Love Me (Remix)", "No Tears Left To Cry", "Twilight Zone (Cosmic Dawn Remix)", "One last time"],
     facts: [
       'L’une des voix pop les plus reconnaissables de sa génération.',
       'Carrière lancée à la télévision avant une percée internationale en musique.',
@@ -442,8 +469,8 @@ export const ARTISTS = [
     name: 'Coldplay',
     genre: 'Rock / Pop',
     origin: 'Royaume-Uni',
-    playCount: 63,
-    tracks: ['Viva La Vida', 'Paradise', 'A Sky Full Of Stars', 'Something Just Like This'],
+    playCount: 171,
+    tracks: ["Adventure Of A Lifetime", "Feelslikeimfallinginlove", "We Pray", "A Sky Full of Stars", "Viva La Vida", "Something Just Like This", "Good feelings (Kleos Remix)", "Paradise"],
     facts: [
       'Groupe britannique formé en 1996, l’un des plus grands groupes pop-rock au monde.',
       'Connu pour des hymnes mélodiques et des concerts spectaculaires.',
@@ -458,8 +485,8 @@ export const ARTISTS = [
     name: 'Calvin Harris',
     genre: 'Dance / Électro',
     origin: 'Écosse',
-    playCount: 62,
-    tracks: ['This Is What You Came For', 'Promises', 'Giant', 'My Way'],
+    playCount: 178,
+    tracks: ["Promises", "This Is What You Came For", "Feels", "My Way", "Giant", "Summer (@northernelg edit)", "Desire (Ft Sam Smith)", "Feel so close (Housejunkee Edit)"],
     facts: [
       'DJ et producteur écossais, l’un des plus streamés et les mieux rémunérés au monde.',
       'Multiplie les collaborations avec des artistes pop de premier plan.',
@@ -474,8 +501,8 @@ export const ARTISTS = [
     name: 'Alicia Keys',
     genre: 'R&B / Pop',
     origin: 'États-Unis',
-    playCount: 60,
-    tracks: ['Fallin’', 'Girl On Fire', 'Empire State Of Mind (Part II)'],
+    playCount: 175,
+    tracks: ["Fallin", "Girl on Fire", "Empire State of Mind (Part II) Broken Down", "No One (Jony Rockstar Remix)"],
     facts: [
       'Chanteuse et pianiste américaine, plusieurs fois récompensée aux Grammy Awards.',
       'Connue pour une voix soul puissante et des compositions au piano.',
@@ -490,8 +517,8 @@ export const ARTISTS = [
     name: 'The Weeknd',
     genre: 'R&B / Pop',
     origin: 'Canada',
-    playCount: 54,
-    tracks: ['Blinding Lights', 'Can’t Feel My Face', 'Starboy (feat. Daft Punk)', 'I Feel It Coming', 'Sacrifice'],
+    playCount: 158,
+    tracks: ["Sacrifice", "Open Hearts (80s Remix)", "Blinding Lights", "I Feel It Coming", "Can't Feel My Face", "Dancing In The Flames", "Save Your Tears", "Starboy (feat. Daft Punk)"],
     facts: [
       'Artiste canadien mêlant R&B, pop et influences electro.',
       'L’un des artistes les plus streamés au monde depuis le milieu des années 2010.',
@@ -506,8 +533,8 @@ export const ARTISTS = [
     name: 'Harry Styles',
     genre: 'Pop / Rock',
     origin: 'Royaume-Uni',
-    playCount: 52,
-    tracks: ['As It Was', 'Watermelon Sugar', 'Sign Of The Times'],
+    playCount: 149,
+    tracks: ["Aperture (ft. Rihanna Remix Odyssey edit)", "Watermelon Sugar", "Sign of the Times", "As It Was"],
     facts: [
       'Ancien membre du groupe One Direction, carrière solo remarquée depuis 2017.',
       'Connu pour un style mêlant pop, rock et influences rétro.',
@@ -522,8 +549,8 @@ export const ARTISTS = [
     name: 'Sia',
     genre: 'Pop',
     origin: 'Australie',
-    playCount: 49,
-    tracks: ['Chandelier', 'Unstoppable', 'Cheap Thrills (feat. Sean Paul)', 'Dance Alone (Ofenbach Remix)'],
+    playCount: 132,
+    tracks: ["Dance Alone (Ofenbach Remix) (Ft Kylie Minogue)", "Cheap Thrills (feat. Sean Paul)", "Gimme Love", "Unstoppable", "The Greatest", "Chandelier"],
     facts: [
       'Chanteuse et compositrice australienne, connue pour cacher son visage en scène.',
       'A aussi composé pour de nombreux autres artistes internationaux.',
@@ -539,8 +566,8 @@ export const ARTISTS = [
     name: 'Sting',
     genre: 'Rock / Pop',
     origin: 'Royaume-Uni',
-    playCount: 46,
-    tracks: ['Fields Of Gold (Andrew Cerrone Remix)', 'Walking On The Moon (The Police)', 'Desert Rose (Zuma Dionys Remix)'],
+    playCount: 203,
+    tracks: ["Til A Mawnin (Remix) | Official Music Video", "Desert Rose (Zuma Dionys Remix)", "Walking On The Moon (The Police)", "Every Little Thing She Does Is Magic (The Police 2022 Remix)", "If You Love Somebody Set Them Free (William Orbit Mix)", "Englishman In New York (Dj ray-g remix)", "Dreaming (Feat Marshmello, P!NK)", "Every Breath You Take (Remastered 2003) (The Police)"],
     facts: [
       'Ancien chanteur et bassiste du groupe The Police, en solo depuis 1984.',
       'Reconnu pour un répertoire mêlant rock, pop et influences world.',
@@ -555,8 +582,8 @@ export const ARTISTS = [
     name: 'Sabrina Carpenter',
     genre: 'Pop',
     origin: 'États-Unis',
-    playCount: 46,
-    tracks: ['Espresso', 'Taste', 'Manchild (CDC Summer Remix)'],
+    playCount: 127,
+    tracks: ["Manchild (CDC Summer Remix)", "Tears (Louis La Roche Remix)", "Espresso", "Taste"],
     facts: [
       'Chanteuse américaine révélée sur le grand public en 2024 avec "Espresso".',
       'Une des voix pop montantes les plus streamées du moment.',
@@ -571,8 +598,8 @@ export const ARTISTS = [
     name: 'Katy Perry',
     genre: 'Pop',
     origin: 'États-Unis',
-    playCount: 43,
-    tracks: ['Firework', 'Roar', 'Chained To The Rhythm (ft. Skip Marley)'],
+    playCount: 155,
+    tracks: ["Bandaids (CK12 - Extended Remix)", "Hot N Cold (NORTKASH Remix)", "When I'm Gone", "Chained To The Rhythm (ft. Skip Marley)", "Roar", "Firework"],
     facts: [
       'L’une des artistes pop les plus vendues des années 2010.',
       'Connue pour des tubes hymnes devenus incontournables.',
@@ -587,8 +614,8 @@ export const ARTISTS = [
     name: 'Miley Cyrus',
     genre: 'Pop',
     origin: 'États-Unis',
-    playCount: 42,
-    tracks: ['Flowers', 'Wrecking Ball (NE-ON Remix)', 'Edge Of Midnight (ft. Stevie Nicks)'],
+    playCount: 148,
+    tracks: ["Dream As One (from Avatar: Fire and Ash)", "End Of The World (Cosmic Dawn Remix Edit)", "Flowers", "Edge of Midnight (Midnight Sky Remix) ft. Stevie Nicks", "Wrecking Ball (NE-ON remix)"],
     facts: [
       'Ancienne star Disney devenue une artiste pop confirmée.',
       'Reconnue pour une évolution artistique marquée au fil de sa carrière.',
@@ -603,8 +630,8 @@ export const ARTISTS = [
     name: 'Céline Dion',
     genre: 'Pop / Variété',
     origin: 'Canada (Québec)',
-    playCount: 37,
-    tracks: ['My Heart Will Go On (Club Remix Dance Version)', 'I’m Alive (Dance Remix)', 'Prière Païenne'],
+    playCount: 115,
+    tracks: ["My Heart Will Go On (Club Remix Dance Version)", "Set My Heart On Fire (I'm Alive x And The Beat Goes On)", "I'm Alive (Jason Parker Remix)", "I'm Alive (Dance remix)", "Prière païenne"],
     facts: [
       'L’une des voix les plus reconnues au monde, célèbre pour "My Heart Will Go On".',
       'Carrière lancée au Québec avant une renommée internationale.',
@@ -619,8 +646,8 @@ export const ARTISTS = [
     name: 'Simple Minds',
     genre: 'Synthpop / Rock',
     origin: 'Écosse',
-    playCount: 34,
-    tracks: ['Don’t You (Forget About Me) (Remix 2022)', 'Alive And Kicking (EDM Remix 2025)', 'Promised You A Miracle'],
+    playCount: 109,
+    tracks: ["Alive and Kicking | EDM Remix 2025 by Nexy Music Production", "Mandela Day", "Don't You (Forget About Me) (Remix 2022 By DeeJay Guido Piva)", "Someone, Somewhere in Summertime (KD Remix 2025)", "Promised You A Miracle (Acoustic featuring KT Tunstall) 432Hz"],
     facts: [
       'Groupe écossais emblématique de la scène synthpop des années 1980.',
       'Connu pour "Don\'t You (Forget About Me)", tube générationnel.',
@@ -635,8 +662,8 @@ export const ARTISTS = [
     name: 'Maroon 5',
     genre: 'Pop / Rock',
     origin: 'États-Unis',
-    playCount: 36,
-    tracks: ['Moves Like Jagger', 'Sugar', 'This Love', 'She Will Be Loved (Pharrell Williams Remix)'],
+    playCount: 104,
+    tracks: ["What Lovers Do (feat. SZA)", "Moves Like Jagger", "Sugar", "She Will Be Loved (Pharrell Williams Remix)(432Hz)", "This Love"],
     facts: [
       'Groupe américain mené par le chanteur Adam Levine.',
       'Connu pour un son pop-rock accessible et de nombreux tubes internationaux.',
@@ -651,8 +678,8 @@ export const ARTISTS = [
     name: 'Phil Collins',
     genre: 'Pop / Rock',
     origin: 'Royaume-Uni',
-    playCount: 35,
-    tracks: ['Two Hearts', 'You Can’t Hurry Love (2016 Remaster)', 'Invisible Touch (Genesis)'],
+    playCount: 115,
+    tracks: ["Easy Lover", "That's All (432Hz Remastered)(Genesis)", "Sussudio", "Invisible Touch. (Genesis)", "Two Hearts", "Something Happened on the Way to Heaven", "You Can't Hurry Love (2016 Remaster)"],
     facts: [
       'Ancien batteur et chanteur du groupe Genesis, également artiste solo.',
       'Une des figures marquantes de la pop-rock britannique des années 1980.',
@@ -667,8 +694,8 @@ export const ARTISTS = [
     name: 'Robbie Williams',
     genre: 'Pop',
     origin: 'Royaume-Uni',
-    playCount: 30,
-    tracks: ['Feel', 'Rock DJ', 'Angels (Acoustic)'],
+    playCount: 105,
+    tracks: ["Tripping", "Angels (Acoustic) 149", "Rock Dj", "Feel", "Millennium (by DJ Jazzy Jones)", "Somethin' Stupid (Ft & Nicole Kidman)"],
     facts: [
       'Ancien membre du groupe Take That, carrière solo lancée en 1996.',
       'L’un des artistes pop britanniques les plus populaires de sa génération.',
@@ -683,8 +710,8 @@ export const ARTISTS = [
     name: 'Wham!',
     genre: 'Pop',
     origin: 'Royaume-Uni',
-    playCount: 30,
-    tracks: ['Wake Me Up Before You Go-Go', 'Fastlove', 'Everything She Wants (Louis La Roche Remix)'],
+    playCount: 99,
+    tracks: ["Wake Me Up Before You Go-Go", "Everything She Wants (Louis La Roche Remix)", "Too Funky (Remix)", "Kissing A Fool (Remastered)", "Fastlove"],
     facts: [
       'Duo pop britannique formé par George Michael et Andrew Ridgeley au début des années 1980.',
       'Symbole de la pop joyeuse et colorée de la décennie 80.',
@@ -699,8 +726,8 @@ export const ARTISTS = [
     name: 'Karol G',
     genre: 'Reggaeton / Pop latine',
     origin: 'Colombie',
-    playCount: 30,
-    tracks: ['Tusa', 'Don’t Be Shy (ft. Tiësto)', 'Si Antes Te Hubiera Conocido'],
+    playCount: 92,
+    tracks: ["Tusa", "Don't Be Shy (Ft Tiësto)", "Si Antes Te Hubiera Conocido"],
     facts: [
       'Chanteuse colombienne, l’une des plus grandes stars actuelles de la musique latine.',
       'Multiplie les collaborations internationales à succès.',
@@ -715,8 +742,8 @@ export const ARTISTS = [
     name: 'Vanessa Paradis',
     genre: 'Pop française',
     origin: 'France',
-    playCount: 29,
-    tracks: ['Joe Le Taxi (MrCØ Remix)', 'Les Épines Du Cœur', 'Bouquet Final'],
+    playCount: 104,
+    tracks: ["Les épines du coeur", "Bouquet final (of Love and Roses reMix 2025)", "Joe Le Taxi (MrCØ Remix)"],
     facts: [
       'Chanteuse et actrice française, révélée dès l’adolescence avec "Joe Le Taxi".',
       'Une figure durable de la chanson française depuis les années 1980.',
@@ -731,8 +758,8 @@ export const ARTISTS = [
     name: 'Jean-Jacques Goldman',
     genre: 'Variété française',
     origin: 'France',
-    playCount: 18,
-    tracks: ['Au Bout De Mes Rêves', 'Je Te Donne (Remix feat. Michael Jones)'],
+    playCount: 157,
+    tracks: ["Au bout de mes rêves", "Il changeait la vie", "On ira", "Nos Mains (Collégiale)(Génération Goldman Volume 2)", "Quand la musique est bonne", "Là-bas", "Je te donne (Remix feat Michael Jones)", "La Vie Par Procuration (Remix 2023)"],
     facts: [
       'L’un des artistes français les plus populaires depuis les années 1980.',
       'Auteur-compositeur également pour de nombreux autres artistes.',
@@ -747,8 +774,8 @@ export const ARTISTS = [
     name: 'Stromae',
     genre: 'Pop électro',
     origin: 'Belgique',
-    playCount: 36,
-    tracks: ['Papaoutai (Francis Mercier Afro House Remix)', 'Ma Meilleure Ennemie (feat. Pomme)', 'Que Ce Soit Clair (feat. Paul Kalkbrenner)'],
+    playCount: 89,
+    tracks: ["Que Ce Soit Clair (Chris Bessy Remix) (feat Paul Kalkbrenner)", "Ma Meilleure Ennemie (feat. Pomme)", "Papaoutai (Francis Mercier Afro House Remix)"],
     facts: [
       'Artiste belge à la renommée internationale, mélange pop, électro et chanson française.',
       'Connu pour des textes engagés portés par des mélodies entraînantes.',
@@ -763,8 +790,8 @@ export const ARTISTS = [
     name: 'Elton John',
     genre: 'Pop / Rock',
     origin: 'Royaume-Uni',
-    playCount: 36,
-    tracks: ['Cold Heart (ft. Dua Lipa, PNAU Remix)', 'Hold Me Closer (feat. Britney Spears)', 'Can You Feel The Love Tonight (Remix)'],
+    playCount: 100,
+    tracks: ["Cold Heart (Ft Dua Lipa - PNAU Remix)", "Hold me closer (feat Britney Spears)", "Nikita (Remastered)", "I Don't Wanna Go On With You Like That", "Can You Feel the Love Tonight (Remix)", "Sorry Seems To Be The Hardest Word (Igor Frank Remix) Radio Cover", "Your Song (Junior Vasquez Remix Edit)"],
     facts: [
       'Une légende vivante de la musique britannique, en carrière depuis les années 1970.',
       'Connu pour des collaborations récentes qui remettent ses titres au goût du jour.',
@@ -780,8 +807,8 @@ export const ARTISTS = [
     name: 'Tame Impala',
     genre: 'Rock psychédélique / Pop',
     origin: 'Australie',
-    playCount: 88,
-    tracks: ['Dracula'],
+    playCount: 272,
+    tracks: ["Dracula"],
     facts: [
       'Projet mené par le multi-instrumentiste australien Kevin Parker.',
       'Connu pour un son psychédélique mêlant rock, pop et production électronique.',
@@ -796,8 +823,8 @@ export const ARTISTS = [
     name: 'Alex Warren',
     genre: 'Pop',
     origin: 'États-Unis',
-    playCount: 85,
-    tracks: ['Fever Dream (Sakgra Remix)', 'Eternity (Full Remix)', 'Ordinary (Dj Dark Remix)'],
+    playCount: 265,
+    tracks: ["Fever dream (Sakgra Remix)", "Passenger (Deep House)", "Eternity (Full Remix)", "Ordinary (Dj Dark Remix)"],
     facts: [
       'Chanteur et créateur de contenu américain, révélé sur les réseaux sociaux avant de percer dans la musique.',
       'Connu pour son tube "Ordinary", sorti en 2024.',
@@ -812,8 +839,8 @@ export const ARTISTS = [
     name: 'Jérémy Frérot',
     genre: 'Pop française',
     origin: 'France',
-    playCount: 85,
-    tracks: ['Frérot'],
+    playCount: 202,
+    tracks: ["Frérot"],
     facts: [
       'Ancien membre du duo Fréro Delavega, révélé dans The Voice en 2013.',
       'Carrière solo lancée en 2018 avec une pop française chaleureuse.',
@@ -828,8 +855,8 @@ export const ARTISTS = [
     name: 'Sound Of Legend',
     genre: 'Dance / Eurodance',
     origin: 'Italie',
-    playCount: 81,
-    tracks: ['San Francisco', 'Some Kind Of Kiss'],
+    playCount: 213,
+    tracks: ["San Francisco", "Game Started", "Some kind of kiss"],
     facts: [
       'Projet dance italien connu pour avoir remis au goût du jour le classique "San Francisco" (Scott McKenzie).',
       'Représentatif des remixes dance qui rythment l’antenne.',
@@ -844,8 +871,8 @@ export const ARTISTS = [
     name: 'Ofenbach',
     genre: 'Dance / Électro',
     origin: 'France',
-    playCount: 76,
-    tracks: ['Miles Away', 'Head Shoulders Knees & Toes (feat. Norma Jean Martine)', 'Be Mine', 'Katchi (& Nick Waterhouse)'],
+    playCount: 184,
+    tracks: ["Miles Away", "Wasted love (ft. Lagique)", "Head Shoulders Knees & Toes (feat. Norma Jean Martine)", "Be Mine", "Katchi (& Nick Waterhouse)"],
     facts: [
       'Duo français de musique électronique formé par Louis Slipper et César Denis Bernard.',
       'Connu pour des tubes dance internationaux comme "Katchi".',
@@ -860,8 +887,8 @@ export const ARTISTS = [
     name: 'Djo',
     genre: 'Pop / Indie',
     origin: 'États-Unis',
-    playCount: 65,
-    tracks: ['End Of Beginning (Sadrican Remix)'],
+    playCount: 142,
+    tracks: ["End Of Beginning (Sadrican Remix)"],
     facts: [
       'Nom de scène de l’acteur et musicien américain Joe Keery, connu pour la série Stranger Things.',
       'Révélé au grand public par son titre viral "End Of Beginning" en 2024.',
@@ -876,8 +903,8 @@ export const ARTISTS = [
     name: 'Christophe Willem',
     genre: 'Pop française',
     origin: 'France',
-    playCount: 59,
-    tracks: ['Systaime', 'Double Je (Remix)'],
+    playCount: 192,
+    tracks: ["Systaime", "Double je (Remix)"],
     facts: [
       'Chanteur français révélé en 2006 en remportant la Nouvelle Star.',
       'Connu pour une pop française élégante, parfois teintée d’électro.',
@@ -892,8 +919,8 @@ export const ARTISTS = [
     name: 'Christophe Maé',
     genre: 'Variété française',
     origin: 'France',
-    playCount: 55,
-    tracks: ['La Lune', 'Il Est Où Le Bonheur (Remix Jay Nessus)', 'Tombé Sous Le Charme (Remix Radio Odyssey Edit)'],
+    playCount: 143,
+    tracks: ["La lune", "Il Est Où Le Bonheur (Remix Jay Nessus)", "Tombé Sous Le Charme (remix Radio Odyssey Edit)."],
     facts: [
       'Chanteur français originaire du sud de la France, révélé en 2007 avec l’album "Mon Paradis".',
       'Connu pour une variété chaleureuse et solaire.',
@@ -908,8 +935,8 @@ export const ARTISTS = [
     name: 'Tove Lo',
     genre: 'Pop',
     origin: 'Suède',
-    playCount: 55,
-    tracks: ['Des Fleurs (feat. Stromae)', 'Habits (Stay High)'],
+    playCount: 195,
+    tracks: ["Tove Lo - des fleurs (Ft Stromae)", "Habits (Stay High)"],
     facts: [
       'Autrice-compositrice-interprète suédoise reconnue internationalement depuis "Habits (Stay High)".',
       'Connue pour une pop synthétique aux textes francs.',
@@ -924,8 +951,8 @@ export const ARTISTS = [
     name: 'Zaho',
     genre: 'Pop / R&B',
     origin: 'Algérie / Canada (Québec)',
-    playCount: 50,
-    tracks: ['Comme Caroline (feat. MC Solaar)'],
+    playCount: 114,
+    tracks: ["Comme Caroline (ft. MC Solaar)"],
     facts: [
       'Chanteuse née en Algérie, ayant grandi au Québec avant de percer en France.',
       'Connue pour une pop R&B mélodique depuis le milieu des années 2000.',
@@ -940,8 +967,8 @@ export const ARTISTS = [
     name: 'Bananarama',
     genre: 'Pop',
     origin: 'Royaume-Uni',
-    playCount: 44,
-    tracks: ['I Heard A Rumour', 'Cruel Summer (Remastered)', 'Shy Boy', 'Na Na Hey Hey (Kiss Him Goodbye)'],
+    playCount: 113,
+    tracks: ["Cruel Summer (Remastered)", "I Heard a Rumour", "Robert De Niro's Waiting (Sakgra PW Elle Mix)", "Na Na Hey Hey (Kiss Him Goodbye)", "Shy Boy", "Venus", "Help!"],
     facts: [
       'Trio pop britannique formé en 1981, l’un des groupes féminins les plus vendus des années 1980.',
       'Connu pour des tubes comme "Cruel Summer" et "Venus".',
@@ -956,8 +983,8 @@ export const ARTISTS = [
     name: 'Clara Luciani',
     genre: 'Pop française',
     origin: 'France',
-    playCount: 43,
-    tracks: ['Cette Vie (Piano Less Radio Odyssey)', 'Tout Pour Moi (Jordan Patural Remix)', 'Respire Encore', 'Amour Toujours (Ced ReWork)'],
+    playCount: 106,
+    tracks: ["Cette vie (Piano less Radio Odyssey)", "Amour Toujours (Ced ReWork)", "Respire encore", "Tout pour moi [Jordan Patural Remix]"],
     facts: [
       'Chanteuse française révélée en solo en 2018 après le groupe La Femme.',
       'Connue pour une pop chaleureuse portée par une voix grave reconnaissable.',
@@ -972,8 +999,8 @@ export const ARTISTS = [
     name: 'Amy Macdonald',
     genre: 'Pop rock',
     origin: 'Écosse',
-    playCount: 42,
-    tracks: ['This Is The Life'],
+    playCount: 120,
+    tracks: ["This Is The Life"],
     facts: [
       'Autrice-compositrice-interprète écossaise révélée en 2007 avec l’album "This Is The Life".',
       'Connue pour une pop-folk mélodique portée à la guitare.',
@@ -988,8 +1015,8 @@ export const ARTISTS = [
     name: 'Sade',
     genre: 'Soul / Smooth jazz',
     origin: 'Royaume-Uni / Nigeria',
-    playCount: 41,
-    tracks: ['The Sweetest Taboo', 'Never As Good As The First Time (GK\'s Remix)', 'No Ordinary Love (Remix By Felix)', 'Cherish The Day (Ahmed Sirour Rework)'],
+    playCount: 111,
+    tracks: ["The Sweetest Taboo", "Never as good as the first time (gk's remix)", "Cherish the Day (Ahmed Sirour rework)", "No Ordinary Love (REMIX by Felix)", "Smooth Operator", "Paradise (Remix Carmine Voccia)"],
     facts: [
       'Groupe britannique mené par la chanteuse Sade Adu, référence de la soul depuis les années 1980.',
       'Connu pour un smooth jazz élégant et intemporel.',
@@ -1004,8 +1031,8 @@ export const ARTISTS = [
     name: 'Soprano',
     genre: 'Pop / Variété',
     origin: 'France (Marseille)',
-    playCount: 41,
-    tracks: ['DJ', 'Venga Mi (feat. Gradur)', 'Le Coach (Radio Odyssey Edit)'],
+    playCount: 189,
+    tracks: ["DJ", "Venga Mi (feat. Gradur)", "Le coach (Radio Odyssey Edit)"],
     facts: [
       'Chanteur marseillais, ancien membre du groupe Psy4 de la Rime, en carrière solo pop depuis 2011.',
       'Connu pour des tubes fédérateurs à la pop entraînante.',
@@ -1021,8 +1048,8 @@ export const ARTISTS = [
     name: 'Clean Bandit',
     genre: 'Dance / Pop',
     origin: 'Royaume-Uni',
-    playCount: 41,
-    tracks: ['Rockabye', 'Rather Be (Cool Remix)', 'Symphony', 'Solo (feat. Demi Lovato)'],
+    playCount: 109,
+    tracks: ["Rockabye", "Rather be - (Cool Remix !)", "Symphony", "Solo (feat. Demi Lovato)"],
     facts: [
       'Groupe britannique de musique électronique formé à Cambridge en 2008.',
       'Connu pour des tubes dance mêlant instruments classiques et production électronique.',
@@ -1037,8 +1064,8 @@ export const ARTISTS = [
     name: 'Charlotte Cardin',
     genre: 'Pop',
     origin: 'Canada (Québec)',
-    playCount: 40,
-    tracks: ['Tant Pis Pour Elle (Remix) (432Hz)', 'Feel Good (Mashup Radio Odyssey)'],
+    playCount: 95,
+    tracks: ["Tant pis pour elle (Remix) (432Hz)", "Feel Good (Mashup Radio Odyssey)"],
     facts: [
       'Chanteuse et autrice-compositrice québécoise, révélée en 2016.',
       'Connue pour une pop soul à la voix reconnaissable.',
@@ -1053,8 +1080,8 @@ export const ARTISTS = [
     name: 'R3HAB',
     genre: 'Dance / Électro',
     origin: 'Pays-Bas',
-    playCount: 39,
-    tracks: ['In My Head (BRYZZ Remix)', 'All Around The World (La La La)', 'Rock My Body', 'Believe (Shooting Stars)'],
+    playCount: 111,
+    tracks: ["In My Head (BRYZZ Remix)", "All Around The World (La La La) (& A Touch Of Class)", "Believe (Shooting Stars) (Mufasa & Hypeman, RANI)", "Rock My Body"],
     facts: [
       'DJ et producteur néerlandais, l’un des artistes dance les plus streamés au monde.',
       'Connu pour des remixes énergiques de tubes internationaux.',
@@ -1069,8 +1096,8 @@ export const ARTISTS = [
     name: 'Simply Red',
     genre: 'Pop / Soul',
     origin: 'Royaume-Uni',
-    playCount: 37,
-    tracks: ['Stars', 'Fairground', 'Something Got Me Started', 'Money’s Too Tight (To Mention)'],
+    playCount: 110,
+    tracks: ["Stars", "Fairground", "Something Got Me Started", "Money's Too Tight (To Mention) (The Cutback Mix)", "Holding Back the Years"],
     facts: [
       'Groupe britannique mené par le chanteur Mick Hucknall, formé en 1985.',
       'Connu pour une pop-soul élégante ayant marqué la fin des années 1980 et les années 1990.',
@@ -1085,8 +1112,8 @@ export const ARTISTS = [
     name: 'Damiano David',
     genre: 'Pop / Rock',
     origin: 'Italie',
-    playCount: 37,
-    tracks: ['The First Time', 'Next Summer (Mr Dendo Remix)', 'Born With A Broken Heart'],
+    playCount: 91,
+    tracks: ["The First Time", "Next Summer (Mr Dendo Remix)", "Born With a Broken Heart"],
     facts: [
       'Chanteur italien, leader du groupe Måneskin, en carrière solo depuis 2024.',
       'Connu pour un rock-pop théâtral porté par une voix reconnaissable.',
@@ -1101,8 +1128,8 @@ export const ARTISTS = [
     name: 'Ava Max',
     genre: 'Pop',
     origin: 'États-Unis',
-    playCount: 35,
-    tracks: ['The Motto (ft. Tiësto)', 'Sweet But Psycho', 'My Head & My Heart (Jonas Blue Remix)', 'Kings & Queens'],
+    playCount: 94,
+    tracks: ["The Motto (Ft Tiësto)", "Sweet But Psycho", "My Head & My Heart (Jonas Blue Remix)", "Kings & Queens"],
     facts: [
       'Chanteuse américaine révélée en 2018 avec le tube "Sweet But Psycho".',
       'Connue pour une pop énergique aux mélodies immédiates.',
@@ -1117,8 +1144,8 @@ export const ARTISTS = [
     name: 'M. Pokora',
     genre: 'Pop / R&B français',
     origin: 'France',
-    playCount: 35,
-    tracks: ['Mille Fois (Remix)', 'Reflet'],
+    playCount: 88,
+    tracks: ["Reflet (Intro cut)", "Mille fois (Remix)"],
     facts: [
       'Chanteur français révélé en 2004 avec le groupe Linkup, en solo depuis 2004.',
       'Connu pour une pop R&B soignée et de nombreux titres fédérateurs.',
@@ -1133,8 +1160,8 @@ export const ARTISTS = [
     name: 'Benson Boone',
     genre: 'Pop',
     origin: 'États-Unis',
-    playCount: 34,
-    tracks: ['Mystical Magical (Remix)', 'Sorry I’m Here For Someone Else', 'In The Stars'],
+    playCount: 106,
+    tracks: ["Mystical Magical (Remix)", "Sorry I'm Here For Someone Else", "In the stars"],
     facts: [
       'Chanteur américain révélé en 2021, connu pour sa voix puissante et ses refrains mélodiques.',
       'Son tube "Beautiful Things" l’a fait connaître internationalement en 2024.',
@@ -1149,8 +1176,8 @@ export const ARTISTS = [
     name: 'Kungs',
     genre: 'Dance / Électro',
     origin: 'France',
-    playCount: 34,
-    tracks: ['Be Right Here (feat. GOLDN)', 'I Feel So Bad (feat. Ephemerals)', 'This Girl (Cookin’ On 3 Burners)', 'Don’t You Know (feat. Jamie N Commons)'],
+    playCount: 103,
+    tracks: ["I Feel So Bad (feat. Ephemerals)", "Be Right Here (Stargate feat. GOLDN)", "Don't You Know (feat. Jamie N Commons)", "This Girl (Cookin' On 3 Burners)"],
     facts: [
       'DJ et producteur français révélé en 2016 avec le remix "This Girl".',
       'Connu pour une dance légère et estivale.',
@@ -1165,8 +1192,8 @@ export const ARTISTS = [
     name: 'Earth, Wind & Fire',
     genre: 'Funk / Soul',
     origin: 'États-Unis',
-    playCount: 33,
-    tracks: ['September (JNATHYN Remix)', 'Let’s Groove', 'Boogie Wonderland'],
+    playCount: 87,
+    tracks: ["September (JNATHYN Remix)", "Boogie Wonderland (with The Emotions Album Version)", "Let's Groove"],
     facts: [
       'Groupe américain de funk et soul formé en 1969, l’un des plus influents de son genre.',
       'Connu pour des tubes devenus des classiques intemporels comme "September".',
@@ -1181,8 +1208,8 @@ export const ARTISTS = [
     name: 'Charlie Winston',
     genre: 'Pop / Folk',
     origin: 'Royaume-Uni',
-    playCount: 33,
-    tracks: ['Like A Hobo'],
+    playCount: 50,
+    tracks: ["Like A Hobo"],
     facts: [
       'Chanteur britannique installé en France, révélé en 2009 avec l’album "Hobo".',
       'Connu pour une pop-folk chaleureuse à la voix distinctive.',
@@ -1197,8 +1224,8 @@ export const ARTISTS = [
     name: 'Amir',
     genre: 'Pop française',
     origin: 'France',
-    playCount: 32,
-    tracks: ['Nous (432Hz)', 'Complémentaires (Remix)', 'On Dirait (Willy William Remix)'],
+    playCount: 104,
+    tracks: ["Nous (432Hz)", "Complémentaires (Remix)", "On dirait (Willy William Remix)"],
     facts: [
       'Chanteur français révélé par l’Eurovision 2016 avec le titre "J’ai Cherché".',
       'Connu pour une pop française mélodique et festive.',
@@ -1213,8 +1240,8 @@ export const ARTISTS = [
     name: 'Lost Frequencies',
     genre: 'Dance / Électro',
     origin: 'Belgique',
-    playCount: 32,
-    tracks: ['Reality (feat. Janieck Devy)', 'Are You With Me', 'Where Are You Now (feat. Calum Scott)'],
+    playCount: 88,
+    tracks: ["Reality (feat. Janieck Devy)", "Are You With Me", "Where Are You Now (Ricii Lompeurs Remix)(ft. Calum Scott)"],
     facts: [
       'DJ et producteur belge, révélé en 2014 avec le tube "Are You With Me".',
       'Connu pour une dance mélodique et estivale.',
@@ -1229,8 +1256,8 @@ export const ARTISTS = [
     name: 'Robin Schulz',
     genre: 'Dance / Électro',
     origin: 'Allemagne',
-    playCount: 31,
-    tracks: ['World Gone Wild (feat. Sam Martin)', 'All We Got (feat. Kiddo)', 'Sugar (feat. Francesco Yates)'],
+    playCount: 86,
+    tracks: ["World Gone Wild (feat. Sam Martin)", "All We Got (Feat. Kiddo)", "Sugar (feat. Francesco Yates)"],
     facts: [
       'DJ et producteur allemand, révélé en 2014 avec un remix du titre "Waves".',
       'Connu pour une dance mélodique aux sonorités tropicales.',
@@ -1245,8 +1272,8 @@ export const ARTISTS = [
     name: 'Rihanna',
     genre: 'Pop / R&B',
     origin: 'Barbade',
-    playCount: 28,
-    tracks: ['Diamonds (Albert Vishi Remix)', 'Umbrella (Acoustic Version)', 'Don’t Stop The Music (MrRevillz Remix)', 'We Found Love (ft. Calvin Harris)'],
+    playCount: 95,
+    tracks: ["Diamonds (Albert Vishi Remix)", "Don't Stop The Music (MrRevillz Remix)", "We Found Love (ft. Calvin Harris)", "Umbrella (Acoustic Version)"],
     facts: [
       'Chanteuse originaire de la Barbade, l’une des artistes pop les plus vendues au monde.',
       'Connue pour des tubes devenus incontournables, souvent ressortis en version remixée.',
@@ -1262,8 +1289,8 @@ export const ARTISTS = [
     name: 'Ridsa',
     genre: 'Pop / R&B français',
     origin: 'France',
-    playCount: 29,
-    tracks: ['Me Enamore', 'Santa Maria'],
+    playCount: 77,
+    tracks: ["Me enamore", "Santa Maria"],
     facts: [
       'Chanteur français révélé en 2015 avec le titre "Je Te Le Donne".',
       'Connu pour une pop R&B mêlant influences latines et françaises.',
@@ -1278,8 +1305,8 @@ export const ARTISTS = [
     name: 'Doja Cat',
     genre: 'Pop / R&B',
     origin: 'États-Unis',
-    playCount: 29,
-    tracks: ['Woman', 'Say So', 'Paint The Town Red (Dj Dark Remix)'],
+    playCount: 84,
+    tracks: ["Paint The Town Red (Dj Dark Remix)", "Say So", "Woman (Clean - Lyrics)"],
     facts: [
       'Chanteuse et rappeuse américaine révélée en 2019 avec le tube "Say So".',
       'Connue pour un style pop-R&B éclectique et des refrains immédiats.',
@@ -1294,8 +1321,8 @@ export const ARTISTS = [
     name: 'Adele',
     genre: 'Pop / Soul',
     origin: 'Royaume-Uni',
-    playCount: 28,
-    tracks: ['Set Fire To The Rain (Remix Trend)', 'Rolling In The Deep', 'Someone Like You'],
+    playCount: 80,
+    tracks: ["Set Fire To The Rain (Remix trend)", "Rolling in the Deep", "Someone Like You"],
     facts: [
       'Chanteuse britannique, l’une des voix les plus reconnues de sa génération.',
       'Connue pour des ballades puissantes devenues des classiques modernes.',
@@ -1310,8 +1337,8 @@ export const ARTISTS = [
     name: 'Avicii',
     genre: 'Dance / Électro',
     origin: 'Suède',
-    playCount: 28,
-    tracks: ['Hey Brother (Kinni & Niquei Remix)', 'Levels', 'Wake Me Up'],
+    playCount: 88,
+    tracks: ["Wake Me Up", "Levels", "Hey Brother (Kinni & Niquei Remix)"],
     facts: [
       'DJ et producteur suédois (Tim Bergling), l’un des artistes les plus influents de la dance des années 2010.',
       'Connu pour des tubes mêlant dance et folk, comme "Wake Me Up".',
@@ -1326,8 +1353,8 @@ export const ARTISTS = [
     name: 'Christina Aguilera',
     genre: 'Pop / R&B',
     origin: 'États-Unis',
-    playCount: 28,
-    tracks: ['Lady Marmalade', 'Genie In A Bottle', 'Beautiful'],
+    playCount: 100,
+    tracks: ["Lady Marmalade", "Beautiful", "Genie In The Bottle"],
     facts: [
       'Chanteuse américaine révélée à la fin des années 1990, reconnue pour sa puissance vocale.',
       'Connue pour des tubes pop-R&B devenus des classiques.',
@@ -1342,8 +1369,8 @@ export const ARTISTS = [
     name: 'Jamiroquai',
     genre: 'Funk / Acid jazz',
     origin: 'Royaume-Uni',
-    playCount: 27,
-    tracks: ['Virtual Insanity (Remastered)', 'When You Gonna Learn', 'Too Young To Die'],
+    playCount: 69,
+    tracks: ["Too Young to Die", "Virtual Insanity (Remastered)", "When You Gonna Learn", "Virtual Insanity"],
     facts: [
       'Groupe britannique mené par le chanteur Jay Kay, figure de l’acid jazz depuis les années 1990.',
       'Connu pour un son funk élégant porté par "Virtual Insanity".',
@@ -1358,8 +1385,8 @@ export const ARTISTS = [
     name: 'Lizzo',
     genre: 'Pop / Funk',
     origin: 'États-Unis',
-    playCount: 27,
-    tracks: ['About Damn Time (Purple Disco Machine Remix)', 'Good As Hell', 'Juice'],
+    playCount: 77,
+    tracks: ["About Damn Time (Purple Disco Machine Remix)", "Juice", "Good as Hell"],
     facts: [
       'Chanteuse et flûtiste américaine révélée en 2019 avec l’album "Cuz I Love You".',
       'Connue pour une pop-funk positive et des messages de confiance en soi.',
@@ -1374,8 +1401,8 @@ export const ARTISTS = [
     name: 'The Black Eyed Peas',
     genre: 'Pop / Hip-hop',
     origin: 'États-Unis',
-    playCount: 27,
-    tracks: ['The Time', 'I Gotta Feeling', 'Pump It'],
+    playCount: 85,
+    tracks: ["The Time (Clean Version)", "I Gotta Feeling", "Pump It"],
     facts: [
       'Groupe américain formé en 1995, popularisé mondialement à la fin des années 2000.',
       'Connu pour des tubes festifs mêlant pop, hip-hop et dance.',
@@ -1390,8 +1417,8 @@ export const ARTISTS = [
     name: 'Bob Sinclar',
     genre: 'Dance / House',
     origin: 'France',
-    playCount: 26,
-    tracks: ['I Feel For You (Bob’s Disco Remix)', 'World Hold On', 'Love Generation'],
+    playCount: 84,
+    tracks: ["I Feel for You (Bob's Disco Remix)", "World Hold On (Fisher Extended Rework)", "Love Generation"],
     facts: [
       'DJ et producteur français, figure majeure de la house depuis la fin des années 1990.',
       'Connu pour des tubes dance devenus des classiques internationaux.',
@@ -1406,8 +1433,8 @@ export const ARTISTS = [
     name: 'Kylie Minogue',
     genre: 'Pop / Dance',
     origin: 'Australie',
-    playCount: 26,
-    tracks: ['Dance To The Music', 'Can’t Get You Out Of My Head', 'I Should Be So Lucky', 'Spinning Around'],
+    playCount: 89,
+    tracks: ["Dance To The Music", "Can't Get You Out of My Head", "Spinning Around (7th District Club Mental Mix)", "I Should Be So Lucky"],
     facts: [
       'Chanteuse australienne en carrière depuis les années 1980, icône de la pop dance.',
       'Connue pour des tubes devenus des classiques incontournables.',
@@ -1422,8 +1449,8 @@ export const ARTISTS = [
     name: 'Moby',
     genre: 'Électro / Pop',
     origin: 'États-Unis',
-    playCount: 26,
-    tracks: ['Go', 'Lift Me Up', 'Natural Blues (feat. Gregory Porter & Amythyst Kiah)', 'Porcelain (2006 Remaster)'],
+    playCount: 81,
+    tracks: ["'Lift Me Up' (Evan Bernard Version)", "Go", "Natural Blues (Reprise Version) ft. Gregory Porter & Amythyst Kiah", "Porcelain (2006 Remaster)"],
     facts: [
       'Musicien et producteur américain, figure influente de la musique électronique depuis les années 1990.',
       'Connu pour un son électro mélancolique mêlant samples et pop.',
@@ -1438,8 +1465,8 @@ export const ARTISTS = [
     name: 'Laurent Voulzy',
     genre: 'Pop française',
     origin: 'France',
-    playCount: 26,
-    tracks: ['Rockollection', 'Bubble Star', 'Le Soleil Donne', 'Le Cœur Grenadine (Yann Muller Remix)'],
+    playCount: 73,
+    tracks: ["Le Soleil Donne", "Bubble star", "Rockollection (lm mix)", "Le Pouvoir des Fleurs (Boogie Magic remix)", "Le Coeur Grenadine (Yann Muller Remix)"],
     facts: [
       'Chanteur et auteur-compositeur français en carrière depuis les années 1970.',
       'Connu pour une pop française mélodique et solaire.',
@@ -1454,8 +1481,8 @@ export const ARTISTS = [
     name: 'DJ Snake',
     genre: 'Dance / Électro',
     origin: 'France',
-    playCount: 26,
-    tracks: ['Paradise (Afro House Remix, Radio Odyssey Edit)', 'Loco Contigo (feat. J. Balvin & Tyga)'],
+    playCount: 75,
+    tracks: ["Paradise (hesho Afro House Remix) (Radio Odyssey Edit)", "Loco Contigo (feat. J. Balvin & Tyga)", "Taki Taki"],
     facts: [
       'DJ et producteur français, l’un des artistes électro français les plus streamés au monde.',
       'Connu pour des productions dance aux influences variées.',
@@ -1470,8 +1497,8 @@ export const ARTISTS = [
     name: 'Pierre Garnier',
     genre: 'Pop française',
     origin: 'France',
-    playCount: 26,
-    tracks: ['L’Horizon (432Hz)', 'Ce Qu’on Était (GRYM Remix)'],
+    playCount: 66,
+    tracks: ["L'horizon (432Hz)", "Ce qu’on était (GRYM remix)"],
     facts: [
       'Chanteur français révélé en 2022 avec le titre "Anyone But You".',
       'Connu pour une pop française mêlant influences country et sensibilité pop.',
@@ -1486,8 +1513,8 @@ export const ARTISTS = [
     name: 'Dario G',
     genre: 'Dance',
     origin: 'Royaume-Uni',
-    playCount: 25,
-    tracks: ['Sunchyme (Delistic Club Remix)', 'Carnaval De Paris'],
+    playCount: 62,
+    tracks: ["Sunchyme (Delistic Club Remix)", "Carnaval de Paris (12_ Mix)"],
     facts: [
       'Collectif britannique de musique dance, actif depuis la fin des années 1990.',
       'Connu pour des tubes dance festifs comme "Sunchyme" et "Carnaval De Paris".',
@@ -1503,8 +1530,8 @@ export const ARTISTS = [
     name: 'Jain',
     genre: 'Pop / World',
     origin: 'France',
-    playCount: 25,
-    tracks: ['The Fool', 'Makeba', 'Come (Remix)'],
+    playCount: 57,
+    tracks: ["Come (Remix)", "The Fool", "Makeba"],
     facts: [
       'Chanteuse française révélée en 2015 avec l’album "Zanaka" et le titre "Makeba".',
       'Connue pour une pop aux influences world et électroniques.',
@@ -1519,8 +1546,8 @@ export const ARTISTS = [
     name: 'Lewis Capaldi',
     genre: 'Pop',
     origin: 'Écosse',
-    playCount: 25,
-    tracks: ['Someone You Loved', 'Wish The Best'],
+    playCount: 73,
+    tracks: ["Wish the best", "Someone You Loved"],
     facts: [
       'Chanteur écossais révélé en 2019 avec la ballade "Someone You Loved".',
       'Connu pour une voix puissante et des textes très personnels.',
@@ -1535,8 +1562,8 @@ export const ARTISTS = [
     name: 'Beyoncé',
     genre: 'Pop / R&B',
     origin: 'États-Unis',
-    playCount: 25,
-    tracks: ['Texas Hold ’Em', 'Crazy In Love (feat. Jay-Z)'],
+    playCount: 80,
+    tracks: ["Texas hold 'em", "Halo (Default Remix)", "Crazy In Love (feat. Jay-Z)"],
     facts: [
       'Chanteuse américaine, l’une des artistes les plus récompensées de l’histoire de la musique.',
       'Ancienne membre du groupe Destiny’s Child, en solo depuis 2003.',
@@ -1551,8 +1578,8 @@ export const ARTISTS = [
     name: 'Amy Winehouse',
     genre: 'Soul / Jazz',
     origin: 'Royaume-Uni',
-    playCount: 25,
-    tracks: ['Rehab', 'You Know I’m No Good', 'Back To Black'],
+    playCount: 57,
+    tracks: ["Rehab", "You Know I'm No Good", "Back To Black"],
     facts: [
       'Chanteuse britannique révélée en 2006 avec l’album "Back To Black".',
       'Reconnue pour une voix soul unique et un style rétro affirmé.',
@@ -1567,8 +1594,8 @@ export const ARTISTS = [
     name: 'Julien Doré',
     genre: 'Pop française',
     origin: 'France',
-    playCount: 25,
-    tracks: ['Paris-Seychelles (Ibiza Sunset Radio Mix)', 'Coco Câline (Tez Cadey Remix)', 'Toutes Les Femmes De Ta Vie'],
+    playCount: 69,
+    tracks: ["Coco Câline (Tez Cadey Remix)", "Toutes les femmes de ta vie", "Paris-Seychelles (Leomeo Ibiza Sunset Radio Mix) (Audio)"],
     facts: [
       'Chanteur français révélé en 2007 en remportant la Nouvelle Star.',
       'Connu pour une pop française singulière à l’univers visuel marqué.',
@@ -1583,8 +1610,8 @@ export const ARTISTS = [
     name: 'Craig David',
     genre: 'R&B / Garage',
     origin: 'Royaume-Uni',
-    playCount: 25,
-    tracks: ['Fill Me In', 'Rise And Fall (feat. Sting, 2024 Remaster)', 'Walking Away', '7 Days'],
+    playCount: 86,
+    tracks: ["Walking Away", "Fill Me In", "7 Days", "Rise And Fall (feat. Sting 2024 Remastered)"],
     facts: [
       'Chanteur britannique révélé en 2000, figure du UK garage et du R&B.',
       'Connu pour des tubes mêlant R&B et rythmes garage.',
@@ -1599,8 +1626,8 @@ export const ARTISTS = [
     name: 'The Avener',
     genre: 'Deep house',
     origin: 'France',
-    playCount: 24,
-    tracks: ['Fade Out Lines', 'Castle In The Snow (Feder Remix, feat. Kadebostany)'],
+    playCount: 52,
+    tracks: ["Fade Out Lines", "Castle in the snow (Feder Remix)(Feat Kadebostany)"],
     facts: [
       'DJ et producteur français (Tristan Casara), révélé en 2014 avec "Fade Out Lines".',
       'Connu pour un style deep house mélancolique et mélodique.',
@@ -1615,8 +1642,8 @@ export const ARTISTS = [
     name: 'Shawn Mendes',
     genre: 'Pop',
     origin: 'Canada',
-    playCount: 24,
-    tracks: ['Señorita (ft. Camila Cabello)', 'There’s Nothing Holding Me Back'],
+    playCount: 71,
+    tracks: ["There's Nothing Holding Me Back", "Senorita (Ft Camila Cabello)"],
     facts: [
       'Chanteur canadien révélé sur les réseaux sociaux avant de percer en 2015.',
       'Connu pour une pop mélodique portée à la guitare.',
@@ -1631,8 +1658,8 @@ export const ARTISTS = [
     name: 'Bob Marley',
     genre: 'Reggae',
     origin: 'Jamaïque',
-    playCount: 24,
-    tracks: ['Sun Is Shining (vs. Funkstar De Luxe)', 'Jammin’ (Kungs Remix)', 'Could You Be Loved (Remastered, & The Wailers)'],
+    playCount: 49,
+    tracks: ["Sun Is Shining (vs. Funkstar De Luxe)", "Could You Be Loved (Remastered) [& The Wailers]", "Jammin (Kungs Remix)"],
     facts: [
       'Chanteur jamaïcain, figure fondatrice et la plus emblématique du reggae.',
       'Connu pour des messages universels de paix portés par des mélodies intemporelles.',
@@ -1647,8 +1674,8 @@ export const ARTISTS = [
     name: 'Muriel Dacq',
     genre: 'Pop',
     origin: 'Belgique',
-    playCount: 22,
-    tracks: ['Tropique'],
+    playCount: 10,
+    tracks: ["Tropique (Fred Crouzet Remix)"],
     facts: [
       'Chanteuse belge, révélée en France en 1986 avec le tube "Tropique".',
       'Le titre a atteint la 6e place des ventes en France et obtenu un disque d’argent.',
@@ -1663,8 +1690,8 @@ export const ARTISTS = [
     name: 'Élégance',
     genre: 'Pop / Funk',
     origin: 'France',
-    playCount: 20,
-    tracks: ['Vacances j’oublie tout'],
+    playCount: 26,
+    tracks: ["Vacances j'oublie tout (1982)"],
     facts: [
       'Groupe français de pop-funk, connu pour son unique grand succès en 1982.',
       '"Vacances j\'oublie tout" s\'est vendu à plus d\'un million d\'exemplaires.',
@@ -1679,8 +1706,8 @@ export const ARTISTS = [
     name: 'Baltimora',
     genre: 'Italo Disco',
     origin: 'Italie / Irlande',
-    playCount: 24,
-    tracks: ['Tarzan Boy'],
+    playCount: 2,
+    tracks: ["Tarzan Boy (Cesar Vilo Remix)"],
     facts: [
       'Projet italo-disco emmené par le chanteur irlandais Jimmy McShane.',
       '"Tarzan Boy", sorti en 1985, reste leur titre le plus connu internationalement.',
@@ -1695,8 +1722,8 @@ export const ARTISTS = [
     name: 'Fun Fun',
     genre: 'Italo Disco',
     origin: 'Italie',
-    playCount: 19,
-    tracks: ['Colour My Love'],
+    playCount: 2,
+    tracks: ["Colour My Love"],
     facts: [
       'Duo italo-disco féminin actif au milieu des années 1980.',
       '"Colour My Love", sorti en 1984, est l\'un des titres phares du mouvement italo-disco.',
@@ -1711,8 +1738,8 @@ export const ARTISTS = [
     name: 'Modern Talking',
     genre: 'Synthpop',
     origin: 'Allemagne',
-    playCount: 30,
-    tracks: ['You’re My Heart, You’re My Soul'],
+    playCount: 12,
+    tracks: ["Cheri Cheri Lady (New remix) 2023", "You're My Heart, You're My Soul (New Remix) 2023", "You Can Win If You Want (NEW REMIX) 2023", "Brother Louie (New Remix) 2023"],
     facts: [
       'Duo allemand formé par Dieter Bohlen et Thomas Anders.',
       '"You\'re My Heart, You\'re My Soul", sorti en 1984, a connu un succès mondial.',
@@ -1727,8 +1754,8 @@ export const ARTISTS = [
     name: 'Kim Wilde',
     genre: 'Synthpop',
     origin: 'Royaume-Uni',
-    playCount: 26,
-    tracks: ['Cambodia'],
+    playCount: 9,
+    tracks: ["You Came (Remix 2023)", "You Keep Me Hangin' On (Jason Parker Remix)"],
     facts: [
       'Chanteuse britannique révélée dès 1981 avec "Kids in America".',
       '"Cambodia", sorti la même année, confirme son ascension sur la scène synthpop.',
@@ -1743,8 +1770,8 @@ export const ARTISTS = [
     name: 'Scotch',
     genre: 'Italo Disco',
     origin: 'Italie',
-    playCount: 18,
-    tracks: ['Take Me Up'],
+    playCount: 3,
+    tracks: ["Take Me Up (Disco Mix)"],
     facts: [
       'Groupe italo-disco fondé par Fabio Margutti et Vince Lancini.',
       '"Take Me Up", sorti en 1985, est l\'un des titres les plus identifiables du mouvement.',
@@ -1759,8 +1786,8 @@ export const ARTISTS = [
     name: 'A-ha',
     genre: 'Synthpop',
     origin: 'Norvège',
-    playCount: 28,
-    tracks: ['Take On Me'],
+    playCount: 20,
+    tracks: ["Take On Me", "Take On Me (Extended UltraTraxx Retro Version)"],
     facts: [
       'Groupe norvégien révélé en 1985 avec "Take On Me" et son clip culte mêlant animation et prises réelles.',
       'Le titre a atteint la 1ère place du Billboard Hot 100 aux États-Unis.',
@@ -1775,8 +1802,8 @@ export const ARTISTS = [
     name: 'Shalamar',
     genre: 'Funk / R&B',
     origin: 'États-Unis',
-    playCount: 21,
-    tracks: ['A Night To Remember'],
+    playCount: 3,
+    tracks: ["A Night To Remember (Extended Rework Deep Edit)"],
     facts: [
       'Trio américain de funk/R&B actif depuis la fin des années 1970.',
       '"A Night To Remember", sorti en 1982, reste leur titre le plus dansant et le plus repris en soirée.',
@@ -1791,8 +1818,8 @@ export const ARTISTS = [
     name: 'Robert Miles',
     genre: 'Dream Trance / Électro',
     origin: 'Italie / Suisse',
-    playCount: 23,
-    tracks: ['Children'],
+    playCount: 49,
+    tracks: ["Children", "Fable"],
     facts: [
       'DJ et producteur italo-suisse (Roberto Concina), pionnier de la "dream trance".',
       '"Children", sorti en 1995, est l\'un des instrumentaux les plus emblématiques des années 90.',
@@ -1807,8 +1834,8 @@ export const ARTISTS = [
     name: 'Gala',
     genre: 'Eurodance',
     origin: 'États-Unis / Italie',
-    playCount: 19,
-    tracks: ['Freed From Desire'],
+    playCount: 37,
+    tracks: ["Freed From Desire"],
     facts: [
       'Chanteuse née aux États-Unis (Gala Rizzatto), révélée sur la scène eurodance italienne.',
       '"Freed From Desire", sorti en 1996, reste son titre le plus connu internationalement.',
@@ -1823,8 +1850,8 @@ export const ARTISTS = [
     name: 'M People',
     genre: 'Dance / Soul',
     origin: 'Royaume-Uni',
-    playCount: 18,
-    tracks: ['Moving On Up'],
+    playCount: 39,
+    tracks: ["Moving on up (Les Bisous Remix)"],
     facts: [
       'Groupe britannique de dance/soul emmené par la chanteuse Heather Small.',
       '"Moving On Up", sorti en 1993, reste leur titre le plus célèbre.',
@@ -1839,8 +1866,8 @@ export const ARTISTS = [
     name: 'Corona',
     genre: 'Eurodance',
     origin: 'Italie',
-    playCount: 24,
-    tracks: ['The Rhythm Of The Night'],
+    playCount: 38,
+    tracks: ["The Rhythm of the Night (DJ MorpheuZ & @RegisMello Remix)"],
     facts: [
       'Projet eurodance italien porté par la voix d\'Olga Souza.',
       '"The Rhythm Of The Night", sorti en 1993, reste l\'un des plus grands tubes eurodance de la décennie.',
@@ -1855,8 +1882,8 @@ export const ARTISTS = [
     name: 'Anastacia',
     genre: 'Pop / Dance',
     origin: 'États-Unis',
-    playCount: 22,
-    tracks: ['I\'m Outta Love'],
+    playCount: 54,
+    tracks: ["I'm Outta Love", "Not That Kind"],
     facts: [
       'Chanteuse américaine à la voix rauque immédiatement reconnaissable.',
       '"I\'m Outta Love", sorti en 2000, est son titre qui l\'a fait connaître mondialement.',
@@ -1871,8 +1898,8 @@ export const ARTISTS = [
     name: 'Modjo',
     genre: 'French Touch / Dance',
     origin: 'France',
-    playCount: 21,
-    tracks: ['Lady (Hear Me Tonight)'],
+    playCount: 25,
+    tracks: ["Lady"],
     facts: [
       'Duo français emblématique de la "French Touch" du début des années 2000.',
       '"Lady (Hear Me Tonight)", sorti en 2000, s\'est classé numéro 1 dans plusieurs pays.',
