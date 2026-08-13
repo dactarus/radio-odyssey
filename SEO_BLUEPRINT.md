@@ -1421,4 +1421,50 @@ Le ratio neutralise le niveau général de la journée. Le vendredi se place à 
 
 ---
 
-*Dernière mise à jour : 2026-08-09, première analyse d'audience horaire (§58).*
+## 59. Correctifs de suivi : lecteur iOS, VideoObject, llms.txt, page de série des quiz (2026-08-10 au 12)
+
+Série de correctifs courts, issus soit d'un signalement du propriétaire, soit d'une alerte Search Console.
+
+**Bug du lecteur sur iPhone.** Après un arrêt puis une relance, le lecteur basculait en mode secours et ouvrait l'ancien player RadioKing ; il fallait quitter l'application pour retrouver un fonctionnement normal — signature d'un état en mémoire non réinitialisé. Cause : le démontage du flux (`removeAttribute('src')` + `load()`) émet un événement d'erreur différé, et iOS interrompt la relance avec une `AbortError`. Or `echec()` traitait **toute** erreur comme définitive. Cinq garde-fous ajoutés : `AbortError` ignorée, drapeau `enArret` pour neutraliser l'erreur du démontage, `modeSecours` annulé dès qu'une lecture aboutit, expiration du mode secours après 60 s, et minuteur de 12 s qui revient au repos avec « Connexion trop lente — réessayer » plutôt que de basculer vers RadioKing. Nouvel événement Umami `play_timeout`. **Confirmé corrigé par le propriétaire.**
+
+**`VideoObject` sans `uploadDate`.** La Search Console signalait « 1 élément non valide » sur `radio-coherence-cardiaque.html`. La date a été relevée sur la fiche YouTube de la vidéo (29 juin 2026, 05:34:44) plutôt qu'inventée. Ajout de `uploadDate`, `duration` (PT3M21S), `contentUrl` et `inLanguage` dans `PartnerVideo.astro` — donc correction simultanée sur les trois pages qui utilisent ce composant. La page restait indexée : seul le résultat enrichi vidéo était bloqué.
+
+**Première citation dans un Aperçu IA de Google.** Sur « web radio quiz années 80 », Radio Odyssey est cité aux côtés de Maxi 80 et Nostalgie, avec une description exacte (« quiz musical interactif de 10 questions »). Sur « web radio quiz années 90 », en revanche, pas de citation dans l'Aperçu mais **première position organique**. Différence analysée : sur les années 80 l'IA disposait d'une phrase autonome décrivant l'offre ; sur les années 90 elle a structuré sa réponse en « webradios » d'un côté et « quiz » de l'autre, et la position hybride de Radio Odyssey — une webradio *qui propose* un quiz — n'entrait dans aucune des deux cases.
+
+**`llms.txt` enrichi** de 20 à 28 URL : les cinq quiz, absents alors que ce sont eux qui font citer le site, et les trois pages de classement d'antenne (données de première main). Précision consignée : `llms.txt` n'est pas un standard utilisé par Google — il sert ChatGPT, Claude et Perplexity, pas l'Aperçu IA.
+
+**Page de série des quiz** — `/quiz-musicaux-radio-odyssey.html`, 752 mots. Elle répond à « quels quiz existent ? », question qu'aucune des cinq pages ne traitait, chacune répondant plutôt à « teste-moi ». Balisage `ItemList` de 5 éléments pour décrire explicitement la collection. Maillage réciproque : entrée au menu, sitemap, `llms.txt`, et lien retour depuis les cinq quiz.
+
+**Côté application** (dépôt séparé, déployé par `npx vercel --prod`, sans remote git) : Umami basculé de `cloud.umami.is` vers `eu.umami.is` pour partager le point d'entrée du site, `canonical` vers `app.radio-odyssey.com`, URL Facebook personnalisée. Une tentative de redirection des URL `.vercel.app` via `vercel.json` a échoué deux fois — la condition `has: host` ne s'est pas déclenchée, ni en égalité stricte ni en expression régulière. Fichier retiré. **La voie fiable est le réglage Deployment Protection de l'interface Vercel**, pas une règle écrite à l'aveugle depuis un environnement qui n'a accès ni aux journaux ni à la configuration.
+
+---
+
+## 60. Réduction des menus : 41 % de HTML en moins, ratio de contenu unique multiplié par 1,65 (2026-08-13)
+
+Le chantier identifié comme le plus lourd de l'audit (§55). Jusqu'ici, `MegaNav.astro` (desktop) et le panneau latéral de `Header.astro` (mobile) rendaient chacun **l'intégralité des 91 pages** de `NAV_CATEGORIES`, soit 182 entrées de menu par page HTML.
+
+**Modification** : les deux menus n'affichent plus que les `MENU_APERCU` premières pages de chaque catégorie (constante fixée à 5 dans `navigation.js`), suivies d'un lien « Voir les N pages de la catégorie → » qui annonce explicitement le volume. Pour changer les pages mises en avant, il suffit de réordonner le tableau `pages` de la catégorie — aucun champ supplémentaire à maintenir.
+
+**Contrepartie indispensable** : création de `/plan-du-site.html`, qui liste l'exhaustivité — les 91 pages thématiques par catégorie, les 115 fiches artistes triées alphabétiquement, les fiches découvertes, les pages légales. Lié une seule fois, depuis le pied de page présent sur les 223 pages. C'est le seul endroit du site où les fiches artistes sont listées exhaustivement.
+
+**Gains mesurés** (build complet avant/après, 225 fichiers HTML comparés) :
+
+| | Avant | Après | |
+|---|---|---|---|
+| Poids HTML moyen | 234 Ko | **138 Ko** | − 41 % |
+| Liens par page | 274 | **161** | − 41 % |
+| Mots de gabarit | 1 759 | **879** | − 50 % |
+| Ratio de contenu unique | 18,7 % | **30,9 %** | **× 1,65** |
+| Poids total du site | 51,3 Mo | **30,1 Mo** | − 21,1 Mo |
+
+L'effet est le plus net sur les pages les plus fines : `ecouter-radio-odyssey-en-voiture.html` passe de 13,6 % à 24,1 % de contenu unique, `artiste-madonna.html` de 16,4 % à 28,3 %.
+
+**Vérifications** — build compilé dans une copie isolée du projet avec dépendances Linux, pour ne pas altérer le `node_modules` macOS du propriétaire : 223 pages, aucune erreur. Analyse exhaustive des liens internes du `dist` : **aucun lien cassé**, deux pages sans lien entrant (`console.html` et `hors-ligne.html`, ce qui est voulu), et surtout **aucune page ne dépend uniquement du plan du site** — chacune conserve des liens entrants depuis son hub de catégorie et les blocs « Pages associées ». Ce dernier point était le vrai risque du chantier.
+
+**Détails** : classe `.nav-link-hub` ajoutée au CSS pour distinguer le lien de catégorie dans le panneau mobile ; paramètre de version de `style.css` incrémenté en `?v=20260813a` afin de forcer le rafraîchissement des caches navigateur et CDN.
+
+**Reste à faire sur ce sujet** : la navigation pèse encore 71 Ko sur une page de 155 Ko, soit 46 %, essentiellement à cause des icônes SVG rendues en ligne à chaque entrée. Les remplacer par des symboles `<use>` référençant un sprite unique diviserait encore ce poids — chantier non entrepris.
+
+---
+
+*Dernière mise à jour : 2026-08-13, réduction des menus et plan du site (§60).*
