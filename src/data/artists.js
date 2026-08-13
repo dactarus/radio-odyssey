@@ -5,6 +5,28 @@
 // Pour ajouter un artiste : ajouter une entrée ici (aucune autre édition
 // nécessaire — la route dynamique artiste-[slug].astro s'en charge).
 
+// Seuil d'indexation des fiches artistes (§61).
+//
+// Une fiche vaut par sa donnée exclusive : la liste des titres réellement
+// diffusés sur l'antenne. Tout le reste — les 3 `facts`, le `why` — suit un
+// gabarit identique sur les 115 fiches. Une fiche à un seul titre n'apporte
+// donc qu'une ligne d'information propre, noyée dans ~350 mots de gabarit :
+// c'est le profil que la politique anti-spam de Google vise sous le nom de
+// « contenu produit à l'échelle ».
+//
+// Les fiches sous ce seuil passent en `noindex, follow` : retirées de
+// l'index, mais leurs liens continuent de transmettre leur valeur, et elles
+// restent accessibles aux visiteurs depuis /plan-du-site.html et les pages
+// d'agrégation.
+//
+// Répartition observée (août 2026) : 23 fiches à 1 titre, 15 à 2, 43 à 3,
+// 32 à 4, 2 à 5. Le seuil à 2 ne désindexe donc que les 23 plus pauvres.
+//
+// Pour ajuster : passer ce seuil à 3 désindexerait 38 fiches, à 1 aucune.
+// ⚠️ En cas de changement, penser à mettre public/sitemap.xml en cohérence —
+// une page en noindex n'a rien à faire dans un sitemap.
+export const SEUIL_INDEXATION_TITRES = 2;
+
 export const GRADIENTS = [
   ['#FFD700', '#7B2FBE'],
   ['#FF3CAC', '#7B2FBE'],

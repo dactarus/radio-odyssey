@@ -164,12 +164,37 @@
 
   /* ── Titre en cours ─────────────────────────────────────────────────── */
 
+  /* Les séquences de cohérence cardiaque remontent de RadioKing avec leur
+     nom de fichier interne — par exemple « CC 3 min 5 inspire / 5 expire
+     Nov05bis ». Affiché tel quel, ce libellé apparaissait dans la barre du
+     lecteur, mais aussi sur l'écran verrouillé et en voiture via Media
+     Session. On le remplace par un intitulé lisible.
+
+     La détection est volontairement large : soit la voix de la partenaire,
+     soit un titre commençant par « CC », soit la mention inspire/expire. */
+  function estSequenceRespiration(t) {
+    if (!t) return false;
+    var a = (t.artist || '').toLowerCase();
+    var ti = (t.title || '').toLowerCase();
+    return /b[eé]lot/.test(a) || /^cc[\s\d]/.test(ti) || /inspire[\s\S]*expire/.test(ti);
+  }
+
+  function libelleSequence(t) {
+    var m = ((t && t.title) || '').match(/(\d+)\s*min/i);
+    return {
+      titre: 'Cohérence cardiaque',
+      sous: m ? ('Respiration guidée · séquence de ' + m[1] + ' min')
+              : 'Respiration guidée · inspirez 5 s, expirez 5 s',
+    };
+  }
+
   function majMediaSession(t) {
     if (!('mediaSession' in navigator) || typeof MediaMetadata === 'undefined') return;
+    var seq = estSequenceRespiration(t) ? libelleSequence(t) : null;
     try {
       navigator.mediaSession.metadata = new MediaMetadata({
-        title:  t && t.title  ? t.title  : 'Radio Odyssey',
-        artist: t && t.artist ? t.artist : 'La Positive Radio',
+        title:  seq ? seq.titre : (t && t.title  ? t.title  : 'Radio Odyssey'),
+        artist: seq ? seq.sous  : (t && t.artist ? t.artist : 'La Positive Radio'),
         album:  'Radio Odyssey — En direct',
         artwork: [{
           src: (t && t.cover) ? t.cover : '/assets/images/icon-512.png',
@@ -185,10 +210,12 @@
       .then(function (r) { return r.json(); })
       .then(function (t) {
         if (!t) return;
-        var titre = (t.artist && t.title) ? (t.artist + ' — ' + t.title) : 'Radio Odyssey';
+        var seq = estSequenceRespiration(t) ? libelleSequence(t) : null;
+        var titre = seq ? seq.titre
+                        : ((t.artist && t.title) ? (t.artist + ' — ' + t.title) : 'Radio Odyssey');
         titreCourant = titre;
         if (barre && barre.classList.contains('is-playing')) {
-          afficher(titre, 'En direct · appuyer pour arrêter');
+          afficher(titre, seq ? seq.sous : 'En direct · appuyer pour arrêter');
         }
         majMediaSession(t);
 
@@ -359,9 +386,11 @@
     fetch(API, { cache: 'no-store' })
       .then(function (r) { return r.json(); })
       .then(function (t) {
-        if (t && t.artist && t.title) {
-          titreCourant = t.artist + ' — ' + t.title;
-          afficher(titreCourant, 'Appuyer pour écouter');
+        if (t && (t.title || t.artist)) {
+          var seq0 = estSequenceRespiration(t) ? libelleSequence(t) : null;
+          titreCourant = seq0 ? seq0.titre
+                              : ((t.artist && t.title) ? (t.artist + ' — ' + t.title) : 'Radio Odyssey');
+          afficher(titreCourant, seq0 ? seq0.sous : 'Appuyer pour écouter');
           majMediaSession(t);
         }
       })

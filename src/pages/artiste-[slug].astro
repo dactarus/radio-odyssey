@@ -5,8 +5,11 @@ import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
-import { ARTISTS, GRADIENTS } from '../data/artists.js';
+import { ARTISTS, GRADIENTS, SEUIL_INDEXATION_TITRES } from '../data/artists.js';
 import { familyForArtist } from '../data/genres.js';
+import { quizDeLArtiste } from '../data/quiz-artistes.js';
+import { statsArtiste, quartileArtiste, ordinal, MOYENNE_PASSAGES } from '../data/artist-stats.js';
+import { topTitreDeLArtiste } from '../data/top-titres.js';
 
 export function getStaticPaths() {
   return ARTISTS.map((artist, index) => ({
@@ -48,12 +51,53 @@ const genreFamily = familyForArtist(artist);
 const title = `${artist.name} : les titres diffusés — Radio Odyssey`;
 const description = `${artist.name} (${artist.genre}) sur Radio Odyssey : les titres et remix réellement diffusés sur l'antenne, sur une radio 100% gratuite et sans pub, à écouter en direct sur mobile ou ordinateur.`;
 
+// Données de diffusion : rang général, part d'antenne, rang dans la famille
+// de genre, voisins de classement. Toutes calculées sur les passages réels
+// relevés dans l'export RadioKing (voir data/artist-stats.js) — donc exactes,
+// différentes sur chaque fiche, et introuvables ailleurs sur le web. C'est ce
+// qui distingue une fiche d'un gabarit rempli avec un nom d'artiste.
+const stats = statsArtiste(artist.slug);
+const quartile = quartileArtiste(artist.slug);
+const topTitre = topTitreDeLArtiste(artist.slug);
+
+// Formulation en clair du quartile de diffusion : un rang sur 115 ne parle
+// à personne, « dans le quart le plus diffusé » se comprend d'emblée.
+const FREQUENCE = {
+  1: "dans le quart le plus diffusé de l'antenne",
+  2: 'dans la moitié haute de la programmation',
+  3: 'dans la moitié basse de la programmation',
+  4: 'parmi les présences les plus occasionnelles',
+};
+
+// Aucun pronom de genre dans les textes générés : la moitié du catalogue est
+// féminine, et le gabarit précédent écrivait « ce qui le place au Ne rang »
+// sur les 115 fiches, artistes féminines comprises.
+const lienArtiste = (a) =>
+  `<a href="/artiste-${a.slug}.html" style="color:var(--ro-purple);font-weight:700;">${a.name}</a>`;
+
+// Quiz dans lesquels l'artiste apparaît (voir data/quiz-artistes.js).
+const quiz = quizDeLArtiste(artist.slug);
+
+// Indexation : les fiches trop pauvres en données propres sortent de
+// l'index tout en gardant leurs liens actifs. Seuil et justification dans
+// data/artists.js.
+const indexable = artist.tracks.length >= SEUIL_INDEXATION_TITRES;
+
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'MusicGroup',
   name: artist.name,
   genre: artist.genre,
   foundingLocation: artist.origin,
+  ...(artist.tracks.length
+    ? {
+        track: artist.tracks.map((t) => ({
+          '@type': 'MusicRecording',
+          name: t,
+          byArtist: { '@type': 'MusicGroup', name: artist.name },
+        })),
+      }
+    : {}),
 };
 
 const faq = [
@@ -62,16 +106,21 @@ const faq = [
     a: `Parmi les titres régulièrement diffusés : ${artist.tracks.slice(0, 3).map((t) => `<em>${t}</em>`).join(', ')}. Retrouvez l'ensemble de la sélection en écoutant l'antenne en direct.`,
   },
   {
-    q: `Radio Odyssey diffuse-t-elle souvent ${artist.name} ?`,
-    a: `Oui — ${artist.name} fait partie des artistes régulièrement présents dans la programmation (${artist.playCount} passages recensés sur un mois de diffusion). Voir aussi notre page <a href="/artistes-diffuses-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">artistes diffusés sur Radio Odyssey</a>.`,
+    q: `À quelle fréquence Radio Odyssey diffuse-t-elle ${artist.name} ?`,
+    a: `${stats.passages} passages relevés sur un mois, soit ${stats.part} % de l'antenne : ${artist.name} se situe ${FREQUENCE[quartile]}, au ${ordinal(stats.rang)} rang des ${stats.total} artistes de notre catalogue${stats.famille ? ` et au ${ordinal(stats.familleRang)} rang des ${stats.familleTotal} artistes ${stats.famille.label}` : ''}. Voir aussi notre page <a href="/artistes-diffuses-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">artistes diffusés sur Radio Odyssey</a>.`,
   },
   {
     q: `Peut-on écouter ${artist.name} gratuitement sur une radio en ligne ?`,
-    a: `Oui — Radio Odyssey est une web radio 100% gratuite et sans publicité, accessible depuis un ordinateur, un mobile ou une enceinte connectée, avec ${artist.name} parmi les artistes réguliers de la programmation.`,
+    a: `Oui, Radio Odyssey est gratuite et sans publicité — et ${artist.name} y revient environ <strong>${stats.parSemaine} fois par semaine</strong> d'après notre dernier relevé de programmation, ${stats.auDessusMoyenne ? 'au-dessus' : 'en deçà'} de la moyenne du catalogue (${(MOYENNE_PASSAGES * 7 / 30).toFixed(1).replace('.', ',')}).`,
   },
 ];
 ---
-<Layout lang="fr" title={title} description={description}>
+<Layout
+  lang="fr"
+  title={title}
+  description={description}
+  robots={indexable ? 'index, follow' : 'noindex, follow'}
+>
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
   </Fragment>
@@ -102,14 +151,102 @@ const faq = [
           </div>
 
           <div class="content-card">
-            <h2>Titres de {artist.name} diffusés sur l'antenne</h2>
-            <p style="margin-bottom:1rem;">Extrait réel de la programmation de Radio Odyssey :</p>
-            <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+            <h2>
+              {artist.tracks.length === 1
+                ? `Un titre de ${artist.name} relevé à l'antenne`
+                : `${artist.tracks.length} titres de ${artist.name} relevés à l'antenne`}
+            </h2>
+            {/* Pas de phrase d'introduction ici : le titre de section dit
+                déjà combien de titres suivent et d'où ils viennent. Répétée
+                sur 115 fiches, une amorce de ce genre ne fait qu'ajouter du
+                texte identique. */}
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem;">
               {artist.tracks.map((track) => (
                 <span class="tag-pill">♪ {track}</span>
               ))}
             </div>
+
+            {/* Chiffres de diffusion : la seule information de cette page
+                qu'aucun autre site ne peut publier. Présentés en tableau de
+                bord plutôt qu'en phrases : la même donnée passe en quatre
+                fois moins de mots, donc sans la couche de texte de liaison
+                qui, répétée sur 115 fiches, ferait ressembler l'ensemble à
+                un gabarit rempli automatiquement. */}
+            <div class="artiste-chiffres">
+              <div>
+                <b>{stats.passages}</b>
+                <span>passages sur un mois</span>
+              </div>
+              <div>
+                <b>{stats.part} %</b>
+                <span>de l'antenne</span>
+              </div>
+              <div>
+                <b>{ordinal(stats.rang)}</b>
+                <span>sur {stats.total} artistes</span>
+              </div>
+              {stats.famille && (
+                <div>
+                  <b>{ordinal(stats.familleRang)}</b>
+                  <span>des {stats.familleTotal} artistes <a href={`/${stats.famille.slug}.html`}>{stats.famille.label}</a></span>
+                </div>
+              )}
+            </div>
+
+            <p style="margin:1rem 0 0;font-size:.92rem;color:var(--ro-muted);">
+              {stats.ecartMoyenne} passages {stats.auDessusMoyenne ? 'de plus' : 'de moins'} que
+              la moyenne ({Math.round(MOYENNE_PASSAGES)}).
+              {stats.exAequo.length > 0 && (
+                <> À égalité avec <Fragment set:html={stats.exAequo.map(lienArtiste).join(' et ')} />
+                {stats.nbExAequo > stats.exAequo.length && ` (et ${stats.nbExAequo - stats.exAequo.length} autre${stats.nbExAequo - stats.exAequo.length > 1 ? 's' : ''})`}.</>
+              )}
+              {stats.devant && (
+                <> Au-dessus, <Fragment set:html={lienArtiste(stats.devant)} /> ({stats.devant.playCount} passages)</>
+              )}
+              {stats.devant && stats.derriere && ' ;'}
+              {stats.derriere && (
+                <> {stats.devant ? 'en dessous' : 'En dessous'}, <Fragment set:html={lienArtiste(stats.derriere)} /> ({stats.derriere.playCount} passages)</>
+              )}
+              {(stats.devant || stats.derriere) && '.'}
+              {stats.familleVoisins.length > 0 && (
+                <> Dans le même registre : <Fragment set:html={stats.familleVoisins.map(lienArtiste).join(', ')} />.</>
+              )}
+            </p>
+
+            {topTitre && (
+              <p style="margin:.6rem 0 0;font-size:.92rem;color:var(--ro-muted);">
+                Un titre entre même au classement des morceaux : <em>« {topTitre.titre} »</em> occupe
+                le <strong>{ordinal(topTitre.rang)} rang</strong> des <a href={topTitre.href} style="color:var(--ro-purple);font-weight:700;">titres les plus diffusés sur Radio Odyssey</a>.
+              </p>
+            )}
+
+            {/* Le lien vers le classement des titres n'apparaît en toutes
+                lettres que sur les 10 fiches qui y figurent réellement.
+                Ailleurs, il est repris dans le bloc de liens de bas de page :
+                même maillage, sans la phrase de liaison recopiée 105 fois. */}
           </div>
+
+          {quiz.length > 0 && (
+            <div class="content-card">
+              <h2>{artist.name} dans nos quiz musicaux</h2>
+              <p>
+                {quiz.length === 1
+                  ? `${artist.name} est l'une des bonnes réponses du quiz musical ${quiz[0].libelle}, sur le titre suivant :`
+                  : `${artist.name} apparaît dans ${quiz.length} de nos quiz musicaux, sur les titres suivants :`}
+              </p>
+              <ul>
+                {quiz.map((q) => (
+                  <li>
+                    <em>« {q.titre} »</em> — <a href={q.href} style="color:var(--ro-purple);font-weight:700;">quiz musical {q.libelle}</a>
+                  </li>
+                ))}
+              </ul>
+              <p style="margin-bottom:0;font-size:.92rem;color:var(--ro-muted);">
+                Nos <a href="/quiz-musicaux-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">cinq quiz musicaux</a> sont
+                construits à partir des titres réellement diffusés sur l'antenne — une décennie chacun, 10 questions et un round bonus.
+              </p>
+            </div>
+          )}
 
           <div class="content-card">
             <h2>Pourquoi Radio Odyssey diffuse {artist.name}</h2>
@@ -131,6 +268,7 @@ const faq = [
             associated={[
               ...(genreFamily ? [{ href: `/${genreFamily.slug}.html`, label: `Radio ${genreFamily.label}` }] : []),
               { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les artistes diffusés' },
+              { href: '/titres-les-plus-diffuses-sur-radio-odyssey.html', label: 'Les titres les plus diffusés' },
               { href: '/styles-musicaux-radio-odyssey.html', label: 'Tous les styles musicaux' },
               { href: '/artistes-et-styles.html', label: 'Le cocon Artistes & Styles' },
             ]}
@@ -159,3 +297,42 @@ const faq = [
     </div>
   </main>
 </Layout>
+
+<style>
+  /* Bandeau de chiffres des fiches artistes.
+     `auto-fit` plutôt qu'un nombre de colonnes figé : les artistes dont le
+     genre n'appartient à aucune famille (reggae, deep house…) n'ont que
+     trois indicateurs, et la grille se referme proprement. */
+  .artiste-chiffres {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: .6rem;
+    margin-top: 1.3rem;
+  }
+  .artiste-chiffres > div {
+    background: linear-gradient(135deg, rgba(123, 47, 190, .07), rgba(255, 60, 172, .05));
+    border-radius: 12px;
+    padding: .7rem .8rem;
+    text-align: center;
+  }
+  .artiste-chiffres b {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1.35rem;
+    line-height: 1.15;
+    color: var(--ro-purple);
+  }
+  .artiste-chiffres span {
+    display: block;
+    margin-top: .15rem;
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--ro-muted);
+  }
+  .artiste-chiffres a { color: var(--ro-purple); font-weight: 700; }
+
+  @media (max-width: 420px) {
+    .artiste-chiffres { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

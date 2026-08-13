@@ -19,3 +19,6 @@ npm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# réglages locaux de Claude Code (propres à la machine, jamais à publier)
+.claude/settings.local.json

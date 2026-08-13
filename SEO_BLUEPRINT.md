@@ -1467,4 +1467,128 @@ L'effet est le plus net sur les pages les plus fines : `ecouter-radio-odyssey-en
 
 ---
 
-*Dernière mise à jour : 2026-08-13, réduction des menus et plan du site (§60).*
+## 61. Silo artistes : désindexation ciblée, croisement avec les quiz, classement réel (2026-08-13)
+
+Dernier des trois chantiers lourds de l'audit (§55). Le plan initial — « enrichir 25 fiches, `noindex` sur les 90 autres, créer des pages d'agrégation » — a été **révisé après examen des données**, sur trois points.
+
+**Les pages d'agrégation existaient déjà.** Six pages couvrent le sujet : artistes diffusés, artistes féminines, styles musicaux, tubes dance, titres les plus diffusés, découvertes. Rien à créer.
+
+**Le critère « les 25 qui font du trafic » était inapplicable.** Aucune fiche artiste ne reçoit de trafic organique (le site entier plafonne à ~15 visiteurs par semaine, §58), et la Search Console ne permet donc aucun classement utile.
+
+**Et la distribution des passages ne sépare rien.** Les 115 fiches vont de 18 à 105 passages, médiane 35 : il n'existe pas de queue d'artistes marginaux. Découper à 25 aurait été arbitraire.
+
+### Le vrai signal de pauvreté : le nombre de titres connus
+
+Une fiche vaut par sa donnée exclusive — la liste des titres réellement diffusés. Le reste (3 `facts`, 1 `why`) suit un gabarit identique partout.
+
+| Titres connus | Fiches | Passages médians |
+|---|---|---|
+| 1 | **23** | 24 |
+| 2 | 15 | 26 |
+| 3 | 43 | 34 |
+| 4 | 32 | 46 |
+| 5 | 2 | 46 |
+
+La corrélation est nette : moins de titres, moins de diffusion. Les 23 fiches à un seul titre n'apportent qu'une ligne d'information propre noyée dans ~350 mots de gabarit — c'est exactement le profil visé par la politique « contenu produit à l'échelle » de Google.
+
+**Décision** : constante `SEUIL_INDEXATION_TITRES = 2` dans `artists.js`. Les fiches sous ce seuil passent en `noindex, follow` — retirées de l'index, mais leurs liens continuent de transmettre leur valeur, et elles restent accessibles depuis `/plan-du-site.html` et les pages d'agrégation. **23 fiches désindexées, 92 conservées.** Passer le seuil à 3 en désindexerait 38, à 1 aucune. Les 23 URL ont été retirées de `public/sitemap.xml` (223 → 200 URL) : une page en `noindex` n'a rien à faire dans un sitemap. **⚠️ Ces deux réglages doivent rester cohérents en cas de changement de seuil.**
+
+### Croisement quiz ↔ artistes
+
+Les cinq quiz désignent leur bonne réponse par le `slug` d'une fiche artiste. On peut donc calculer, pour chaque artiste, dans quel quiz il apparaît et sur quel titre : **90 des 115 fiches sont concernées**, 10 d'entre elles figurant dans deux quiz.
+
+Nouveau module `src/data/quiz-artistes.js` : la correspondance est extraite du **code source des quiz au moment du build** via `import.meta.glob(..., { query: '?raw' })`, jamais recopiée à la main — elle ne peut pas se désynchroniser. Si le format des questions changeait et que l'extraction ne trouvait plus rien, la fonction renverrait un tableau vide et le bloc disparaîtrait simplement des fiches : aucun risque de casse.
+
+Intérêt : c'est une donnée **réelle, différente pour chaque fiche**, et elle relie le silo le plus faible du site au contenu qui lui a valu sa première citation dans un Aperçu IA (§59). Les quiz gagnent 24 à 29 liens entrants chacun.
+
+### Rang de diffusion sur chaque fiche
+
+Chaque fiche indique désormais le nombre de passages de l'artiste et son rang parmi les 115 — donnée propre à Radio Odyssey, qu'aucun autre site ne peut publier. Le schéma `MusicGroup` est complété d'un tableau `track` listant les `MusicRecording` réellement diffusés.
+
+### Correction sur la page d'ensemble
+
+`artistes-diffuses-radio-odyssey.html` présentait ses « artistes phares » en prenant les 10 premiers **de l'ordre du fichier**, pas de l'ordre de diffusion — Shakira, artiste la plus diffusée avec 105 passages, n'y figurait pas. La page affiche maintenant un vrai classement par passages réels, avec le décompte visible et le total (5 109 passages recensés).
+
+### Vérifications
+
+Build compilé dans une copie isolée : 223 pages, aucune erreur. Concordance exacte entre le seuil déclaré et les 23 fiches effectivement en `noindex`. Cohérence sitemap ↔ `noindex` : aucune incohérence dans un sens ni dans l'autre. Aucun lien interne cassé. **Les 23 fiches désindexées restent atteignables** — Baltimora, par exemple, est liée depuis 5 pages. Classement de la page d'ensemble contrôlé ligne à ligne contre les données source.
+
+### Ce qui n'a pas été fait, et pourquoi
+
+**Aucune fiche n'a été enrichie en prose.** Écrire 800 mots sur 25 artistes réels sans vérification produirait exactement le remplissage générique que ce chantier vise à supprimer, avec en prime un risque d'erreurs factuelles qui ruinerait la crédibilité bâtie par les quiz (dont les 100 dates ont été vérifiées une par une, §53). Si ce travail est entrepris, il demande une recherche par artiste — pas une génération.
+
+**Le levier le plus simple reste inexploité** : ajouter des titres dans `artists.js`. Une fiche passant de 1 à 3 titres gagne de la donnée exclusive, sort du seuil de désindexation, et devient éligible aux quiz. C'est une saisie, pas une rédaction — et c'est l'export RadioKing qui la fournit.
+
+> La question de fond — *une fiche vaut-elle mieux qu'un gabarit ?* — est traitée au §62.
+
+---
+
+## 62. Fiches artistes : remplacer le gabarit par de la donnée calculée (2026-08-13)
+
+Le §61 a retiré de l'index les 23 fiches les plus pauvres. Restait la question de fond, valable pour les 92 autres : **une fiche artiste vaut-elle mieux qu'un gabarit dans lequel on a changé le nom ?**
+
+### Ce que la mesure disait
+
+Analyse par empreintes de 6 mots consécutifs sur le HTML construit, corps de page uniquement (hors barre latérale et navigation), sur les 115 fiches. Un segment est dit *singulier* s'il n'apparaît sur aucune autre fiche.
+
+| | HEAD (dernière version publiée) |
+|---|---|
+| Mots par fiche | 289 |
+| Segments singuliers, total | 15 553 |
+| Part de contenu singulier | 47,8 % |
+| Liens vers d'autres fiches | 3,0 par fiche |
+
+Autrement dit : sur 289 mots, un peu plus de la moitié était rigoureusement identique d'une fiche à l'autre. Les trois `facts` et le `why` sont bien du texte rédigé, mais tout ce qui les entoure — titres de section, phrases d'amorce, questions fréquentes — était strictement recopié 115 fois.
+
+### Le principe retenu
+
+Ne rien écrire qui ne soit **calculé à partir des passages réellement relevés**. Aucune prose ajoutée, aucun fait inventé, aucune variation de formulation destinée à tromper la détection de gabarit. Si une information n'est pas dérivable de `artists.js`, `genres.js` ou du code source des pages de classement, elle n'apparaît pas.
+
+Deux modules nouveaux :
+
+- **`src/data/artist-stats.js`** — rang général, part d'antenne en pourcentage, fréquence hebdomadaire, écart à la moyenne, rang dans la famille de genre, voisins de classement, ex æquo. Source unique : `ARTISTS`. Si un `playCount` change, tout suit.
+- **`src/data/top-titres.js`** — croisement avec le top 15 des titres les plus diffusés, extrait du code source de la page **au moment du build** (`import.meta.glob(..., { query: '?raw' })`), sur le modèle de `quiz-artistes.js` (§61). Dix fiches y figurent ; les autres n'affichent rien plutôt qu'une phrase vide.
+
+### Ce qui apparaît maintenant sur une fiche
+
+Un bandeau de quatre indicateurs chiffrés (passages, part d'antenne, rang général, rang dans le registre), puis une phrase de mise en perspective citant l'artiste juste au-dessus, celui juste en dessous, les ex æquo et deux artistes comparables du même registre — **quatre à six liens internes différents sur chaque fiche**. Le bandeau remplace un paragraphe de texte : même donnée, quatre fois moins de mots de liaison.
+
+Deux erreurs de rédaction corrigées au passage :
+
+- Le gabarit écrivait « ce qui **le** place au N<sup>e</sup> rang » sur les 115 fiches, artistes féminines comprises. Plus aucun pronom de genre n'est généré.
+- Les ex æquo sont nombreux en bas de classement (cinq artistes à 24 passages). Comparer par position de tableau produisait « juste derrière Shawn Mendes (24) et juste devant Baltimora (24) » pour un artiste à 24 passages : trois fois le même chiffre présenté comme un écart. Le tri distingue désormais strictement au-dessus / à égalité / strictement en dessous, et les ex æquo sont cités **par rotation** — les cinq fiches à 24 passages ne se renvoient plus les deux mêmes noms.
+
+### Ce qui a été retiré
+
+- La phrase d'amorce « Extrait réel de la programmation de Radio Odyssey : », recopiée 115 fois : le titre de section indique déjà combien de titres suivent.
+- La phrase « Voir aussi les titres les plus diffusés », recopiée sur 105 fiches : le lien est repris dans le bloc de liens de bas de page, même maillage sans le texte identique.
+- La troisième question fréquente, dont la réponse générique était identique partout, porte maintenant une donnée : « X y revient environ 5,6 fois par semaine d'après notre dernier relevé, en deçà de la moyenne du catalogue (10,4). »
+
+### Résultat mesuré
+
+| | HEAD | Après §61 + §62 | |
+|---|---|---|---|
+| Mots par fiche | 289 | **405** | +40 % |
+| Segments singuliers, total | 15 553 | **21 983** | **+41 %** |
+| Part de contenu singulier | 47,8 % | **48,0 %** | stable |
+| Liens vers d'autres fiches | 3,0 | **7,1** | ×2,4 |
+
+Le point important est la troisième ligne : le volume de contenu propre augmente de 41 %, **sans diluer la densité**. Ajouter du texte fait normalement chuter ce ratio ; ici il ne bouge pas, parce que rien de ce qui a été ajouté n'est recopié d'une fiche à l'autre.
+
+### Vérifications
+
+Build isolé : 225 pages, aucune erreur. 14 209 liens internes vérifiés, **aucune cible introuvable**. Les 200 URL du sitemap existent toutes dans le build et **aucune n'est marquée `noindex`**. Les 115 fiches JSON-LD sont syntaxiquement valides. Toujours exactement 23 fiches en `noindex, follow`, conformément au seuil du §61. Cas limites contrôlés à la main : rang 1 (Shakira, pas de voisin au-dessus), artistes sans famille de genre (bandeau à trois indicateurs), groupe des ex æquo à 24 passages.
+
+### Correction du lecteur : les séquences de cohérence cardiaque
+
+Signalée par les copies d'écran envoyées avant la publication du §61. RadioKing remonte les séquences de respiration sous leur nom de fichier interne — *« Elisabeth Bélot-Grimaud — CC 3 min 5 inspire / 5 expire Nov05bis »*. Ce libellé s'affichait dans la barre du lecteur, mais aussi, via Media Session, sur les écrans verrouillés et les écrans de voiture.
+
+`RadioPlayer.astro` détecte désormais ces séquences (voix de la partenaire, titre commençant par « CC », ou mention inspire/expire) et affiche **« Cohérence cardiaque — Respiration guidée · séquence de 3 min »**, la durée étant lue dans le libellé d'origine. La normalisation s'applique aux trois points d'affichage : barre du lecteur, affichage initial avant lecture, et métadonnées Media Session. Détection vérifiée sur six cas réels, dont trois titres musicaux qui ne doivent pas être capturés.
+
+### Ce qui reste
+
+Le levier du §61 est intact et inchangé : **ajouter des titres dans `artists.js` depuis l'export RadioKing**. Une fiche passant de 1 à 3 titres sort du seuil de désindexation et gagne de la donnée exclusive. C'est une saisie, pas une rédaction, et rien de ce qui précède ne la remplace.
+
+---
+
+*Dernière mise à jour : 2026-08-13, fiches artistes (§62).*
