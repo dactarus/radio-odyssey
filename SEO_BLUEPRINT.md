@@ -1743,4 +1743,79 @@ Build isolé : 237 pages, aucune erreur. 217 URL au sitemap, aucun doublon, tout
 
 ---
 
-*Dernière mise à jour : 2026-08-13, douze nouvelles fiches artistes (§64).*
+---
+
+## 65. Les vingt fiches restantes, et deux choses qu'on ne pouvait pas voir avant (2026-08-13, nuit)
+
+Achèvement du gisement ouvert au §63. Sur les 21 artistes restants, **20 ont désormais une fiche**. Le vingt-et-unième est traité plus bas — il ne s'agit pas d'un oubli.
+
+### Treize fiches au répertoire installé
+
+Imagination, Fine Young Cannibals, Joe Cocker, Chris Rea, Level 42, Valerie Dore, Texas, Real McCoy, Rod Stewart, The Beatles, Delegation, Rick Astley, Kool & The Gang.
+
+Même méthode qu'au §64 : chaque affirmation chiffrée vérifiée avant rédaction. Ce que la vérification a rapporté :
+
+- **Valerie Dore** est le nom de scène de Monica Stucchi, mais sur les premiers disques du projet — dont *The Night* (1984) — **la voix entendue est celle de Dora Carofiglio**. Stucchi en était le visage avant d'en devenir la chanteuse. Une fiche écrite de mémoire aurait attribué le chant à la mauvaise personne.
+- **Delegation** : *Oh Honey* est monté 6e au classement R&B du Billboard, pas au Hot 100 général.
+- **Level 42** : *Lessons in Love* est leur meilleur classement britannique, 3e — et non un numéro 1, comme on pourrait le supposer d'un titre aussi connu.
+- **Real McCoy** : *Another Night* sort en Europe en 1993 mais n'atteint la 3e place américaine qu'après sa sortie aux États-Unis en 1994, où il reste plus de quarante-cinq semaines au classement.
+- **Texas** doit son nom au film *Paris, Texas* de Wim Wenders ; le groupe se forme en 1986 mais son premier single ne sort qu'en janvier 1989.
+
+### Sept fiches d'artistes actuels
+
+Helena, Marine, Santa, Imagine Dragons, Ellie Goulding, Zaz, Emmanuel Moire. Ceux-là ont demandé une recherche en ligne artiste par artiste — aucun fait écrit de mémoire.
+
+**Helena entre directement au 12e rang des 147 fiches**, avec 242 passages. C'était le plus gros trou du catalogue : la douzième artiste de l'antenne n'avait pas de page.
+
+### Une erreur d'étiquetage dans la médiathèque
+
+Le rapport crédite **Emmanuel Moire** de *« L'assasymphonie »*. Vérification faite : ce titre est de **Florent Mothe**, tiré de *Mozart, l'opéra rock* (2009). Emmanuel Moire, lui, vient du *Roi Soleil*. Les deux comédies musicales sont contemporaines, la confusion est banale — mais elle est dans les métadonnées du fichier, donc elle s'affiche à l'antenne, sur le lecteur et sur les écrans de voiture.
+
+La fiche ne retient que ses deux titres réels, ce qui la fait passer de 3 à 2 titres. **Le fichier est à corriger dans le manager RadioKing** ; tant qu'il ne l'est pas, chaque nouveau dépouillement réintroduira l'erreur.
+
+Portée du problème : 1 828 titres distincts ont été dépouillés, aucune vérification systématique des attributions n'est possible à cette échelle. Celle-ci n'a été repérée que parce qu'un fait connu contredisait la donnée. **Il y en a probablement d'autres.**
+
+### Une fiche volontairement non écrite : Tom York
+
+105 passages, trois titres — *Sunscreen*, *I Can't Stay*, *Close To Me*. Les sources disponibles se limitent à des pages de plateformes : un artiste basé à Paris, des singles sortis en 2025, un album *Close to Me* en 2024. Rien qui permette d'écrire trois faits vérifiés.
+
+S'y ajoute un risque propre : **« Tom York » est à une lettre de « Thom Yorke », le chanteur de Radiohead.** Une fiche mal étayée sur ce nom attirerait des visiteurs cherchant l'autre, et publierait des affirmations invérifiables sur un artiste vivant. Les deux sont à éviter.
+
+La question est renvoyée à Frédéric, qui connaît peut-être l'artiste — auquel cas les *Découvertes Radio Odyssey* seraient un meilleur cadre qu'une fiche du catalogue.
+
+### Résultat
+
+| | §64 | §65 | |
+|---|---|---|---|
+| Fiches artistes | 127 | **147** | +20 |
+| Fiches indexées | 109 | **129** | +20 |
+| Pages générées | 235 | **255** | +20 |
+| URL au sitemap | 217 | **237** | +20 |
+| Titres documentés | 487 | **549** | +62 |
+
+Les 18 fiches désindexées n'ont pas bougé : les nouvelles arrivent toutes avec au moins deux titres.
+
+### Vérifications
+
+Build isolé : 257 pages, aucune erreur. 237 URL au sitemap, aucun doublon, toutes présentes dans le build, aucune en `noindex`, aucune fiche indexable absente du sitemap. Aucun lien interne cassé. 147 JSON-LD valides. Un genre corrigé avant publication : Ellie Goulding avait été saisie en « Pop / Électro », libellé que `genres.js` ne connaît pas — la fiche serait sortie sans rang de registre. C'est « Électro / Pop » qu'il fallait écrire.
+
+### Piste ouverte par Frédéric : des quiz sur l'univers de la radio
+
+Idée soumise le soir même : des quiz construits non plus sur les décennies, mais sur ce que le site publie de sa propre antenne. Faisabilité étudiée dans la foulée, à partir des seules données existantes.
+
+La matière est là, et elle est **déjà structurée** :
+
+| Type de question | Volume disponible |
+|---|---|
+| « De quel pays vient X ? » | 147 questions, 27 pays comme distracteurs |
+| « Lequel de ces titres passe réellement à l'antenne ? » | 549 titres réels |
+| « Quel artiste est le plus diffusé ? » | classement recalculé à chaque build |
+| « Combien de titres de X ? » | 113 fiches assez fournies |
+
+L'intérêt est double. D'abord, **aucune rédaction** : les questions se génèrent depuis `artists.js`, comme `quiz-artistes.js` le fait déjà en sens inverse. Ensuite, et surtout, ce serait le premier contenu du site dont **Radio Odyssey est le sujet** — un quiz auquel personne d'autre au monde ne peut répondre, et qui ramène vers les 147 fiches.
+
+Deux réserves à examiner avant de construire : un quiz dont les réponses changent à chaque build ne peut pas être partagé (« j'ai eu 8/10 » ne veut plus rien dire la semaine suivante), et les cinq quiz par décennie existants sont déjà ce qui a valu au site sa première citation dans un Aperçu IA — il faudrait vérifier qu'un sixième format ne les cannibalise pas.
+
+---
+
+*Dernière mise à jour : 2026-08-13 (nuit), vingt nouvelles fiches artistes (§65).*
