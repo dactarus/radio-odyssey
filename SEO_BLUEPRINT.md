@@ -1585,6 +1585,12 @@ Signalée par les copies d'écran envoyées avant la publication du §61. RadioK
 
 `RadioPlayer.astro` détecte désormais ces séquences (voix de la partenaire, titre commençant par « CC », ou mention inspire/expire) et affiche **« Cohérence cardiaque — Respiration guidée · séquence de 3 min »**, la durée étant lue dans le libellé d'origine. La normalisation s'applique aux trois points d'affichage : barre du lecteur, affichage initial avant lecture, et métadonnées Media Session. Détection vérifiée sur six cas réels, dont trois titres musicaux qui ne doivent pas être capturés.
 
+### Mise à jour de la documentation
+
+Passe de cohérence sur les trois fichiers `.md`, à partir des chiffres relevés dans le build et non de mémoire. Corrigé dans `CLAUDE.md` : « 223 URL au sitemap » (il y en a 200, pour 223 pages générées), `vercel.json` annoncé à 11 règles alors qu'il en compte 10 depuis le retrait de la redirection du §60, `roPlayNow` annoncée sur 95 pages alors qu'elle est appelée depuis 223, et sept composants absents du tableau. Ajouté : les trois modules dérivés du silo artistes, la répartition des fiches par nombre de titres, et une liste de vérifications avant publication — chacune de ses lignes correspond à une régression réellement survenue sur ce projet.
+
+`PROJET_RADIO_ODYSSEY.md` reste le document de référence pour la charte graphique et les horaires de cohérence cardiaque, mais décrit par ailleurs une architecture disparue. Son en-tête porte maintenant un tableau section par section (à jour / périmé), et chaque section périmée un bandeau en propre : une recherche plein texte ne peut plus tomber sur l'ancienne configuration du lecteur ou l'ancien `padding-top` sans voir l'avertissement.
+
 ### Ce qui reste
 
 Le levier du §61 est intact et inchangé : **ajouter des titres dans `artists.js` depuis l'export RadioKing**. Une fiche passant de 1 à 3 titres sort du seuil de désindexation et gagne de la donnée exclusive. C'est une saisie, pas une rédaction, et rien de ce qui précède ne la remplace.

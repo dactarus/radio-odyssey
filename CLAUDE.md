@@ -8,7 +8,7 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 ## Objectif du projet
 
-Faire de **radio-odyssey.com** un site de contenu riche — objectif des 100 pages thématiques **atteint et dépassé** (223 URL au sitemap) — organisé en catégories :
+Faire de **radio-odyssey.com** un site de contenu riche — objectif des 100 pages thématiques **atteint et dépassé** (223 pages générées, 200 au sitemap) — organisé en catégories :
 - Musique et bien-être
 - Respiration et cohérence cardiaque
 - Playlists selon les moments de la journée
@@ -23,7 +23,8 @@ But : devenir un site référent sur ces sujets, capable d'attirer des internaut
 Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → URLs en `.html`, `trailingSlash: 'never'`).
 - Hébergement **Vercel**, déploiement automatique au push sur `main` du dépôt GitHub `dactarus/radio-odyssey`
 - Les URLs historiques ont été conservées à l'identique — l'indexation Google n'a pas été rompue
-- Redirections héritées centralisées dans `vercel.json` (11 règles), en-têtes de cache également
+- Redirections héritées centralisées dans `vercel.json` (10 règles, plus 4 blocs d'en-têtes de cache).
+  ⚠️ **Avant de créer une page, vérifier qu'aucune redirection ne porte déjà son URL** : `/plan-du-site.html` a été créée alors qu'une règle héritée la renvoyait vers l'accueil, et la page est restée invisible jusqu'à ce que la règle soit retirée (§60)
 
 ## Contraintes SEO impératives
 
@@ -54,6 +55,12 @@ Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → U
 | `CoherenceExercise.astro` | Exercice de respiration guidée, présent sur 8 pages |
 | `CookieConsent.astro` | Bandeau RGPD — GA4 n'est chargé qu'après acceptation |
 | `WebviewBanner.astro` | Alerte navigateur intégré (Facebook/Instagram) |
+| `SearchModal.astro` | Recherche interne (Pagefind) |
+| `CategoryHub.astro` | Gabarit des 7 pages de hub de catégorie |
+| `DayScheduleNav.astro` | Navigation entre les 6 playlists du jour |
+| `ContentIllustration.astro` | Illustration SVG en ligne (30 pages) |
+| `PartnerVideo.astro` | Intégration vidéo partenaire (3 pages) |
+| `Icon.astro` | Icônes en ligne depuis `data/icons.js` (108 pages) |
 | `PageHero.astro`, `Sidebar.astro`, `FAQBlock.astro`, `RelatedPages.astro` | Gabarits de page |
 
 **Données** (`src/data/`) : `navigation.js` (menu, hubs, pied de page), `artists.js` (115 fiches — **source unique** des passages), `genres.js`, `discoveries.js`, `icons.js`.
@@ -106,7 +113,7 @@ Depuis le 2026-08-09, l'iframe RadioKing est **remplacée par un lecteur natif**
 - **Repli** : si la lecture native échoue (navigateurs intégrés Facebook/Instagram), le lecteur bascule en mode secours et le clic suivant ouvre `link.radioking.com`
 - **Séquences de cohérence cardiaque** (§62) : RadioKing les remonte sous leur nom de fichier interne (« CC 3 min 5 inspire / 5 expire Nov05bis »). `estSequenceRespiration()` les détecte et `libelleSequence()` affiche « Cohérence cardiaque · Respiration guidée — séquence de N min », aux trois points d'affichage (barre, affichage initial, Media Session). ⚠️ Si un nouveau format de nommage apparaît dans RadioKing, c'est la regex de `estSequenceRespiration` qu'il faut élargir.
 
-> ⚠️ **`roPlayNow(event)` est appelée en `onclick` depuis 95 pages** et depuis `Sidebar.astro`. Son nom et sa signature ne doivent pas changer. Elle est définie dans `Footer.astro` et délègue à `window.roPlayerToggle`.
+> ⚠️ **`roPlayNow(event)` est appelée en `onclick` depuis 223 pages** (dont les 115 fiches artistes) et depuis `Sidebar.astro`. Son nom et sa signature ne doivent pas changer. Elle est définie dans `Footer.astro` et délègue à `window.roPlayerToggle`.
 
 ## Points de vigilance techniques
 
@@ -117,6 +124,28 @@ Depuis le 2026-08-09, l'iframe RadioKing est **remplacée par un lecteur natif**
 - **Mesure** : site et application envoient à `eu.umami.is` avec le **même `data-website-id`** — c'est volontaire. La formule gratuite d'Umami ne permet qu'une propriété ; la lecture séparée se fait par le **filtre « Host »** du tableau de bord (`www.radio-odyssey.com` ou `app.radio-odyssey.com`). Ne pas séparer les identifiants, cela casserait ce filtre et rendrait un abonnement nécessaire.
 - **URL Vercel de l'appli** : `radio-odyssey-v8b.vercel.app` sert la même page que `app.radio-odyssey.com` et représente 2,2 % des écoutes. Un `canonical` a été posé ; la redirection par `vercel.json` a échoué deux fois (§59) — passer par Settings → Deployment Protection dans l'interface Vercel.
 - Héritage Mobirise non purgé : `assets/vendor/bootstrap/bootstrap.min.css` est toujours chargé.
+
+## Vérifications avant publication
+
+Cette liste vient d'erreurs réellement commises sur ce projet, pas d'une bonne pratique générale. Chaque ligne a coûté une régression en production.
+
+```bash
+npm run build          # doit finir par « Complete! » sans erreur
+npm run preview        # http://localhost:4321 — Ctrl+C pour rendre la main
+```
+
+⚠️ **`npm run preview` occupe le terminal.** Tant qu'il tourne, tout ce qui est tapé part dans son entrée standard et n'est pas exécuté. Ctrl+C avant de reprendre la main.
+
+À contrôler sur `dist/` avant de publier :
+
+| Contrôle | Pourquoi |
+|---|---|
+| Aucune URL du sitemap ne porte `noindex` | une page en `noindex` dans un sitemap est un signal contradictoire (§61) |
+| Toutes les URL du sitemap existent dans `dist/` | le sitemap est maintenu à la main, il dérive |
+| Aucun `href="/…"` ne pointe vers un fichier absent | 14 209 liens internes, une route dynamique qui change les casse en masse |
+| **Aucune règle de `vercel.json` ne porte l'URL d'une page nouvelle** | `/plan-du-site.html` a été créée puis rendue invisible par une redirection héritée (§60) |
+| Nombre de fiches en `noindex` = nombre attendu par `SEUIL_INDEXATION_TITRES` | seuil et sitemap doivent rester d'accord (§61) |
+| `CACHE_VERSION` incrémenté si `public/sw.js` a changé | sinon le service worker sert l'ancienne version |
 
 ## Console d'édition
 
@@ -163,7 +192,7 @@ Chiffres réels, utiles pour arbitrer les priorités — le détail figure au §
 
 ## Prochaines étapes
 
-1. **Compléter les titres manquants** dans `artists.js` pour les 38 fiches à 1 ou 2 titres, depuis l'export RadioKing — saisie simple, effet direct sur l'indexation (§61)
+1. **Compléter les titres manquants** dans `artists.js` depuis l'export RadioKing — saisie simple, effet direct sur l'indexation (§61). Répartition au 2026-08-13 : **23 fiches à 1 titre** (les désindexées), 15 à 2, 43 à 3, 32 à 4, 2 à 5. Les 23 premières sont la priorité : passer l'une d'elles à 2 titres suffit à la réindexer
 2. **Protéger les déploiements** dans l'interface Vercel (Settings → Deployment Protection). Ne pas retenter par `vercel.json` : deux tentatives ont échoué, la condition `has: host` ne se déclenche pas (§59)
 3. **E-E-A-T santé** sur les 18 pages bien-être : auteur, date de révision, sources, mention de non-substitution à un avis médical
 4. **Grille week-end distincte** : midi y est le meilleur moment et reçoit la programmation standard (§58)

@@ -1,19 +1,27 @@
 # 📻 RADIO ODYSSEY — Résumé du Projet Web
 
-> ⚠️ **Document historique (état au 1er juillet 2026).** Il reste la référence
-> pour la **charte graphique** (couleurs, dégradés, typographies) et les
-> **horaires de cohérence cardiaque**, qui n'ont pas changé.
+> # ⚠️ DOCUMENT HISTORIQUE — état au 1er juillet 2026
 >
-> En revanche, plusieurs sections sont **périmées** :
-> - la structure du site (14 pages → **221 URL**) ;
-> - le **player RadioKing en iframe**, remplacé le 2026-08-09 par un lecteur
->   audio natif avec Media Session (voir `RadioPlayer.astro` et §57) ;
-> - le `padding-top` de 190px, lié au débordement de cette iframe ;
-> - la section « État du projet », antérieure à la PWA et à la migration
->   de l'ancien site Mobirise.
+> **Ne rien mettre en œuvre à partir de ce fichier sans avoir lu `CLAUDE.md`.**
+> Le site a migré sous Astro depuis, et la majorité des sections ci-dessous
+> décrivent une architecture qui n'existe plus.
 >
-> **Pour l'état courant du projet, lire `CLAUDE.md`. Pour l'historique
-> détaillé des travaux, lire `SEO_BLUEPRINT.md` (§1 à §57).**
+> | Section | Statut |
+> |---|---|
+> | Informations générales | ✅ à jour |
+> | Charte graphique (couleurs, dégradés, typographies) | ✅ **référence** |
+> | Horaires de cohérence cardiaque | ✅ **référence** |
+> | Partenaire officiel, réseaux sociaux et plateformes | ✅ à jour |
+> | Le player RadioKing | ⛔ **périmé** — iframe remplacée le 2026-08-09 par un lecteur natif (`RadioPlayer.astro`, §57) |
+> | Structure du projet | ⛔ **périmé** — 14 fichiers HTML à plat → 223 pages Astro (200 au sitemap) |
+> | Architecture technique (player sticky, padding-top) | ⛔ **périmé** — liés au débordement de l'ancienne iframe |
+> | Pages et leur contenu spécifique | ⛔ **périmé** — 4 pages EN listées, il y en a 13 |
+> | SEO (schema, sitemap 14 URL) | ⛔ **périmé** — voir `CLAUDE.md` et §41-§62 |
+> | Console d'édition live | ⛔ **périmé** — `console.html` remplacée par `admin-console/` (§43) |
+> | État du projet / Améliorations futures | ⛔ **périmé** — antérieur à la PWA, aux 223 pages et à la migration Mobirise |
+> | Déploiement | ⚠️ toujours valable pour le **site**, mais l'**appli** n'a pas de dépôt git : elle se publie par `npx vercel --prod` |
+>
+> **État courant → `CLAUDE.md`. Historique détaillé des travaux → `SEO_BLUEPRINT.md` (§1 à §62).**
 **Fichier de référence — À conserver dans le dossier du site**
 Dernière mise à jour : 1er juillet 2026
 
@@ -37,6 +45,8 @@ Dernière mise à jour : 1er juillet 2026
 
 ## 🎵 Le player RadioKing
 
+> ⛔ **PÉRIMÉ.** L'iframe n'est plus utilisée. Le lecteur actuel est `src/components/RadioPlayer.astro` (balise `<audio>` + Media Session). Seules restent exactes l'URL de flux et l'API des titres, reprises dans `CLAUDE.md`.
+
 | Élément | Valeur |
 |---|---|
 | **Player desktop** | `https://player.radioking.io/radio-odyssey/?c=%231e7fcb&c2=%23ffffff&f=h&i=1&p=1&s=0&li=0&popup=0&h=90` |
@@ -50,6 +60,8 @@ Dernière mise à jour : 1er juillet 2026
 ---
 
 ## 📁 Structure du projet
+
+> ⛔ **PÉRIMÉ.** Arborescence d'avant la migration Astro. Voir « Architecture actuelle du site » dans `CLAUDE.md`.
 
 ```
 radio-odyssey/
@@ -116,6 +128,8 @@ linear-gradient(90deg, #0b1c2d, #1e7fcb, #0b1c2d)
 
 ## 🔧 Architecture technique
 
+> ⛔ **PÉRIMÉ.** Décrit le calage de l'ancienne iframe. Ne pas réappliquer ces valeurs de `padding-top`.
+
 ### Player sticky (barre du haut)
 - **Desktop** : barre 105px, iframe `.rk-desktop` (h=90, margin-top:35px)
 - **Mobile** : barre 60px, iframes cachées, bouton dégradé rose/violet "Radio Odyssey" → ouvre `link.radioking.com`
@@ -138,6 +152,8 @@ linear-gradient(90deg, #0b1c2d, #1e7fcb, #0b1c2d)
 ---
 
 ## 📄 Pages et leur contenu spécifique
+
+> ⛔ **PÉRIMÉ.** 13 pages sont en anglais aujourd'hui, pas 4 ; l'exercice de respiration est présent sur 8 pages via `CoherenceExercise.astro`.
 
 ### index.html (Page d'accueil)
 - Hero avec logo flottant animé + stats (24/7, 80's, 100%, 0 pub)
@@ -208,6 +224,8 @@ Ces 3 pages contiennent le **bloc exercice complet** :
 
 ## 🔍 SEO
 
+> ⛔ **PÉRIMÉ.** Le sitemap compte 200 URL, pas 14. Le balisage Schema.org est généré par `Layout.astro` et les gabarits de page.
+
 ### Schema.org (dans index.html)
 - Type `RadioStation` : nom, URL, logo, description, date création, adresse FR, contact, sameAs, potentialAction (ListenAction gratuit)
 - Type `MusicGroup` : genres musicaux (Pop, Synthpop, Dance, New Wave, Easy Listening)
@@ -238,6 +256,8 @@ Ces 3 pages contiennent le **bloc exercice complet** :
 
 ## 📱 Console d'édition live
 
+> ⛔ **PÉRIMÉ.** `console.html` éditait du HTML brut, écrasé à chaque build depuis la migration Astro. L'outil actuel est `admin-console/` (`npm run console`), décrit dans `CLAUDE.md`.
+
 Accessible via `https://www.radio-odyssey.com/console.html`
 
 Permet sans toucher au code :
@@ -252,6 +272,8 @@ Permet sans toucher au code :
 ---
 
 ## ✅ État du projet (1er juillet 2026)
+
+> ⛔ **PÉRIMÉ.** Instantané d'avant la PWA, les 223 pages et la migration Mobirise. Conservé comme repère historique uniquement.
 
 ### Fonctionnel
 - [x] 14 pages HTML complètes avec contenu réel
