@@ -9,7 +9,6 @@
     { "source": "/radio-bien-etre.html", "destination": "/radio-bien-etre-en-ligne.html", "permanent": true },
     { "source": "/Radio-annees-80-en-ligne.html", "destination": "/radio-annees-80-en-ligne.html", "permanent": true },
     { "source": "/radio-remix-annees-80.html", "destination": "/radio-annees-80-en-ligne.html", "permanent": true },
-    { "source": "/plan-du-site.html", "destination": "/", "permanent": true },
     { "source": "/sitemap.xml/:slug.html", "destination": "/:slug.html", "permanent": true }
   ],
   "headers": [
