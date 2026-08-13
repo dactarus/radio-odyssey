@@ -4,11 +4,11 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-13 (§64).*
+*Dernière mise à jour de ce fichier : 2026-08-13 (§65).*
 
 ## Objectif du projet
 
-Faire de **radio-odyssey.com** un site de contenu riche — objectif des 100 pages thématiques **atteint et dépassé** (235 pages générées, 217 au sitemap) — organisé en catégories :
+Faire de **radio-odyssey.com** un site de contenu riche — objectif des 100 pages thématiques **atteint et dépassé** (255 pages générées, 237 au sitemap) — organisé en catégories :
 - Musique et bien-être
 - Respiration et cohérence cardiaque
 - Playlists selon les moments de la journée
@@ -40,10 +40,10 @@ Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → U
 
 ## Architecture actuelle du site
 
-**217 URL au sitemap** (235 pages générées, dont 18 fiches artistes volontairement désindexées — §61, §63), réparties en deux silos :
+**237 URL au sitemap** (255 pages générées, dont 18 fiches artistes volontairement désindexées — §61, §63), réparties en deux silos :
 
 - **108 pages éditoriales** — organisées en 7 catégories définies dans `src/data/navigation.js` : Bien-être & Santé (18), Musique & Énergie (26), Playlists du Jour (6), Artistes & Styles (10), Conseils d'Écoute (8), Les Coulisses (12), International (13 pages en `lang="en"`). S'y ajoutent l'accueil, `/plan-du-site.html`, `/quiz-musicaux-radio-odyssey.html` et les deux pages légales.
-- **127 fiches artistes** — générées par la route dynamique `src/pages/artiste-[slug].astro` à partir de `src/data/artists.js`. **109 indexées, 18 en `noindex, follow`** selon la constante `SEUIL_INDEXATION_TITRES` (§61, §63). On y accède depuis `/artistes-diffuses-radio-odyssey.html` et `/plan-du-site.html`.
+- **147 fiches artistes** — générées par la route dynamique `src/pages/artiste-[slug].astro` à partir de `src/data/artists.js`. **129 indexées, 18 en `noindex, follow`** selon la constante `SEUIL_INDEXATION_TITRES` (§61, §63). On y accède depuis `/artistes-diffuses-radio-odyssey.html` et `/plan-du-site.html`.
 
 **Composants clés** (`src/components/`) :
 
@@ -63,7 +63,7 @@ Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → U
 | `Icon.astro` | Icônes en ligne depuis `data/icons.js` (108 pages) |
 | `PageHero.astro`, `Sidebar.astro`, `FAQBlock.astro`, `RelatedPages.astro` | Gabarits de page |
 
-**Données** (`src/data/`) : `navigation.js` (menu, hubs, pied de page), `artists.js` (127 fiches — **source unique** des passages), `genres.js`, `discoveries.js`, `icons.js`.
+**Données** (`src/data/`) : `navigation.js` (menu, hubs, pied de page), `artists.js` (147 fiches — **source unique** des passages), `genres.js`, `discoveries.js`, `icons.js`.
 
 Trois modules **dérivés** alimentent les fiches artistes (§61-63). Aucun ne stocke de donnée propre : tout est recalculé à chaque build, donc rien ne peut se désynchroniser.
 
@@ -73,13 +73,13 @@ Trois modules **dérivés** alimentent les fiches artistes (§61-63). Aucun ne s
 | `quiz-artistes.js` | quiz dans lesquels l'artiste est une bonne réponse | code source des 5 pages de quiz, lu en `?raw` au build |
 | `top-titres.js` | rang de l'artiste au top 15 des titres | code source de `titres-les-plus-diffuses-…`, lu en `?raw` au build |
 
-⚠️ `artist-stats.js` expose `JOURS_RELEVE` (92) et `PERIODE_RELEVE` (« du 14 mai au 13 août 2026 »). **Si la fenêtre de comptage d'`artists.js` change, ces deux constantes doivent changer avec elle**, sinon la fréquence hebdomadaire affichée sur les 127 fiches est fausse.
+⚠️ `artist-stats.js` expose `JOURS_RELEVE` (92) et `PERIODE_RELEVE` (« du 14 mai au 13 août 2026 »). **Si la fenêtre de comptage d'`artists.js` change, ces deux constantes doivent changer avec elle**, sinon la fréquence hebdomadaire affichée sur les 147 fiches est fausse.
 
 **Fichiers statiques** (`public/`) : `sitemap.xml` (maintenu à la main et par la console), `robots.txt`, `llms.txt`, `manifest.json`, `sw.js`, `hors-ligne.html`, `console.html` (ancien outil, `noindex`).
 
 ## Application installable (PWA)
 
-Depuis le 2026-08-09, `www.radio-odyssey.com` est **installable depuis n'importe laquelle de ses 235 pages** :
+Depuis le 2026-08-09, `www.radio-odyssey.com` est **installable depuis n'importe laquelle de ses 255 pages** :
 
 - `public/sw.js` — service worker. Stratégie : *network-first* sur le HTML (la fraîcheur prime, la console publie souvent), *cache-first* sur les ressources à empreinte (`/_astro/`, polices, images), *stale-while-revalidate* sur le reste. **Aucune interception du cross-origin** : le flux audio et la mesure d'audience passent directement. Incrémenter `CACHE_VERSION` à chaque modification.
 - `public/hors-ligne.html` — page de repli autonome (CSS en ligne, zéro dépendance externe).
@@ -115,7 +115,7 @@ Depuis le 2026-08-09, l'iframe RadioKing est **remplacée par un lecteur natif**
 - **Repli** : si la lecture native échoue (navigateurs intégrés Facebook/Instagram), le lecteur bascule en mode secours et le clic suivant ouvre `link.radioking.com`
 - **Séquences de cohérence cardiaque** (§62) : RadioKing les remonte sous leur nom de fichier interne (« CC 3 min 5 inspire / 5 expire Nov05bis »). `estSequenceRespiration()` les détecte et `libelleSequence()` affiche « Cohérence cardiaque · Respiration guidée — séquence de N min », aux trois points d'affichage (barre, affichage initial, Media Session). ⚠️ Si un nouveau format de nommage apparaît dans RadioKing, c'est la regex de `estSequenceRespiration` qu'il faut élargir.
 
-> ⚠️ **`roPlayNow(event)` est appelée en `onclick` depuis 235 pages** (dont les 127 fiches artistes) et depuis `Sidebar.astro`. Son nom et sa signature ne doivent pas changer. Elle est définie dans `Footer.astro` et délègue à `window.roPlayerToggle`.
+> ⚠️ **`roPlayNow(event)` est appelée en `onclick` depuis 255 pages** (dont les 147 fiches artistes) et depuis `Sidebar.astro`. Son nom et sa signature ne doivent pas changer. Elle est définie dans `Footer.astro` et délègue à `window.roPlayerToggle`.
 
 ## Points de vigilance techniques
 
@@ -194,9 +194,7 @@ Chiffres réels, utiles pour arbitrer les priorités — le détail figure au §
 
 ## Prochaines étapes
 
-1. **Ouvrir les 21 fiches artistes restantes** (§63, §64). Sur les 33 artistes bien installés à l'antenne sans fiche, 12 ont été traités au §64. Restent, par ordre de diffusion : Helena (242 passages), Marine (172), Tom York (105), Imagination, Santa, Imagine Dragons, Fine Young Cannibals, Ellie Goulding, Emmanuel Moire, Joe Cocker, Chris Rea, Level 42, Valerie Dore, Texas, Zaz, Real McCoy, Rod Stewart, The Beatles, Delegation, Rick Astley, Kool & The Gang.
-   ⚠️ Helena, Marine, Tom York, Santa, Emmanuel Moire, Zaz, Ellie Goulding et Imagine Dragons sont des artistes actuels : **leurs faits demandent une vérification en ligne, pas une rédaction de mémoire**.
-   ⚠️ Ne pas répéter l'erreur des §61-62 : **les 18 fiches désindexées ne sont pas incomplètes**, le rapport confirme qu'un seul titre de ces artistes passe à l'antenne. Aucune saisie ne les sauvera
+1. **Corriger l'étiquetage de « L'assasymphonie » dans le manager RadioKing** : le fichier est crédité à Emmanuel Moire alors que le titre est de Florent Mothe (*Mozart, l'opéra rock*). L'erreur s'affiche à l'antenne et sur les écrans de voiture, et **chaque nouveau dépouillement la réintroduira** tant que le fichier n'est pas corrigé (§65). Le gisement d'artistes sans fiche est épuisé : 20 des 21 restants ont été traités au §65, seul **Tom York** reste en attente — sources insuffisantes, et un risque de confusion avec Thom Yorke de Radiohead
 2. **Protéger les déploiements** dans l'interface Vercel (Settings → Deployment Protection). Ne pas retenter par `vercel.json` : deux tentatives ont échoué, la condition `has: host` ne se déclenche pas (§59)
 3. **E-E-A-T santé** sur les 18 pages bien-être : auteur, date de révision, sources, mention de non-substitution à un avis médical
 4. **Grille week-end distincte** : midi y est le meilleur moment et reçoit la programmation standard (§58)
