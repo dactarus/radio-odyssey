@@ -4,11 +4,11 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-13 (§62).*
+*Dernière mise à jour de ce fichier : 2026-08-13 (§63).*
 
 ## Objectif du projet
 
-Faire de **radio-odyssey.com** un site de contenu riche — objectif des 100 pages thématiques **atteint et dépassé** (223 pages générées, 200 au sitemap) — organisé en catégories :
+Faire de **radio-odyssey.com** un site de contenu riche — objectif des 100 pages thématiques **atteint et dépassé** (223 pages générées, 205 au sitemap) — organisé en catégories :
 - Musique et bien-être
 - Respiration et cohérence cardiaque
 - Playlists selon les moments de la journée
@@ -40,10 +40,10 @@ Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → U
 
 ## Architecture actuelle du site
 
-**200 URL au sitemap** (223 pages générées, dont 23 fiches artistes volontairement désindexées — §61), réparties en deux silos :
+**205 URL au sitemap** (223 pages générées, dont 18 fiches artistes volontairement désindexées — §61, §63), réparties en deux silos :
 
 - **108 pages éditoriales** — organisées en 7 catégories définies dans `src/data/navigation.js` : Bien-être & Santé (18), Musique & Énergie (26), Playlists du Jour (6), Artistes & Styles (10), Conseils d'Écoute (8), Les Coulisses (12), International (13 pages en `lang="en"`). S'y ajoutent l'accueil, `/plan-du-site.html`, `/quiz-musicaux-radio-odyssey.html` et les deux pages légales.
-- **115 fiches artistes** — générées par la route dynamique `src/pages/artiste-[slug].astro` à partir de `src/data/artists.js`. **92 indexées, 23 en `noindex, follow`** selon la constante `SEUIL_INDEXATION_TITRES` (§61). On y accède depuis `/artistes-diffuses-radio-odyssey.html` et `/plan-du-site.html`.
+- **115 fiches artistes** — générées par la route dynamique `src/pages/artiste-[slug].astro` à partir de `src/data/artists.js`. **97 indexées, 18 en `noindex, follow`** selon la constante `SEUIL_INDEXATION_TITRES` (§61, §63). On y accède depuis `/artistes-diffuses-radio-odyssey.html` et `/plan-du-site.html`.
 
 **Composants clés** (`src/components/`) :
 
@@ -65,13 +65,15 @@ Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → U
 
 **Données** (`src/data/`) : `navigation.js` (menu, hubs, pied de page), `artists.js` (115 fiches — **source unique** des passages), `genres.js`, `discoveries.js`, `icons.js`.
 
-Trois modules **dérivés** alimentent les fiches artistes (§61-62). Aucun ne stocke de donnée propre : tout est recalculé à chaque build, donc rien ne peut se désynchroniser.
+Trois modules **dérivés** alimentent les fiches artistes (§61-63). Aucun ne stocke de donnée propre : tout est recalculé à chaque build, donc rien ne peut se désynchroniser.
 
 | Fichier | Ce qu'il calcule | Source |
 |---|---|---|
 | `artist-stats.js` | rang général, part d'antenne, fréquence hebdomadaire, rang dans la famille de genre, voisins de classement, ex æquo | `artists.js` + `genres.js` |
 | `quiz-artistes.js` | quiz dans lesquels l'artiste est une bonne réponse | code source des 5 pages de quiz, lu en `?raw` au build |
 | `top-titres.js` | rang de l'artiste au top 15 des titres | code source de `titres-les-plus-diffuses-…`, lu en `?raw` au build |
+
+⚠️ `artist-stats.js` expose `JOURS_RELEVE` (92) et `PERIODE_RELEVE` (« du 14 mai au 13 août 2026 »). **Si la fenêtre de comptage d'`artists.js` change, ces deux constantes doivent changer avec elle**, sinon la fréquence hebdomadaire affichée sur les 115 fiches est fausse.
 
 **Fichiers statiques** (`public/`) : `sitemap.xml` (maintenu à la main et par la console), `robots.txt`, `llms.txt`, `manifest.json`, `sw.js`, `hors-ligne.html`, `console.html` (ancien outil, `noindex`).
 
@@ -118,7 +120,7 @@ Depuis le 2026-08-09, l'iframe RadioKing est **remplacée par un lecteur natif**
 ## Points de vigilance techniques
 
 - **Navigation** : réglée au §60. Les deux menus n'affichent plus que les `MENU_APERCU` (= 5) premières pages de chaque catégorie ; le reste passe par le hub et par `/plan-du-site.html`. Le HTML est passé de 234 à 138 Ko par page, le ratio de contenu unique de 18,7 % à 30,9 %. **Reste possible** : les icônes SVG rendues en ligne pèsent encore 71 Ko sur 155 Ko — un sprite avec `<use>` diviserait ce poids.
-- **Silo artistes** : traité aux §61 et §62. Les 23 fiches à un seul titre sont en `noindex, follow` ; les 92 autres portent un bandeau de chiffres de diffusion, le croisement avec les quiz (90 fiches) et le top des titres (10 fiches). Mesuré sur le HTML construit, le contenu propre par fiche est passé de 15 553 à 21 983 empreintes de 6 mots (+41 %) à densité constante (48 %), et les liens entre fiches de 3,0 à 7,1 par page. **Le levier restant est une saisie, pas une rédaction** : ajouter des titres dans `artists.js` depuis l'export RadioKing fait sortir une fiche du seuil de désindexation. ⚠️ `SEUIL_INDEXATION_TITRES` et `public/sitemap.xml` doivent rester cohérents. ⚠️ Ne jamais écrire de prose générée sur une fiche : tout ce qui s'y trouve doit être calculé ou vérifié.
+- **Silo artistes** : traité aux §61, §62 et §63. Les 23 fiches à un seul titre sont en `noindex, follow` ; les 92 autres portent un bandeau de chiffres de diffusion, le croisement avec les quiz (90 fiches) et le top des titres (10 fiches). Mesuré sur le HTML construit, le contenu propre par fiche est passé de 15 553 à 21 983 empreintes de 6 mots (+41 %) à densité constante (48 %), et les liens entre fiches de 3,0 à 7,1 par page. ⚠️ **`playCount` et `tracks` ne se saisissent plus à la main** : ils sont dérivés du rapport de diffusion RadioKing (§63), sur une fenêtre de trois mois glissants. Pour les rafraîchir, réexporter le rapport et relancer le dépouillement — méthode au §63. ⚠️ `SEUIL_INDEXATION_TITRES` et `public/sitemap.xml` doivent rester cohérents **dans les deux sens** : une fiche peut aussi repasser *sous* le seuil et devoir sortir du sitemap. ⚠️ Ne jamais écrire de prose générée sur une fiche : tout ce qui s'y trouve doit être calculé ou vérifié.
 - **Internationalisation** : les 13 pages anglaises n'ont pas de page d'accueil dédiée, le `x-default` renvoie vers l'accueil français, et leur navigation reste en français.
 - **Pages santé** : les 18 pages bien-être avancent des effets (cortisol, sommeil, concentration) sans source, ni date de révision, ni auteur nommé. Zone YMYL — à documenter.
 - **Mesure** : site et application envoient à `eu.umami.is` avec le **même `data-website-id`** — c'est volontaire. La formule gratuite d'Umami ne permet qu'une propriété ; la lecture séparée se fait par le **filtre « Host »** du tableau de bord (`www.radio-odyssey.com` ou `app.radio-odyssey.com`). Ne pas séparer les identifiants, cela casserait ce filtre et rendrait un abonnement nécessaire.
@@ -192,7 +194,8 @@ Chiffres réels, utiles pour arbitrer les priorités — le détail figure au §
 
 ## Prochaines étapes
 
-1. **Compléter les titres manquants** dans `artists.js` depuis l'export RadioKing — saisie simple, effet direct sur l'indexation (§61). Répartition au 2026-08-13 : **23 fiches à 1 titre** (les désindexées), 15 à 2, 43 à 3, 32 à 4, 2 à 5. Les 23 premières sont la priorité : passer l'une d'elles à 2 titres suffit à la réindexer
+1. **Ouvrir des fiches pour les 50 artistes qui n'en ont pas** alors qu'ils ont 3 titres distincts ou plus à l'antenne (§63) : Jimmy Somerville (6 titres), Tears For Fears (5), Donna Summer (6), The Cure, Eurythmics, Lisa Stansfield, Tina Turner, Whitney Houston… Chacun ferait une fiche plus solide que les 18 désindexées. C'est de la rédaction — 3 faits vérifiés et un « pourquoi » par artiste, pas de génération.
+   ⚠️ Ne pas répéter l'erreur des §61-62 : **les 18 fiches désindexées ne sont pas incomplètes**, le rapport confirme qu'un seul titre de ces artistes passe à l'antenne. Aucune saisie ne les sauvera
 2. **Protéger les déploiements** dans l'interface Vercel (Settings → Deployment Protection). Ne pas retenter par `vercel.json` : deux tentatives ont échoué, la condition `has: host` ne se déclenche pas (§59)
 3. **E-E-A-T santé** sur les 18 pages bien-être : auteur, date de révision, sources, mention de non-substitution à un avis médical
 4. **Grille week-end distincte** : midi y est le meilleur moment et reçoit la programmation standard (§58)

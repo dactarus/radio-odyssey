@@ -1597,4 +1597,81 @@ Le levier du §61 est intact et inchangé : **ajouter des titres dans `artists.j
 
 ---
 
-*Dernière mise à jour : 2026-08-13, fiches artistes (§62).*
+---
+
+## 63. Le rapport de diffusion contredit le §61 — et ouvre autre chose (2026-08-13)
+
+Trois exports RadioKing couvrant le 1er juillet 2025 → 13 août 2026 : **170 655 passages, 1 180 artistes, 1 828 titres distincts.** C'est la première fois que le site s'appuie sur la programmation complète plutôt que sur un relevé partiel.
+
+### Ce que je répétais depuis le §61 était faux
+
+Aux §61 et §62, et dans `CLAUDE.md`, la même phrase revenait : *« le levier restant est une saisie, pas une rédaction — ajouter des titres depuis l'export RadioKing fait sortir une fiche du seuil »*. Le rapport dit le contraire.
+
+**Dix-sept des vingt-trois fiches désindexées n'ont réellement qu'un titre à l'antenne.**
+
+| artiste | passages | titres distincts |
+|---|---:|---:|
+| Amy Macdonald | 436 | 1 — *This Is The Life* |
+| Djo | 392 | 1 — *End Of Beginning* |
+| Bebe Rexha | 322 | 1 — *New Religion* |
+| Tame Impala | 272 | 1 — *Dracula* |
+
+Ce n'était pas une lacune de saisie, c'était la programmation. Sur les 38 fiches à un ou deux titres, **12 seulement** gagnent quelque chose. Le seuil du §61 était le bon choix, mais la justification que j'en donnais était erronée, et la première ligne des « prochaines étapes » de `CLAUDE.md` promettait un gain qui n'existait pas.
+
+### Ce que les chiffres du site valaient
+
+Contrôle avant de toucher à quoi que ce soit : les `playCount` en place corrélaient à **0,959** avec les passages réels de juin 2026, à quelques unités près sur tout le haut du classement. Les chiffres publiés depuis le §61 étaient justes.
+
+### Le vrai gisement était ailleurs
+
+Les fiches **riches** étaient sous-documentées. 320 titres saisis, alors que ces mêmes 115 artistes ont réellement diffusé **520 titres distincts**. Dua Lipa : 4 titres sur sa fiche, 11 à l'antenne. Madonna : 4 saisis, 21 diffusés.
+
+### Méthode de dépouillement
+
+Deux règles, appliquées à 170 655 lignes :
+
+- **Une collaboration officielle compte pour chacun des artistes crédités.** *Shaggy feat. Sting* est un vrai disque : il compte pour Sting comme pour Shaggy.
+- **Un mashup ne compte pour personne.** *« Dj Allan X Michael Jackson Vs. Tiesto »* n'est le disque d'aucun des deux. Marqueurs retenus : `vs`, `versus`, `X` entre deux noms, ou un DJ en tête d'affiche. 106 lignes écartées sur 170 655.
+
+Un piège évité au passage : couper les noms sur « and » cassait les groupes — *Earth, Wind & Fire* devenait *earth wind* et sortait du catalogue. La coupure ne se fait que sur les marqueurs explicites de featuring.
+
+### Fenêtre de comptage : trois mois, et pourquoi pas douze
+
+Premier essai sur douze mois glissants. Résultat rejeté : **Tame Impala, 6e artiste le plus diffusé aujourd'hui, ressortait 92e sur 115.** Exact sur douze mois, faux comme description de l'antenne — un artiste entré en rotation récemment est écrasé par ceux qui tournent depuis un an. L'écart de rang médian entre les deux fenêtres est de 8 places, mais la queue va jusqu'à 86.
+
+Retenu : **trois mois glissants, du 14 mai au 13 août 2026**, 14 117 passages. Presque autant de titres que sur douze mois (439 contre 466), aucune fiche à zéro, et un classement fidèle au direct. La période est désormais **affichée sur chaque fiche** : un chiffre sans sa fenêtre de mesure n'est pas vérifiable.
+
+### Une erreur de données corrigée
+
+**Kim Wilde — « Cambodia »** figurait sur sa fiche et n'a **jamais été diffusé** en 13,5 mois. Seul titre du fichier dans ce cas. Remplacé par les deux titres réels, ce qui fait au passage repasser la fiche au-dessus du seuil.
+
+À signaler également : **Baltimora (2 passages) et Scotch (7)** ont quasiment quitté l'antenne — leurs fiches annonçaient 24 et 18 passages mensuels.
+
+### Résultat mesuré
+
+| | §62 publié | §63 | |
+|---|---|---|---|
+| Titres saisis | 320 | **439** | +37 % |
+| Mots par fiche | 289 | **427** | +48 % |
+| Segments singuliers (6 mots) | 15 553 | **23 843** | **+53 %** |
+| Part de contenu singulier | 47,8 % | **49,4 %** | +1,6 pt |
+| Fiches désindexées | 23 | **18** | −5 |
+| URL au sitemap | 200 | **205** | +5 |
+
+La densité **monte** alors que le volume augmente de moitié : ce qui a été ajouté est de la donnée, pas du texte de liaison.
+
+### Vérifications
+
+Build isolé : 225 pages, aucune erreur. 205 URL au sitemap, toutes présentes dans le build, **aucune en `noindex`**, et aucune fiche indexable absente du sitemap — vérifié dans les deux sens après le double mouvement (6 fiches ajoutées, Gala retirée en repassant sous le seuil). Liens internes : aucun cassé. 115 JSON-LD valides. `lastmod` porté à la date du jour sur les 97 fiches concernées. Aucune mention résiduelle de l'ancienne fenêtre « sur un mois ».
+
+### Ce qui reste, et qui est maintenant chiffré
+
+**50 artistes diffusés n'ont aucune fiche alors qu'ils ont 3 titres distincts ou plus à l'antenne** : Jimmy Somerville (6 titres, 386 passages), Tears For Fears (5), Donna Summer (6), The Cure (4), Eurythmics (4), Lisa Stansfield (4), Tina Turner, Whitney Houston, Supertramp, The Corrs… Chacun ferait une fiche plus solide que les 18 désindexées.
+
+C'est le prochain chantier du silo artistes — et cette fois c'est bien de la rédaction : 3 faits vérifiés et un « pourquoi » par artiste. Pas de génération.
+
+Point secondaire : `titres-les-plus-diffuses-sur-radio-odyssey.astro` annonce toujours un relevé « de janvier à juin 2026 », saisi à la main. Le rapport permettrait de le recalculer sur la même fenêtre de trois mois que les fiches.
+
+---
+
+*Dernière mise à jour : 2026-08-13, rapport de diffusion (§63).*

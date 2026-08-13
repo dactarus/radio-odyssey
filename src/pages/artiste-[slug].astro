@@ -8,7 +8,7 @@ import RelatedPages from '../components/RelatedPages.astro';
 import { ARTISTS, GRADIENTS, SEUIL_INDEXATION_TITRES } from '../data/artists.js';
 import { familyForArtist } from '../data/genres.js';
 import { quizDeLArtiste } from '../data/quiz-artistes.js';
-import { statsArtiste, quartileArtiste, ordinal, MOYENNE_PASSAGES } from '../data/artist-stats.js';
+import { statsArtiste, quartileArtiste, ordinal, MOYENNE_PASSAGES, JOURS_RELEVE, PERIODE_RELEVE } from '../data/artist-stats.js';
 import { topTitreDeLArtiste } from '../data/top-titres.js';
 
 export function getStaticPaths() {
@@ -107,11 +107,11 @@ const faq = [
   },
   {
     q: `À quelle fréquence Radio Odyssey diffuse-t-elle ${artist.name} ?`,
-    a: `${stats.passages} passages relevés sur un mois, soit ${stats.part} % de l'antenne : ${artist.name} se situe ${FREQUENCE[quartile]}, au ${ordinal(stats.rang)} rang des ${stats.total} artistes de notre catalogue${stats.famille ? ` et au ${ordinal(stats.familleRang)} rang des ${stats.familleTotal} artistes ${stats.famille.label}` : ''}. Voir aussi notre page <a href="/artistes-diffuses-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">artistes diffusés sur Radio Odyssey</a>.`,
+    a: `${stats.passages} passages relevés sur trois mois de programmation, soit ${stats.part} % de l'antenne : ${artist.name} se situe ${FREQUENCE[quartile]}, au ${ordinal(stats.rang)} rang des ${stats.total} artistes de notre catalogue${stats.famille ? ` et au ${ordinal(stats.familleRang)} rang des ${stats.familleTotal} artistes ${stats.famille.label}` : ''}. Voir aussi notre page <a href="/artistes-diffuses-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">artistes diffusés sur Radio Odyssey</a>.`,
   },
   {
     q: `Peut-on écouter ${artist.name} gratuitement sur une radio en ligne ?`,
-    a: `Oui, Radio Odyssey est gratuite et sans publicité — et ${artist.name} y revient environ <strong>${stats.parSemaine} fois par semaine</strong> d'après notre dernier relevé de programmation, ${stats.auDessusMoyenne ? 'au-dessus' : 'en deçà'} de la moyenne du catalogue (${(MOYENNE_PASSAGES * 7 / 30).toFixed(1).replace('.', ',')}).`,
+    a: `Oui, Radio Odyssey est gratuite et sans publicité — et ${artist.name} y revient environ <strong>${stats.parSemaine} fois par semaine</strong> d'après notre dernier relevé de programmation, ${stats.auDessusMoyenne ? 'au-dessus' : 'en deçà'} de la moyenne du catalogue (${(MOYENNE_PASSAGES * 7 / JOURS_RELEVE).toFixed(1).replace('.', ',')}).`,
   },
 ];
 ---
@@ -175,7 +175,7 @@ const faq = [
             <div class="artiste-chiffres">
               <div>
                 <b>{stats.passages}</b>
-                <span>passages sur un mois</span>
+                <span>passages sur trois mois</span>
               </div>
               <div>
                 <b>{stats.part} %</b>
@@ -211,6 +211,13 @@ const faq = [
               {stats.familleVoisins.length > 0 && (
                 <> Dans le même registre : <Fragment set:html={stats.familleVoisins.map(lienArtiste).join(', ')} />.</>
               )}
+            </p>
+
+            {/* La période de relevé est affichée : un chiffre sans sa fenêtre
+                de mesure n'est pas vérifiable, et c'est ce qui distingue une
+                donnée d'une affirmation. */}
+            <p style="margin:.6rem 0 0;font-size:.78rem;color:var(--ro-muted);">
+              Source : rapport de diffusion Radio Odyssey, {PERIODE_RELEVE}.
             </p>
 
             {topTitre && (

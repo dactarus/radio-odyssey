@@ -22,3 +22,7 @@ npm-debug.log*
 
 # réglages locaux de Claude Code (propres à la machine, jamais à publier)
 .claude/settings.local.json
+
+# rapports de diffusion RadioKing (source de artists.js, ~29 Mo)
+# À conserver en local, hors dépôt : ils se réexportent depuis le manager.
+report-from-*.csv

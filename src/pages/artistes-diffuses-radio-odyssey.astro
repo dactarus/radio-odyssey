@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import { ARTISTS } from '../data/artists.js';
+import { PERIODE_RELEVE } from '../data/artist-stats.js';
 
 // Classement par passages réels à l'antenne (export RadioKing), et non par
 // l'ordre du fichier : Shakira, artiste la plus diffusée, n'apparaissait pas
@@ -60,7 +61,7 @@ const totalPassages = ARTISTS.reduce((n, a) => n + a.playCount, 0);
 
           <div class="content-card">
             <h2>Les 10 artistes les plus diffusés</h2>
-            <p style="margin-bottom:1.2rem;">Classement établi sur un mois de programmation réelle, {totalPassages.toLocaleString('fr-FR')} passages recensés pour les {classement.length} artistes ayant leur fiche.</p>
+            <p style="margin-bottom:1.2rem;">Classement établi sur trois mois de programmation réelle ({PERIODE_RELEVE}), {totalPassages.toLocaleString('fr-FR')} passages recensés pour les {classement.length} artistes ayant leur fiche.</p>
             <div class="row g-3">
               {flagship.map((a) => (
                 <div class="col-md-6">

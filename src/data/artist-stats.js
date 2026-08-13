@@ -18,6 +18,12 @@
 import { ARTISTS } from './artists.js';
 import { GENRE_FAMILIES, artistsForFamily, familyForArtist } from './genres.js';
 
+/** Durée, en jours, de la fenêtre de relevé déclarée dans artists.js. */
+export const JOURS_RELEVE = 92;
+
+/** Libellé de la période, affiché tel quel sur les fiches. */
+export const PERIODE_RELEVE = 'du 14 mai au 13 août 2026';
+
 const CLASSEMENT = [...ARTISTS].sort((a, b) => b.playCount - a.playCount);
 const TOTAL_PASSAGES = ARTISTS.reduce((n, a) => n + a.playCount, 0);
 const MOYENNE = TOTAL_PASSAGES / ARTISTS.length;
@@ -109,9 +115,11 @@ export function statsArtiste(slug) {
   const part = (100 * artiste.playCount) / TOTAL_PASSAGES;
 
   // Fréquence ramenée à la semaine : « 5,6 fois par semaine » se représente
-  // immédiatement, « 24 passages sur un mois » beaucoup moins. Le relevé
-  // porte sur 30 jours (voir artists.js), d'où le rapport 7/30.
-  const parSemaine = (artiste.playCount * 7) / 30;
+  // immédiatement, « 272 passages sur trois mois » beaucoup moins.
+  // ⚠️ Le diviseur suit la fenêtre déclarée dans artists.js. Elle est passée
+  // d'un mois à trois mois glissants au §63 : toute nouvelle fenêtre impose
+  // de corriger JOURS_RELEVE, sinon la fréquence affichée est fausse.
+  const parSemaine = (artiste.playCount * 7) / JOURS_RELEVE;
 
   return {
     rang,
