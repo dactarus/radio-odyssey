@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { NAV_CATEGORIES } from '../data/navigation.js';
+import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
 ---
 <style is:global>
   .ro-mega-nav {
@@ -88,9 +88,7 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
             {cat.label} <Icon name="chevron-down" style="font-size:.65rem;" />
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item ro-hub-link" href={cat.hub}>Voir toute la catégorie →</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            {cat.pages.map((p) => (
+            {cat.pages.slice(0, MENU_APERCU).map((p) => (
               <li>
                 <a class="dropdown-item" href={p.href}>
                   <strong><Icon name={p.bi} style="color:var(--ro-purple);font-size:.85rem;margin-right:.35rem;" />{p.label}</strong>
@@ -98,6 +96,12 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
                 </a>
               </li>
             ))}
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item ro-hub-link" href={cat.hub}>
+                Voir les {cat.pages.length} pages de la catégorie →
+              </a>
+            </li>
           </ul>
         </li>
       ))}

@@ -2,7 +2,7 @@
 import Icon from './Icon.astro';
 import MegaNav from './MegaNav.astro';
 import RadioPlayer from './RadioPlayer.astro';
-import { NAV_CATEGORIES } from '../data/navigation.js';
+import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
 ---
 <!-- ============================================================
      PLAYER BAR STICKY
@@ -76,15 +76,23 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
     <span class="nav-cat"><Icon name="house-door-fill" /> Accueil</span>
     <a class="nav-link" href="/"><span class="ni"><Icon name="house-door-fill" /></span> Page d'accueil</a>
 
+    {/* Aperçu des MENU_APERCU premières pages par catégorie, comme sur le
+        méga-menu desktop. Le reste passe par le hub de catégorie et par le
+        plan du site — voir le commentaire dans navigation.js. */}
     {NAV_CATEGORIES.map((cat) => (
       <>
         <span class="nav-cat"><Icon name={cat.bi} /> {cat.label}</span>
-        <a class="nav-link" href={cat.hub}><span class="ni"><Icon name="search" /></span> <strong>Voir tout</strong></a>
-        {cat.pages.map((p) => (
+        {cat.pages.slice(0, MENU_APERCU).map((p) => (
           <a class="nav-link" href={p.href}><span class="ni"><Icon name={p.bi} /></span> {p.label}</a>
         ))}
+        <a class="nav-link nav-link-hub" href={cat.hub}>
+          <span class="ni"><Icon name="arrow-right" /></span> <strong>Voir les {cat.pages.length} pages</strong>
+        </a>
       </>
     ))}
+
+    <span class="nav-cat"><Icon name="list" /> Tout le site</span>
+    <a class="nav-link" href="/plan-du-site.html"><span class="ni"><Icon name="grid" /></span> Plan du site</a>
 
     <div class="offcanvas-cta">
       <a class="btn-ro w-100 justify-content-center"

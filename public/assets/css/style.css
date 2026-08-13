@@ -227,6 +227,16 @@ img { max-width: 100%; }
   color: var(--ro-purple);
 }
 #site-nav a.nav-link .ni { width: 1.5rem; text-align: center; }
+/* Lien « Voir les N pages » qui clôt chaque catégorie du panneau mobile.
+   Depuis la réduction du menu (août 2026), il est la porte d'entrée vers
+   les pages non affichées en aperçu — il doit donc se distinguer. */
+#site-nav a.nav-link.nav-link-hub {
+  color: var(--ro-purple);
+  font-size: .86rem;
+  padding-top: .35rem;
+  padding-bottom: .7rem;
+}
+#site-nav a.nav-link.nav-link-hub:hover { background: rgba(123,47,190,.08); }
 .offcanvas-cta { padding: 1rem; margin-top: .5rem; }
 
 /* ── SECTIONS ────────────────────────────────────────────────── */

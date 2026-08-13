@@ -1,0 +1,153 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import { NAV_CATEGORIES } from '../data/navigation.js';
+import { ARTISTS } from '../data/artists.js';
+import { DISCOVERIES } from '../data/discoveries.js';
+
+// Plan du site : la contrepartie de la réduction des menus.
+//
+// Depuis août 2026, le méga-menu et le panneau mobile n'affichent que les
+// cinq premières pages de chaque catégorie. Cette page garantit que
+// l'intégralité du site reste atteignable en un clic depuis n'importe où —
+// elle est liée depuis le pied de page, présent sur les 222 pages.
+//
+// Elle est aussi le seul endroit du site où les 115 fiches artistes et les
+// fiches découvertes sont listées exhaustivement.
+
+const artistesTries = [...ARTISTS].sort((a, b) =>
+  a.name.localeCompare(b.name, 'fr', { sensitivity: 'base' })
+);
+const decouvertesTriees = [...DISCOVERIES].sort((a, b) =>
+  (a.name || '').localeCompare(b.name || '', 'fr', { sensitivity: 'base' })
+);
+
+const totalPages =
+  1 +                                            // accueil
+  NAV_CATEGORIES.length +                        // hubs de catégorie
+  NAV_CATEGORIES.reduce((n, c) => n + c.pages.length, 0) +
+  artistesTries.length +
+  decouvertesTriees.length +
+  3;                                             // plan du site + 2 pages légales
+---
+<Layout
+  lang="fr"
+  title="Plan du Site | Radio Odyssey"
+  description="Toutes les pages de Radio Odyssey en un coup d'œil : bien-être, musique, playlists, artistes diffusés, conseils d'écoute et coulisses de l'antenne."
+>
+  <PageHero
+    gradientFrom="#7B2FBE"
+    gradientTo="#00C6FF"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Plan du site"
+    title="Plan du Site"
+    text={`Toutes les pages de Radio Odyssey, réunies sur une seule page.`}
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><rect x="7" y="7" width="14" height="14" rx="3" stroke="white" stroke-width="2.3"/><rect x="27" y="7" width="14" height="14" rx="3" stroke="rgba(255,255,255,.65)" stroke-width="2.3"/><rect x="7" y="27" width="14" height="14" rx="3" stroke="rgba(255,255,255,.65)" stroke-width="2.3"/><rect x="27" y="27" width="14" height="14" rx="3" stroke="white" stroke-width="2.3"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+
+      <div class="content-card">
+        <p style="margin:0;">Radio Odyssey compte <strong>{totalPages} pages</strong>. Le menu n'en présente qu'une sélection pour rester lisible — vous trouverez ici l'intégralité, classée par thème. Vous pouvez aussi utiliser la <button type="button" class="ro-search-trigger" style="background:none;border:none;padding:0;color:var(--ro-purple);font-weight:700;font-family:inherit;font-size:inherit;cursor:pointer;text-decoration:underline;">recherche du site</button> si vous savez déjà ce que vous cherchez.</p>
+      </div>
+
+      <div class="content-card">
+        <h2>Accueil</h2>
+        <ul class="ro-plan-liste">
+          <li><a href="/">Page d'accueil</a></li>
+        </ul>
+      </div>
+
+      {NAV_CATEGORIES.map((cat) => (
+        <div class="content-card">
+          <h2><Icon name={cat.bi} style="color:var(--ro-purple);margin-right:.45rem;" />{cat.label}</h2>
+          <p style="font-size:.9rem;color:var(--ro-muted);margin-bottom:1rem;">{cat.hubIntro}</p>
+          <ul class="ro-plan-liste">
+            <li><a href={cat.hub}><strong>{cat.hubTitle} — vue d'ensemble</strong></a></li>
+            {cat.pages.map((p) => (
+              <li><a href={p.href}>{p.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+
+      <div class="content-card">
+        <h2><Icon name="person-badge" style="color:var(--ro-purple);margin-right:.45rem;" />Les artistes diffusés</h2>
+        <p style="font-size:.9rem;color:var(--ro-muted);margin-bottom:1rem;">
+          {artistesTries.length} fiches, une par artiste régulièrement programmé sur l'antenne, avec les titres réellement diffusés.
+          Voir aussi <a href="/artistes-diffuses-radio-odyssey.html">la page d'ensemble des artistes</a>.
+        </p>
+        <ul class="ro-plan-liste ro-plan-liste-dense">
+          {artistesTries.map((a) => (
+            <li><a href={`/artiste-${a.slug}.html`}>{a.name}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      {decouvertesTriees.length > 0 && (
+        <div class="content-card">
+          <h2><Icon name="stars" style="color:var(--ro-purple);margin-right:.45rem;" />Les découvertes</h2>
+          <p style="font-size:.9rem;color:var(--ro-muted);margin-bottom:1rem;">
+            Les artistes émergents soutenus par la radio. Voir aussi <a href="/decouvertes-radio-odyssey.html">la page d'ensemble des découvertes</a>.
+          </p>
+          <ul class="ro-plan-liste ro-plan-liste-dense">
+            {decouvertesTriees.map((d) => (
+              <li><a href={`/decouverte-${d.slug}.html`}>{d.name}</a></li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <div class="content-card">
+        <h2><Icon name="info-circle" style="color:var(--ro-purple);margin-right:.45rem;" />Informations légales</h2>
+        <ul class="ro-plan-liste">
+          <li><a href="/mentions-legales.html">Mentions légales</a></li>
+          <li><a href="/politique-de-confidentialite.html">Politique de confidentialité</a></li>
+        </ul>
+      </div>
+
+      <div class="page-cta-bar">
+        <h3>Vous préférez simplement écouter ?</h3>
+        <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+          <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <style is:global>
+    .ro-plan-liste {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      columns: 2;
+      column-gap: 2rem;
+    }
+    .ro-plan-liste li {
+      break-inside: avoid;
+      margin-bottom: .45rem;
+      font-size: .93rem;
+      line-height: 1.45;
+    }
+    .ro-plan-liste a {
+      color: var(--ro-dark);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .ro-plan-liste a:hover {
+      color: var(--ro-purple);
+      border-bottom-color: rgba(123, 47, 190, .35);
+    }
+    .ro-plan-liste-dense { columns: 3; }
+    @media (max-width: 767px) {
+      .ro-plan-liste,
+      .ro-plan-liste-dense { columns: 1; }
+    }
+  </style>
+</Layout>
