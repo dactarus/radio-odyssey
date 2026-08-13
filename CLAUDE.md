@@ -4,11 +4,11 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-09.*
+*Dernière mise à jour de ce fichier : 2026-08-13.*
 
 ## Objectif du projet
 
-Faire de **radio-odyssey.com** un site de contenu riche — objectif des 100 pages thématiques **atteint et dépassé** (221 URL au sitemap) — organisé en catégories :
+Faire de **radio-odyssey.com** un site de contenu riche — objectif des 100 pages thématiques **atteint et dépassé** (223 URL au sitemap) — organisé en catégories :
 - Musique et bien-être
 - Respiration et cohérence cardiaque
 - Playlists selon les moments de la journée
@@ -39,9 +39,9 @@ Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → U
 
 ## Architecture actuelle du site
 
-**221 URL au sitemap**, réparties en deux silos :
+**223 URL au sitemap**, réparties en deux silos :
 
-- **106 pages éditoriales** — 104 fichiers dans `src/pages/*.astro`, organisées en 7 catégories définies dans `src/data/navigation.js` : Bien-être & Santé, Musique & Énergie, Playlists du Jour, Artistes & Styles, Conseils d'Écoute, Les Coulisses, International (13 pages en `lang="en"`).
+- **108 pages éditoriales** — organisées en 7 catégories définies dans `src/data/navigation.js` : Bien-être & Santé (18), Musique & Énergie (26), Playlists du Jour (6), Artistes & Styles (10), Conseils d'Écoute (8), Les Coulisses (12), International (13 pages en `lang="en"`). S'y ajoutent l'accueil, `/plan-du-site.html`, `/quiz-musicaux-radio-odyssey.html` et les deux pages légales.
 - **115 fiches artistes** — générées par la route dynamique `src/pages/artiste-[slug].astro` à partir de `src/data/artists.js`. Elles n'apparaissent pas dans le méga-menu : on y accède depuis `/artistes-diffuses-radio-odyssey.html`.
 
 **Composants clés** (`src/components/`) :
@@ -50,7 +50,7 @@ Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → U
 |---|---|
 | `RadioPlayer.astro` | Lecteur audio natif + Media Session (voir plus bas) |
 | `Header.astro` | Barre lecteur fixe, méga-menu, panneau latéral mobile |
-| `MegaNav.astro` | Menu déroulant desktop — rend l'intégralité de `NAV_CATEGORIES` |
+| `MegaNav.astro` | Menu déroulant desktop — 5 pages par catégorie + lien hub |
 | `CoherenceExercise.astro` | Exercice de respiration guidée, présent sur 8 pages |
 | `CookieConsent.astro` | Bandeau RGPD — GA4 n'est chargé qu'après acceptation |
 | `WebviewBanner.astro` | Alerte navigateur intégré (Facebook/Instagram) |
@@ -62,7 +62,7 @@ Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → U
 
 ## Application installable (PWA)
 
-Depuis le 2026-08-09, `www.radio-odyssey.com` est **installable depuis n'importe laquelle de ses 221 pages** :
+Depuis le 2026-08-09, `www.radio-odyssey.com` est **installable depuis n'importe laquelle de ses 223 pages** :
 
 - `public/sw.js` — service worker. Stratégie : *network-first* sur le HTML (la fraîcheur prime, la console publie souvent), *cache-first* sur les ressources à empreinte (`/_astro/`, polices, images), *stale-while-revalidate* sur le reste. **Aucune interception du cross-origin** : le flux audio et la mesure d'audience passent directement. Incrémenter `CACHE_VERSION` à chaque modification.
 - `public/hors-ligne.html` — page de repli autonome (CSS en ligne, zéro dépendance externe).
@@ -101,12 +101,12 @@ Depuis le 2026-08-09, l'iframe RadioKing est **remplacée par un lecteur natif**
 
 ## Points de vigilance techniques
 
-- **Méga-menu** : `MegaNav.astro` (desktop) et le panneau latéral de `Header.astro` (mobile) rendent tous deux l'intégralité de `NAV_CATEGORIES`. Le HTML fait donc 217 à 278 Ko par page pour 259 à 1 013 mots de contenu utile — soit 8 à 28 % de contenu unique. **C'est le principal chantier SEO restant.**
+- **Navigation** : réglée au §60. Les deux menus n'affichent plus que les `MENU_APERCU` (= 5) premières pages de chaque catégorie ; le reste passe par le hub et par `/plan-du-site.html`. Le HTML est passé de 234 à 138 Ko par page, le ratio de contenu unique de 18,7 % à 30,9 %. **Reste possible** : les icônes SVG rendues en ligne pèsent encore 71 Ko sur 155 Ko — un sprite avec `<use>` diviserait ce poids.
 - **Silo artistes** : 115 fiches au gabarit identique (~410 mots). Risque de « contenu produit à l'échelle » au sens de la politique anti-spam Google. Plan retenu : enrichir 25 fiches, passer les autres en `noindex, follow`, créer des pages d'agrégation.
 - **Internationalisation** : les 13 pages anglaises n'ont pas de page d'accueil dédiée, le `x-default` renvoie vers l'accueil français, et leur navigation reste en français.
 - **Pages santé** : les 18 pages bien-être avancent des effets (cortisol, sommeil, concentration) sans source, ni date de révision, ni auteur nommé. Zone YMYL — à documenter.
-- **Mesure** : `eu.umami.is` pour le site, `cloud.umami.is` pour l'appli, **avec le même identifiant** — les deux surfaces sont donc indistinguables. À séparer avant toute analyse.
-- **Préproduction Vercel** : `radio-odyssey-v8b.vercel.app` est publiquement accessible et représente 2,2 % des écoutes. Activer la protection des déploiements.
+- **Mesure** : site et application envoient à `eu.umami.is` avec le **même `data-website-id`** — c'est volontaire. La formule gratuite d'Umami ne permet qu'une propriété ; la lecture séparée se fait par le **filtre « Host »** du tableau de bord (`www.radio-odyssey.com` ou `app.radio-odyssey.com`). Ne pas séparer les identifiants, cela casserait ce filtre et rendrait un abonnement nécessaire.
+- **URL Vercel de l'appli** : `radio-odyssey-v8b.vercel.app` sert la même page que `app.radio-odyssey.com` et représente 2,2 % des écoutes. Un `canonical` a été posé ; la redirection par `vercel.json` a échoué deux fois (§59) — passer par Settings → Deployment Protection dans l'interface Vercel.
 - Héritage Mobirise non purgé : `assets/vendor/bootstrap/bootstrap.min.css` est toujours chargé.
 
 ## Console d'édition
@@ -154,13 +154,13 @@ Chiffres réels, utiles pour arbitrer les priorités — le détail figure au §
 
 ## Prochaines étapes
 
-1. **Réduire le méga-menu** à 7 entrées + page « plan du site », supprimer le doublon desktop/mobile — c'est le chantier au plus fort effet
-2. **Séparer les propriétés Umami** site / application
-3. **Protéger les déploiements de préproduction** Vercel
-4. **Restructurer le silo artistes** (enrichir 25, `noindex` sur le reste, pages d'agrégation)
-5. **E-E-A-T santé** sur les 18 pages bien-être : auteur, date de révision, sources, mention de non-substitution à un avis médical
+1. **Restructurer le silo artistes** (enrichir 25 fiches, `noindex` sur le reste, pages d'agrégation) — c'est désormais le chantier au plus fort effet
+2. **Protéger les déploiements** dans l'interface Vercel (Settings → Deployment Protection). Ne pas retenter par `vercel.json` : deux tentatives ont échoué, la condition `has: host` ne se déclenche pas (§59)
+3. **E-E-A-T santé** sur les 18 pages bien-être : auteur, date de révision, sources, mention de non-substitution à un avis médical
+4. **Grille week-end distincte** : midi y est le meilleur moment et reçoit la programmation standard (§58)
+5. **Expérience jeudi soir** : appliquer la grille musclée un soir de plus pendant un mois, et vérifier si le ratio soirée/après-midi passe de 0,40 vers 0,67 (§58)
 6. **Ouvrir une liste e-mail** — aucun actif propriétaire à ce jour ; à faire avant toute nouvelle campagne payante
 7. **Instrumenter** les événements manquants (installation PWA, opt-in push, quiz, exercice, sorties plateformes)
 8. **Fusionner l'appli** : page hors ligne enrichie (garder l'exercice et le programme), masquage du bouton « App Mobile » en mode autonome, puis redirection de `app.` vers `www`
-9. `og:image` par page sur les ~213 pages feuilles ; compléter `llms.txt` (il ne référence que ~25 pages sur 221)
+9. `og:image` par page sur les ~213 pages feuilles (les 7 hubs et l'accueil ont déjà la leur). `llms.txt` complété à 29 URL au §59
 10. **Décision internationale** : `/en/` complet, ou repli assumé
