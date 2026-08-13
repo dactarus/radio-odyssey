@@ -1674,4 +1674,73 @@ Point secondaire : `titres-les-plus-diffuses-sur-radio-odyssey.astro` annonce to
 
 ---
 
-*Dernière mise à jour : 2026-08-13, rapport de diffusion (§63).*
+---
+
+## 64. Douze fiches ouvertes sur les artistes que l'antenne diffusait sans les documenter (2026-08-13)
+
+Suite directe du §63, qui avait chiffré le gisement : des artistes bien installés dans la programmation, sans aucune page sur le site.
+
+### Le chiffre corrigé, d'abord
+
+Le §63 annonçait **50 artistes** à 3 titres distincts ou plus. Ce comptage portait sur 13,5 mois. Recalculé sur **la même fenêtre de trois mois que les fiches** — la seule comparaison honnête — le total tombe à **33**. La cohérence de fenêtre n'est pas un détail : un artiste peut avoir 3 titres sur un an et un seul sur le trimestre en cours.
+
+### Les douze retenues
+
+Choisies sur la profondeur de leur présence à l'antenne, et parce que leurs faits se vérifient :
+
+| artiste | passages | titres | registre |
+|---|---:|---:|---|
+| R.E.M. | 74 | 3 | Rock |
+| Jimmy Somerville | 72 | 6 | Dance / Pop |
+| Lisa Stansfield | 70 | 4 | Pop / R&B |
+| The Cure | 69 | 4 | Rock |
+| The Corrs | 65 | 3 | Pop / Rock |
+| Tears For Fears | 64 | 5 | Synthpop / Rock |
+| Supertramp | 64 | 3 | Pop / Rock |
+| Eurythmics | 60 | 4 | Synthpop / Rock |
+| Tina Turner | 58 | 3 | Pop / Rock |
+| Donna Summer | 52 | 4 | Dance |
+| Duran Duran | 48 | 3 | Synthpop / Rock |
+| Abba | 18 | 6 | Pop |
+
+Jimmy Somerville et Abba arrivent avec **six titres chacun** : plus que 111 des 115 fiches existantes.
+
+### Vérification des faits
+
+Aucun fait écrit de mémoire sans contrôle. Les affirmations chiffrées ont été vérifiées une par une avant rédaction :
+
+- *A View To A Kill* (Duran Duran, 1985) est bien **le seul générique de James Bond arrivé n°1 du Billboard Hot 100** — le 13 juillet 1985.
+- La reprise de *Don't Leave Me This Way* par les Communards a bien été **le single le plus vendu au Royaume-Uni en 1986**, à 768 500 exemplaires.
+- *There Must Be an Angel* est bien **l'unique n°1 britannique** d'Eurythmics, avec le solo d'harmonica de Stevie Wonder.
+- Tina Turner a remporté **huit Grammy Awards en compétition** — le chiffre de « douze » qui circule inclut trois entrées au Hall of Fame et un prix de carrière. La fiche dit les deux.
+- *Breathless* (The Corrs, 2000) est bien leur **seul n°1 britannique**, coécrit et produit par Mutt Lange.
+- *All Around the World* (Lisa Stansfield, 1989) : **n°1 au Royaume-Uni, 3e du Billboard Hot 100**.
+- *Last Dance* : l'Oscar de la meilleure chanson originale est allé à **Paul Jabara, son auteur** — pas à Donna Summer, qui l'interprétait. La fiche le formule correctement.
+
+Deux précisions factuelles que le gabarit aurait laissé passer : *Cannonball* n'est pas de l'album *Breakfast in America* mais de 1985, après le départ de Roger Hodgson ; et Robert Smith est le seul membre de The Cure présent sur tous les albums.
+
+### Ce que ça change
+
+| | §63 | §64 |
+|---|---|---|
+| Fiches artistes | 115 | **127** |
+| Fiches indexées | 97 | **109** |
+| Pages générées | 223 | **235** |
+| URL au sitemap | 205 | **217** |
+| Titres à l'antenne documentés | 439 | **487** |
+
+Les nouvelles fiches s'insèrent **sans une ligne de code** : la route dynamique, le classement, les voisins, le rang par famille de genre et le plan du site les prennent en charge automatiquement. Elles se lient d'ailleurs entre elles dès le premier build — la fiche Tears For Fears cite Supertramp comme ex æquo, The Corrs au-dessus, The Cure et Eurythmics dans le même registre.
+
+### Vérifications
+
+Build isolé : 237 pages, aucune erreur. 217 URL au sitemap, aucun doublon, toutes présentes dans le build, **aucune en `noindex`**, aucune fiche indexable absente du sitemap. Aucun lien interne cassé. 127 JSON-LD valides. Les 12 nouveaux genres tombent tous dans une famille existante de `genres.js` — sans quoi le rang par registre serait resté vide.
+
+### Ce qui reste
+
+**21 artistes** du même gisement attendent leur fiche. Par ordre de diffusion : Helena (242 passages), Marine (172), Tom York (105), Imagination, Santa, Imagine Dragons, Fine Young Cannibals, Ellie Goulding, Emmanuel Moire, Joe Cocker, Chris Rea, Level 42, Valerie Dore, Texas, Zaz, Real McCoy, Rod Stewart, The Beatles, Delegation, Rick Astley, Kool & The Gang.
+
+⚠️ Huit d'entre eux sont des artistes actuels — Helena, Marine, Tom York, Santa, Emmanuel Moire, Zaz, Ellie Goulding, Imagine Dragons. **Leurs faits demandent une vérification en ligne, pas une rédaction de mémoire.** C'est précisément le cas où une fiche fausse coûterait plus cher que pas de fiche du tout.
+
+---
+
+*Dernière mise à jour : 2026-08-13, douze nouvelles fiches artistes (§64).*
