@@ -35,9 +35,9 @@ const LIBELLE_DECENNIE = {
 
 // Quiz thématiques : le libellé ne se déduit pas du nom de fichier.
 const THEMATIQUES = {
-  'quiz-noms-artistes-radio-odyssey': "d'où viennent leurs noms ?",
-  'quiz-records-radio-odyssey': 'records et premières fois',
-  'quiz-coulisses-artistes-radio-odyssey': 'les coulisses des titres',
+  'quiz-noms-artistes-radio-odyssey': 'noms de scène',
+  'quiz-records-radio-odyssey': 'records',
+  'quiz-coulisses-artistes-radio-odyssey': 'coulisses',
 };
 
 function construire() {
@@ -55,7 +55,7 @@ function construire() {
     const href = `/${fichier}.html`;
     const libelle = decennie
       ? `quiz musical ${LIBELLE_DECENNIE[decennie] || `années ${decennie}`}`
-      : `quiz « ${theme} »`;
+      : `quiz des ${theme}`;
 
     // { track: "Titre", correct: 'slug' }  ou  { enonce: "…", correct: 'slug' }
     // Le slug est attendu entre apostrophes (convention du projet), mais on
