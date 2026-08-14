@@ -1,0 +1,223 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import QuizBlock from '../components/QuizBlock.astro';
+
+// Quiz bâti sur les `facts` des fiches artistes (§64 à §68), tous vérifiés
+// avant publication. Les réponses sont **immuables** : une date, un nom, un
+// lieu, un record acquis — rien qui dépende de la programmation du moment.
+// C'est la condition pour qu'un score reste comparable d'un mois à l'autre.
+//
+// Chaque artiste n'est bonne réponse qu'une seule fois dans ce quiz.
+// `correct` porte le slug de la fiche : data/quiz-artistes.js s'en sert pour
+// afficher le quiz sur la fiche de l'artiste concerné, sans aucune saisie.
+
+const main = [
+  { enonce: "Quelle chanteuse suédoise a coécrit « Love Me Like You Do » pour Ellie Goulding ?", correct: 'tove-lo', choices: [
+    { slug: "dua-lipa", name: "Dua Lipa" },
+    { slug: "ava-max", name: "Ava Max" },
+    { slug: "tove-lo", name: "Tove Lo" },
+    { slug: "sia", name: "Sia" },
+  ]},
+  { enonce: "De quel projet italien la voix du disque n'est-elle pas celle de l'homme qui apparaît dans le clip ?", correct: 'baltimora', choices: [
+    { slug: "baltimora", name: "Baltimora" },
+    { slug: "corona", name: "Corona" },
+    { slug: "fun-fun", name: "Fun Fun" },
+    { slug: "scotch", name: "Scotch" },
+  ]},
+  { enonce: "Quel groupe américain compte un membre ayant popularisé le backslide, dont Michael Jackson tirera le moonwalk ?", correct: 'shalamar', choices: [
+    { slug: "shalamar", name: "Shalamar" },
+    { slug: "the-black-eyed-peas", name: "The Black Eyed Peas" },
+    { slug: "delegation", name: "Delegation" },
+    { slug: "earth-wind-and-fire", name: "Earth, Wind & Fire" },
+  ]},
+  { enonce: "Quel artiste a écrit « Children » pour donner aux DJ un morceau apaisant en fin de soirée, afin de réduire les accidents de la route au retour ?", correct: 'robert-miles', choices: [
+    { slug: "dario-g", name: "Dario G" },
+    { slug: "robert-miles", name: "Robert Miles" },
+    { slug: "the-avener", name: "The Avener" },
+    { slug: "moby", name: "Moby" },
+  ]},
+  { enonce: "Quel groupe a ouvert son plus grand tube sur la date du 21 septembre, choisie uniquement parce qu'elle sonnait bien ?", correct: 'earth-wind-and-fire', choices: [
+    { slug: "shalamar", name: "Shalamar" },
+    { slug: "earth-wind-and-fire", name: "Earth, Wind & Fire" },
+    { slug: "kool-and-the-gang", name: "Kool & The Gang" },
+    { slug: "imagination", name: "Imagination" },
+  ]},
+  { enonce: "Quel artiste a cédé les dix-huit morceaux de son album à la publicité ou au cinéma, une première à cette échelle ?", correct: 'moby', choices: [
+    { slug: "daft-punk", name: "Daft Punk" },
+    { slug: "moby", name: "Moby" },
+    { slug: "robert-miles", name: "Robert Miles" },
+    { slug: "avicii", name: "Avicii" },
+  ]},
+  { enonce: "Quel duo français a construit son unique tube sur un extrait de « Soup for One », du groupe Chic ?", correct: 'modjo', choices: [
+    { slug: "daft-punk", name: "Daft Punk" },
+    { slug: "modjo", name: "Modjo" },
+    { slug: "ofenbach", name: "Ofenbach" },
+    { slug: "bob-sinclar", name: "Bob Sinclar" },
+  ]},
+  { enonce: "Quel artiste américain a vu son titre de 2022 devenir un succès mondial deux ans plus tard, porté par les réseaux sociaux ?", correct: 'djo', choices: [
+    { slug: "benson-boone", name: "Benson Boone" },
+    { slug: "alex-warren", name: "Alex Warren" },
+    { slug: "teddy-swims", name: "Teddy Swims" },
+    { slug: "djo", name: "Djo" },
+  ]},
+  { enonce: "Quelle chanteuse française a vu « Makeba », sorti en 2015, exploser six ans après sa sortie ?", correct: 'jain', choices: [
+    { slug: "clara-luciani", name: "Clara Luciani" },
+    { slug: "jain", name: "Jain" },
+    { slug: "zaz", name: "Zaz" },
+    { slug: "aya-nakamura", name: "Aya Nakamura" },
+  ]},
+  { enonce: "Quel artiste britannique doit l'un de ses titres les plus connus à une rupture de batterie survenue par accident en studio ?", correct: 'phil-collins', choices: [
+    { slug: "elton-john", name: "Elton John" },
+    { slug: "rod-stewart", name: "Rod Stewart" },
+    { slug: "sting", name: "Sting" },
+    { slug: "phil-collins", name: "Phil Collins" },
+  ]},
+];
+
+const bonus = [
+  { enonce: "Quel groupe écossais avait d'abord refusé le titre qui allait devenir son seul numéro 1 américain ?", correct: 'simple-minds', choices: [
+    { slug: "simply-red", name: "Simply Red" },
+    { slug: "simple-minds", name: "Simple Minds" },
+    { slug: "texas", name: "Texas" },
+    { slug: "a-ha", name: "A-ha" },
+  ]},
+  { enonce: "Quel DJ allemand a signé le remix de « Prayer in C », du duo Lilly Wood & The Prick ?", correct: 'robin-schulz', choices: [
+    { slug: "robin-schulz", name: "Robin Schulz" },
+    { slug: "kungs", name: "Kungs" },
+    { slug: "lost-frequencies", name: "Lost Frequencies" },
+    { slug: "r3hab", name: "R3HAB" },
+  ]},
+  { enonce: "Quel auteur-compositeur français a écrit et composé l'intégralité de l'album « D'eux » pour Céline Dion ?", correct: 'jean-jacques-goldman', choices: [
+    { slug: "pascal-obispo", name: "Pascal Obispo" },
+    { slug: "jean-jacques-goldman", name: "Jean-Jacques Goldman" },
+    { slug: "laurent-voulzy", name: "Laurent Voulzy" },
+    { slug: "julien-dore", name: "Julien Doré" },
+  ]},
+  { enonce: "Quelle chanteuse a écrit « Diamonds » pour Rihanna avant de chanter elle-même « Chandelier » ?", correct: 'sia', choices: [
+    { slug: "sia", name: "Sia" },
+    { slug: "lizzo", name: "Lizzo" },
+    { slug: "tove-lo", name: "Tove Lo" },
+    { slug: "bebe-rexha", name: "Bebe Rexha" },
+  ]},
+  { enonce: "Quel chanteur a fait se serrer la main sur scène deux chefs politiques rivaux jamaïcains, en 1978 ?", correct: 'bob-marley', choices: [
+    { slug: "lizzo", name: "Lizzo" },
+    { slug: "bob-marley", name: "Bob Marley" },
+    { slug: "craig-david", name: "Craig David" },
+    { slug: "the-weeknd", name: "The Weeknd" },
+  ]},
+  { enonce: "Quelle chanteuse belge a produit « C'est l'amour » de Léopold Nord & Vous ?", correct: 'muriel-dacq', choices: [
+    { slug: "elegance", name: "Élégance" },
+    { slug: "muriel-dacq", name: "Muriel Dacq" },
+    { slug: "gala", name: "Gala" },
+    { slug: "corona", name: "Corona" },
+  ]},
+  { enonce: "Quel groupe britannique a fait tourner quatre MTV Video Music Awards à un clip tourné sur un sol mouvant ?", correct: 'jamiroquai', choices: [
+    { slug: "m-people", name: "M People" },
+    { slug: "clean-bandit", name: "Clean Bandit" },
+    { slug: "jamiroquai", name: "Jamiroquai" },
+    { slug: "simply-red", name: "Simply Red" },
+  ]},
+  { enonce: "Quelle chanteuse française a débuté comme guitariste du groupe La Femme ?", correct: 'clara-luciani', choices: [
+    { slug: "jain", name: "Jain" },
+    { slug: "zaz", name: "Zaz" },
+    { slug: "clara-luciani", name: "Clara Luciani" },
+    { slug: "angele", name: "Angèle" },
+  ]},
+  { enonce: "Quelle chanteuse britannique a enregistré son plus grand succès sur un titre écrit par son père et son frère ?", correct: 'kim-wilde', choices: [
+    { slug: "anastacia", name: "Anastacia" },
+    { slug: "bananarama", name: "Bananarama" },
+    { slug: "kim-wilde", name: "Kim Wilde" },
+    { slug: "sade", name: "Sade" },
+  ]},
+  { enonce: "Quel duo allemand a été monté par le producteur Dieter Bohlen autour du chanteur Thomas Anders ?", correct: 'modern-talking', choices: [
+    { slug: "wham", name: "Wham!" },
+    { slug: "baltimora", name: "Baltimora" },
+    { slug: "modern-talking", name: "Modern Talking" },
+    { slug: "a-ha", name: "A-ha" },
+  ]},
+];
+
+const faq = [
+  { q: "Les réponses de ce quiz peuvent-elles changer ?", a: "Non. Chaque réponse porte sur un fait acquis — une date, un nom, un record établi. Contrairement à un classement d'écoutes, rien ici ne bougera le mois prochain." },
+  { q: "D'où viennent ces informations ?", a: "Des fiches artistes du site, dont chaque fait a été vérifié individuellement avant publication. Chaque bonne réponse renvoie vers la fiche correspondante." },
+  { q: "Qu'est-ce que le round bonus ?", a: "Un sans-faute sur les 10 questions du round principal débloque 10 questions supplémentaires, pour un score final possible sur 20." },
+  { q: "Ces artistes passent-ils vraiment sur Radio Odyssey ?", a: "Oui — tous les artistes cités figurent dans notre <a href='/artistes-diffuses-radio-odyssey.html' style='color:var(--ro-purple);font-weight:700;'>catalogue réel de programmation</a>, avec le détail des titres diffusés." },
+];
+---
+<Layout
+  lang="fr"
+  title=Quiz : les coulisses des titres diffusés | Radio Odyssey
+  description=Un quiz sur les histoires derrière les titres diffusés sur Radio Odyssey : qui a écrit pour qui, quelle voix on entend vraiment, pourquoi ce titre existe. 20 questions vérifiées.
+>
+  <PageHero
+    gradientFrom="#FF9A3C"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent=Les coulisses des titres
+    title=Les coulisses des titres
+    text="Des réponses qui ne changeront pas : une date, un nom, un record acquis."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.3"/><path d="M19 19a5 5 0 1 1 6.5 4.8c-1 .3-1.5 1-1.5 2v1.2" stroke="white" stroke-width="2.3" stroke-linecap="round" fill="none"/><circle cx="24" cy="32.5" r="1.6" fill="white"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Qui chante vraiment sur le disque, qui a écrit pour qui, pourquoi ce morceau existe : 20 questions sur ce qu'on n'entend pas en écoutant. Un sans-faute sur les 10 premières débloque 10 questions bonus. Toutes les réponses sont tirées de nos <a href="/artistes-diffuses-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">fiches artistes</a>, où chaque fait a été vérifié un par un.</p>
+          </div>
+
+          <div class="content-card">
+            <QuizBlock
+              id="quiz-coulisses-artistes-radio-odyssey"
+              main={main}
+              bonus={bonus}
+              verdicts={{
+                parfait: 'Sans-faute intégral — vous connaissez la maison mieux que nous.',
+                bon: 'Très joli score. Il reste deux ou trois coulisses à découvrir.',
+                moyen: "Bonne base ! Un tour sur les fiches artistes et le sans-faute est à portée.",
+                faible: "Tout est sur les fiches artistes — et c'est plutôt agréable à lire.",
+              }}
+            />
+          </div>
+
+          <FAQBlock items={faq} idPrefix="quiz-coulisses-artistes-radio-odyssey-faq" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/quiz-noms-artistes-radio-odyssey.html', label: "D'où viennent leurs noms ?", desc: 'Un autre quiz sur l\'univers de la radio' },
+              { href: '/quiz-records-radio-odyssey.html', label: "Records et premières fois", desc: 'Un autre quiz sur l\'univers de la radio' },
+              { href: '/quiz-musicaux-radio-odyssey.html', label: 'Tous nos quiz musicaux', desc: 'Les cinq décennies, 100 questions' },
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les artistes diffusés', desc: 'Les 147 fiches, avec les titres réellement passés' },
+            ]}
+            associated={[
+              { href: '/styles-musicaux-radio-odyssey.html', label: 'Les styles musicaux de l\'antenne' },
+              { href: '/titres-les-plus-diffuses-sur-radio-odyssey.html', label: 'Les titres les plus diffusés' },
+              { href: '/artistes-et-styles.html', label: 'Le cocon Artistes & Styles' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez ces artistes en direct</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

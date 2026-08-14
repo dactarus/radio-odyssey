@@ -4,11 +4,11 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-14 (§68).*
+*Dernière mise à jour de ce fichier : 2026-08-14 (§69).*
 
 ## Objectif du projet
 
-Faire de **radio-odyssey.com** un site de contenu riche — objectif des 100 pages thématiques **atteint et dépassé** (255 pages générées, 237 au sitemap) — organisé en catégories :
+Faire de **radio-odyssey.com** un site de contenu riche — objectif des 100 pages thématiques **atteint et dépassé** (258 pages générées, 240 au sitemap) — organisé en catégories :
 - Musique et bien-être
 - Respiration et cohérence cardiaque
 - Playlists selon les moments de la journée
@@ -40,7 +40,7 @@ Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → U
 
 ## Architecture actuelle du site
 
-**237 URL au sitemap** (255 pages générées, dont 18 fiches artistes volontairement désindexées — §61, §63), réparties en deux silos :
+**240 URL au sitemap** (258 pages générées, dont 18 fiches artistes volontairement désindexées — §61, §63), réparties en deux silos :
 
 - **108 pages éditoriales** — organisées en 7 catégories définies dans `src/data/navigation.js` : Bien-être & Santé (18), Musique & Énergie (26), Playlists du Jour (6), Artistes & Styles (10), Conseils d'Écoute (8), Les Coulisses (12), International (13 pages en `lang="en"`). S'y ajoutent l'accueil, `/plan-du-site.html`, `/quiz-musicaux-radio-odyssey.html` et les deux pages légales.
 - **147 fiches artistes** — générées par la route dynamique `src/pages/artiste-[slug].astro` à partir de `src/data/artists.js`. **129 indexées, 18 en `noindex, follow`** selon la constante `SEUIL_INDEXATION_TITRES` (§61, §63). On y accède depuis `/artistes-diffuses-radio-odyssey.html` et `/plan-du-site.html`.
@@ -56,6 +56,7 @@ Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → U
 | `CookieConsent.astro` | Bandeau RGPD — GA4 n'est chargé qu'après acceptation |
 | `WebviewBanner.astro` | Alerte navigateur intégré (Facebook/Instagram) |
 | `SearchModal.astro` | Recherche interne (Pagefind) |
+| `QuizBlock.astro` | Moteur de quiz réutilisable (§69) — les 5 quiz par décennie gardent leur copie propre, les 3 quiz thématiques l'utilisent |
 | `CategoryHub.astro` | Gabarit des 7 pages de hub de catégorie |
 | `DayScheduleNav.astro` | Navigation entre les 6 playlists du jour |
 | `ContentIllustration.astro` | Illustration SVG en ligne (30 pages) |
@@ -70,7 +71,7 @@ Trois modules **dérivés** alimentent les fiches artistes (§61-63). Aucun ne s
 | Fichier | Ce qu'il calcule | Source |
 |---|---|---|
 | `artist-stats.js` | rang général, part d'antenne, fréquence hebdomadaire, rang dans la famille de genre, voisins de classement, ex æquo | `artists.js` + `genres.js` |
-| `quiz-artistes.js` | quiz dans lesquels l'artiste est une bonne réponse | code source des 5 pages de quiz, lu en `?raw` au build |
+| `quiz-artistes.js` | quiz dans lesquels l'artiste est une bonne réponse | code source des 8 pages de quiz, lu en `?raw` au build |
 | `top-titres.js` | rang de l'artiste au top 15 des titres | code source de `titres-les-plus-diffuses-…`, lu en `?raw` au build |
 
 ⚠️ `artist-stats.js` expose `JOURS_RELEVE` (92) et `PERIODE_RELEVE` (« du 14 mai au 13 août 2026 »). **Si la fenêtre de comptage d'`artists.js` change, ces deux constantes doivent changer avec elle**, sinon la fréquence hebdomadaire affichée sur les 147 fiches est fausse.
@@ -79,7 +80,7 @@ Trois modules **dérivés** alimentent les fiches artistes (§61-63). Aucun ne s
 
 ## Application installable (PWA)
 
-Depuis le 2026-08-09, `www.radio-odyssey.com` est **installable depuis n'importe laquelle de ses 255 pages** :
+Depuis le 2026-08-09, `www.radio-odyssey.com` est **installable depuis n'importe laquelle de ses 258 pages** :
 
 - `public/sw.js` — service worker. Stratégie : *network-first* sur le HTML (la fraîcheur prime, la console publie souvent), *cache-first* sur les ressources à empreinte (`/_astro/`, polices, images), *stale-while-revalidate* sur le reste. **Aucune interception du cross-origin** : le flux audio et la mesure d'audience passent directement. Incrémenter `CACHE_VERSION` à chaque modification.
 - `public/hors-ligne.html` — page de repli autonome (CSS en ligne, zéro dépendance externe).
@@ -115,7 +116,7 @@ Depuis le 2026-08-09, l'iframe RadioKing est **remplacée par un lecteur natif**
 - **Repli** : si la lecture native échoue (navigateurs intégrés Facebook/Instagram), le lecteur bascule en mode secours et le clic suivant ouvre `link.radioking.com`
 - **Séquences de cohérence cardiaque** (§62) : RadioKing les remonte sous leur nom de fichier interne (« CC 3 min 5 inspire / 5 expire Nov05bis »). `estSequenceRespiration()` les détecte et `libelleSequence()` affiche « Cohérence cardiaque · Respiration guidée — séquence de N min », aux trois points d'affichage (barre, affichage initial, Media Session). ⚠️ Si un nouveau format de nommage apparaît dans RadioKing, c'est la regex de `estSequenceRespiration` qu'il faut élargir.
 
-> ⚠️ **`roPlayNow(event)` est appelée en `onclick` depuis 255 pages** (dont les 147 fiches artistes) et depuis `Sidebar.astro`. Son nom et sa signature ne doivent pas changer. Elle est définie dans `Footer.astro` et délègue à `window.roPlayerToggle`.
+> ⚠️ **`roPlayNow(event)` est appelée en `onclick` depuis 258 pages** (dont les 147 fiches artistes) et depuis `Sidebar.astro`. Son nom et sa signature ne doivent pas changer. Elle est définie dans `Footer.astro` et délègue à `window.roPlayerToggle`.
 
 ## Points de vigilance techniques
 
@@ -194,8 +195,8 @@ Chiffres réels, utiles pour arbitrer les priorités — le détail figure au §
 
 ## Prochaines étapes
 
-1. **Construire les quiz sur l'univers de la radio** (§68). Le réservoir est plein : **341 faits datés et vérifiés** sur les 147 fiches, dont plusieurs se répondent d'une fiche à l'autre. De quoi bâtir trois à quatre quiz de dix questions à réponses immuables — une date, un nom, un lieu — sur le modèle des cinq quiz par décennie existants (`quiz-musical-annees-*.astro`).
-   ⚠️ Le croisement quiz ↔ fiches est déjà automatisé par `data/quiz-artistes.js` : les nouveaux quiz apparaîtront tout seuls sur les fiches concernées, à condition de garder le même format `{ track: "…", correct: 'slug' }`.
+1. **Mesurer l'effet des trois nouveaux quiz** (§69) avant d'en créer d'autres : le réservoir permettrait un quatrième quiz, mais rien ne dit qu'un neuvième quiz apporte plus qu'il ne dilue. Les cinq quiz par décennie ont valu au site sa première citation dans un Aperçu IA (§59) — regarder si les nouveaux font de même.
+   ⚠️ Le croisement quiz ↔ fiches est automatisé par `data/quiz-artistes.js`, qui lit le code source des pages au build. Format attendu : `{ track: "…", correct: 'slug' }` ou `{ enonce: "…", correct: 'slug' }`. **Si l'extraction ne trouve rien, le bloc quiz disparaît des 147 fiches sans erreur au build** — c'est arrivé au §69.
    ⚠️ **Quatre erreurs factuelles ont été trouvées dans les fiches d'origine** (§63, §66, §67, §68). Les faits sont désormais vérifiés, mais toute nouvelle fiche doit l'être aussi : ne jamais écrire un fait de mémoire.
 2. **Corriger l'étiquetage de « L'assasymphonie » dans le manager RadioKing** : le fichier est crédité à Emmanuel Moire alors que le titre est de Florent Mothe (*Mozart, l'opéra rock*). L'erreur s'affiche à l'antenne et sur les écrans de voiture, et **chaque nouveau dépouillement la réintroduira** tant que le fichier n'est pas corrigé (§65). Le gisement d'artistes sans fiche est épuisé : 20 des 21 restants ont été traités au §65, seul **Tom York** reste en attente — sources insuffisantes, et un risque de confusion avec Thom Yorke de Radiohead
 3. **Protéger les déploiements** dans l'interface Vercel (Settings → Deployment Protection). Ne pas retenter par `vercel.json` : deux tentatives ont échoué, la condition `has: host` ne se déclenche pas (§59)

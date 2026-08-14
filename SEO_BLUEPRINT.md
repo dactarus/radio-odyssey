@@ -1975,4 +1975,68 @@ Build isolé : 257 pages, aucune erreur. 237 URL au sitemap, aucune absente, auc
 
 ---
 
-*Dernière mise à jour : 2026-08-14, précision des faits terminée (§68).*
+---
+
+## 69. Trois quiz sur l'univers de la radio (2026-08-14)
+
+Idée de Frédéric, posée le 13 au soir : exploiter la matière des fiches autrement, avec des **réponses immuables** — une date, un nom, un événement terminé. Le §68 avait rempli le réservoir ; il restait à le verser.
+
+### La contrainte qui a tout décidé
+
+Ma première étude (§65) partait des statistiques : *« quel artiste est le plus diffusé ? »*, *« combien de titres de X ? »*. Frédéric a corrigé le tir, et il avait raison : un quiz dont les réponses changent à chaque build **ne se partage pas**. Dire « j'ai eu 8/10 » ne veut plus rien dire la semaine suivante, et un moteur qui cite la page risque de citer une réponse périmée.
+
+Les trois quiz ne contiennent donc **aucune donnée de programmation**. Uniquement des faits acquis.
+
+### Un moteur, au lieu de cinq copies
+
+Les cinq quiz par décennie embarquent chacun leur propre copie du même JavaScript — environ 180 lignes, avec le préfixe d'identifiant écrit en dur (`quiz80Init`, `quiz90Init`…). Une correction de comportement demandait cinq modifications à la main.
+
+Le moteur est désormais isolé dans **`src/components/QuizBlock.astro`** : mélange des questions et des réponses, round bonus débloqué au sans-faute, verdicts paramétrables. Il se repère par `data-quiz` sur le conteneur, donc plusieurs quiz pourraient coexister sur une page.
+
+**Les cinq pages existantes n'ont pas été touchées.** Elles fonctionnent ; les réécrire ferait courir un risque pour un gain nul. Le composant sert aux quiz créés à partir d'aujourd'hui.
+
+### Les trois quiz
+
+| page | thème | exemple de question |
+|---|---|---|
+| `/quiz-noms-artistes-radio-odyssey.html` | l'origine des noms de scène | *Quel chanteur doit son surnom à un pull rayé jaune et noir qui le faisait ressembler à une abeille ?* |
+| `/quiz-records-radio-odyssey.html` | records et premières fois | *Quel groupe signe le seul générique de James Bond arrivé n°1 du Billboard Hot 100 ?* |
+| `/quiz-coulisses-artistes-radio-odyssey.html` | les coulisses des titres | *De quel projet italien la voix du disque n'est-elle pas celle de l'homme qui apparaît dans le clip ?* |
+
+10 questions + 10 bonus chacun, soit **60 questions**. Chaque artiste n'est bonne réponse qu'une fois par quiz — 20 artistes distincts par page, 60 fiches sollicitées au total.
+
+### Le croisement se fait tout seul
+
+`data/quiz-artistes.js` a été étendu pour reconnaître les deux formats : `track:` pour les quiz par décennie, `enonce:` pour les nouveaux. Les trois quiz sont donc apparus **sans aucune saisie** sur les fiches des artistes concernés, qui passent de 90 à **100 fiches** portant un bloc quiz.
+
+Sur la fiche Michael Jackson, par exemple, on lit maintenant les trois d'un coup : *« Billie Jean »* pour les années 80, *« Earth Song »* pour les années 90, et *« Quel artiste signe l'album le plus vendu de tous les temps ? »* pour le quiz records.
+
+### Un piège rencontré, et le garde-fou posé
+
+La génération automatique des trois pages a produit `correct: "slug"` avec des guillemets doubles, là où le projet utilise des apostrophes. L'expression d'extraction ne trouvait plus rien : **le bloc quiz disparaissait des 147 fiches sans le moindre message d'erreur.** Le build passait, la page s'affichait, seul le croisement était mort.
+
+Deux corrections : les fichiers repassés à la convention du projet, et l'expression rendue tolérante aux deux écritures. Une extraction silencieuse est un mauvais point de rupture — mieux vaut qu'elle accepte large.
+
+### Ce que ça change
+
+| | avant | après |
+|---|---:|---:|
+| Quiz sur le site | 5 | **8** |
+| Questions au total | 100 | **160** |
+| Fiches artistes portant un bloc quiz | 90 | **100** |
+| Pages générées | 255 | **258** |
+| URL au sitemap | 237 | **240** |
+
+La page hub `/quiz-musicaux-radio-odyssey.html` présente désormais les deux familles séparément, et son balisage `ItemList` couvre les huit.
+
+### Pourquoi ça compte
+
+C'est le premier contenu du site **dont Radio Odyssey est le sujet**, et non le diffuseur. Les cinq quiz par décennie interrogent la culture musicale générale ; ceux-là interrogent ce que le site a établi lui-même, fiche par fiche. Aucun autre site ne peut produire les mêmes questions, parce que personne d'autre n'a fait le travail de vérification des §64 à §68.
+
+### Vérifications
+
+Build isolé : 260 pages, aucune erreur. 240 URL au sitemap, aucun doublon, aucune absente du build, aucune en `noindex`. Aucun lien interne cassé. JSON-LD valides sur l'ensemble du site. Les trois pages rendent bien 20 questions, 20 bonnes réponses et 100 propositions chacune. Une icône inexistante (`patch-question`) a été rattrapée par le contrôle de `Icon.astro`, qui échoue au build plutôt que d'afficher un trou.
+
+---
+
+*Dernière mise à jour : 2026-08-14, trois quiz sur l'univers de la radio (§69).*
