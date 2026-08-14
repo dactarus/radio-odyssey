@@ -4,7 +4,7 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-13 (§65).*
+*Dernière mise à jour de ce fichier : 2026-08-14 (§66).*
 
 ## Objectif du projet
 
@@ -194,13 +194,15 @@ Chiffres réels, utiles pour arbitrer les priorités — le détail figure au §
 
 ## Prochaines étapes
 
-1. **Corriger l'étiquetage de « L'assasymphonie » dans le manager RadioKing** : le fichier est crédité à Emmanuel Moire alors que le titre est de Florent Mothe (*Mozart, l'opéra rock*). L'erreur s'affiche à l'antenne et sur les écrans de voiture, et **chaque nouveau dépouillement la réintroduira** tant que le fichier n'est pas corrigé (§65). Le gisement d'artistes sans fiche est épuisé : 20 des 21 restants ont été traités au §65, seul **Tom York** reste en attente — sources insuffisantes, et un risque de confusion avec Thom Yorke de Radiohead
-2. **Protéger les déploiements** dans l'interface Vercel (Settings → Deployment Protection). Ne pas retenter par `vercel.json` : deux tentatives ont échoué, la condition `has: host` ne se déclenche pas (§59)
-3. **E-E-A-T santé** sur les 18 pages bien-être : auteur, date de révision, sources, mention de non-substitution à un avis médical
-4. **Grille week-end distincte** : midi y est le meilleur moment et reçoit la programmation standard (§58)
-5. **Expérience jeudi soir** : appliquer la grille musclée un soir de plus pendant un mois, et vérifier si le ratio soirée/après-midi passe de 0,40 vers 0,67 (§58)
-6. **Ouvrir une liste e-mail** — aucun actif propriétaire à ce jour ; à faire avant toute nouvelle campagne payante
-7. **Instrumenter** les événements manquants (installation PWA, opt-in push, quiz, exercice, sorties plateformes)
-8. **Fusionner l'appli** : page hors ligne enrichie (garder l'exercice et le programme), masquage du bouton « App Mobile » en mode autonome, puis redirection de `app.` vers `www`
-9. `og:image` par page sur les ~213 pages feuilles (les 7 hubs et l'accueil ont déjà la leur). `llms.txt` complété à 29 URL au §59
-10. **Décision internationale** : `/en/` complet, ou repli assumé
+1. **Poursuivre la précision des faits** (§66) : 95 des 115 fiches d'origine restent à reprendre, par lots de 20 dans l'ordre de diffusion. Objectif : au moins deux faits datés et vérifiés par fiche, condition posée pour construire les quiz sur l'univers de la radio. État actuel : 175 faits datables, 38 fiches encore sans aucun.
+   ⚠️ Deux erreurs factuelles ont déjà été trouvées dans les fiches d'origine — « Cambodia » de Kim Wilde, jamais diffusé (§63), et « Ordinary » d'Alex Warren daté de 2024 au lieu de 2025 (§66). **Vérifier, ne pas recopier.**
+2. **Corriger l'étiquetage de « L'assasymphonie » dans le manager RadioKing** : le fichier est crédité à Emmanuel Moire alors que le titre est de Florent Mothe (*Mozart, l'opéra rock*). L'erreur s'affiche à l'antenne et sur les écrans de voiture, et **chaque nouveau dépouillement la réintroduira** tant que le fichier n'est pas corrigé (§65). Le gisement d'artistes sans fiche est épuisé : 20 des 21 restants ont été traités au §65, seul **Tom York** reste en attente — sources insuffisantes, et un risque de confusion avec Thom Yorke de Radiohead
+3. **Protéger les déploiements** dans l'interface Vercel (Settings → Deployment Protection). Ne pas retenter par `vercel.json` : deux tentatives ont échoué, la condition `has: host` ne se déclenche pas (§59)
+4. **E-E-A-T santé** sur les 18 pages bien-être : auteur, date de révision, sources, mention de non-substitution à un avis médical
+5. **Grille week-end distincte** : midi y est le meilleur moment et reçoit la programmation standard (§58)
+6. **Expérience jeudi soir** : appliquer la grille musclée un soir de plus pendant un mois, et vérifier si le ratio soirée/après-midi passe de 0,40 vers 0,67 (§58)
+7. **Ouvrir une liste e-mail** — aucun actif propriétaire à ce jour ; à faire avant toute nouvelle campagne payante
+8. **Instrumenter** les événements manquants (installation PWA, opt-in push, quiz, exercice, sorties plateformes)
+9. **Fusionner l'appli** : page hors ligne enrichie (garder l'exercice et le programme), masquage du bouton « App Mobile » en mode autonome, puis redirection de `app.` vers `www`
+10. `og:image` par page sur les ~213 pages feuilles (les 7 hubs et l'accueil ont déjà la leur). `llms.txt` complété à 29 URL au §59
+11. **Décision internationale** : `/en/` complet, ou repli assumé
