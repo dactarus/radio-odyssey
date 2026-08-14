@@ -1916,4 +1916,63 @@ Build isolé : 257 pages, aucune erreur. 237 URL au sitemap, aucune absente, auc
 
 ---
 
-*Dernière mise à jour : 2026-08-14, précision des faits, lot 2 (§67).*
+---
+
+## 68. Précision des faits — lots 3 à 5, chantier terminé (2026-08-14)
+
+Reprise des 75 fiches restantes, en trois lots : 41-60, 61-80, puis les 35 dernières. **Les 147 fiches du catalogue portent désormais des faits vérifiés.**
+
+### Une quatrième erreur
+
+La fiche **Bananarama** datait la formation du trio de 1981. Sara Dallin, Keren Woodward et Siobhan Fahey se sont réunies en **1979**. Bilan des erreurs trouvées dans les 115 fiches d'origine :
+
+| fiche | erreur | § |
+|---|---|---|
+| Kim Wilde | « Cambodia » listé, jamais diffusé | 63 |
+| Alex Warren | « Ordinary » daté de 2024 au lieu de 2025 | 66 |
+| Ofenbach | membres du duo inventés | 67 |
+| Bananarama | formation datée de 1981 au lieu de 1979 | 68 |
+
+Quatre erreurs sur 115 fiches. Aucune n'était détectable sans vérification pièce par pièce.
+
+### Ce que le chantier a mis au jour
+
+Trois faits corrigent une attribution que le public tient pour acquise, et feront d'excellentes questions :
+
+- La voix de *« Tarzan Boy »* (**Baltimora**) n'est pas celle de Jimmy McShane, qui apparaît dans le clip, mais celle de **Maurizio Bassi**, producteur du morceau.
+- Sur l'enregistrement original de *« The Rhythm of the Night »* (**Corona**), c'est **Giovanna Bersola** qui chante, pas Olga Souza, présentée comme l'interprète.
+- **Jeffrey Daniel**, membre de **Shalamar**, a popularisé le *backslide* dont Michael Jackson tirera le moonwalk — les deux artistes ont une fiche sur le site.
+
+Trois autres, sur l'intention derrière un morceau :
+
+- *« Children »* de **Robert Miles** a été écrit dans un but précis : donner aux DJ un morceau apaisant à jouer en fin de soirée, pour réduire les accidents de la route au retour.
+- *« September »* d'**Earth, Wind & Fire** s'ouvre sur le 21 septembre, date choisie uniquement parce qu'elle sonnait bien.
+- Les dix-huit morceaux de *Play*, de **Moby**, ont tous été cédés à la publicité ou au cinéma — une première à cette échelle.
+
+Et quelques origines de noms : **Bob Sinclar** vient d'un personnage du *Magnifique* ; **Stromae** est le verlan de « maestro » ; **Avicii** désigne le plus bas niveau de l'enfer bouddhiste ; **Dario G** porte le nom de l'entraîneur du club de football de Crewe.
+
+### Résultat du chantier complet
+
+| | départ | lot 1 | lot 2 | lots 3-5 |
+|---|---:|---:|---:|---:|
+| Faits datables | 133 | 175 | 217 | **341** |
+| Fiches sans aucun fait datable | 52 | 38 | 27 | **1** |
+| Faits auto-référents (« diffusé sur l'antenne ») | ~100 | — | — | **0** |
+
+Une seule fiche reste sans fait daté : **Sound Of Legend**, projet dance italien dont aucune source fiable ne donne ni date de formation ni discographie établie. Rien n'a été inventé pour combler la case.
+
+Effet secondaire notable : la disparition des faits auto-référents. Sur la plupart des fiches d'origine, le troisième fait redisait en prose ce que le bandeau de chiffres affiche depuis le §62 — un tiers de l'espace éditorial consacré à une redite.
+
+### Le réservoir pour les quiz
+
+341 faits datés, 147 fiches, dont plusieurs se répondent d'une fiche à l'autre — Tove Lo et Ellie Goulding, Katy Perry et Michael Jackson, Shalamar et Michael Jackson. De quoi construire **trois à quatre quiz de dix questions**, sur le modèle des cinq quiz par décennie existants, avec des réponses immuables : une date, un nom, un lieu.
+
+C'est le chantier suivant.
+
+### Vérifications
+
+Build isolé : 257 pages, aucune erreur. 237 URL au sitemap, aucune absente, aucune en `noindex`, aucune fiche indexable hors sitemap. Aucun lien interne cassé. 147 JSON-LD valides. 18 fiches désindexées, inchangé — les lots ne touchent qu'aux `facts`.
+
+---
+
+*Dernière mise à jour : 2026-08-14, précision des faits terminée (§68).*
