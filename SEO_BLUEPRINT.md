@@ -1818,4 +1818,56 @@ Deux réserves à examiner avant de construire : un quiz dont les réponses chan
 
 ---
 
-*Dernière mise à jour : 2026-08-13 (nuit), vingt nouvelles fiches artistes (§65).*
+---
+
+## 66. Préciser les faits pour rendre les fiches interrogeables — lot 1 (2026-08-14)
+
+Décision de Frédéric : avant de construire les quiz sur l'univers de la radio, remplir le réservoir. Les quiz ne sont pas un contenu à côté des fiches, ils en sont le sous-produit — mais seulement si les faits sont **datés et vérifiables**.
+
+### Ce que la mesure disait
+
+Sur 441 faits rédigés, seuls **133 portaient une information exploitable comme réponse** : une année précise, un nom propre, une récompense. Et la répartition était très inégale.
+
+| | 0 fait datable | 1 | 2 | 3 |
+|---|---:|---:|---:|---:|
+| les 115 fiches d'origine | **52** | 59 | 4 | 0 |
+| les 32 fiches des §64-65 | 0 | 5 | 20 | 7 |
+
+Les fiches d'origine disaient *« active depuis le début des années 1980 »*, *« révélée à la fin des années 2010 »*, *« carrière lancée dans les années 1990 »*. Vrai, mais sans prise : aucune question ne peut en sortir, et aucun lecteur n'y apprend rien.
+
+Deuxième défaut, plus gênant : sur la plupart de ces fiches, **le troisième fait parlait de Radio Odyssey** — *« un des artistes les plus diffusés sur l'antenne »*. Depuis le §62, cette information figure déjà dans le bandeau de chiffres, calculée et datée. La répéter en prose consommait un tiers de l'espace éditorial pour redire ce que la page affiche deux blocs plus bas.
+
+### Lot 1 : les vingt fiches les plus diffusées
+
+David Guetta, Madonna, Shakira, Gims, Bruno Mars, Tame Impala, Teddy Swims, Alex Warren, Justin Bieber, Mylène Farmer, Zazie, Ed Sheeran, Ariana Grande, Lady Gaga, Sound Of Legend, Pascal Obispo, Taylor Swift, Jennifer Lopez, Sting, Jérémy Frérot.
+
+Soixante faits réécrits, chacun vérifié avant d'être posé.
+
+**Une erreur corrigée :** la fiche Alex Warren datait *« Ordinary »* de **2024**. Le titre est sorti le **7 février 2025**, et il est resté dix semaines en tête du Billboard Hot 100. C'est la deuxième erreur factuelle trouvée dans les fiches d'origine, après *« Cambodia »* de Kim Wilde, jamais diffusé (§63).
+
+**Ce que la vérification a rapporté**, et qui fera de bonnes questions :
+
+- Le nom de scène de **Teddy Swims** est un acronyme : *Someone Who Isn't Me, Sometimes*. Et *« Lose Control »* détient le record de longévité au Billboard Hot 100, avec **112 semaines** de présence.
+- Le surnom de **Sting** vient d'un pull rayé jaune et noir qui le faisait ressembler à une abeille.
+- Le premier album de **Jennifer Lopez**, *On the 6* (1999), doit son nom à la ligne de métro qu'elle prenait pour rejoindre Manhattan.
+- Les albums d'**Ed Sheeran** portent tous un symbole mathématique : +, ×, ÷, = puis −.
+- **Zazie** a été mannequin une dizaine d'années avant la musique, et a reçu la Victoire de la révélation féminine en 1993.
+- **Mylène Farmer** est née au Québec, à Pierrefonds, et non en France.
+- **Jérémy Frérot** est passé par la troisième saison de The Voice avant de former Fréro Delavega, dont le premier album fut numéro 1 en 2014.
+
+### Résultat du lot
+
+| | avant | après |
+|---|---:|---:|
+| Faits datables, toutes fiches | 133 | **175** |
+| Fiches sans aucun fait datable | 52 | **38** |
+
+Les vingt fiches du lot passent de 0,2 à 2,7 faits datables en moyenne. Il reste **95 fiches d'origine** à reprendre, par lots de vingt.
+
+### Vérifications
+
+Build isolé : 257 pages, aucune erreur. 237 URL au sitemap, aucune absente du build, aucune en `noindex`, aucune fiche indexable hors sitemap. Aucun lien interne cassé. 147 JSON-LD valides. Toujours 18 fiches désindexées — le lot ne touche qu'aux `facts`, ni aux titres ni aux passages.
+
+---
+
+*Dernière mise à jour : 2026-08-14, précision des faits, lot 1 (§66).*
