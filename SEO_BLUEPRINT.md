@@ -2039,4 +2039,24 @@ Build isolé : 260 pages, aucune erreur. 240 URL au sitemap, aucun doublon, aucu
 
 ---
 
-*Dernière mise à jour : 2026-08-14, trois quiz sur l'univers de la radio (§69).*
+### Correction du lendemain : titres, sous-titres, et un bug d'attributs
+
+Deux retours de Frédéric, tous deux justifiés.
+
+**Les titres ne disaient pas la règle du jeu.** « D'où viennent leurs noms ? », « Records et premières fois », « Les coulisses des titres » : jolis, mais on ne sait pas ce qu'on doit faire. Les cinq quiz par décennie, eux, respectaient le principe — « Quiz Musical Années 80 » se comprend seul. Les trois pages deviennent :
+
+- **Quiz des noms de scène : à qui appartient ce surnom ?**
+- **Quiz des records : qui détient cet exploit ?**
+- **Quiz des coulisses : qui se cache derrière ce titre ?**
+
+Le mot « quiz » ouvre, le thème suit, la question pose la règle : on cherche un artiste.
+
+**Le sous-titre parlait au concepteur, pas au joueur.** « Des réponses qui ne changeront pas : une date, un nom, un record acquis » répondait à un risque de conception — un quiz bâti sur des chiffres d'écoute donnerait un score incomparable d'un mois à l'autre. Vrai, mais personne n'arrive sur un jeu en se demandant si les réponses vont bouger. Remplacé par un aperçu du contenu : « Un pull rayé, un roman du XIXᵉ siècle, un entraîneur de football : 20 noms de scène à attribuer. »
+
+**Et un bug que ce retour a mis au jour.** Le gabarit de génération posait quatre attributs sans guillemets : `title=Quiz : d'où viennent les noms d'artistes ?`. Astro tronquait la valeur au premier espace. Les trois pages étaient donc **en ligne avec `<title>` = « Quiz » et `<h1>` = « D'où »**. Le build passait, aucun avertissement. Corrigé sur les trois pages.
+
+Leçon reprise dans les vérifications avant publication : **contrôler qu'aucun `<title>` du build ne fait moins de trois mots**. C'est un test à une ligne qui aurait attrapé la régression.
+
+---
+
+*Dernière mise à jour : 2026-08-14, quiz renommés et correction des titres (§69).*

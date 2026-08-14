@@ -4,7 +4,7 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-14 (§69).*
+*Dernière mise à jour de ce fichier : 2026-08-14 (§69, révisé).*
 
 ## Objectif du projet
 
@@ -149,6 +149,7 @@ npm run preview        # http://localhost:4321 — Ctrl+C pour rendre la main
 | **Aucune règle de `vercel.json` ne porte l'URL d'une page nouvelle** | `/plan-du-site.html` a été créée puis rendue invisible par une redirection héritée (§60) |
 | Nombre de fiches en `noindex` = nombre attendu par `SEUIL_INDEXATION_TITRES` | seuil et sitemap doivent rester d'accord (§61) |
 | `CACHE_VERSION` incrémenté si `public/sw.js` a changé | sinon le service worker sert l'ancienne version |
+| **Aucun `<title>` du build ne fait moins de trois mots** | un attribut Astro sans guillemets est tronqué au premier espace, sans erreur au build : trois pages de quiz sont parties en ligne avec `<title>` = « Quiz » (§69) |
 
 ## Console d'édition
 
