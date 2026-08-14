@@ -4,7 +4,7 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-14 (§67).*
+*Dernière mise à jour de ce fichier : 2026-08-14 (§68).*
 
 ## Objectif du projet
 
@@ -194,8 +194,9 @@ Chiffres réels, utiles pour arbitrer les priorités — le détail figure au §
 
 ## Prochaines étapes
 
-1. **Poursuivre la précision des faits** (§66-67) : 75 des 115 fiches d'origine restent à reprendre, par lots de 20 dans l'ordre de diffusion. Objectif : au moins deux faits datés et vérifiés par fiche, condition posée pour construire les quiz sur l'univers de la radio. État actuel : 217 faits datables, 27 fiches encore sans aucun.
-   ⚠️ **Trois erreurs factuelles trouvées sur les 40 fiches déjà vérifiées** — « Cambodia » de Kim Wilde, jamais diffusé (§63) ; « Ordinary » d'Alex Warren daté de 2024 au lieu de 2025 (§66) ; les deux membres d'Ofenbach purement inventés (§67). Le taux est tel que **les 75 fiches restantes ne peuvent pas être considérées comme fiables**. Vérifier, ne jamais recopier.
+1. **Construire les quiz sur l'univers de la radio** (§68). Le réservoir est plein : **341 faits datés et vérifiés** sur les 147 fiches, dont plusieurs se répondent d'une fiche à l'autre. De quoi bâtir trois à quatre quiz de dix questions à réponses immuables — une date, un nom, un lieu — sur le modèle des cinq quiz par décennie existants (`quiz-musical-annees-*.astro`).
+   ⚠️ Le croisement quiz ↔ fiches est déjà automatisé par `data/quiz-artistes.js` : les nouveaux quiz apparaîtront tout seuls sur les fiches concernées, à condition de garder le même format `{ track: "…", correct: 'slug' }`.
+   ⚠️ **Quatre erreurs factuelles ont été trouvées dans les fiches d'origine** (§63, §66, §67, §68). Les faits sont désormais vérifiés, mais toute nouvelle fiche doit l'être aussi : ne jamais écrire un fait de mémoire.
 2. **Corriger l'étiquetage de « L'assasymphonie » dans le manager RadioKing** : le fichier est crédité à Emmanuel Moire alors que le titre est de Florent Mothe (*Mozart, l'opéra rock*). L'erreur s'affiche à l'antenne et sur les écrans de voiture, et **chaque nouveau dépouillement la réintroduira** tant que le fichier n'est pas corrigé (§65). Le gisement d'artistes sans fiche est épuisé : 20 des 21 restants ont été traités au §65, seul **Tom York** reste en attente — sources insuffisantes, et un risque de confusion avec Thom Yorke de Radiohead
 3. **Protéger les déploiements** dans l'interface Vercel (Settings → Deployment Protection). Ne pas retenter par `vercel.json` : deux tentatives ont échoué, la condition `has: host` ne se déclenche pas (§59)
 4. **E-E-A-T santé** sur les 18 pages bien-être : auteur, date de révision, sources, mention de non-substitution à un avis médical
