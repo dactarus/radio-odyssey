@@ -1870,4 +1870,50 @@ Build isolé : 257 pages, aucune erreur. 237 URL au sitemap, aucune absente du b
 
 ---
 
-*Dernière mise à jour : 2026-08-14, précision des faits, lot 1 (§66).*
+---
+
+## 67. Précision des faits — lot 2 (2026-08-14)
+
+Fiches classées 21e à 40e par diffusion : Angèle, Tove Lo, Christophe Willem, Indochine, Soprano, Ofenbach, Calvin Harris, Alicia Keys, Dua Lipa, Coldplay, Bebe Rexha, The Weeknd, Jean-Jacques Goldman, Mika, Katy Perry, Michael Jackson, Harry Styles, Miley Cyrus, Christophe Maé, Djo.
+
+### Une troisième erreur factuelle
+
+La fiche **Ofenbach** présentait le duo comme formé de « Louis Slipper et César Denis Bernard ». Les deux membres sont **Dorian Lauduique et César de Rummel**. Le second prénom était juste, le reste inventé de bout en bout — c'est le profil typique d'une donnée hallucinée, et elle était en ligne depuis la création de la fiche.
+
+Récapitulatif des erreurs trouvées dans les 115 fiches d'origine depuis le §63 :
+
+| fiche | erreur | §  |
+|---|---|---|
+| Kim Wilde | « Cambodia » listé, jamais diffusé en 13,5 mois | 63 |
+| Alex Warren | « Ordinary » daté de 2024 au lieu de 2025 | 66 |
+| Ofenbach | membres du duo inventés | 67 |
+
+Trois erreurs sur quarante fiches vérifiées. **Le taux est trop élevé pour considérer les 75 fiches non encore reprises comme fiables.**
+
+### Ce que la vérification a rapporté
+
+Deux faits se répondent d'une fiche à l'autre, ce qui n'était pas cherché :
+
+- **Tove Lo** a coécrit *« Love Me Like You Do »* pour **Ellie Goulding** — deux fiches du site, dont la seconde a été créée au §65.
+- **Katy Perry** est la seule artiste, avec **Michael Jackson**, à avoir placé cinq singles d'un même album en tête du Billboard Hot 100. Elle avec *Teenage Dream* (2010), lui avec *Bad* (1987). Personne depuis.
+
+Ce type de croisement fera de meilleures questions qu'une date isolée, et il relie les fiches entre elles.
+
+Autres trouvailles utilisables : *« Bleta »*, le prénom de naissance de **Bebe Rexha**, signifie « abeille » en albanais ; **Calvin Harris** a placé huit singles du seul album *18 Months* dans le top 10 britannique ; **Christophe Willem** doit son surnom de « tortue » à sa tessiture de contre-ténor ; *« End of Beginning »* de **Djo** est sorti en 2022 et n'est devenu un succès qu'au début de 2024.
+
+### Résultat cumulé
+
+| | avant lot 1 | après lot 1 | après lot 2 |
+|---|---:|---:|---:|
+| Faits datables | 133 | 175 | **217** |
+| Fiches sans aucun fait datable | 52 | 38 | **27** |
+
+Il reste **75 fiches d'origine** à reprendre, soit environ quatre lots.
+
+### Vérifications
+
+Build isolé : 257 pages, aucune erreur. 237 URL au sitemap, aucune absente, aucune en `noindex`, aucune fiche indexable hors sitemap. Aucun lien interne cassé. 147 JSON-LD valides. 18 fiches désindexées, inchangé — le lot ne touche qu'aux `facts`.
+
+---
+
+*Dernière mise à jour : 2026-08-14, précision des faits, lot 2 (§67).*
