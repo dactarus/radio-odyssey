@@ -2059,4 +2059,39 @@ Leçon reprise dans les vérifications avant publication : **contrôler qu'aucun
 
 ---
 
-*Dernière mise à jour : 2026-08-14, quiz renommés et correction des titres (§69).*
+---
+
+## 70. La base d'abonnés push n'existe pas — la fusion de l'appli est débloquée (2026-08-14)
+
+Un courriel d'Upstash signale que la base `radio-odyssey-push` n'a reçu aucun trafic depuis des semaines et sera archivée.
+
+### Ce que cette base contient
+
+Les abonnements aux notifications push de `app.radio-odyssey.com`, stockés dans un ensemble Redis sous la clé `push_subscriptions`. Deux endpoints s'en servent : `api/subscribe.js` (enregistre à l'acceptation) et `api/send.js` (envoi groupé depuis `admin.html`). Le site `www` n'y touche pas.
+
+### Le chiffre
+
+`SCARD push_subscriptions` → **1**.
+
+Un abonné. Selon toute vraisemblance, le téléphone de Frédéric le jour du test.
+
+### Ce que ça change
+
+Depuis le §57, `CLAUDE.md` justifiait le maintien de deux PWA distinctes par cette base : les abonnements push sont liés à une origine et ne se transfèrent pas d'un domaine à l'autre. C'est exact techniquement. Sauf qu'on protégeait un abonné.
+
+**La fusion de l'appli vers `www` n'a plus d'obstacle.** Elle reste au programme (point 9), l'exécution est simplement reportée.
+
+Décisions prises :
+
+- **Ne pas payer, ne pas maintenir la base en vie.** L'archivage sauvegarde les données et permet de les restaurer ; il n'y a rien à sauver. À noter pour plus tard : chez Upstash, un `PING` ne compte pas comme activité — seule une opération de données réinitialise le compteur d'inactivité de quatorze jours.
+- **Si des notifications push reviennent un jour, ce sera sur `www`**, et seulement avec un programme éditorial défini.
+
+### Le vrai enseignement
+
+La fonction est en place depuis des mois et n'a recruté personne. Ce n'est pas un problème de plateforme, c'est un problème de proposition : soit le bouton d'abonnement est invisible, soit ce qu'il promet n'intéresse pas. Reconstruire le même dispositif ailleurs sans répondre à cette question donnerait le même résultat.
+
+C'est aussi une leçon de méthode. Une contrainte structurante — « on ne peut pas fusionner à cause des abonnés push » — a orienté l'architecture du projet pendant des mois sans que personne n'aille compter les abonnés. La vérification a pris dix secondes.
+
+---
+
+*Dernière mise à jour : 2026-08-14, base push et fusion de l'appli (§70).*

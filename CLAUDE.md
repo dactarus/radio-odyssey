@@ -4,7 +4,7 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-14 (§69, révisé).*
+*Dernière mise à jour de ce fichier : 2026-08-14 (§70).*
 
 ## Objectif du projet
 
@@ -87,7 +87,9 @@ Depuis le 2026-08-09, `www.radio-odyssey.com` est **installable depuis n'importe
 - `public/manifest.json` — `scope: /`, icônes classiques et maskables, 3 raccourcis.
 - Enregistrement dans `Layout.astro`, après l'événement `load`.
 
-**À savoir** : `app.radio-odyssey.com` est une **seconde PWA**, sur un dépôt distinct, avec sa propre base d'abonnés aux notifications push (les abonnements push sont liés à une origine et ne se transfèrent pas). La décision prise est de **fusionner à terme** vers `www`, une fois que le site couvrira ce que fait l'appli.
+**À savoir** : `app.radio-odyssey.com` est une **seconde PWA**, sur un dépôt distinct (dossier `Appli Radio Odyssey V8`, sans dépôt git — publication par `npx vercel --prod`).
+
+⚠️ **L'argument qui justifiait de la garder séparée est tombé le 2026-08-14 (§70).** On invoquait sa base d'abonnés aux notifications push, non transférable car liée à une origine. Vérification faite dans la console Upstash (`SCARD push_subscriptions`) : **elle compte un seul abonné**, très probablement un test. La fusion vers `www` n'a donc plus d'obstacle.
 
 ## Charte graphique (voir aussi PROJET_RADIO_ODYSSEY.md pour le détail complet)
 
@@ -206,6 +208,8 @@ Chiffres réels, utiles pour arbitrer les priorités — le détail figure au §
 6. **Expérience jeudi soir** : appliquer la grille musclée un soir de plus pendant un mois, et vérifier si le ratio soirée/après-midi passe de 0,40 vers 0,67 (§58)
 7. **Ouvrir une liste e-mail** — aucun actif propriétaire à ce jour ; à faire avant toute nouvelle campagne payante
 8. **Instrumenter** les événements manquants (installation PWA, opt-in push, quiz, exercice, sorties plateformes)
-9. **Fusionner l'appli** : page hors ligne enrichie (garder l'exercice et le programme), masquage du bouton « App Mobile » en mode autonome, puis redirection de `app.` vers `www`
+9. **Fusionner l'appli dans le site** (§70) — décision prise, exécution reportée. Page hors ligne enrichie (garder l'exercice et le programme), masquage du bouton « App Mobile » en mode autonome, puis redirection de `app.` vers `www`. Disparaissent au passage : un second déploiement Vercel, la base Upstash et les deux endpoints `api/subscribe.js` et `api/send.js`.
+   ⚠️ **Ne pas payer d'abonnement Upstash et ne pas maintenir la base en vie.** Elle sera archivée pour inactivité ; les données sont sauvegardées par Upstash et restaurables, et il n'y a de toute façon rien à sauver. Un simple `PING` ne compte pas comme activité chez Upstash — seule une opération de données (`GET`, `SET`, `SCARD`…) réinitialise le compteur, si jamais le besoin se présentait
+   ⚠️ Si des notifications push sont refaites un jour, ce sera **sur `www`, et seulement avec un programme éditorial défini** : la fonction existe depuis des mois sur l'appli et n'a recruté personne. Avant de la reconstruire, savoir si c'est le bouton qui est invisible ou la proposition qui n'intéresse pas
 10. `og:image` par page sur les ~213 pages feuilles (les 7 hubs et l'accueil ont déjà la leur). `llms.txt` complété à 29 URL au §59
 11. **Décision internationale** : `/en/` complet, ou repli assumé
