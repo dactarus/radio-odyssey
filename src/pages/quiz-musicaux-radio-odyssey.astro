@@ -55,6 +55,37 @@ const QUIZ = [
   },
 ];
 
+// Seconde famille (§69) : les quiz ne portent plus sur les titres mais sur
+// les artistes eux-mêmes, à partir des faits vérifiés de leurs fiches. La
+// distinction est réelle et vaut d'être affichée : ici, connaître le tube ne
+// suffit pas.
+const QUIZ_UNIVERS = [
+  {
+    href: '/quiz-noms-artistes-radio-odyssey.html',
+    decennie: 'Noms de scène',
+    titre: "D'où viennent leurs noms ?",
+    exemples: 'Sting, Stromae, Moby, Avicii',
+    accroche: "Un pull rayé, un roman du XIXe siècle, un entraîneur de football : les noms de scène ont une histoire.",
+    from: '#00C6FF', to: '#7B2FBE',
+  },
+  {
+    href: '/quiz-records-radio-odyssey.html',
+    decennie: 'Records',
+    titre: 'Records et premières fois',
+    exemples: 'Teddy Swims, Duran Duran, Katy Perry, U2',
+    accroche: "Le plus long séjour au Billboard, le seul générique de Bond arrivé en tête, le premier Belge n°1 au Royaume-Uni.",
+    from: '#FFD700', to: '#FF3CAC',
+  },
+  {
+    href: '/quiz-coulisses-artistes-radio-odyssey.html',
+    decennie: 'Coulisses',
+    titre: 'Les coulisses des titres',
+    exemples: 'Tove Lo, Baltimora, Robert Miles, Modjo',
+    accroche: "Qui chante vraiment sur le disque, qui a écrit pour qui, pourquoi ce morceau existe.",
+    from: '#FF9A3C', to: '#7B2FBE',
+  },
+];
+
 // ItemList : décrit explicitement la série comme un ensemble ordonné de
 // cinq éléments. C'est ce balisage qui permet à un moteur de comprendre
 // qu'il s'agit d'une collection, et non de cinq pages sans rapport.
@@ -62,10 +93,10 @@ const serieSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: 'Les quiz musicaux de Radio Odyssey',
-  description: "Série de cinq quiz musicaux, une décennie chacun, construits à partir des titres réellement diffusés sur l'antenne de Radio Odyssey.",
-  numberOfItems: QUIZ.length,
+  description: "Huit quiz musicaux : cinq par décennie, construits à partir des titres réellement diffusés sur l'antenne, et trois sur l'univers de la radio, construits à partir des faits vérifiés des fiches artistes.",
+  numberOfItems: QUIZ.length + QUIZ_UNIVERS.length,
   itemListOrder: 'https://schema.org/ItemListOrderAscending',
-  itemListElement: QUIZ.map((q, i) => ({
+  itemListElement: [...QUIZ, ...QUIZ_UNIVERS].map((q, i) => ({
     '@type': 'ListItem',
     position: i + 1,
     name: q.titre,
@@ -128,13 +159,33 @@ const faq = [
         <div class="col-lg-8">
 
           <div class="content-card">
-            <p style="margin:0;">Radio Odyssey propose <strong>cinq quiz musicaux gratuits</strong>, un par décennie, des années 80 aux années 2020. Chacun comporte 10 questions, et un round bonus de 10 questions supplémentaires se débloque si vous réalisez un sans-faute — soit <strong>100 questions au total</strong>. Aucune inscription, aucune application : tout se joue dans le navigateur.</p>
+            <p style="margin:0;">Radio Odyssey propose <strong>huit quiz musicaux gratuits</strong>, répartis en deux familles : <strong>cinq quiz par décennie</strong>, des années 80 aux années 2020, où il faut retrouver l'interprète d'un titre ; et <strong>trois quiz sur l'univers de la radio</strong>, où les questions portent sur les artistes eux-mêmes. Chacun comporte 10 questions, et un round bonus de 10 questions se débloque en cas de sans-faute — soit <strong>160 questions au total</strong>. Aucune inscription, aucune application : tout se joue dans le navigateur.</p>
           </div>
 
           <div class="content-card">
-            <h2>Les cinq quiz</h2>
+            <h2>Les cinq quiz par décennie</h2>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.2rem;">
               {QUIZ.map((q) => (
+                <a href={q.href} style="text-decoration:none;color:inherit;display:block;border:1.5px solid rgba(123,47,190,.15);border-radius:16px;overflow:hidden;background:#fff;">
+                  <div style={`background:linear-gradient(135deg,${q.from},${q.to});padding:1rem 1.2rem;`}>
+                    <span style="display:block;font-family:'Nunito',sans-serif;font-weight:900;font-size:1.25rem;color:#fff;">{q.decennie}</span>
+                    <span style="display:block;font-size:.76rem;color:rgba(255,255,255,.85);font-weight:600;">10 questions + round bonus</span>
+                  </div>
+                  <div style="padding:1rem 1.2rem;">
+                    <p style="margin:0 0 .6rem;font-size:.92rem;line-height:1.55;">{q.accroche}</p>
+                    <p style="margin:0 0 .8rem;font-size:.8rem;color:var(--ro-muted);"><strong>Artistes possibles :</strong> {q.exemples}…</p>
+                    <span style="font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;color:var(--ro-purple);">Jouer <Icon name="chevron-right" /></span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Les trois quiz sur l'univers de la radio</h2>
+            <p>Ceux-là ne portent pas sur les titres mais sur les artistes : d'où vient leur nom de scène, quel record ils détiennent, ce qui s'est passé en studio. Les réponses sortent des <a href="/artistes-diffuses-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">fiches artistes du site</a>, où chaque fait a été vérifié un par un — et, comme il s'agit de faits acquis, <strong>elles ne changeront jamais</strong>.</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.2rem;">
+              {QUIZ_UNIVERS.map((q) => (
                 <a href={q.href} style="text-decoration:none;color:inherit;display:block;border:1.5px solid rgba(123,47,190,.15);border-radius:16px;overflow:hidden;background:#fff;">
                   <div style={`background:linear-gradient(135deg,${q.from},${q.to});padding:1rem 1.2rem;`}>
                     <span style="display:block;font-family:'Nunito',sans-serif;font-weight:900;font-size:1.25rem;color:#fff;">{q.decennie}</span>

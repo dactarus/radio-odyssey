@@ -1,0 +1,223 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import QuizBlock from '../components/QuizBlock.astro';
+
+// Quiz bâti sur les `facts` des fiches artistes (§64 à §68), tous vérifiés
+// avant publication. Les réponses sont **immuables** : une date, un nom, un
+// lieu, un record acquis — rien qui dépende de la programmation du moment.
+// C'est la condition pour qu'un score reste comparable d'un mois à l'autre.
+//
+// Chaque artiste n'est bonne réponse qu'une seule fois dans ce quiz.
+// `correct` porte le slug de la fiche : data/quiz-artistes.js s'en sert pour
+// afficher le quiz sur la fiche de l'artiste concerné, sans aucune saisie.
+
+const main = [
+  { enonce: "Quel artiste détient le record de longévité au Billboard Hot 100 avec « Lose Control », resté 112 semaines au classement ?", correct: 'teddy-swims', choices: [
+    { slug: "teddy-swims", name: "Teddy Swims" },
+    { slug: "alex-warren", name: "Alex Warren" },
+    { slug: "shawn-mendes", name: "Shawn Mendes" },
+    { slug: "benson-boone", name: "Benson Boone" },
+  ]},
+  { enonce: "Quel groupe signe le seul générique de James Bond arrivé à la première place du Billboard Hot 100 ?", correct: 'duran-duran', choices: [
+    { slug: "tina-turner", name: "Tina Turner" },
+    { slug: "queen", name: "Queen" },
+    { slug: "a-ha", name: "A-ha" },
+    { slug: "duran-duran", name: "Duran Duran" },
+  ]},
+  { enonce: "Quelle artiste a placé cinq singles d'un même album en tête du Billboard Hot 100, exploit réalisé avant elle par Michael Jackson seul ?", correct: 'katy-perry', choices: [
+    { slug: "katy-perry", name: "Katy Perry" },
+    { slug: "taylor-swift", name: "Taylor Swift" },
+    { slug: "lady-gaga", name: "Lady Gaga" },
+    { slug: "rihanna", name: "Rihanna" },
+  ]},
+  { enonce: "Quel groupe est le plus récompensé de l'histoire des Grammy Awards, avec vingt-deux trophées ?", correct: 'u2', choices: [
+    { slug: "maroon-5", name: "Maroon 5" },
+    { slug: "u2", name: "U2" },
+    { slug: "queen", name: "Queen" },
+    { slug: "coldplay", name: "Coldplay" },
+  ]},
+  { enonce: "Quel artiste belge a été le premier à atteindre la première place des ventes au Royaume-Uni ?", correct: 'lost-frequencies', choices: [
+    { slug: "angele", name: "Angèle" },
+    { slug: "lost-frequencies", name: "Lost Frequencies" },
+    { slug: "stromae", name: "Stromae" },
+    { slug: "damiano-david", name: "Damiano David" },
+  ]},
+  { enonce: "Quel groupe entièrement féminin détient le record du plus grand nombre d'entrées au classement britannique ?", correct: 'bananarama', choices: [
+    { slug: "abba", name: "Abba" },
+    { slug: "bananarama", name: "Bananarama" },
+    { slug: "the-corrs", name: "The Corrs" },
+    { slug: "m-people", name: "M People" },
+  ]},
+  { enonce: "Quelle artiste détient le record du plus grand nombre de Grammy Awards remportés, tous artistes confondus ?", correct: 'beyonce', choices: [
+    { slug: "rihanna", name: "Rihanna" },
+    { slug: "adele", name: "Adele" },
+    { slug: "beyonce", name: "Beyoncé" },
+    { slug: "alicia-keys", name: "Alicia Keys" },
+  ]},
+  { enonce: "Quel artiste signe l'album le plus vendu de tous les temps ?", correct: 'michael-jackson', choices: [
+    { slug: "abba", name: "Abba" },
+    { slug: "queen", name: "Queen" },
+    { slug: "michael-jackson", name: "Michael Jackson" },
+    { slug: "madonna", name: "Madonna" },
+  ]},
+  { enonce: "Quelle chanteuse britannique a été la première à remporter cinq Grammy Awards en une seule soirée ?", correct: 'amy-winehouse', choices: [
+    { slug: "amy-winehouse", name: "Amy Winehouse" },
+    { slug: "sade", name: "Sade" },
+    { slug: "lisa-stansfield", name: "Lisa Stansfield" },
+    { slug: "adele", name: "Adele" },
+  ]},
+  { enonce: "Quel artiste britannique signe le single le plus vendu de l'histoire des classements ?", correct: 'elton-john', choices: [
+    { slug: "phil-collins", name: "Phil Collins" },
+    { slug: "elton-john", name: "Elton John" },
+    { slug: "sting", name: "Sting" },
+    { slug: "queen", name: "Queen" },
+  ]},
+];
+
+const bonus = [
+  { enonce: "Quel chanteur a réuni 375 000 spectateurs sur trois soirs à Knebworth en 2003 ?", correct: 'robbie-williams', choices: [
+    { slug: "ed-sheeran", name: "Ed Sheeran" },
+    { slug: "coldplay", name: "Coldplay" },
+    { slug: "robbie-williams", name: "Robbie Williams" },
+    { slug: "harry-styles", name: "Harry Styles" },
+  ]},
+  { enonce: "Quel duo a été le premier groupe pop occidental à se produire en Chine, en 1985 ?", correct: 'wham', choices: [
+    { slug: "a-ha", name: "A-ha" },
+    { slug: "wham", name: "Wham!" },
+    { slug: "modern-talking", name: "Modern Talking" },
+    { slug: "duran-duran", name: "Duran Duran" },
+  ]},
+  { enonce: "Quel artiste a joué au Live Aid à Londres puis à Philadelphie le même jour, en traversant l'Atlantique en Concorde ?", correct: 'phil-collins', choices: [
+    { slug: "sting", name: "Sting" },
+    { slug: "queen", name: "Queen" },
+    { slug: "phil-collins", name: "Phil Collins" },
+    { slug: "elton-john", name: "Elton John" },
+  ]},
+  { enonce: "Quelle artiste colombienne signe le premier album entièrement en espagnol d'une femme arrivé en tête du Billboard 200 ?", correct: 'karol-g', choices: [
+    { slug: "rihanna", name: "Rihanna" },
+    { slug: "shakira", name: "Shakira" },
+    { slug: "doja-cat", name: "Doja Cat" },
+    { slug: "karol-g", name: "Karol G" },
+  ]},
+  { enonce: "Quel chanteur italien a remporté l'Eurovision 2021 avec son groupe, vingt-huit ans après la dernière victoire italienne ?", correct: 'damiano-david', choices: [
+    { slug: "celine-dion", name: "Céline Dion" },
+    { slug: "damiano-david", name: "Damiano David" },
+    { slug: "amir", name: "Amir" },
+    { slug: "abba", name: "Abba" },
+  ]},
+  { enonce: "Quelle chanteuse a remporté l'Eurovision 1988 sous les couleurs de la Suisse ?", correct: 'celine-dion', choices: [
+    { slug: "vanessa-paradis", name: "Vanessa Paradis" },
+    { slug: "mylene-farmer", name: "Mylène Farmer" },
+    { slug: "zazie", name: "Zazie" },
+    { slug: "celine-dion", name: "Céline Dion" },
+  ]},
+  { enonce: "Quelle artiste signe l'album le plus vendu du XXIe siècle au Royaume-Uni ?", correct: 'adele', choices: [
+    { slug: "adele", name: "Adele" },
+    { slug: "ed-sheeran", name: "Ed Sheeran" },
+    { slug: "dua-lipa", name: "Dua Lipa" },
+    { slug: "amy-winehouse", name: "Amy Winehouse" },
+  ]},
+  { enonce: "Quel artiste signe l'album de reggae le plus vendu de tous les temps ?", correct: 'bob-marley', choices: [
+    { slug: "craig-david", name: "Craig David" },
+    { slug: "bob-marley", name: "Bob Marley" },
+    { slug: "shalamar", name: "Shalamar" },
+    { slug: "earth-wind-and-fire", name: "Earth, Wind & Fire" },
+  ]},
+  { enonce: "Quel groupe britannique a remporté le Mercury Prize 1994 devant Blur et Pulp ?", correct: 'm-people', choices: [
+    { slug: "simply-red", name: "Simply Red" },
+    { slug: "jamiroquai", name: "Jamiroquai" },
+    { slug: "clean-bandit", name: "Clean Bandit" },
+    { slug: "m-people", name: "M People" },
+  ]},
+  { enonce: "Quel chanteur français a terminé sixième de l'Eurovision 2016, meilleur résultat français depuis 2002 ?", correct: 'amir', choices: [
+    { slug: "m-pokora", name: "M. Pokora" },
+    { slug: "christophe-willem", name: "Christophe Willem" },
+    { slug: "amir", name: "Amir" },
+    { slug: "soprano", name: "Soprano" },
+  ]},
+];
+
+const faq = [
+  { q: "Les réponses de ce quiz peuvent-elles changer ?", a: "Non. Chaque réponse porte sur un fait acquis — une date, un nom, un record établi. Contrairement à un classement d'écoutes, rien ici ne bougera le mois prochain." },
+  { q: "D'où viennent ces informations ?", a: "Des fiches artistes du site, dont chaque fait a été vérifié individuellement avant publication. Chaque bonne réponse renvoie vers la fiche correspondante." },
+  { q: "Qu'est-ce que le round bonus ?", a: "Un sans-faute sur les 10 questions du round principal débloque 10 questions supplémentaires, pour un score final possible sur 20." },
+  { q: "Ces artistes passent-ils vraiment sur Radio Odyssey ?", a: "Oui — tous les artistes cités figurent dans notre <a href='/artistes-diffuses-radio-odyssey.html' style='color:var(--ro-purple);font-weight:700;'>catalogue réel de programmation</a>, avec le détail des titres diffusés." },
+];
+---
+<Layout
+  lang="fr"
+  title=Quiz : les records des artistes de Radio Odyssey | Radio Odyssey
+  description=Un quiz sur les records détenus par les artistes diffusés sur Radio Odyssey : classements, Grammy, Eurovision. 20 questions à réponses vérifiées.
+>
+  <PageHero
+    gradientFrom="#FFD700"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent=Records et premières fois
+    title=Records et premières fois
+    text="Des réponses qui ne changeront pas : une date, un nom, un record acquis."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.3"/><path d="M19 19a5 5 0 1 1 6.5 4.8c-1 .3-1.5 1-1.5 2v1.2" stroke="white" stroke-width="2.3" stroke-linecap="round" fill="none"/><circle cx="24" cy="32.5" r="1.6" fill="white"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Le plus long séjour au Billboard, le seul générique de James Bond arrivé en tête, la première place au Royaume-Uni pour un Belge : 20 questions sur des records qui ne bougeront plus. Un sans-faute sur les 10 premières débloque 10 questions bonus. Toutes les réponses sont tirées de nos <a href="/artistes-diffuses-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">fiches artistes</a>, où chaque fait a été vérifié un par un.</p>
+          </div>
+
+          <div class="content-card">
+            <QuizBlock
+              id="quiz-records-radio-odyssey"
+              main={main}
+              bonus={bonus}
+              verdicts={{
+                parfait: 'Sans-faute intégral — vous connaissez la maison mieux que nous.',
+                bon: 'Très joli score. Il reste deux ou trois coulisses à découvrir.',
+                moyen: "Bonne base ! Un tour sur les fiches artistes et le sans-faute est à portée.",
+                faible: "Tout est sur les fiches artistes — et c'est plutôt agréable à lire.",
+              }}
+            />
+          </div>
+
+          <FAQBlock items={faq} idPrefix="quiz-records-radio-odyssey-faq" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/quiz-noms-artistes-radio-odyssey.html', label: "D'où viennent leurs noms ?", desc: 'Un autre quiz sur l\'univers de la radio' },
+              { href: '/quiz-coulisses-artistes-radio-odyssey.html', label: "Les coulisses des titres", desc: 'Un autre quiz sur l\'univers de la radio' },
+              { href: '/quiz-musicaux-radio-odyssey.html', label: 'Tous nos quiz musicaux', desc: 'Les cinq décennies, 100 questions' },
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les artistes diffusés', desc: 'Les 147 fiches, avec les titres réellement passés' },
+            ]}
+            associated={[
+              { href: '/styles-musicaux-radio-odyssey.html', label: 'Les styles musicaux de l\'antenne' },
+              { href: '/titres-les-plus-diffuses-sur-radio-odyssey.html', label: 'Les titres les plus diffusés' },
+              { href: '/artistes-et-styles.html', label: 'Le cocon Artistes & Styles' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez ces artistes en direct</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

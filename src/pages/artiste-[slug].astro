@@ -235,22 +235,26 @@ const faq = [
 
           {quiz.length > 0 && (
             <div class="content-card">
-              <h2>{artist.name} dans nos quiz musicaux</h2>
+              <h2>{artist.name} dans nos quiz</h2>
               <p>
                 {quiz.length === 1
-                  ? `${artist.name} est l'une des bonnes réponses du quiz musical ${quiz[0].libelle}, sur le titre suivant :`
-                  : `${artist.name} apparaît dans ${quiz.length} de nos quiz musicaux, sur les titres suivants :`}
+                  ? `${artist.name} est l'une des bonnes réponses de notre ${quiz[0].libelle} :`
+                  : `${artist.name} est bonne réponse dans ${quiz.length} de nos quiz :`}
               </p>
               <ul>
                 {quiz.map((q) => (
                   <li>
-                    <em>« {q.titre} »</em> — <a href={q.href} style="color:var(--ro-purple);font-weight:700;">quiz musical {q.libelle}</a>
+                    {q.type === 'titre'
+                      ? <><em>« {q.texte} »</em> — </>
+                      : <><em>« {q.texte} »</em> — </>}
+                    <a href={q.href} style="color:var(--ro-purple);font-weight:700;">{q.libelle}</a>
                   </li>
                 ))}
               </ul>
               <p style="margin-bottom:0;font-size:.92rem;color:var(--ro-muted);">
-                Nos <a href="/quiz-musicaux-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">cinq quiz musicaux</a> sont
-                construits à partir des titres réellement diffusés sur l'antenne — une décennie chacun, 10 questions et un round bonus.
+                Nos <a href="/quiz-musicaux-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">quiz</a> se
+                répartissent en deux familles : cinq quiz par décennie, bâtis sur les titres réellement diffusés,
+                et trois quiz sur l'univers de la radio, dont les réponses sortent des faits vérifiés de ces fiches.
               </p>
             </div>
           )}

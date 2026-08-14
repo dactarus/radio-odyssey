@@ -1,0 +1,275 @@
+---
+/*
+  Moteur de quiz réutilisable.
+  ---------------------------
+  Les cinq quiz par décennie (quiz-musical-annees-*.astro) embarquent chacun
+  leur propre copie du même moteur : environ 180 lignes de JavaScript, avec un
+  préfixe d'identifiant écrit en dur. Une correction de comportement devait
+  donc être reportée cinq fois à la main.
+
+  Ce composant isole ce moteur une bonne fois. Il ne touche pas aux cinq pages
+  existantes — elles fonctionnent, et les réécrire ferait courir un risque
+  pour un gain nul. Les quiz créés à partir du §69 l'utilisent.
+
+  Le script est générique : il se repère par `data-quiz` sur le conteneur, et
+  plusieurs quiz pourraient coexister sur une même page sans se gêner.
+
+  Props :
+    id              identifiant unique du quiz sur la page
+    main            questions du round principal
+    bonus           questions du round bonus (score parfait requis)
+    prefixe         préfixe affiché devant l'énoncé (ex. '🎵 ' ou rien)
+    verdicts        { parfait, bon, moyen, faible } — messages de fin
+
+  Chaque question : { enonce, correct, choices: [{ slug, name }] }
+  `correct` est le slug d'une fiche artiste, ce qui permet à
+  data/quiz-artistes.js de recenser les quiz où chaque artiste apparaît.
+*/
+const {
+  id,
+  main = [],
+  bonus = [],
+  prefixe = '',
+  verdicts = {},
+} = Astro.props;
+
+const V = {
+  parfait: 'Score absolument parfait, sur les deux rounds !',
+  bon: 'Très fort — vous connaissez bien la maison.',
+  moyen: 'Pas mal ! Un tour sur les fiches artistes et ce sera parfait.',
+  faible: "Il est temps de flâner un peu sur nos fiches artistes.",
+  ...verdicts,
+};
+const total = main.length + bonus.length;
+---
+
+<div class="ro-quiz" id={id} data-quiz
+     data-verdict-parfait={V.parfait}
+     data-verdict-bon={V.bon}
+     data-verdict-moyen={V.moyen}
+     data-verdict-faible={V.faible}>
+
+  <div class="ro-quiz-progress" data-progress>Question 1/{main.length}</div>
+
+  {[['main', main], ['bonus', bonus]].map(([round, liste]) => (
+    liste.map((q, i) => (
+      <div class="ro-quiz-q" data-round={round} data-index={i}
+           style={round === 'main' && i === 0 ? '' : 'display:none;'}>
+        <p class="ro-quiz-enonce">{round === 'bonus' ? '🎁 ' : ''}{prefixe}{q.enonce}</p>
+        <div class="ro-quiz-choices">
+          {q.choices.map((c) => (
+            <button type="button" class={`ro-quiz-choice${round === 'bonus' ? ' is-bonus' : ''}`}
+                    data-slug={c.slug}
+                    data-correct={c.slug === q.correct ? 'true' : 'false'}>
+              <span class="ro-quiz-icon"></span>{c.name}
+            </button>
+          ))}
+        </div>
+        <p class="ro-quiz-feedback" style="display:none;"></p>
+        <button type="button" class="ro-quiz-next btn-hero-ghost" style="display:none;">Question suivante →</button>
+      </div>
+    ))
+  ))}
+
+  <div class="ro-quiz-offer" data-offer style="display:none;text-align:center;">
+    <p style="font-size:1.4rem;margin-bottom:.3rem;">🎉 Score parfait !</p>
+    <p style="color:var(--ro-muted);margin-bottom:1.3rem;">
+      Vous débloquez {bonus.length} questions bonus. Score final possible : {total}/{total}.
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;">
+      <button type="button" class="btn-hero" data-bonus-start>🎁 Tenter le bonus</button>
+      <button type="button" class="btn-hero-ghost" data-bonus-skip>Voir mon score</button>
+    </div>
+  </div>
+
+  <div class="ro-quiz-results" data-results style="display:none;">
+    <p style="font-size:1.3rem;font-weight:900;color:var(--ro-purple);text-align:center;margin-bottom:.3rem;">
+      Votre score : <span data-score>0</span>/<span data-max>{main.length}</span>
+    </p>
+    <p data-verdict style="text-align:center;color:var(--ro-muted);margin-bottom:1.5rem;"></p>
+    <div style="display:flex;justify-content:center;">
+      <button type="button" class="btn-hero" data-restart>Recommencer</button>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .ro-quiz-progress {
+    font-size: .78rem; font-weight: 800; letter-spacing: .1em;
+    text-transform: uppercase; color: #7B2FBE; margin-bottom: .8rem;
+  }
+  .ro-quiz-enonce {
+    font-size: 1.15rem; font-weight: 800; color: var(--ro-dark);
+    margin-bottom: 1rem; line-height: 1.45;
+  }
+  .ro-quiz-choices { display: flex; flex-direction: column; gap: .6rem; }
+  .ro-quiz-choice {
+    text-align: left; padding: .8rem 1rem; border-radius: 12px;
+    border: 1.5px solid rgba(123, 47, 190, .2);
+    background: rgba(123, 47, 190, .03);
+    font-family: 'Nunito', sans-serif; font-weight: 700; color: var(--ro-dark);
+    cursor: pointer; width: 100%;
+    transition: background .15s, border-color .15s;
+  }
+  .ro-quiz-choice.is-bonus {
+    border-color: rgba(255, 215, 0, .35);
+    background: rgba(255, 215, 0, .05);
+  }
+  .ro-quiz-choice:hover { background: rgba(123, 47, 190, .08); }
+  .ro-quiz-choice.is-correct { background: rgba(56, 161, 105, .15) !important; border-color: #38a169 !important; }
+  .ro-quiz-choice.is-wrong   { background: rgba(220, 38, 38, .1) !important; border-color: #dc2626 !important; }
+  .ro-quiz-choice:disabled   { cursor: default; opacity: .85; }
+  .ro-quiz-feedback { margin: .8rem 0 0; font-weight: 800; }
+  .ro-quiz-next { margin-top: .8rem; }
+</style>
+
+<script is:inline>
+(function () {
+  function melange(n) {
+    var o = [];
+    for (var k = 0; k < n; k++) o.push(k);
+    for (var i = o.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = o[i]; o[i] = o[j]; o[j] = t;
+    }
+    return o;
+  }
+
+  function init(box) {
+    if (box.dataset.pret === '1') return;   // idempotent : les transitions
+    box.dataset.pret = '1';                 // Astro réexécutent le script
+
+    var principales = [].slice.call(box.querySelectorAll('.ro-quiz-q[data-round="main"]'));
+    var bonus = [].slice.call(box.querySelectorAll('.ro-quiz-q[data-round="bonus"]'));
+    var total = principales.length + bonus.length;
+    var ordreP = melange(principales.length);
+    var ordreB = melange(bonus.length);
+    var phase = 'main', pos = 0, score = 0, minuteur = null;
+
+    var elProgress = box.querySelector('[data-progress]');
+    var elOffer = box.querySelector('[data-offer]');
+    var elResults = box.querySelector('[data-results]');
+
+    function courants() { return phase === 'bonus' ? bonus : principales; }
+    function ordre() { return phase === 'bonus' ? ordreB : ordreP; }
+
+    function toutCacher() {
+      principales.concat(bonus).forEach(function (q) { q.style.display = 'none'; });
+      if (elOffer) elOffer.style.display = 'none';
+      if (elResults) elResults.style.display = 'none';
+    }
+
+    function afficher(i) {
+      toutCacher();
+      var els = courants();
+      var cible = els[ordre()[i]];
+      if (cible) cible.style.display = '';
+      if (elProgress) {
+        elProgress.style.display = '';
+        elProgress.textContent = (phase === 'bonus' ? '🎁 Bonus — Question ' : 'Question ')
+          + (i + 1) + '/' + els.length;
+      }
+    }
+
+    function resultats() {
+      toutCacher();
+      if (elProgress) elProgress.style.display = 'none';
+      var max = phase === 'bonus' ? total : principales.length;
+      var s = box.querySelector('[data-score]'), m = box.querySelector('[data-max]'),
+          v = box.querySelector('[data-verdict]');
+      if (s) s.textContent = String(score);
+      if (m) m.textContent = String(max);
+      if (v) {
+        var d = box.dataset, msg;
+        if (phase === 'bonus') {
+          msg = score === total ? d.verdictParfait
+              : score >= Math.ceil(total * 0.7) ? d.verdictBon
+              : d.verdictMoyen;
+        } else if (score === principales.length) {
+          msg = 'Score parfait ! (Vous avez choisi de ne pas tenter le bonus.)';
+        } else {
+          msg = score >= Math.ceil(principales.length * 0.7) ? d.verdictBon
+              : score >= Math.ceil(principales.length * 0.4) ? d.verdictMoyen
+              : d.verdictFaible;
+        }
+        v.textContent = msg;
+      }
+      if (elResults) elResults.style.display = '';
+    }
+
+    function suivante() {
+      if (minuteur) { clearTimeout(minuteur); minuteur = null; }
+      pos += 1;
+      if (pos < courants().length) { afficher(pos); return; }
+      if (phase === 'main' && score === principales.length && bonus.length > 0) {
+        toutCacher();
+        if (elProgress) elProgress.style.display = 'none';
+        if (elOffer) elOffer.style.display = '';
+      } else {
+        resultats();
+      }
+    }
+
+    function brancher(q) {
+      var zone = q.querySelector('.ro-quiz-choices');
+      if (zone) {
+        var b = [].slice.call(zone.children);
+        for (var i = b.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var t = b[i]; b[i] = b[j]; b[j] = t;
+        }
+        b.forEach(function (x) { zone.appendChild(x); });
+      }
+      var boutons = [].slice.call(q.querySelectorAll('.ro-quiz-choice'));
+      var next = q.querySelector('.ro-quiz-next');
+      var retour = q.querySelector('.ro-quiz-feedback');
+      var repondu = false;
+
+      boutons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          if (repondu) return;
+          repondu = true;
+          var juste = btn.getAttribute('data-correct') === 'true';
+          var bon = boutons.filter(function (x) { return x.getAttribute('data-correct') === 'true'; })[0];
+          if (juste) {
+            score += 1;
+            btn.classList.add('is-correct');
+            btn.querySelector('.ro-quiz-icon').textContent = '✅ ';
+            if (retour) { retour.textContent = '✅ Bonne réponse !'; retour.style.color = '#38a169'; }
+          } else {
+            btn.classList.add('is-wrong');
+            btn.querySelector('.ro-quiz-icon').textContent = '❌ ';
+            if (bon) { bon.classList.add('is-correct'); bon.querySelector('.ro-quiz-icon').textContent = '✅ '; }
+            if (retour) { retour.textContent = '❌ Raté — la bonne réponse est surlignée en vert.'; retour.style.color = '#dc2626'; }
+          }
+          if (retour) retour.style.display = '';
+          boutons.forEach(function (x) { x.disabled = true; });
+          if (next) next.style.display = 'inline-block';
+          minuteur = setTimeout(suivante, 1800);
+        });
+      });
+      if (next) next.addEventListener('click', suivante);
+    }
+
+    principales.forEach(brancher);
+    bonus.forEach(brancher);
+
+    var demarrer = box.querySelector('[data-bonus-start]');
+    if (demarrer) demarrer.addEventListener('click', function () { phase = 'bonus'; pos = 0; afficher(0); });
+    var passer = box.querySelector('[data-bonus-skip]');
+    if (passer) passer.addEventListener('click', resultats);
+    var recommencer = box.querySelector('[data-restart]');
+    if (recommencer) recommencer.addEventListener('click', function () { window.location.reload(); });
+
+    afficher(0);
+  }
+
+  function tout() {
+    [].slice.call(document.querySelectorAll('[data-quiz]')).forEach(init);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tout);
+  else tout();
+  document.addEventListener('astro:page-load', tout);
+})();
+</script>
