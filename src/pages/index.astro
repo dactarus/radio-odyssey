@@ -5,6 +5,20 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
 
 const title = 'Radio Odyssey – Web Radio Bien-être & Bonne Humeur 24h/24';
 const description = "Radio Odyssey, votre web radio 100% positive ! Hits des années 80, dance, easy listening, cohérence cardiaque. Gratuite, sans pub, non-stop 24h/24.";
+
+// Les huit quiz mis en avant sur l'accueil. Ordre choisi : les décennies
+// d'abord (les plus jouées et les plus recherchées), puis les trois quiz
+// sur l'univers de la radio, plus récents.
+const QUIZ_ACCUEIL = [
+  { href: '/quiz-musical-annees-80.html', nom: 'Années 80', sous: 'Le plus joué' },
+  { href: '/quiz-musical-annees-90.html', nom: 'Années 90', sous: 'Eurodance & ballades' },
+  { href: '/quiz-musical-annees-2000.html', nom: 'Années 2000', sous: 'Le tournant électro' },
+  { href: '/quiz-musical-annees-2010.html', nom: 'Années 2010', sous: 'La décennie streaming' },
+  { href: '/quiz-musical-annees-2020.html', nom: 'Années 2020', sous: 'La décennie en cours' },
+  { href: '/quiz-noms-artistes-radio-odyssey.html', nom: 'Noms de scène', sous: "D'où vient ce surnom ?" },
+  { href: '/quiz-records-radio-odyssey.html', nom: 'Records', sous: 'Qui détient cet exploit ?' },
+  { href: '/quiz-coulisses-artistes-radio-odyssey.html', nom: 'Coulisses', sous: 'Qui se cache derrière ?' },
+];
 const ogTitle = 'Radio Odyssey – Positive Web Radio';
 const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse, bien-être, gratuite.";
 ---
@@ -501,6 +515,66 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
     gap: .6rem !important;
   }
 }
+  /* ── Invitation aux quiz ────────────────────────────────────────────
+     Traitement délibérément sobre : les deux encarts qui précèdent sur
+     l'accueil sont des bandeaux à dégradé pleine largeur. Un troisième
+     du même genre ferait mur. Ici, fond blanc, bordure fine, et les huit
+     quiz en pastilles — le regard tombe sur les jeux, pas sur un pavé. */
+  .ro-quiz-invite {
+    border: 1.5px solid rgba(123, 47, 190, .16);
+    border-radius: 20px;
+    background: #fff;
+    padding: 1.8rem 2rem;
+    box-shadow: 0 8px 30px rgba(45, 45, 58, .05);
+  }
+  .ro-quiz-invite-tete {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+  }
+  .ro-quiz-invite-liste {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: .7rem;
+    margin-top: 1.5rem;
+  }
+  .ro-quiz-pastille {
+    display: block;
+    padding: .75rem .95rem;
+    border-radius: 13px;
+    text-decoration: none;
+    background: linear-gradient(135deg, rgba(123, 47, 190, .07), rgba(255, 60, 172, .05));
+    border: 1px solid rgba(123, 47, 190, .12);
+    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+  }
+  .ro-quiz-pastille:hover {
+    transform: translateY(-2px);
+    border-color: rgba(123, 47, 190, .32);
+    box-shadow: 0 6px 18px rgba(123, 47, 190, .14);
+  }
+  .ro-quiz-pastille-nom {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: .95rem;
+    color: var(--ro-purple);
+  }
+  .ro-quiz-pastille-sous {
+    display: block;
+    margin-top: .1rem;
+    font-size: .74rem;
+    font-weight: 600;
+    color: var(--ro-muted);
+  }
+  @media (max-width: 575px) {
+    .ro-quiz-invite { padding: 1.4rem 1.2rem; }
+    .ro-quiz-invite-liste { grid-template-columns: repeat(2, 1fr); gap: .55rem; }
+    .ro-quiz-pastille { padding: .6rem .7rem; }
+    .ro-quiz-pastille-nom { font-size: .86rem; }
+    .ro-quiz-pastille-sous { font-size: .68rem; }
+  }
 </style>
 
 
@@ -545,6 +619,49 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
       <a href="radio-coherence-cardiaque.html" class="btn-ro" style="flex-shrink:0;">
         <Icon name="arrow-right-circle-fill" />&nbsp;En savoir plus
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     QUIZ MUSICAUX — invitation à jouer
+     ------------------------------------------------------------
+     Placé juste après le bandeau cohérence cardiaque, mais
+     volontairement plus léger que les deux encarts qui précèdent :
+     trois bandeaux pleine largeur d'affilée feraient mur. Fond
+     blanc, une seule ligne de titre, les huit quiz listés en
+     pastilles cliquables — on entre dans le jeu, on ne lit pas un
+     argumentaire de plus.
+
+     Motif : avant ce bloc, l'accueil ne contenait aucun lien vers
+     un quiz. Les huit pages ne vivaient que du référencement, alors
+     que /quiz-musical-annees-80.html est déjà la 3e page la plus
+     consultée du site.
+     ============================================================ -->
+<section class="ro-section" style="padding-top:2.4rem;padding-bottom:2.4rem;">
+  <div class="container">
+    <div class="ro-quiz-invite">
+      <div class="ro-quiz-invite-tete">
+        <div>
+          <span class="section-eyebrow">Jouez avec nous</span>
+          <h2 style="margin:.3rem 0 .4rem;">Nos <span class="highlight">quiz musicaux</span> gratuits</h2>
+          <p style="margin:0;font-size:.93rem;color:var(--ro-muted);max-width:60ch;">
+            Huit quiz, 160 questions, construites à partir des titres et des artistes réellement diffusés sur l'antenne. Sans inscription, directement dans votre navigateur.
+          </p>
+        </div>
+        <a href="/quiz-musicaux-radio-odyssey.html" class="btn-ro" style="flex-shrink:0;">
+          <Icon name="trophy" />&nbsp;Voir les 8 quiz
+        </a>
+      </div>
+
+      <div class="ro-quiz-invite-liste">
+        {QUIZ_ACCUEIL.map((q) => (
+          <a href={q.href} class="ro-quiz-pastille">
+            <span class="ro-quiz-pastille-nom">{q.nom}</span>
+            <span class="ro-quiz-pastille-sous">{q.sous}</span>
+          </a>
+        ))}
+      </div>
     </div>
   </div>
 </section>

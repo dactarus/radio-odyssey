@@ -2094,4 +2094,37 @@ C'est aussi une leçon de méthode. Une contrainte structurante — « on ne peu
 
 ---
 
-*Dernière mise à jour : 2026-08-14, base push et fusion de l'appli (§70).*
+---
+
+## 71. Les quiz étaient invisibles depuis le site (2026-08-14)
+
+Remarque de Frédéric sur l'ordre d'apparition des jeux. Vérification faite sur le build : **la page d'accueil ne contenait aucun lien vers un quiz.** Aucun. 111 pages du site pointaient vers le hub — les fiches artistes surtout — mais pas l'accueil.
+
+Pire, dans le méga-menu les huit quiz occupaient les positions 17 à 25 sur 29 dans « Musique & Énergie ». Le menu n'affichant que les cinq premières entrées depuis le §60, **ils étaient invisibles depuis n'importe quelle page**. Seuls chemins restants : Google, ou le plan du site.
+
+D'où un paradoxe qu'on n'avait pas vu : `/quiz-musical-annees-80.html` est la 3ᵉ page la plus consultée du site alors qu'aucun lien interne ne la met en avant. Elle ne vit que du référencement.
+
+### Deux corrections
+
+**Un bandeau sur l'accueil**, placé après celui de la cohérence cardiaque, listant les huit quiz en pastilles cliquables. Traitement volontairement sobre — fond blanc, bordure fine, une ligne de titre — parce que les deux encarts qui précèdent sont déjà des bandeaux à dégradé pleine largeur : un troisième aurait fait mur. L'accueil passe de **0 à 9 liens** vers les quiz.
+
+**« Tous nos Quiz Musicaux » passe de la 17ᵉ à la 5ᵉ place** de « Musique & Énergie », donc dans les entrées visibles du menu. « Pour Faire du Sport » recule d'un rang et reste accessible par le hub.
+
+Le hub plutôt que le quiz années 80 en direct : même coût — une place de menu — mais l'entrée ouvre sur les huit au lieu d'un seul.
+
+### Résultat
+
+| | avant | après |
+|---|---:|---:|
+| Liens vers un quiz depuis l'accueil | 0 | **9** |
+| Pages liant vers le hub des quiz | 111 | **258** sur 260 |
+
+Le hub est désormais lié depuis presque tout le site, puisqu'il est dans le méga-menu présent sur chaque page.
+
+### Vérifications
+
+Build isolé : 260 pages, aucune erreur, aucun lien cassé, JSON-LD valides, aucun titre tronqué. Accueil à 162 Ko, contre 155 avant — le bandeau coûte 7 Ko, dont l'essentiel en CSS mutualisé.
+
+---
+
+*Dernière mise à jour : 2026-08-14, mise en avant des quiz (§71).*
