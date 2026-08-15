@@ -4,7 +4,7 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-14 (§70).*
+*Dernière mise à jour de ce fichier : 2026-08-14 (§71).*
 
 ## Objectif du projet
 
@@ -52,6 +52,7 @@ Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → U
 | `RadioPlayer.astro` | Lecteur audio natif + Media Session (voir plus bas) |
 | `Header.astro` | Barre lecteur fixe, méga-menu, panneau latéral mobile |
 | `MegaNav.astro` | Menu déroulant desktop — 5 pages par catégorie + lien hub |
+| `index.astro` | ⚠️ L'ordre des pages dans `navigation.js` décide de ce qui est **visible dans le menu** : seules les 5 premières de chaque catégorie s'affichent (§60). Une page reléguée au-delà n'est plus atteignable que par le hub — c'est ce qui rendait les 8 quiz invisibles jusqu'au §71 |
 | `CoherenceExercise.astro` | Exercice de respiration guidée, présent sur 8 pages |
 | `CookieConsent.astro` | Bandeau RGPD — GA4 n'est chargé qu'après acceptation |
 | `WebviewBanner.astro` | Alerte navigateur intégré (Facebook/Instagram) |
