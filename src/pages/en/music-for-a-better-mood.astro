@@ -1,10 +1,10 @@
 ---
-import Icon from '../components/Icon.astro';
-import Layout from '../layouts/Layout.astro';
-import PageHero from '../components/PageHero.astro';
-import Sidebar from '../components/Sidebar.astro';
-import FAQBlock from '../components/FAQBlock.astro';
-import RelatedPages from '../components/RelatedPages.astro';
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
 
 const faq = [
   { q: 'Can music really improve my mood?', a: "Music doesn't cure anything, but many people find it genuinely helps change the tone of a moment — from a slow morning to a stressful commute. Radio Odyssey is built around that idea from the ground up." },
@@ -14,6 +14,7 @@ const faq = [
 ---
 <Layout
   lang="en"
+  altLangs={{ fr: '/musique-positive-et-bonne-humeur.html', en: '/en/music-for-a-better-mood.html' }}
   title="Music for a Better Mood | Radio Odyssey"
   description="Looking for music to lift your mood? Radio Odyssey is a free, positive radio station built around feel-good energy, with input from a real psychologist."
 >
@@ -66,14 +67,14 @@ const faq = [
           <RelatedPages
             lang="en"
             alsoLike={[
-              { href: '/why-positive-radio-is-trending.html', label: 'Why Positive Radio Is Trending', desc: 'The bigger picture behind this shift' },
-              { href: '/heart-coherence-breathing-radio.html', label: 'Heart Coherence Breathing Radio', desc: 'Guided breathing woven into the music' },
-              { href: '/radio-odyssey-vs-meditation-apps.html', label: 'Radio Odyssey vs. Meditation Apps', desc: 'A no-pressure way to unwind' },
+              { href: '/en/why-positive-radio-is-trending.html', label: 'Why Positive Radio Is Trending', desc: 'The bigger picture behind this shift' },
+              { href: '/en/heart-coherence-breathing-radio.html', label: 'Heart Coherence Breathing Radio', desc: 'Guided breathing woven into the music' },
+              { href: '/en/radio-odyssey-vs-meditation-apps.html', label: 'Radio Odyssey vs. Meditation Apps', desc: 'A no-pressure way to unwind' },
             ]}
             associated={[
               { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Our Partner Elisabeth Bélot-Grimaud' },
-              { href: '/feel-good-music-radio.html', label: 'Feel Good Music Radio' },
-              { href: '/80s-throwback-radio-online.html', label: '80s Throwback Radio Online' },
+              { href: '/en/feel-good-music-radio.html', label: 'Feel Good Music Radio' },
+              { href: '/en/80s-throwback-radio-online.html', label: '80s Throwback Radio Online' },
             ]}
           />
 

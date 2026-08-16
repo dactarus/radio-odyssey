@@ -2438,3 +2438,70 @@ Reste dans `robots.txt` : les interdictions sur `/sitemap.xml/` et `/hors-ligne.
 ---
 
 *Dernière mise à jour : 2026-08-16, suppression de la console d'édition (§79).*
+
+---
+
+## 81. Version anglaise — lot 1 : les 13 pages passent sous `/en/` (2026-08-16)
+
+Le point 11 des « Prochaines étapes » posait le choix depuis des semaines : `/en/` complet, ou repli assumé. **Décision : ni l'un ni l'autre au sens strict.** Traduire les 255 pages n'a aucun sens — le site reçoit ~15 visiteurs par semaine hors campagne, et un site anglais de 255 pages sans audience anglophone ne serait qu'un doublon à maintenir. Ce qui est retenu : une **sélection assumée de portes d'entrée**, pensées pour un public froid (qui arrive sans connaître la marque), messages courts et orientés bénéfice.
+
+Périmètre du chantier, en cinq lots : (1) regrouper les 13 pages anglaises existantes sous `/en/`, (2) créer une vraie page d'accueil anglaise et traduire trois pages de fond, (3) porter le bloc E-E-A-T du §72 sur les deux pages anglaises de cohérence cardiaque, (4) traduire le gabarit de fiche artiste — le plus gros levier, il débloque n'importe quelle fiche à coût marginal quasi nul —, (5) traduire un ou deux quiz. **Ce paragraphe ne couvre que le lot 1.**
+
+### Pourquoi commencer par les URLs, et pas par le contenu
+
+L'ordre naturel aurait été de commencer par le lot 3 (composants déjà prêts, effet immédiat). Il a été inversé pour une raison mécanique : traiter le contenu d'abord aurait fait retoucher deux fois les mêmes fichiers, et surtout aurait produit des fiches artistes anglaises pointant vers des URLs sur le point de changer. Déplacer d'abord, écrire ensuite.
+
+### `/en.html` et non `/en/`
+
+Le préfixe visé était `/en/`. Il ne peut pas exister tel quel : avec `build.format: 'file'` et `trailingSlash: 'never'`, Astro écrit `src/pages/en/index.astro` dans `dist/en.html` — vérifié par un projet Astro 7 isolé reproduisant la configuration, plutôt que supposé. Le schéma retenu est donc :
+
+| | |
+|---|---|
+| Accueil anglais | `/en.html` (lot 2, pas encore créé) |
+| Les 13 pages | `/en/<slug>.html` |
+
+C'est cohérent avec le reste du site, où **toutes** les URLs se terminent par `.html`. ⚠️ Ne pas « corriger » cela en passant `build.format` à `'directory'` : les 240 URLs du sitemap y perdraient leur `.html` d'un coup, ce que la contrainte SEO n°1 du projet interdit.
+
+### Les 301, et le piège du §60 vérifié avant
+
+Treize redirections permanentes ajoutées à `vercel.json` (10 règles → 23). Le contrôle imposé par le §60 — *aucune règle héritée ne doit porter l'URL d'une page réelle* — a été fait dans les deux sens et automatisé dans le script de vérification : aucune des 23 sources ne correspond à un fichier existant de `dist/`, et toutes les destinations existent.
+
+Deux règles héritées pointaient vers `/listen-on-tunein.html`. Elles ont été **réécrites vers la nouvelle URL** plutôt que laissées en place : sinon `/listen-to-radio-odyssey-on-alexa.html` aurait produit deux sauts au lieu d'un. Il ne reste aucune chaîne de redirection.
+
+### Le `hreflang` était faux sur les 258 pages
+
+En allant poser les balises, le mécanisme existant s'est révélé inutilisable : `Layout.astro` émettait sur **chaque** page un `hreflang` auto-référent (sans valeur seul, un groupe d'équivalence a besoin d'au moins deux membres) et un `x-default` codé en dur vers l'accueil français — **y compris sur les 13 pages anglaises, qui renvoyaient donc l'anglophone vers du français.**
+
+Remplacé par une prop `altLangs={{ fr: '…', en: '…' }}` : les deux balises ne sont émises que dans un vrai groupe, et `x-default` désigne la version française, langue par défaut du site.
+
+⚠️ **Une paire ne se déclare qu'entre deux pages traitant réellement du même sujet.** Cinq paires ont été retenues, chacune après comparaison du titre et de la description des deux pages — pas sur la ressemblance du slug :
+
+| Français | Anglais |
+|---|---|
+| `/radio-coherence-cardiaque.html` | `/en/heart-coherence-breathing-radio.html` |
+| `/coherence-cardiaque-au-bureau.html` | `/en/heart-coherence-breathing-at-work.html` |
+| `/musique-positive-et-bonne-humeur.html` | `/en/music-for-a-better-mood.html` |
+| `/radio-sans-publicite.html` | `/en/free-radio-no-ads-no-sign-up.html` |
+| `/radio-annees-80-en-ligne.html` | `/en/80s-throwback-radio-online.html` |
+
+Les huit autres pages anglaises (`positive-european-music-station`, `european-chill-radio`, `feel-good-music-radio`, `keep-listening-radio-odyssey`, `radio-odyssey-vs-meditation-apps`, `why-positive-radio-is-trending`, `listen-on-tunein`, `radio-for-focus-and-productivity`) n'ont **pas** d'équivalent français : ce sont des pages anglaises d'origine, pas des traductions. Leur en inventer un aurait fait perdre le bénéfice du groupe entier. Elles n'émettent donc aucun `hreflang`, ce qui est le comportement correct.
+
+### Vérifications
+
+⚠️ **`npm run build` ne peut pas tourner sur le dossier monté** : `node_modules` est installé pour `darwin-arm64` et le pont de fichiers expose un VM `linux-arm64`, d'où un `Cannot find native binding` sur Rolldown. La vérification a été refaite dans un conteneur séparé, sur la même version d'Astro, à partir d'une archive des sources.
+
+Build : **258 pages, aucune erreur** (nombre inchangé — déplacement, pas création). Sur `dist/` : 13 fichiers dans `en/`, 240 URLs au sitemap toutes présentes et aucune en `noindex`, **39 819 liens internes vérifiés, zéro cible absente**, aucun `<title>` de moins de trois mots, 19 pages en `noindex` (18 fiches artistes sous le seuil + `hors-ligne.html`, conforme). Les dix pages des cinq paires déclarent un groupe `hreflang` réciproque et symétrique — contrôle automatisé dans les deux sens, une déclaration unilatérale étant ignorée par Google.
+
+### Reste à faire sur ce chantier
+
+Lots 2 à 5, dans cet ordre : accueil anglais `/en.html` + traduction de `histoire-de-radio-odyssey`, `pourquoi-radio-odyssey-est-differente` et `faq-radio-odyssey` ; bloc E-E-A-T sur les deux pages anglaises de cohérence cardiaque ; gabarit de fiche artiste anglais ; un ou deux quiz.
+
+⚠️ **`AuthorReview.astro` et `SourcesBlock.astro` ont leurs libellés en dur en français** (« Relu par… », « Dernière vérification », le rappel de non-substitution à un avis médical, « Sources et références »), et les `label` de `data/reviewer.js` aussi. Le lot 3 n'est donc pas un simple ajout d'import : il demande une prop de langue sur les deux composants et un jeu de libellés de sources en anglais. Les deux sources de cohérence cardiaque (Inserm, Goessl 2017) restent citables telles quelles.
+
+⚠️ **Décision de maillage prise pour toute la suite** : sur une page anglaise, un lien interne n'est affiché que si sa cible existe en anglais. Pas de renvoi vers le français, même signalé. Cela concerne surtout le gabarit de fiche artiste du lot 4, dont `linkHref`, le bloc quiz, les voisins de classement et `RelatedPages` pointent tous vers des pages françaises.
+
+⚠️ La navigation (`Header.astro`, `MegaNav.astro`, `Footer.astro`, `Sidebar.astro`) reste **entièrement en français sur les 13 pages anglaises**. Non traité au lot 1, et c'est le premier point du lot 2 : un visiteur froid qui arrive sur `/en/feel-good-music-radio.html` voit un menu qu'il ne peut pas lire.
+
+---
+
+*Dernière mise à jour : 2026-08-16, version anglaise lot 1 — les 13 pages sous `/en/` (§81).*

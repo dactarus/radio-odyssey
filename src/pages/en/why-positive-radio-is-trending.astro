@@ -1,11 +1,11 @@
 ---
-import Icon from '../components/Icon.astro';
-import Layout from '../layouts/Layout.astro';
-import PageHero from '../components/PageHero.astro';
-import Sidebar from '../components/Sidebar.astro';
-import FAQBlock from '../components/FAQBlock.astro';
-import RelatedPages from '../components/RelatedPages.astro';
-import ContentIllustration from '../components/ContentIllustration.astro';
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
+import ContentIllustration from '../../components/ContentIllustration.astro';
 
 const faq = [
   { q: 'Is "positive radio" an official music genre?', a: "Not really — it's more of an editorial stance than a genre. It describes stations that deliberately curate uplifting, feel-good tracks and avoid melancholic or aggressive content, regardless of the underlying style (pop, dance, 80s remixes...)." },
@@ -54,8 +54,8 @@ const faq = [
 
           <div class="content-card">
             <h2>Where Radio Odyssey Fits</h2>
-            <p>Radio Odyssey didn't launch to chase this trend — the station has always been built around "The Positive Radio" as its core identity, mixing 80s hits remixed for today, current dance and pop, and <a href="/heart-coherence-breathing-radio.html" style="color:var(--ro-purple);font-weight:700;">guided breathing sequences</a> woven directly into the broadcast. What's changed is that more listeners outside France are now actively looking for exactly this kind of station.</p>
-            <p>Curious what actually shaped that philosophy? See <a href="/music-for-a-better-mood.html" style="color:var(--ro-purple);font-weight:700;">Music for a Better Mood</a>, built in partnership with a cognitive psychologist. And unlike most stations riding this trend, Radio Odyssey backs it up with a concrete choice: <a href="/free-radio-no-ads-no-sign-up.html" style="color:var(--ro-purple);font-weight:700;">no ads, no sign-up, ever</a>.</p>
+            <p>Radio Odyssey didn't launch to chase this trend — the station has always been built around "The Positive Radio" as its core identity, mixing 80s hits remixed for today, current dance and pop, and <a href="/en/heart-coherence-breathing-radio.html" style="color:var(--ro-purple);font-weight:700;">guided breathing sequences</a> woven directly into the broadcast. What's changed is that more listeners outside France are now actively looking for exactly this kind of station.</p>
+            <p>Curious what actually shaped that philosophy? See <a href="/en/music-for-a-better-mood.html" style="color:var(--ro-purple);font-weight:700;">Music for a Better Mood</a>, built in partnership with a cognitive psychologist. And unlike most stations riding this trend, Radio Odyssey backs it up with a concrete choice: <a href="/en/free-radio-no-ads-no-sign-up.html" style="color:var(--ro-purple);font-weight:700;">no ads, no sign-up, ever</a>.</p>
           </div>
 
           <FAQBlock items={faq} idPrefix="trend" lang="en" />
@@ -63,13 +63,13 @@ const faq = [
           <RelatedPages
             lang="en"
             alsoLike={[
-              { href: '/music-for-a-better-mood.html', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
-              { href: '/feel-good-music-radio.html', label: 'Feel Good Music Radio', desc: 'The station, in a nutshell' },
-              { href: '/radio-odyssey-vs-meditation-apps.html', label: 'Radio Odyssey vs. Meditation Apps', desc: 'A no-pressure way to unwind' },
+              { href: '/en/music-for-a-better-mood.html', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
+              { href: '/en/feel-good-music-radio.html', label: 'Feel Good Music Radio', desc: 'The station, in a nutshell' },
+              { href: '/en/radio-odyssey-vs-meditation-apps.html', label: 'Radio Odyssey vs. Meditation Apps', desc: 'A no-pressure way to unwind' },
             ]}
             associated={[
-              { href: '/heart-coherence-breathing-radio.html', label: 'Heart Coherence Breathing Radio' },
-              { href: '/positive-european-music-station.html', label: 'Positive European Music Station' },
+              { href: '/en/heart-coherence-breathing-radio.html', label: 'Heart Coherence Breathing Radio' },
+              { href: '/en/positive-european-music-station.html', label: 'Positive European Music Station' },
               { href: '/', label: 'Home Page' },
             ]}
           />

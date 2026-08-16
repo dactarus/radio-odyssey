@@ -18,6 +18,20 @@ interface Props {
   articleDatePublished?: string;
   articleDateModified?: string;
   articleAuthorName?: string;
+  /*
+    Paire de pages équivalentes FR/EN, sous la forme { fr: '/…', en: '/en/…' }
+    (§81). À ne renseigner que lorsque les deux pages traitent réellement du
+    même sujet : une déclaration `hreflang` entre deux pages qui ne se
+    correspondent pas est ignorée par Google, et peut faire perdre le bénéfice
+    du groupe entier.
+
+    Avant le §81, chaque page émettait un `hreflang` auto-référent (inutile
+    seul) et un `x-default` codé en dur vers l'accueil français — y compris
+    les 13 pages anglaises, qui renvoyaient donc l'anglophone vers du
+    français. Les deux balises ne sont désormais émises que dans un vrai
+    groupe d'équivalence.
+  */
+  altLangs?: Partial<Record<'fr' | 'en', string>>;
 }
 
 const {
@@ -32,12 +46,20 @@ const {
   articleDatePublished,
   articleDateModified,
   articleAuthorName,
+  altLangs,
 } = Astro.props;
 
 const ogImageURL = new URL(ogImage, Astro.site);
 
 const canonicalPath = Astro.url.pathname === '/index.html' ? '/' : Astro.url.pathname;
 const canonicalURL = new URL(canonicalPath, Astro.site);
+
+// Groupe d'équivalence linguistique (§81). `x-default` désigne la version
+// servie à un visiteur dont la langue n'est couverte par aucune déclaration :
+// c'est le français, langue par défaut du site — jamais l'anglais, qui n'est
+// qu'une porte d'entrée partielle (13 pages sur 258).
+const altLangEntries = altLangs ? Object.entries(altLangs) : [];
+const xDefaultPath = altLangs?.fr ?? altLangEntries[0]?.[1];
 
 // Trois entités distinctes, reliées par @id : l'association (Organization,
 // l'éditeur légal), le site web (WebSite, la publication numérique) et la
@@ -219,8 +241,10 @@ const articleSchema = articleDatePublished ? {
   <meta name="description" content={description}/>
   <meta name="robots" content={robots}/>
   <link rel="canonical" href={canonicalURL}/>
-  <link rel="alternate" hreflang={lang} href={canonicalURL}/>
-  <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)}/>
+  {altLangEntries.map(([code, path]) => (
+    <link rel="alternate" hreflang={code} href={new URL(path, Astro.site)}/>
+  ))}
+  {xDefaultPath && <link rel="alternate" hreflang="x-default" href={new URL(xDefaultPath, Astro.site)}/>}
   <meta property="og:title" content={ogTitle}/>
   <meta property="og:description" content={ogDescription}/>
   <meta property="og:image" content={ogImageURL}/>

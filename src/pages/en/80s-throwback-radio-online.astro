@@ -1,10 +1,10 @@
 ---
-import Icon from '../components/Icon.astro';
-import Layout from '../layouts/Layout.astro';
-import PageHero from '../components/PageHero.astro';
-import Sidebar from '../components/Sidebar.astro';
-import FAQBlock from '../components/FAQBlock.astro';
-import RelatedPages from '../components/RelatedPages.astro';
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
 
 const faq = [
   { q: 'Is Radio Odyssey only 80s music?', a: "No — the 80s throwback sound is one part of a wider mix that also includes current dance hits, feel-good pop and easy listening. It's blended in, not the only thing you'll hear." },
@@ -14,6 +14,7 @@ const faq = [
 ---
 <Layout
   lang="en"
+  altLangs={{ fr: '/radio-annees-80-en-ligne.html', en: '/en/80s-throwback-radio-online.html' }}
   title="80s Throwback Radio Online | Radio Odyssey"
   description="Stream 80s throwback hits online with Radio Odyssey — classic songs reimagined with a modern touch, free and ad-free, streaming live worldwide on TuneIn."
 >
@@ -48,7 +49,7 @@ const faq = [
           <div class="content-card">
             <h2>Part of a Bigger, Positive Mix</h2>
             <p>The 80s throwback sound doesn't play in isolation — it's woven into a wider flow of dance hits, feel-good pop, and even short wellness-oriented breathing sequences throughout the day. Think of it as one flavor within Radio Odyssey's larger positive mix, not a dedicated 80s-only station.</p>
-            <p>See our <a href="/music-for-a-better-mood.html" style="color:var(--ro-purple);font-weight:700;">Music for a Better Mood</a> page for more on that broader philosophy.</p>
+            <p>See our <a href="/en/music-for-a-better-mood.html" style="color:var(--ro-purple);font-weight:700;">Music for a Better Mood</a> page for more on that broader philosophy.</p>
           </div>
 
           <FAQBlock items={faq} idPrefix="80s" lang="en" />
@@ -56,12 +57,12 @@ const faq = [
           <RelatedPages
             lang="en"
             alsoLike={[
-              { href: '/feel-good-music-radio.html', label: 'Feel Good Music Radio', desc: "Radio Odyssey's positive mix" },
-              { href: '/listen-on-tunein.html', label: 'How to Listen on TuneIn', desc: 'The easiest way to tune in worldwide' },
+              { href: '/en/feel-good-music-radio.html', label: 'Feel Good Music Radio', desc: "Radio Odyssey's positive mix" },
+              { href: '/en/listen-on-tunein.html', label: 'How to Listen on TuneIn', desc: 'The easiest way to tune in worldwide' },
             ]}
             associated={[
-              { href: '/positive-european-music-station.html', label: 'Positive European Music Station' },
-              { href: '/heart-coherence-breathing-radio.html', label: 'Heart Coherence Breathing Radio' },
+              { href: '/en/positive-european-music-station.html', label: 'Positive European Music Station' },
+              { href: '/en/heart-coherence-breathing-radio.html', label: 'Heart Coherence Breathing Radio' },
             ]}
           />
 

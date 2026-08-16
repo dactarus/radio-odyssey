@@ -1,11 +1,11 @@
 ---
-import Icon from '../components/Icon.astro';
-import Layout from '../layouts/Layout.astro';
-import PageHero from '../components/PageHero.astro';
-import Sidebar from '../components/Sidebar.astro';
-import FAQBlock from '../components/FAQBlock.astro';
-import RelatedPages from '../components/RelatedPages.astro';
-import ContentIllustration from '../components/ContentIllustration.astro';
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
+import ContentIllustration from '../../components/ContentIllustration.astro';
 
 const faq = [
   { q: 'Can I practice heart coherence breathing without leaving my desk?', a: "Yes — that's the point of having it woven into a music broadcast rather than a standalone app. Keep working, keep your eyes open, and just follow the rhythm when a sequence plays." },
@@ -15,6 +15,7 @@ const faq = [
 ---
 <Layout
   lang="en"
+  altLangs={{ fr: '/coherence-cardiaque-au-bureau.html', en: '/en/heart-coherence-breathing-at-work.html' }}
   title="Heart Coherence Breathing at Work | Radio Odyssey"
   description="Bring heart coherence breathing into your workday without leaving your desk — guided sequences woven into Radio Odyssey's live broadcast, no app required."
 >
@@ -38,7 +39,7 @@ const faq = [
 
           <div class="content-card">
             <h2>Why the Workday Is a Good Time to Practice</h2>
-            <p>Back-to-back meetings, deadlines and constant notifications make the workday one of the most common sources of daily tension — and one of the best places for a short breathing reset to actually make a difference. <a href="/heart-coherence-breathing-radio.html" style="color:var(--ro-purple);font-weight:700;">Heart coherence breathing</a> only takes a few minutes, which is exactly why it fits so naturally into a workday that rarely offers a longer break.</p>
+            <p>Back-to-back meetings, deadlines and constant notifications make the workday one of the most common sources of daily tension — and one of the best places for a short breathing reset to actually make a difference. <a href="/en/heart-coherence-breathing-radio.html" style="color:var(--ro-purple);font-weight:700;">Heart coherence breathing</a> only takes a few minutes, which is exactly why it fits so naturally into a workday that rarely offers a longer break.</p>
           </div>
 
           <div class="content-card">
@@ -65,7 +66,7 @@ const faq = [
           <div class="content-card">
             <h2>A Shared Option for Open Offices</h2>
             <p>Some teams choose to play Radio Odyssey as shared background music in an open office — there's nothing to install or configure, just a browser tab. It won't suit every team, but for one that already enjoys music together, the breathing sequences come along for free.</p>
-            <p>For the fuller picture on why this works well for a workday, see <a href="/radio-for-focus-and-productivity.html" style="color:var(--ro-purple);font-weight:700;">Radio for Focus and Productivity</a>.</p>
+            <p>For the fuller picture on why this works well for a workday, see <a href="/en/radio-for-focus-and-productivity.html" style="color:var(--ro-purple);font-weight:700;">Radio for Focus and Productivity</a>.</p>
           </div>
 
           <FAQBlock items={faq} idPrefix="workcc" lang="en" />
@@ -73,13 +74,13 @@ const faq = [
           <RelatedPages
             lang="en"
             alsoLike={[
-              { href: '/heart-coherence-breathing-radio.html', label: 'Heart Coherence Breathing Radio', desc: 'What it is, and how to try it right now' },
-              { href: '/radio-odyssey-vs-meditation-apps.html', label: 'Radio Odyssey vs. Meditation Apps', desc: 'A no-pressure way to unwind' },
-              { href: '/music-for-a-better-mood.html', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
+              { href: '/en/heart-coherence-breathing-radio.html', label: 'Heart Coherence Breathing Radio', desc: 'What it is, and how to try it right now' },
+              { href: '/en/radio-odyssey-vs-meditation-apps.html', label: 'Radio Odyssey vs. Meditation Apps', desc: 'A no-pressure way to unwind' },
+              { href: '/en/music-for-a-better-mood.html', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
             ]}
             associated={[
               { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Our Partner Elisabeth Bélot-Grimaud' },
-              { href: '/feel-good-music-radio.html', label: 'Feel Good Music Radio' },
+              { href: '/en/feel-good-music-radio.html', label: 'Feel Good Music Radio' },
               { href: '/', label: 'Home Page' },
             ]}
           />
