@@ -2223,3 +2223,21 @@ Build isolé : 258 pages, aucune erreur. `ro-newsletter` présent sur exactement
 ---
 
 *Dernière mise à jour : 2026-08-16, capture e-mail minimale (§74).*
+
+---
+
+## 75. Fusion appli → site : décision annulée (2026-08-16)
+
+Le point 9 des « Prochaines étapes » avait acté au §70 la fusion de `app.radio-odyssey.com` dans `www` : page hors ligne enrichie, masquage du bouton « App Mobile » en mode autonome, puis redirection de `app.` vers `www`. L'argument qui justifiait de les garder séparées (la base d'abonnés aux notifications push, non transférable entre origines) était tombé — vérifiée quasi vide dans Upstash (`SCARD push_subscriptions` = 1).
+
+Le propriétaire a fait remarquer que ce raisonnement ne tenait pas compte de ce que l'appli apporte réellement : une navigation par onglets, le sentiment d'une vraie application plutôt que d'un site, et le fait que, comme la plupart des auditeurs de radio, il ouvre l'appli plutôt que le site quand il veut écouter — comportement que les chiffres d'audience confirment (durée moyenne 16 min sur l'appli contre 8 min sur le site, voir Contexte d'audience de CLAUDE.md).
+
+**Vérification faite avant de trancher** : lecture du code de `Appli Radio Odyssey V8/index.html`. Ce n'est pas un miroir du site : c'est une interface à un seul écran avec une barre de navigation à 5 onglets (Écouter, Programme, À propos, Bien-être, Réseaux), commutés en JavaScript sans rechargement de page, avec visualisation waveform animée et fond étoilé — une expérience construite pour l'écoute répétée en un geste, pas pour le contenu à parcourir. Le site `www`, à l'inverse, est un site de 258 pages avec mega-menu, construit pour être trouvé sur les moteurs de recherche. Rediriger `app.` vers `www` aurait remplacé la première expérience par la seconde, supprimant précisément ce qui explique sa meilleure rétention.
+
+**Décision révisée** : l'appli et le site restent deux produits distincts, chacun avec son rôle (l'appli pour l'écoute récurrente, le site pour l'acquisition et le contenu). Seule la partie de l'ancien plan qui ne concernait pas l'expérience reste valide : la base Upstash et les deux endpoints `api/subscribe.js`/`api/send.js`, inutilisés, pourront être débranchés un jour sans toucher au domaine ni à l'interface — mais ce n'est pas urgent (pas de coût, Upstash archive les bases inactives sans les supprimer).
+
+Aucun changement de code dans ce lot — uniquement une correction de plan, consignée pour ne pas revenir sur une fausse bonne idée une seconde fois.
+
+---
+
+*Dernière mise à jour : 2026-08-16, annulation de la fusion appli/site (§75).*

@@ -4,7 +4,7 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-16 (§74).*
+*Dernière mise à jour de ce fichier : 2026-08-16 (§75).*
 
 ## Objectif du projet
 
@@ -92,7 +92,7 @@ Depuis le 2026-08-09, `www.radio-odyssey.com` est **installable depuis n'importe
 
 **À savoir** : `app.radio-odyssey.com` est une **seconde PWA**, sur un dépôt distinct (dossier `Appli Radio Odyssey V8`, sans dépôt git — publication par `npx vercel --prod`).
 
-⚠️ **L'argument qui justifiait de la garder séparée est tombé le 2026-08-14 (§70).** On invoquait sa base d'abonnés aux notifications push, non transférable car liée à une origine. Vérification faite dans la console Upstash (`SCARD push_subscriptions`) : **elle compte un seul abonné**, très probablement un test. La fusion vers `www` n'a donc plus d'obstacle.
+⚠️ L'argument technique qui justifiait de la garder séparée (sa base d'abonnés aux notifications push, non transférable car liée à une origine) est tombé le 2026-08-14 (§70) : vérification faite dans la console Upstash (`SCARD push_subscriptions`), elle ne compte qu'un seul abonné, très probablement un test. Mais la décision de fusionner l'appli dans le site a été **annulée le 2026-08-16 (§75)** : l'appli n'est pas un miroir du site, c'est une interface à onglets distincte (5 écrans, navigation par geste, sans page de contenu) qui retient deux fois plus longtemps que le site (16 min contre 8 min, voir Contexte d'audience) — la garder séparée reste le bon choix. Voir Prochaines étapes #9.
 
 ## Charte graphique (voir aussi PROJET_RADIO_ODYSSEY.md pour le détail complet)
 
@@ -212,10 +212,10 @@ Chiffres réels, utiles pour arbitrer les priorités — le détail figure au §
 5. **Grille week-end distincte** : midi y est le meilleur moment et reçoit la programmation standard (§58)
 6. **Expérience jeudi soir** : appliquer la grille musclée un soir de plus pendant un mois, et vérifier si le ratio soirée/après-midi passe de 0,40 vers 0,67 (§58)
 7. ~~**Ouvrir une liste e-mail**~~ — fait au §74, version minimale : capture (sans programme éditorial) sur les pages de quiz et de cohérence cardiaque, compte Brevo, double opt-in
-8. ~~**Instrumenter** les événements manquants~~ — fait au §72 pour installation PWA, quiz, exercice et sorties plateformes (voir Points de vigilance ci-dessus). L'opt-in push reste hors périmètre tant que la fonctionnalité n'existe pas sur `www` (point 9)
-9. **Fusionner l'appli dans le site** (§70) — décision prise, exécution reportée. Page hors ligne enrichie (garder l'exercice et le programme), masquage du bouton « App Mobile » en mode autonome, puis redirection de `app.` vers `www`. Disparaissent au passage : un second déploiement Vercel, la base Upstash et les deux endpoints `api/subscribe.js` et `api/send.js`.
-   ⚠️ **Ne pas payer d'abonnement Upstash et ne pas maintenir la base en vie.** Elle sera archivée pour inactivité ; les données sont sauvegardées par Upstash et restaurables, et il n'y a de toute façon rien à sauver. Un simple `PING` ne compte pas comme activité chez Upstash — seule une opération de données (`GET`, `SET`, `SCARD`…) réinitialise le compteur, si jamais le besoin se présentait
-   ⚠️ Si des notifications push sont refaites un jour, ce sera **sur `www`, et seulement avec un programme éditorial défini** : la fonction existe depuis des mois sur l'appli et n'a recruté personne. Avant de la reconstruire, savoir si c'est le bouton qui est invisible ou la proposition qui n'intéresse pas
+8. ~~**Instrumenter** les événements manquants~~ — fait au §72 pour installation PWA, quiz, exercice et sorties plateformes (voir Points de vigilance ci-dessus). L'opt-in push reste hors périmètre : la fonctionnalité n'existe que sur l'appli, pas sur `www`, et le restera — voir point 9
+9. ~~**Fusionner l'appli dans le site**~~ — décision prise au §70, **annulée au §75 (2026-08-16)**. En allant lire le code de l'appli (`Appli Radio Odyssey V8/index.html`), il s'est avéré que ce n'est pas un miroir du site mais une interface à onglets à part entière (barre de navigation à 5 écrans — Écouter, Programme, À propos, Bien-être, Réseaux —, un seul geste, pas de page de contenu à faire défiler). C'est très probablement ce qui explique sa durée d'écoute moyenne, le double de celle du site (16 min contre 8 min, voir Contexte d'audience). Rediriger `app.` vers `www` aurait remplacé cette interface par le site à 258 pages — supprimé exactement ce qui la rend efficace. **L'appli et le site restent deux produits distincts.**
+   Reste valable, et détaché de toute idée de fusion : la base Upstash des abonnés push (`SCARD push_subscriptions` = 1, très probablement un test) et les deux endpoints `api/subscribe.js`/`api/send.js` sont inutilisés. Ils pourront être débranchés un jour sans toucher à l'expérience de l'appli ni à son domaine — mais ce n'est pas urgent : ⚠️ **ne pas payer d'abonnement Upstash pour autant, ne pas chercher à maintenir la base en vie.** Elle sera archivée pour inactivité si rien ne change ; les données sont sauvegardées par Upstash et restaurables, et il n'y a de toute façon rien à sauver. Un simple `PING` ne compte pas comme activité chez Upstash — seule une opération de données (`GET`, `SET`, `SCARD`…) réinitialise le compteur, si jamais le besoin se présentait.
+   ⚠️ Si des notifications push sont refaites un jour, ce sera **seulement avec un programme éditorial défini** : la fonction existe depuis des mois sur l'appli et n'a recruté personne. Avant de la reconstruire, savoir si c'est le bouton qui est invisible ou la proposition qui n'intéresse pas
 10. `og:image` par page sur les ~213 pages feuilles (les 7 hubs et l'accueil ont déjà la leur). `llms.txt` complété à 29 URL au §59
 11. **Décision internationale** : `/en/` complet, ou repli assumé
 12. **Mesurer l'effet du bloc E-E-A-T et des nouveaux événements Umami** (§72) une fois quelques jours de données accumulées : taux de complétion des quiz et de l'exercice, poids réel des clics vers l'appli et les plateformes externes, installations PWA — jusqu'ici invisibles faute d'instrumentation
