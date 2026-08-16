@@ -358,6 +358,40 @@
       etat('lecture');
       afficher(titreCourant || 'Radio Odyssey', 'En direct · appuyer pour arrêter');
       suivre('play_started', { device: estMobile() ? 'mobile' : 'desktop', method: 'audio-natif' });
+      /* ⚠️ LIMITE CONNUE — NE PAS ESSAYER DE LA CONTOURNER PAR LE CODE.
+
+         Sur iPhone, en application installée sur l'écran d'accueil, mettre la
+         radio en pause depuis l'écran verrouillé fait **démarrer l'app
+         Musique** une seconde plus tard : `arreter()` relâche la session
+         audio, iOS considère alors terminée l'« interruption » que Radio
+         Odyssey lui avait causée, et reprend la lecture de l'application
+         interrompue. Cela vaut pour tout auditeur ayant Musique en pause.
+
+         Trois contournements ont été écrits, publiés et testés sur iPhone le
+         2026-08-16, sur l'appli `app.radio-odyssey.com` qui a le même défaut
+         (§77.1) : faire « tenir » la pause, différer le rechargement du flux,
+         puis couper le son sans arrêter le flux. Aucun ne fonctionne — iOS met
+         l'élément en pause de son côté quoi que fasse le gestionnaire.
+
+         Le seul contournement théorique restant (ne jamais mettre en pause,
+         garder le flux ouvert en permanence) a été écarté sciemment : il
+         ferait compter par RadioKing du temps d'écoute qui n'en est pas, et
+         fausserait la durée d'écoute moyenne, sur laquelle tout le reste est
+         arbitré.
+
+         Écran allumé, application au premier plan, le même arrêt est en
+         revanche sans conséquence : Musique ne bouge pas — c'est vérifié.
+
+         Seconde limite, du même ressort : iOS libère la session audio ~30 s
+         après une pause, si bien qu'une reprise depuis l'écran verrouillé est
+         ensuite muette jusqu'au retour au premier plan. Forum développeurs
+         Apple, fil 762582 ; bug WebKit 261858, ouvert, propre au mode
+         « ajouté à l'écran d'accueil ».
+
+         ⚠️ Toute modification touchant à la lecture, à la pause ou à la
+         reconnexion doit être testée sur un vrai iPhone avant publication :
+         le banc d'essai Playwright ne voit pas la session audio d'iOS et
+         validait les trois tentatives ci-dessus. */
       if ('mediaSession' in navigator) {
         try {
           navigator.mediaSession.playbackState = 'playing';
