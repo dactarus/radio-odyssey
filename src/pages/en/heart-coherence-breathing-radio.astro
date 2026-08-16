@@ -1,10 +1,10 @@
 ---
-import Icon from '../components/Icon.astro';
-import Layout from '../layouts/Layout.astro';
-import PageHero from '../components/PageHero.astro';
-import Sidebar from '../components/Sidebar.astro';
-import FAQBlock from '../components/FAQBlock.astro';
-import RelatedPages from '../components/RelatedPages.astro';
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
 
 const faq = [
   { q: 'What is heart coherence breathing?', a: "It's a slow, rhythmic breathing pattern — about 5 to 6 breaths per minute — that brings heart rate variability into a smoother, more regular pattern often called \"coherence.\" It's been studied and promoted by organizations such as the HeartMath Institute, and is known in France as \"cohérence cardiaque.\"" },
@@ -28,6 +28,7 @@ const howToSchema = {
 ---
 <Layout
   lang="en"
+  altLangs={{ fr: '/radio-coherence-cardiaque.html', en: '/en/heart-coherence-breathing-radio.html' }}
   title="Heart Coherence Breathing Radio | Radio Odyssey"
   description="Discover heart coherence breathing with Radio Odyssey — guided sequences woven into a free, ad-free positive music radio, streaming live worldwide."
 >
@@ -85,14 +86,14 @@ const howToSchema = {
           <RelatedPages
             lang="en"
             alsoLike={[
-              { href: '/heart-coherence-breathing-at-work.html', label: 'Heart Coherence Breathing at Work', desc: 'Bring it into your workday, without leaving your desk' },
-              { href: '/radio-odyssey-vs-meditation-apps.html', label: 'Radio Odyssey vs. Meditation Apps', desc: 'A no-pressure way to unwind' },
-              { href: '/music-for-a-better-mood.html', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
+              { href: '/en/heart-coherence-breathing-at-work.html', label: 'Heart Coherence Breathing at Work', desc: 'Bring it into your workday, without leaving your desk' },
+              { href: '/en/radio-odyssey-vs-meditation-apps.html', label: 'Radio Odyssey vs. Meditation Apps', desc: 'A no-pressure way to unwind' },
+              { href: '/en/music-for-a-better-mood.html', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
             ]}
             associated={[
               { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Our Partner Elisabeth Bélot-Grimaud' },
-              { href: '/feel-good-music-radio.html', label: 'Feel Good Music Radio' },
-              { href: '/listen-on-tunein.html', label: 'How to Listen on TuneIn' },
+              { href: '/en/feel-good-music-radio.html', label: 'Feel Good Music Radio' },
+              { href: '/en/listen-on-tunein.html', label: 'How to Listen on TuneIn' },
             ]}
           />
 

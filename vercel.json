@@ -1,40 +1,160 @@
 {
   "redirects": [
-    { "source": "/sitemap.xml/index.html", "destination": "/", "permanent": true },
-    { "source": "/sitemap.xml/page1.html", "destination": "/", "permanent": true },
-    { "source": "/sitemap.xml/plan-du-site.html", "destination": "/", "permanent": true },
-    { "source": "/sitemap.xml/radio-remix-annees-80.html", "destination": "/radio-annees-80-en-ligne.html", "permanent": true },
-    { "source": "/sitemap.xml/listen-to-radio-odyssey-on-alexa.html", "destination": "/listen-on-tunein.html", "permanent": true },
-    { "source": "/listen-to-radio-odyssey-on-alexa.html", "destination": "/listen-on-tunein.html", "permanent": true },
-    { "source": "/radio-bien-etre.html", "destination": "/radio-bien-etre-en-ligne.html", "permanent": true },
-    { "source": "/Radio-annees-80-en-ligne.html", "destination": "/radio-annees-80-en-ligne.html", "permanent": true },
-    { "source": "/radio-remix-annees-80.html", "destination": "/radio-annees-80-en-ligne.html", "permanent": true },
-    { "source": "/sitemap.xml/:slug.html", "destination": "/:slug.html", "permanent": true }
+    {
+      "source": "/sitemap.xml/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap.xml/page1.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap.xml/plan-du-site.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap.xml/radio-remix-annees-80.html",
+      "destination": "/radio-annees-80-en-ligne.html",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap.xml/listen-to-radio-odyssey-on-alexa.html",
+      "destination": "/en/listen-on-tunein.html",
+      "permanent": true
+    },
+    {
+      "source": "/listen-to-radio-odyssey-on-alexa.html",
+      "destination": "/en/listen-on-tunein.html",
+      "permanent": true
+    },
+    {
+      "source": "/radio-bien-etre.html",
+      "destination": "/radio-bien-etre-en-ligne.html",
+      "permanent": true
+    },
+    {
+      "source": "/Radio-annees-80-en-ligne.html",
+      "destination": "/radio-annees-80-en-ligne.html",
+      "permanent": true
+    },
+    {
+      "source": "/radio-remix-annees-80.html",
+      "destination": "/radio-annees-80-en-ligne.html",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap.xml/:slug.html",
+      "destination": "/:slug.html",
+      "permanent": true
+    },
+    {
+      "source": "/positive-european-music-station.html",
+      "destination": "/en/positive-european-music-station.html",
+      "permanent": true
+    },
+    {
+      "source": "/european-chill-radio.html",
+      "destination": "/en/european-chill-radio.html",
+      "permanent": true
+    },
+    {
+      "source": "/feel-good-music-radio.html",
+      "destination": "/en/feel-good-music-radio.html",
+      "permanent": true
+    },
+    {
+      "source": "/keep-listening-radio-odyssey.html",
+      "destination": "/en/keep-listening-radio-odyssey.html",
+      "permanent": true
+    },
+    {
+      "source": "/heart-coherence-breathing-radio.html",
+      "destination": "/en/heart-coherence-breathing-radio.html",
+      "permanent": true
+    },
+    {
+      "source": "/heart-coherence-breathing-at-work.html",
+      "destination": "/en/heart-coherence-breathing-at-work.html",
+      "permanent": true
+    },
+    {
+      "source": "/radio-odyssey-vs-meditation-apps.html",
+      "destination": "/en/radio-odyssey-vs-meditation-apps.html",
+      "permanent": true
+    },
+    {
+      "source": "/why-positive-radio-is-trending.html",
+      "destination": "/en/why-positive-radio-is-trending.html",
+      "permanent": true
+    },
+    {
+      "source": "/80s-throwback-radio-online.html",
+      "destination": "/en/80s-throwback-radio-online.html",
+      "permanent": true
+    },
+    {
+      "source": "/music-for-a-better-mood.html",
+      "destination": "/en/music-for-a-better-mood.html",
+      "permanent": true
+    },
+    {
+      "source": "/listen-on-tunein.html",
+      "destination": "/en/listen-on-tunein.html",
+      "permanent": true
+    },
+    {
+      "source": "/radio-for-focus-and-productivity.html",
+      "destination": "/en/radio-for-focus-and-productivity.html",
+      "permanent": true
+    },
+    {
+      "source": "/free-radio-no-ads-no-sign-up.html",
+      "destination": "/en/free-radio-no-ads-no-sign-up.html",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/assets/(images|fonts|vendor)/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/assets/(css|js)/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
       ]
     },
     {
       "source": "/sw.js",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
-        { "key": "Service-Worker-Allowed", "value": "/" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
       ]
     },
     {
       "source": "/manifest.json",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
       ]
     }
   ]

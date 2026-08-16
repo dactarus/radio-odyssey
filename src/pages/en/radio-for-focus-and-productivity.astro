@@ -1,10 +1,10 @@
 ---
-import Icon from '../components/Icon.astro';
-import Layout from '../layouts/Layout.astro';
-import PageHero from '../components/PageHero.astro';
-import Sidebar from '../components/Sidebar.astro';
-import FAQBlock from '../components/FAQBlock.astro';
-import RelatedPages from '../components/RelatedPages.astro';
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
 
 const faq = [
   { q: 'Why is a radio stream better than a fixed playlist for focus?', a: "A fixed playlist ends, and choosing the next one breaks concentration. A continuous radio stream removes that micro-decision entirely, which helps maintain a productive flow state." },
@@ -55,12 +55,12 @@ const faq = [
 
           <div class="content-card">
             <h2>Heart Coherence, Built Into the Workday</h2>
-            <p>A few minutes of slow, guided breathing can help reduce tension and refocus attention between tasks. Radio Odyssey weaves these <a href="/heart-coherence-breathing-at-work.html" style="color:var(--ro-purple);font-weight:700;">heart coherence breathing</a> sequences directly into the broadcast — no separate app, no timer to set.</p>
+            <p>A few minutes of slow, guided breathing can help reduce tension and refocus attention between tasks. Radio Odyssey weaves these <a href="/en/heart-coherence-breathing-at-work.html" style="color:var(--ro-purple);font-weight:700;">heart coherence breathing</a> sequences directly into the broadcast — no separate app, no timer to set.</p>
           </div>
 
           <div class="content-card">
             <h2>No Ads, No Account, No Distractions</h2>
-            <p style="margin-bottom:0;">Nothing to configure before your workday starts: no sign-up, no ad breaks interrupting a call or a deep-focus block. Just press play. <a href="/listen-on-tunein.html" style="color:var(--ro-purple);font-weight:700;">Here's the easiest way to tune in <Icon name="arrow-right" /></a></p>
+            <p style="margin-bottom:0;">Nothing to configure before your workday starts: no sign-up, no ad breaks interrupting a call or a deep-focus block. Just press play. <a href="/en/listen-on-tunein.html" style="color:var(--ro-purple);font-weight:700;">Here's the easiest way to tune in <Icon name="arrow-right" /></a></p>
           </div>
 
           <FAQBlock items={faq} idPrefix="focus" lang="en" />
@@ -68,14 +68,14 @@ const faq = [
           <RelatedPages
             lang="en"
             alsoLike={[
-              { href: '/heart-coherence-breathing-at-work.html', label: 'Heart Coherence Breathing at Work', desc: 'Bring it into your workday, no app required' },
-              { href: '/music-for-a-better-mood.html', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
-              { href: '/radio-odyssey-vs-meditation-apps.html', label: 'Radio Odyssey vs. Meditation Apps', desc: 'A no-pressure way to unwind' },
+              { href: '/en/heart-coherence-breathing-at-work.html', label: 'Heart Coherence Breathing at Work', desc: 'Bring it into your workday, no app required' },
+              { href: '/en/music-for-a-better-mood.html', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
+              { href: '/en/radio-odyssey-vs-meditation-apps.html', label: 'Radio Odyssey vs. Meditation Apps', desc: 'A no-pressure way to unwind' },
             ]}
             associated={[
-              { href: '/listen-on-tunein.html', label: 'How to Listen on TuneIn' },
-              { href: '/feel-good-music-radio.html', label: 'Feel Good Music Radio' },
-              { href: '/why-positive-radio-is-trending.html', label: 'Why Positive Radio Is Trending' },
+              { href: '/en/listen-on-tunein.html', label: 'How to Listen on TuneIn' },
+              { href: '/en/feel-good-music-radio.html', label: 'Feel Good Music Radio' },
+              { href: '/en/why-positive-radio-is-trending.html', label: 'Why Positive Radio Is Trending' },
             ]}
           />
 

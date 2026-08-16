@@ -156,7 +156,7 @@ export const ARTISTS = [
       "Sa voix couvre plus de trois octaves, un registre rare dans la pop.",
     ],
     why: "La pop joyeuse et communicative de Mika illustre bien l'ambiance \"feel good\" recherchée sur l'antenne.",
-    linkHref: '/feel-good-music-radio.html',
+    linkHref: '/en/feel-good-music-radio.html',
     linkLabel: 'feel good music radio',
   },
   {

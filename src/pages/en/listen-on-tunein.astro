@@ -1,10 +1,10 @@
 ---
-import Icon from '../components/Icon.astro';
-import Layout from '../layouts/Layout.astro';
-import PageHero from '../components/PageHero.astro';
-import Sidebar from '../components/Sidebar.astro';
-import FAQBlock from '../components/FAQBlock.astro';
-import RelatedPages from '../components/RelatedPages.astro';
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
 
 const faq = [
   { q: 'Is TuneIn free?', a: "Yes. Listening to Radio Odyssey on TuneIn is completely free, with no account required for basic listening." },
@@ -73,12 +73,12 @@ const faq = [
           <RelatedPages
             lang="en"
             alsoLike={[
-              { href: '/feel-good-music-radio.html', label: 'Feel Good Music Radio', desc: "Radio Odyssey's positive mix" },
-              { href: '/80s-throwback-radio-online.html', label: '80s Throwback Radio Online', desc: 'Classic hits, reimagined' },
+              { href: '/en/feel-good-music-radio.html', label: 'Feel Good Music Radio', desc: "Radio Odyssey's positive mix" },
+              { href: '/en/80s-throwback-radio-online.html', label: '80s Throwback Radio Online', desc: 'Classic hits, reimagined' },
             ]}
             associated={[
-              { href: '/heart-coherence-breathing-radio.html', label: 'Heart Coherence Breathing Radio' },
-              { href: '/keep-listening-radio-odyssey.html', label: 'Keep Listening' },
+              { href: '/en/heart-coherence-breathing-radio.html', label: 'Heart Coherence Breathing Radio' },
+              { href: '/en/keep-listening-radio-odyssey.html', label: 'Keep Listening' },
             ]}
           />
 

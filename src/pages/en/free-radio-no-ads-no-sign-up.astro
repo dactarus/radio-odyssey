@@ -1,10 +1,10 @@
 ---
-import Icon from '../components/Icon.astro';
-import Layout from '../layouts/Layout.astro';
-import PageHero from '../components/PageHero.astro';
-import Sidebar from '../components/Sidebar.astro';
-import FAQBlock from '../components/FAQBlock.astro';
-import RelatedPages from '../components/RelatedPages.astro';
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
 
 const faq = [
   { q: 'Is Radio Odyssey really completely free?', a: "Yes. Live listening is free, with no account creation and no time limit, on every device — web, mobile, car, or connected speaker." },
@@ -16,6 +16,7 @@ const faq = [
 ---
 <Layout
   lang="en"
+  altLangs={{ fr: '/radio-sans-publicite.html', en: '/en/free-radio-no-ads-no-sign-up.html' }}
   title="Free Radio, No Ads, No Sign-Up | Radio Odyssey"
   description="Radio Odyssey is 100% free, with no ad breaks and no account required — just music, at no cost, on any device."
 >
@@ -45,7 +46,7 @@ const faq = [
           <div class="content-card">
             <h2>What That Actually Means for You</h2>
             <h3>Listening without interruption</h3>
-            <p>The music stream never stops for an ad. The only planned "pause" is the <a href="/heart-coherence-breathing-radio.html" style="color:var(--ro-purple);font-weight:700;">heart coherence breathing</a> sequence, woven in deliberately — not imposed by an advertiser.</p>
+            <p>The music stream never stops for an ad. The only planned "pause" is the <a href="/en/heart-coherence-breathing-radio.html" style="color:var(--ro-purple);font-weight:700;">heart coherence breathing</a> sequence, woven in deliberately — not imposed by an advertiser.</p>
             <h3>No hidden subscription</h3>
             <p>There's no "premium, ad-free" tier to unlock: the free experience is already, by default, entirely free of ads.</p>
             <h3>A different model from commercial radio</h3>
@@ -63,13 +64,13 @@ const faq = [
             lang="en"
             alsoLike={[
               { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Our Partner Elisabeth Bélot-Grimaud', desc: 'How the station is funded, without ads' },
-              { href: '/music-for-a-better-mood.html', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
-              { href: '/listen-on-tunein.html', label: 'How to Listen on TuneIn', desc: 'The easiest way to tune in worldwide' },
+              { href: '/en/music-for-a-better-mood.html', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
+              { href: '/en/listen-on-tunein.html', label: 'How to Listen on TuneIn', desc: 'The easiest way to tune in worldwide' },
             ]}
             associated={[
-              { href: '/radio-odyssey-vs-meditation-apps.html', label: 'Radio Odyssey vs. Meditation Apps' },
-              { href: '/why-positive-radio-is-trending.html', label: 'Why Positive Radio Is Trending' },
-              { href: '/radio-for-focus-and-productivity.html', label: 'Radio for Focus and Productivity' },
+              { href: '/en/radio-odyssey-vs-meditation-apps.html', label: 'Radio Odyssey vs. Meditation Apps' },
+              { href: '/en/why-positive-radio-is-trending.html', label: 'Why Positive Radio Is Trending' },
+              { href: '/en/radio-for-focus-and-productivity.html', label: 'Radio for Focus and Productivity' },
             ]}
           />
 
