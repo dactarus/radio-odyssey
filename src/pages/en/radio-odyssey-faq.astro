@@ -1,0 +1,115 @@
+---
+/*
+  Adaptation anglaise de faq-radio-odyssey.astro (§81, lot 2).
+
+  ⚠️ La version française renvoie, dans ses réponses, vers six guides
+  d'écoute par appareil et vers plusieurs pages de coulisses — aucun n'existe
+  en anglais. Les réponses portent donc ici l'information directement, et le
+  bloc « où écouter » liste les plateformes (liens externes, valables dans
+  toutes les langues) au lieu des guides français.
+
+  ⚠️ Faits repris de la version française : association loi 1901 à but non
+  lucratif, gratuité sans limite de temps, aucune inscription, application
+  disponible hors App Store et Play Store, adresse de contact. Ne rien
+  ajouter de mémoire.
+*/
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
+
+const faq = [
+  { q: 'Is Radio Odyssey really free?', a: "Yes — entirely, with no time limit, no subscription and no paid tier. It is run by a French non-profit association rather than on a commercial model." },
+  { q: 'Are there ad breaks?', a: "No. The stream carries no advertising at all — see <a href='/en/free-radio-no-ads-no-sign-up.html' style='color:var(--ro-purple);font-weight:700;'>free radio, no ads, no sign-up</a> for how that works." },
+  { q: 'Do I need an account to listen?', a: "No sign-up of any kind. One click on \"Listen Live\", from any page of this site, is enough." },
+  { q: 'Who is behind Radio Odyssey?', a: "A French non-profit association, founded in 1994 and back on air online since January 2025 — the full account is on <a href='/en/the-story-of-radio-odyssey.html' style='color:var(--ro-purple);font-weight:700;'>the story of Radio Odyssey</a>." },
+  { q: 'Can I listen from outside France?', a: "Yes. The stream is available anywhere in the world over an internet connection, and the station is carried on the main international platforms — TuneIn being the simplest route for most listeners." },
+  { q: 'Is there a mobile app?', a: "Yes, and it does not go through the App Store or Google Play: open app.radio-odyssey.com in your phone's browser and add it to your home screen. This site itself can be installed the same way." },
+  { q: 'What is the difference between this and a Spotify playlist?', a: "A playlist stays frozen until you change it. Radio Odyssey is a live stream that keeps moving, shaped by a programme director through the day, with heart coherence breathing sequences at fixed times — a radio experience rather than a list of tracks." },
+  { q: 'What music will I actually hear?', a: "80s hits reimagined with a modern touch, dance and electro, easy listening and recent releases — with melancholy and aggressive tracks deliberately left out." },
+  { q: 'How can I support Radio Odyssey?', a: "The simplest way: tell people about it, keep listening, and follow the station on social media. Every new listener counts for an independent non-profit radio." },
+  { q: 'How do I get in touch or suggest a track?', a: "By email, at <a href='mailto:odysseylaradio@gmail.com' style='color:var(--ro-purple);font-weight:700;'>odysseylaradio@gmail.com</a> — every message is read." },
+];
+---
+<Layout
+  lang="en"
+  altLangs={{ fr: '/faq-radio-odyssey.html', en: '/en/radio-odyssey-faq.html' }}
+  title="Radio Odyssey FAQ | Everything You Might Want to Ask"
+  description="Is it free? Are there ads? Can I listen from abroad? Is there an app? The most common questions about Radio Odyssey, answered plainly."
+>
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Home"
+    homeHref="/en.html"
+    breadcrumbCurrent="Radio Odyssey FAQ"
+    title="Frequently Asked Questions"
+    text="What people ask us most about Radio Odyssey — cost, ads, the app, listening from abroad, and how to help."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 6C14.6 6 8 12.5 8 20C8 26 11.5 30.8 17 33.3V41L25 34.9C34.2 34.4 40 28 40 20C40 12.5 33.4 6 24 6Z" stroke="white" stroke-width="2.3" stroke-linejoin="round" fill="none"/><circle cx="24" cy="21" r="1.4" fill="white"/><path d="M24 17.5C24 15 27 15 27 17.5C27 19.5 24 19.5 24 21" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>The questions we get most</h2>
+            <p>This page gathers the questions people ask most often about Radio Odyssey. Can't find your answer? Write to us directly at <a href="mailto:odysseylaradio@gmail.com" style="color:var(--ro-purple);font-weight:700;">odysseylaradio@gmail.com</a>.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="en-faq" lang="en" />
+
+          <div class="content-card">
+            <h2>Where to listen</h2>
+            <p style="margin-bottom:1rem;">Press play anywhere on this site, or tune in through one of these:</p>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+              <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener" class="tag-pill" style="text-decoration:none;">TuneIn</a>
+              <a href="https://www.deezer.com/search/radio%20odyssey/livestream" target="_blank" rel="noopener" class="tag-pill" style="text-decoration:none;">Deezer</a>
+              <a href="https://fr.welove.radio/radio/radio-odyssey/" target="_blank" rel="noopener" class="tag-pill" style="text-decoration:none;">WeLoveRadio</a>
+              <a href="https://radio.orange.com/radios/radio_odyssey" target="_blank" rel="noopener" class="tag-pill" style="text-decoration:none;">Orange</a>
+              <a href="https://www.radioline.co/fr/radios/radio_odyssey" target="_blank" rel="noopener" class="tag-pill" style="text-decoration:none;">Radioline</a>
+              <a href="https://app.radio-odyssey.com" target="_blank" rel="noopener" class="tag-pill" style="text-decoration:none;">The app</a>
+            </div>
+            <p style="margin-top:1rem;margin-bottom:0;">Smart speakers work through TuneIn. In the car, the simplest route is your phone's Bluetooth connection — the on-screen controls will show the track that is playing.</p>
+          </div>
+
+          <RelatedPages
+            lang="en"
+            alsoLike={[
+              { href: '/en/what-makes-radio-odyssey-different.html', label: 'What Makes Radio Odyssey Different', desc: 'The mission and the choices behind it' },
+              { href: '/en/free-radio-no-ads-no-sign-up.html', label: 'Free Radio, No Ads, No Sign-Up', desc: 'Why it stays free' },
+              { href: '/en/listen-on-tunein.html', label: 'How to Listen on TuneIn', desc: 'The easiest way to tune in worldwide' },
+            ]}
+            associated={[
+              { href: '/en/the-story-of-radio-odyssey.html', label: 'The Story of Radio Odyssey' },
+              { href: '/en/heart-coherence-breathing-radio.html', label: 'Heart Coherence Breathing Radio' },
+              { href: '/en.html', label: 'English home' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>One last question? Just listen</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Listen to Radio Odyssey
+              </a>
+              <a href="mailto:odysseylaradio@gmail.com" class="btn-hero-ghost">
+                <Icon name="envelope" /> Contact us
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar lang="en" />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

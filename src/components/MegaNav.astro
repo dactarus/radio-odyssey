@@ -1,6 +1,17 @@
 ---
 import Icon from './Icon.astro';
 import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
+import { EN_NAV_CATEGORIES, ACCUEIL, t } from '../data/i18n.js';
+
+// §81 (lot 2) : voir l'en-tête de Header.astro. Côté anglais, structure
+// propre et courte, pas la traduction du menu français.
+interface Props { lang?: 'fr' | 'en'; }
+const { lang = 'fr' } = Astro.props;
+const L = t(lang);
+const categories = lang === 'en' ? EN_NAV_CATEGORIES : NAV_CATEGORIES;
+const apercu = lang === 'en' ? 99 : MENU_APERCU;
+const avecHub = lang !== 'en';
+const accueil = ACCUEIL[lang];
 ---
 <style is:global>
   .ro-mega-nav {
@@ -74,21 +85,21 @@ import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
   }
 </style>
 
-<nav class="ro-mega-nav" aria-label="Navigation principale">
+<nav class="ro-mega-nav" aria-label={L.navPrincipale}>
   <div class="container">
     <ul class="ro-mega-nav-list">
       <li>
-        <a class="ro-mega-nav-toggle" href="/">
-          <Icon name="house-door-fill" style="font-size:.85rem;" /> Accueil
+        <a class="ro-mega-nav-toggle" href={accueil}>
+          <Icon name="house-door-fill" style="font-size:.85rem;" /> {L.accueil}
         </a>
       </li>
-      {NAV_CATEGORIES.map((cat) => (
+      {categories.map((cat) => (
         <li class="dropdown">
           <button class="ro-mega-nav-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             {cat.label} <Icon name="chevron-down" style="font-size:.65rem;" />
           </button>
           <ul class="dropdown-menu">
-            {cat.pages.slice(0, MENU_APERCU).map((p) => (
+            {cat.pages.slice(0, apercu).map((p) => (
               <li>
                 <a class="dropdown-item" href={p.href}>
                   <strong><Icon name={p.bi} style="color:var(--ro-purple);font-size:.85rem;margin-right:.35rem;" />{p.label}</strong>
@@ -96,17 +107,21 @@ import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
                 </a>
               </li>
             ))}
-            <li><hr class="dropdown-divider" /></li>
-            <li>
-              <a class="dropdown-item ro-hub-link" href={cat.hub}>
-                Voir les {cat.pages.length} pages de la catégorie →
-              </a>
-            </li>
+            {avecHub && (
+              <>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item ro-hub-link" href={cat.hub}>
+                    {L.voirLesPagesCategorie(cat.pages.length)}
+                  </a>
+                </li>
+              </>
+            )}
           </ul>
         </li>
       ))}
       <li class="ro-mega-nav-search-item">
-        <button class="ro-mega-nav-toggle ro-mega-nav-search-btn ro-search-trigger" type="button" aria-label="Rechercher sur le site">
+        <button class="ro-mega-nav-toggle ro-mega-nav-search-btn ro-search-trigger" type="button" aria-label={L.rechercher}>
           <Icon name="search" />
         </button>
       </li>

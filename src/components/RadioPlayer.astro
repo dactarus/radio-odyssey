@@ -19,20 +19,53 @@
   Instagram, politiques restrictives), le lecteur bascule en mode « secours »
   et le clic suivant ouvre link.radioking.com — comportement d'avant.
 */
+import { t } from '../data/i18n.js';
+
+/*
+  §81 (lot 2) : libellés du lecteur traduits.
+
+  ⚠️ #topRadioBar porte transition:persist — la barre survit aux navigations
+  client-side d'Astro, script compris. Ses libellés sont donc figés dans la
+  langue de la PREMIÈRE page chargée : passer de l'accueil français à
+  l'accueil anglais sans recharger laisse le lecteur en français. Cas de
+  bord assumé (les deux versions ne se croisent qu'à cet endroit) ; un
+  rechargement complet remet tout d'aplomb.
+
+  ⚠️ estSequenceRespiration()/libelleSequence() existent aussi dans l'appli
+  (Appli Radio Odyssey V8/index.html). Si la regex change, la changer des
+  deux côtés — voir CLAUDE.md.
+*/
+interface Props { lang?: 'fr' | 'en'; }
+const { lang = 'fr' } = Astro.props;
+const L = t(lang);
+const LIB = {
+  ecouter: L.lecteurEcouter,
+  pause: L.lecteurPause,
+  connexion: L.lecteurConnexion,
+  appuyer: L.lecteurAppuyer,
+  enDirectArret: L.lecteurEnDirectArret,
+  lent: L.lecteurLent,
+  memoire: L.lecteurMemoire,
+  seqTitre: L.lecteurSeqTitre,
+  seqDefaut: L.lecteurSeqDefaut,
+  // Fonction non sérialisable : on passe le gabarit, pas la fonction.
+  seqDureeAvant: L.lecteurSeqDuree('@').split('@')[0],
+  seqDureeApres: L.lecteurSeqDuree('@').split('@')[1],
+};
 ---
 
 <audio id="ro-audio" preload="none" playsinline></audio>
 
 <button type="button" id="ro-player" class="ro-player"
-        aria-label="Écouter Radio Odyssey en direct">
+        aria-label={LIB.ecouter}>
   <span class="ro-player-btn" aria-hidden="true">
     <svg class="ro-ico ro-ico-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.54.84l10-6.5a1 1 0 0 0 0-1.68l-10-6.5A1 1 0 0 0 8 5.5z"/></svg>
     <svg class="ro-ico ro-ico-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6.5" y="5" width="4" height="14" rx="1.3"/><rect x="13.5" y="5" width="4" height="14" rx="1.3"/></svg>
-    <span class="ro-ico ro-ico-load" role="status" aria-label="Connexion en cours"></span>
+    <span class="ro-ico ro-ico-load" role="status" aria-label={LIB.connexion}></span>
   </span>
   <span class="ro-player-label">
     <span class="ro-player-title" id="ro-np-title">Radio Odyssey</span>
-    <span class="ro-player-sub" id="ro-np-sub">Appuyer pour écouter</span>
+    <span class="ro-player-sub" id="ro-np-sub">{LIB.appuyer}</span>
   </span>
 </button>
 
@@ -124,7 +157,7 @@
   }
 </style>
 
-<script is:inline>
+<script is:inline define:vars={{ LIB }}>
 (function () {
   // La barre du lecteur porte transition:persist : le nœud DOM survit aux
   // navigations Astro, donc les écouteurs aussi. Ce garde-fou évite de les
@@ -153,7 +186,7 @@
     barre.classList.toggle('is-playing', nom === 'lecture');
     if (bouton) {
       bouton.setAttribute('aria-label',
-        nom === 'lecture' ? 'Mettre la radio en pause' : 'Écouter Radio Odyssey en direct');
+        nom === 'lecture' ? LIB.pause : LIB.ecouter);
     }
   }
 
@@ -182,9 +215,9 @@
   function libelleSequence(t) {
     var m = ((t && t.title) || '').match(/(\d+)\s*min/i);
     return {
-      titre: 'Cohérence cardiaque',
-      sous: m ? ('Respiration guidée · séquence de ' + m[1] + ' min')
-              : 'Respiration guidée · inspirez 5 s, expirez 5 s',
+      titre: LIB.seqTitre,
+      sous: m ? (LIB.seqDureeAvant + m[1] + LIB.seqDureeApres)
+              : LIB.seqDefaut,
     };
   }
 
@@ -215,7 +248,7 @@
                         : ((t.artist && t.title) ? (t.artist + ' — ' + t.title) : 'Radio Odyssey');
         titreCourant = titre;
         if (barre && barre.classList.contains('is-playing')) {
-          afficher(titre, seq ? seq.sous : 'En direct · appuyer pour arrêter');
+          afficher(titre, seq ? seq.sous : LIB.enDirectArret);
         }
         majMediaSession(t);
 
@@ -257,7 +290,7 @@
     minuteurDemarrage = setTimeout(function () {
       if (audio && audio.paused === false) return;
       etat('arret');
-      afficher(titreCourant || 'Radio Odyssey', 'Connexion trop lente — réessayer');
+      afficher(titreCourant || 'Radio Odyssey', LIB.lent);
       suivre('play_timeout', { device: estMobile() ? 'mobile' : 'desktop' });
     }, 12000);
 
@@ -288,7 +321,7 @@
     try { audio.removeAttribute('src'); audio.load(); } catch (e) {}
     clearTimeout(minuteurTitre);
     etat('arret');
-    afficher(titreCourant || 'Radio Odyssey', 'Appuyer pour écouter');
+    afficher(titreCourant || 'Radio Odyssey', LIB.appuyer);
     if ('mediaSession' in navigator) {
       try { navigator.mediaSession.playbackState = 'paused'; } catch (e) {}
     }
@@ -356,7 +389,7 @@
       // natif fonctionne, il n'y a plus de raison de renvoyer vers RadioKing.
       modeSecours = false;
       etat('lecture');
-      afficher(titreCourant || 'Radio Odyssey', 'En direct · appuyer pour arrêter');
+      afficher(titreCourant || 'Radio Odyssey', LIB.enDirectArret);
       suivre('play_started', { device: estMobile() ? 'mobile' : 'desktop', method: 'audio-natif' });
       /* ⚠️ LIMITE CONNUE — NE PAS ESSAYER DE LA CONTOURNER PAR LE CODE.
 
@@ -404,7 +437,7 @@
     });
 
     audio.addEventListener('waiting', function () {
-      if (!audio.paused) { etat('chargement'); afficher(null, 'Mise en mémoire…'); }
+      if (!audio.paused) { etat('chargement'); afficher(null, LIB.memoire); }
     });
     audio.addEventListener('pause', function () { if (audio.getAttribute('src')) etat('arret'); });
     audio.addEventListener('error', function () {
@@ -424,7 +457,7 @@
           var seq0 = estSequenceRespiration(t) ? libelleSequence(t) : null;
           titreCourant = seq0 ? seq0.titre
                               : ((t.artist && t.title) ? (t.artist + ' — ' + t.title) : 'Radio Odyssey');
-          afficher(titreCourant, seq0 ? seq0.sous : 'Appuyer pour écouter');
+          afficher(titreCourant, seq0 ? seq0.sous : LIB.appuyer);
           majMediaSession(t);
         }
       })

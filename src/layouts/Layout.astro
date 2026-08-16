@@ -175,13 +175,17 @@ const organizationSchema = {
 // BreadcrumbList : dérivé du <title> (déjà unique par page), pas besoin
 // de faire passer un prop supplémentaire à chaque page. La page d'accueil
 // n'a pas de fil d'Ariane propre (c'est la racine), donc pas de schema ici.
-const isHome = canonicalPath === '/';
+// §81 : /en.html est l'accueil anglais — lui non plus n'a pas de fil
+// d'Ariane, et le fil des pages anglaises remonte vers lui, pas vers
+// l'accueil français.
+const accueilDeLaLangue = lang === 'en' ? '/en.html' : '/';
+const isHome = canonicalPath === '/' || canonicalPath === accueilDeLaLangue;
 const breadcrumbLabel = title.replace(/\s*[|—]\s*Radio Odyssey\s*$/i, '').trim();
 const breadcrumbSchema = isHome ? null : {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Accueil', item: new URL('/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 1, name: lang === 'en' ? 'Home' : 'Accueil', item: new URL(accueilDeLaLangue, Astro.site).toString() },
     { '@type': 'ListItem', position: 2, name: breadcrumbLabel || title, item: canonicalURL.toString() },
   ],
 };
@@ -304,11 +308,11 @@ const articleSchema = articleDatePublished ? {
   <slot name="head" />
 </head>
 <body>
-  <Header />
-  <WebviewBanner />
+  <Header lang={lang} />
+  <WebviewBanner lang={lang} />
   <slot />
-  <Footer />
-  <CookieConsent />
-  <SearchModal />
+  <Footer lang={lang} />
+  <CookieConsent lang={lang} />
+  <SearchModal lang={lang} />
 </body>
 </html>

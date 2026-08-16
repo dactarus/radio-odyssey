@@ -114,6 +114,16 @@
       "source": "/free-radio-no-ads-no-sign-up.html",
       "destination": "/en/free-radio-no-ads-no-sign-up.html",
       "permanent": true
+    },
+    {
+      "source": "/en/",
+      "destination": "/en.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/index.html",
+      "destination": "/en.html",
+      "permanent": true
     }
   ],
   "headers": [

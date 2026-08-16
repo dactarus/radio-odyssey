@@ -1,12 +1,26 @@
 ---
 import Icon from './Icon.astro';
+import { t } from '../data/i18n.js';
+
+/*
+  §81 (lot 2) : libellés de la recherche traduits.
+
+  ⚠️ Pagefind construit un index par langue à partir de l'attribut `lang` de
+  <html> et sert celui de la page courante : une recherche depuis une page
+  anglaise ne remonte donc que des pages anglaises. C'est le comportement
+  voulu — mais il rend l'index anglais très petit (17 pages). Si un jour la
+  recherche paraît vide côté anglais, c'est cela, pas un bug.
+*/
+interface Props { lang?: 'fr' | 'en'; }
+const { lang = 'fr' } = Astro.props;
+const L = t(lang);
 ---
 <div id="ro-search-modal" class="ro-search-modal" hidden aria-hidden="true">
   <div class="ro-search-backdrop"></div>
-  <div class="ro-search-panel" role="dialog" aria-modal="true" aria-label="Rechercher sur le site">
+  <div class="ro-search-panel" role="dialog" aria-modal="true" aria-label={L.rechercher}>
     <div class="ro-search-header">
-      <span class="ro-search-title"><Icon name="search" /> Rechercher sur Radio Odyssey</span>
-      <button type="button" id="ro-search-close" class="ro-search-close" aria-label="Fermer la recherche">&times;</button>
+      <span class="ro-search-title"><Icon name="search" /> {L.rechercheTitre}</span>
+      <button type="button" id="ro-search-close" class="ro-search-close" aria-label={L.rechercheFermer}>&times;</button>
     </div>
     <div id="ro-search-ui"></div>
   </div>
@@ -86,7 +100,7 @@ import Icon from './Icon.astro';
   }
 </style>
 
-<script is:inline>
+<script is:inline define:vars={{ PLACEHOLDER: L.recherchePlaceholder, ZERO_RESULTS: L.rechercheAucunResultat }}>
 (function () {
   var modal = document.getElementById('ro-search-modal');
   var closeBtn = document.getElementById('ro-search-close');
@@ -110,8 +124,8 @@ import Icon from './Icon.astro';
         showImages: false,
         excerptLength: 15,
         translations: {
-          placeholder: 'Cohérence cardiaque, années 80, artiste...',
-          zero_results: 'Aucun résultat pour [SEARCH_TERM].'
+          placeholder: PLACEHOLDER,
+          zero_results: ZERO_RESULTS
         }
       });
       callback();

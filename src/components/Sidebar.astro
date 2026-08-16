@@ -1,20 +1,31 @@
 ---
 import Icon from './Icon.astro';
 import { NAV_CATEGORIES } from '../data/navigation.js';
+import { EN_NAV_CATEGORIES, ACCUEIL, t } from '../data/i18n.js';
+
+// §81 (lot 2). Côté anglais il n'existe pas de page de hub par catégorie :
+// la liste renvoie directement vers la première page de chaque groupe, qui
+// en est la porte d'entrée naturelle.
+interface Props { lang?: 'fr' | 'en'; }
+const { lang = 'fr' } = Astro.props;
+const L = t(lang);
+const liens = lang === 'en'
+  ? EN_NAV_CATEGORIES.map((c) => ({ href: c.pages[0].href, bi: c.bi, label: c.label }))
+  : NAV_CATEGORIES.map((c) => ({ href: c.hub, bi: c.bi, label: c.label }));
 ---
 <div class="content-card" style="position:sticky;top:calc(var(--bar-h) + 1.5rem);">
-  <h3 style="color:var(--ro-purple);font-size:1rem;"><Icon name="music-note-beamed" /> Ecouter maintenant</h3>
-  <p style="font-size:.85rem;">Radio Odyssey en direct, 24h/24, gratuit et sans pub !</p>
+  <h3 style="color:var(--ro-purple);font-size:1rem;"><Icon name="music-note-beamed" /> {L.ecouterMaintenant}</h3>
+  <p style="font-size:.85rem;">{L.sidebarAccroche}</p>
   <a href="#" onclick="roPlayNow(event)"
      class="btn-ro w-100 justify-content-center mb-3" style="font-size:.88rem;cursor:pointer;">
-    <Icon name="broadcast-pin" />&nbsp;Lancer la radio
+    <Icon name="broadcast-pin" />&nbsp;{L.lancerLaRadio}
   </a>
   <hr style="border-color:rgba(123,47,190,.1);"/>
-  <p style="font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--ro-muted);margin:.8rem 0 .4rem;">Explorer le site</p>
+  <p style="font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--ro-muted);margin:.8rem 0 .4rem;">{L.explorerLeSite}</p>
   <div style="display:flex;flex-direction:column;gap:.28rem;font-size:.82rem;">
-    <a href="/" style="color:var(--ro-purple);text-decoration:none;"><Icon name="house-door-fill" /> Accueil</a>
-    {NAV_CATEGORIES.map((cat) => (
-      <a href={cat.hub} style="color:var(--ro-purple);text-decoration:none;"><Icon name={cat.bi} /> {cat.label}</a>
+    <a href={ACCUEIL[lang]} style="color:var(--ro-purple);text-decoration:none;"><Icon name="house-door-fill" /> {L.accueil}</a>
+    {liens.map((l) => (
+      <a href={l.href} style="color:var(--ro-purple);text-decoration:none;"><Icon name={l.bi} /> {l.label}</a>
     ))}
   </div>
 </div>

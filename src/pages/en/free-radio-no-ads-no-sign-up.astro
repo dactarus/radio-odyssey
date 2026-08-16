@@ -24,6 +24,7 @@ const faq = [
     gradientFrom="#FFD700"
     gradientTo="#FF9A3C"
     homeLabel="🏠 Home"
+    homeHref="/en.html"
     breadcrumbCurrent="Free radio, no ads, no sign-up"
     title="Free Radio, No Ads, No Sign-Up"
     text="No interruptions, no subscription, no account to create — just music, for free."
@@ -55,7 +56,7 @@ const faq = [
 
           <div class="content-card">
             <h2>How Radio Odyssey Funds Itself Without Ads</h2>
-            <p style="margin-bottom:0;">Radio Odyssey is notably supported by <a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Elisabeth Bélot-Grimaud</a>, a cognitive psychologist and the station's exclusive partner — a partnership consistent with a wellness-focused radio, rather than a traditional ad agency. No cost is ever passed on to the listener.</p>
+            <p style="margin-bottom:0;">Radio Odyssey is notably supported by <a href="/en/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Elisabeth Bélot-Grimaud</a>, a cognitive psychologist and the station's exclusive partner — a partnership consistent with a wellness-focused radio, rather than a traditional ad agency. No cost is ever passed on to the listener.</p>
           </div>
 
           <FAQBlock items={faq} idPrefix="freeads" lang="en" />
@@ -63,7 +64,7 @@ const faq = [
           <RelatedPages
             lang="en"
             alsoLike={[
-              { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Our Partner Elisabeth Bélot-Grimaud', desc: 'How the station is funded, without ads' },
+              { href: '/en/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Our Partner Elisabeth Bélot-Grimaud', desc: 'How the station is funded, without ads' },
               { href: '/en/music-for-a-better-mood.html', label: 'Music for a Better Mood', desc: "Radio Odyssey's positive-radio philosophy" },
               { href: '/en/listen-on-tunein.html', label: 'How to Listen on TuneIn', desc: 'The easiest way to tune in worldwide' },
             ]}
@@ -88,7 +89,7 @@ const faq = [
 
         </div>
         <div class="col-lg-4">
-          <Sidebar />
+          <Sidebar lang="en" />
         </div>
       </div>
     </div>

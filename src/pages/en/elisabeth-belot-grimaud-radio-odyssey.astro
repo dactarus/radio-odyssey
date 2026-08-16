@@ -1,0 +1,141 @@
+---
+/*
+  Traduction anglaise de elisabeth-belot-grimaud-radio-odyssey.astro
+  (§81, lot 2).
+
+  ⚠️⚠️ PERSONNE RÉELLE ET NOMMÉE. Chaque ligne ici est la traduction d'un
+  fait déjà présent sur la version française : doctorat en psychologie
+  cognitive, chercheuse et enseignante, deux DU (micronutrition et prévention
+  santé), DU méditation et pratiques respiratoires, autrice de « Programmez
+  votre cerveau pour le bonheur », deux TEDx, podcast « L'instant Beau Bien
+  Bon », modèles D.O.S.E.®, ENCÉFAL® et Beau Bien-Bon®, site
+  santementalepositive.fr. Ne JAMAIS enrichir cette page de mémoire, ne
+  jamais lui prêter un titre ou une publication qu'elle n'a pas — même règle
+  qu'au §72 pour l'attribution des relectures.
+
+  Les titres d'ouvrage, de podcast et les noms de modèles sont laissés en
+  français : ce sont des noms propres, pas du texte à traduire.
+*/
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
+import PartnerVideo from '../../components/PartnerVideo.astro';
+
+const faq = [
+  { q: 'Who is Elisabeth Bélot-Grimaud?', a: "She holds a doctorate in cognitive psychology and works as a researcher and lecturer in psychology, specialising in positive mental health. She is the author of « Programmez votre cerveau pour le bonheur », has given two TEDx talks, and hosts the podcast « L'instant Beau Bien Bon »." },
+  { q: 'What exactly is her role at Radio Odyssey?', a: "She is Radio Odyssey's exclusive partner. The heart coherence breathing sequences broadcast on air were designed with her, and it is her voice that guides listeners through the breathing, several times a day." },
+  { q: 'What is the sinusoidal rhythm in heart coherence breathing?', a: "It is the effect that slow, regular breathing — around 6 breaths per minute — is aiming for: heart rate variability settles into a smooth, wave-like curve associated with a state of physiological calm." },
+  { q: 'Where can I find her work outside Radio Odyssey?', a: "On her website santementalepositive.fr, where she publishes free resources on positive mental health — sleep, breathing, emotions, mindfulness and more — organised into biological, cognitive and psychological resources. The site is in French." },
+];
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Elisabeth Bélot-Grimaud',
+  jobTitle: 'Doctor of cognitive psychology',
+  knowsAbout: 'Positive mental health',
+  url: 'https://santementalepositive.fr/',
+  sameAs: ['https://santementalepositive.fr/'],
+};
+---
+<Layout
+  lang="en"
+  altLangs={{ fr: '/elisabeth-belot-grimaud-radio-odyssey.html', en: '/en/elisabeth-belot-grimaud-radio-odyssey.html' }}
+  title="Elisabeth Bélot-Grimaud, Radio Odyssey's Health Partner"
+  description="A doctor of cognitive psychology, Elisabeth Bélot-Grimaud designed and voices the heart coherence breathing sequences broadcast on Radio Odyssey."
+>
+  <PageHero
+    gradientFrom="#7B2FBE"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Home"
+    homeHref="/en.html"
+    breadcrumbCurrent="Elisabeth Bélot-Grimaud, health partner"
+    title="Elisabeth Bélot-Grimaud"
+    text="Doctor of cognitive psychology and Radio Odyssey's exclusive partner — hers is the voice guiding the station's breathing sequences."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="17" r="9" stroke="white" stroke-width="2.3"/><path d="M8 40C8 30 15 25 24 25C33 25 40 30 40 40" stroke="white" stroke-width="2.3" stroke-linecap="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>The voice behind the breathing sequences</h2>
+            <p>Several times a day, a voice guides Radio Odyssey listeners through slow breathing and back toward a steadier heart rhythm. That voice belongs to <strong>Elisabeth Bélot-Grimaud</strong>, a doctor of cognitive psychology. The sequences were designed and recorded with her, as part of her exclusive partnership with the station — you can hear them on <a href="/en/heart-coherence-breathing-radio.html" style="color:var(--ro-purple);font-weight:700;">heart coherence breathing radio</a>.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Her background</h2>
+            <ul>
+              <li>Doctorate in cognitive psychology</li>
+              <li>Researcher and lecturer in psychology, specialising in positive mental health</li>
+              <li>Two postgraduate university diplomas, in micronutrition and in health prevention</li>
+              <li>Postgraduate university diploma in meditation and breathing practices</li>
+              <li>Author of <em>« Programmez votre cerveau pour le bonheur »</em></li>
+              <li>TEDx speaker, twice</li>
+              <li>Host of the podcast <em>« L'instant Beau Bien Bon »</em></li>
+            </ul>
+            <p style="margin-bottom:0;">She has developed several frameworks of her own within her approach to positive mental health — D.O.S.E.®, ENCÉFAL® and Beau Bien-Bon® — which she sets out on her website.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Why heart coherence, and why her voice</h2>
+            <p>Heart coherence breathing rests on slow, regular breathing at around 6 breaths per minute. Done properly, it brings heart rate variability into a smooth, wave-like — <strong>sinusoidal</strong> — curve, associated with a measurable state of physiological calm. It is one of the few biological levers you can deliberately pull, in a matter of minutes.</p>
+            <p>Rather than broadcast a generic sequence, Radio Odyssey chose to have one designed and recorded with a genuine specialist: someone whose university diploma in meditation and breathing practices, and whose expertise in positive psychology, make the practice grounded rather than approximate.</p>
+            <p style="margin-bottom:0;">The station also made a simple but uncommon choice: a <strong>human voice</strong> rather than a synthetic one. No AI, no robot guiding your breathing — a real person, with her own breath, intonation and natural pace.</p>
+            <div class="highlight-box">
+              <p style="margin:0;"><Icon name="broadcast" /> <strong>On air</strong><br/>
+              You will find these sequences in the Radio Odyssey stream several times a day — see <a href="/en/heart-coherence-breathing-at-work.html" style="color:var(--ro-purple);font-weight:700;">how to fit them into a workday</a>.</p>
+            </div>
+            <p style="margin-top:1rem;margin-bottom:0;">That meeting is also what brought the station back online in 2025 — the full account is in <a href="/en/the-story-of-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">the story of Radio Odyssey</a>.</p>
+          </div>
+
+          <PartnerVideo
+            heading="Hear her voice, on video"
+            intro="Elisabeth Bélot-Grimaud has published a guided heart coherence session set to music on her YouTube channel — the same exercise, and the same voice, as the one broadcast on Radio Odyssey. The spoken guidance is in French, but the breathing rhythm carries on its own."
+          />
+
+          <div class="content-card">
+            <h2>Her work beyond Radio Odyssey</h2>
+            <p>On her website <a href="https://santementalepositive.fr/" target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">santementalepositive.fr</a>, Elisabeth Bélot-Grimaud publishes free resources organised around three pillars: biological (sleep, movement, nutrition, breathing), cognitive (memory, attention, learning) and psychological (emotions, relationships, meaning). She describes heart coherence breathing there as <em>"one of the simplest and best documented tools for regulating stress"</em>. The site is in French.</p>
+            <p style="margin-bottom:0;"><a href="https://santementalepositive.fr/" target="_blank" rel="noopener" class="btn-ro" style="margin-top:.5rem;"><Icon name="box-arrow-up-right" />&nbsp;Visit santementalepositive.fr</a></p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="en-ebg" lang="en" />
+
+          <RelatedPages
+            lang="en"
+            alsoLike={[
+              { href: '/en/heart-coherence-breathing-radio.html', label: 'Heart Coherence Breathing Radio', desc: 'The sequences broadcast on air' },
+              { href: '/en/heart-coherence-breathing-at-work.html', label: 'Heart Coherence Breathing at Work', desc: 'Fitting it into your workday' },
+            ]}
+            associated={[
+              { href: '/en/radio-odyssey-vs-meditation-apps.html', label: 'Radio Odyssey vs. Meditation Apps' },
+              { href: '/en/what-makes-radio-odyssey-different.html', label: 'What Makes Radio Odyssey Different' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Hear the sequences live</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Listen to Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar lang="en" />
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(personSchema)} />
+</Layout>
