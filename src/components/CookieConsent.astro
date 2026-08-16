@@ -1,4 +1,30 @@
 ---
+/*
+  §84 — Les écouteurs étaient posés directement sur #ro-cookie-accept et
+  #ro-cookie-decline. Avec ClientRouter (navigation client-side), Astro
+  remplace le corps du document mais ne réexécute pas un script en ligne dont
+  le contenu n'a pas changé : après le premier changement de page, les boutons
+  étaient des éléments neufs, sans écouteur, et plus rien ne répondait — sans
+  la moindre erreur en console.
+
+  Le défaut existait depuis l'arrivée de ClientRouter, mais il était invisible :
+  avant le §80 le bandeau portait `hidden` par défaut, donc après une
+  navigation il restait simplement masqué. Le §80 l'a rendu visible par
+  défaut — le bandeau apparaissait alors, inerte.
+
+  Correctif, aligné sur ce que le §60 avait fait pour les menus : un seul
+  écouteur délégué sur `document`, qui survit aux remplacements de corps.
+
+  ⚠️ Le masquage passe par la classe `ro-cookie-decided` sur <html>, et non
+  par l'attribut `hidden` du bandeau : <html> n'est pas remplacé par
+  ClientRouter, contrairement au bandeau. Mais ⚠️ ClientRouter recopie les
+  attributs du <html> entrant à chaque navigation, ce qui efface la classe —
+  d'où la réapplication sur `astro:after-swap`, déclenchée avant peinture.
+
+  ⚠️ §85 : ces explications sont ici, dans le frontmatter, et non dans le
+  script. Un commentaire placé dans un `<script>` en ligne est servi aux
+  263 pages ; ici, il est retiré au build.
+*/
 import Icon from './Icon.astro';
 import { t } from '../data/i18n.js';
 // §81 (lot 2) : bandeau traduit. Le lien « en savoir plus » reste vers la
@@ -94,23 +120,7 @@ const GA_MEASUREMENT_ID = 'G-6CXEFXNH97';
 
 <script define:vars={{ GA_MEASUREMENT_ID }}>
   (function () {
-    /*
-      §84 — Les écouteurs étaient posés directement sur #ro-cookie-accept et
-      #ro-cookie-decline. Avec ClientRouter (navigation client-side), Astro
-      remplace le corps du document mais ne réexécute pas un script en ligne
-      dont le contenu n'a pas changé : après le premier changement de page,
-      les boutons du bandeau étaient des éléments neufs, sans écouteur, et
-      plus rien ne répondait. Sans la moindre erreur en console.
-
-      Le défaut existait depuis l'arrivée de ClientRouter, mais il était
-      invisible : avant le §80 le bandeau portait `hidden` par défaut, donc
-      après une navigation il restait simplement masqué. Le §80 l'a rendu
-      visible par défaut — le bandeau apparaissait alors, inerte.
-
-      Correctif, aligné sur ce que le §80 avait déjà fait pour les menus :
-      un seul écouteur délégué sur `document`, qui survit aux remplacements
-      de corps, posé une fois grâce au garde-fou ci-dessous.
-    */
+    // Écouteur délégué et état réappliqué après navigation — voir l'en-tête du fichier (§84).
     if (window.__roCookieBound) return;
     window.__roCookieBound = true;
 

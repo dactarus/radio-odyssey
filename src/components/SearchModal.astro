@@ -1,4 +1,23 @@
 ---
+/*
+  §84 — Même défaut que sur le bandeau cookies : les écouteurs étaient posés
+  directement sur `.ro-search-trigger`, `#ro-search-close` et le fond.
+  ClientRouter remplace le corps du document sans réexécuter un script en
+  ligne inchangé : après la première navigation client-side, la loupe ne
+  répondait plus, sans erreur en console. Défaut présent depuis l'arrivée de
+  ClientRouter.
+
+  Trois conséquences traitées dans le script :
+    - écouteurs délégués sur `document`, posés une seule fois ;
+    - `#ro-search-modal` et `#ro-search-ui` relus à chaque ouverture, jamais
+      mémorisés : ce sont des éléments neufs après chaque navigation ;
+    - interface Pagefind réinstanciée si le conteneur de la page courante est
+      vide, sans recharger le script (window.PagefindUI reste en mémoire).
+
+  ⚠️ Les libellés viennent d'attributs `data-` de la modale, pas de
+  `define:vars` : ils suivent la langue de la page réellement affichée, et le
+  script n'a aucune constante à redéclarer.
+*/
 import Icon from './Icon.astro';
 import { t } from '../data/i18n.js';
 
@@ -103,26 +122,7 @@ const L = t(lang);
 
 <script is:inline>
 (function () {
-  /*
-    §84 — Même défaut que sur le bandeau cookies : les écouteurs étaient
-    posés directement sur `.ro-search-trigger`, `#ro-search-close` et le
-    fond. ClientRouter remplace le corps du document sans réexécuter un
-    script en ligne inchangé : après la première navigation client-side, la
-    loupe ne répondait plus, sans erreur en console. Défaut présent depuis
-    l'arrivée de ClientRouter, donc en ligne aujourd'hui.
-
-    Trois conséquences traitées ici :
-      - écouteurs délégués sur `document`, posés une seule fois ;
-      - `#ro-search-modal` et `#ro-search-ui` sont relus à chaque ouverture,
-        jamais mémorisés : ce sont des éléments neufs après chaque navigation ;
-      - l'interface Pagefind est réinstanciée si le conteneur de la page
-        courante est vide, sans recharger le script (window.PagefindUI reste
-        en mémoire).
-
-    ⚠️ Les libellés viennent d'attributs `data-` de la modale, pas de
-    `define:vars` : ils suivent ainsi la langue de la page réellement
-    affichée, et le script n'a aucune constante à redéclarer.
-  */
+  // Écouteurs délégués, éléments relus à chaque usage — voir l'en-tête du fichier (§84).
   if (window.__roSearchBound) return;
   window.__roSearchBound = true;
 

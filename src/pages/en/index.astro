@@ -16,6 +16,7 @@ import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/PageHero.astro';
 import FAQBlock from '../../components/FAQBlock.astro';
 import { EN_NAV_CATEGORIES } from '../../data/i18n.js';
+import NowPlaying from '../../components/NowPlaying.astro';
 
 const faq = [
   { q: 'What kind of music does Radio Odyssey play?', a: "Positive music, around the clock: 80s hits reimagined with a modern touch, dance and electro, easy listening and recent releases. Tracks that are melancholy or aggressive are deliberately left out — that editorial choice is the whole point of the station." },
@@ -60,6 +61,8 @@ const faq = [
               <Icon name="broadcast-pin" />&nbsp;Listen live now
             </a>
           </div>
+
+          <NowPlaying lang="en" variante="carte" />
 
           <div class="content-card">
             <h2>Three reasons people stay</h2>
