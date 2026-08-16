@@ -4,8 +4,17 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import ContentIllustration from '../components/ContentIllustration.astro';
+import AuthorReview from '../components/AuthorReview.astro';
+import SourcesBlock from '../components/SourcesBlock.astro';
+import { DATE_REVISION_BIEN_ETRE_LABEL, SOURCES_COHERENCE_CARDIAQUE } from '../data/reviewer.js';
 ---
-<Layout lang="fr" title="Radio Anti-Stress Gratuite en Ligne | Radio Odyssey" description="Radio anti-stress gratuite en ligne sur Radio Odyssey : musique équilibrée, respiration guidée et cohérence cardiaque pour réduire le stress.">
+<Layout
+  lang="fr"
+  title="Radio Anti-Stress Gratuite en Ligne | Radio Odyssey"
+  description="Radio anti-stress gratuite en ligne sur Radio Odyssey : musique équilibrée, respiration guidée et cohérence cardiaque pour réduire le stress."
+  articleDatePublished="2026-07-01"
+  articleDateModified="2026-08-16"
+>
   <PageHero
     gradientFrom="#00C6FF"
     gradientTo="#1e7fcb"
@@ -23,7 +32,9 @@ import ContentIllustration from '../components/ContentIllustration.astro';
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-8">
-        
+
+          <AuthorReview dateLabel={DATE_REVISION_BIEN_ETRE_LABEL} />
+
           <div class="content-card">
             <h2>Vous recherchez une radio anti-stress gratuite&#160;?</h2>
             <p>Radio Odyssey propose une diffusion en ligne m&#234;lant musique &#233;quilibr&#233;e, hits 80 revisit&#233;s, ambiances modernes et s&#233;quences de coh&#233;rence cardiaque int&#233;gr&#233;es.</p>
@@ -90,6 +101,8 @@ import ContentIllustration from '../components/ContentIllustration.astro';
             </ul>
             <p>Aucune inscription requise. Un simple clic suffit &#8212; ou d&#233;couvrez notre <a href="/musique-pour-respiration-guidee.html" style="color:var(--ro-purple);font-weight:700;">musique pour respiration guid&#233;e</a> si vous pr&#233;f&#233;rez commencer par un exercice.</p>
           </div>
+
+          <SourcesBlock sources={SOURCES_COHERENCE_CARDIAQUE} />
 
           <div class="page-cta-bar">
             <h3>Rel&#226;chez la pression maintenant &#8212; gratuitement</h3>

@@ -7,6 +7,9 @@ import CoherenceExercise from '../components/CoherenceExercise.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
 import ContentIllustration from '../components/ContentIllustration.astro';
+import AuthorReview from '../components/AuthorReview.astro';
+import SourcesBlock from '../components/SourcesBlock.astro';
+import { ELISABETH_REVIEWER, DATE_REVISION_BIEN_ETRE_LABEL, SOURCES_COHERENCE_CARDIAQUE } from '../data/reviewer.js';
 
 const faq = [
   { q: 'La cohérence cardiaque est-elle adaptée aux personnes âgées ?', a: "C'est une respiration lente et guidée, sans effort physique — accessible à la plupart des personnes. En cas de doute lié à une pathologie cardiaque ou respiratoire, l'avis d'un médecin reste la démarche à privilégier avant de commencer." },
@@ -19,6 +22,9 @@ const faq = [
   lang="fr"
   title="Cohérence Cardiaque pour Seniors | Radio Odyssey"
   description="La cohérence cardiaque pour les personnes âgées : une respiration simple, sans effort ni application, intégrée à l'antenne de Radio Odyssey."
+  articleDatePublished="2026-08-06"
+  articleDateModified="2026-08-16"
+  articleAuthorName="Elisabeth Bélot-Grimaud"
 >
   <PageHero
     gradientFrom="#1e7fcb"
@@ -37,6 +43,8 @@ const faq = [
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-8">
+
+          <AuthorReview reviewer={ELISABETH_REVIEWER} dateLabel={DATE_REVISION_BIEN_ETRE_LABEL} />
 
           <div class="content-card">
             <h2>Une technique simple, sans contrainte</h2>
@@ -70,6 +78,8 @@ const faq = [
             <h2>Écouter, tout simplement</h2>
             <p style="margin-bottom:0;">Pas besoin de matériel technique compliqué pour profiter de Radio Odyssey : un poste connecté, un ordinateur ou une simple radio internet suffisent. Voir notre guide <a href="/ecouter-radio-odyssey-sur-ordinateur.html" style="color:var(--ro-purple);font-weight:700;">écouter sur ordinateur</a> pour une configuration simple, sans rien installer.</p>
           </div>
+
+          <SourcesBlock sources={SOURCES_COHERENCE_CARDIAQUE} />
 
           <FAQBlock items={faq} idPrefix="ccseniors" />
 

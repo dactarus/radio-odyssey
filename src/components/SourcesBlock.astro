@@ -1,0 +1,29 @@
+---
+/*
+  Bloc "Sources et références" (§72) — liste de 2 à 4 sources externes
+  vérifiées (Inserm, méta-analyses publiées, fédération professionnelle...)
+  citées à l'appui des effets avancés sur les pages bien-être.
+
+  Chaque source doit avoir été vérifiée individuellement avant d'être
+  ajoutée ici — même règle que pour les fiches artistes : jamais une
+  référence citée de mémoire.
+*/
+interface Source {
+  label: string;
+  url: string;
+}
+interface Props {
+  sources: Source[];
+}
+const { sources } = Astro.props;
+---
+{sources.length > 0 && (
+  <div class="content-card">
+    <h2>Sources et références</h2>
+    <ul>
+      {sources.map((s) => (
+        <li><a href={s.url} target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">{s.label}</a></li>
+      ))}
+    </ul>
+  </div>
+)}

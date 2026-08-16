@@ -95,4 +95,43 @@ function roPlayNow(e){
   var win = window.open('https://link.radioking.com/radio-odyssey', '_blank');
   if(!win) roUmamiTrack('play_error', { device: isMobile ? 'mobile' : 'desktop', reason: 'popup_blocked' });
 }
+
+/* Sorties plateformes (§72) : plutôt que d'ajouter un onclick sur chaque
+   lien "Télécharger l'application" (une trentaine de pages) et chaque lien
+   d'écoute externe (RadioKing, TuneIn, Deezer, WeLoveRadio, Orange...), un
+   seul écouteur délégué au clic couvre l'ensemble du site, présent et futur
+   — cohérent avec le principe du projet d'éviter la duplication à la main.
+   PLATEFORMES doit rester aligné avec le tableau SAME_AS de Layout.astro. */
+var PLATEFORMES = {
+  'link.radioking.com': 'radioking',
+  'tunein.com': 'tunein',
+  'deezer.com': 'deezer',
+  'welove.radio': 'welove',
+  'radio.orange.com': 'orange',
+  'radioline.co': 'radioline',
+  'mytuner-radio.com': 'mytuner',
+};
+document.addEventListener('click', function (e) {
+  var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+  if (!a) return;
+  var href = a.getAttribute('href') || '';
+  if (href.indexOf('app.radio-odyssey.com') !== -1) {
+    roUmamiTrack('app_download_click', { page: location.pathname });
+    return;
+  }
+  for (var host in PLATEFORMES) {
+    if (href.indexOf(host) !== -1) {
+      roUmamiTrack('external_platform_click', { platform: PLATEFORMES[host], page: location.pathname });
+      break;
+    }
+  }
+});
+
+/* Installation PWA (§72) : 'appinstalled' est l'événement standard du
+   navigateur, déclenché après toute installation réussie — qu'elle vienne
+   de l'icône native de la barre d'adresse ou du menu "Ajouter à l'écran
+   d'accueil". Pas besoin d'un bouton dédié pour la capter. */
+window.addEventListener('appinstalled', function () {
+  roUmamiTrack('pwa_installed', { page: location.pathname });
+});
 </script>

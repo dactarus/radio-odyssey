@@ -6,6 +6,9 @@ import Sidebar from '../components/Sidebar.astro';
 import CoherenceExercise from '../components/CoherenceExercise.astro';
 import ContentIllustration from '../components/ContentIllustration.astro';
 import PartnerVideo from '../components/PartnerVideo.astro';
+import AuthorReview from '../components/AuthorReview.astro';
+import SourcesBlock from '../components/SourcesBlock.astro';
+import { ELISABETH_REVIEWER, DATE_REVISION_BIEN_ETRE_LABEL, SOURCES_COHERENCE_CARDIAQUE } from '../data/reviewer.js';
 
 const howToSchema = {
   '@context': 'https://schema.org',
@@ -20,7 +23,14 @@ const howToSchema = {
   ],
 };
 ---
-<Layout lang="fr" title="Radio Cohérence Cardiaque en Ligne Gratuite | Radio Odyssey" description="Radio Odyssey propose une radio de cohérence cardiaque en ligne gratuite : musique positive, séquences de respiration guidée et bien-être, 24h/24.">
+<Layout
+  lang="fr"
+  title="Radio Cohérence Cardiaque en Ligne Gratuite | Radio Odyssey"
+  description="Radio Odyssey propose une radio de cohérence cardiaque en ligne gratuite : musique positive, séquences de respiration guidée et bien-être, 24h/24."
+  articleDatePublished="2026-07-01"
+  articleDateModified="2026-08-16"
+  articleAuthorName="Elisabeth Bélot-Grimaud"
+>
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(howToSchema)} />
   </Fragment>
@@ -42,7 +52,9 @@ const howToSchema = {
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-8">
-        
+
+          <AuthorReview reviewer={ELISABETH_REVIEWER} dateLabel={DATE_REVISION_BIEN_ETRE_LABEL} />
+
           <div class="content-card">
             <h2>Vous recherchez une radio de coh&#233;rence cardiaque en ligne gratuite&#160;?</h2>
             <p>Radio Odyssey propose une exp&#233;rience unique m&#234;lant musique soigneusement s&#233;lectionn&#233;e, hits revisit&#233;s et s&#233;quences de coh&#233;rence cardiaque int&#233;gr&#233;es &#224; la programmation.</p>
@@ -193,6 +205,8 @@ const howToSchema = {
             <p>Que vous soyez au bureau, &#224; domicile ou en d&#233;placement, Radio Odyssey vous accompagne partout.</p>
             <p>Curieux de savoir pourquoi ces s&#233;quences utilisent ce style musical pr&#233;cis&#160;? <a href="/quel-style-de-musique-pour-la-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">Quel style de musique pour la coh&#233;rence cardiaque</a>.</p>
           </div>
+
+          <SourcesBlock sources={SOURCES_COHERENCE_CARDIAQUE} />
 
           <div class="page-cta-bar">
             <h3>Commencez votre s&#233;ance maintenant</h3>
