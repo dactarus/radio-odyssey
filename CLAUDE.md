@@ -4,7 +4,7 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-16 (§79).*
+*Dernière mise à jour de ce fichier : 2026-08-16 (§80).*
 
 ## Objectif du projet
 
@@ -143,7 +143,8 @@ Depuis le 2026-08-09, l'iframe RadioKing est **remplacée par un lecteur natif**
 - **Événements Umami** : `roUmamiTrack(nom, data)`, défini dans `Footer.astro`, est le point d'entrée unique — préexistant pour les écoutes (`play_click`, `play_error`, `play_started`, `play_stalled`...), complété au §72 par `quiz_complete` (`QuizBlock.astro` + les 5 quiz par décennie, qui gardent leur propre copie du moteur), `exercise_start`/`exercise_complete` (`CoherenceExercise.astro`), `pwa_installed` (écouteur `appinstalled`, global) et `app_download_click`/`external_platform_click` (écouteur délégué au clic dans `Footer.astro`, couvre tous les liens sortants sans avoir à instrumenter chaque page), puis au §74 par `email_signup` (`NewsletterCapture.astro`). ⚠️ La liste `PLATEFORMES` dans `Footer.astro` doit rester alignée avec `SAME_AS` dans `Layout.astro`. L'opt-in push n'est pas instrumenté : la fonctionnalité n'existe pas sur `www` (voir Prochaines étapes, §70).
 - **Liste e-mail** : traité au §74. Capture minimale (pas de programme éditorial) via `NewsletterCapture.astro`, sur les 8 pages de quiz et les 8 pages avec exercice de cohérence cardiaque. Compte Brevo du propriétaire, liste « Newsletter Radio Odyssey », double opt-in. ⚠️ Le bloc RGPD natif de Brevo n'a pas pu être ajouté au formulaire (glisser-déposer non fonctionnel dans l'éditeur Brevo) — le consentement est recueilli par une case à cocher côté site (non transmise à Brevo) et formalisé juridiquement par la confirmation double opt-in. Si le champ `email_address_check` (piège à robots) ou l'URL d'action Brevo changent un jour côté Brevo, il faudra les remettre à jour dans le composant.
 - **URL Vercel de l'appli** : `radio-odyssey-v8b.vercel.app` sert la même page que `app.radio-odyssey.com` et représente 2,2 % des écoutes. Un `canonical` a été posé ; la redirection par `vercel.json` a échoué deux fois (§59) — passer par Settings → Deployment Protection dans l'interface Vercel.
-- Héritage Mobirise non purgé : `assets/vendor/bootstrap/bootstrap.min.css` est toujours chargé.
+- Héritage Mobirise partiellement purgé (§80) : `bootstrap.bundle.min.js` a été retiré et remplacé par un script maison dans `Footer.astro` (accordéon FAQ, méga-menu, panneau mobile). ⚠️ `assets/vendor/bootstrap/bootstrap.min.css` reste chargé : sa grille (`row`/`col-`/`container`) structure 110+ fichiers `.astro`, non purgeable sans migration lourde.
+- **Performance mobile** (§80) : LCP passé de 4,1 s à mesurer à nouveau après quelques jours — la cause principale était le bandeau cookies (`CookieConsent.astro`, en toute fin de `<body>`), visible désormais par défaut et masqué avant peinture via `html.ro-cookie-decided` (script bloquant en tête de `Layout.astro`) si un choix est déjà enregistré. Le poids d'images signalé par PageSpeed (~370 Kio) vient des pochettes RadioKing (`image.radioking.io`, tiers) — non actionnable sans proxy, écarté.
 
 ## Vérifications avant publication
 

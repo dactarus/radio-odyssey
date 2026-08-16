@@ -55,8 +55,100 @@ const FOOTER_PAGE_LIMIT = 4;
   </div>
 </footer>
 
-<script is:inline src="/assets/vendor/bootstrap-js/bootstrap.bundle.min.js"></script>
+<!-- §80 : bootstrap.bundle.min.js retiré. PageSpeed Insights le signalait à
+     ~20 Kio de JS quasi entièrement inutilisé — sur les 258 pages, il ne
+     servait qu'à trois comportements (FAQ en accordéon, méga-menu déroulant,
+     panneau mobile), jamais à ses modales/carrousels/tooltips. Le script
+     ci-dessous reproduit ce strict nécessaire à la main. bootstrap.min.css
+     reste chargé (voir Layout.astro) : sa grille (row/col-/container) sert
+     sur 110+ fichiers, et les classes .collapse/.dropdown-menu/.offcanvas
+     qu'il définit continuent de fournir tout l'habillage visuel — seul le
+     déclenchement en JavaScript change. -->
 <script is:inline src="/assets/js/main.js"></script>
+<script is:inline>
+(function () {
+  function closeDropdowns(except) {
+    document.querySelectorAll('.dropdown-menu.show').forEach(function (menu) {
+      if (menu === except) return;
+      menu.classList.remove('show');
+      menu.style.left = '';
+      menu.style.right = '';
+      var toggle = menu.previousElementSibling;
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function closeOffcanvas() {
+    var panel = document.querySelector('.offcanvas.show');
+    if (!panel) return;
+    panel.classList.remove('show');
+    document.body.style.overflow = '';
+    var backdrop = document.querySelector('.ro-offcanvas-backdrop');
+    if (backdrop) backdrop.remove();
+  }
+
+  function openOffcanvas(panel) {
+    panel.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    var backdrop = document.createElement('div');
+    backdrop.className = 'offcanvas-backdrop fade show ro-offcanvas-backdrop';
+    backdrop.addEventListener('click', closeOffcanvas);
+    document.body.appendChild(backdrop);
+  }
+
+  document.addEventListener('click', function (e) {
+    // Accordéon FAQ (FAQBlock.astro + index.astro)
+    var collapseTrigger = e.target.closest('[data-bs-toggle="collapse"]');
+    if (collapseTrigger) {
+      var target = document.querySelector(collapseTrigger.getAttribute('data-bs-target'));
+      if (target) {
+        var showing = target.classList.contains('show');
+        target.classList.toggle('show', !showing);
+        collapseTrigger.classList.toggle('collapsed', showing);
+        collapseTrigger.setAttribute('aria-expanded', String(!showing));
+      }
+      return;
+    }
+
+    // Méga-menu déroulant (MegaNav.astro)
+    var dropdownTrigger = e.target.closest('[data-bs-toggle="dropdown"]');
+    if (dropdownTrigger) {
+      var menu = dropdownTrigger.nextElementSibling;
+      if (menu && menu.classList.contains('dropdown-menu')) {
+        var isOpen = menu.classList.contains('show');
+        closeDropdowns();
+        if (!isOpen) {
+          menu.classList.add('show');
+          dropdownTrigger.setAttribute('aria-expanded', 'true');
+          // Remplace le repli automatique que faisait Popper (inclus dans
+          // le bundle complet) : si le menu déborderait de la fenêtre à
+          // droite, on l'aligne sur la droite du bouton plutôt qu'à gauche.
+          var r = menu.getBoundingClientRect();
+          if (r.right > window.innerWidth) {
+            menu.style.left = 'auto';
+            menu.style.right = '0';
+          }
+        }
+      }
+      return;
+    }
+    if (!e.target.closest('.dropdown-menu')) closeDropdowns();
+
+    // Panneau mobile (Header.astro)
+    var offcanvasTrigger = e.target.closest('[data-bs-toggle="offcanvas"]');
+    if (offcanvasTrigger) {
+      var panel = document.querySelector(offcanvasTrigger.getAttribute('data-bs-target'));
+      if (panel) openOffcanvas(panel);
+      return;
+    }
+    if (e.target.closest('[data-bs-dismiss="offcanvas"]')) closeOffcanvas();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeDropdowns(); closeOffcanvas(); }
+  });
+})();
+</script>
 
 <script is:inline>
 /* ── Radio Odyssey : lecture adaptée desktop/mobile ── */

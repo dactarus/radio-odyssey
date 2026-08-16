@@ -2244,6 +2244,27 @@ Aucun changement de code dans ce lot — uniquement une correction de plan, cons
 
 ---
 
+## 80. Performance mobile : bootstrap.bundle.min.js remplacé, retard du bandeau cookies corrigé (2026-08-16)
+
+Suite à un score PageSpeed Insights mobile mitigé (73-83 selon les passages, contre 98-100 sur bureau), diagnostic détaillé du rapport (métriques, répartition du LCP, tables de ressources JS/CSS/images inutilisées).
+
+**Constat** : le LCP (4,1 s, "à améliorer") ne venait pas des images — 371 des 399 Kio d'images signalés sont les pochettes du morceau en cours servies par `image.radioking.io` (tiers, hors de notre contrôle). Deux causes propres au site :
+
+1. **`bootstrap.bundle.min.js`** (~20 Kio) chargé sur les 258 pages pour trois comportements seulement — accordéon FAQ (`FAQBlock.astro`, `index.astro`), méga-menu déroulant (`MegaNav.astro`), panneau mobile (`Header.astro`) — jamais ses modales/carrousels/tooltips. Remplacé par un script maison d'une centaine de lignes dans `Footer.astro`, qui reproduit ces trois comportements (délégation d'événements sur `data-bs-toggle="collapse|dropdown|offcanvas"` et `data-bs-dismiss="offcanvas"`) en s'appuyant sur les classes et transitions déjà fournies par `bootstrap.min.css` (`.collapse`/`.show`, `.dropdown-menu`/`.show`, `.offcanvas`/`.show`, `.offcanvas-backdrop`) — seul le déclenchement change, pas l'habillage visuel. ⚠️ **`bootstrap.min.css` reste chargé** : ses classes de grille (`row`, `col-`, `container`) structurent 110+ fichiers `.astro`, une purge complète n'est pas envisageable sans migration lourde — écarté de ce lot.
+2. **Retard du bandeau cookies** : `CookieConsent.astro` est la dernière chose insérée dans `<body>` (après tout le contenu de page), et son bandeau démarrait avec l'attribut `hidden`, retiré seulement quand ce script de fin de page s'exécutait — donc après le HTML entier de la page. Lighthouse a identifié ce texte comme élément LCP, avec ~1,3 s de retard d'affichage. Corrigé en inversant la logique : le bandeau est désormais **visible par défaut** dans le HTML (rapide à peindre pour un premier visiteur, le cas mesuré par Lighthouse), et un petit script bloquant ajouté en tête de `Layout.astro` masque immédiatement le bandeau, avant peinture, **si et seulement si** un choix est déjà en `localStorage` (`html.ro-cookie-decided .ro-cookie-banner{display:none}`) — aucun clignotement pour un visiteur qui a déjà répondu.
+
+**Écarté de ce lot, pour plus tard si besoin** : purge complète de `bootstrap.min.css` (migration de grille, risqué) et proxy de redimensionnement pour les pochettes RadioKing (complexité et gain incertains face à un contenu tiers).
+
+### Vérifications
+
+Build isolé : 258 pages, aucune erreur, sitemap cohérent (240 URL, 0 manquante), aucun `<title>` tronqué. Confirmé sur le HTML construit : plus aucune balise `<script src=".../bootstrap.bundle.min.js">` sur les 258 pages ; `bootstrap.min.css` toujours chargé ; bandeau cookies sans attribut `hidden` ; règle CSS `html.ro-cookie-decided .ro-cookie-banner{display:none}` présente dans le CSS compilé (`_astro/Layout.*.css`). Logique JS vérifiée dynamiquement (jsdom, faute de pouvoir installer un navigateur complet dans le bac à sable) : accordéon FAQ (ouverture/fermeture, `aria-expanded`), méga-menu (ouverture, fermeture au clic extérieur), panneau mobile (ouverture, verrouillage du défilement, fond assombri, fermeture par le fond ou le bouton de fermeture) — tous les comportements se comportent comme avec le bundle Bootstrap complet. Le repli automatique du méga-menu en bord d'écran (remplaçant Popper) n'a pas pu être vérifié en conditions réelles (nécessite un vrai moteur de mise en page) ; sa logique reste simple (comparaison de largeur) et son échec resterait sans conséquence grave (menu aligné à gauche, comme le comportement Bootstrap par défaut sans Popper).
+
+---
+
+*Dernière mise à jour : 2026-08-16, performance mobile — bootstrap.bundle.min.js et retard du bandeau cookies (§80).*
+
+---
+
 ## 76. Appli V8 — quatre défauts de fiabilité corrigés (2026-08-16)
 
 Premier lot d'un audit du code de `Appli Radio Odyssey V8/`, mené après le §75. L'appli n'avait jamais été relue en tant que telle : le §75 s'y était plongé uniquement pour trancher la question de la fusion. Ce lot ne traite que ce qui **faisait perdre de l'écoute**. Rien d'ajouté, rien de redessiné.
