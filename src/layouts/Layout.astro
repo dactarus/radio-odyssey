@@ -187,6 +187,23 @@ const articleSchema = articleDatePublished ? {
 <!DOCTYPE html>
 <html lang={lang}>
 <head>
+  <!-- §80 : lu et appliqué avant tout le reste. Le bandeau cookies
+       (CookieConsent.astro) est en toute fin de <body>, après le contenu de
+       la page — PageSpeed Insights l'a repéré comme élément LCP, avec ~1,3 s
+       de retard : le bandeau démarrait avec l'attribut `hidden`, retiré
+       seulement une fois le script de fin de page atteint, donc après tout
+       le HTML de la page. Le bandeau est désormais visible par défaut (plus
+       rapide à peindre pour un premier visiteur, le cas mesuré par
+       Lighthouse) ; ce minuscule script bloquant ne fait que le masquer tout
+       de suite, avant peinture, pour un visiteur qui a déjà répondu — sans
+       lui, ce visiteur verrait le bandeau clignoter une fraction de seconde. -->
+  <script is:inline>
+    try {
+      if (localStorage.getItem('ro-cookie-consent')) {
+        document.documentElement.classList.add('ro-cookie-decided');
+      }
+    } catch (e) {}
+  </script>
   <meta charset="UTF-8"/>
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png"/>
   <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48.png"/>
