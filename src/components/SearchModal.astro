@@ -15,7 +15,8 @@ interface Props { lang?: 'fr' | 'en'; }
 const { lang = 'fr' } = Astro.props;
 const L = t(lang);
 ---
-<div id="ro-search-modal" class="ro-search-modal" hidden aria-hidden="true">
+<div id="ro-search-modal" class="ro-search-modal" hidden aria-hidden="true"
+     data-placeholder={L.recherchePlaceholder} data-zero-results={L.rechercheAucunResultat}>
   <div class="ro-search-backdrop"></div>
   <div class="ro-search-panel" role="dialog" aria-modal="true" aria-label={L.rechercher}>
     <div class="ro-search-header">
@@ -100,62 +101,99 @@ const L = t(lang);
   }
 </style>
 
-<script is:inline define:vars={{ PLACEHOLDER: L.recherchePlaceholder, ZERO_RESULTS: L.rechercheAucunResultat }}>
+<script is:inline>
 (function () {
-  var modal = document.getElementById('ro-search-modal');
-  var closeBtn = document.getElementById('ro-search-close');
-  var backdrop = modal.querySelector('.ro-search-backdrop');
-  var uiLoaded = false;
+  /*
+    §84 — Même défaut que sur le bandeau cookies : les écouteurs étaient
+    posés directement sur `.ro-search-trigger`, `#ro-search-close` et le
+    fond. ClientRouter remplace le corps du document sans réexécuter un
+    script en ligne inchangé : après la première navigation client-side, la
+    loupe ne répondait plus, sans erreur en console. Défaut présent depuis
+    l'arrivée de ClientRouter, donc en ligne aujourd'hui.
 
-  function loadPagefindUI(callback) {
-    if (uiLoaded) { callback(); return; }
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = '/pagefind/pagefind-ui.css';
-    document.head.appendChild(link);
+    Trois conséquences traitées ici :
+      - écouteurs délégués sur `document`, posés une seule fois ;
+      - `#ro-search-modal` et `#ro-search-ui` sont relus à chaque ouverture,
+        jamais mémorisés : ce sont des éléments neufs après chaque navigation ;
+      - l'interface Pagefind est réinstanciée si le conteneur de la page
+        courante est vide, sans recharger le script (window.PagefindUI reste
+        en mémoire).
 
+    ⚠️ Les libellés viennent d'attributs `data-` de la modale, pas de
+    `define:vars` : ils suivent ainsi la langue de la page réellement
+    affichée, et le script n'a aucune constante à redéclarer.
+  */
+  if (window.__roSearchBound) return;
+  window.__roSearchBound = true;
+
+  function laModale() { return document.getElementById('ro-search-modal'); }
+
+  function chargerUI(callback) {
+    var conteneur = document.getElementById('ro-search-ui');
+    var modale = laModale();
+    if (!conteneur || !modale) { callback(); return; }
+    if (conteneur.children.length) { callback(); return; }
+
+    if (!document.querySelector('link[data-ro-pagefind]')) {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = '/pagefind/pagefind-ui.css';
+      link.setAttribute('data-ro-pagefind', '');
+      document.head.appendChild(link);
+    }
+
+    function instancier() {
+      try {
+        new PagefindUI({
+          element: '#ro-search-ui',
+          showSubResults: true,
+          showImages: false,
+          excerptLength: 15,
+          translations: {
+            placeholder: modale.dataset.placeholder || '',
+            zero_results: modale.dataset.zeroResults || ''
+          }
+        });
+      } catch (err) { /* recherche indisponible : la page reste utilisable */ }
+      callback();
+    }
+
+    if (window.PagefindUI) { instancier(); return; }
     var script = document.createElement('script');
     script.src = '/pagefind/pagefind-ui.js';
-    script.onload = function () {
-      uiLoaded = true;
-      new PagefindUI({
-        element: '#ro-search-ui',
-        showSubResults: true,
-        showImages: false,
-        excerptLength: 15,
-        translations: {
-          placeholder: PLACEHOLDER,
-          zero_results: ZERO_RESULTS
-        }
-      });
-      callback();
-    };
+    script.onload = instancier;
     document.body.appendChild(script);
   }
 
-  function openSearch() {
-    modal.hidden = false;
-    modal.setAttribute('aria-hidden', 'false');
+  function ouvrir() {
+    var modale = laModale();
+    if (!modale) return;
+    modale.hidden = false;
+    modale.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    loadPagefindUI(function () {
-      var input = document.querySelector('#ro-search-ui input');
-      if (input) input.focus();
+    chargerUI(function () {
+      var champ = document.querySelector('#ro-search-ui input');
+      if (champ) champ.focus();
     });
   }
 
-  function closeSearch() {
-    modal.hidden = true;
-    modal.setAttribute('aria-hidden', 'true');
+  function fermer() {
+    var modale = laModale();
+    if (!modale) return;
+    modale.hidden = true;
+    modale.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
   }
 
-  document.querySelectorAll('.ro-search-trigger').forEach(function (btn) {
-    btn.addEventListener('click', openSearch);
+  document.addEventListener('click', function (e) {
+    if (!e.target || !e.target.closest) return;
+    if (e.target.closest('.ro-search-trigger')) { ouvrir(); return; }
+    if (e.target.closest('#ro-search-close') || e.target.closest('.ro-search-backdrop')) { fermer(); }
   });
-  closeBtn.addEventListener('click', closeSearch);
-  backdrop.addEventListener('click', closeSearch);
+
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !modal.hidden) closeSearch();
+    var modale = laModale();
+    if (e.key === 'Escape' && modale && !modale.hidden) fermer();
   });
 })();
 </script>

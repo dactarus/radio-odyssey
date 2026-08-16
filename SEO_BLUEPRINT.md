@@ -2636,3 +2636,66 @@ Lots 1 à 3 forment un ensemble qui se tient : 18 pages anglaises, un accueil, u
 ---
 
 *Dernière mise à jour : 2026-08-16, version anglaise lot 3 — E-E-A-T anglais (§83).*
+
+---
+
+## 84. Le test manuel trouve un défaut en ligne depuis des mois — et le chaînon manquant entre les deux langues (2026-08-16)
+
+La vérification avant publication des lots 1 à 3 a remonté trois anomalies. **Deux ne venaient pas de ce chantier : elles sont en production aujourd'hui.** La troisième était une conséquence directe d'une règle du §82.
+
+### 1 et 2. La recherche et le bandeau cookies cessaient de répondre après un changement de page
+
+Symptôme rapporté : la loupe n'ouvre rien, et les boutons « Accepter »/« Refuser » ne font rien — sur certaines pages seulement, sans logique apparente.
+
+Reproduit sur navigateur piloté : **tout fonctionne au chargement direct d'une page, et plus rien après la première navigation client-side.** Aucune erreur en console, ce qui explique que le défaut soit passé inaperçu si longtemps.
+
+**Cause.** `ClientRouter` remplace le corps du document sans réexécuter un script en ligne dont le contenu n'a pas changé — comportement normal et voulu : le script est censé avoir posé des effets durables. Or `SearchModal.astro` et `CookieConsent.astro` posaient leurs écouteurs **directement sur des éléments** (`.ro-search-trigger`, `#ro-search-close`, `#ro-cookie-accept`…). Après un échange de document, ces éléments sont neufs, sans écouteur, et le script qui les aurait rebranchés ne tourne plus.
+
+**Depuis quand.** Depuis l'arrivée de `ClientRouter` (commit `04a55a6`, « lecture persistante entre pages »), donc bien avant ce chantier. Vérifié en construisant le commit `7d4943d` (§80) et en rejouant le même scénario : identique. Le §60 avait déjà traité ce problème pour les menus — en remplaçant `bootstrap.bundle.min.js` par un écouteur **délégué** sur `document` — mais sans que personne remarque que la recherche et le bandeau cookies souffraient du même mal.
+
+⚠️ **Le §80 a rendu visible un défaut jusque-là silencieux, sans le créer.** Avant lui, le bandeau cookies portait `hidden` par défaut et n'était affiché que par son script : après une navigation, le script ne tournant pas, le bandeau restait simplement invisible. Le §80 l'a rendu visible par défaut pour la performance — le bandeau apparaissait alors, et ne répondait pas. C'est exactement le genre d'enchaînement qu'un correctif de performance peut produire sans que rien ne le signale.
+
+**Correctif**, aligné sur ce que le §60 avait fait pour les menus :
+
+- Écouteurs **délégués sur `document`**, posés une seule fois (`window.__roSearchBound`, `window.__roCookieBound`). `document` n'est pas remplacé par `ClientRouter`.
+- Les éléments sont **relus à chaque usage**, jamais mémorisés dans une variable au chargement.
+- L'interface Pagefind est réinstanciée si le conteneur de la page courante est vide, sans recharger le script (`window.PagefindUI` reste en mémoire).
+- ⚠️ Le choix cookies est marqué par la classe `ro-cookie-decided` sur `<html>` plutôt que par l'attribut `hidden` du bandeau — mais **`ClientRouter` recopie les attributs du `<html>` entrant à chaque navigation**, ce qui efface la classe. L'état est donc réappliqué sur `astro:after-swap`, déclenché avant peinture, donc sans clignotement. Sans cela, le bandeau revenait à chaque page alors que le consentement était bien enregistré.
+
+⚠️ **Règle générale à retenir pour ce projet** : sur ce site, **tout écouteur d'événement doit être délégué à `document`**, et tout état visuel qui doit survivre à une navigation doit être réappliqué sur `astro:after-swap`. Un écouteur posé sur un élément précis ne survit pas à la première navigation, et cela ne produit **aucune erreur** — donc aucun signal.
+
+### 3. Aucun chemin de retour du français vers l'anglais, ni l'inverse
+
+La règle du §82 — sur une page anglaise, un lien interne n'est affiché que si sa cible existe en anglais — avait supprimé le seul chemin de retour existant : l'ancien menu français affiché sur les pages anglaises. Résultat : un lecteur arrivé sur `/en/…` ne pouvait plus revenir au site français, et l'accueil français n'offrait aucune entrée vers l'anglais.
+
+**Un sélecteur de langue est précisément le cas où le lien inter-langues est le sujet, pas un accident.** Ajouté à trois endroits : barre de menu (ordinateur), panneau latéral (mobile) et pied de page. Il pointe vers la **page équivalente** quand le couple existe (`altLangs`, transmis par `Layout.astro` à `Header` et `Footer`), sinon vers l'accueil de l'autre langue — 8 des 18 pages anglaises ont ainsi une cible précise, les 10 autres renvoient à l'accueil français.
+
+⚠️ **Ces liens portent `data-astro-reload`**, et ce n'est pas optionnel : `#topRadioBar` est en `transition:persist`, donc une navigation client-side conserverait la barre du lecteur avec les libellés de la langue précédente. C'est ce que le §82 avait consigné comme « cas de bord assumé » — le sélecteur en faisait un passage normal, il fallait donc le traiter. Un chargement complet est la seule façon de reconstruire la barre dans la bonne langue.
+
+### Au passage : `define:vars` retiré des composants de mise en page
+
+`RadioPlayer`, `SearchModal` et `WebviewBanner` recevaient leurs libellés par `define:vars`, qui génère un `const` en tête de script. Le contenu du script différait donc d'une langue à l'autre — et un script au contenu différent **est** réexécuté par `ClientRouter`, ce qui aurait levé une `SyntaxError` de redéclaration au passage français → anglais, emportant tout le lecteur. Les libellés passent désormais par des attributs `data-` lus au moment utile : le script redevient identique sur les 263 pages, donc jamais réexécuté, et les libellés suivent la langue de la page réellement affichée.
+
+### Vérifications
+
+Comparaison avant/après sur navigateur piloté, même scénario, après une navigation client-side sur une page française :
+
+| | avant (§80, état en ligne) | après |
+|---|---|---|
+| Recherche (loupe) | **KO** | OK |
+| Boutons cookies | **KO** | OK |
+| Choix cookies retenu d'une page à l'autre | **KO** | OK |
+
+Parcours complet sans une seule erreur JavaScript. Sélecteur de langue : présent sur les 18 pages anglaises, cible correcte (page équivalente pour 8 d'entre elles), et le passage FR → EN reconstruit bien la barre en anglais (« ON AIR », « Tap to listen »).
+
+Batterie du chantier rejouée : 263 pages, 18 anglaises, 245 URL au sitemap toutes présentes, **39 511 liens internes vérifiés sans une cible absente**, 0 libellé français visible côté anglais, 0 lien vers du français hors le sélecteur et les deux exceptions légales, 20 pages en `hreflang` réciproques, 0 titre tronqué, 19 `noindex`, 0 règle `vercel.json` masquante.
+
+### Ce que cet épisode dit de la méthode
+
+Les trois lots précédents avaient passé tous les contrôles automatisés : build sans erreur, 38 722 liens vérifiés, `hreflang` réciproques, aucun libellé français côté anglais. **Aucun de ces contrôles ne pouvait voir un bouton qui ne répond plus** — il est présent dans le HTML, correctement libellé, correctement lié. Il ne manque qu'un écouteur, et le HTML construit n'en dit rien.
+
+⚠️ Le test manuel avant publication n'est pas une formalité de fin de chantier : ici, il a trouvé un défaut vieux de plusieurs mois que personne n'avait vu, et qui touche la recherche interne de **toutes** les pages du site.
+
+---
+
+*Dernière mise à jour : 2026-08-16, écouteurs délégués et sélecteur de langue (§84).*

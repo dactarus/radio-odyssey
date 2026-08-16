@@ -3,7 +3,7 @@ import Icon from './Icon.astro';
 import MegaNav from './MegaNav.astro';
 import RadioPlayer from './RadioPlayer.astro';
 import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
-import { EN_NAV_CATEGORIES, ACCUEIL, t } from '../data/i18n.js';
+import { EN_NAV_CATEGORIES, ACCUEIL, AUTRE_LANGUE, cibleAutreLangue, t } from '../data/i18n.js';
 
 /*
   §81 (lot 2) : la navigation était écrite en dur en français. Les 13 pages
@@ -15,8 +15,10 @@ import { EN_NAV_CATEGORIES, ACCUEIL, t } from '../data/i18n.js';
   pages françaises n'y figurent pas — un lien n'est montré que si sa cible
   existe dans la langue de la page.
 */
-interface Props { lang?: 'fr' | 'en'; }
-const { lang = 'fr' } = Astro.props;
+interface Props { lang?: 'fr' | 'en'; altLangs?: Partial<Record<'fr' | 'en', string>>; }
+const { lang = 'fr', altLangs } = Astro.props;
+const autreLangue = AUTRE_LANGUE[lang];
+const hrefAutreLangue = cibleAutreLangue(lang, altLangs);
 const L = t(lang);
 const categories = lang === 'en' ? EN_NAV_CATEGORIES : NAV_CATEGORIES;
 // Les groupes anglais tiennent en 5 ou 6 entrées : tout est affiché, et il
@@ -71,7 +73,7 @@ const accueil = ACCUEIL[lang];
 <!-- ============================================================
      MEGA-MENU (desktop)
      ============================================================ -->
-<MegaNav lang={lang} />
+<MegaNav lang={lang} altLangs={altLangs} />
 
 <!-- ============================================================
      OFFCANVAS NAV (mobile)
@@ -113,6 +115,9 @@ const accueil = ACCUEIL[lang];
         )}
       </>
     ))}
+
+    <span class="nav-cat"><Icon name="globe" /> {autreLangue.label}</span>
+    <a class="nav-link" href={hrefAutreLangue} data-astro-reload hreflang={autreLangue.code} lang={autreLangue.code}><span class="ni"><Icon name="globe" /></span> {autreLangue.label}</a>
 
     <span class="nav-cat"><Icon name="list" /> {L.toutLeSite}</span>
     <a class="nav-link" href={lang === 'en' ? accueil : '/plan-du-site.html'}><span class="ni"><Icon name="grid" /></span> {L.planDuSite}</a>

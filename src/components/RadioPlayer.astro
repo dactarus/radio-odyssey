@@ -57,7 +57,8 @@ const LIB = {
 <audio id="ro-audio" preload="none" playsinline></audio>
 
 <button type="button" id="ro-player" class="ro-player"
-        aria-label={LIB.ecouter}>
+        aria-label={LIB.ecouter}
+        data-libelles={JSON.stringify(LIB)}>
   <span class="ro-player-btn" aria-hidden="true">
     <svg class="ro-ico ro-ico-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.54.84l10-6.5a1 1 0 0 0 0-1.68l-10-6.5A1 1 0 0 0 8 5.5z"/></svg>
     <svg class="ro-ico ro-ico-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6.5" y="5" width="4" height="14" rx="1.3"/><rect x="13.5" y="5" width="4" height="14" rx="1.3"/></svg>
@@ -157,7 +158,17 @@ const LIB = {
   }
 </style>
 
-<script is:inline define:vars={{ LIB }}>
+<script is:inline>
+  /*
+    §84 — Les libellés passaient par `define:vars`, qui génère un `const LIB`
+    en tête de script. Or le contenu du script changeait alors d'une langue à
+    l'autre : ClientRouter le réexécutait au passage français → anglais, et
+    la redéclaration du `const` levait une SyntaxError qui emportait tout le
+    lecteur. En les lisant sur un attribut `data-`, le script devient
+    identique sur les 263 pages — donc jamais réexécuté, donc jamais en
+    conflit avec lui-même.
+  */
+  var LIB = JSON.parse((document.getElementById('ro-player') || {}).dataset?.libelles || '{}');
 (function () {
   // La barre du lecteur porte transition:persist : le nœud DOM survit aux
   // navigations Astro, donc les écouteurs aussi. Ce garde-fou évite de les
