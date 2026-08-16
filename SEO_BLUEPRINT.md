@@ -2299,3 +2299,61 @@ Syntaxe des deux blocs `<script>` et du service worker validée par `node --chec
 ---
 
 *Dernière mise à jour : 2026-08-16, correctifs de fiabilité de l'appli V8 (§76).*
+
+---
+
+## 77. Appli V8 — ce qui a tenu, ce qui n'a pas tenu (2026-08-16)
+
+⚠️ **Ce paragraphe corrige le §76.** Le §76 annonçait quatre correctifs de fiabilité, tous validés au banc d'essai. Testés sur un vrai iPhone dans la foulée, **le premier s'est révélé faux et a été annulé** ; les trois autres tiennent. Le §76 reste tel quel pour l'histoire, mais c'est ici qu'est l'état réel.
+
+### 77.1 La pause depuis l'écran verrouillé réveille l'app Musique — limite d'iOS, non contournable
+
+Faire « tenir » la pause depuis l'écran verrouillé (§76.1) produit un effet bien pire que le défaut qu'il corrigeait : **une seconde après la pause, l'iPhone lance la lecture de l'app Musique.** En relâchant la session audio, iOS considère terminée l'« interruption » que Radio Odyssey lui avait causée et reprend la lecture de l'application interrompue. Cela se produirait chez tout auditeur ayant Musique en pause.
+
+**Trois contournements ont été écrits, publiés et testés sur iPhone. Aucun ne marche.**
+
+| Tentative | Résultat |
+|---|---|
+| Poser `userPaused` pour que la pause tienne (§76.1) | Musique démarre |
+| Ne pas recharger le flux depuis l'arrière-plan et rattraper le direct au déverrouillage | Musique démarre |
+| Couper le son sans arrêter le flux (« pause silencieuse »), vrai arrêt différé au retour au premier plan | Musique démarre quand même — iOS met l'élément en pause de son côté, quoi que fasse le gestionnaire |
+
+⚠️ **Ce n'est pas une régression.** Le comportement est antérieur au 2026-08-16, et le lecteur du site (`RadioPlayer.astro`) l'a aussi : son `arreter()` est branché sur les actions Media Session `pause` et `stop`, et fait un démontage encore plus franc (`audio.pause()` puis `removeAttribute('src')`). Le défaut existe donc sur `www` depuis le §55 (passage au lecteur natif, 2026-08-09). Il n'avait jamais été rencontré parce que la pause de l'écran verrouillé, se relançant toute seule au bout de 1,2 s, ne servait à rien.
+
+**Décision** : on s'en tient au comportement par défaut. Un avertissement détaillé est écrit dans `index.html`, au-dessus des deux `setActionHandler`, listant les trois tentatives et pourquoi chacune échoue — pour que personne ne reparte dans cette impasse. Le contournement théorique restant (ne jamais mettre en pause, garder le flux ouvert en permanence) a été écarté : il ferait compter par RadioKing du temps d'écoute qui n'en est pas, et fausserait la durée d'écoute moyenne, sur laquelle tout le reste est arbitré.
+
+Seconde limite relevée au passage : iOS libère la session audio ~30 s après une pause, si bien qu'une reprise depuis l'écran verrouillé est ensuite muette jusqu'au retour de l'appli au premier plan. Sources : forum développeurs Apple, fil 762582 ; bug WebKit 261858, ouvert depuis 2023, propre au mode « ajouté à l'écran d'accueil ».
+
+### 77.2 Ce qui a tenu du §76
+
+- **Lancement hors ligne depuis l'écran d'accueil** — validé sur iPhone en mode Avion, Wi-Fi coupé : l'appli s'ouvre avec son bandeau, là où elle affichait la page d'erreur du navigateur. La `start_url` du manifeste (`/?source=pwa`) ne correspondait à aucune entrée du cache, faute d'`ignoreSearch` et de repli de navigation.
+- **Curseur de volume restauré**, avec validation de la valeur — une donnée corrompue en stockage levait une exception qui cassait tout le script en aval. Invisible sur iPhone : Apple interdit le réglage du volume par script, la ligne y est remplacée par une note.
+- **Un seul écouteur `pause`** : la remise à zéro de l'analyse n'a plus lieu sur les interruptions système que l'appli rattrape toute seule.
+- **`.vercelignore`** : `admin.html` — console d'envoi de notifications, accessible publiquement sans authentification, vérifiée en ligne — et les documents de travail ne sont plus publiés. ⚠️ Dès qu'un `.vercelignore` existe, Vercel cesse de se référer au `.gitignore` : tout ce qui doit rester hors ligne y est répété.
+
+### 77.3 Lot 2 — visibilité, sobriété, mesure
+
+- **Le titre en cours s'affiche dès l'ouverture**, avant tout appui sur play. `fetchNow()` n'était appelée que dans le `.then()` de `togglePlay` : l'appli affichait « Radio Odyssey / Positive radio ✨ » tant qu'on n'avait rien lancé. C'est l'information qui décide d'écouter — levier le plus direct sur les 35 % d'écoutes de moins de 30 s (§55).
+- **Relevé calé sur la fin réelle du morceau** (`next_track` de l'API RadioKing), comme le fait déjà `RadioPlayer.astro`, au lieu d'un rythme fixe de 10 s qui tournait même écran éteint. Mesuré : **1 requête au lieu de 16** pour un morceau de 2 min 40, et le titre change à l'écran à la seconde où il change à l'antenne. À l'arrêt, plus de sondage en boucle : un relevé à l'ouverture, un au retour au premier plan.
+- **Palier progressif sur les reconnexions** : 5 s → 10 s → 30 s → 60 s au lieu de 5 s indéfiniment, avec un message explicite à partir du troisième échec au lieu d'un « Reconnexion… » perpétuel.
+- **Instrumentation** : l'appli n'envoyait qu'un seul type d'événement à Umami (les changements d'onglet), contre une dizaine sur le site depuis le §72 — la surface qui retient deux fois mieux était celle sur laquelle on ne savait rien. Treize événements désormais, au **nommage strictement identique à celui du site** (`roUmamiTrack` repris de `Footer.astro`), chacun portant `surface: 'appli'`. ⚠️ Ne jamais renommer un événement d'un côté sans l'autre. ⚠️ La table `PLATEFORMES` doit rester alignée avec celle de `Footer.astro` et avec `SAME_AS` de `Layout.astro`.
+
+### Vérifications
+
+Tout a été vérifié sur Chromium piloté par Playwright, élément `<audio>` neutralisé et API RadioKing simulée : ouverture hors ligne sur `/?source=pwa`, restauration du curseur de volume, valeur de stockage corrompue sans exception, affichage du titre sans lecture, absence de sondage à l'arrêt, un seul relevé supplémentaire à la fin du morceau, numérotation des tentatives de reconnexion, et départ effectif des treize événements. Syntaxe des deux blocs `<script>` et du service worker validée par `node --check`.
+
+⚠️ **Leçon de la journée, la plus utile** : le banc d'essai ne voit pas la session audio d'iOS. Les quatre correctifs du §76 y passaient tous. Trois publications ont été nécessaires pour découvrir que le premier était nuisible. **Pour tout ce qui touche à la lecture, à la pause ou à la reconnexion, un test sur un vrai iPhone est obligatoire avant publication** — `npx vercel` sans `--prod` crée une préversion installable sur l'écran d'accueil, à supprimer après le test. `CACHE_VERSION` sert désormais de repère de version vérifiable en ligne (`app.radio-odyssey.com/service-worker.js`) : l'incrémenter à chaque publication, sans quoi on teste sans savoir quelle version tourne — ce qui est arrivé deux fois aujourd'hui.
+
+### Reste à faire, par ordre d'effet décroissant
+
+1. **Porter les mêmes correctifs au lecteur du site** — `RadioPlayer.astro` a la même limite iOS (77.1), et son relevé de titre est déjà calé sur `end_at`, mais l'avertissement sur la session audio doit y figurer aussi.
+2. **Lire les nouveaux événements** après quelques jours : part des écoutes courtes qui sont des échecs techniques, conversion du bandeau d'installation, taux de lancement de l'exercice de respiration.
+3. Polices auto-hébergées : perdues hors ligne (le service worker ne met en cache que le même domaine), et transfert d'IP vers Google sans consentement. **Mentions légales et politique de confidentialité absentes de `app.radio-odyssey.com`** — deux liens à ajouter dans l'onglet « À propos ».
+4. Grille du week-end et du vendredi soir : l'onglet Programme est statique 7 j/7 alors que le §58 a établi une grille distincte. `.sched-item.current` est stylé mais n'est appliqué par aucune ligne de JavaScript — l'émission en cours n'est jamais mise en avant.
+5. Dépôt GitHub pour l'appli : aucun dépôt distant, publication manuelle, donc pas de sauvegarde hors machine.
+6. Contraste : `--muted` (#7878a8) donne 3,11:1 sur les cartes, sous le seuil AA de 4,5:1, alors qu'il porte l'artiste du titre en cours et tout l'historique.
+7. Débrancher les endpoints push inutilisés (§75) : `admin.html` n'est plus publié, mais `api/subscribe.js` et `api/send.js` restent en ligne.
+
+---
+
+*Dernière mise à jour : 2026-08-16, correctifs et limites de l'appli V8 (§77).*
