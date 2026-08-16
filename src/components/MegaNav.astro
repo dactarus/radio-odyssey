@@ -1,12 +1,14 @@
 ---
 import Icon from './Icon.astro';
 import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
-import { EN_NAV_CATEGORIES, ACCUEIL, t } from '../data/i18n.js';
+import { EN_NAV_CATEGORIES, ACCUEIL, AUTRE_LANGUE, cibleAutreLangue, t } from '../data/i18n.js';
 
 // §81 (lot 2) : voir l'en-tête de Header.astro. Côté anglais, structure
 // propre et courte, pas la traduction du menu français.
-interface Props { lang?: 'fr' | 'en'; }
-const { lang = 'fr' } = Astro.props;
+interface Props { lang?: 'fr' | 'en'; altLangs?: Partial<Record<'fr' | 'en', string>>; }
+const { lang = 'fr', altLangs } = Astro.props;
+const autreLangue = AUTRE_LANGUE[lang];
+const hrefAutreLangue = cibleAutreLangue(lang, altLangs);
 const L = t(lang);
 const categories = lang === 'en' ? EN_NAV_CATEGORIES : NAV_CATEGORIES;
 const apercu = lang === 'en' ? 99 : MENU_APERCU;
@@ -121,6 +123,12 @@ const accueil = ACCUEIL[lang];
         </li>
       ))}
       <li class="ro-mega-nav-search-item">
+        <a class="ro-mega-nav-toggle" href={hrefAutreLangue} data-astro-reload
+           hreflang={autreLangue.code} lang={autreLangue.code} aria-label={autreLangue.aria}>
+          <Icon name="globe" style="font-size:.85rem;" /> {autreLangue.label}
+        </a>
+      </li>
+      <li>
         <button class="ro-mega-nav-toggle ro-mega-nav-search-btn ro-search-trigger" type="button" aria-label={L.rechercher}>
           <Icon name="search" />
         </button>

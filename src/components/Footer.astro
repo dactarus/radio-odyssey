@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import { NAV_CATEGORIES } from '../data/navigation.js';
-import { EN_NAV_CATEGORIES, t } from '../data/i18n.js';
+import { EN_NAV_CATEGORIES, AUTRE_LANGUE, cibleAutreLangue, t } from '../data/i18n.js';
 const FOOTER_PAGE_LIMIT = 4;
 
 /*
@@ -16,8 +16,10 @@ const FOOTER_PAGE_LIMIT = 4;
   pire qu'un lien dans la mauvaise langue. Le plan du site et le bloc
   partenaire, eux, sont retirés côté anglais : purement éditoriaux.
 */
-interface Props { lang?: 'fr' | 'en'; }
-const { lang = 'fr' } = Astro.props;
+interface Props { lang?: 'fr' | 'en'; altLangs?: Partial<Record<'fr' | 'en', string>>; }
+const { lang = 'fr', altLangs } = Astro.props;
+const autreLangue = AUTRE_LANGUE[lang];
+const hrefAutreLangue = cibleAutreLangue(lang, altLangs);
 const L = t(lang);
 const enAnglais = lang === 'en';
 const categories = enAnglais ? EN_NAV_CATEGORIES : NAV_CATEGORIES;
@@ -66,7 +68,7 @@ const limitePages = enAnglais ? 99 : FOOTER_PAGE_LIMIT;
     </div>
     <hr/>
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
-      <div class="footer-bottom">© 2026 Radio Odyssey. {L.droitsReserves} | {L.depuisLe} · <a href="/mentions-legales.html" style="color:inherit;text-decoration:underline;">{L.mentionsLegales}</a> · <a href="/politique-de-confidentialite.html" style="color:inherit;text-decoration:underline;">{L.confidentialite}</a>{!enAnglais && (<> · <a href="/plan-du-site.html" style="color:inherit;text-decoration:underline;">{L.planDuSite}</a></>)} · <a href="#" onclick="window.roOpenCookiePreferences && window.roOpenCookiePreferences(); return false;" style="color:inherit;text-decoration:underline;">{L.gererCookies}</a></div>
+      <div class="footer-bottom">© 2026 Radio Odyssey. {L.droitsReserves} | {L.depuisLe} · <a href="/mentions-legales.html" style="color:inherit;text-decoration:underline;">{L.mentionsLegales}</a> · <a href="/politique-de-confidentialite.html" style="color:inherit;text-decoration:underline;">{L.confidentialite}</a>{!enAnglais && (<> · <a href="/plan-du-site.html" style="color:inherit;text-decoration:underline;">{L.planDuSite}</a></>)} · <a href="#" onclick="window.roOpenCookiePreferences && window.roOpenCookiePreferences(); return false;" style="color:inherit;text-decoration:underline;">{L.gererCookies}</a> &middot; <a href={hrefAutreLangue} data-astro-reload hreflang={autreLangue.code} lang={autreLangue.code} style="color:inherit;text-decoration:underline;font-weight:700;">{autreLangue.label}</a></div>
       <div class="footer-social d-flex gap-3">
         <a href="https://www.facebook.com/RadioOdysseyFrance" target="_blank" rel="noopener" aria-label="Facebook"><Icon name="facebook" /></a>
         <a href="https://www.instagram.com/radio_odyssey_france/" target="_blank" rel="noopener" aria-label="Instagram"><Icon name="instagram" /></a>

@@ -308,10 +308,10 @@ const articleSchema = articleDatePublished ? {
   <slot name="head" />
 </head>
 <body>
-  <Header lang={lang} />
+  <Header lang={lang} altLangs={altLangs} />
   <WebviewBanner lang={lang} />
   <slot />
-  <Footer lang={lang} />
+  <Footer lang={lang} altLangs={altLangs} />
   <CookieConsent lang={lang} />
   <SearchModal lang={lang} />
 </body>

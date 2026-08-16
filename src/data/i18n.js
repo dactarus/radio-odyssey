@@ -133,6 +133,30 @@ export const t = (lang) => UI[lang] || UI.fr;
 export const ACCUEIL = { fr: '/', en: '/en.html' };
 
 /*
+  Sélecteur de langue (§84). Il manquait purement et simplement : depuis une
+  page anglaise, aucun chemin de retour vers le français — la règle « pas de
+  lien vers du français depuis une page anglaise » du §82 avait supprimé le
+  seul qui existait, l'ancien menu français. Un sélecteur de langue est
+  précisément le cas où le lien inter-langues est le sujet, pas un accident.
+
+  ⚠️ Ces liens doivent porter `data-astro-reload` : la barre du lecteur est
+  en `transition:persist` et survivrait à une navigation client-side avec les
+  libellés de la langue précédente. Un chargement complet est la seule façon
+  de la reconstruire dans la bonne langue.
+*/
+export const AUTRE_LANGUE = {
+  fr: { code: 'en', label: 'English', aria: 'Switch to English' },
+  en: { code: 'fr', label: 'Français', aria: 'Passer en français' },
+};
+
+// Cible du sélecteur : la page équivalente si le couple existe (prop
+// altLangs de Layout.astro), sinon l'accueil de l'autre langue.
+export const cibleAutreLangue = (lang, altLangs) => {
+  const autre = AUTRE_LANGUE[lang].code;
+  return (altLangs && altLangs[autre]) || ACCUEIL[autre];
+};
+
+/*
   Navigation anglaise (§81, lot 2).
 
   Ce n'est PAS une traduction de NAV_CATEGORIES : les 7 catégories

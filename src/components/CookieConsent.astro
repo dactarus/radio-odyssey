@@ -94,6 +94,26 @@ const GA_MEASUREMENT_ID = 'G-6CXEFXNH97';
 
 <script define:vars={{ GA_MEASUREMENT_ID }}>
   (function () {
+    /*
+      §84 — Les écouteurs étaient posés directement sur #ro-cookie-accept et
+      #ro-cookie-decline. Avec ClientRouter (navigation client-side), Astro
+      remplace le corps du document mais ne réexécute pas un script en ligne
+      dont le contenu n'a pas changé : après le premier changement de page,
+      les boutons du bandeau étaient des éléments neufs, sans écouteur, et
+      plus rien ne répondait. Sans la moindre erreur en console.
+
+      Le défaut existait depuis l'arrivée de ClientRouter, mais il était
+      invisible : avant le §80 le bandeau portait `hidden` par défaut, donc
+      après une navigation il restait simplement masqué. Le §80 l'a rendu
+      visible par défaut — le bandeau apparaissait alors, inerte.
+
+      Correctif, aligné sur ce que le §80 avait déjà fait pour les menus :
+      un seul écouteur délégué sur `document`, qui survit aux remplacements
+      de corps, posé une fois grâce au garde-fou ci-dessous.
+    */
+    if (window.__roCookieBound) return;
+    window.__roCookieBound = true;
+
     var STORAGE_KEY = 'ro-cookie-consent';
 
     function loadGoogleAnalytics() {
@@ -112,48 +132,62 @@ const GA_MEASUREMENT_ID = 'G-6CXEFXNH97';
       gtag('config', GA_MEASUREMENT_ID);
     }
 
-    function hideBanner() {
-      var banner = document.getElementById('ro-cookie-banner');
-      if (banner) banner.hidden = true;
-    }
-
-    function showBanner() {
+    /*
+      ⚠️ Le masquage passe par la classe `ro-cookie-decided` sur <html>, et
+      non plus par l'attribut `hidden` du bandeau. C'est ce qui le fait tenir
+      d'une page à l'autre : <html> n'est pas remplacé par ClientRouter,
+      contrairement au bandeau. Avec `hidden`, le choix était oublié à chaque
+      changement de page et le bandeau revenait.
+    */
+    function masquer() {
+      document.documentElement.classList.add('ro-cookie-decided');
       var banner = document.getElementById('ro-cookie-banner');
       if (banner) banner.hidden = false;
     }
 
-    var consent = localStorage.getItem(STORAGE_KEY);
-    if (consent === 'accepted') {
-      loadGoogleAnalytics();
-    } else if (consent !== 'declined') {
-      showBanner();
+    function afficher() {
+      document.documentElement.classList.remove('ro-cookie-decided');
+      var banner = document.getElementById('ro-cookie-banner');
+      if (banner) banner.hidden = false;
     }
 
-    // Ce script s'exécute après le HTML du bandeau (même composant, plus
-    // bas dans le flux du document) : les boutons existent déjà dans le
-    // DOM à ce stade, pas besoin d'attendre DOMContentLoaded (qui peut
-    // déjà s'être déclenché avant ce point selon comment Astro sert le
-    // script, auquel cas le listener ne se déclencherait jamais).
-    var acceptBtn = document.getElementById('ro-cookie-accept');
-    var declineBtn = document.getElementById('ro-cookie-decline');
-    if (acceptBtn) {
-      acceptBtn.addEventListener('click', function () {
+    /*
+      ⚠️ ClientRouter recopie les attributs du <html> entrant sur le document
+      courant à chaque navigation : la classe `ro-cookie-decided` posée au
+      clic est donc effacée dès le changement de page, et le bandeau
+      revenait alors même que le choix était bien enregistré en localStorage.
+      L'état est pour cette raison réappliqué après chaque échange de
+      document (`astro:after-swap`, déclenché avant peinture, donc sans
+      clignotement), et pas seulement au premier chargement.
+    */
+    function appliquerEtat() {
+      var consent = localStorage.getItem(STORAGE_KEY);
+      if (consent === 'accepted') { loadGoogleAnalytics(); masquer(); }
+      else if (consent === 'declined') { masquer(); }
+      else { afficher(); }
+    }
+
+    appliquerEtat();
+    document.addEventListener('astro:after-swap', appliquerEtat);
+
+    document.addEventListener('click', function (e) {
+      var cible = e.target && e.target.closest
+        ? e.target.closest('#ro-cookie-accept, #ro-cookie-decline')
+        : null;
+      if (!cible) return;
+      if (cible.id === 'ro-cookie-accept') {
         localStorage.setItem(STORAGE_KEY, 'accepted');
         loadGoogleAnalytics();
-        hideBanner();
-      });
-    }
-    if (declineBtn) {
-      declineBtn.addEventListener('click', function () {
+      } else {
         localStorage.setItem(STORAGE_KEY, 'declined');
-        hideBanner();
-      });
-    }
+      }
+      masquer();
+    });
 
     // Permet de rouvrir le choix depuis le lien "Gérer les cookies" du footer
     window.roOpenCookiePreferences = function () {
       localStorage.removeItem(STORAGE_KEY);
-      showBanner();
+      afficher();
     };
   })();
 </script>

@@ -14,7 +14,8 @@ const L = t(lang);
       <span class="ro-webview-hint">{L.webviewAstuce}</span>
     </p>
     <div class="ro-webview-actions">
-      <button type="button" id="ro-webview-copy" class="ro-webview-btn">{L.webviewCopier}</button>
+      <button type="button" id="ro-webview-copy" class="ro-webview-btn"
+              data-copier={L.webviewCopier} data-copie={L.webviewCopie}>{L.webviewCopier}</button>
       <button type="button" id="ro-webview-close" class="ro-webview-close" aria-label={L.fermer}>&times;</button>
     </div>
   </div>
@@ -85,7 +86,7 @@ const L = t(lang);
   }
 </style>
 
-<script is:inline define:vars={{ LIB_COPIER: L.webviewCopier, LIB_COPIE: L.webviewCopie }}>
+<script is:inline>
 (function () {
   var STORAGE_KEY = 'ro-webview-banner-dismissed';
 
@@ -138,8 +139,10 @@ const L = t(lang);
   copyBtn.addEventListener('click', function () {
     var url = location.href;
     var done = function () {
-      copyBtn.textContent = LIB_COPIE;
-      setTimeout(function () { copyBtn.textContent = LIB_COPIER; }, 2000);
+      // §84 : libellés lus sur l'élément, pas via define:vars — voir la note
+      // dans RadioPlayer.astro.
+      copyBtn.textContent = copyBtn.dataset.copie || copyBtn.textContent;
+      setTimeout(function () { copyBtn.textContent = copyBtn.dataset.copier || copyBtn.textContent; }, 2000);
     };
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(url).then(done, function () { fallbackCopy(url, done); });
