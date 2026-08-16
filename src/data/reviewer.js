@@ -30,6 +30,32 @@ export const SOURCES_MUSIQUE_HUMEUR = [
   { label: "Salimpoor et al. (2011), Nature Neuroscience — libération de dopamine liée au plaisir musical", url: 'https://pubmed.ncbi.nlm.nih.gov/21217764/' },
 ];
 
+/*
+  Version anglaise (§83). Deux choses seulement changent :
+
+  - `href` pointe vers la page anglaise d'Elisabeth Bélot-Grimaud, créée au
+    §82. ⚠️ Ne jamais laisser un bloc « Relu par » d'une page anglaise
+    renvoyer vers la fiche française : le lecteur qui veut vérifier qui
+    signe la relecture est précisément celui qu'on ne peut pas envoyer sur
+    une page qu'il ne lit pas.
+  - le libellé des sources est traduit. Les URLs, elles, sont les MÊMES —
+    ce sont les mêmes travaux, vérifiés une fois. ⚠️ La note « in French »
+    sur la source Inserm n'est pas décorative : le lecteur doit savoir
+    avant de cliquer qu'il arrive sur un document en français.
+*/
+export const ELISABETH_REVIEWER_EN = {
+  name: 'Elisabeth Bélot-Grimaud',
+  title: 'Doctor of cognitive psychology, health partner of Radio Odyssey',
+  href: '/en/elisabeth-belot-grimaud-radio-odyssey.html',
+};
+
+export const DATE_REVISION_BIEN_ETRE_LABEL_EN = '16 August 2026';
+
+export const SOURCES_COHERENCE_CARDIAQUE_EN = [
+  { label: 'Inserm (Canal Détox) — Is heart coherence breathing really a way to improve your health? (in French)', url: 'https://presse.inserm.fr/canal-detox/la-coherence-cardiaque-une-technique-pour-ameliorer-sa-sante-vraiment/' },
+  { label: 'Goessl, Curtiss & Hofmann (2017), Psychological Medicine — meta-analysis of heart rate variability biofeedback for stress and anxiety', url: 'https://pubmed.ncbi.nlm.nih.gov/28478782/' },
+];
+
 export const SOURCES_MUSIQUE_CONCENTRATION = [
   { label: "Kämpfe, Sedlmeier & Renkewitz (2011), Psychology of Music — méta-analyse sur les effets de la musique de fond chez l'adulte", url: 'https://journals.sagepub.com/doi/abs/10.1177/0305735610376261' },
 ];

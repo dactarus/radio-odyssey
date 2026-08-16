@@ -31,23 +31,39 @@ interface Props {
   reviewer?: Reviewer;
   dateLabel: string;
   disclaimer?: boolean;
+  lang?: 'fr' | 'en';
 }
-const { reviewer, dateLabel, disclaimer = true } = Astro.props;
+const { reviewer, dateLabel, disclaimer = true, lang = 'fr' } = Astro.props;
+
+// §83 : mêmes règles d'attribution qu'au §72, dans les deux langues.
+const T = lang === 'en'
+  ? {
+      reluPar: 'Reviewed by',
+      redaction: 'Written by the Radio Odyssey editorial team',
+      derniereVerif: 'Last checked:',
+      avertissement: 'This content is provided for information only and does not replace medical, psychological or professional advice. If in doubt, please consult a healthcare professional.',
+    }
+  : {
+      reluPar: 'Relu par',
+      redaction: 'Rédigé par la rédaction de Radio Odyssey',
+      derniereVerif: 'Dernière vérification :',
+      avertissement: 'Ce contenu est fourni à titre informatif et ne remplace pas un avis médical, psychologique ou professionnel. En cas de doute, consultez un professionnel de santé.',
+    };
 ---
 <div class="ro-author-review">
   <p class="ro-author-review-line">
     <Icon name="patch-check-fill" />
     {reviewer ? (
-      <>Relu par <a href={reviewer.href}>{reviewer.name}</a>, {reviewer.title}</>
+      <>{T.reluPar} <a href={reviewer.href}>{reviewer.name}</a>, {reviewer.title}</>
     ) : (
-      <>Rédigé par la rédaction de Radio Odyssey</>
+      <>{T.redaction}</>
     )}
     <span class="ro-author-review-dot">&middot;</span>
-    Dernière vérification : {dateLabel}
+    {T.derniereVerif} {dateLabel}
   </p>
   {disclaimer && (
     <p class="ro-author-review-disclaimer">
-      Ce contenu est fourni à titre informatif et ne remplace pas un avis médical, psychologique ou professionnel. En cas de doute, consultez un professionnel de santé.
+      {T.avertissement}
     </p>
   )}
 </div>

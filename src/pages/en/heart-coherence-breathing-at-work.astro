@@ -5,6 +5,9 @@ import PageHero from '../../components/PageHero.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import FAQBlock from '../../components/FAQBlock.astro';
 import RelatedPages from '../../components/RelatedPages.astro';
+import AuthorReview from '../../components/AuthorReview.astro';
+import SourcesBlock from '../../components/SourcesBlock.astro';
+import { ELISABETH_REVIEWER_EN, DATE_REVISION_BIEN_ETRE_LABEL_EN, SOURCES_COHERENCE_CARDIAQUE_EN } from '../../data/reviewer.js';
 import ContentIllustration from '../../components/ContentIllustration.astro';
 
 const faq = [
@@ -16,6 +19,9 @@ const faq = [
 <Layout
   lang="en"
   altLangs={{ fr: '/coherence-cardiaque-au-bureau.html', en: '/en/heart-coherence-breathing-at-work.html' }}
+  articleDatePublished="2026-07-27"
+  articleDateModified="2026-08-16"
+  articleAuthorName="Elisabeth Bélot-Grimaud"
   title="Heart Coherence Breathing at Work | Radio Odyssey"
   description="Bring heart coherence breathing into your workday without leaving your desk — guided sequences woven into Radio Odyssey's live broadcast, no app required."
 >
@@ -37,6 +43,8 @@ const faq = [
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-8">
+
+          <AuthorReview lang="en" reviewer={ELISABETH_REVIEWER_EN} dateLabel={DATE_REVISION_BIEN_ETRE_LABEL_EN} />
 
           <div class="content-card">
             <h2>Why the Workday Is a Good Time to Practice</h2>
@@ -69,6 +77,8 @@ const faq = [
             <p>Some teams choose to play Radio Odyssey as shared background music in an open office — there's nothing to install or configure, just a browser tab. It won't suit every team, but for one that already enjoys music together, the breathing sequences come along for free.</p>
             <p>For the fuller picture on why this works well for a workday, see <a href="/en/radio-for-focus-and-productivity.html" style="color:var(--ro-purple);font-weight:700;">Radio for Focus and Productivity</a>.</p>
           </div>
+
+          <SourcesBlock lang="en" sources={SOURCES_COHERENCE_CARDIAQUE_EN} />
 
           <FAQBlock items={faq} idPrefix="workcc" lang="en" />
 

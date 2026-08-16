@@ -14,12 +14,14 @@ interface Source {
 }
 interface Props {
   sources: Source[];
+  lang?: 'fr' | 'en';
 }
-const { sources } = Astro.props;
+const { sources, lang = 'fr' } = Astro.props;
+const titre = lang === 'en' ? 'Sources and references' : 'Sources et références';
 ---
 {sources.length > 0 && (
   <div class="content-card">
-    <h2>Sources et références</h2>
+    <h2>{titre}</h2>
     <ul>
       {sources.map((s) => (
         <li><a href={s.url} target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">{s.label}</a></li>
