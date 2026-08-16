@@ -2357,3 +2357,45 @@ Tout a été vérifié sur Chromium piloté par Playwright, élément `<audio>` 
 ---
 
 *Dernière mise à jour : 2026-08-16, correctifs et limites de l'appli V8 (§77).*
+
+---
+
+## 78. Appli V8 — conformité, polices, et un transfert dans l'autre sens (2026-08-16)
+
+Points 1 et 3 du « reste à faire » du §77. En allant pour porter les correctifs de l'appli vers le lecteur du site, il s'est avéré que **le site était déjà en avance** : il affiche le titre avant lecture, se cale déjà sur `end_at`, est instrumenté depuis le §72, et auto-héberge ses polices depuis longtemps (`public/assets/fonts/`). Le transfert utile allait donc dans l'autre sens.
+
+### 78.1 Séquences de cohérence cardiaque : l'appli ne les traitait pas
+
+Le §62 avait réglé le problème côté site : RadioKing remonte ces séquences sous leur nom de fichier interne (« CC 3 min 5 inspire / 5 expire Nov05bis »), et `estSequenceRespiration()` / `libelleSequence()` le remplacent par un intitulé lisible. **L'appli n'avait jamais reçu ce traitement** : le nom de fichier s'affichait tel quel — dans l'appli, mais aussi sur l'écran verrouillé et sur les écrans de voiture via Media Session, sept fois par jour minimum (7h, 8h, 9h, 12h, 13h, 18h, 19h pour les séquences longues).
+
+Les deux fonctions sont reprises à l'identique, expression régulière comprise. ⚠️ **Si un nouveau format de nommage apparaît dans RadioKing, il faut désormais élargir la regex des deux côtés** : `RadioPlayer.astro` et `Appli Radio Odyssey V8/index.html`.
+
+### 78.2 Polices auto-hébergées dans l'appli
+
+L'appli chargeait Nunito et Inter depuis `fonts.googleapis.com`. Trois défauts en un :
+
+- **Hors ligne, la typographie disparaissait.** Le service worker ne met en cache que le même domaine (`res.type === 'basic'`) : l'appli retombait en police système au moment précis où son bandeau annonçait qu'elle restait utilisable — soit le cas d'usage même du §76.2.
+- **Deux résolutions DNS et deux poignées de main TLS** avant le premier rendu. Le `preconnect` ne couvrait même pas `fonts.gstatic.com`, d'où venaient réellement les fichiers : il était à moitié inutile.
+- **L'adresse IP de chaque auditeur partait chez Google** avant tout consentement.
+
+Fichiers variables, sous-ensemble latin, servis depuis notre domaine et ajoutés à la coquille du service worker : une requête par famille au lieu d'une par graisse, et la typographie survit au mode hors ligne. ⚠️ Le sous-ensemble latin a été vérifié pour `U+0152-0153` (Œ/œ), employé par « Cœur en cohérence ». Licences OFL dans `fonts/`. Contrepartie assumée : 88 Ko ajoutés à la coquille, mis en cache une fois pour toutes.
+
+### 78.3 Mentions légales
+
+`app.radio-odyssey.com` n'en portait aucune, alors qu'elles sont obligatoires en France (LCEN) pour tout service de communication au public en ligne, sous-domaine compris. Deux liens ajoutés dans l'onglet « À propos », vers les pages du site plutôt qu'un texte dupliqué qui divergerait, plus une phrase sur l'absence de cookie et de traceur publicitaire. La mesure Umami étant sans cookie, et les polices n'étant plus tierces, il n'y a plus rien à faire consentir.
+
+### 78.4 Avertissement porté dans le lecteur du site
+
+`RadioPlayer.astro` reçoit, au-dessus de ses `setActionHandler`, le même avertissement détaillé que l'appli sur la limite iOS du §77.1 : symptôme, trois contournements testés et pourquoi chacun échoue, contournement théorique écarté et sa raison, et l'obligation de tester sur un vrai iPhone. Commentaire uniquement — aucun changement de comportement, le rendu du site est identique.
+
+### Vérifications
+
+Sur Chromium piloté : aucune requête vers `googleapis`/`gstatic`, les deux `woff2` servis par notre domaine, `document.fonts.check()` positif pour Nunito 800 et Inter 500, libellé de séquence correct à l'écran **et** dans les métadonnées Media Session, présence des deux liens légaux, les deux polices dans la coquille du service worker, et ouverture hors ligne avec la typographie intacte. Les tests des §76-77 rejoués sans régression. `CACHE_VERSION` en `v20`, vérifiée en ligne après publication.
+
+### Reste à faire
+
+Inchangé par rapport au §77, moins les points traités ici : lecture des nouveaux événements après quelques jours, grille du week-end et émission en cours dans l'onglet Programme (`.sched-item.current` est stylé mais n'est appliqué par aucune ligne de JavaScript), dépôt GitHub pour l'appli, contraste de `--muted` (3,11:1, sous le seuil AA), et débranchement des endpoints push inutilisés. À noter aussi : `public/console.html` du site, outil obsolète mais toujours accessible en ligne, charge encore des polices Google — même exposition qu'au 78.2, sur une page que plus personne n'utilise.
+
+---
+
+*Dernière mise à jour : 2026-08-16, conformité et polices de l'appli V8 (§78).*
