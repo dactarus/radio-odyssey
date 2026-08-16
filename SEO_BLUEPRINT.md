@@ -2191,3 +2191,35 @@ Les deux ont déjà **Vercel Authentication** activée en scope **Standard Prote
 ---
 
 *Dernière mise à jour : 2026-08-16, vérification Deployment Protection (§73).*
+
+---
+
+## 74. Liste e-mail — version minimale (2026-08-16)
+
+Point 7 des « Prochaines étapes ». Position initiale (sessions précédentes) : superflu tant que le site ne recevait que ~15 visiteurs organiques par semaine. Reconsidérée à la demande du propriétaire à la lumière de ce qui a changé depuis : le §72 a créé deux moments de forte intention mesurables (fin de quiz, fin d'exercice de cohérence cardiaque) là où il n'y en avait aucun, et la fragilité n°1 du site reste que 35 % des écoutes durent moins de 30 secondes — un canal possédé (l'e-mail) est précisément ce qui peut faire revenir un visiteur qu'un pic d'audience Facebook ne retient qu'une fois. Décision : pas de programme éditorial (aucun contenu récurrent à produire, aucune promesse de fréquence), seulement un point de collecte minimal aux deux moments identifiés.
+
+**Prestataire retenu : Brevo** (ex-Sendinblue, hébergement UE) — cohérent avec la sensibilité RGPD déjà présente sur le projet (bandeau de consentement, double opt-in par défaut).
+
+**Créé dans le compte Brevo du propriétaire** (via Claude in Chrome, le propriétaire étant déjà connecté) :
+- Liste dédiée « Newsletter Radio Odyssey » (la liste par défaut « Votre première liste », qui contenait déjà 1 contact, n'a pas été réutilisée).
+- Formulaire « Newsletter site web », finalisé, ciblant cette liste, avec confirmation en **double opt-in** (case cochée par défaut dans Brevo, recommandée RGPD — la preuve de consentement est le clic dans l'e-mail de confirmation, pas une case côté site).
+- Tentative d'ajout du bloc RGPD natif de Brevo (glisser-déposer « Champ RGPD ») : n'a pas abouti après deux essais (le dépôt ne se validait jamais). Abandonné au profit d'une case à cocher écrite directement dans le composant du site — voir plus bas.
+
+**Composant créé : `src/components/NewsletterCapture.astro`** — formulaire natif au style du site (pas d'iframe ni de script Brevo), posté vers l'URL d'action Brevo extraite du formulaire (`https://74fb5591.sibforms.com/serve/...`), champs `EMAIL`, `email_address_check` (piège à robots, doit rester vide, caché en CSS et non en `display:none` pour ne pas être ignoré par les anti-spam les plus simples), `locale=fr`. Soumission dans une **iframe cachée** (`target` sur le formulaire) pour ne pas quitter la page ; cette iframe étant cross-origin, sa réponse est illisible en JavaScript, donc le message de succès affiché après l'envoi est optimiste (pas de confirmation serveur lue). Une case à cocher RGPD, requise avant envoi, renvoie vers `/politique-de-confidentialite.html` — elle n'est pas transmise à Brevo (pas de champ dédié côté formulaire) mais formalise le geste de consentement avant l'envoi ; la preuve légale reste la confirmation double opt-in.
+
+Événement Umami ajouté à la même convention que le §72 : `email_signup`, avec `{ context: 'quiz' | 'exercise' }`.
+
+**Intégration** :
+- `QuizBlock.astro` (3 quiz thématiques) — dans l'écran de résultats, après le bouton « Recommencer ».
+- Les 5 pages de quiz par décennie, qui gardent leur propre copie du moteur (§69) — même emplacement, ajouté individuellement dans chacune.
+- `CoherenceExercise.astro` (8 pages) — bloc caché par défaut (`display:none`), révélé par JavaScript uniquement à l'issue d'un cycle complet (même condition que `exercise_complete`, §72), et qui reste affiché même après le `reset()` automatique de l'exercice (le `reset()` ne touche pas à ce bloc).
+
+Soit **16 pages** au total : les 8 pages de quiz existantes et les 8 pages intégrant l'exercice de cohérence cardiaque.
+
+### Vérifications
+
+Build isolé : 258 pages, aucune erreur. `ro-newsletter` présent sur exactement 16 pages, la liste correspondant exactement aux 8 quiz + 8 pages d'exercice attendues. Champs `email_address_check` et `locale=fr` bien rendus. `/politique-de-confidentialite.html` existe dans `dist/`. Sitemap toujours cohérent avec `dist/` (240 URL, 0 manquante) — ce lot ne touche à aucune URL ni à la navigation.
+
+---
+
+*Dernière mise à jour : 2026-08-16, capture e-mail minimale (§74).*

@@ -1,4 +1,5 @@
 ---
+import NewsletterCapture from './NewsletterCapture.astro';
 ---
 <div class="content-card" id="cc-exercise-card">
   <h2>Exercice de Coh&eacute;rence Cardiaque</h2>
@@ -48,6 +49,10 @@
        onmouseout="this.style.transform='none'">
       Commencer
     </button>
+  </div>
+
+  <div id="cc-newsletter-wrap" style="display:none;">
+    <NewsletterCapture context="exercise" />
   </div>
 
   <style is:global>
@@ -115,6 +120,8 @@
             // complet (pas à l'arrêt manuel via "Arrêter", qui repasse par
             // reset() sans passer par cette branche).
             if(typeof roUmamiTrack === 'function') roUmamiTrack('exercise_complete', { page: location.pathname });
+            var nlWrap = document.getElementById('cc-newsletter-wrap');
+            if (nlWrap) nlWrap.style.display = 'block';
             reset();return;
           }
           phase='inhale'; cnt=IN;

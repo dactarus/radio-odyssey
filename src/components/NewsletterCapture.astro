@@ -1,0 +1,129 @@
+---
+/*
+  Capture e-mail minimale (§74).
+  -------------------------------
+  Décision du 2026-08-16 : pas de programme éditorial de newsletter, juste un
+  point de collecte aux deux moments de plus forte intention repérés sur le
+  site (fin de quiz, fin de l'exercice de cohérence cardiaque) — voir
+  Prochaines étapes #7 dans CLAUDE.md et §74 de SEO_BLUEPRINT.md.
+
+  Le formulaire poste directement vers Brevo (compte "Radio Odyssey", liste
+  "Newsletter Radio Odyssey", double opt-in actif — la confirmation par clic
+  dans l'e-mail vaut preuve de consentement RGPD). Pas d'iframe Brevo, pas de
+  script Brevo : un formulaire natif au style du site, qui poste dans une
+  iframe cachée pour ne pas quitter la page. Cette iframe est cross-origin
+  (domaine sibforms.com) : on ne peut pas lire sa réponse, donc le message de
+  succès affiché est optimiste (il s'affiche dès l'envoi, sans attendre de
+  confirmation serveur). C'est acceptable ici : en cas d'échec réel côté
+  Brevo, l'utilisateur ne recevra simplement pas l'e-mail de confirmation.
+
+  Champs Brevo à respecter tels quels (extraits du formulaire "Newsletter
+  site web" créé dans le compte) :
+    - EMAIL              : le champ visible
+    - email_address_check: piège à robots — doit rester vide, cache en CSS,
+                            pas en display:none (certains anti-spam ignorent
+                            les champs display:none)
+    - locale              : fixe, "fr"
+
+  La case RGPD ci-dessous n'est PAS transmise à Brevo (il n'existe pas de
+  champ dédié côté formulaire — l'ajout du bloc RGPD natif de Brevo a été
+  tenté et n'a pas abouti). Elle sert de geste de consentement explicite
+  avant l'envoi ; la preuve juridique reste la confirmation double opt-in.
+
+  Props :
+    context   'quiz' | 'exercise' — sert de libellé d'événement Umami et,
+              concaténé, de nom d'iframe unique si plusieurs instances
+              cohabitaient un jour sur une même page.
+*/
+const { context = 'site' } = Astro.props;
+const frameName = `ro-newsletter-frame-${context}`;
+---
+<div class="ro-newsletter" data-newsletter={context}>
+  <p class="ro-newsletter-title">📻 Envie de suivre Radio Odyssey&nbsp;?</p>
+  <p class="ro-newsletter-copy">Un e-mail de temps en temps, pour ne rien rater — jamais plus.</p>
+
+  <form class="ro-newsletter-form"
+        target={frameName}
+        action="https://74fb5591.sibforms.com/serve/MUIFADxa36pt5ncGGVgysL36gLuncBCB2L7ZQK5YSPp-aI8UbuiyyeKuLJoaC80lE48LzUj47VlLuI31mtJHXOz6ZAstIO9qHI5cKEEvx9nL91S-aDwYy0wMhT9dMJ492PWzFnggXhAMXZi57fcLOzNtSVklZpopzrFasHVqprmErdTkU8l_ReIVtUu42mQI_DZXiLIxryZdhDkkqw=="
+        method="POST">
+    <div class="ro-newsletter-row">
+      <input type="email" name="EMAIL" required placeholder="votre@email.com" class="ro-newsletter-input" aria-label="Adresse e-mail" />
+      <button type="submit" class="btn-hero ro-newsletter-submit">S'inscrire</button>
+    </div>
+    <label class="ro-newsletter-consent">
+      <input type="checkbox" required />
+      <span>J'accepte de recevoir des e-mails de Radio Odyssey et j'ai pris connaissance de la <a href="/politique-de-confidentialite.html">politique de confidentialité</a>.</span>
+    </label>
+    <input type="text" name="email_address_check" value="" class="ro-newsletter-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <input type="hidden" name="locale" value="fr" />
+  </form>
+
+  <p class="ro-newsletter-success" hidden>✅ Merci&nbsp;! Vérifiez votre boîte mail pour confirmer votre inscription.</p>
+
+  <iframe name={frameName} class="ro-newsletter-iframe" title="Confirmation d'inscription" hidden></iframe>
+</div>
+
+<style>
+  .ro-newsletter {
+    margin-top: 1.6rem;
+    padding: 1.3rem 1.4rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(123,47,190,.06), rgba(255,60,172,.06));
+    border: 1.5px solid rgba(123,47,190,.15);
+    text-align: left;
+  }
+  .ro-newsletter-title { font-weight: 800; color: var(--ro-dark); margin-bottom: .2rem; font-size: 1.02rem; }
+  .ro-newsletter-copy { color: var(--ro-muted); font-size: .92rem; margin-bottom: .9rem; }
+  .ro-newsletter-row { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: .7rem; }
+  .ro-newsletter-input {
+    flex: 1 1 200px; min-width: 0; padding: .7rem 1rem; border-radius: 999px;
+    border: 1.5px solid rgba(123,47,190,.25); font-family: 'Inter', sans-serif; font-size: .95rem;
+  }
+  .ro-newsletter-input:focus { outline: 2px solid var(--ro-purple); outline-offset: 1px; }
+  .ro-newsletter-submit {
+    background: linear-gradient(135deg,#7B2FBE,#FF3CAC) !important; color: #fff !important;
+    box-shadow: 0 6px 20px rgba(123,47,190,.3); padding: .7rem 1.6rem; font-size: .95rem;
+  }
+  .ro-newsletter-consent {
+    display: flex; align-items: flex-start; gap: .5rem; font-size: .8rem; color: var(--ro-muted); cursor: pointer;
+  }
+  .ro-newsletter-consent input { margin-top: .2rem; flex-shrink: 0; }
+  .ro-newsletter-consent a { color: var(--ro-purple); }
+  .ro-newsletter-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .ro-newsletter-success { font-weight: 700; color: #38a169; margin: 0; }
+  .ro-newsletter-iframe { display: none; }
+</style>
+
+<script is:inline>
+(function () {
+  function init(box) {
+    if (box.dataset.pret === '1') return;   // idempotent, cf. QuizBlock.astro
+    box.dataset.pret = '1';
+
+    var form = box.querySelector('.ro-newsletter-form');
+    var success = box.querySelector('.ro-newsletter-success');
+    if (!form) return;
+
+    form.addEventListener('submit', function () {
+      // La vraie soumission part dans l'iframe cachée (autre origine,
+      // réponse illisible en JS) : le message de succès est optimiste,
+      // affiché juste après l'envoi plutôt qu'après une confirmation serveur.
+      setTimeout(function () {
+        form.hidden = true;
+        if (success) success.hidden = false;
+        if (typeof roUmamiTrack === 'function') {
+          roUmamiTrack('email_signup', { context: box.dataset.newsletter || '' });
+        }
+      }, 300);
+    });
+  }
+
+  function tout() {
+    [].slice.call(document.querySelectorAll('[data-newsletter]')).forEach(init);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tout);
+  else tout();
+  document.addEventListener('astro:page-load', tout);
+})();
+</script>

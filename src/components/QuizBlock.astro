@@ -25,6 +25,8 @@
   `correct` est le slug d'une fiche artiste, ce qui permet à
   data/quiz-artistes.js de recenser les quiz où chaque artiste apparaît.
 */
+import NewsletterCapture from './NewsletterCapture.astro';
+
 const {
   id,
   main = [],
@@ -90,6 +92,7 @@ const total = main.length + bonus.length;
     <div style="display:flex;justify-content:center;">
       <button type="button" class="btn-hero" data-restart>Recommencer</button>
     </div>
+    <NewsletterCapture context="quiz" />
   </div>
 </div>
 

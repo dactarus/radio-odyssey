@@ -5,6 +5,7 @@ import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
+import NewsletterCapture from '../components/NewsletterCapture.astro';
 
 // Même principe que les quiz années 80 et 90 : chaque artiste/groupe
 // n'apparaît qu'une seule fois comme bonne réponse sur tout le quiz
@@ -233,6 +234,7 @@ const faq = [
               <div style="display:flex;justify-content:center;">
                 <button type="button" id="quiz2000-restart" class="btn-hero">Recommencer</button>
               </div>
+              <NewsletterCapture context="quiz" />
             </div>
           </div>
 
