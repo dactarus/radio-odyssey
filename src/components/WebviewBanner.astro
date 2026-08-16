@@ -1,13 +1,21 @@
+---
+import { t } from '../data/i18n.js';
+// §81 (lot 2). Comme le lecteur, ce bandeau porte transition:persist : ses
+// libellés sont figés dans la langue de la première page chargée.
+interface Props { lang?: 'fr' | 'en'; }
+const { lang = 'fr' } = Astro.props;
+const L = t(lang);
+---
 <div id="ro-webview-banner" class="ro-webview-banner" role="status" aria-live="polite" hidden
      transition:persist transition:name="webview-banner">
   <div class="ro-webview-inner">
     <p class="ro-webview-text">
-      🎧 Pour une meilleure écoute (lecture en fond, sans coupure), ouvrez ce lien dans votre navigateur.
-      <span class="ro-webview-hint">Astuce : appuyez sur ⋯ en haut à droite, puis « Ouvrir dans le navigateur ».</span>
+      {L.webviewTexte}
+      <span class="ro-webview-hint">{L.webviewAstuce}</span>
     </p>
     <div class="ro-webview-actions">
-      <button type="button" id="ro-webview-copy" class="ro-webview-btn">Copier le lien</button>
-      <button type="button" id="ro-webview-close" class="ro-webview-close" aria-label="Fermer">&times;</button>
+      <button type="button" id="ro-webview-copy" class="ro-webview-btn">{L.webviewCopier}</button>
+      <button type="button" id="ro-webview-close" class="ro-webview-close" aria-label={L.fermer}>&times;</button>
     </div>
   </div>
 </div>
@@ -77,7 +85,7 @@
   }
 </style>
 
-<script is:inline>
+<script is:inline define:vars={{ LIB_COPIER: L.webviewCopier, LIB_COPIE: L.webviewCopie }}>
 (function () {
   var STORAGE_KEY = 'ro-webview-banner-dismissed';
 
@@ -130,8 +138,8 @@
   copyBtn.addEventListener('click', function () {
     var url = location.href;
     var done = function () {
-      copyBtn.textContent = 'Lien copié !';
-      setTimeout(function () { copyBtn.textContent = 'Copier le lien'; }, 2000);
+      copyBtn.textContent = LIB_COPIE;
+      setTimeout(function () { copyBtn.textContent = LIB_COPIER; }, 2000);
     };
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(url).then(done, function () { fallbackCopy(url, done); });

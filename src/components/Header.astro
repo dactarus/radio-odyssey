@@ -3,6 +3,27 @@ import Icon from './Icon.astro';
 import MegaNav from './MegaNav.astro';
 import RadioPlayer from './RadioPlayer.astro';
 import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
+import { EN_NAV_CATEGORIES, ACCUEIL, t } from '../data/i18n.js';
+
+/*
+  §81 (lot 2) : la navigation était écrite en dur en français. Les 13 pages
+  anglaises affichaient donc un menu illisible pour leur lecteur — le premier
+  obstacle pour un public froid arrivant par une recherche en anglais.
+
+  Côté anglais, ce n'est pas le menu français traduit : c'est une structure
+  propre (EN_NAV_CATEGORIES), courte, sur les seules pages anglaises. Les 108
+  pages françaises n'y figurent pas — un lien n'est montré que si sa cible
+  existe dans la langue de la page.
+*/
+interface Props { lang?: 'fr' | 'en'; }
+const { lang = 'fr' } = Astro.props;
+const L = t(lang);
+const categories = lang === 'en' ? EN_NAV_CATEGORIES : NAV_CATEGORIES;
+// Les groupes anglais tiennent en 5 ou 6 entrées : tout est affiché, et il
+// n'y a pas de page de hub vers laquelle renvoyer.
+const apercu = lang === 'en' ? 99 : MENU_APERCU;
+const avecHub = lang !== 'en';
+const accueil = ACCUEIL[lang];
 ---
 <!-- ============================================================
      PLAYER BAR STICKY
@@ -10,7 +31,7 @@ import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
 <div id="topRadioBar" transition:persist transition:name="player-bar">
 
   <!-- GAUCHE : logo + badge -->
-  <a class="bar-logo" href="/" aria-label="Radio Odyssey — Accueil">
+  <a class="bar-logo" href={accueil} aria-label={L.accueilAria}>
     <picture>
       <source srcset="/assets/images/logo.webp" type="image/webp"/>
       <img class="bar-logo-img" src="/assets/images/logo.png" alt="Radio Odyssey"
@@ -19,13 +40,13 @@ import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
   </a>
   <div class="live-badge">
     <span class="live-dot"></span>
-    EN DIRECT
+    {L.enDirect}
   </div>
 
   <!-- CENTRE : lecteur natif, identique sur mobile et ordinateur.
        Remplace l'iframe RadioKing et le bouton mobile qui ouvrait un onglet
        externe. Voir RadioPlayer.astro pour le détail du choix. -->
-  <RadioPlayer />
+  <RadioPlayer lang={lang} />
 
   <!-- DROITE : wave + burger -->
   <div class="bar-wave" aria-hidden="true">
@@ -36,7 +57,7 @@ import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
           data-bs-toggle="offcanvas"
           data-bs-target="#site-nav"
           aria-controls="site-nav"
-          aria-label="Ouvrir le menu"
+          aria-label={L.ouvrirMenu}
           style="margin-right:16px;">
     <Icon name="list" />
   </button>
@@ -50,7 +71,7 @@ import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
 <!-- ============================================================
      MEGA-MENU (desktop)
      ============================================================ -->
-<MegaNav />
+<MegaNav lang={lang} />
 
 <!-- ============================================================
      OFFCANVAS NAV (mobile)
@@ -64,41 +85,43 @@ import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
       </picture>
       Radio Odyssey
     </div>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fermer"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label={L.fermer}></button>
   </div>
   <div class="offcanvas-body p-2">
 
     <button type="button" class="nav-link ro-search-trigger w-100 text-start" data-bs-dismiss="offcanvas"
             style="background:none;border:none;cursor:pointer;">
-      <span class="ni"><Icon name="search" /></span> Rechercher sur le site
+      <span class="ni"><Icon name="search" /></span> {L.rechercher}
     </button>
 
-    <span class="nav-cat"><Icon name="house-door-fill" /> Accueil</span>
-    <a class="nav-link" href="/"><span class="ni"><Icon name="house-door-fill" /></span> Page d'accueil</a>
+    <span class="nav-cat"><Icon name="house-door-fill" /> {L.accueil}</span>
+    <a class="nav-link" href={accueil}><span class="ni"><Icon name="house-door-fill" /></span> {L.pageAccueil}</a>
 
     {/* Aperçu des MENU_APERCU premières pages par catégorie, comme sur le
         méga-menu desktop. Le reste passe par le hub de catégorie et par le
         plan du site — voir le commentaire dans navigation.js. */}
-    {NAV_CATEGORIES.map((cat) => (
+    {categories.map((cat) => (
       <>
         <span class="nav-cat"><Icon name={cat.bi} /> {cat.label}</span>
-        {cat.pages.slice(0, MENU_APERCU).map((p) => (
+        {cat.pages.slice(0, apercu).map((p) => (
           <a class="nav-link" href={p.href}><span class="ni"><Icon name={p.bi} /></span> {p.label}</a>
         ))}
-        <a class="nav-link nav-link-hub" href={cat.hub}>
-          <span class="ni"><Icon name="arrow-right" /></span> <strong>Voir les {cat.pages.length} pages</strong>
-        </a>
+        {avecHub && (
+          <a class="nav-link nav-link-hub" href={cat.hub}>
+            <span class="ni"><Icon name="arrow-right" /></span> <strong>{L.voirLesPages(cat.pages.length)}</strong>
+          </a>
+        )}
       </>
     ))}
 
-    <span class="nav-cat"><Icon name="list" /> Tout le site</span>
-    <a class="nav-link" href="/plan-du-site.html"><span class="ni"><Icon name="grid" /></span> Plan du site</a>
+    <span class="nav-cat"><Icon name="list" /> {L.toutLeSite}</span>
+    <a class="nav-link" href={lang === 'en' ? accueil : '/plan-du-site.html'}><span class="ni"><Icon name="grid" /></span> {L.planDuSite}</a>
 
     <div class="offcanvas-cta">
       <a class="btn-ro w-100 justify-content-center"
          href="https://link.radioking.com/radio-odyssey" target="_blank" rel="noopener"
          onclick="if(typeof roUmamiTrack==='function')roUmamiTrack('play_click',{source:'offcanvas-menu'});">
-        <Icon name="broadcast" />&nbsp; Écouter en Direct
+        <Icon name="broadcast" />&nbsp; {L.ecouterEnDirect}
       </a>
     </div>
   </div>

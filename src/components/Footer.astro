@@ -1,7 +1,27 @@
 ---
 import Icon from './Icon.astro';
 import { NAV_CATEGORIES } from '../data/navigation.js';
+import { EN_NAV_CATEGORIES, t } from '../data/i18n.js';
 const FOOTER_PAGE_LIMIT = 4;
+
+/*
+  §81 (lot 2) : pied de page bilingue. Côté anglais, les colonnes reprennent
+  EN_NAV_CATEGORIES — pas les 7 catégories françaises, dont aucune page n'a
+  d'équivalent anglais.
+
+  ⚠️ Exception assumée à la règle « pas de lien vers du français depuis une
+  page anglaise » : les mentions légales et la politique de confidentialité
+  restent liées, en anglais dans le libellé mais vers les pages françaises.
+  Ce sont des obligations légales — les retirer d'une page publique serait
+  pire qu'un lien dans la mauvaise langue. Le plan du site et le bloc
+  partenaire, eux, sont retirés côté anglais : purement éditoriaux.
+*/
+interface Props { lang?: 'fr' | 'en'; }
+const { lang = 'fr' } = Astro.props;
+const L = t(lang);
+const enAnglais = lang === 'en';
+const categories = enAnglais ? EN_NAV_CATEGORIES : NAV_CATEGORIES;
+const limitePages = enAnglais ? 99 : FOOTER_PAGE_LIMIT;
 ---
 <!-- FOOTER -->
 <footer id="site-footer">
@@ -13,38 +33,40 @@ const FOOTER_PAGE_LIMIT = 4;
             <source srcset="/assets/images/logo.webp" type="image/webp"/>
             <img src="/assets/images/logo.png" alt="Radio Odyssey" width="512" height="512"/>
           </picture>
-          <div class="footer-brand">Radio Odyssey<small>Positive Web Radio ✨</small></div>
+          <div class="footer-brand">Radio Odyssey<small>{L.footerBaseline}</small></div>
         </div>
-        <p style="font-size:.85rem;max-width:280px;">La webradio positive française — Hits des années 80, dance, easy listening et bien-être, 24h/24, gratuitement, depuis janvier 2025 !</p>
+        <p style="font-size:.85rem;max-width:280px;">{L.footerDescription}</p>
         <a href="mailto:odysseylaradio@gmail.com" style="color:var(--ro-sky)!important;">odysseylaradio@gmail.com</a>
       </div>
-      {NAV_CATEGORIES.map((cat) => (
+      {categories.map((cat) => (
         <div class="col-sm-6 col-lg-2">
           <h5>{cat.label}</h5>
-          {cat.pages.slice(0, FOOTER_PAGE_LIMIT).map((p) => (
+          {cat.pages.slice(0, limitePages).map((p) => (
             <a href={p.href}>{p.label}</a>
           ))}
-          {cat.pages.length > FOOTER_PAGE_LIMIT && (
-            <a href={cat.hub} style="font-weight:700;">Voir tout →</a>
+          {!enAnglais && cat.pages.length > FOOTER_PAGE_LIMIT && (
+            <a href={cat.hub} style="font-weight:700;">{L.voirTout}</a>
           )}
         </div>
       ))}
       <div class="col-sm-6 col-lg-2">
-        <h5>Écouter sur</h5>
+        <h5>{L.ecouterSur}</h5>
         <a href="https://link.radioking.com/radio-odyssey" target="_blank" rel="noopener">RadioKing</a>
         <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener">TuneIn</a>
         <a href="https://www.deezer.com/search/radio%20odyssey/livestream" target="_blank" rel="noopener">Deezer</a>
         <a href="https://fr.welove.radio/radio/radio-odyssey/" target="_blank" rel="noopener">WeLoveRadio</a>
         <a href="https://radio.orange.com/radios/radio_odyssey" target="_blank" rel="noopener">Orange</a>
       </div>
-      <div class="col-sm-6 col-lg-2">
-        <h5>Partenaire</h5>
-        <a href="/#partenaire">Santé Mentale Positive</a>
-      </div>
+      {!enAnglais && (
+        <div class="col-sm-6 col-lg-2">
+          <h5>{L.partenaire}</h5>
+          <a href="/#partenaire">Santé Mentale Positive</a>
+        </div>
+      )}
     </div>
     <hr/>
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
-      <div class="footer-bottom">© 2026 Radio Odyssey. Tous droits réservés. | Depuis le 19 janvier 2025 · <a href="/mentions-legales.html" style="color:inherit;text-decoration:underline;">Mentions légales</a> · <a href="/politique-de-confidentialite.html" style="color:inherit;text-decoration:underline;">Confidentialité</a> · <a href="/plan-du-site.html" style="color:inherit;text-decoration:underline;">Plan du site</a> · <a href="#" onclick="window.roOpenCookiePreferences && window.roOpenCookiePreferences(); return false;" style="color:inherit;text-decoration:underline;">Gérer les cookies</a></div>
+      <div class="footer-bottom">© 2026 Radio Odyssey. {L.droitsReserves} | {L.depuisLe} · <a href="/mentions-legales.html" style="color:inherit;text-decoration:underline;">{L.mentionsLegales}</a> · <a href="/politique-de-confidentialite.html" style="color:inherit;text-decoration:underline;">{L.confidentialite}</a>{!enAnglais && (<> · <a href="/plan-du-site.html" style="color:inherit;text-decoration:underline;">{L.planDuSite}</a></>)} · <a href="#" onclick="window.roOpenCookiePreferences && window.roOpenCookiePreferences(); return false;" style="color:inherit;text-decoration:underline;">{L.gererCookies}</a></div>
       <div class="footer-social d-flex gap-3">
         <a href="https://www.facebook.com/RadioOdysseyFrance" target="_blank" rel="noopener" aria-label="Facebook"><Icon name="facebook" /></a>
         <a href="https://www.instagram.com/radio_odyssey_france/" target="_blank" rel="noopener" aria-label="Instagram"><Icon name="instagram" /></a>

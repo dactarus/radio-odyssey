@@ -3,6 +3,12 @@ interface Props {
   gradientFrom: string;
   gradientTo: string;
   homeLabel?: string;
+  /* §81 : le fil d'Ariane pointait toujours vers l'accueil français, y
+     compris sur les pages anglaises, dont le libellé disait pourtant
+     « Home ». */
+  homeHref?: string;
+  /* Une page d'accueil n'a pas de fil d'Ariane : elle en est la racine. */
+  breadcrumb?: boolean;
   breadcrumbCurrent: string;
   title: string;
   text: string;
@@ -12,6 +18,8 @@ const {
   gradientFrom,
   gradientTo,
   homeLabel = '🏠 Accueil',
+  homeHref = '/',
+  breadcrumb = true,
   breadcrumbCurrent,
   title,
   text,
@@ -58,12 +66,14 @@ const {
 
 <section class="page-hero" style={`background:linear-gradient(135deg,${gradientFrom},${gradientTo})`}>
   <div class="container">
+    {breadcrumb && (
     <nav aria-label="breadcrumb" style="margin-bottom:1.2rem;">
       <ol class="breadcrumb" style="background:rgba(0,0,0,.18);padding:.5rem 1rem;border-radius:999px;margin:0;font-size:.88rem;display:inline-flex;backdrop-filter:blur(6px);">
-        <li class="breadcrumb-item"><a href="/" style="color:#fff;text-decoration:none;font-weight:700;">{homeLabel}</a></li>
+        <li class="breadcrumb-item"><a href={homeHref} style="color:#fff;text-decoration:none;font-weight:700;">{homeLabel}</a></li>
         <li class="breadcrumb-item active" style="color:#fff;">{breadcrumbCurrent}</li>
       </ol>
     </nav>
+    )}
     <div class="page-hero-icon"><slot name="icon" /></div>
     <h1>{title}</h1>
     <p>{text}</p>

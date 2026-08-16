@@ -2505,3 +2505,83 @@ Lots 2 à 5, dans cet ordre : accueil anglais `/en.html` + traduction de `histoi
 ---
 
 *Dernière mise à jour : 2026-08-16, version anglaise lot 1 — les 13 pages sous `/en/` (§81).*
+
+---
+
+## 82. Version anglaise — lot 2 : une vraie porte d'entrée anglophone (2026-08-16)
+
+Suite du §81. Le lot 1 avait déplacé les URLs ; celui-ci rend le site réellement lisible en anglais. Trois chantiers dans un seul lot, parce qu'ils n'ont aucun sens séparés : une page d'accueil anglaise entourée d'un menu français n'aurait rien réglé.
+
+### 1. L'interface était écrite en dur en français
+
+C'est le point qui a occupé le plus de temps, et il n'était pas au périmètre initial — il est apparu en regardant les composants. `Header`, `MegaNav`, `Footer`, `Sidebar`, `SearchModal`, `CookieConsent`, `WebviewBanner` et `RadioPlayer` portaient tous leurs libellés en dur. Sur les 13 pages anglaises, cela donnait : « EN DIRECT » dans la barre, « Appuyer pour écouter » sous le lecteur, un méga-menu de 7 catégories françaises, « Voir tout → », « Gérer les cookies », « Rechercher sur le site ». Le contenu était en anglais, tout ce qui l'entoure ne l'était pas.
+
+Nouveau fichier `src/data/i18n.js` : source unique des libellés d'interface, `UI.fr` / `UI.en`, plus un helper `t(lang)`. Les huit composants prennent une prop `lang` et `Layout.astro` la leur transmet. Les scripts en ligne (lecteur, bandeau navigateur) reçoivent leurs chaînes par `define:vars` plutôt que de les porter en dur.
+
+⚠️ **`#topRadioBar` et le bandeau navigateur portent `transition:persist`** : ils survivent aux navigations client-side d'Astro, script compris. Leurs libellés sont donc figés dans la langue de la **première** page chargée. Passer de l'accueil français à l'accueil anglais sans rechargement laisse le lecteur en français. Cas de bord assumé — les deux versions ne se croisent qu'à cet endroit, et un rechargement complet remet tout d'aplomb.
+
+### 2. La navigation anglaise n'est pas le menu français traduit
+
+Traduire les 7 catégories aurait produit un menu anglais pointant vers 108 pages françaises. `EN_NAV_CATEGORIES` est donc une structure propre, sur les seules pages anglaises, en trois groupes correspondant à l'ordre dans lequel un visiteur froid se pose les questions : **Listen** (6), **Calm & Focus** (5), **About** (6). Pas de page de hub par groupe : ils tiennent en 5 ou 6 entrées, toutes affichées, donc `MENU_APERCU` ne s'y applique pas.
+
+⚠️ **Règle de maillage, valable pour toute la suite du chantier** : sur une page anglaise, un lien interne n'est affiché que si sa cible existe en anglais. Deux exceptions, et seulement deux :
+
+- **Mentions légales et politique de confidentialité** restent liées, libellé en anglais, vers les pages françaises. Ce sont des obligations légales, et ce sont les seuls documents qui font foi — les retirer d'une page publique serait pire qu'un lien dans la mauvaise langue.
+- **L'accueil français**, depuis la seule barre latérale de `/en.html` (« Vous cherchez la version française ? »), en français dans le texte pour être compris de celui à qui il s'adresse.
+
+Le plan du site et le bloc partenaire du pied de page, purement éditoriaux et sans équivalent anglais, sont retirés côté anglais.
+
+### 3. Cinq pages, dont une non prévue
+
+| Page | URL |
+|---|---|
+| Accueil anglais | `/en.html` |
+| L'histoire de la radio | `/en/the-story-of-radio-odyssey.html` |
+| Ce qui la différencie | `/en/what-makes-radio-odyssey-different.html` |
+| FAQ | `/en/radio-odyssey-faq.html` |
+| Elisabeth Bélot-Grimaud | `/en/elisabeth-belot-grimaud-radio-odyssey.html` |
+
+**L'accueil** est écrit pour quelqu'un qui n'a jamais entendu parler de la station : ce que c'est, pourquoi on resterait, comment on écoute — dans cet ordre. Pas d'historique en tête de page, il est à un clic pour qui veut. Le bouton d'écoute apparaît trois fois, dont une dès le premier bloc.
+
+**Les deux pages de fond ne sont pas des traductions ligne à ligne, et c'est délibéré.** Les versions françaises fonctionnent comme des sommaires : chaque section résume un sujet puis renvoie vers l'article complet (comment la musique est choisie, les bienfaits, les avis…). Aucun de ces articles n'existe en anglais. Les sections anglaises portent donc la substance elles-mêmes au lieu de la déléguer — sans quoi la page aurait été une suite de promesses sans destination.
+
+**La page d'Elisabeth Bélot-Grimaud n'était pas au périmètre.** Elle s'est imposée en trouvant que cinq pages anglaises la liaient déjà — huit liens vers une page entièrement française. Sur une zone santé, un lecteur qui ne peut pas vérifier qui est la personne citée perd tout le bénéfice de la citer. Elle débloque aussi le lot 3, où le bloc « Relu par » a besoin d'une destination. ⚠️ **Personne réelle et nommée** : chaque ligne de la version anglaise est la traduction d'un fait déjà présent en français, titres d'ouvrage, de podcast et noms de modèles laissés en français puisque ce sont des noms propres. Même règle qu'au §72 — ne jamais l'enrichir de mémoire.
+
+### 4. Le fil d'Ariane pointait vers l'accueil français
+
+`PageHero` liait « 🏠 Home » vers `/`, et le schema `BreadcrumbList` de `Layout.astro` posait « Accueil » → `/` sur les pages anglaises. Deux nouvelles props (`homeHref`, `breadcrumb`) et un calcul par langue dans `Layout` corrigent les deux. `/en.html` est reconnu comme racine : pas de fil d'Ariane, pas de schema, comme l'accueil français.
+
+### 5. Recherche interne
+
+⚠️ **Pagefind construit un index par langue** à partir de l'attribut `lang` de `<html>`, et sert celui de la page courante. Vérifié après build : `fr` = 245 pages, `en` = 18. Une recherche depuis une page anglaise ne remonte donc que des pages anglaises — c'est le comportement voulu, mais il rend l'index anglais très petit. Si la recherche paraît vide côté anglais, c'est cela, pas une panne.
+
+### Vérifications
+
+Build : **263 pages** (258 + 5), aucune erreur. Contrôles automatisés sur `dist/` :
+
+| Contrôle | Résultat |
+|---|---|
+| Pages anglaises construites | 18 (`/en.html` + 17) |
+| Sitemap | 245 URL, 0 absente de `dist/`, 0 en `noindex` |
+| Liens internes | **38 720 vérifiés, 0 cible absente** |
+| Libellés français visibles sur une page anglaise | 0 (hors la phrase française assumée de la barre latérale) |
+| Liens vers du français depuis une page anglaise | 0 (hors les deux exceptions ci-dessus) |
+| `hreflang` | 20 pages = 10 paires, réciprocité et symétrie vérifiées dans les deux sens |
+| `<title>` de moins de trois mots | 0 |
+| Pages en `noindex` | 19 (18 fiches + `hors-ligne.html`) |
+| Règles `vercel.json` masquant une page réelle | 0 |
+| `<html lang="en">` | 18 / 18 |
+
+⚠️ Rappel du §81 : `npm run build` ne peut pas tourner sur le dossier monté par le pont de fichiers (`node_modules` en `darwin-arm64`, VM en `linux-arm64`). Ces vérifications ont été faites dans un conteneur séparé, sur la même version d'Astro.
+
+### Relevé au passage, non traité
+
+⚠️ **`src/data/artists.js`, fiche Mika** : `linkHref` pointe vers `/en/feel-good-music-radio.html` avec le libellé français « feel good music radio ». Un lecteur français y est donc envoyé sur une page entièrement anglaise. L'équivalent français existe (`/musique-positive-et-bonne-humeur.html`). Non modifié : les fiches artistes sont de la donnée éditoriale du propriétaire. Le même défaut sur `pourquoi-radio-odyssey-est-differente.astro`, lui, a été corrigé — la phrase promettait « notre philosophie de radio positive » et la page française du même nom existe.
+
+### Reste à faire sur ce chantier
+
+Lot 3 (bloc E-E-A-T sur les deux pages anglaises de cohérence cardiaque — ⚠️ `AuthorReview.astro` et `SourcesBlock.astro` ont toujours leurs libellés en dur en français, et les `label` de `data/reviewer.js` aussi), lot 4 (gabarit de fiche artiste anglais), lot 5 (un ou deux quiz).
+
+---
+
+*Dernière mise à jour : 2026-08-16, version anglaise lot 2 — accueil, interface et pages de fond (§82).*
