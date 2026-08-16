@@ -2172,3 +2172,22 @@ Build isolé : 258 pages, aucune erreur, sitemap et `dist/` cohérents (240 URL,
 ---
 
 *Dernière mise à jour : 2026-08-16, E-E-A-T bien-être et instrumentation Umami (§72).*
+
+---
+
+## 73. Deployment Protection Vercel : déjà en place (2026-08-16)
+
+Le point 3 des « Prochaines étapes » demandait de protéger les déploiements dans l'interface Vercel (Settings → Deployment Protection), après l'échec de deux tentatives de redirection par `vercel.json` (§59) — le contexte précis est expliqué à l'utilisateur avant toute action : le domaine généré automatiquement (`radio-odyssey-v8b.vercel.app`) sert le même contenu que le domaine personnalisé et représentait 2,2 % des écoutes mesurées.
+
+**Vérification faite dans le tableau de bord Vercel** (navigation via Claude in Chrome, connecté au compte du propriétaire) sur les deux projets :
+
+- `radio-odyssey` (radio-odyssey.vercel.app)
+- `radio-odyssey-v8b` (app.radio-odyssey.com)
+
+Les deux ont déjà **Vercel Authentication** activée en scope **Standard Protection** — enregistré, bouton « Save » inactif, confirmé après rechargement complet de la page. Aucune action n'était donc nécessaire : cette protection avait déjà été mise en place (probablement au moment de la connexion du domaine personnalisé), simplement jamais consignée dans CLAUDE.md.
+
+⚠️ Standard Protection protège les URLs générées (`*.vercel.app`) mais laisse le domaine personnalisé public — c'est le comportement recherché. Un visiteur sans session Vercel qui arrive sur `radio-odyssey-v8b.vercel.app` doit désormais rencontrer un mur de connexion Vercel plutôt que le site ; ça n'a pas pu être testé en navigation déconnectée dans cette session (le navigateur utilisé était déjà authentifié), à vérifier à l'occasion en navigation privée.
+
+---
+
+*Dernière mise à jour : 2026-08-16, vérification Deployment Protection (§73).*

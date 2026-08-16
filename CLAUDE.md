@@ -4,7 +4,7 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-16 (§72).*
+*Dernière mise à jour de ce fichier : 2026-08-16 (§73).*
 
 ## Objectif du projet
 
@@ -205,7 +205,7 @@ Chiffres réels, utiles pour arbitrer les priorités — le détail figure au §
    ⚠️ Le croisement quiz ↔ fiches est automatisé par `data/quiz-artistes.js`, qui lit le code source des pages au build. Format attendu : `{ track: "…", correct: 'slug' }` ou `{ enonce: "…", correct: 'slug' }`. **Si l'extraction ne trouve rien, le bloc quiz disparaît des 147 fiches sans erreur au build** — c'est arrivé au §69.
    ⚠️ **Quatre erreurs factuelles ont été trouvées dans les fiches d'origine** (§63, §66, §67, §68). Les faits sont désormais vérifiés, mais toute nouvelle fiche doit l'être aussi : ne jamais écrire un fait de mémoire.
 2. **Corriger l'étiquetage de « L'assasymphonie » dans le manager RadioKing** : le fichier est crédité à Emmanuel Moire alors que le titre est de Florent Mothe (*Mozart, l'opéra rock*). L'erreur s'affiche à l'antenne et sur les écrans de voiture, et **chaque nouveau dépouillement la réintroduira** tant que le fichier n'est pas corrigé (§65). Le gisement d'artistes sans fiche est épuisé : 20 des 21 restants ont été traités au §65, seul **Tom York** reste en attente — sources insuffisantes, et un risque de confusion avec Thom Yorke de Radiohead
-3. **Protéger les déploiements** dans l'interface Vercel (Settings → Deployment Protection). Ne pas retenter par `vercel.json` : deux tentatives ont échoué, la condition `has: host` ne se déclenche pas (§59)
+3. ~~**Protéger les déploiements** dans l'interface Vercel~~ — vérifié le 2026-08-16 (§73) : les deux projets (`radio-odyssey` et `radio-odyssey-v8b`) ont déjà Standard Protection + Vercel Authentication actives dans Settings → Deployment Protection. Rien à faire.
 4. ~~**E-E-A-T santé** sur les 18 pages bien-être~~ — fait au §72 sur 15 des 18 pages (auteur/relecteur, date de vérification, sources). Les 3 pages restantes (radio-sans-publicite, avis-radio-odyssey-bien-etre, elisabeth-belot-grimaud-radio-odyssey) n'en avaient pas besoin — voir Points de vigilance ci-dessus.
 5. **Grille week-end distincte** : midi y est le meilleur moment et reçoit la programmation standard (§58)
 6. **Expérience jeudi soir** : appliquer la grille musclée un soir de plus pendant un mois, et vérifier si le ratio soirée/après-midi passe de 0,40 vers 0,67 (§58)
