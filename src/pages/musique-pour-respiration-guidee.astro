@@ -7,6 +7,9 @@ import CoherenceExercise from '../components/CoherenceExercise.astro';
 import ContentIllustration from '../components/ContentIllustration.astro';
 import PartnerVideo from '../components/PartnerVideo.astro';
 import FAQBlock from '../components/FAQBlock.astro';
+import AuthorReview from '../components/AuthorReview.astro';
+import SourcesBlock from '../components/SourcesBlock.astro';
+import { ELISABETH_REVIEWER, DATE_REVISION_BIEN_ETRE_LABEL, SOURCES_COHERENCE_CARDIAQUE } from '../data/reviewer.js';
 
 const faq = [
   { q: 'Combien de temps dure une séance ?', a: "Une séance classique dure environ 5 minutes. Sur Radio Odyssey, nous proposons des séances de 1 ou 3 minutes, répétées toutes les heures." },
@@ -15,7 +18,14 @@ const faq = [
   { q: 'La respiration guidée remplace-t-elle un traitement médical ?', a: "Non. Elle constitue une pratique de bien-être et ne remplace jamais l'avis d'un professionnel de santé." },
 ];
 ---
-<Layout lang="fr" title="Musique pour Respiration Guidée | Radio Odyssey" description="Musique pour respiration guidée sur Radio Odyssey : cohérence cardiaque, méthode 365, exercices guidés et bien-être toute la journée.">
+<Layout
+  lang="fr"
+  title="Musique pour Respiration Guidée | Radio Odyssey"
+  description="Musique pour respiration guidée sur Radio Odyssey : cohérence cardiaque, méthode 365, exercices guidés et bien-être toute la journée."
+  articleDatePublished="2026-07-01"
+  articleDateModified="2026-08-16"
+  articleAuthorName="Elisabeth Bélot-Grimaud"
+>
   <PageHero
     gradientFrom="#00C6FF"
     gradientTo="#7B2FBE"
@@ -33,7 +43,9 @@ const faq = [
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-8">
-        
+
+          <AuthorReview reviewer={ELISABETH_REVIEWER} dateLabel={DATE_REVISION_BIEN_ETRE_LABEL} />
+
           <div class="content-card">
             <h2>Comment pratiquer la m&#233;thode de respiration guid&#233;e de Radio Odyssey&#160;?</h2>
             <p>Cette respiration guid&#233;e permet d&#8217;installer un rythme naturel entre le corps et l&#8217;esprit. En associant un tempo adapt&#233; &#224; une technique respiratoire pr&#233;cise, il devient plus facile de ralentir, se recentrer et retrouver un &#233;quilibre int&#233;rieur.</p>
@@ -195,6 +207,8 @@ const faq = [
           </div>
 
           <PartnerVideo />
+
+          <SourcesBlock sources={SOURCES_COHERENCE_CARDIAQUE} />
 
           <FAQBlock items={faq} idPrefix="mprg" />
 

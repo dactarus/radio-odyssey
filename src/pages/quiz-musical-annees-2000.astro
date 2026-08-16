@@ -343,6 +343,7 @@ const faq = [
       var maxEl = document.getElementById('quiz2000-max');
       var verdictEl = document.getElementById('quiz2000-verdict');
       var max = phase === 'bonus' ? totalArtists : mainEls.length;
+      if (typeof roUmamiTrack === 'function') roUmamiTrack('quiz_complete', { quiz: 'quiz-musical-annees-2000', round: phase, score: score, max: max });
       if (scoreEl) scoreEl.textContent = String(score);
       if (maxEl) maxEl.textContent = String(max);
       if (verdictEl) {

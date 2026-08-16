@@ -4,7 +4,7 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-14 (§71).*
+*Dernière mise à jour de ce fichier : 2026-08-16 (§72).*
 
 ## Objectif du projet
 
@@ -64,8 +64,9 @@ Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → U
 | `PartnerVideo.astro` | Intégration vidéo partenaire (3 pages) |
 | `Icon.astro` | Icônes en ligne depuis `data/icons.js` (108 pages) |
 | `PageHero.astro`, `Sidebar.astro`, `FAQBlock.astro`, `RelatedPages.astro` | Gabarits de page |
+| `AuthorReview.astro`, `SourcesBlock.astro` | Bloc E-E-A-T des 15 pages bien-être traitées (§72) — auteur/relecteur + date de vérification, sources externes. Alimentés par `data/reviewer.js` |
 
-**Données** (`src/data/`) : `navigation.js` (menu, hubs, pied de page), `artists.js` (147 fiches — **source unique** des passages), `genres.js`, `discoveries.js`, `icons.js`.
+**Données** (`src/data/`) : `navigation.js` (menu, hubs, pied de page), `artists.js` (147 fiches — **source unique** des passages), `genres.js`, `discoveries.js`, `icons.js`, `reviewer.js` (attribution et sources des pages bien-être, §72).
 
 Trois modules **dérivés** alimentent les fiches artistes (§61-63). Aucun ne stocke de donnée propre : tout est recalculé à chaque build, donc rien ne peut se désynchroniser.
 
@@ -126,8 +127,9 @@ Depuis le 2026-08-09, l'iframe RadioKing est **remplacée par un lecteur natif**
 - **Navigation** : réglée au §60. Les deux menus n'affichent plus que les `MENU_APERCU` (= 5) premières pages de chaque catégorie ; le reste passe par le hub et par `/plan-du-site.html`. Le HTML est passé de 234 à 138 Ko par page, le ratio de contenu unique de 18,7 % à 30,9 %. **Reste possible** : les icônes SVG rendues en ligne pèsent encore 71 Ko sur 155 Ko — un sprite avec `<use>` diviserait ce poids.
 - **Silo artistes** : traité aux §61, §62 et §63. Les 23 fiches à un seul titre sont en `noindex, follow` ; les 92 autres portent un bandeau de chiffres de diffusion, le croisement avec les quiz (90 fiches) et le top des titres (10 fiches). Mesuré sur le HTML construit, le contenu propre par fiche est passé de 15 553 à 21 983 empreintes de 6 mots (+41 %) à densité constante (48 %), et les liens entre fiches de 3,0 à 7,1 par page. ⚠️ **`playCount` et `tracks` ne se saisissent plus à la main** : ils sont dérivés du rapport de diffusion RadioKing (§63), sur une fenêtre de trois mois glissants. Pour les rafraîchir, réexporter le rapport et relancer le dépouillement — méthode au §63. ⚠️ `SEUIL_INDEXATION_TITRES` et `public/sitemap.xml` doivent rester cohérents **dans les deux sens** : une fiche peut aussi repasser *sous* le seuil et devoir sortir du sitemap. ⚠️ Ne jamais écrire de prose générée sur une fiche : tout ce qui s'y trouve doit être calculé ou vérifié.
 - **Internationalisation** : les 13 pages anglaises n'ont pas de page d'accueil dédiée, le `x-default` renvoie vers l'accueil français, et leur navigation reste en français.
-- **Pages santé** : les 18 pages bien-être avancent des effets (cortisol, sommeil, concentration) sans source, ni date de révision, ni auteur nommé. Zone YMYL — à documenter.
+- **Pages santé** : traité au §72 sur 15 des 18 pages bien-être (auteur/relecteur, date de vérification, sources externes vérifiées — voir `AuthorReview.astro`/`SourcesBlock.astro`/`data/reviewer.js` ci-dessus). ⚠️ Elisabeth Bélot-Grimaud n'est créditée comme relectrice que sur les 11 pages où elle est réellement impliquée (cohérence cardiaque + musique-positive-et-bonne-humeur) ; les 4 autres portent « Rédaction Radio Odyssey ». Ne jamais étendre son nom à une page qu'elle n'a pas revue — c'est une personne réelle nommée.
 - **Mesure** : site et application envoient à `eu.umami.is` avec le **même `data-website-id`** — c'est volontaire. La formule gratuite d'Umami ne permet qu'une propriété ; la lecture séparée se fait par le **filtre « Host »** du tableau de bord (`www.radio-odyssey.com` ou `app.radio-odyssey.com`). Ne pas séparer les identifiants, cela casserait ce filtre et rendrait un abonnement nécessaire.
+- **Événements Umami** : `roUmamiTrack(nom, data)`, défini dans `Footer.astro`, est le point d'entrée unique — préexistant pour les écoutes (`play_click`, `play_error`, `play_started`, `play_stalled`...), complété au §72 par `quiz_complete` (`QuizBlock.astro` + les 5 quiz par décennie, qui gardent leur propre copie du moteur), `exercise_start`/`exercise_complete` (`CoherenceExercise.astro`), `pwa_installed` (écouteur `appinstalled`, global) et `app_download_click`/`external_platform_click` (écouteur délégué au clic dans `Footer.astro`, couvre tous les liens sortants sans avoir à instrumenter chaque page). ⚠️ La liste `PLATEFORMES` dans `Footer.astro` doit rester alignée avec `SAME_AS` dans `Layout.astro`. L'opt-in push n'est pas instrumenté : la fonctionnalité n'existe pas sur `www` (voir Prochaines étapes, §70).
 - **URL Vercel de l'appli** : `radio-odyssey-v8b.vercel.app` sert la même page que `app.radio-odyssey.com` et représente 2,2 % des écoutes. Un `canonical` a été posé ; la redirection par `vercel.json` a échoué deux fois (§59) — passer par Settings → Deployment Protection dans l'interface Vercel.
 - Héritage Mobirise non purgé : `assets/vendor/bootstrap/bootstrap.min.css` est toujours chargé.
 
@@ -204,13 +206,14 @@ Chiffres réels, utiles pour arbitrer les priorités — le détail figure au §
    ⚠️ **Quatre erreurs factuelles ont été trouvées dans les fiches d'origine** (§63, §66, §67, §68). Les faits sont désormais vérifiés, mais toute nouvelle fiche doit l'être aussi : ne jamais écrire un fait de mémoire.
 2. **Corriger l'étiquetage de « L'assasymphonie » dans le manager RadioKing** : le fichier est crédité à Emmanuel Moire alors que le titre est de Florent Mothe (*Mozart, l'opéra rock*). L'erreur s'affiche à l'antenne et sur les écrans de voiture, et **chaque nouveau dépouillement la réintroduira** tant que le fichier n'est pas corrigé (§65). Le gisement d'artistes sans fiche est épuisé : 20 des 21 restants ont été traités au §65, seul **Tom York** reste en attente — sources insuffisantes, et un risque de confusion avec Thom Yorke de Radiohead
 3. **Protéger les déploiements** dans l'interface Vercel (Settings → Deployment Protection). Ne pas retenter par `vercel.json` : deux tentatives ont échoué, la condition `has: host` ne se déclenche pas (§59)
-4. **E-E-A-T santé** sur les 18 pages bien-être : auteur, date de révision, sources, mention de non-substitution à un avis médical
+4. ~~**E-E-A-T santé** sur les 18 pages bien-être~~ — fait au §72 sur 15 des 18 pages (auteur/relecteur, date de vérification, sources). Les 3 pages restantes (radio-sans-publicite, avis-radio-odyssey-bien-etre, elisabeth-belot-grimaud-radio-odyssey) n'en avaient pas besoin — voir Points de vigilance ci-dessus.
 5. **Grille week-end distincte** : midi y est le meilleur moment et reçoit la programmation standard (§58)
 6. **Expérience jeudi soir** : appliquer la grille musclée un soir de plus pendant un mois, et vérifier si le ratio soirée/après-midi passe de 0,40 vers 0,67 (§58)
 7. **Ouvrir une liste e-mail** — aucun actif propriétaire à ce jour ; à faire avant toute nouvelle campagne payante
-8. **Instrumenter** les événements manquants (installation PWA, opt-in push, quiz, exercice, sorties plateformes)
+8. ~~**Instrumenter** les événements manquants~~ — fait au §72 pour installation PWA, quiz, exercice et sorties plateformes (voir Points de vigilance ci-dessus). L'opt-in push reste hors périmètre tant que la fonctionnalité n'existe pas sur `www` (point 9)
 9. **Fusionner l'appli dans le site** (§70) — décision prise, exécution reportée. Page hors ligne enrichie (garder l'exercice et le programme), masquage du bouton « App Mobile » en mode autonome, puis redirection de `app.` vers `www`. Disparaissent au passage : un second déploiement Vercel, la base Upstash et les deux endpoints `api/subscribe.js` et `api/send.js`.
    ⚠️ **Ne pas payer d'abonnement Upstash et ne pas maintenir la base en vie.** Elle sera archivée pour inactivité ; les données sont sauvegardées par Upstash et restaurables, et il n'y a de toute façon rien à sauver. Un simple `PING` ne compte pas comme activité chez Upstash — seule une opération de données (`GET`, `SET`, `SCARD`…) réinitialise le compteur, si jamais le besoin se présentait
    ⚠️ Si des notifications push sont refaites un jour, ce sera **sur `www`, et seulement avec un programme éditorial défini** : la fonction existe depuis des mois sur l'appli et n'a recruté personne. Avant de la reconstruire, savoir si c'est le bouton qui est invisible ou la proposition qui n'intéresse pas
 10. `og:image` par page sur les ~213 pages feuilles (les 7 hubs et l'accueil ont déjà la leur). `llms.txt` complété à 29 URL au §59
 11. **Décision internationale** : `/en/` complet, ou repli assumé
+12. **Mesurer l'effet du bloc E-E-A-T et des nouveaux événements Umami** (§72) une fois quelques jours de données accumulées : taux de complétion des quiz et de l'exercice, poids réel des clics vers l'appli et les plateformes externes, installations PWA — jusqu'ici invisibles faute d'instrumentation

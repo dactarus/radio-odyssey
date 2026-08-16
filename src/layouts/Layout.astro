@@ -16,6 +16,7 @@ interface Props {
   ogImage?: string;
   robots?: string;
   articleDatePublished?: string;
+  articleDateModified?: string;
   articleAuthorName?: string;
 }
 
@@ -29,6 +30,7 @@ const {
   ogImage = '/assets/images/og/home.jpg',
   robots = 'index, follow',
   articleDatePublished,
+  articleDateModified,
   articleAuthorName,
 } = Astro.props;
 
@@ -163,14 +165,17 @@ const breadcrumbSchema = isHome ? null : {
 };
 
 // Article schema : uniquement sur les pages qui passent articleDatePublished
-// (les articles éditoriaux type "Coulisses"), pas sur les pages produit/hub.
+// (les articles éditoriaux type "Coulisses", et depuis §72 les pages bien-être).
+// dateModified suit articleDateModified quand la page le précise (date de
+// relecture E-E-A-T, distincte de la date de création réelle) ; sinon elle
+// retombe sur la date de publication.
 const articleSchema = articleDatePublished ? {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: breadcrumbLabel || title,
   description,
   datePublished: articleDatePublished,
-  dateModified: articleDatePublished,
+  dateModified: articleDateModified || articleDatePublished,
   author: articleAuthorName
     ? { '@type': 'Person', name: articleAuthorName }
     : { '@type': 'Organization', name: 'Radio Odyssey' },

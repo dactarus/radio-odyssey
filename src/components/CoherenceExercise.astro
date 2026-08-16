@@ -110,7 +110,13 @@
         cnt--;
         if(cnt<0){
           cycle++; dot(Math.min(4,cycle));
-          if(cycle>=TOTAL){reset();return;}
+          if(cycle>=TOTAL){
+            // §72 : suivi de fin d'exercice — uniquement à l'issue d'un cycle
+            // complet (pas à l'arrêt manuel via "Arrêter", qui repasse par
+            // reset() sans passer par cette branche).
+            if(typeof roUmamiTrack === 'function') roUmamiTrack('exercise_complete', { page: location.pathname });
+            reset();return;
+          }
           phase='inhale'; cnt=IN;
         }
       }
@@ -120,6 +126,7 @@
       if(tmr){clearInterval(tmr);tmr=null;}
       phase='inhale';cnt=IN;cycle=0;
       btn.textContent='Arrêter'; btn.onclick=reset;
+      if(typeof roUmamiTrack === 'function') roUmamiTrack('exercise_start', { page: location.pathname });
       tick(); tmr=setInterval(tick,1000);
     };
   })();

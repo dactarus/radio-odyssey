@@ -1,0 +1,91 @@
+---
+/*
+  Bloc E-E-A-T (§72) — utilisé sur les pages bien-être / santé (zone YMYL).
+
+  Avant §72, les 18 pages « Bien-être & Santé » avançaient des effets (stress,
+  sommeil, concentration) sans auteur nommé, sans date de révision et sans
+  source externe — trois signaux que Google cite explicitement dans ses
+  Quality Rater Guidelines pour juger la fiabilité d'une page de santé.
+
+  Deux profils possibles, jamais mélangés à la légère :
+    - `reviewer` renseigné (Elisabeth Bélot-Grimaud) : uniquement sur les
+      pages où elle est réellement impliquée (les séquences de cohérence
+      cardiaque qu'elle a conçues). Il serait malhonnête — et risqué pour une
+      personne réelle nommée — de lui prêter une relecture qu'elle n'a pas
+      faite sur des pages plus générales.
+    - `reviewer` omis : la page porte "Rédigé par la rédaction de Radio
+      Odyssey", sans revendiquer une caution scientifique individuelle.
+
+  `dateLabel` est la date de vérification des faits (§72), pas forcément la
+  date de création de la page — les deux sont distinctes dans Layout.astro
+  via articleDatePublished / articleDateModified.
+*/
+import Icon from './Icon.astro';
+
+interface Reviewer {
+  name: string;
+  title: string;
+  href: string;
+}
+interface Props {
+  reviewer?: Reviewer;
+  dateLabel: string;
+  disclaimer?: boolean;
+}
+const { reviewer, dateLabel, disclaimer = true } = Astro.props;
+---
+<div class="ro-author-review">
+  <p class="ro-author-review-line">
+    <Icon name="patch-check-fill" />
+    {reviewer ? (
+      <>Relu par <a href={reviewer.href}>{reviewer.name}</a>, {reviewer.title}</>
+    ) : (
+      <>Rédigé par la rédaction de Radio Odyssey</>
+    )}
+    <span class="ro-author-review-dot">&middot;</span>
+    Dernière vérification : {dateLabel}
+  </p>
+  {disclaimer && (
+    <p class="ro-author-review-disclaimer">
+      Ce contenu est fourni à titre informatif et ne remplace pas un avis médical, psychologique ou professionnel. En cas de doute, consultez un professionnel de santé.
+    </p>
+  )}
+</div>
+
+<style>
+  .ro-author-review {
+    background: rgba(123, 47, 190, .04);
+    border: 1px solid rgba(123, 47, 190, .12);
+    border-radius: 14px;
+    padding: .85rem 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  .ro-author-review-line {
+    margin: 0;
+    font-size: .85rem;
+    font-weight: 700;
+    color: var(--ro-dark);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .35rem;
+  }
+  .ro-author-review-line :global(svg) {
+    color: #7B2FBE;
+    flex-shrink: 0;
+  }
+  .ro-author-review-line a {
+    color: var(--ro-purple);
+    font-weight: 800;
+  }
+  .ro-author-review-dot {
+    color: var(--ro-muted);
+    margin: 0 .1rem;
+  }
+  .ro-author-review-disclaimer {
+    margin: .45rem 0 0;
+    font-size: .78rem;
+    line-height: 1.5;
+    color: var(--ro-muted);
+  }
+</style>

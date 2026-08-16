@@ -7,6 +7,9 @@ import CoherenceExercise from '../components/CoherenceExercise.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
 import ContentIllustration from '../components/ContentIllustration.astro';
+import AuthorReview from '../components/AuthorReview.astro';
+import SourcesBlock from '../components/SourcesBlock.astro';
+import { ELISABETH_REVIEWER, DATE_REVISION_BIEN_ETRE_LABEL, SOURCES_COHERENCE_CARDIAQUE } from '../data/reviewer.js';
 
 const howToSchema = {
   '@context': 'https://schema.org',
@@ -35,6 +38,9 @@ const faq = [
   lang="fr"
   title="Comment Pratiquer la Cohérence Cardiaque | Radio Odyssey"
   description="Le guide complet pour pratiquer la cohérence cardiaque : rythme 5s/5s, étapes détaillées, erreurs à éviter, avec l'outil interactif de Radio Odyssey."
+  articleDatePublished="2026-07-02"
+  articleDateModified="2026-08-16"
+  articleAuthorName="Elisabeth Bélot-Grimaud"
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(howToSchema)} />
@@ -57,6 +63,8 @@ const faq = [
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-8">
+
+          <AuthorReview reviewer={ELISABETH_REVIEWER} dateLabel={DATE_REVISION_BIEN_ETRE_LABEL} />
 
           <div class="content-card">
             <h2>Qu'est-ce que la cohérence cardiaque, en bref</h2>
@@ -139,6 +147,8 @@ const faq = [
             <h3>La voix qui vous guide</h3>
             <p>Ces séquences ont été conçues avec <strong>Elisabeth Bélot-Grimaud</strong>, Docteure en psychologie cognitive et partenaire exclusive de Radio Odyssey — c'est elle qui prête sa voix aux séquences diffusées à l'antenne. <a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">En savoir plus sur notre partenaire <Icon name="arrow-right" /></a></p>
           </div>
+
+          <SourcesBlock sources={SOURCES_COHERENCE_CARDIAQUE} />
 
           <FAQBlock items={faq} idPrefix="cpcc" />
 

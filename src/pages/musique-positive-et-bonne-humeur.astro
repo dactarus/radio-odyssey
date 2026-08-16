@@ -5,6 +5,9 @@ import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
+import AuthorReview from '../components/AuthorReview.astro';
+import SourcesBlock from '../components/SourcesBlock.astro';
+import { ELISABETH_REVIEWER, DATE_REVISION_BIEN_ETRE_LABEL, SOURCES_MUSIQUE_HUMEUR } from '../data/reviewer.js';
 
 const faq = [
   { q: 'La musique peut-elle vraiment améliorer l\'humeur ?', a: "La musique ne soigne rien, mais beaucoup de personnes constatent qu'elle aide à changer la tonalité d'un moment — un matin difficile, un trajet stressant, un coup de mou dans l'après-midi. C'est l'idée fondatrice de Radio Odyssey." },
@@ -16,6 +19,9 @@ const faq = [
   lang="fr"
   title="Musique Positive et Bonne Humeur | Radio Odyssey"
   description="Pourquoi la musique positive aide à améliorer l'humeur : la philosophie de Radio Odyssey, conçue avec une psychologue cognitive."
+  articleDatePublished="2026-08-06"
+  articleDateModified="2026-08-16"
+  articleAuthorName="Elisabeth Bélot-Grimaud"
 >
   <PageHero
     gradientFrom="#FF3CAC"
@@ -34,6 +40,8 @@ const faq = [
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-8">
+
+          <AuthorReview reviewer={ELISABETH_REVIEWER} dateLabel={DATE_REVISION_BIEN_ETRE_LABEL} />
 
           <div class="content-card">
             <h2>Pourquoi la musique positive compte</h2>
@@ -60,6 +68,8 @@ const faq = [
               <li>Une courte pause respiration, grâce aux séquences de <a href="/radio-coherence-cardiaque.html" style="color:var(--ro-purple);font-weight:700;">cohérence cardiaque</a> intégrées à l'antenne</li>
             </ul>
           </div>
+
+          <SourcesBlock sources={SOURCES_MUSIQUE_HUMEUR} />
 
           <FAQBlock items={faq} idPrefix="humeur" />
 

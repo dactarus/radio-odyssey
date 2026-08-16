@@ -4,8 +4,17 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import ContentIllustration from '../components/ContentIllustration.astro';
+import AuthorReview from '../components/AuthorReview.astro';
+import SourcesBlock from '../components/SourcesBlock.astro';
+import { DATE_REVISION_BIEN_ETRE_LABEL, SOURCES_COHERENCE_CARDIAQUE } from '../data/reviewer.js';
 ---
-<Layout lang="fr" title="Radio Détente Moderne en Ligne | Radio Odyssey" description="Radio détente moderne en ligne sur Radio Odyssey : musique apaisante, énergie douce et cohérence cardiaque pour se ressourcer.">
+<Layout
+  lang="fr"
+  title="Radio Détente Moderne en Ligne | Radio Odyssey"
+  description="Radio détente moderne en ligne sur Radio Odyssey : musique apaisante, énergie douce et cohérence cardiaque pour se ressourcer."
+  articleDatePublished="2026-07-01"
+  articleDateModified="2026-08-16"
+>
   <PageHero
     gradientFrom="#1e7fcb"
     gradientTo="#7B2FBE"
@@ -23,7 +32,9 @@ import ContentIllustration from '../components/ContentIllustration.astro';
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-8">
-        
+
+          <AuthorReview dateLabel={DATE_REVISION_BIEN_ETRE_LABEL} />
+
           <div class="content-card">
             <h2>Vous recherchez une radio d&#233;tente moderne en ligne&#160;?</h2>
             <p>Radio Odyssey propose une exp&#233;rience &#233;quilibr&#233;e&#160;: une programmation fluide m&#234;lant hits 80 revisit&#233;s, ambiances actuelles et s&#233;quences de coh&#233;rence cardiaque int&#233;gr&#233;es.</p>
@@ -89,6 +100,8 @@ import ContentIllustration from '../components/ContentIllustration.astro';
             </ul>
             <p>Elle accompagne sans envahir &#8212; y compris pour ceux qui cherchent avant tout une <a href="/radio-sans-publicite.html" style="color:var(--ro-purple);font-weight:700;">radio sans publicit&#233;</a>. M&#234;me pour un intérieur partagé avec des plantes ou des animaux : voir nos pages <a href="/musique-pour-les-plantes.html" style="color:var(--ro-purple);font-weight:700;">musique pour les plantes</a> et <a href="/musique-pour-les-animaux.html" style="color:var(--ro-purple);font-weight:700;">musique pour les animaux</a>.</p>
           </div>
+
+          <SourcesBlock sources={SOURCES_COHERENCE_CARDIAQUE} />
 
           <div class="page-cta-bar">
             <h3>D&#233;compressez maintenant avec Radio Odyssey</h3>

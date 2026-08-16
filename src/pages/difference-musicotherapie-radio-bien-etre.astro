@@ -6,6 +6,9 @@ import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
 import ContentIllustration from '../components/ContentIllustration.astro';
+import AuthorReview from '../components/AuthorReview.astro';
+import SourcesBlock from '../components/SourcesBlock.astro';
+import { DATE_REVISION_BIEN_ETRE_LABEL, SOURCES_MUSICOTHERAPIE } from '../data/reviewer.js';
 
 const faq = [
   { q: 'Radio Odyssey remplace-t-elle une thérapie par la musique ?', a: "Non. Radio Odyssey est une radio de divertissement et de bien-être grand public, pas un protocole thérapeutique. Pour un accompagnement thérapeutique, seul un musicothérapeute diplômé peut proposer un suivi adapté." },
@@ -17,6 +20,8 @@ const faq = [
   lang="fr"
   title="Musicothérapie ou Radio Bien-être ? | Radio Odyssey"
   description="Radio Odyssey n'est pas de la musicothérapie clinique. On vous explique clairement la différence, pour savoir à quoi vous attendre."
+  articleDatePublished="2026-07-02"
+  articleDateModified="2026-08-16"
 >
   <PageHero
     gradientFrom="#FF9A3C"
@@ -35,6 +40,8 @@ const faq = [
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-8">
+
+          <AuthorReview dateLabel={DATE_REVISION_BIEN_ETRE_LABEL} />
 
           <div class="content-card">
             <h2>Qu'est-ce que la musicothérapie</h2>
@@ -82,6 +89,8 @@ const faq = [
             <h3>Pour un accompagnement individualisé</h3>
             <p>Un musicothérapeute adapte sa pratique à votre situation précise, ce qu'une programmation radio grand public ne peut pas faire par nature.</p>
           </div>
+
+          <SourcesBlock sources={SOURCES_MUSICOTHERAPIE} />
 
           <FAQBlock items={faq} idPrefix="dmr" />
 

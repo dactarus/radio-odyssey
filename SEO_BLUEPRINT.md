@@ -2128,3 +2128,47 @@ Build isolé : 260 pages, aucune erreur, aucun lien cassé, JSON-LD valides, auc
 ---
 
 *Dernière mise à jour : 2026-08-14, mise en avant des quiz (§71).*
+
+---
+
+## 72. E-E-A-T sur les 18 pages bien-être, et instrumentation des événements manquants (2026-08-16)
+
+Deux chantiers du même lot, tous deux tirés des « Prochaines étapes » de CLAUDE.md.
+
+### E-E-A-T (zone YMYL)
+
+Avant ce lot, les 18 pages « Bien-être & Santé » avançaient des effets (stress, sommeil, concentration) sans auteur nommé, sans date de révision et sans source externe — trois signaux que Google cite explicitement dans ses Quality Rater Guidelines pour juger la fiabilité d'une page de santé.
+
+**Décision d'attribution** (validée avec le propriétaire avant d'écrire quoi que ce soit) : Elisabeth Bélot-Grimaud, Docteure en psychologie cognitive et partenaire de la radio, n'est créditée comme relectrice que sur les pages où elle est réellement impliquée. Lui prêter une relecture qu'elle n'a pas faite sur des pages plus générales aurait été à la fois malhonnête et risqué pour une personne réelle nommée.
+
+- **11 pages « Elisabeth »** — les pages consacrées à la cohérence cardiaque (radio-coherence-cardiaque, comment-pratiquer-la-coherence-cardiaque, bienfaits-coherence-cardiaque, radio-bien-etre-en-ligne, coherence-cardiaque-au-bureau, coherence-cardiaque-enfants-ados, musique-pour-respiration-guidee, coherence-cardiaque-pour-dormir, coherence-cardiaque-et-sport, coherence-cardiaque-pour-seniors) et musique-positive-et-bonne-humeur, qui crédite explicitement sa contribution au positionnement « radio positive ».
+- **4 pages « Rédaction Radio Odyssey »** — radio-anti-stress-gratuite, radio-detente-moderne, musique-sans-parole-pour-se-concentrer, difference-musicotherapie-radio-bien-etre : la cohérence cardiaque y est mentionnée mais pas au point de justifier une caution individuelle.
+- **3 pages non touchées** — radio-sans-publicite et avis-radio-odyssey-bien-etre (pas de revendication de santé), elisabeth-belot-grimaud-radio-odyssey (déjà pourvue d'un schema Person, page qui parle d'elle plutôt que relue par elle).
+
+**Composants créés** :
+- `AuthorReview.astro` — bandeau en haut de page : « Relu par [nom], [titre] » ou « Rédigé par la rédaction de Radio Odyssey », plus la date de vérification et une mention de non-substitution à un avis médical.
+- `SourcesBlock.astro` — bloc « Sources et références » en bas de page, avant la FAQ.
+- `src/data/reviewer.js` — source unique pour l'objet relecteur, la date de révision et quatre jeux de sources externes, chacune vérifiée individuellement avant citation (jamais une référence de mémoire, même règle que pour les fiches artistes) :
+  - Cohérence cardiaque : Inserm (Canal Détox) + Goessl, Curtiss & Hofmann (2017, *Psychological Medicine*), méta-analyse HRV biofeedback.
+  - Musicothérapie : Fédération Française des Musicothérapeutes.
+  - Musique et humeur : Salimpoor et al. (2011, *Nature Neuroscience*), dopamine et plaisir musical.
+  - Musique et concentration : Kämpfe, Sedlmeier & Renkewitz (2011, *Psychology of Music*), méta-analyse musique de fond.
+
+**Layout.astro** : `articleDateModified` ajouté en prop distincte de `articleDatePublished` — la date de publication réelle (retrouvée par `git log --follow --diff-filter=A`, jamais inventée) reste dans `datePublished`, la date de vérification du 16 août dans `dateModified`. Le schema Article utilise déjà `articleAuthorName` pour distinguer Person (Elisabeth) et Organization (Radio Odyssey) — mécanisme existant depuis les pages « Coulisses », jusqu'ici jamais utilisé pour un auteur nommé.
+
+### Instrumentation des événements manquants
+
+Le point 8 des « Prochaines étapes » listait cinq événements absents : installation PWA, opt-in push, quiz, exercice, sorties plateformes. L'audit a montré que le suivi des écoutes (`play_click`, `play_error`, `play_started`, `play_stalled`...) existait déjà via `roUmamiTrack()`, défini dans `Footer.astro` et appelé depuis `RadioPlayer.astro` et `Header.astro` — seuls les cinq événements listés manquaient réellement. L'opt-in push n'existe pas sur `www` (seulement sur l'appli, fusion différée, §70) : rien à instrumenter pour l'instant.
+
+- **`quiz_complete`** — ajouté dans `QuizBlock.astro` (les 3 quiz thématiques) et individuellement dans les 5 pages de quiz par décennie, qui gardent leur propre copie du moteur (§69) : `{ quiz, round, score, max }`.
+- **`exercise_start` / `exercise_complete`** — ajoutés dans `CoherenceExercise.astro` : `start` au clic sur « Commencer », `complete` uniquement à l'issue d'un cycle complet (pas à l'arrêt manuel).
+- **`pwa_installed`** — écouteur sur l'événement standard `appinstalled` du navigateur, ajouté dans `Footer.astro`. Capte l'installation quelle que soit son origine (icône native ou menu navigateur), sans dépendre d'un bouton dédié qui n'existe pas dans l'interface actuelle.
+- **`app_download_click` / `external_platform_click`** — plutôt que d'ajouter un `onclick` sur chaque lien « Télécharger l'application » (une trentaine de pages) et chaque lien d'écoute externe, un seul écouteur délégué au clic dans `Footer.astro` (présent sur les 258 pages) couvre l'ensemble du site, présent et futur. La liste `PLATEFORMES` (RadioKing, TuneIn, Deezer, WeLoveRadio, Orange, Radioline, myTuner) doit rester alignée avec `SAME_AS` dans `Layout.astro`.
+
+### Vérifications
+
+Build isolé : 258 pages, aucune erreur, sitemap et `dist/` cohérents (240 URL, 0 manquante, 0 `noindex` en sitemap), aucun lien interne cassé, aucun `<title>` tronqué. Schema Article vérifié sur un échantillon : `dateModified` distinct de `datePublished`, auteur Person sur les pages Elisabeth, Organization ailleurs. Les 15 pages traitées affichent bien le bandeau et le bloc sources dans le HTML construit ; les 8 pages de quiz émettent toutes `quiz_complete`.
+
+---
+
+*Dernière mise à jour : 2026-08-16, E-E-A-T bien-être et instrumentation Umami (§72).*

@@ -7,6 +7,9 @@ import CoherenceExercise from '../components/CoherenceExercise.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
 import ContentIllustration from '../components/ContentIllustration.astro';
+import AuthorReview from '../components/AuthorReview.astro';
+import SourcesBlock from '../components/SourcesBlock.astro';
+import { ELISABETH_REVIEWER, DATE_REVISION_BIEN_ETRE_LABEL, SOURCES_COHERENCE_CARDIAQUE } from '../data/reviewer.js';
 
 const faq = [
   { q: 'À partir de quel âge un enfant peut-il pratiquer la cohérence cardiaque ?', a: "Il n'y a pas d'âge minimum strict, mais la plupart des repères cités évoquent plutôt les enfants à partir de 7-8 ans, capables de suivre consciemment un rythme de respiration — avec un accompagnement d'un adulte pour les plus jeunes." },
@@ -19,6 +22,9 @@ const faq = [
   lang="fr"
   title="Cohérence Cardiaque pour Enfants et Ados | Radio Odyssey"
   description="La cohérence cardiaque expliquée aux enfants et aux ados : gérer le stress scolaire, les examens et les émotions, avec l'outil interactif de Radio Odyssey."
+  articleDatePublished="2026-07-27"
+  articleDateModified="2026-08-16"
+  articleAuthorName="Elisabeth Bélot-Grimaud"
 >
   <PageHero
     gradientFrom="#FFD700"
@@ -37,6 +43,8 @@ const faq = [
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-8">
+
+          <AuthorReview reviewer={ELISABETH_REVIEWER} dateLabel={DATE_REVISION_BIEN_ETRE_LABEL} />
 
           <div class="content-card">
             <h2>Une technique simple, aussi pour les plus jeunes</h2>
@@ -75,6 +83,8 @@ const faq = [
             <h2>Un moment à faire en famille</h2>
             <p>Pratiquer ensemble, parent et enfant, rend l'exercice plus naturel qu'une consigne donnée seule à l'enfant — et c'est aussi l'occasion d'un moment calme partagé, loin des écrans.</p>
           </div>
+
+          <SourcesBlock sources={SOURCES_COHERENCE_CARDIAQUE} />
 
           <FAQBlock items={faq} idPrefix="ccenfants" />
 
