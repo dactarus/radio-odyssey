@@ -4,7 +4,7 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-16 (§75).*
+*Dernière mise à jour de ce fichier : 2026-08-16 (§76).*
 
 ## Objectif du projet
 
@@ -90,7 +90,11 @@ Depuis le 2026-08-09, `www.radio-odyssey.com` est **installable depuis n'importe
 - `public/manifest.json` — `scope: /`, icônes classiques et maskables, 3 raccourcis.
 - Enregistrement dans `Layout.astro`, après l'événement `load`.
 
-**À savoir** : `app.radio-odyssey.com` est une **seconde PWA**, sur un dépôt distinct (dossier `Appli Radio Odyssey V8`, sans dépôt git — publication par `npx vercel --prod`).
+**À savoir** : `app.radio-odyssey.com` est une **seconde PWA**, sur un dépôt distinct (dossier `Appli Radio Odyssey V8`, dépôt git **local uniquement, sans dépôt distant** — publication par `npx vercel --prod`). ⚠️ Le code n'existe donc que sur la machine du propriétaire : pas de sauvegarde, pas de préversion, pas de retour arrière simple. Créer le dépôt GitHub et le rattacher au projet Vercel `radio-odyssey-v8b` est au programme (§76).
+
+⚠️ **Le service worker de l'appli est distinct de celui du site** (`Appli Radio Odyssey V8/service-worker.js`, `CACHE_VERSION` = `v16` depuis le §76). Même règle que sur `www` : l'incrémenter à chaque modification. Les navigations y sont traitées à part depuis le §76 — c'est ce qui permet le lancement hors ligne depuis l'écran d'accueil, la `start_url` du manifeste étant `/?source=pwa`. ⚠️ Ne pas retirer ce traitement en croyant simplifier : sans lui, `caches.match` ne fait pas correspondre `/?source=pwa` à `/` et l'appli ne s'ouvre pas hors ligne.
+
+⚠️ **Media Session de l'appli** : les commandes `play`/`pause`/`stop` doivent passer par `userPaused` (§76). Une pause qui ne pose pas ce drapeau est prise pour une interruption système et **annulée par une reprise automatique 1,2 s plus tard** — la pause depuis l'écran verrouillé, la voiture ou un casque Bluetooth ne tenait pas.
 
 ⚠️ L'argument technique qui justifiait de la garder séparée (sa base d'abonnés aux notifications push, non transférable car liée à une origine) est tombé le 2026-08-14 (§70) : vérification faite dans la console Upstash (`SCARD push_subscriptions`), elle ne compte qu'un seul abonné, très probablement un test. Mais la décision de fusionner l'appli dans le site a été **annulée le 2026-08-16 (§75)** : l'appli n'est pas un miroir du site, c'est une interface à onglets distincte (5 écrans, navigation par geste, sans page de contenu) qui retient deux fois plus longtemps que le site (16 min contre 8 min, voir Contexte d'audience) — la garder séparée reste le bon choix. Voir Prochaines étapes #9.
 
@@ -218,4 +222,5 @@ Chiffres réels, utiles pour arbitrer les priorités — le détail figure au §
    ⚠️ Si des notifications push sont refaites un jour, ce sera **seulement avec un programme éditorial défini** : la fonction existe depuis des mois sur l'appli et n'a recruté personne. Avant de la reconstruire, savoir si c'est le bouton qui est invisible ou la proposition qui n'intéresse pas
 10. `og:image` par page sur les ~213 pages feuilles (les 7 hubs et l'accueil ont déjà la leur). `llms.txt` complété à 29 URL au §59
 11. **Décision internationale** : `/en/` complet, ou repli assumé
-12. **Mesurer l'effet du bloc E-E-A-T et des nouveaux événements Umami** (§72) une fois quelques jours de données accumulées : taux de complétion des quiz et de l'exercice, poids réel des clics vers l'appli et les plateformes externes, installations PWA — jusqu'ici invisibles faute d'instrumentation
+12. **Poursuivre l'audit de l'appli** (§76) — quatre défauts de fiabilité corrigés, la suite est listée à la fin du §76, par ordre d'effet décroissant. Les deux premiers points priment sur tout le reste : **afficher le titre en cours dès l'ouverture** (aujourd'hui l'appli n'affiche rien tant qu'on n'a pas appuyé sur play — levier direct sur les 35 % d'écoutes de moins de 30 s) et **instrumenter l'appli** (un seul événement Umami, contre une dizaine sur le site depuis le §72 : la surface qui retient deux fois mieux est celle sur laquelle on ne sait rien). ⚠️ Ne pas ajouter d'écran ni d'onglet : ce qui fait les 16 minutes, c'est qu'il n'y a rien à parcourir.
+13. **Mesurer l'effet du bloc E-E-A-T et des nouveaux événements Umami** (§72) une fois quelques jours de données accumulées : taux de complétion des quiz et de l'exercice, poids réel des clics vers l'appli et les plateformes externes, installations PWA — jusqu'ici invisibles faute d'instrumentation
