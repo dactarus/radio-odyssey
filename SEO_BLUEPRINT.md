@@ -2585,3 +2585,54 @@ Lot 3 (bloc E-E-A-T sur les deux pages anglaises de cohérence cardiaque — ⚠
 ---
 
 *Dernière mise à jour : 2026-08-16, version anglaise lot 2 — accueil, interface et pages de fond (§82).*
+
+---
+
+## 83. Version anglaise — lot 3 : E-E-A-T sur les deux pages anglaises de cohérence cardiaque (2026-08-16)
+
+Le §72 avait posé le bloc auteur/relecteur et les sources externes sur 15 des 18 pages bien-être. Les deux pages **anglaises** de cohérence cardiaque n'y figuraient pas : elles avançaient les mêmes effets que leurs équivalentes françaises — respiration, stress, variabilité cardiaque — sans auteur nommé, sans date de vérification et sans source. Sur une zone YMYL, c'est précisément la différence que les Quality Rater Guidelines demandent aux évaluateurs de regarder.
+
+### Ce n'était pas un simple ajout d'import
+
+`AuthorReview.astro`, `SourcesBlock.astro` et `data/reviewer.js` portaient leurs libellés en dur en français : « Relu par », « Dernière vérification », le rappel de non-substitution à un avis médical, « Sources et références », et l'intitulé de chaque source. Les trois sont désormais bilingues, sur le même principe que les composants de mise en page du §82 : une prop `lang`, et des libellés séparés.
+
+Côté données, `reviewer.js` gagne `ELISABETH_REVIEWER_EN`, `DATE_REVISION_BIEN_ETRE_LABEL_EN` et `SOURCES_COHERENCE_CARDIAQUE_EN`. Deux points qui ne sont pas cosmétiques :
+
+- ⚠️ **`href` pointe vers la page anglaise d'Elisabeth Bélot-Grimaud**, créée au §82. Un bloc « Reviewed by » qui renverrait vers sa fiche française enverrait le lecteur venu vérifier la relecture sur une page qu'il ne peut pas lire — c'est-à-dire exactement l'inverse de ce que le bloc est censé produire. C'est la raison pour laquelle cette page a été ajoutée au lot 2.
+- ⚠️ **Les URLs des sources sont les mêmes** dans les deux langues : ce sont les mêmes travaux, vérifiés une fois au §72. Seul l'intitulé est traduit. La source Inserm est explicitement signalée **« (in French) »** — le lecteur doit savoir avant de cliquer qu'il arrive sur un document français.
+
+### Dates d'article
+
+`articleDatePublished` a été relevée par `git log --follow --diff-filter=A` sur chaque fichier, comme au §72, jamais inventée : **2026-07-04** pour `heart-coherence-breathing-radio`, **2026-07-27** pour `heart-coherence-breathing-at-work`. `articleDateModified` porte la date de vérification du 16 août, et `articleAuthorName` fait basculer le schema Article de `Organization` à `Person`.
+
+### Attribution
+
+Elisabeth Bélot-Grimaud est créditée sur ces deux pages, et sur elles seules côté anglais. La règle du §72 est inchangée : elle n'est nommée que là où elle est réellement impliquée — ici les séquences de cohérence cardiaque qu'elle a conçues et qu'elle voix. ⚠️ **Ne pas étendre son nom aux autres pages anglaises** (`radio-for-focus-and-productivity`, `music-for-a-better-mood`, `radio-odyssey-vs-meditation-apps`) : elles mentionnent la respiration sans justifier une caution individuelle, exactement comme leurs cousines françaises portent « Rédaction Radio Odyssey ».
+
+### Vérifications
+
+Build : 263 pages, aucune erreur. Sur `dist/` :
+
+| Contrôle | Résultat |
+|---|---|
+| Bandeaux « Relu par » / « Reviewed by » | **11 en français, 2 en anglais** — comptes attendus, aucune page n'en a gagné ou perdu |
+| Lien du relecteur | `/en/…` sur les pages anglaises, `/elisabeth-…` sur les françaises, vérifié séparément dans les deux sens |
+| Bloc sources | 2 entrées sur chaque page anglaise, mention « in French » présente sur l'Inserm |
+| Schema Article | `author` = Person « Elisabeth Bélot-Grimaud », `datePublished` ≠ `dateModified` sur les deux pages |
+| Non-régression française | les 2 pages françaises de référence gardent bandeau, sources et lien français intacts |
+
+Et la batterie complète du chantier, rejouée : 18 pages anglaises, 245 URL au sitemap toutes présentes, **38 722 liens internes vérifiés sans une cible absente**, 0 libellé français visible sur une page anglaise, 0 lien vers du français hors les deux exceptions, 20 pages en `hreflang` réciproques, 0 titre tronqué, 19 `noindex`, 0 règle `vercel.json` masquant une page.
+
+⚠️ **Piège rencontré en vérifiant** : le premier contrôle a conclu à l'absence du bandeau sur les deux pages anglaises. C'était faux — la chaîne `ro-author-review` apparaît d'abord dans le CSS en ligne d'Astro, et l'extraction lisait la feuille de style au lieu du balisage. ⚠️ Une vérification automatisée sur `dist/` doit chercher `<div class="ro-author-review"`, pas la classe seule. Le même piège guette tout contrôle de présence par nom de classe.
+
+⚠️ **Second piège, plus vicieux** : une archive de sources fraîchement copiée dans le conteneur de vérification s'est extraite dans sa version précédente (cache du montage), et le build a validé un état périmé sans rien signaler. **Vérifier après extraction qu'un marqueur du dernier changement est bien présent dans la source** avant de tirer la moindre conclusion d'un build.
+
+### Ce lot clôt le socle publiable
+
+Lots 1 à 3 forment un ensemble qui se tient : 18 pages anglaises, un accueil, une interface entièrement anglaise, et la caution E-E-A-T sur les pages santé. Les lots 4 (gabarit de fiche artiste anglais) et 5 (un ou deux quiz) ajoutent du contenu sans rien restructurer : ils peuvent partir dans un second temps.
+
+⚠️ **Avant publication, un test manuel est indispensable, et il ne porte pas sur l'anglais.** Le §82 a modifié `Layout.astro`, `Header`, `Footer`, `PageHero`, `RadioPlayer`, `CookieConsent`, `SearchModal` et `WebviewBanner` — donc les **263 pages, dont les 245 françaises**. Un build ne voit ni un menu qui ne s'ouvre plus, ni un lecteur qui ne démarre pas. Et la consigne de `CLAUDE.md` s'applique en plein : test iPhone obligatoire dès qu'on touche à la lecture, à la pause ou à la reconnexion — les libellés envoyés à Media Session ont changé.
+
+---
+
+*Dernière mise à jour : 2026-08-16, version anglaise lot 3 — E-E-A-T anglais (§83).*

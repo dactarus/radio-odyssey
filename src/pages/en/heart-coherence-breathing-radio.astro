@@ -5,6 +5,9 @@ import PageHero from '../../components/PageHero.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import FAQBlock from '../../components/FAQBlock.astro';
 import RelatedPages from '../../components/RelatedPages.astro';
+import AuthorReview from '../../components/AuthorReview.astro';
+import SourcesBlock from '../../components/SourcesBlock.astro';
+import { ELISABETH_REVIEWER_EN, DATE_REVISION_BIEN_ETRE_LABEL_EN, SOURCES_COHERENCE_CARDIAQUE_EN } from '../../data/reviewer.js';
 
 const faq = [
   { q: 'What is heart coherence breathing?', a: "It's a slow, rhythmic breathing pattern — about 5 to 6 breaths per minute — that brings heart rate variability into a smoother, more regular pattern often called \"coherence.\" It's been studied and promoted by organizations such as the HeartMath Institute, and is known in France as \"cohérence cardiaque.\"" },
@@ -29,6 +32,9 @@ const howToSchema = {
 <Layout
   lang="en"
   altLangs={{ fr: '/radio-coherence-cardiaque.html', en: '/en/heart-coherence-breathing-radio.html' }}
+  articleDatePublished="2026-07-04"
+  articleDateModified="2026-08-16"
+  articleAuthorName="Elisabeth Bélot-Grimaud"
   title="Heart Coherence Breathing Radio | Radio Odyssey"
   description="Discover heart coherence breathing with Radio Odyssey — guided sequences woven into a free, ad-free positive music radio, streaming live worldwide."
 >
@@ -54,6 +60,8 @@ const howToSchema = {
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-8">
+
+          <AuthorReview lang="en" reviewer={ELISABETH_REVIEWER_EN} dateLabel={DATE_REVISION_BIEN_ETRE_LABEL_EN} />
 
           <div class="content-card">
             <h2>What Is Heart Coherence Breathing?</h2>
@@ -81,6 +89,8 @@ const howToSchema = {
               Repeat this cycle for a few minutes.
             </div>
           </div>
+
+          <SourcesBlock lang="en" sources={SOURCES_COHERENCE_CARDIAQUE_EN} />
 
           <FAQBlock items={faq} idPrefix="hcb" lang="en" />
 
