@@ -116,8 +116,11 @@ const accueil = ACCUEIL[lang];
       </>
     ))}
 
-    <span class="nav-cat"><Icon name="globe" /> {autreLangue.label}</span>
-    <a class="nav-link" href={hrefAutreLangue} data-astro-reload hreflang={autreLangue.code} lang={autreLangue.code}><span class="ni"><Icon name="globe" /></span> {autreLangue.label}</a>
+    {/* §85 : pas d'icône ici. « English » / « Français » se suffit, et
+        l'icône `globe` pèse 1 098 octets rendue en ligne — sur 263 pages,
+        c'est le genre de poids que le §60 a passé du temps à retirer. */}
+    <a class="nav-link nav-link-hub" href={hrefAutreLangue} data-astro-reload
+       hreflang={autreLangue.code} lang={autreLangue.code}><strong>{autreLangue.label}</strong></a>
 
     <span class="nav-cat"><Icon name="list" /> {L.toutLeSite}</span>
     <a class="nav-link" href={lang === 'en' ? accueil : '/plan-du-site.html'}><span class="ni"><Icon name="grid" /></span> {L.planDuSite}</a>

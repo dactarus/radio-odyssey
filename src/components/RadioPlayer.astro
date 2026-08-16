@@ -1,5 +1,13 @@
 ---
 /*
+  §84 — Les libellés passaient par `define:vars`, qui génère un `const LIB` en
+  tête de script. Or le contenu du script changeait alors d'une langue à
+  l'autre : ClientRouter le réexécutait au passage français → anglais, et la
+  redéclaration du `const` levait une SyntaxError qui emportait tout le
+  lecteur. Lus sur un attribut `data-`, le script devient identique sur les
+  263 pages — donc jamais réexécuté, donc jamais en conflit avec lui-même.
+*/
+/*
   Lecteur natif Radio Odyssey
   ---------------------------
   Remplace l'iframe RadioKing par une balise <audio> pilotée par le site.
@@ -159,15 +167,6 @@ const LIB = {
 </style>
 
 <script is:inline>
-  /*
-    §84 — Les libellés passaient par `define:vars`, qui génère un `const LIB`
-    en tête de script. Or le contenu du script changeait alors d'une langue à
-    l'autre : ClientRouter le réexécutait au passage français → anglais, et
-    la redéclaration du `const` levait une SyntaxError qui emportait tout le
-    lecteur. En les lisant sur un attribut `data-`, le script devient
-    identique sur les 263 pages — donc jamais réexécuté, donc jamais en
-    conflit avec lui-même.
-  */
   var LIB = JSON.parse((document.getElementById('ro-player') || {}).dataset?.libelles || '{}');
 (function () {
   // La barre du lecteur porte transition:persist : le nœud DOM survit aux

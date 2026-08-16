@@ -2699,3 +2699,55 @@ Les trois lots précédents avaient passé tous les contrôles automatisés : bu
 ---
 
 *Dernière mise à jour : 2026-08-16, écouteurs délégués et sélecteur de langue (§84).*
+
+---
+
+## 85. Le panneau des titres diffusés passe en composant, et deux corrections de poids (2026-08-16, nuit)
+
+Trois demandes du propriétaire, plus ce qu'elles ont fait apparaître.
+
+### 1. Une fiche artiste renvoyait un lecteur français vers une page anglaise
+
+Relevé au §82, tranché ici : **le français doit pointer vers le français, l'anglais vers l'anglais.** La fiche Mika portait `linkHref: '/en/feel-good-music-radio.html'` avec un libellé français ; elle pointe désormais vers `/musique-positive-et-bonne-humeur.html`, qui est l'équivalent français exact du sujet annoncé par sa phrase `why` (« l'ambiance feel good recherchée sur l'antenne »). Vérification faite sur les 147 fiches : c'était la seule.
+
+### 2. Le panneau « 4 derniers titres » devient un composant, et arrive sur l'accueil anglais
+
+*« C'est une radio »* — l'accueil anglais montrait ce que la station est, pas ce qu'elle passe. Le panneau des quatre dernières pochettes est désormais entre « One station, one promise » et « Three reasons people stay ».
+
+Il vivait en dur dans `src/pages/index.astro` : le balisage dans le corps de la page, et **259 lignes de CSS** dans son bloc `<style is:global>`. Le recopier pour l'anglais aurait garanti la divergence au premier changement de balisage chez RadioKing. Nouveau composant `NowPlaying.astro`, deux formes :
+
+- `variante="section"` — bandeau pleine largeur avec vagues de transition, tel quel sur l'accueil français ;
+- `variante="carte"` — même contenu au gabarit d'une `.content-card`, pour s'insérer dans une colonne. ⚠️ Les vagues n'auraient aucun sens dans une colonne : elles servent à raccorder deux bandeaux pleine largeur.
+
+Effet de bord favorable : le CSS du widget, jusque-là propre à l'accueil, devient un fichier partagé par les deux accueils, et le reste du CSS de la page passe sous le seuil d'incorporation d'Astro — l'accueil français a donc une requête de moins.
+
+⚠️ `#rk-played-tracks-widget` est le seul contenu tiers de l'accueil. Il n'est pas intercepté par le service worker (origine externe) : si RadioKing est indisponible, la zone reste vide et le reste de la page fonctionne.
+
+### 3. Le chantier avait pris 11 Ko par page — la moitié était évitable
+
+Mesure faite en comparant le HTML construit à celui du §80 : l'accueil était passé de 174 809 à 186 161 octets. Sur un site dont le §60 a passé un chantier entier à retirer du HTML, c'est trop pour ce qui avait été ajouté. Deux postes, tous deux corrigés :
+
+- **Les commentaires du §84 étaient servis au navigateur.** Placés dans des `<script>` en ligne, ils partaient sur les 263 pages : 2 339 octets d'explications par page. Ils sont remontés dans le frontmatter des composants, retiré au build. ⚠️ **Règle générale : une explication va dans le frontmatter, jamais dans un `<script>` en ligne.** Le savoir reste dans le fichier, le navigateur ne le télécharge pas.
+- **L'icône `globe` du sélecteur de langue pesait 1 098 octets**, rendue trois fois (deux fois dans le panneau mobile, une fois dans la barre). Supprimée : « English » / « Français » se suffit comme repère.
+
+Reste **+5 507 octets sur l'accueil** (+3,2 %) et **+3 074 en moyenne** par rapport au §80, pour l'ensemble des lots 1 à 5 : balises `hreflang`, sélecteur de langue à trois emplacements, attribut `data-libelles` du lecteur, et écouteurs délégués. C'est le prix assumé de ce qui a été ajouté.
+
+### Le piège qui a failli passer
+
+⚠️ **Un `---` de soulignement dans un commentaire est indiscernable du délimiteur de frontmatter.** Le script qui remontait les commentaires cherchait le `---` fermant par `index('---\n')` — et l'a trouvé au milieu de la ligne `  ---------------------------` du commentaire d'en-tête de `RadioPlayer.astro`, coupant le fichier en deux. Erreur de compilation nette au build, mais **le build n'était plus possible** : le pont de fichiers vers la machine du propriétaire venait de refuser les transferts (session expirée), et `npm run build` ne tourne pas sur le dossier monté (§81).
+
+Solution employée : **cloner le dépôt public depuis GitHub dans le conteneur de vérification**, y rejouer les mêmes modifications par script, et y construire. L'erreur est apparue là, à l'abri. La correction — insérer juste après le `---` ouvrant, position sans ambiguïté — a ensuite été rejouée sur la machine, et les **neuf fichiers touchés ont des empreintes MD5 identiques des deux côtés** : l'état vérifié et l'état livré sont le même octet pour octet.
+
+⚠️ À retenir : quand le pont de fichiers tombe, le dépôt GitHub reste une voie de vérification, à condition que les modifications soient rejouables par script plutôt que faites à la main.
+
+### Vérifications
+
+Build : 263 pages, aucune erreur, 2 langues indexées par Pagefind. Sur `dist/` : 18 pages anglaises, 245 URL au sitemap toutes présentes, **39 511 liens internes vérifiés sans une cible absente**, 20 pages en `hreflang` réciproques, 0 titre tronqué, 19 `noindex`, panneau des titres présent sur les deux accueils avec le bon libellé de langue, et aucune fiche artiste ne renvoie plus vers l'autre langue.
+
+### Reste à faire
+
+Le **lot 4** (gabarit de fiche artiste anglais) et le **lot 5** (un ou deux quiz) n'ont pas été entamés. ⚠️ Le lot 4 est le plus gros du chantier — 349 lignes de gabarit et une quinzaine de fiches à traduire — et il ne devrait pas être écrit sans boucle de vérification complète. Le passage par le clone GitHub fonctionne, mais il oblige à rejouer chaque modification des deux côtés : praticable pour huit fichiers, hasardeux pour un lot de cette taille. **À reprendre quand le pont de fichiers est rétabli.**
+
+---
+
+*Dernière mise à jour : 2026-08-16, panneau des titres en composant et allègement du HTML (§85).*

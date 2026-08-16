@@ -156,8 +156,8 @@ export const ARTISTS = [
       "Sa voix couvre plus de trois octaves, un registre rare dans la pop.",
     ],
     why: "La pop joyeuse et communicative de Mika illustre bien l'ambiance \"feel good\" recherchée sur l'antenne.",
-    linkHref: '/en/feel-good-music-radio.html',
-    linkLabel: 'feel good music radio',
+    linkHref: '/musique-positive-et-bonne-humeur.html',
+    linkLabel: 'musique positive et bonne humeur',
   },
   {
     slug: 'daft-punk',
