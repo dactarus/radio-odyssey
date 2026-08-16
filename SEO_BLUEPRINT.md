@@ -2241,3 +2241,61 @@ Aucun changement de code dans ce lot — uniquement une correction de plan, cons
 ---
 
 *Dernière mise à jour : 2026-08-16, annulation de la fusion appli/site (§75).*
+
+---
+
+## 76. Appli V8 — quatre défauts de fiabilité corrigés (2026-08-16)
+
+Premier lot d'un audit du code de `Appli Radio Odyssey V8/`, mené après le §75. L'appli n'avait jamais été relue en tant que telle : le §75 s'y était plongé uniquement pour trancher la question de la fusion. Ce lot ne traite que ce qui **faisait perdre de l'écoute**. Rien d'ajouté, rien de redessiné.
+
+### 76.1 La pause depuis l'écran verrouillé ne tenait pas
+
+Le gestionnaire Media Session appelait `player.pause()` sans poser `userPaused = true`. Or l'écouteur `pause` traite toute pause dont ce drapeau est faux comme une **interruption système** et programme une reprise 1,2 s plus tard (`scheduleResume`). Conséquence : une pause depuis l'écran verrouillé, un écran de voiture, un casque Bluetooth ou le Centre de contrôle était **annulée par l'appli elle-même**. Seul le bouton pause de l'interface fonctionnait.
+
+C'est le geste que fait un auditeur quand quelqu'un lui parle. Ne pas pouvoir couper le son est le genre de défaut qui fait désinstaller.
+
+Les commandes `play`, `pause` et `stop` passent désormais par la même logique d'intention que les boutons de l'appli. `play` distingue les deux cas qu'il confondait : reprise après interruption (l'intention « en lecture » n'a jamais changé, on ne repasse pas par `togglePlay` qui mettrait en pause) et démarrage à froid. Il réinitialise aussi `resyncMuting`, sans quoi un play depuis l'écran verrouillé pouvait relancer la lecture **sans son** si une reconnexion s'était bloquée.
+
+### 76.2 L'appli ne s'ouvrait pas hors ligne depuis l'écran d'accueil
+
+`manifest.json` déclare `start_url: "/?source=pwa"`. Le service worker préchargeait `'./'` et interrogeait le cache par `caches.match(req)` **sans `ignoreSearch`** : la chaîne de requête compte, `/?source=pwa` ne correspondait donc à aucune entrée. Réseau absent → `.catch(() => cached)` rendait `undefined` → `event.respondWith(undefined)` → **page d'erreur du navigateur**. Il n'existait par ailleurs aucun repli de navigation, contrairement au site et à son `hors-ligne.html`.
+
+Le bandeau hors ligne de l'appli promet pourtant que « la cohérence cardiaque et le programme restent dispo ». C'était faux exactement là où ça comptait : métro, avion, sous-sol.
+
+Les navigations sont désormais traitées à part, servies depuis `./index.html` en cache avec `ignoreSearch`, rafraîchies en tâche de fond pour la prochaine ouverture — même stratégie que le reste de la coquille. `CACHE_VERSION` passé à `v16`.
+
+### 76.3 Deux écouteurs `pause` qui se contredisaient
+
+Un second écouteur `pause`, indépendant, remettait l'analyse BPM/énergie à zéro et vidait les barres du spectre — y compris sur les interruptions système que l'appli rattrape toute seule. Après un appel téléphonique, l'interface se vidait alors que la lecture reprenait une seconde plus tard. Fusionné en un écouteur unique ; la remise à zéro (`resetTrackAnalysis`) n'a plus lieu que sur une pause voulue.
+
+### 76.4 Le curseur de volume mentait
+
+Le volume était bien enregistré et restauré sur le lecteur, mais **pas sur le curseur**, figé à 80. Un auditeur qui avait baissé à 20 % rouvrait l'appli sur une interface en désaccord avec ce qu'il entendait. Restauré, avec `parseFloat` et validation de l'intervalle : une valeur corrompue en stockage levait jusqu'ici une exception non rattrapée qui **cassait tout le script en aval**. Le curseur étant absent sur iOS (remplacé par une note, le réglage par script y étant bloqué), la restauration est gardée.
+
+### Vérifications
+
+Les deux défauts principaux ont été reproduits **avant** correction, puis vérifiés après, sur Chromium piloté par Playwright, avec l'élément `<audio>` neutralisé et les appels à `play()` comptés :
+
+| Vérification | Code d'origine | Après correction |
+|---|---|---|
+| Pause depuis l'écran verrouillé | 1 reprise automatique, `playing` reste à `true` | 0 reprise, `playing` passe à `false`, le bouton réaffiche « lecture » |
+| Interruption système (non-régression) | reprise automatique | reprise automatique — comportement conservé |
+| Ouverture hors ligne sur `/?source=pwa` | `net::ERR_FAILED` | page servie, 5 onglets présents |
+| Curseur de volume après réouverture | — | curseur à 23 pour un volume de 0,23 |
+| Valeur de volume corrompue en stockage | — | aucune exception levée |
+
+Syntaxe des deux blocs `<script>` et du service worker validée par `node --check`. Aucune modification d'interface, de contenu ni d'URL.
+
+### Reste à faire (par ordre d'effet décroissant)
+
+1. **Afficher le titre en cours dès l'ouverture** — `fetchNow()` n'est appelée que dans le `.then()` de `togglePlay`, donc l'appli affiche « Radio Odyssey / Positive radio ✨ » tant qu'on n'a pas appuyé sur play. C'est l'information qui décide d'écouter, et le levier le plus direct sur les 35 % d'écoutes de moins de 30 s.
+2. **Instrumenter l'appli** — un seul événement Umami aujourd'hui (les changements d'onglet), contre une dizaine sur le site depuis le §72. La surface qui retient deux fois mieux est celle sur laquelle on ne sait rien.
+3. Sondage du titre aligné sur la fin réelle du morceau (comme `RadioPlayer.astro`) plutôt que toutes les 10 s, y compris écran éteint ; palier progressif sur les reconnexions (aujourd'hui : toutes les 5 s, indéfiniment).
+4. Polices auto-hébergées (perdues hors ligne, et transfert d'IP vers Google sans consentement) ; **mentions légales et politique de confidentialité absentes de `app.radio-odyssey.com`**.
+5. Grille du week-end et du vendredi soir (l'onglet Programme est statique 7 j/7 alors que le §58 a établi une grille distincte) ; `.sched-item.current` est stylé mais n'est appliqué par aucune ligne de JavaScript.
+6. Dépôt GitHub pour l'appli — aucun dépôt distant aujourd'hui, publication manuelle par `npx vercel --prod`, donc pas de sauvegarde hors machine ni de retour arrière simple.
+7. Contraste : `--muted` (#7878a8) donne 3,11:1 sur les cartes, sous le seuil AA de 4,5:1, alors qu'il porte l'artiste du titre en cours et tout l'historique.
+
+---
+
+*Dernière mise à jour : 2026-08-16, correctifs de fiabilité de l'appli V8 (§76).*
