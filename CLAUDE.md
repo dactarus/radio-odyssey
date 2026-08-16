@@ -4,7 +4,7 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-16 (§78).*
+*Dernière mise à jour de ce fichier : 2026-08-16 (§79).*
 
 ## Objectif du projet
 
@@ -32,7 +32,6 @@ Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → U
 - Domaine canonique : `https://www.radio-odyssey.com`
 - Le domaine `radio-odyssey.fr` appartient également au propriétaire et redirige (301) vers `.com` — pas de contenu dupliqué à gérer, mais rester vigilant si de nouvelles pages sont créées
 - Balises `canonical` présentes sur toutes les pages (générées par `Layout.astro`)
-- `console.html` (voir plus bas) ne doit pas être indexée (`noindex`, exclue du sitemap et idéalement bloquée dans robots.txt)
 
 ### Corrections déjà faites (dans le dossier fourni)
 - `sitemap.xml` : corrigé, toutes les URLs pointent vers `www.radio-odyssey.com` (elles pointaient à tort vers `radio-odyssey.fr`)
@@ -79,7 +78,7 @@ Trois modules **dérivés** alimentent les fiches artistes (§61-63). Aucun ne s
 
 ⚠️ `artist-stats.js` expose `JOURS_RELEVE` (92) et `PERIODE_RELEVE` (« du 14 mai au 13 août 2026 »). **Si la fenêtre de comptage d'`artists.js` change, ces deux constantes doivent changer avec elle**, sinon la fréquence hebdomadaire affichée sur les 147 fiches est fausse.
 
-**Fichiers statiques** (`public/`) : `sitemap.xml` (maintenu à la main et par la console), `robots.txt`, `llms.txt`, `manifest.json`, `sw.js`, `hors-ligne.html`, `console.html` (ancien outil, `noindex`).
+**Fichiers statiques** (`public/`) : `sitemap.xml` (maintenu à la main et par la console), `robots.txt`, `llms.txt`, `manifest.json`, `sw.js`, `hors-ligne.html`.
 
 ## Application installable (PWA)
 
@@ -99,7 +98,7 @@ Depuis le 2026-08-09, `www.radio-odyssey.com` est **installable depuis n'importe
 
 ⚠️ **Test sur iPhone obligatoire avant publication** pour tout ce qui touche à la lecture, à la pause ou à la reconnexion : le banc d'essai Playwright ne voit pas la session audio d'iOS et validait les quatre correctifs du §76, dont un s'est révélé nuisible. `npx vercel` **sans** `--prod` crée une préversion installable sur l'écran d'accueil.
 
-**Conformité de l'appli** (§78) : polices Nunito et Inter **auto-hébergées** dans `fonts/` (fichiers variables, sous-ensemble latin, ajoutées à la coquille du service worker) — plus aucune requête vers Google, la typographie survit au mode hors ligne, et aucune IP d'auditeur ne part chez un tiers. ⚠️ Le sous-ensemble latin couvre `U+0152-0153` (Œ/œ), employé par « Cœur en cohérence » : le vérifier avant tout changement de sous-ensemble. Mentions légales et politique de confidentialité liées depuis l'onglet « À propos », vers les pages du site. ⚠️ `public/console.html` du site charge encore des polices Google — même exposition, sur un outil obsolète.
+**Conformité de l'appli** (§78) : polices Nunito et Inter **auto-hébergées** dans `fonts/` (fichiers variables, sous-ensemble latin, ajoutées à la coquille du service worker) — plus aucune requête vers Google, la typographie survit au mode hors ligne, et aucune IP d'auditeur ne part chez un tiers. ⚠️ Le sous-ensemble latin couvre `U+0152-0153` (Œ/œ), employé par « Cœur en cohérence » : le vérifier avant tout changement de sous-ensemble. Mentions légales et politique de confidentialité liées depuis l'onglet « À propos », vers les pages du site.
 
 **Mesure de l'appli** (§77.3) : `roUmamiTrack(nom, data)` y est repris à l'identique de `Footer.astro`, avec les mêmes noms d'événements et `surface: 'appli'` en plus. ⚠️ Ne jamais renommer un événement d'un côté sans l'autre, et garder la table `PLATEFORMES` de l'appli alignée avec celle du site et avec `SAME_AS` de `Layout.astro`.
 
@@ -171,7 +170,7 @@ npm run preview        # http://localhost:4321 — Ctrl+C pour rendre la main
 
 ## Console d'édition
 
-L'ancien `console.html` (édition de HTML brut, téléchargement manuel du fichier modifié) est obsolète depuis la migration Astro : le HTML final est généré à chaque build, donc toute édition directe aurait été écrasée. Il reste présent dans `public/console.html` (noindex, exclu du sitemap) mais n'est plus l'outil à utiliser.
+L'ancien `console.html` (édition de HTML brut, téléchargement manuel du fichier modifié) était obsolète depuis la migration Astro : le HTML final est généré à chaque build, donc toute édition directe aurait été écrasée. **Supprimé au §79** — il restait accessible en ligne et chargeait des polices Google, donc transmettait l'IP de chaque visiteur à un tiers, pour un outil que plus personne n'utilisait. La ligne `Disallow: /console.html` a été retirée de `robots.txt` dans le même mouvement, pour que les moteurs puissent constater le 404 et retirer l'URL de leurs index.
 
 **Nouvelle console (Phase 1, construite le 2026-07-05)** : outil local dans `admin-console/` (hors de `src/` et `public/`, donc jamais inclus dans le build ni déployé). Lancement : `npm run console` (port 4400) — démarre aussi automatiquement `npm run dev` (aperçu Astro, port 4321) si besoin.
 

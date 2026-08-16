@@ -2399,3 +2399,21 @@ Inchangé par rapport au §77, moins les points traités ici : lecture des nouve
 ---
 
 *Dernière mise à jour : 2026-08-16, conformité et polices de l'appli V8 (§78).*
+
+---
+
+## 79. Suppression de l'ancienne console d'édition (2026-08-16)
+
+`public/console.html` — l'outil d'édition de HTML brut d'avant la migration Astro — était obsolète depuis le §0 mais restait servi en ligne. Relevé au §78 en traitant les polices de l'appli : **cette page chargeait encore Nunito, Inter et JetBrains Mono depuis `fonts.googleapis.com`**, et transmettait donc l'adresse IP de tout visiteur à Google, sans consentement, pour un outil que plus personne n'utilise et qui ne pouvait plus rien faire d'utile (le HTML final étant regénéré à chaque build, toute édition directe aurait été écrasée).
+
+La supprimer règle la question sans écrire une ligne de code, et retire 37 Ko du déploiement.
+
+**Vérifications faites avant de supprimer** : aucune page du site n'y renvoie (`grep` sur `src/`), l'URL n'est pas au sitemap, et aucune règle de `vercel.json` ne la concerne. Le seul point d'attache était `robots.txt`.
+
+⚠️ **La ligne `Disallow: /console.html` a été retirée de `robots.txt` en même temps.** C'est délibéré et c'est le bon ordre : une URL interdite au crawl ne peut pas être constatée disparue. En laissant les moteurs y accéder, ils reçoivent un 404 et retirent l'URL de leurs index. La garder aurait figé une adresse morte dans les résultats. Même raisonnement que pour toute page supprimée : laisser voir le 404 plutôt que le masquer.
+
+Reste dans `robots.txt` : les interdictions sur `/sitemap.xml/` et `/hors-ligne.html`, toujours justifiées.
+
+---
+
+*Dernière mise à jour : 2026-08-16, suppression de la console d'édition (§79).*
