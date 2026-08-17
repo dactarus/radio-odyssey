@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /sitemap.xml/
 Disallow: /hors-ligne.html
 
 # Robots des IA génératives — autorisés explicitement (déjà couverts par

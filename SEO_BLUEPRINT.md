@@ -2433,7 +2433,7 @@ La supprimer règle la question sans écrire une ligne de code, et retire 37 Ko 
 
 ⚠️ **La ligne `Disallow: /console.html` a été retirée de `robots.txt` en même temps.** C'est délibéré et c'est le bon ordre : une URL interdite au crawl ne peut pas être constatée disparue. En laissant les moteurs y accéder, ils reçoivent un 404 et retirent l'URL de leurs index. La garder aurait figé une adresse morte dans les résultats. Même raisonnement que pour toute page supprimée : laisser voir le 404 plutôt que le masquer.
 
-Reste dans `robots.txt` : les interdictions sur `/sitemap.xml/` et `/hors-ligne.html`, toujours justifiées.
+Reste dans `robots.txt` : les interdictions sur `/sitemap.xml/` et `/hors-ligne.html`, toujours justifiées. ⚠️ *Jugement erroné pour `/sitemap.xml/` — le raisonnement du paragraphe précédent lui était applicable et n'a pas été appliqué. Corrigé au §93.*
 
 ---
 
@@ -3114,3 +3114,44 @@ Build : 291 pages, aucune erreur. Mesuré sur navigateur piloté, à 1280 px : l
 ---
 
 *Dernière mise à jour : 2026-08-17, resserrement du bloc « Where to start » (§92).*
+
+---
+
+## 93. Search Console : 135 pages non indexées, deux familles, une seule à corriger (2026-08-17)
+
+Le propriétaire relève dans la Search Console **139 pages non indexées pour 112 indexées** (données au 14/08/2026). Un tel écart mérite d'être ouvert avant de conclure quoi que ce soit : la répartition par motif dit presque tout.
+
+| Motif | Pages |
+|---|---|
+| Détectée, actuellement non indexée | **135** |
+| Page avec redirection | 3 |
+| Autre page avec balise canonique correcte | 1 |
+| Explorée, actuellement non indexée | **0** |
+
+⚠️ **Le zéro est le chiffre important.** « Explorée, actuellement non indexée » signifie *Google a lu la page et l'a jugée sans intérêt* — c'est le seul motif qui porte un jugement de qualité. Il est à zéro. « Détectée » signifie seulement *connue, pas encore visitée* : c'est une file d'attente, pas un verdict. Confondre les deux fait corriger un problème qui n'existe pas.
+
+Lecture des 135 URLs : elles se répartissent en deux familles qui n'ont rien à voir.
+
+### Famille 1 — une centaine de fiches artistes en attente de crawl
+
+Une centaine de `www.radio-odyssey.com/artiste-*.html`, publiées entre le 11 et le 14/08. **147 pages apparues en trois jours sur un site qui en comptait 110** : le budget de crawl ne suit pas, et c'est normal. Aucune action. Le sitemap les déclare, IndexNow les a signalées, elles entreront par vagues. Y toucher serait s'agiter.
+
+### Famille 2 — une vingtaine d'URLs fantômes que Google ne pourra jamais retirer
+
+Une vingtaine de `radio-odyssey.com/sitemap.xml/<slug>.html` — **sans `www`**, héritage de l'ancien site Mobirise, où le plan du site était un dossier. `vercel.json` les traite depuis longtemps : cinq règles nommées, plus le fourre-tout `/sitemap.xml/:slug.html` → `/:slug.html`, toutes en 301.
+
+Ces redirections n'ont jamais été vues. `robots.txt` portait `Disallow: /sitemap.xml/` : **une URL interdite au crawl ne peut pas être constatée redirigée.** Google la connaît, ne peut pas la visiter, ne peut donc pas apprendre qu'elle a déménagé — et la garde indéfiniment en « détectée ». Le robots.txt, censé faire le ménage, était exactement ce qui empêchait le ménage de se faire.
+
+C'est **mot pour mot le raisonnement du §79**, écrit la veille pour `/console.html` : *« une URL interdite au crawl ne peut pas être constatée disparue »*. La ligne voisine, dans le même fichier, relevait du même traitement — et le §79 la déclare explicitement « toujours justifiée ». La leçon avait été tirée sans être appliquée au cas d'à côté.
+
+**Ligne retirée.** `Disallow: /hors-ligne.html` reste : c'est la page de repli du service worker, sans contenu propre, et rien ne redirige depuis elle.
+
+Aucun effet sur le sitemap lui-même : la directive visait `/sitemap.xml/` **avec barre finale**, donc le dossier fantôme, jamais le fichier `/sitemap.xml`. La ligne `Sitemap:` est intacte.
+
+### À retenir
+
+Une règle de `robots.txt` et une règle de redirection qui portent sur la même adresse **se neutralisent** : la première gagne toujours, et elle gagne en silence. Avant d'ajouter un `Disallow`, vérifier qu'aucune redirection ne concerne le chemin visé. ⚠️ Deux occurrences en deux jours dans un fichier de quatre lignes.
+
+---
+
+*Dernière mise à jour : 2026-08-17, retrait du blocage qui empêchait les 301 du plan de site fantôme d'être vues (§93).*
