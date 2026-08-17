@@ -208,6 +208,7 @@ export const EN_NAV_CATEGORIES = [
       { href: '/en/artist-abba.html', bi: 'disc', label: 'Abba', desc: 'Six tracks, all remixed' },
       { href: '/en/artist-coldplay.html', bi: 'soundwave', label: 'Coldplay', desc: '8 tracks in rotation' },
       { href: '/en/artist-dua-lipa.html', bi: 'lightning-charge', label: 'Dua Lipa', desc: '8 tracks in rotation' },
+      { href: '/en/80s-music-quiz.html', bi: 'trophy', label: '80s Music Quiz', desc: '20 questions on the tracks we play' },
     ],
   },
   {

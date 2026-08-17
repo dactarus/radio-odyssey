@@ -35,30 +35,56 @@
               concaténé, de nom d'iframe unique si plusieurs instances
               cohabitaient un jour sur une même page.
 */
-const { context = 'site' } = Astro.props;
+const { context = 'site', lang = 'fr' } = Astro.props;
+
+// §89 : le formulaire apparaît aussi sur les quiz anglais. Le double opt-in
+// et la liste Brevo restent les mêmes — seuls les libellés changent.
+// ⚠️ Ne pas toucher au nom du champ `EMAIL` ni au piège à robots
+// `email_address_check` : ils sont imposés par le formulaire Brevo (§74).
+const T = lang === 'en'
+  ? {
+      titre: '📻 Want to follow Radio Odyssey\u00a0?',
+      accroche: 'An email now and then, so you never miss anything — never more than that.',
+      champ: 'your@email.com',
+      champAria: 'Email address',
+      bouton: 'Sign up',
+      consentement: 'I agree to receive emails from Radio Odyssey and I have read the ',
+      consentementLien: 'privacy policy',
+      succes: '✅ Thank you\u00a0! Check your inbox to confirm your subscription.',
+    }
+  : {
+      titre: '📻 Envie de suivre Radio Odyssey\u00a0?',
+      accroche: 'Un e-mail de temps en temps, pour ne rien rater — jamais plus.',
+      champ: 'votre@email.com',
+      champAria: 'Adresse e-mail',
+      bouton: "S'inscrire",
+      consentement: "J'accepte de recevoir des e-mails de Radio Odyssey et j'ai pris connaissance de la ",
+      consentementLien: 'politique de confidentialité',
+      succes: '✅ Merci\u00a0! Vérifiez votre boîte mail pour confirmer votre inscription.',
+    };
 const frameName = `ro-newsletter-frame-${context}`;
 ---
 <div class="ro-newsletter" data-newsletter={context}>
-  <p class="ro-newsletter-title">📻 Envie de suivre Radio Odyssey&nbsp;?</p>
-  <p class="ro-newsletter-copy">Un e-mail de temps en temps, pour ne rien rater — jamais plus.</p>
+  <p class="ro-newsletter-title" set:html={T.titre}></p>
+  <p class="ro-newsletter-copy">{T.accroche}</p>
 
   <form class="ro-newsletter-form"
         target={frameName}
         action="https://74fb5591.sibforms.com/serve/MUIFADxa36pt5ncGGVgysL36gLuncBCB2L7ZQK5YSPp-aI8UbuiyyeKuLJoaC80lE48LzUj47VlLuI31mtJHXOz6ZAstIO9qHI5cKEEvx9nL91S-aDwYy0wMhT9dMJ492PWzFnggXhAMXZi57fcLOzNtSVklZpopzrFasHVqprmErdTkU8l_ReIVtUu42mQI_DZXiLIxryZdhDkkqw=="
         method="POST">
     <div class="ro-newsletter-row">
-      <input type="email" name="EMAIL" required placeholder="votre@email.com" class="ro-newsletter-input" aria-label="Adresse e-mail" />
-      <button type="submit" class="btn-hero ro-newsletter-submit">S'inscrire</button>
+      <input type="email" name="EMAIL" required placeholder={T.champ} class="ro-newsletter-input" aria-label={T.champAria} />
+      <button type="submit" class="btn-hero ro-newsletter-submit">{T.bouton}</button>
     </div>
     <label class="ro-newsletter-consent">
       <input type="checkbox" required />
-      <span>J'accepte de recevoir des e-mails de Radio Odyssey et j'ai pris connaissance de la <a href="/politique-de-confidentialite.html">politique de confidentialité</a>.</span>
+      <span>{T.consentement}<a href="/politique-de-confidentialite.html">{T.consentementLien}</a>.</span>
     </label>
     <input type="text" name="email_address_check" value="" class="ro-newsletter-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
     <input type="hidden" name="locale" value="fr" />
   </form>
 
-  <p class="ro-newsletter-success" hidden>✅ Merci&nbsp;! Vérifiez votre boîte mail pour confirmer votre inscription.</p>
+  <p class="ro-newsletter-success" hidden set:html={T.succes}></p>
 
   <iframe name={frameName} class="ro-newsletter-iframe" title="Confirmation d'inscription" hidden></iframe>
 </div>

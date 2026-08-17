@@ -2933,3 +2933,68 @@ Vérifications avant envoi : aucun secret en dur dans les fichiers **ni dans les
 ---
 
 *Dernière mise à jour : 2026-08-17, pause de l'écran verrouillé qui tient enfin (§88).*
+
+---
+
+## 89. Version anglaise — lot 5 : le quiz des années 80, et la fin du chantier (2026-08-17)
+
+Dernier lot. Le choix du quiz à traduire s'est fait sur les données plutôt qu'à l'instinct : pour chacun des huit quiz, combien de bonnes réponses sont des artistes internationaux, et combien ont déjà une fiche anglaise.
+
+| Quiz | Réponses internationales | Dont une fiche anglaise |
+|---|---|---|
+| **années 80** | 17 / 20 | **8** |
+| records | 19 / 20 | 5 |
+| années 90 | 17 / 20 | 4 |
+| années 2000 | 17 / 20 | 0 |
+
+Le quiz des années 80 l'emporte largement : c'est l'identité de la station, et ses bonnes réponses recoupent huit des vingt fiches traduites au §86 — donc huit fiches qui regagnent leur bloc quiz du même coup.
+
+### Les questions ne se traduisent pas
+
+C'est la découverte qui a rendu ce lot rapide : les questions sont des **titres de morceaux et des noms d'artistes**. « Billie Jean », « Take On Me », Michael Jackson, A-ha — rien de tout cela n'a de version française. Les vingt questions sont donc reprises à l'identique, et seuls l'habillage et le moteur ont été traduits.
+
+⚠️ **Conséquence à connaître : c'est le seul endroit où les deux pages peuvent diverger.** Si une question est corrigée d'un côté, il faut la corriger de l'autre. Un contrôle automatique compare désormais les vingt intitulés des deux pages construites.
+
+Le moteur est une copie, comme pour les cinq quiz français par décennie (§69). Assumé : le mutualiser obligerait à refondre six pages pour un gain nul aujourd'hui.
+
+### Le bloc quiz revient tout seul sur les fiches
+
+Nouveau module `data/quiz-artistes-en.js`, jumeau de `quiz-artistes.js` avec une différence de périmètre : il ne lit que `src/pages/en/*quiz*.astro`. Une fiche anglaise ne peut donc jamais renvoyer vers un quiz français (§82).
+
+Le §86 avait masqué ce bloc faute de quiz anglais. Il n'a pas fallu le rallumer : la condition existait déjà, et le bloc est réapparu de lui-même **sur exactement les huit fiches attendues** — Michael Jackson, Queen, Wham!, Madonna, A-ha, Simple Minds, Phil Collins, Sade. Traduire un second quiz l'étendra sans toucher au gabarit.
+
+⚠️ Comme côté français, si l'extraction ne trouve plus rien, le bloc disparaît **sans erreur au build** — c'est arrivé au §69. Le contrôle de non-régression est donc explicite : après build, comparer la liste des fiches portant le bloc à celle des bonnes réponses du quiz.
+
+`NewsletterCapture.astro` est devenu bilingue au passage : le formulaire apparaît sur les pages de quiz, il aurait été en français au milieu d'une page anglaise. La liste Brevo et le double opt-in sont inchangés. ⚠️ Le champ `EMAIL` et le piège à robots `email_address_check` sont imposés par Brevo (§74) — ne pas les renommer.
+
+### Vérifications
+
+Build : **285 pages**, aucune erreur, 2 langues indexées. Sur `dist/` : **42 067 liens internes vérifiés sans une cible absente**, 267 URL au sitemap toutes présentes, 62 pages en `hreflang` réciproques, aucun libellé français visible sur le quiz anglais, aucun lien vers du français depuis lui, et les 20 questions identiques des deux côtés.
+
+⚠️ **Un quiz est interactif : aucun contrôle statique ne dit s'il fonctionne.** Vérifié sur navigateur piloté — la première réponse affiche « ✅ Correct! », les dix questions s'enchaînent, l'écran « Perfect score! » débloque le round bonus, zéro erreur JavaScript. C'est le même principe qu'au §84 : le HTML construit peut être parfait et le comportement mort.
+
+### Le chantier anglais est terminé
+
+Cinq lots, du §81 au §89 :
+
+| Lot | Résultat |
+|---|---|
+| 1 (§81) | 13 pages sous `/en/`, 13 redirections 301, `hreflang` corrigé sur les 258 pages |
+| 2 (§82) | Accueil `/en.html`, interface entièrement bilingue, 5 pages traduites |
+| 3 (§83) | Bloc E-E-A-T sur les deux pages anglaises de cohérence cardiaque |
+| 4 (§86-§87) | 20 fiches artistes, page de regroupement, groupe « Artists » au menu |
+| 5 (§89) | Quiz des années 80, bloc quiz rebranché sur 8 fiches |
+
+**40 pages anglaises** au total, contre 13 pages sans accueil ni navigation lisible au départ.
+
+Trois défauts trouvés en chemin n'avaient rien à voir avec l'anglais et étaient **en production depuis des mois** : le `hreflang` auto-référent des 258 pages (§81), la recherche interne et le bandeau cookies morts après toute navigation interne (§84), et le service worker qui faussait chaque essai en local (§87). Aucun n'aurait été trouvé sans le test manuel du propriétaire.
+
+### Reste ouvert
+
+- **Décision en attente** : appliquer ou non aux 129 fiches françaises la reformulation des chiffres de diffusion du §86.
+- Un second quiz anglais (le quiz « records », 19 réponses internationales sur 20) étendrait le bloc quiz à cinq fiches de plus.
+- Les 127 autres artistes internationaux du catalogue : une entrée dans `artists-en.js` suffit pour chacun.
+
+---
+
+*Dernière mise à jour : 2026-08-17, quiz anglais des années 80 — le chantier anglais est terminé (§89).*
