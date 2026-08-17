@@ -1,0 +1,124 @@
+---
+/*
+  Page de regroupement des fiches artistes anglaises (§87).
+
+  Créée parce que les 20 fiches du §86 n'avaient aucune porte d'entrée : au
+  sitemap, liées entre elles, mais introuvables depuis le menu — on n'y
+  arrivait que par la recherche. Vingt pages qui ne reçoivent de liens que
+  d'elles-mêmes forment un îlot, pour un lecteur comme pour un robot.
+
+  ⚠️ Les artistes sont groupés par époque et listés dans l'ordre du fichier
+  de données, jamais triés par nombre de passages : un tri par volume
+  réintroduirait le palmarès retiré des fiches au §86.
+*/
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
+import { ARTISTS } from '../../data/artists.js';
+import { ARTISTS_EN, SLUGS_EN, PAR_EPOQUE } from '../../data/artists-en.js';
+import { PERIODE_RELEVE_EN } from '../../data/artist-stats.js';
+
+const fiche = (slug) => {
+  const a = ARTISTS.find((x) => x.slug === slug);
+  return { slug, name: a.name, genre: a.genre, origin: a.origin, titres: a.tracks.length };
+};
+const classiques = PAR_EPOQUE('classics').map(fiche);
+const aujourdhui = PAR_EPOQUE('today').map(fiche);
+
+const faq = [
+  { q: 'How are these artists chosen?', a: "They are artists actually played on Radio Odyssey, picked from the station's own broadcast log — not a wish list. Each page shows how many times we played them and over what period." },
+  { q: 'Why are some artists missing?', a: `Radio Odyssey plays ${ARTISTS.length} artists in total. These ${SLUGS_EN.length} have a page written in English so far; the others have one in French. More are added over time.` },
+  { q: 'Where do the play figures come from?', a: `From our own broadcast log, covering ${PERIODE_RELEVE_EN}. They are recalculated at every build, so a page never drifts from the schedule it describes.` },
+];
+---
+<Layout
+  lang="en"
+  title="Artists Played on Radio Odyssey — the full English list"
+  description="From Madonna and Queen to Dua Lipa and Coldplay: the artists actually played on Radio Odyssey, with real play figures taken from our own broadcast log."
+>
+  <PageHero
+    gradientFrom="#7B2FBE"
+    gradientTo="#00C6FF"
+    homeLabel="🏠 Home"
+    homeHref="/en.html"
+    breadcrumbCurrent="Artists played on Radio Odyssey"
+    title="Artists on Radio Odyssey"
+    text="Who we actually play — with the real figures from our own broadcast log, not a wish list."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="19" cy="27" r="14" stroke="white" stroke-width="2.3"/><circle cx="19" cy="27" r="4.5" stroke="white" stroke-width="1.8"/><path d="M27 13L37 9V21L27 25Z" stroke="rgba(255,255,255,.8)" stroke-width="1.8" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Radio Odyssey plays {ARTISTS.length} artists across three worlds: 80s hits reimagined, dance and electro, and recent releases. Each page below is built from the station's own broadcast log — how many times we played them, how many of their tracks are in rotation, and over which period. Nothing here is a wish list.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>The classics we keep playing</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.7rem;margin-top:.9rem;">
+              {classiques.map((a) => (
+                <a href={`/en/artist-${a.slug}.html`} style="display:block;text-decoration:none;color:inherit;background:linear-gradient(135deg,rgba(123,47,190,.07),rgba(255,60,172,.05));border:1px solid rgba(123,47,190,.12);border-radius:14px;padding:.85rem 1rem;">
+                  <strong style="color:var(--ro-purple);font-family:'Nunito',sans-serif;font-size:1.02rem;">{a.name}</strong>
+                  <span style="display:block;font-size:.78rem;color:var(--ro-muted);margin-top:.15rem;">{a.genre} — {a.origin}</span>
+                  <span style="display:block;font-size:.74rem;color:var(--ro-muted);margin-top:.2rem;">{a.titres} {a.titres === 1 ? 'track' : 'tracks'} in rotation</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>On today's playlist</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.7rem;margin-top:.9rem;">
+              {aujourdhui.map((a) => (
+                <a href={`/en/artist-${a.slug}.html`} style="display:block;text-decoration:none;color:inherit;background:linear-gradient(135deg,rgba(0,198,255,.08),rgba(123,47,190,.05));border:1px solid rgba(0,198,255,.15);border-radius:14px;padding:.85rem 1rem;">
+                  <strong style="color:var(--ro-purple);font-family:'Nunito',sans-serif;font-size:1.02rem;">{a.name}</strong>
+                  <span style="display:block;font-size:.78rem;color:var(--ro-muted);margin-top:.15rem;">{a.genre} — {a.origin}</span>
+                  <span style="display:block;font-size:.74rem;color:var(--ro-muted);margin-top:.2rem;">{a.titres} {a.titres === 1 ? 'track' : 'tracks'} in rotation</span>
+                </a>
+              ))}
+            </div>
+            <p style="margin:1.2rem 0 0;font-size:.85rem;color:var(--ro-muted);">
+              Play figures on every page come from our own broadcast log, {PERIODE_RELEVE_EN}, and are recalculated at each update.
+            </p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="en-artists" lang="en" />
+
+          <RelatedPages
+            lang="en"
+            alsoLike={[
+              { href: '/en/80s-throwback-radio-online.html', label: '80s Throwback Radio', desc: 'Classic hits, reimagined' },
+              { href: '/en/feel-good-music-radio.html', label: 'Feel Good Music Radio', desc: 'Pure feel-good music, all day' },
+              { href: '/en/european-chill-radio.html', label: 'European Chill Radio', desc: 'Laid-back chill vibes' },
+            ]}
+            associated={[
+              { href: '/en/what-makes-radio-odyssey-different.html', label: 'What Makes Radio Odyssey Different' },
+              { href: '/en/the-story-of-radio-odyssey.html', label: 'The Story of Radio Odyssey' },
+              { href: '/en.html', label: 'English home' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Hear them live, right now</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Listen to Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar lang="en" />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

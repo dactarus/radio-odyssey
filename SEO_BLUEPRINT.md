@@ -2829,3 +2829,48 @@ Build : **283 pages** (263 + 20), aucune erreur, 2 langues indexées. Sur `dist/
 ---
 
 *Dernière mise à jour : 2026-08-17, fiches artistes anglaises et reformulation des chiffres de diffusion (§86).*
+
+---
+
+## 87. Les vingt fiches anglaises n'avaient aucune porte d'entrée, et le service worker faussait tous les essais en local (2026-08-17)
+
+Deux défauts relevés par le propriétaire en testant le §86, tous deux plus importants qu'ils n'en avaient l'air.
+
+### 1. Vingt pages qu'on ne pouvait atteindre que par la recherche
+
+*« Je ne vois pas où se trouve artistes en anglais, mais quand je fais une recherche je tombe sur les fiches. »*
+
+Exact, et ce n'était pas un problème d'ergonomie mais de maillage. Les 20 fiches du §86 étaient au sitemap et liées entre elles — et à rien d'autre. Vingt pages qui ne reçoivent de liens que d'elles-mêmes forment un îlot : un lecteur ne les trouve pas, un robot leur attribue le poids que leur donnent leurs liens entrants, c'est-à-dire presque rien. Le §61 avait fait tout l'inverse côté français.
+
+Deux corrections :
+
+- **Une page de regroupement**, `/en/artists-on-radio-odyssey.html`, qui présente les 20 fiches avec genre, origine et nombre de titres en rotation.
+- **Un quatrième groupe « Artists » dans la navigation anglaise**, contenant la page de regroupement et cinq fiches en accès direct. Le menu anglais compte désormais Listen · Calm & Focus · Artists · About.
+
+⚠️ **La page de regroupement classe par époque, jamais par nombre de passages.** Trier cette liste par volume de diffusion réintroduirait exactement le palmarès retiré des fiches au §86 — au niveau supérieur, et de façon encore plus visible. Deux sections : « The classics we keep playing » (16) et « On today's playlist » (4), l'appartenance étant portée par un champ `ere` dans `artists-en.js` plutôt que déduite d'un chiffre.
+
+Effet mesuré sur le HTML construit : les fiches reçoivent désormais **de 2 à 40 liens entrants** chacune, aucune n'en reçoit un seul ou zéro.
+
+### 2. Le service worker faussait tous les essais en local
+
+Le propriétaire est tombé sur la page « Pas de connexion » en aperçu local, avec une navigation erratique et des fiches invisibles — alors que son `dist/` contenait bien les 20 pages, construites après le commit.
+
+**C'était le service worker.** Enregistré sur `localhost` comme sur la production, il s'intercalait entre le navigateur et le serveur d'aperçu : cache de l'ancienne structure du site, page hors ligne servie dès que l'aperçu redémarre, et correctif qu'on croit inopérant alors qu'il est simplement invisible.
+
+⚠️ **Ce n'était pas la première fois : c'est le troisième diagnostic faux qu'il provoque.** Au §84, la recherche paraissait cassée en anglais alors qu'elle était réparée. Au §86, les fiches semblaient absentes alors qu'elles étaient construites. À chaque fois, du temps perdu à chercher un défaut inexistant dans le code.
+
+**Le service worker ne s'enregistre plus que sur `www.radio-odyssey.com`** (une condition sur `location.hostname` dans `Layout.astro`). En production, rien ne change : même installation sur l'écran d'accueil, même fonctionnement hors ligne, même stratégie de cache. En local et sur les préversions Vercel, il disparaît — **ce que montre l'aperçu redevient exactement ce que le build a produit.**
+
+⚠️ Conséquence à connaître : le mode hors ligne et l'installation PWA ne sont donc plus testables en local. Ils ne l'étaient déjà pas utilement — le cache local mentait plus qu'il n'informait. Pour les vérifier, c'est en production, ou sur `app.radio-odyssey.com` pour l'application, qui a son propre service worker et n'est pas concernée par ce changement.
+
+### Vérifications
+
+Build : **284 pages**, aucune erreur, 2 langues indexées. Sur `dist/` : 39 pages anglaises (17 éditoriales + 20 fiches + 1 regroupement + l'accueil), **41 843 liens internes vérifiés sans une cible absente**, 266 URL au sitemap toutes présentes, aucune fiche artiste anglaise en dessous de 2 liens entrants, et la condition `surLaProd` bien présente dans le HTML construit.
+
+### Reste à faire
+
+Lot 5 (un ou deux quiz traduits, ce qui fera réapparaître le bloc quiz sur les fiches), et la décision en attente sur la reformulation des 129 fiches françaises.
+
+---
+
+*Dernière mise à jour : 2026-08-17, page de regroupement des artistes anglais et service worker limité à la production (§87).*

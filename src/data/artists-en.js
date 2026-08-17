@@ -26,6 +26,7 @@ const FEEL_GOOD = { linkHref: '/en/feel-good-music-radio.html', linkLabel: 'feel
 
 export const ARTISTS_EN = {
   'madonna': {
+    ere: 'classics',
     facts: [
       'Madonna Louise Ciccone, born in Michigan in 1958, moved to New York at nineteen with 35 dollars to her name.',
       '"Like a Virgin" (1984) was her first number one on the Billboard Hot 100.',
@@ -35,6 +36,7 @@ export const ARTISTS_EN = {
     ...ANNEES_80,
   },
   'michael-jackson': {
+    ere: 'classics',
     facts: [
       'Born in Gary, Indiana in 1958, he started performing at five alongside his brothers in the Jackson 5.',
       'Thriller (1982) remains the best-selling album of all time.',
@@ -44,6 +46,7 @@ export const ARTISTS_EN = {
     ...ANNEES_80,
   },
   'queen': {
+    ere: 'classics',
     facts: [
       'Formed in London in 1970; Freddie Mercury, born Farrokh Bulsara in Zanzibar in 1946, became its singer.',
       '"Bohemian Rhapsody" (1975) runs five minutes and fifty-five seconds — a length considered impossible for radio at the time.',
@@ -53,6 +56,7 @@ export const ARTISTS_EN = {
     ...ANNEES_80,
   },
   'abba': {
+    ere: 'classics',
     facts: [
       'Swedish quartet formed in 1972, brought to a wide audience by their 1974 Eurovision win with "Waterloo".',
       'They rank among the best-selling recording artists in the history of music.',
@@ -62,6 +66,7 @@ export const ARTISTS_EN = {
     ...FEEL_GOOD,
   },
   'the-beatles': {
+    ere: 'classics',
     facts: [
       'Formed in Liverpool in 1960 and split in 1970, after a decade that redefined popular music.',
       '"Here Comes the Sun", written by George Harrison, appears on Abbey Road (1969).',
@@ -71,6 +76,7 @@ export const ARTISTS_EN = {
     ...DETENTE,
   },
   'elton-john': {
+    ere: 'classics',
     facts: [
       'Reginald Kenneth Dwight, born near London in 1947, a classically trained pianist from the Royal Academy of Music.',
       'His rewritten "Candle in the Wind", performed at Diana’s funeral in 1997, is the best-selling chart single in history.',
@@ -80,6 +86,7 @@ export const ARTISTS_EN = {
     ...ANNEES_80,
   },
   'phil-collins': {
+    ere: 'classics',
     facts: [
       'Born in London in 1951, drummer with Genesis from 1970, he became its singer in 1975 after Peter Gabriel left.',
       'On 13 July 1985 he played Live Aid in London and again in Philadelphia the same day, crossing the Atlantic by Concorde.',
@@ -89,6 +96,7 @@ export const ARTISTS_EN = {
     ...ANNEES_80,
   },
   'wham': {
+    ere: 'classics',
     facts: [
       'Duo formed in 1981 by George Michael and Andrew Ridgeley, friends since secondary school.',
       'In 1985 they became the first Western pop act to perform in China.',
@@ -98,6 +106,7 @@ export const ARTISTS_EN = {
     ...ANNEES_80,
   },
   'eurythmics': {
+    ere: 'classics',
     facts: [
       'Duo formed in 1980 by Annie Lennox and Dave Stewart, after their first band, The Tourists, broke up.',
       '"Sweet Dreams (Are Made of This)" (1983) took them to the top of the American charts.',
@@ -107,6 +116,7 @@ export const ARTISTS_EN = {
     ...ANNEES_80,
   },
   'duran-duran': {
+    ere: 'classics',
     facts: [
       'Formed in Birmingham in 1978, a leading act of the British New Romantic movement.',
       '"A View To A Kill" (1985) is the only James Bond theme ever to reach number one on the Billboard Hot 100.',
@@ -116,6 +126,7 @@ export const ARTISTS_EN = {
     ...ANNEES_80,
   },
   'rick-astley': {
+    ere: 'classics',
     facts: [
       'British singer who broke through in 1987 with "Never Gonna Give You Up", produced by the Stock Aitken Waterman team.',
       'The single reached number one in around twenty countries.',
@@ -125,6 +136,7 @@ export const ARTISTS_EN = {
     ...ANNEES_80,
   },
   'tears-for-fears': {
+    ere: 'classics',
     facts: [
       'Duo formed in Bath in 1981 by Roland Orzabal and Curt Smith, friends since their teens.',
       'Their name comes from Arthur Janov’s primal therapy, whose theories fed their early lyrics.',
@@ -134,6 +146,7 @@ export const ARTISTS_EN = {
     ...ANNEES_80,
   },
   'simple-minds': {
+    ere: 'classics',
     facts: [
       'Scottish band formed in Glasgow in 1977, contemporaries of the early new wave.',
       '"Don’t You (Forget About Me)" (1985), written for the film The Breakfast Club, was initially turned down by the band.',
@@ -143,6 +156,7 @@ export const ARTISTS_EN = {
     ...ANNEES_80,
   },
   'a-ha': {
+    ere: 'classics',
     facts: [
       'Norwegian trio formed in Oslo in 1982.',
       'The video for "Take On Me" (1985), mixing live action and pencil animation, took sixteen weeks to make.',
@@ -152,6 +166,7 @@ export const ARTISTS_EN = {
     ...ANNEES_80,
   },
   'sade': {
+    ere: 'classics',
     facts: [
       'Sade is a British band before it is a person, named after its singer Helen Folasade Adu, born in Ibadan, Nigeria in 1959.',
       'The first album, Diamond Life (1984), carried by "Smooth Operator", sold more than six million copies.',
@@ -161,6 +176,7 @@ export const ARTISTS_EN = {
     ...DETENTE,
   },
   'simply-red': {
+    ere: 'classics',
     facts: [
       'Formed in Manchester in 1985 around Mick Hucknall, whose red hair gave the band its name.',
       '"Holding Back the Years" reached number one on the Billboard Hot 100 in 1986.',
@@ -170,6 +186,7 @@ export const ARTISTS_EN = {
     ...DETENTE,
   },
   'ed-sheeran': {
+    ere: 'today',
     facts: [
       'British singer-songwriter born in 1991, who performed alone for years with a guitar and a loop pedal.',
       '"Shape of You" (2017) is one of the most streamed tracks in Spotify history.',
@@ -179,6 +196,7 @@ export const ARTISTS_EN = {
     ...DETENTE,
   },
   'coldplay': {
+    ere: 'today',
     facts: [
       'Formed in London in 1996 by four students from University College London.',
       '"Yellow", from Parachutes (2000), is the track that made their name.',
@@ -188,6 +206,7 @@ export const ARTISTS_EN = {
     ...DETENTE,
   },
   'dua-lipa': {
+    ere: 'today',
     facts: [
       'Born in London in 1995 to Kosovar parents, she moved back to Pristina as a teenager before returning to London alone at sixteen.',
       '"New Rules" (2017) brought her worldwide recognition.',
@@ -197,6 +216,7 @@ export const ARTISTS_EN = {
     ...FEEL_GOOD,
   },
   'imagine-dragons': {
+    ere: 'today',
     facts: [
       'Alternative rock band formed in Las Vegas in 2008.',
       '"Believer" and "Thunder" both come from Evolve, released on 23 June 2017, the album that marked their turn towards a poppier rock.',
@@ -208,3 +228,12 @@ export const ARTISTS_EN = {
 };
 
 export const SLUGS_EN = Object.keys(ARTISTS_EN);
+
+/*
+  Regroupement par époque pour la page /en/artists-on-radio-odyssey.html.
+
+  ⚠️ Par époque, et surtout PAS par nombre de passages : trier la liste par
+  volume de diffusion réintroduirait exactement le palmarès retiré des fiches
+  au §86. Le classement mesure la grille, pas les artistes.
+*/
+export const PAR_EPOQUE = (ere) => SLUGS_EN.filter((s) => ARTISTS_EN[s].ere === ere);
