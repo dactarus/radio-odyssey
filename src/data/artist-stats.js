@@ -23,6 +23,10 @@ export const JOURS_RELEVE = 92;
 
 /** Libellé de la période, affiché tel quel sur les fiches. */
 export const PERIODE_RELEVE = 'du 14 mai au 13 août 2026';
+// ⚠️ Même fenêtre, libellée en anglais pour les fiches artistes anglaises
+// (§86). À changer EN MÊME TEMPS que PERIODE_RELEVE et JOURS_RELEVE si la
+// fenêtre de comptage bouge — trois constantes, une seule réalité.
+export const PERIODE_RELEVE_EN = '14 May to 13 August 2026';
 
 const CLASSEMENT = [...ARTISTS].sort((a, b) => b.playCount - a.playCount);
 const TOTAL_PASSAGES = ARTISTS.reduce((n, a) => n + a.playCount, 0);

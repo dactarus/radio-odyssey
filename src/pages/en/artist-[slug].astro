@@ -1,0 +1,298 @@
+---
+/*
+  Fiche artiste anglaise (§86).
+
+  Le gabarit français assemble des données calculées dans des phrases toutes
+  faites : le traduire une fois débloque une fiche anglaise pour n'importe
+  quel artiste, sans coût par fiche. Seuls les textes écrits à la main
+  (`facts`, `why`) sont propres à chaque artiste — ils vivent dans
+  `data/artists-en.js`, et c'est la présence d'un slug dans ce fichier qui
+  décide qu'une fiche anglaise existe.
+
+  ⚠️⚠️ CE GABARIT N'AFFICHE PAS LE RANG, contrairement au français, et ce
+  n'est pas un oubli. Le rang mesure la grille de la station, pas la stature
+  d'un artiste. Sur une fiche consultée par quelqu'un qui cherche « ABBA
+  radio » et ne connaît pas la station, « 137e sur 147 » ne se lit pas
+  « notre grille tourne peu ABBA » mais « ABBA est un petit artiste » : le
+  chiffre est exact, la lecture qu'il induit est fausse, et elle dessert
+  précisément les noms qui devraient servir de porte d'entrée.
+
+  Ce qui reste affiché dit la même vérité sans hiérarchie implicite :
+  passages relevés, part d'antenne, titres en rotation, fréquence
+  hebdomadaire, et la fenêtre de mesure. Tout est calculé, rien n'est écrit
+  à la main — la règle du §62 tient toujours.
+
+  Sont écartés pour la même raison : la phrase de quartile (« parmi les
+  présences les plus occasionnelles »), l'écart à la moyenne du catalogue,
+  et la formulation « au-dessus / en dessous » des voisins, devenue
+  « également en rotation ».
+
+  ⚠️ Le bloc quiz est masqué : les 8 quiz n'existent qu'en français. Il
+  reviendra de lui-même quand un quiz anglais existera (lot 5).
+*/
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
+import { ARTISTS, GRADIENTS, SEUIL_INDEXATION_TITRES } from '../../data/artists.js';
+import { ARTISTS_EN, SLUGS_EN } from '../../data/artists-en.js';
+import { statsArtiste, PERIODE_RELEVE_EN } from '../../data/artist-stats.js';
+import { topTitreDeLArtiste } from '../../data/top-titres.js';
+
+export function getStaticPaths() {
+  return SLUGS_EN.map((slug) => {
+    const index = ARTISTS.findIndex((a) => a.slug === slug);
+    return { params: { slug }, props: { artist: ARTISTS[index], index } };
+  });
+}
+
+const { artist, index } = Astro.props;
+const en = ARTISTS_EN[artist.slug];
+const [gradientFrom, gradientTo] = GRADIENTS[index % GRADIENTS.length];
+
+const stats = statsArtiste(artist.slug);
+const topTitre = topTitreDeLArtiste(artist.slug);
+const indexable = artist.tracks.length >= SEUIL_INDEXATION_TITRES;
+
+// Les chiffres sont formatés à la française dans artist-stats.js (virgule
+// décimale). On repasse au point pour un lecteur anglophone.
+const nombre = (v) => String(v).replace(',', '.');
+
+// Un artiste n'est lié que s'il a lui-même une fiche anglaise ; sinon son
+// nom reste en texte simple. L'information factuelle est conservée, le lien
+// vers du français est évité (§82).
+const aUneFicheEn = (slug) => SLUGS_EN.includes(slug);
+const lienArtiste = (a) =>
+  aUneFicheEn(a.slug)
+    ? `<a href="/en/artist-${a.slug}.html" style="color:var(--ro-purple);font-weight:700;">${a.name}</a>`
+    : `<strong>${a.name}</strong>`;
+
+// « Également en rotation » : mêmes voisins que sur la fiche française, mais
+// présentés comme des artistes au volume de diffusion voisin, sans la
+// formulation « au-dessus / en dessous » qui installe un classement.
+const enRotation = [stats.devant, stats.derriere]
+  .filter(Boolean)
+  .map((a) => `${lienArtiste(a)} (${a.playCount} plays)`);
+
+const related = ARTISTS
+  .filter((a) => a.slug !== artist.slug && aUneFicheEn(a.slug))
+  .map((a) => {
+    const mots = new Set(artist.genre.toLowerCase().split(/[/\s]+/).filter((t) => t.length > 2));
+    const siens = new Set(a.genre.toLowerCase().split(/[/\s]+/).filter((t) => t.length > 2));
+    let commun = 0;
+    for (const t of mots) if (siens.has(t)) commun++;
+    return { a, commun };
+  })
+  .sort((x, y) => y.commun - x.commun || y.a.playCount - x.a.playCount)
+  .slice(0, 3)
+  .map((s) => s.a);
+
+const title = `${artist.name} on Radio Odyssey — the tracks we play`;
+const description = `${artist.name} (${artist.genre}) on Radio Odyssey: the tracks and remixes actually played on air, on a free, ad-free radio you can listen to live on any device.`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicGroup',
+  name: artist.name,
+  genre: artist.genre,
+  foundingLocation: artist.origin,
+  ...(artist.tracks.length
+    ? {
+        track: artist.tracks.map((t) => ({
+          '@type': 'MusicRecording',
+          name: t,
+          byArtist: { '@type': 'MusicGroup', name: artist.name },
+        })),
+      }
+    : {}),
+};
+
+const faq = [
+  {
+    q: `Which ${artist.name} tracks does Radio Odyssey play?`,
+    a: `Among the tracks in regular rotation: ${artist.tracks.slice(0, 3).map((t) => `<em>${t}</em>`).join(', ')}. The full selection is best discovered by listening live.`,
+  },
+  {
+    q: `How often does Radio Odyssey play ${artist.name}?`,
+    a: `${stats.passages} plays logged over three months of scheduling — about <strong>${nombre(stats.parSemaine)} times a week</strong>, or ${nombre(stats.part)}% of our airtime. Figures come from our own broadcast log, ${PERIODE_RELEVE_EN}.`,
+  },
+  {
+    q: `Can I listen to ${artist.name} free on an online radio?`,
+    a: `Yes. Radio Odyssey is free and ad-free, with no account to create — press play on any page of this site and ${artist.name} will come round in rotation.`,
+  },
+];
+---
+<Layout
+  lang="en"
+  altLangs={{ fr: `/artiste-${artist.slug}.html`, en: `/en/artist-${artist.slug}.html` }}
+  title={title}
+  description={description}
+  robots={indexable ? 'index, follow' : 'noindex, follow'}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+  </Fragment>
+
+  <PageHero
+    gradientFrom={gradientFrom}
+    gradientTo={gradientTo}
+    homeLabel="🏠 Home"
+    homeHref="/en.html"
+    breadcrumbCurrent={`${artist.name} on Radio Odyssey`}
+    title={`${artist.name} on Radio Odyssey`}
+    text={`${artist.genre} — ${artist.origin}. Hear ${artist.name} tracks and remixes on a free, ad-free radio, on any device.`}
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="19" cy="27" r="14" stroke="white" stroke-width="2.3"/><circle cx="19" cy="27" r="4.5" stroke="white" stroke-width="1.8"/><circle cx="19" cy="27" r="1.2" fill="white"/><path d="M27 13L37 9V21L27 25Z" stroke="rgba(255,255,255,.8)" stroke-width="1.8" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>3 things worth knowing about {artist.name}</h2>
+            <ul>
+              {en.facts.map((fact) => <li set:html={fact} />)}
+            </ul>
+          </div>
+
+          <div class="content-card">
+            <h2>
+              {artist.tracks.length === 1
+                ? `One ${artist.name} track logged on air`
+                : `${artist.tracks.length} ${artist.name} tracks logged on air`}
+            </h2>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem;">
+              {artist.tracks.map((track) => (
+                <span class="tag-pill">♪ {track}</span>
+              ))}
+            </div>
+
+            <div class="artiste-chiffres">
+              <div>
+                <b>{stats.passages}</b>
+                <span>plays over three months</span>
+              </div>
+              <div>
+                <b>{nombre(stats.part)} %</b>
+                <span>of our airtime</span>
+              </div>
+              <div>
+                <b>{artist.tracks.length}</b>
+                <span>{artist.tracks.length === 1 ? 'track in rotation' : 'tracks in rotation'}</span>
+              </div>
+              <div>
+                <b>{nombre(stats.parSemaine)}×</b>
+                <span>per week, on average</span>
+              </div>
+            </div>
+
+            {enRotation.length > 0 && (
+              <p style="margin:1rem 0 0;font-size:.92rem;color:var(--ro-muted);">
+                Also in similar rotation: <Fragment set:html={enRotation.join(', ')} />.
+                {stats.familleVoisins.length > 0 && (
+                  <> In the same vein: <Fragment set:html={stats.familleVoisins.map(lienArtiste).join(', ')} />.</>
+                )}
+              </p>
+            )}
+
+            {/* La fenêtre de mesure est affichée : un chiffre sans elle n'est
+                pas vérifiable, et c'est ce qui distingue une donnée d'une
+                affirmation. */}
+            <p style="margin:.6rem 0 0;font-size:.78rem;color:var(--ro-muted);">
+              Source: Radio Odyssey broadcast log, {PERIODE_RELEVE_EN}.
+            </p>
+
+            {topTitre && (
+              <p style="margin:.6rem 0 0;font-size:.92rem;color:var(--ro-muted);">
+                One track even makes our most-played list: <em>“{topTitre.titre}”</em> sits
+                at number <strong>{topTitre.rang}</strong> among the tracks we play most.
+              </p>
+            )}
+          </div>
+
+          <div class="content-card">
+            <h2>Why Radio Odyssey plays {artist.name}</h2>
+            <p set:html={en.why} />
+            <p style="margin-bottom:0;">More of this on our <a href={en.linkHref} style="color:var(--ro-purple);font-weight:700;">{en.linkLabel}</a> page.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix={`en-artist-${artist.slug}`} lang="en" />
+
+          <RelatedPages
+            lang="en"
+            alsoLike={related.map((a) => ({
+              href: `/en/artist-${a.slug}.html`,
+              label: a.name,
+              desc: `${a.genre} — ${a.origin}`,
+            }))}
+            associated={[
+              { href: en.linkHref, label: en.linkLabel },
+              { href: '/en/feel-good-music-radio.html', label: 'Feel Good Music Radio' },
+              { href: '/en.html', label: 'English home' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Hear {artist.name} live on Radio Odyssey</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Listen to Radio Odyssey
+              </a>
+              <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <Icon name="phone" /> Get the app
+              </a>
+              <a href="/en.html" class="btn-hero-ghost">
+                <Icon name="grid" /> Everything in English
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar lang="en" />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* Même bandeau de chiffres que sur les fiches françaises — quatre tuiles,
+     mais pas les mêmes : voir l'avertissement en tête de fichier. */
+  .artiste-chiffres {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: .6rem;
+    margin-top: 1.3rem;
+  }
+  .artiste-chiffres > div {
+    background: linear-gradient(135deg, rgba(123, 47, 190, .07), rgba(255, 60, 172, .05));
+    border-radius: 12px;
+    padding: .7rem .8rem;
+    text-align: center;
+  }
+  .artiste-chiffres b {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1.35rem;
+    line-height: 1.15;
+    color: var(--ro-purple);
+  }
+  .artiste-chiffres span {
+    display: block;
+    margin-top: .15rem;
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--ro-muted);
+  }
+  @media (max-width: 420px) {
+    .artiste-chiffres { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
