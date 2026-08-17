@@ -174,6 +174,7 @@ export const cibleAutreLangue = (lang, altLangs) => {
 export const EN_NAV_CATEGORIES = [
   {
     id: 'listen',
+    intro: 'What the station sounds like, hour after hour.',
     bi: 'broadcast',
     label: 'Listen',
     pages: [
@@ -187,6 +188,7 @@ export const EN_NAV_CATEGORIES = [
   },
   {
     id: 'calm',
+    intro: 'The breathing sequences, and what they are for.',
     bi: 'activity',
     label: 'Calm & Focus',
     pages: [
@@ -199,6 +201,7 @@ export const EN_NAV_CATEGORIES = [
   },
   {
     id: 'artists',
+    intro: 'Who we play, with real figures from our broadcast log.',
     bi: 'people-fill',
     label: 'Artists',
     pages: [
@@ -212,6 +215,7 @@ export const EN_NAV_CATEGORIES = [
   },
   {
     id: 'quizzes',
+    intro: 'Five decades, 100 questions, no sign-up.',
     bi: 'trophy',
     label: 'Quizzes',
     pages: [
@@ -225,6 +229,7 @@ export const EN_NAV_CATEGORIES = [
   },
   {
     id: 'about',
+    intro: 'Who is behind the station, and why it exists.',
     bi: 'info-circle',
     label: 'About',
     pages: [
