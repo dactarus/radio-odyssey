@@ -10,6 +10,7 @@ import { familyForArtist } from '../data/genres.js';
 import { quizDeLArtiste } from '../data/quiz-artistes.js';
 import { statsArtiste, quartileArtiste, ordinal, MOYENNE_PASSAGES, JOURS_RELEVE, PERIODE_RELEVE } from '../data/artist-stats.js';
 import { topTitreDeLArtiste } from '../data/top-titres.js';
+import { SLUGS_EN } from '../data/artists-en.js';
 
 export function getStaticPaths() {
   return ARTISTS.map((artist, index) => ({
@@ -83,6 +84,13 @@ const quiz = quizDeLArtiste(artist.slug);
 // data/artists.js.
 const indexable = artist.tracks.length >= SEUIL_INDEXATION_TITRES;
 
+// §86 : paire de langue, uniquement pour les artistes dont la fiche anglaise
+// existe réellement. ⚠️ Un `hreflang` vers une page absente est une erreur
+// que la Search Console remonte — la liste fait donc foi des deux côtés.
+const altLangs = SLUGS_EN.includes(artist.slug)
+  ? { fr: `/artiste-${artist.slug}.html`, en: `/en/artist-${artist.slug}.html` }
+  : undefined;
+
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'MusicGroup',
@@ -117,6 +125,7 @@ const faq = [
 ---
 <Layout
   lang="fr"
+  altLangs={altLangs}
   title={title}
   description={description}
   robots={indexable ? 'index, follow' : 'noindex, follow'}

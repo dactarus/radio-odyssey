@@ -2751,3 +2751,81 @@ Le **lot 4** (gabarit de fiche artiste anglais) et le **lot 5** (un ou deux quiz
 ---
 
 *Dernière mise à jour : 2026-08-16, panneau des titres en composant et allègement du HTML (§85).*
+
+---
+
+## 86. Version anglaise — lot 4 : les fiches artistes, et le rang qui disait autre chose que ce qu'il mesurait (2026-08-17)
+
+Le gabarit `artiste-[slug].astro` assemble des données calculées dans des phrases toutes faites : le traduire une fois débloque une fiche anglaise pour n'importe quel artiste, sans coût par fiche. C'était le plus gros levier du chantier. Il a aussi obligé à regarder de près ce que ces phrases racontent.
+
+### Le rang mesure la grille, pas l'artiste
+
+La sélection d'artistes avait d'abord été proposée sur un critère de notoriété **croisée avec le volume de diffusion**, au motif qu'une fiche annonçant « 137ᵉ des 147 artistes » desservirait le nom qu'elle porte. Le propriétaire a corrigé le raisonnement, et la correction déplace le problème là où il est :
+
+> *« Les rotations c'est de la stratégie radio, donc nombre de passage. En revanche la notoriété d'un artiste est indépendante dans les recherches des personnes. Un groupe comme ABBA, immense groupe, ne peut pas être relégué dans les profondeurs du classement — je parle bien de fiche, et non de la diffusion réelle. »*
+
+Le défaut n'était pas dans la sélection mais dans **la formulation du gabarit**. Le rang est une conséquence de choix de programmation ; affiché sur une fiche consultée par quelqu'un qui cherche « ABBA radio » et ne connaît pas la station, il ne se lit pas « notre grille tourne peu ABBA » mais « ABBA est un petit artiste ». Le chiffre est exact, la lecture qu'il induit est fausse, et elle dessert précisément les noms qui devraient servir de porte d'entrée.
+
+**Le gabarit anglais n'affiche donc aucun rang.** Les quatre tuiles deviennent :
+
+| Français | Anglais |
+|---|---|
+| passages sur trois mois | plays over three months |
+| % de l'antenne | of our airtime |
+| **Nᵉ sur 147 artistes** | **titres en rotation** |
+| **Nᵉ des M artistes `<genre>`** | **fréquence hebdomadaire** |
+
+Sont écartés pour la même raison : la phrase de quartile (« parmi les présences les plus occasionnelles »), l'écart à la moyenne du catalogue, et la formulation « au-dessus / en dessous » des voisins, devenue « **also in similar rotation** ». Rien n'est perdu en vérifiabilité : tout reste calculé à partir du rapport de diffusion, la fenêtre de mesure est affichée, et la règle du §62 — ne jamais écrire de prose générée sur une fiche — tient inchangée.
+
+Le résultat, sur les deux extrêmes du catalogue :
+
+- **ABBA** : *18 plays over three months · 0.11 % of our airtime · 6 tracks in rotation · 1.4× per week*
+- **Madonna** : *312 plays · 1.93 % · 8 tracks in rotation · 23.7× per week*
+
+Aucune des deux fiches ne prétend classer l'artiste. La différence de volume reste visible pour qui lit les chiffres, ce qui est honnête ; elle n'est simplement plus présentée comme un palmarès.
+
+⚠️ **Les 129 fiches françaises indexées gardent le rang**, décidé aux §61-§63. Le propriétaire a choisi de voir d'abord le résultat en anglais avant de décider d'y toucher — modifier 129 pages indexées dans le même lot que la création des anglaises aurait fait deux choses à vérifier au lieu d'une.
+
+### Comment une fiche anglaise existe
+
+Nouveau fichier `src/data/artists-en.js`, séparé de `artists.js` **volontairement** : ce dernier est la source unique des passages et des titres, réécrite à chaque dépouillement du rapport RadioKing (§63) : y mêler des traductions les exposerait à être écrasées.
+
+⚠️ **La présence d'un slug dans `ARTISTS_EN` est ce qui décide qu'une fiche anglaise existe.** `getStaticPaths` ne génère que ces pages. Ajouter une entrée suffit à créer la fiche — le reste (passages, part d'antenne, titres, voisins, indexation) est calculé. C'est exactement l'économie recherchée : le coût par artiste retombe aux seuls textes écrits à la main.
+
+**20 fiches** pour ce premier lot, dont les six citées par le propriétaire : Madonna, Michael Jackson, Queen, Abba, The Beatles, Elton John, Phil Collins, Wham!, Eurythmics, Duran Duran, Rick Astley, Tears For Fears, Simple Minds, A-ha, Sade, Simply Red, Ed Sheeran, Coldplay, Dua Lipa, Imagine Dragons.
+
+⚠️ Les `facts` sont des **traductions** de la version française, pas des textes nouveaux : ne jamais y ajouter un fait absent côté français, et répercuter ici toute correction faite là-bas. Même règle qu'aux §66-§68, où quatre erreurs factuelles avaient été trouvées dans les fiches d'origine.
+
+### Maillage
+
+- **Un artiste voisin n'est lié que s'il a lui-même une fiche anglaise** ; sinon son nom reste en texte simple. L'information factuelle est conservée, le lien vers du français évité (§82). Sur la fiche Madonna, `David Guetta (333 plays)` apparaît ainsi en gras sans lien.
+- **Le bloc quiz est masqué** : les 8 quiz n'existent qu'en français. Il reviendra de lui-même quand un quiz anglais existera (lot 5).
+- Le renvoi thématique de bas de fiche pointe vers une page anglaise, choisie par artiste dans `artists-en.js` : `80s throwback radio`, `European chill radio` ou `feel-good music radio`.
+- ⚠️ La paire `hreflang` n'est posée **que** pour les artistes réellement traduits, des deux côtés. Une fiche française sans équivalent anglais n'émet aucun `hreflang` — vérifié : `artiste-shakira.html` n'en porte aucun.
+
+### Vérifications
+
+Build : **283 pages** (263 + 20), aucune erreur, 2 langues indexées. Sur `dist/` :
+
+| Contrôle | Résultat |
+|---|---|
+| Fiches artistes anglaises | 20 |
+| Mention d'un classement de station sur une fiche anglaise | **0** (recherche sur `of 147`, `catalogue average`, `above`, `below`, `quartile`) |
+| Liens vers du français depuis une fiche anglaise | 0 |
+| Liens internes | **41 004 vérifiés, 0 cible absente** |
+| URL du sitemap absentes de `dist/` | 0 (265 URL) |
+| Pages en `hreflang` | 60 = 30 paires, réciprocité et symétrie vérifiées |
+| `<title>` de moins de trois mots | 0 |
+| Pages en `noindex` | 19, inchangé |
+
+⚠️ Un contrôle automatique cherchant `rank ` a d'abord signalé trois fiches. Les trois étaient des faux positifs : « They **rank** among the best-selling recording artists » (fait sur ABBA), « Igor F**rank** Remix » (nom de piste), « the p**rank** of redirecting » (rickrolling). **Un contrôle par mot-clé sur du texte libre doit être relu avant d'être cru** — la recherche ciblée sur les formulations de classement de la station, elle, ne remonte rien.
+
+### Reste à faire
+
+- **Lot 5** : traduire un ou deux quiz, ce qui fera réapparaître le bloc quiz sur les fiches anglaises.
+- **Décision en attente** : appliquer ou non la même reformulation aux 129 fiches françaises.
+- Les 127 autres artistes internationaux du catalogue peuvent recevoir une fiche anglaise à tout moment — une entrée dans `artists-en.js` suffit.
+
+---
+
+*Dernière mise à jour : 2026-08-17, fiches artistes anglaises et reformulation des chiffres de diffusion (§86).*
