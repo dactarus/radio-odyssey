@@ -2920,7 +2920,15 @@ Le commentaire du §77.1 a été réécrit en conséquence : le point n°1 porte
 
 Test iPhone obligatoire, sur l'appli **installée depuis son icône**, pas dans Safari : lancer la lecture, verrouiller, mettre en pause depuis l'écran verrouillé, déverrouiller, et **attendre dix secondes sans rien toucher**. La lecture ne doit pas repartir. Puis vérifier qu'un appui sur play la relance normalement.
 
-⚠️ Le dépôt de l'appli n'a toujours pas de dépôt distant (§76). Ce correctif n'existe que sur la machine du propriétaire.
+### Le dépôt de l'appli est enfin sauvegardé
+
+En attente depuis le §76, fait dans la foulée : `github.com/dactarus/radio-odyssey-app`, **dépôt privé**, 26 commits, historique complet. Le code de l'appli n'existait jusque-là que sur une seule machine.
+
+⚠️ **Privé, et pas par principe.** Le dépôt du site est public sans inconvénient — c'est du contenu. Celui-ci contient `admin.html` et `api/send.js`, dont `.vercelignore` décrit lui-même la faiblesse : mot de passe comparé en clair, sans limitation du nombre de tentatives. Publier la description d'un point faible de son propre service revient à en offrir la moitié du travail. Et un dépôt privé peut être ouvert plus tard ; l'inverse n'existe pas.
+
+Vérifications avant envoi : aucun secret en dur dans les fichiers **ni dans les 25 commits d'historique** — tout passe par les variables d'environnement Vercel. Vérification après envoi, depuis l'extérieur et sans être authentifié : l'adresse renvoie un 404, la confidentialité est donc effective.
+
+⚠️ **Le dépôt n'est pas rattaché au projet Vercel, et ne doit pas l'être sans décision explicite.** La publication reste `npx vercel --prod`. Un rattachement ferait de chaque `git push` un déploiement — un commit de travail partirait en production.
 
 ---
 
