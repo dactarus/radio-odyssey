@@ -208,7 +208,19 @@ export const EN_NAV_CATEGORIES = [
       { href: '/en/artist-abba.html', bi: 'disc', label: 'Abba', desc: 'Six tracks, all remixed' },
       { href: '/en/artist-coldplay.html', bi: 'soundwave', label: 'Coldplay', desc: '8 tracks in rotation' },
       { href: '/en/artist-dua-lipa.html', bi: 'lightning-charge', label: 'Dua Lipa', desc: '8 tracks in rotation' },
-      { href: '/en/80s-music-quiz.html', bi: 'trophy', label: '80s Music Quiz', desc: '20 questions on the tracks we play' },
+    ],
+  },
+  {
+    id: 'quizzes',
+    bi: 'trophy',
+    label: 'Quizzes',
+    pages: [
+      { href: '/en/music-quizzes.html', bi: 'grid', label: 'All five quizzes', desc: 'Five decades, 100 questions' },
+      { href: '/en/80s-music-quiz.html', bi: 'clock-history', label: '80s Music Quiz', desc: 'Billie Jean, Take On Me, Cruel Summer…' },
+      { href: '/en/90s-music-quiz.html', bi: 'disc', label: '90s Music Quiz', desc: 'Dance floors and big choruses' },
+      { href: '/en/2000s-music-quiz.html', bi: 'soundwave', label: '2000s Music Quiz', desc: 'When pop went global' },
+      { href: '/en/2010s-music-quiz.html', bi: 'lightning-charge', label: '2010s Music Quiz', desc: 'Streaming-era hits' },
+      { href: '/en/2020s-music-quiz.html', bi: 'stars', label: '2020s Music Quiz', desc: 'The newest additions' },
     ],
   },
   {

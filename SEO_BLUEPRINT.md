@@ -2998,3 +2998,52 @@ Trois défauts trouvés en chemin n'avaient rien à voir avec l'anglais et étai
 ---
 
 *Dernière mise à jour : 2026-08-17, quiz anglais des années 80 — le chantier anglais est terminé (§89).*
+
+---
+
+## 90. Les cinq quiz en anglais, une vraie question devant chaque titre, et un mot français qui avait échappé à tout (2026-08-17)
+
+Trois retours du propriétaire après publication du §89, tous les trois justes.
+
+### 1. « Tenter le bonus » était resté en français
+
+Après dix bonnes réponses, le bouton du round bonus s'affichait en français sur le quiz anglais. Corrigé — mais c'est la manière dont il a échappé aux contrôles qui mérite d'être retenue.
+
+⚠️ **Ma détection de français résiduel cherchait des accents et une liste de mots courants** (`les`, `des`, `votre`, `réponse`, `années`…). « Tenter le bonus » n'a ni accent ni aucun de ces mots. Le contrôle a donc affiché « 0 chaîne française restante » sur une page qui en contenait une, bien visible, sur un écran que tout joueur atteint en réussissant.
+
+**Une détection par mots-clés sur du texte libre ne prouve rien.** Elle avait déjà produit trois faux positifs au §86 (« They **rank** among… », « Igor F**rank** Remix », « the p**rank** of… ») ; elle produit ici un faux négatif, plus coûteux. Le contrôle fiable est comparatif : lister toutes les chaînes lisibles de la page anglaise et de la française, et examiner celles qui sont identiques sans être des noms propres.
+
+### 2. La question posait un titre, sans poser de question
+
+*« Devant chaque titre dans la question, il faut mettre "Qui chante… et le titre". Ce serait plus convivial. »*
+
+L'affichage montrait `🎵 "Billie Jean"` — un titre nu, à charge pour le joueur de deviner ce qu'on lui demande. Il montre désormais **`🎵 Qui chante « Billie Jean » ?`** et, côté anglais, **`🎵 Who sings "Billie Jean"?`**. Appliqué aux cinq quiz français et aux cinq anglais.
+
+⚠️ **Seul l'affichage a changé, jamais la donnée.** Le champ `track` reste le titre nu, parce que `data/quiz-artistes.js` l'extrait au build pour alimenter le bloc « dans nos quiz » des fiches artistes. Y écrire « Qui chante… » aurait fait apparaître la question entière sur les fiches — et surtout, une modification du format d'extraction casse ce croisement **sans erreur au build** (constaté au §69).
+
+### 3. « Pour la version anglaise le quiz est caché »
+
+Exact : il était rangé dans le groupe « Artists » du menu, donc introuvable pour qui cherche un jeu. Deux corrections, et l'occasion de traduire les quatre décennies restantes.
+
+- **Les cinq quiz anglais existent** : 80s, 90s, 2000s, 2010s, 2020s.
+- **Une page de regroupement** `/en/music-quizzes.html` — cinq décennies, 100 questions.
+- **Un groupe « Quizzes » à part entière** dans le menu anglais, qui en compte désormais cinq : Listen · Calm & Focus · Artists · Quizzes · About.
+
+**Méthode employée pour les quatre nouveaux** : ils n'ont pas été traduits depuis le français, mais **fabriqués à partir du quiz anglais déjà vérifié**, en n'y injectant que les questions de la décennie visée et en renommant les identifiants. Aucun français ne pouvait donc réapparaître — la base n'en contenait plus. Les libellés propres aux années 80 (page de catégorie, mentions « italo-disco ») ont été remplacés par des formulations valables pour toutes les décennies, faute de page de catégorie anglaise pour les autres.
+
+Effet secondaire utile : le bloc quiz des fiches artistes anglaises est passé de **8 à 12 fiches**, sans toucher au gabarit — `quiz-artistes-en.js` lit tous les quiz anglais présents.
+
+### Vérifications
+
+Build : **290 pages**, aucune erreur, 2 langues indexées. Sur `dist/` : **43 291 liens internes vérifiés sans une cible absente**, 272 URL au sitemap toutes présentes, 70 pages en `hreflang` réciproques, aucun libellé français visible sur les six pages de quiz anglaises.
+
+⚠️ **Le renommage des identifiants était le vrai risque de ce lot.** Passer `quiz80-` à `quiz90-`, `quiz2000-`… touche à la fois le balisage, le CSS et le JavaScript qui les cherche par `getElementById`. Un seul identifiant oublié et le moteur reste muet — sans erreur en console, puisqu'il ne trouverait simplement rien. Les cinq quiz ont donc été essayés sur navigateur piloté : question affichée, réponse cliquée, retour « ✅ Correct! » obtenu, zéro erreur JavaScript. **C'est le seul contrôle qui pouvait le dire.**
+
+### Reste ouvert
+
+- Décision en attente sur la reformulation des chiffres des 129 fiches françaises (§86).
+- Les trois quiz thématiques français (records, noms de scène, coulisses) ne sont pas traduits ; celui sur les records a 19 réponses internationales sur 20.
+
+---
+
+*Dernière mise à jour : 2026-08-17, cinq quiz anglais, question reformulée dans les deux langues (§90).*

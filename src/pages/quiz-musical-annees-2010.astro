@@ -149,6 +149,7 @@ const faq = [
 ---
 <Layout
   lang="fr"
+  altLangs={{ fr: '/quiz-musical-annees-2010.html', en: '/en/2010s-music-quiz.html' }}
   title="Quiz Musical Années 2010 | Radio Odyssey"
   description="Testez vos connaissances avec ce quiz musical années 2010, basé sur les vrais titres diffusés sur Radio Odyssey. Un round bonus si score parfait."
 >
@@ -179,7 +180,7 @@ const faq = [
 
             {mainQuestions.map((q, i) => (
               <div class="quiz2010-q" data-round="main" data-index={i} style={i === 0 ? '' : 'display:none;'}>
-                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎵 "{q.track}"</p>
+                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎵 Qui chante « {q.track} » ?</p>
                 <div style="display:flex;flex-direction:column;gap:.6rem;">
                   {q.choices.map((c) => (
                     <button
@@ -200,7 +201,7 @@ const faq = [
 
             {bonusQuestions.map((q, i) => (
               <div class="quiz2010-q" data-round="bonus" data-index={i} style="display:none;">
-                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎁 🎵 "{q.track}"</p>
+                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎁 🎵 Qui chante « {q.track} » ?</p>
                 <div style="display:flex;flex-direction:column;gap:.6rem;">
                   {q.choices.map((c) => (
                     <button

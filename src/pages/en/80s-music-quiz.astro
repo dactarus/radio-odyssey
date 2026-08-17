@@ -192,7 +192,7 @@ const faq = [
 
             {mainQuestions.map((q, i) => (
               <div class="quiz80-q" data-round="main" data-index={i} style={i === 0 ? '' : 'display:none;'}>
-                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎵 "{q.track}"</p>
+                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎵 Who sings “{q.track}”?</p>
                 <div style="display:flex;flex-direction:column;gap:.6rem;">
                   {q.choices.map((c) => (
                     <button
@@ -213,7 +213,7 @@ const faq = [
 
             {bonusQuestions.map((q, i) => (
               <div class="quiz80-q" data-round="bonus" data-index={i} style="display:none;">
-                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎁 🎵 "{q.track}"</p>
+                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎁 🎵 Who sings “{q.track}”?</p>
                 <div style="display:flex;flex-direction:column;gap:.6rem;">
                   {q.choices.map((c) => (
                     <button
@@ -236,7 +236,7 @@ const faq = [
               <p style="font-size:1.4rem;margin-bottom:.3rem;">🎉 Perfect score!</p>
               <p style="color:var(--ro-muted);margin-bottom:1.3rem;">You have unlocked {bonusQuestions.length} bonus questions. Possible final score: {TOTAL_ARTISTS}/{TOTAL_ARTISTS}.</p>
               <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;">
-                <button type="button" id="quiz80-bonus-start" class="btn-hero">🎁 Tenter le bonus</button>
+                <button type="button" id="quiz80-bonus-start" class="btn-hero">🎁 Try the bonus round</button>
                 <button type="button" id="quiz80-bonus-skip" class="btn-hero-ghost">See my score</button>
               </div>
             </div>
