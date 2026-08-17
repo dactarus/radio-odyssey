@@ -1,0 +1,122 @@
+---
+/*
+  Invitation aux quiz (§91), commune aux deux accueils.
+
+  Le bloc et ses 60 lignes de CSS vivaient dans `src/pages/index.astro`
+  depuis le §71. Le recopier pour l'accueil anglais aurait dupliqué le CSS —
+  et surtout, un `<style is:global>` déclaré dans une page n'est servi
+  qu'avec cette page : le balisage seul se serait affiché sans habillage.
+  Même piège que pour `NowPlaying.astro` au §85.
+
+  ⚠️ Traitement délibérément sobre : les deux encarts qui précèdent sur
+  l'accueil sont des bandeaux à dégradé pleine largeur. Un troisième du même
+  genre ferait mur.
+*/
+import Icon from './Icon.astro';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  href: string;
+  quiz: { href: string; nom: string; sous: string }[];
+  boutonNombre: number;
+}
+const { lang = 'fr', href, quiz, boutonNombre } = Astro.props;
+
+const T = lang === 'en'
+  ? {
+      chapeau: 'Play with us',
+      titreAvant: 'Our free ', titreFort: 'music quizzes', titreApres: '',
+      accroche: `${boutonNombre} quizzes, ${boutonNombre * 20} questions, built from the tracks and artists we actually play. No sign-up, straight in your browser.`,
+      bouton: `See all ${boutonNombre}`,
+    }
+  : {
+      chapeau: 'Jouez avec nous',
+      titreAvant: 'Nos ', titreFort: 'quiz musicaux', titreApres: ' gratuits',
+      accroche: `${boutonNombre} quiz, ${boutonNombre * 20} questions, construites à partir des titres et des artistes réellement diffusés sur l'antenne. Sans inscription, directement dans votre navigateur.`,
+      bouton: `Voir les ${boutonNombre} quiz`,
+    };
+---
+<div class="ro-quiz-invite">
+  <div class="ro-quiz-invite-tete">
+    <div>
+      <span class="section-eyebrow">{T.chapeau}</span>
+      <h2 style="margin:.3rem 0 .4rem;">{T.titreAvant}<span class="highlight">{T.titreFort}</span>{T.titreApres}</h2>
+      <p style="margin:0;font-size:.93rem;color:var(--ro-muted);max-width:60ch;">{T.accroche}</p>
+    </div>
+    <a href={href} class="btn-ro" style="flex-shrink:0;">
+      <Icon name="trophy" />&nbsp;{T.bouton}
+    </a>
+  </div>
+
+  <div class="ro-quiz-invite-liste">
+    {quiz.map((q) => (
+      <a href={q.href} class="ro-quiz-pastille">
+        <span class="ro-quiz-pastille-nom">{q.nom}</span>
+        <span class="ro-quiz-pastille-sous">{q.sous}</span>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style is:global>
+  /* ── Invitation aux quiz ────────────────────────────────────────────
+     Traitement délibérément sobre : les deux encarts qui précèdent sur
+     l'accueil sont des bandeaux à dégradé pleine largeur. Un troisième
+     du même genre ferait mur. Ici, fond blanc, bordure fine, et les huit
+     quiz en pastilles — le regard tombe sur les jeux, pas sur un pavé. */
+  .ro-quiz-invite {
+    border: 1.5px solid rgba(123, 47, 190, .16);
+    border-radius: 20px;
+    background: #fff;
+    padding: 1.8rem 2rem;
+    box-shadow: 0 8px 30px rgba(45, 45, 58, .05);
+  }
+  .ro-quiz-invite-tete {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+  }
+  .ro-quiz-invite-liste {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: .7rem;
+    margin-top: 1.5rem;
+  }
+  .ro-quiz-pastille {
+    display: block;
+    padding: .75rem .95rem;
+    border-radius: 13px;
+    text-decoration: none;
+    background: linear-gradient(135deg, rgba(123, 47, 190, .07), rgba(255, 60, 172, .05));
+    border: 1px solid rgba(123, 47, 190, .12);
+    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+  }
+  .ro-quiz-pastille:hover {
+    transform: translateY(-2px);
+    border-color: rgba(123, 47, 190, .32);
+    box-shadow: 0 6px 18px rgba(123, 47, 190, .14);
+  }
+  .ro-quiz-pastille-nom {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: .95rem;
+    color: var(--ro-purple);
+  }
+  .ro-quiz-pastille-sous {
+    display: block;
+    margin-top: .1rem;
+    font-size: .74rem;
+    font-weight: 600;
+    color: var(--ro-muted);
+  }
+  @media (max-width: 575px) {
+    .ro-quiz-invite { padding: 1.4rem 1.2rem; }
+    .ro-quiz-invite-liste { grid-template-columns: repeat(2, 1fr); gap: .55rem; }
+    .ro-quiz-pastille { padding: .6rem .7rem; }
+    .ro-quiz-pastille-nom { font-size: .86rem; }
+    .ro-quiz-pastille-sous { font-size: .68rem; }
+  }
+</style>

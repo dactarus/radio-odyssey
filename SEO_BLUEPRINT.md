@@ -3047,3 +3047,44 @@ Build : **290 pages**, aucune erreur, 2 langues indexées. Sur `dist/` : **43 29
 ---
 
 *Dernière mise à jour : 2026-08-17, cinq quiz anglais, question reformulée dans les deux langues (§90).*
+
+---
+
+## 91. L'invitation aux quiz arrive sur l'accueil anglais, et la règle des fiches françaises est actée (2026-08-17)
+
+### L'accueil anglais n'invitait pas à jouer
+
+Relevé par le propriétaire : *« je ne sais pas si tu mets les quiz sur la page d'accueil anglaise comme pour la version française. »* Non — l'accueil français porte cette invitation depuis le §71, l'anglais ne l'avait pas, alors que les cinq quiz existaient désormais.
+
+⚠️ **Le piège du §85 s'est représenté, et il a failli passer.** Recopier le balisage sur l'accueil anglais aurait produit un bloc **sans habillage** : ses 61 lignes de CSS vivaient dans un `<style is:global>` déclaré dans `src/pages/index.astro`, et un style déclaré dans une page n'est servi qu'avec cette page — « global » qualifie sa portée dans le document, pas les pages qui le reçoivent. C'est exactement ce qui avait obligé à extraire `NowPlaying.astro`.
+
+D'où `QuizInvite.astro`, commun aux deux accueils : huit pastilles côté français, cinq côté anglais, un seul CSS.
+
+⚠️ Une balise fermante en trop est restée lors de l'extraction du bloc hors de `index.astro`. Le build l'a signalée immédiatement (`Closing tag '</div>' has no matching opening tag`) — sur **l'accueil**, la page la plus consultée du site. Rappel de ce que le §85 avait déjà montré : une extraction de balisage se vérifie par un build, jamais à l'œil.
+
+### La règle des fiches artistes est arrêtée
+
+Le §86 laissait une décision en attente : appliquer ou non aux 129 fiches françaises la reformulation des chiffres de diffusion. **Tranchée, et dans le sens du non.** Les mots du propriétaire :
+
+> *« Pour les artistes français je n'y toucherai pas, ça reflète la radio. Ce qui était important c'est qu'à l'international on est en recherche de notoriété de l'artiste dans sa recherche ; on ratisse plus large à l'international avec des très gros artistes. Mais pour la version française, ça fait les deux. »*
+
+⚠️ **Ce n'est pas une incohérence entre les deux langues, c'est une différence d'intention de recherche** — et c'est la raison pour laquelle il ne faut pas « harmoniser » un jour les deux gabarits en croyant bien faire :
+
+- **En français**, le lecteur connaît la station ou vient la découvrir. La fiche fait les deux métiers à la fois : informer sur l'artiste et rendre compte de la programmation. Le rang y est une information sur *nous*, et il est lu comme tel.
+- **En anglais**, la recherche porte sur la notoriété de l'artiste, pas sur une station inconnue du visiteur. Sur de très gros noms — ABBA, The Beatles, Queen —, « 137ᵉ sur 147 » ne se lit pas « notre grille tourne peu cet artiste » mais « cet artiste est mineur ».
+
+La consigne est reportée dans `CLAUDE.md`, à sa place : les points de vigilance du silo artistes, là où quelqu'un qui s'apprête à modifier un gabarit la trouvera.
+
+### Vérifications
+
+Build : **291 pages**, aucune erreur. Les deux accueils portent le bloc avec **le CSS effectivement servi** (vérifié dans la feuille construite, pas seulement dans le balisage), huit pastilles côté français, cinq côté anglais, accroche dans la bonne langue. **43 297 liens internes vérifiés sans une cible absente.**
+
+Et un point de méthode : les trois fichiers touchés ont des **empreintes MD5 identiques** entre le conteneur où le build a été vérifié et la machine du propriétaire — la correction validée est bien celle qui est livrée.
+
+### Au passage
+
+Le propriétaire ne voyait qu'un seul quiz en anglais. Vérification faite depuis l'extérieur : les cinq étaient bien en ligne, page de regroupement et menu compris. Son `dist/` local datait d'avant les §89 et §90, et son navigateur gardait l'ancienne page. ⚠️ Réflexe à garder : avant de chercher un défaut, vérifier **ce qui est réellement servi** — c'est la troisième fois de la journée que la question se pose (§86, §87, §91).
+
+---
+
+*Dernière mise à jour : 2026-08-17, invitation aux quiz sur l'accueil anglais et règle des fiches artistes actée (§91).*
