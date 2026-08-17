@@ -128,6 +128,71 @@ export const UI = {
 // Raccourci : t('en').accueil
 export const t = (lang) => UI[lang] || UI.fr;
 
+/*
+  Libellés du moteur de quiz (§94).
+
+  Séparés d'`UI` volontairement : `UI` est chargé par les composants de mise
+  en page, donc par les 264 pages. Ces libellés-ci ne servent qu'aux pages de
+  quiz et n'ont rien à faire dans le lot commun.
+
+  ⚠️ Les valeurs `fr` reproduisent **à l'identique** les chaînes qui étaient
+  écrites en dur dans `QuizBlock.astro` : les trois quiz thématiques français
+  qui l'utilisent ne doivent voir aucune différence.
+
+  ⚠️ Les quatre libellés du groupe « moteur » sont lus par le script en ligne
+  via des attributs `data-` sur le conteneur. Ils ne peuvent pas passer par
+  `define:vars` : le contenu du script changerait d'une langue à l'autre, il
+  serait réexécuté à chaque navigation client-side, et le `const` généré
+  lèverait une SyntaxError de redéclaration (§85).
+*/
+export const QUIZ_UI = {
+  fr: {
+    // Rendus dans le balisage
+    questionSuivante: 'Question suivante →',
+    scoreParfait: '🎉 Score parfait !',
+    debloque: (n, total) => `Vous débloquez ${n} questions bonus. Score final possible : ${total}/${total}.`,
+    tenterBonus: '🎁 Tenter le bonus',
+    voirScore: 'Voir mon score',
+    votreScore: 'Votre score :',
+    recommencer: 'Recommencer',
+    // Lus par le moteur, via data-attributs
+    question: 'Question',
+    bonusQuestion: '🎁 Bonus — Question',
+    bonneReponse: '✅ Bonne réponse !',
+    mauvaiseReponse: '❌ Raté — la bonne réponse est surlignée en vert.',
+    parfaitSansBonus: 'Score parfait ! (Vous avez choisi de ne pas tenter le bonus.)',
+    // Verdicts par défaut, si la page n'en fournit pas
+    verdicts: {
+      parfait: 'Score absolument parfait, sur les deux rounds !',
+      bon: 'Très fort — vous connaissez bien la maison.',
+      moyen: 'Pas mal ! Un tour sur les fiches artistes et ce sera parfait.',
+      faible: "Il est temps de flâner un peu sur nos fiches artistes.",
+    },
+  },
+  en: {
+    questionSuivante: 'Next question →',
+    scoreParfait: '🎉 Perfect score!',
+    debloque: (n, total) => `You have unlocked ${n} bonus questions. Best possible final score: ${total}/${total}.`,
+    tenterBonus: '🎁 Try the bonus round',
+    voirScore: 'See my score',
+    votreScore: 'Your score:',
+    recommencer: 'Play again',
+    question: 'Question',
+    bonusQuestion: '🎁 Bonus — Question',
+    bonneReponse: '✅ Correct!',
+    mauvaiseReponse: '❌ Not quite — the right answer is highlighted in green.',
+    parfaitSansBonus: 'Perfect score! (You chose to skip the bonus round.)',
+    verdicts: {
+      parfait: 'A flawless score, across both rounds!',
+      bon: 'Very strong — you know this station well.',
+      moyen: 'Not bad! A look around the artist pages and it will be perfect.',
+      faible: 'Time for a wander through our artist pages.',
+    },
+  },
+};
+
+export const quizT = (lang) => QUIZ_UI[lang] || QUIZ_UI.fr;
+
 // L'accueil de chaque langue. Avec build.format: 'file', l'accueil anglais
 // sort à /en.html et non /en/ — voir §81.
 export const ACCUEIL = { fr: '/', en: '/en.html' };
@@ -169,7 +234,8 @@ export const cibleAutreLangue = (lang, altLangs) => {
   ce que j'écoute, ce que ça m'apporte, à qui j'ai affaire.
 
   ⚠️ Pas de page de hub par catégorie côté anglais : les groupes tiennent en
-  5 ou 6 entrées, toutes affichées. Ne pas y appliquer MENU_APERCU.
+  5 à 7 entrées, toutes affichées (Header et MegaNav forcent `apercu = 99`
+  quand `lang === 'en'`). Ne pas y appliquer MENU_APERCU.
 */
 export const EN_NAV_CATEGORIES = [
   {
@@ -215,11 +281,12 @@ export const EN_NAV_CATEGORIES = [
   },
   {
     id: 'quizzes',
-    intro: 'Five decades, 100 questions, no sign-up.',
+    intro: 'Six quizzes, 120 questions, no sign-up.',
     bi: 'trophy',
     label: 'Quizzes',
     pages: [
-      { href: '/en/music-quizzes.html', bi: 'grid', label: 'All five quizzes', desc: 'Five decades, 100 questions' },
+      { href: '/en/music-quizzes.html', bi: 'grid', label: 'All six quizzes', desc: 'Six quizzes, 120 questions' },
+      { href: '/en/music-records-quiz.html', bi: 'trophy', label: 'Music Records Quiz', desc: 'Billboard, Grammys, Eurovision, Live Aid' },
       { href: '/en/80s-music-quiz.html', bi: 'clock-history', label: '80s Music Quiz', desc: 'Billie Jean, Take On Me, Cruel Summer…' },
       { href: '/en/90s-music-quiz.html', bi: 'disc', label: '90s Music Quiz', desc: 'Dance floors and big choruses' },
       { href: '/en/2000s-music-quiz.html', bi: 'soundwave', label: '2000s Music Quiz', desc: 'When pop went global' },

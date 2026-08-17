@@ -27,12 +27,12 @@ const apercu = lang === 'en' ? 99 : MENU_APERCU;
 const avecHub = lang !== 'en';
 const accueil = ACCUEIL[lang];
 ---
-<!-- ============================================================
+{/* ============================================================
      PLAYER BAR STICKY
-     ============================================================ -->
+     ============================================================ */}
 <div id="topRadioBar" transition:persist transition:name="player-bar">
 
-  <!-- GAUCHE : logo + badge -->
+  {/* GAUCHE : logo + badge */}
   <a class="bar-logo" href={accueil} aria-label={L.accueilAria}>
     <picture>
       <source srcset="/assets/images/logo.webp" type="image/webp"/>
@@ -45,12 +45,12 @@ const accueil = ACCUEIL[lang];
     {L.enDirect}
   </div>
 
-  <!-- CENTRE : lecteur natif, identique sur mobile et ordinateur.
+  {/* CENTRE : lecteur natif, identique sur mobile et ordinateur.
        Remplace l'iframe RadioKing et le bouton mobile qui ouvrait un onglet
-       externe. Voir RadioPlayer.astro pour le détail du choix. -->
+       externe. Voir RadioPlayer.astro pour le détail du choix. */}
   <RadioPlayer lang={lang} />
 
-  <!-- DROITE : wave + burger -->
+  {/* DROITE : wave + burger */}
   <div class="bar-wave" aria-hidden="true">
     <span></span><span></span><span></span>
     <span></span><span></span><span></span><span></span>
@@ -66,18 +66,18 @@ const accueil = ACCUEIL[lang];
 
 </div>
 
-<!-- Le script d'iframe RadioKing a été retiré avec l'iframe : il ne servait
+{/* Le script d'iframe RadioKing a été retiré avec l'iframe : il ne servait
      qu'à dimensionner le lecteur embarqué. Une dépendance tierce en moins
-     sur le chemin de rendu. -->
+     sur le chemin de rendu. */}
 
-<!-- ============================================================
+{/* ============================================================
      MEGA-MENU (desktop)
-     ============================================================ -->
+     ============================================================ */}
 <MegaNav lang={lang} altLangs={altLangs} />
 
-<!-- ============================================================
+{/* ============================================================
      OFFCANVAS NAV (mobile)
-     ============================================================ -->
+     ============================================================ */}
 <div class="offcanvas offcanvas-start" id="site-nav" tabindex="-1" aria-labelledby="nav-label">
   <div class="offcanvas-header">
     <div class="offcanvas-title" id="nav-label">

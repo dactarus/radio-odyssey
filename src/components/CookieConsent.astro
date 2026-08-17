@@ -38,11 +38,11 @@ const L = t(lang);
 // "Refuser" a la même importance visuelle qu'"Accepter" (exigence CNIL).
 const GA_MEASUREMENT_ID = 'G-6CXEFXNH97';
 ---
-<!-- §80 : plus d'attribut `hidden` par défaut — voir le script bloquant
+{/* §80 : plus d'attribut `hidden` par défaut — voir le script bloquant
      ajouté en tête de Layout.astro, qui masque le bandeau avant peinture
      seulement si un choix est déjà enregistré. Un premier visiteur (le cas
      mesuré par Lighthouse) le voit dès la première peinture, sans attendre
-     ce script-ci qui ne s'exécute qu'en toute fin de page. -->
+     ce script-ci qui ne s'exécute qu'en toute fin de page. */}
 <div id="ro-cookie-banner" class="ro-cookie-banner" role="dialog" aria-live="polite" aria-label={L.cookieAria}>
   <div class="ro-cookie-inner">
     <p class="ro-cookie-text">

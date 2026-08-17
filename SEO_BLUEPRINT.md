@@ -3155,3 +3155,75 @@ Une règle de `robots.txt` et une règle de redirection qui portent sur la même
 ---
 
 *Dernière mise à jour : 2026-08-17, retrait du blocage qui empêchait les 301 du plan de site fantôme d'être vues (§93).*
+
+---
+
+## 94. Le premier quiz thématique en anglais, et un moteur qui parle deux langues (2026-08-17)
+
+Les cinq quiz par décennie traduits aux §89-§90 avaient un privilège dont personne n'avait mesuré la portée : **il n'y avait rien à traduire dedans**. Une question y est un titre et quatre noms d'artistes. Le quiz des records est le premier où chaque énoncé est une phrase — et une phrase ne se traduit pas seulement, elle **se réévalue**.
+
+### Le moteur parlait français en dur
+
+`QuizBlock.astro` — le moteur partagé par les trois quiz thématiques français — portait **onze chaînes écrites en dur** : « Question suivante », « Tenter le bonus », « Votre score », « Recommencer », et surtout quatre chaînes produites à l'exécution par le script (« ✅ Bonne réponse ! », « ❌ Raté — la bonne réponse est surlignée en vert. », le compteur de progression, le verdict du sans-faute sans bonus).
+
+C'est exactement le défaut relevé par le propriétaire au §90 sur les quiz par décennie : *« on a "tentez le bonus" (en français donc) »*. Les cinq copies du moteur avaient été traduites une par une ; le moteur partagé, lui, n'avait jamais servi qu'en français, donc personne ne l'avait regardé.
+
+Les libellés sont désormais dans `QUIZ_UI` (`data/i18n.js`), avec une prop `lang` sur le composant. ⚠️ **Les quatre chaînes du script transitent par des attributs `data-`**, pas par `define:vars` : le contenu du script changerait d'une langue à l'autre, il serait réexécuté à chaque navigation client-side, et le `const` généré lèverait une SyntaxError de redéclaration (§85).
+
+`QUIZ_UI` est volontairement séparé d'`UI` : `UI` est chargé par les composants de mise en page, donc par les 291 pages. Ces libellés-ci ne servent qu'à sept d'entre elles.
+
+### Preuve que le français n'a pas bougé
+
+Trois quiz français en production utilisent ce moteur. Le contrôle n'a pas été « ça a l'air pareil » : le HTML construit de `/quiz-records-radio-odyssey.html` a été **comparé fragment par fragment entre la version d'avant et celle d'après**. Six fragments diffèrent — le conteneur (qui gagne cinq attributs `data-`) et le corps du script. **Aucun texte visible n'a changé d'un octet.**
+
+### Deux écarts assumés dans la traduction
+
+Le quiz anglais n'est pas un décalque, et c'est le point de méthode de ce lot.
+
+- **La question sur Amir** (6ᵉ à l'Eurovision 2016 pour la France) est remplacée par le record de fréquentation de la tournée de Coldplay. Amir, M. Pokora, Christophe Willem et Soprano forment un quatuor illisible pour un lecteur anglophone : la question ne se joue pas, elle se subit. ⚠️ Le fait qui la remplace n'est **pas nouveau** — il est déjà publié et vérifié dans les deux langues (`artists.js` et `artists-en.js`). Règle du §86 tenue : on ne crée pas de fait à l'occasion d'une traduction.
+- **Les distracteurs de la question « Eurovision 1988 pour la Suisse »** passent de Vanessa Paradis / Mylène Farmer / Zazie à Kim Wilde / Kylie Minogue / Tina Turner. La bonne réponse — Céline Dion — ne bouge pas ; ce sont les fausses pistes qui étaient devenues des non-réponses.
+
+Les 18 autres questions sont identiques des deux côtés. ⚠️ Une correction d'un côté doit être répercutée de l'autre.
+
+⚠️ **Ce constat vaut pour la suite du chantier.** Les deux quiz thématiques restants (noms de scène, coulisses) demanderont le même travail d'arbitrage, question par question — pas une traduction. Le quiz des noms de scène est le plus favorable : Sting, Avicii, Daft Punk, Texas, Stromae y sont tous internationaux.
+
+### Branchement
+
+Le croisement quiz ↔ fiches anglaises s'est fait **sans une ligne de code** : `data/quiz-artistes-en.js` accepte déjà le format `enonce:` en plus de `track:`, et lit tout `src/pages/en/*quiz*.astro`. Seule une entrée dans sa table `LIBELLES` était nécessaire. ⚠️ Le nom du fichier doit contenir « quiz » — c'est le glob qui décide.
+
+La page de regroupement passe à **deux groupes**, « by decade » et « by theme » : une liste plate aurait rangé un quiz de records au milieu des décennies, ce qu'il n'est pas. Le second groupe est fait pour accueillir les deux autres si leur traduction est décidée.
+
+### Vérifications
+
+Build : **291 pages**, aucune erreur, **46 177 liens internes sans une cible absente**. 273 URL au sitemap, toutes présentes dans `dist/`, aucune en `noindex`. 19 pages en `noindex` — les 18 fiches sous seuil plus `hors-ligne.html`, chiffre attendu. Aucun `<title>` de moins de trois mots. Aucune règle de `vercel.json` ne porte la nouvelle URL.
+
+Sur la page anglaise : `lang="en"`, `hreflang` fr/en/x-default cohérents avec la page française, 20 questions rendues, les onze libellés du moteur en anglais. **Le bloc « in our quizzes » apparaît sur exactement six fiches anglaises** — duran-duran, michael-jackson, elton-john, wham, phil-collins, coldplay —, c'est-à-dire les six bonnes réponses qui ont une fiche anglaise, et sur aucune autre. C'est le contrôle de non-régression explicitement demandé par l'en-tête de `quiz-artistes-en.js`, celui qui manquait au §69.
+
+---
+
+*Dernière mise à jour : 2026-08-17, quiz des records en anglais et moteur de quiz bilingue (§94).*
+
+---
+
+## 95. Un mégaoctet de commentaires français partait chez les visiteurs (2026-08-17)
+
+Trouvé en cherchant autre chose : le contrôle de français résiduel sur les 46 pages anglaises les a **toutes** signalées, avec exactement le même jeu de mots. Un tel uniformisme ne désigne pas une traduction oubliée, il désigne un composant commun.
+
+C'étaient des **commentaires HTML**. `<!-- §80 : lu et appliqué avant tout le reste… -->`, `<!-- Service worker : rend le site installable… -->`, `<!-- ============ MEGA-MENU (desktop) ============ -->`. Des explications justes, utiles, écrites pour la personne qui ouvrira le fichier — et **téléchargées par chaque visiteur de chaque page**, en français, y compris sur les pages anglaises.
+
+Répartition : `Layout.astro` 1 642 o, `Header.astro` 935 o, `Footer.astro` 664 o, `CookieConsent.astro` 362 o. Soit **3 603 octets sur les 291 pages**, plus 2 839 o sur le seul accueil français et 49 o sur les huit pages d'exercice.
+
+⚠️ **C'est le §85 qui se répète sous une autre forme.** Là-bas, des commentaires placés dans un `<script>` partaient dans le navigateur ; la règle inscrite dans `CLAUDE.md` disait « jamais dans un script en ligne ». Elle était trop étroite : **un commentaire HTML part aussi**. La bonne formulation est qu'un commentaire ne doit jamais se trouver dans une zone que le build recopie telle quelle.
+
+La correction est mécanique : `<!-- … -->` devient `{/* … */}`, la forme JSX qu'Astro retire à la construction. Le savoir reste au même endroit dans le fichier, à la même ligne, à un signe près.
+
+### Vérifications
+
+31 commentaires convertis dans six fichiers. La preuve est un **diff du site construit avant et après, commentaires neutralisés des deux côtés** : sur les 291 pages, **zéro différence de contenu**. Le seul commentaire HTML subsistant est celui de `public/hors-ligne.html`, fichier statique autonome où il est à sa place.
+
+**HTML total livré : 45 058 Ko → 44 010 Ko, soit 1 048 Ko de moins** sans qu'une ligne de contenu bouge.
+
+---
+
+*Dernière mise à jour : 2026-08-17, commentaires HTML sortis du site livré (§95).*
+
