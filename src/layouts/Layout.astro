@@ -213,7 +213,7 @@ const articleSchema = articleDatePublished ? {
 <!DOCTYPE html>
 <html lang={lang}>
 <head>
-  <!-- §80 : lu et appliqué avant tout le reste. Le bandeau cookies
+  {/* §80 : lu et appliqué avant tout le reste. Le bandeau cookies
        (CookieConsent.astro) est en toute fin de <body>, après le contenu de
        la page — PageSpeed Insights l'a repéré comme élément LCP, avec ~1,3 s
        de retard : le bandeau démarrait avec l'attribut `hidden`, retiré
@@ -222,7 +222,7 @@ const articleSchema = articleDatePublished ? {
        rapide à peindre pour un premier visiteur, le cas mesuré par
        Lighthouse) ; ce minuscule script bloquant ne fait que le masquer tout
        de suite, avant peinture, pour un visiteur qui a déjà répondu — sans
-       lui, ce visiteur verrait le bandeau clignoter une fraction de seconde. -->
+       lui, ce visiteur verrait le bandeau clignoter une fraction de seconde. */}
   <script is:inline>
     try {
       if (localStorage.getItem('ro-cookie-consent')) {
@@ -263,22 +263,22 @@ const articleSchema = articleDatePublished ? {
 
   <link rel="preload" href="/assets/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin/>
   <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin/>
-  <!-- ?v=... : incrémenter à chaque modification de fonts.css/style.css.
+  {/* ?v=... : incrémenter à chaque modification de fonts.css/style.css.
        Ces fichiers sont modifiés en place (pas de renommage) ; le paramètre
        force un nouveau cache (navigateur + CDN Vercel) à chaque changement,
-       au lieu de compter sur l'expiration du cache existant. -->
+       au lieu de compter sur l'expiration du cache existant. */}
   <link rel="stylesheet" href="/assets/css/fonts.css?v=20260717b"/>
   <link rel="stylesheet" href="/assets/vendor/bootstrap/bootstrap.min.css"/>
   <link rel="stylesheet" href="/assets/css/style.css?v=20260813a"/>
 
-  <!-- Umami : mesure d'audience sans cookie, pas de bandeau de consentement requis -->
+  {/* Umami : mesure d'audience sans cookie, pas de bandeau de consentement requis */}
   <script defer src="https://eu.umami.is/script.js" data-website-id="93f685e2-de60-4635-855a-b07be4902808"></script>
 
-  <!-- Service worker : rend le site installable (icône sur l'écran d'accueil)
+  {/* Service worker : rend le site installable (icône sur l'écran d'accueil)
        et consultable hors connexion. Enregistré après l'événement load pour ne
        pas concurrencer le démarrage du lecteur, qui est la priorité de la page.
        Le garde-fou __roSwRegistered évite un ré-enregistrement lors des
-       navigations client-side d'Astro (ClientRouter). -->
+       navigations client-side d'Astro (ClientRouter). */}
   <script is:inline>
     /* §87 : le service worker ne s'enregistre que sur le domaine de
        production. En local (localhost, aperçu Astro) et sur les préversions
@@ -300,8 +300,8 @@ const articleSchema = articleDatePublished ? {
     }
   </script>
 
-  <!-- Navigation client-side : garde le lecteur RadioKing (#topRadioBar,
-       transition:persist) en lecture continue quand on change de page. -->
+  {/* Navigation client-side : garde le lecteur RadioKing (#topRadioBar,
+       transition:persist) en lecture continue quand on change de page. */}
   <ClientRouter />
 
   <script type="application/ld+json" is:inline set:html={JSON.stringify(associationSchema)} />

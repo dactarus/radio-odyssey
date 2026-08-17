@@ -26,6 +26,7 @@ const LIBELLES = {
   '2000s-music-quiz': 'our 2000s music quiz',
   '2010s-music-quiz': 'our 2010s music quiz',
   '2020s-music-quiz': 'our 2020s music quiz',
+  'music-records-quiz': 'our music records quiz',
 };
 
 function construire() {

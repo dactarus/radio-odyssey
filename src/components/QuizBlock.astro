@@ -20,12 +20,19 @@
     bonus           questions du round bonus (score parfait requis)
     prefixe         préfixe affiché devant l'énoncé (ex. '🎵 ' ou rien)
     verdicts        { parfait, bon, moyen, faible } — messages de fin
+    lang            'fr' (défaut) ou 'en'
 
   Chaque question : { enonce, correct, choices: [{ slug, name }] }
   `correct` est le slug d'une fiche artiste, ce qui permet à
   data/quiz-artistes.js de recenser les quiz où chaque artiste apparaît.
+
+  ⚠️ Aucune chaîne visible ne doit être écrite en dur ici : elles sont toutes
+  dans `QUIZ_UI` (data/i18n.js). Les quatre que le moteur produit à
+  l'exécution transitent par des attributs `data-` — le script est partagé
+  entre les langues, il ne peut pas les porter (§85, §94).
 */
 import NewsletterCapture from './NewsletterCapture.astro';
+import { quizT } from '../data/i18n.js';
 
 const {
   id,
@@ -33,15 +40,11 @@ const {
   bonus = [],
   prefixe = '',
   verdicts = {},
+  lang = 'fr',
 } = Astro.props;
 
-const V = {
-  parfait: 'Score absolument parfait, sur les deux rounds !',
-  bon: 'Très fort — vous connaissez bien la maison.',
-  moyen: 'Pas mal ! Un tour sur les fiches artistes et ce sera parfait.',
-  faible: "Il est temps de flâner un peu sur nos fiches artistes.",
-  ...verdicts,
-};
+const L = quizT(lang);
+const V = { ...L.verdicts, ...verdicts };
 const total = main.length + bonus.length;
 ---
 
@@ -49,9 +52,14 @@ const total = main.length + bonus.length;
      data-verdict-parfait={V.parfait}
      data-verdict-bon={V.bon}
      data-verdict-moyen={V.moyen}
-     data-verdict-faible={V.faible}>
+     data-verdict-faible={V.faible}
+     data-l-question={L.question}
+     data-l-bonus-question={L.bonusQuestion}
+     data-l-juste={L.bonneReponse}
+     data-l-faux={L.mauvaiseReponse}
+     data-l-parfait-sans-bonus={L.parfaitSansBonus}>
 
-  <div class="ro-quiz-progress" data-progress>Question 1/{main.length}</div>
+  <div class="ro-quiz-progress" data-progress>{L.question} 1/{main.length}</div>
 
   {[['main', main], ['bonus', bonus]].map(([round, liste]) => (
     liste.map((q, i) => (
@@ -68,31 +76,31 @@ const total = main.length + bonus.length;
           ))}
         </div>
         <p class="ro-quiz-feedback" style="display:none;"></p>
-        <button type="button" class="ro-quiz-next btn-hero-ghost" style="display:none;">Question suivante →</button>
+        <button type="button" class="ro-quiz-next btn-hero-ghost" style="display:none;">{L.questionSuivante}</button>
       </div>
     ))
   ))}
 
   <div class="ro-quiz-offer" data-offer style="display:none;text-align:center;">
-    <p style="font-size:1.4rem;margin-bottom:.3rem;">🎉 Score parfait !</p>
+    <p style="font-size:1.4rem;margin-bottom:.3rem;">{L.scoreParfait}</p>
     <p style="color:var(--ro-muted);margin-bottom:1.3rem;">
-      Vous débloquez {bonus.length} questions bonus. Score final possible : {total}/{total}.
+      {L.debloque(bonus.length, total)}
     </p>
     <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;">
-      <button type="button" class="btn-hero" data-bonus-start>🎁 Tenter le bonus</button>
-      <button type="button" class="btn-hero-ghost" data-bonus-skip>Voir mon score</button>
+      <button type="button" class="btn-hero" data-bonus-start>{L.tenterBonus}</button>
+      <button type="button" class="btn-hero-ghost" data-bonus-skip>{L.voirScore}</button>
     </div>
   </div>
 
   <div class="ro-quiz-results" data-results style="display:none;">
     <p style="font-size:1.3rem;font-weight:900;color:var(--ro-purple);text-align:center;margin-bottom:.3rem;">
-      Votre score : <span data-score>0</span>/<span data-max>{main.length}</span>
+      {L.votreScore} <span data-score>0</span>/<span data-max>{main.length}</span>
     </p>
     <p data-verdict style="text-align:center;color:var(--ro-muted);margin-bottom:1.5rem;"></p>
     <div style="display:flex;justify-content:center;">
-      <button type="button" class="btn-hero" data-restart>Recommencer</button>
+      <button type="button" class="btn-hero" data-restart>{L.recommencer}</button>
     </div>
-    <NewsletterCapture context="quiz" />
+    <NewsletterCapture context="quiz" lang={lang} />
   </div>
 </div>
 
@@ -169,8 +177,8 @@ const total = main.length + bonus.length;
       if (cible) cible.style.display = '';
       if (elProgress) {
         elProgress.style.display = '';
-        elProgress.textContent = (phase === 'bonus' ? '🎁 Bonus — Question ' : 'Question ')
-          + (i + 1) + '/' + els.length;
+        elProgress.textContent = (phase === 'bonus' ? box.dataset.lBonusQuestion : box.dataset.lQuestion)
+          + ' ' + (i + 1) + '/' + els.length;
       }
     }
 
@@ -195,7 +203,7 @@ const total = main.length + bonus.length;
               : score >= Math.ceil(total * 0.7) ? d.verdictBon
               : d.verdictMoyen;
         } else if (score === principales.length) {
-          msg = 'Score parfait ! (Vous avez choisi de ne pas tenter le bonus.)';
+          msg = d.lParfaitSansBonus;
         } else {
           msg = score >= Math.ceil(principales.length * 0.7) ? d.verdictBon
               : score >= Math.ceil(principales.length * 0.4) ? d.verdictMoyen
@@ -244,12 +252,12 @@ const total = main.length + bonus.length;
             score += 1;
             btn.classList.add('is-correct');
             btn.querySelector('.ro-quiz-icon').textContent = '✅ ';
-            if (retour) { retour.textContent = '✅ Bonne réponse !'; retour.style.color = '#38a169'; }
+            if (retour) { retour.textContent = box.dataset.lJuste; retour.style.color = '#38a169'; }
           } else {
             btn.classList.add('is-wrong');
             btn.querySelector('.ro-quiz-icon').textContent = '❌ ';
             if (bon) { bon.classList.add('is-correct'); bon.querySelector('.ro-quiz-icon').textContent = '✅ '; }
-            if (retour) { retour.textContent = '❌ Raté — la bonne réponse est surlignée en vert.'; retour.style.color = '#dc2626'; }
+            if (retour) { retour.textContent = box.dataset.lFaux; retour.style.color = '#dc2626'; }
           }
           if (retour) retour.style.display = '';
           boutons.forEach(function (x) { x.disabled = true; });

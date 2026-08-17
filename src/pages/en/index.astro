@@ -19,13 +19,15 @@ import { EN_NAV_CATEGORIES } from '../../data/i18n.js';
 import NowPlaying from '../../components/NowPlaying.astro';
 import QuizInvite from '../../components/QuizInvite.astro';
 
-// Les cinq quiz par décennie, pour l'invitation de l'accueil.
+// Les six quiz anglais, pour l'invitation de l'accueil : les cinq décennies
+// et le quiz thématique des records (§94).
 const QUIZ_EN = [
-  { href: '/en/80s-music-quiz.html',   nom: '80s',   sous: 'Billie Jean, Take On Me…' },
-  { href: '/en/90s-music-quiz.html',   nom: '90s',   sous: 'Dance floors and big choruses' },
-  { href: '/en/2000s-music-quiz.html', nom: '2000s', sous: 'When pop went global' },
-  { href: '/en/2010s-music-quiz.html', nom: '2010s', sous: 'Streaming-era hits' },
-  { href: '/en/2020s-music-quiz.html', nom: '2020s', sous: 'The newest additions' },
+  { href: '/en/80s-music-quiz.html',      nom: '80s',     sous: 'Billie Jean, Take On Me…' },
+  { href: '/en/90s-music-quiz.html',      nom: '90s',     sous: 'Dance floors and big choruses' },
+  { href: '/en/2000s-music-quiz.html',    nom: '2000s',   sous: 'When pop went global' },
+  { href: '/en/2010s-music-quiz.html',    nom: '2010s',   sous: 'Streaming-era hits' },
+  { href: '/en/2020s-music-quiz.html',    nom: '2020s',   sous: 'The newest additions' },
+  { href: '/en/music-records-quiz.html',  nom: 'Records', sous: 'Billboard, Grammys, Eurovision' },
 ];
 
 const faq = [
@@ -84,7 +86,7 @@ const faq = [
             <p>The breathing sequences were designed with Elisabeth Bélot-Grimaud, a cognitive psychologist and the station's health partner. They are part of the programming, not a separate feature you have to remember to use. <a href="/en/radio-odyssey-vs-meditation-apps.html" style="color:var(--ro-purple);font-weight:700;">Compared with meditation apps</a>.</p>
           </div>
 
-          <QuizInvite lang="en" href="/en/music-quizzes.html" quiz={QUIZ_EN} boutonNombre={5} />
+          <QuizInvite lang="en" href="/en/music-quizzes.html" quiz={QUIZ_EN} boutonNombre={6} />
 
           <div class="content-card">
             <h2>Where to start</h2>

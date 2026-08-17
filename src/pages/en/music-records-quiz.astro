@@ -1,0 +1,248 @@
+---
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
+import QuizBlock from '../../components/QuizBlock.astro';
+
+/*
+  Quiz des records, version anglaise (§94).
+
+  Premier quiz **thématique** traduit. Il diffère des cinq quiz par décennie
+  sur un point qui compte : là-bas, une question est un titre et un nom
+  d'artiste — rien à traduire. Ici, chaque énoncé est une phrase, et un
+  énoncé se traduit **et se réévalue**.
+
+  ⚠️ Ce n'est donc PAS un décalque de la version française. Deux écarts,
+  assumés et volontairement peu nombreux :
+
+  1. La question sur Amir (6ᵉ à l'Eurovision 2016 pour la France) est
+     remplacée par le record de fréquentation de la tournée de Coldplay.
+     Amir, M. Pokora, Christophe Willem et Soprano forment un quatuor
+     illisible pour un lecteur anglophone : la question ne se joue pas, elle
+     se subit. Le fait qui la remplace est déjà publié et vérifié, dans les
+     deux langues (`artists.js` et `artists-en.js`).
+  2. Les distracteurs de la question « Eurovision 1988 pour la Suisse »
+     passent de Vanessa Paradis / Mylène Farmer / Zazie à Kim Wilde /
+     Kylie Minogue / Tina Turner. La bonne réponse — Céline Dion — ne change
+     pas ; ce sont les fausses pistes qui devenaient des non-réponses.
+
+  ⚠️ Les 18 autres questions sont les mêmes des deux côtés : une correction
+  d'un côté doit être répercutée de l'autre.
+
+  ⚠️ Chaque artiste n'est bonne réponse qu'une seule fois (20 slugs
+  distincts). `correct` porte le slug de la fiche : `data/quiz-artistes-en.js`
+  s'en sert pour afficher le quiz sur la fiche anglaise de l'artiste, sans
+  aucune saisie — à condition que le nom du fichier contienne « quiz ».
+*/
+
+const main = [
+  { enonce: "Which artist holds the Billboard Hot 100 longevity record, with “Lose Control” spending 112 weeks on the chart?", correct: 'teddy-swims', choices: [
+    { slug: "teddy-swims", name: "Teddy Swims" },
+    { slug: "alex-warren", name: "Alex Warren" },
+    { slug: "shawn-mendes", name: "Shawn Mendes" },
+    { slug: "benson-boone", name: "Benson Boone" },
+  ]},
+  { enonce: "Which band recorded the only James Bond theme ever to reach number one on the Billboard Hot 100?", correct: 'duran-duran', choices: [
+    { slug: "tina-turner", name: "Tina Turner" },
+    { slug: "queen", name: "Queen" },
+    { slug: "a-ha", name: "A-ha" },
+    { slug: "duran-duran", name: "Duran Duran" },
+  ]},
+  { enonce: "Which artist sent five singles from one album to number one on the Billboard Hot 100, a feat only Michael Jackson had managed before her?", correct: 'katy-perry', choices: [
+    { slug: "katy-perry", name: "Katy Perry" },
+    { slug: "taylor-swift", name: "Taylor Swift" },
+    { slug: "lady-gaga", name: "Lady Gaga" },
+    { slug: "rihanna", name: "Rihanna" },
+  ]},
+  { enonce: "Which band is the most awarded in Grammy history, with twenty-two trophies?", correct: 'u2', choices: [
+    { slug: "maroon-5", name: "Maroon 5" },
+    { slug: "u2", name: "U2" },
+    { slug: "queen", name: "Queen" },
+    { slug: "coldplay", name: "Coldplay" },
+  ]},
+  { enonce: "Which Belgian artist was the first to reach number one on the UK singles chart?", correct: 'lost-frequencies', choices: [
+    { slug: "angele", name: "Angèle" },
+    { slug: "lost-frequencies", name: "Lost Frequencies" },
+    { slug: "stromae", name: "Stromae" },
+    { slug: "damiano-david", name: "Damiano David" },
+  ]},
+  { enonce: "Which all-female group holds the record for the most entries on the UK singles chart?", correct: 'bananarama', choices: [
+    { slug: "abba", name: "Abba" },
+    { slug: "bananarama", name: "Bananarama" },
+    { slug: "the-corrs", name: "The Corrs" },
+    { slug: "m-people", name: "M People" },
+  ]},
+  { enonce: "Which artist has won the most Grammy Awards of anyone, in any category?", correct: 'beyonce', choices: [
+    { slug: "rihanna", name: "Rihanna" },
+    { slug: "adele", name: "Adele" },
+    { slug: "beyonce", name: "Beyoncé" },
+    { slug: "alicia-keys", name: "Alicia Keys" },
+  ]},
+  { enonce: "Which artist recorded the best-selling album of all time?", correct: 'michael-jackson', choices: [
+    { slug: "abba", name: "Abba" },
+    { slug: "queen", name: "Queen" },
+    { slug: "michael-jackson", name: "Michael Jackson" },
+    { slug: "madonna", name: "Madonna" },
+  ]},
+  { enonce: "Which British singer was the first woman to win five Grammy Awards in a single night?", correct: 'amy-winehouse', choices: [
+    { slug: "amy-winehouse", name: "Amy Winehouse" },
+    { slug: "sade", name: "Sade" },
+    { slug: "lisa-stansfield", name: "Lisa Stansfield" },
+    { slug: "adele", name: "Adele" },
+  ]},
+  { enonce: "Which British artist recorded the best-selling chart single in history?", correct: 'elton-john', choices: [
+    { slug: "phil-collins", name: "Phil Collins" },
+    { slug: "elton-john", name: "Elton John" },
+    { slug: "sting", name: "Sting" },
+    { slug: "queen", name: "Queen" },
+  ]},
+];
+
+const bonus = [
+  { enonce: "Which singer drew 375,000 people over three nights at Knebworth in 2003?", correct: 'robbie-williams', choices: [
+    { slug: "ed-sheeran", name: "Ed Sheeran" },
+    { slug: "coldplay", name: "Coldplay" },
+    { slug: "robbie-williams", name: "Robbie Williams" },
+    { slug: "harry-styles", name: "Harry Styles" },
+  ]},
+  { enonce: "Which duo was the first Western pop act to perform in China, in 1985?", correct: 'wham', choices: [
+    { slug: "a-ha", name: "A-ha" },
+    { slug: "wham", name: "Wham!" },
+    { slug: "modern-talking", name: "Modern Talking" },
+    { slug: "duran-duran", name: "Duran Duran" },
+  ]},
+  { enonce: "Which artist played Live Aid in London and again in Philadelphia on the same day, crossing the Atlantic by Concorde?", correct: 'phil-collins', choices: [
+    { slug: "sting", name: "Sting" },
+    { slug: "queen", name: "Queen" },
+    { slug: "phil-collins", name: "Phil Collins" },
+    { slug: "elton-john", name: "Elton John" },
+  ]},
+  { enonce: "Which Colombian artist recorded the first all-Spanish-language album by a woman to top the Billboard 200?", correct: 'karol-g', choices: [
+    { slug: "rihanna", name: "Rihanna" },
+    { slug: "shakira", name: "Shakira" },
+    { slug: "doja-cat", name: "Doja Cat" },
+    { slug: "karol-g", name: "Karol G" },
+  ]},
+  { enonce: "Which Italian singer won Eurovision 2021 with his band, twenty-eight years after Italy’s previous win?", correct: 'damiano-david', choices: [
+    { slug: "celine-dion", name: "Céline Dion" },
+    { slug: "damiano-david", name: "Damiano David" },
+    { slug: "baltimora", name: "Baltimora" },
+    { slug: "abba", name: "Abba" },
+  ]},
+  { enonce: "Which singer won Eurovision 1988 representing Switzerland?", correct: 'celine-dion', choices: [
+    { slug: "kim-wilde", name: "Kim Wilde" },
+    { slug: "kylie-minogue", name: "Kylie Minogue" },
+    { slug: "tina-turner", name: "Tina Turner" },
+    { slug: "celine-dion", name: "Céline Dion" },
+  ]},
+  { enonce: "Which artist recorded the best-selling album of the 21st century in the United Kingdom?", correct: 'adele', choices: [
+    { slug: "adele", name: "Adele" },
+    { slug: "ed-sheeran", name: "Ed Sheeran" },
+    { slug: "dua-lipa", name: "Dua Lipa" },
+    { slug: "amy-winehouse", name: "Amy Winehouse" },
+  ]},
+  { enonce: "Which artist recorded the best-selling reggae album of all time?", correct: 'bob-marley', choices: [
+    { slug: "craig-david", name: "Craig David" },
+    { slug: "bob-marley", name: "Bob Marley" },
+    { slug: "shalamar", name: "Shalamar" },
+    { slug: "earth-wind-and-fire", name: "Earth, Wind & Fire" },
+  ]},
+  { enonce: "Which British band won the 1994 Mercury Prize, ahead of Blur and Pulp?", correct: 'm-people', choices: [
+    { slug: "simply-red", name: "Simply Red" },
+    { slug: "jamiroquai", name: "Jamiroquai" },
+    { slug: "clean-bandit", name: "Clean Bandit" },
+    { slug: "m-people", name: "M People" },
+  ]},
+  { enonce: "Which band staged the most attended tour ever played by a band?", correct: 'coldplay', choices: [
+    { slug: "u2", name: "U2" },
+    { slug: "coldplay", name: "Coldplay" },
+    { slug: "queen", name: "Queen" },
+    { slug: "imagine-dragons", name: "Imagine Dragons" },
+  ]},
+];
+
+const faq = [
+  { q: 'Can the answers to this quiz change?', a: "No. Every answer is a settled fact — a date, a name, a record that has been set. Unlike a play-count chart, nothing here will move next month." },
+  { q: 'Where do these facts come from?', a: "From the artist pages on this site, where every fact was checked individually before publication. Each correct answer points to the artist it belongs to." },
+  { q: 'What is the bonus round?', a: "A perfect score on the 10 main questions unlocks 10 more, for a possible final score of 20." },
+  { q: 'Do these artists really play on Radio Odyssey?', a: "Yes — every artist named here is in our <a href='/en/artists-on-radio-odyssey.html' style='color:var(--ro-purple);font-weight:700;'>real broadcast catalogue</a>, with the tracks we actually air." },
+];
+---
+<Layout
+  lang="en"
+  title="Music Records Quiz — Who Holds That Record? | Radio Odyssey"
+  description="Free music quiz: 20 records to match with the artists Radio Odyssey plays — Billboard, Grammys, Eurovision, Live Aid. Bonus round for a perfect score."
+  altLangs={{ fr: '/quiz-records-radio-odyssey.html', en: '/en/music-records-quiz.html' }}
+>
+  <PageHero
+    gradientFrom="#FFD700"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Home"
+    homeHref="/en.html"
+    breadcrumbCurrent="Music records quiz"
+    title="Music Records Quiz: Who Holds That Record?"
+    text="The longest run on the Billboard chart, the only Bond theme to hit number one: 20 records, 20 artists to name."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.3"/><path d="M19 19a5 5 0 1 1 6.5 4.8c-1 .3-1.5 1-1.5 2v1.2" stroke="white" stroke-width="2.3" stroke-linecap="round" fill="none"/><circle cx="24" cy="32.5" r="1.6" fill="white"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">The longest run on the Billboard Hot 100, the only James Bond theme to reach number one, the first Belgian act to top the UK chart: 20 questions on records that are settled for good. A perfect score on the first 10 unlocks 10 bonus questions. Every answer is drawn from our <a href="/en/artists-on-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">artist pages</a>, where each fact was checked one by one.</p>
+          </div>
+
+          <div class="content-card">
+            <QuizBlock
+              lang="en"
+              id="en-music-records-quiz"
+              main={main}
+              bonus={bonus}
+              verdicts={{
+                parfait: 'A clean sweep — you know this station better than we do.',
+                bon: 'A very good score. Two or three stories left to discover.',
+                moyen: 'Solid start! A look around the artist pages and the clean sweep is within reach.',
+                faible: 'It is all on the artist pages — and they are rather pleasant to read.',
+              }}
+            />
+          </div>
+
+          <FAQBlock items={faq} idPrefix="en-music-records-quiz-faq" lang="en" />
+
+          <RelatedPages
+            lang="en"
+            alsoLike={[
+              { href: '/en/music-quizzes.html', label: 'All Our Music Quizzes', desc: 'Five decades, 100 more questions' },
+              { href: '/en/80s-music-quiz.html', label: '80s Music Quiz', desc: 'Billie Jean, Take On Me, Cruel Summer…' },
+              { href: '/en/artists-on-radio-odyssey.html', label: 'All the Artists We Play', desc: 'The full list, with real play figures' },
+            ]}
+            associated={[
+              { href: '/en/what-makes-radio-odyssey-different.html', label: 'What Makes Radio Odyssey Different' },
+              { href: '/en/radio-odyssey-faq.html', label: 'Radio Odyssey FAQ' },
+              { href: '/en.html', label: 'English home' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Listen to these artists live</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Listen to Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar lang="en" />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

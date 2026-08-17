@@ -25,7 +25,7 @@ const enAnglais = lang === 'en';
 const categories = enAnglais ? EN_NAV_CATEGORIES : NAV_CATEGORIES;
 const limitePages = enAnglais ? 99 : FOOTER_PAGE_LIMIT;
 ---
-<!-- FOOTER -->
+{/* FOOTER */}
 <footer id="site-footer">
   <div class="container">
     <div class="row gy-4">
@@ -79,7 +79,7 @@ const limitePages = enAnglais ? 99 : FOOTER_PAGE_LIMIT;
   </div>
 </footer>
 
-<!-- §80 : bootstrap.bundle.min.js retiré. PageSpeed Insights le signalait à
+{/* §80 : bootstrap.bundle.min.js retiré. PageSpeed Insights le signalait à
      ~20 Kio de JS quasi entièrement inutilisé — sur les 258 pages, il ne
      servait qu'à trois comportements (FAQ en accordéon, méga-menu déroulant,
      panneau mobile), jamais à ses modales/carrousels/tooltips. Le script
@@ -87,7 +87,7 @@ const limitePages = enAnglais ? 99 : FOOTER_PAGE_LIMIT;
      reste chargé (voir Layout.astro) : sa grille (row/col-/container) sert
      sur 110+ fichiers, et les classes .collapse/.dropdown-menu/.offcanvas
      qu'il définit continuent de fournir tout l'habillage visuel — seul le
-     déclenchement en JavaScript change. -->
+     déclenchement en JavaScript change. */}
 <script is:inline src="/assets/js/main.js"></script>
 <script is:inline>
 (function () {
