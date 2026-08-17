@@ -4,7 +4,7 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-17 (§87).*
+*Dernière mise à jour de ce fichier : 2026-08-17 (§88).*
 
 ## Objectif du projet
 
@@ -97,7 +97,7 @@ Depuis le 2026-08-09, `www.radio-odyssey.com` est **installable depuis n'importe
 ⚠️ **Le service worker de l'appli est distinct de celui du site** (`Appli Radio Odyssey V8/service-worker.js`, `CACHE_VERSION` = `v20` depuis le §78). Les navigations y sont traitées à part depuis le §76 — c'est ce qui permet le lancement hors ligne depuis l'écran d'accueil, la `start_url` du manifeste étant `/?source=pwa`. ⚠️ Ne pas retirer ce traitement en croyant simplifier : sans lui, `caches.match` ne fait pas correspondre `/?source=pwa` à `/` et l'appli ne s'ouvre pas hors ligne.
 ⚠️ **`CACHE_VERSION` sert de repère de version vérifiable en ligne** (`app.radio-odyssey.com/service-worker.js`). L'incrémenter à **chaque** publication, sans exception : faute de quoi on teste sur iPhone sans savoir quelle version tourne — c'est arrivé deux fois le 2026-08-16, et cela a coûté deux diagnostics faux.
 
-⚠️⚠️ **Mettre la radio en pause depuis l'écran verrouillé fait démarrer l'app Musique** sur iPhone (§77.1). En relâchant la session audio, iOS considère terminée l'« interruption » causée à l'application précédente et reprend sa lecture. **Trois contournements ont été écrits, publiés et testés sur iPhone le 2026-08-16 : aucun ne fonctionne.** Le détail est au §77.1 et dans un avertissement au-dessus des `setActionHandler` d'`index.html`. Ne pas repartir dans cette impasse. ⚠️ Le défaut existe aussi sur `www` (`RadioPlayer.astro`, `arreter()` branché sur les actions `pause` et `stop`) depuis le passage au lecteur natif du 2026-08-09.
+⚠️⚠️ **Mettre la radio en pause depuis l'écran verrouillé fait démarrer l'app Musique** sur iPhone (§77.1). En relâchant la session audio, iOS considère terminée l'« interruption » causée à l'application précédente et reprend sa lecture. **Trois contournements ont été écrits, publiés et testés sur iPhone le 2026-08-16 : aucun ne fonctionne** pour empêcher Musique de démarrer. ⚠️ Mais le n°1 (`userPaused`) réglait un **autre** défaut et a été rétabli au §88 : sans lui, la pause depuis l'écran verrouillé était prise pour une interruption système, et la lecture repartait seule au déverrouillage. Ne pas le retirer en croyant supprimer un contournement inopérant — ce sont deux symptômes distincts. Le détail est au §77.1 et dans un avertissement au-dessus des `setActionHandler` d'`index.html`. Ne pas repartir dans cette impasse. ⚠️ Le défaut existe aussi sur `www` (`RadioPlayer.astro`, `arreter()` branché sur les actions `pause` et `stop`) depuis le passage au lecteur natif du 2026-08-09.
 
 ⚠️ **Test sur iPhone obligatoire avant publication** pour tout ce qui touche à la lecture, à la pause ou à la reconnexion : le banc d'essai Playwright ne voit pas la session audio d'iOS et validait les quatre correctifs du §76, dont un s'est révélé nuisible. `npx vercel` **sans** `--prod` crée une préversion installable sur l'écran d'accueil.
 
