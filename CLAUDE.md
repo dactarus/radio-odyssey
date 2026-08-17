@@ -4,7 +4,7 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-17 (§92).*
+*Dernière mise à jour de ce fichier : 2026-08-17 (§93).*
 
 ## Objectif du projet
 
@@ -36,6 +36,7 @@ Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → U
 ### Corrections déjà faites (dans le dossier fourni)
 - `sitemap.xml` : corrigé, toutes les URLs pointent vers `www.radio-odyssey.com` (elles pointaient à tort vers `radio-odyssey.fr`)
 - `robots.txt` : corrigé, la ligne `Sitemap:` pointe maintenant vers `www.radio-odyssey.com/sitemap.xml`
+- `robots.txt` ne porte plus qu'un seul `Disallow` : `/hors-ligne.html` (page de repli du service worker, sans contenu propre). `/console.html` retiré au §79, `/sitemap.xml/` au §93 — dans les deux cas parce que le blocage empêchait les moteurs de constater la disparition ou la redirection.
 
 ## Architecture actuelle du site
 
@@ -177,6 +178,7 @@ npm run preview        # http://localhost:4321 — Ctrl+C pour rendre la main
 | Nombre de fiches en `noindex` = nombre attendu par `SEUIL_INDEXATION_TITRES` | seuil et sitemap doivent rester d'accord (§61) |
 | `CACHE_VERSION` incrémenté si `public/sw.js` a changé | sinon le service worker sert l'ancienne version |
 | **Aucun `<title>` du build ne fait moins de trois mots** | un attribut Astro sans guillemets est tronqué au premier espace, sans erreur au build : trois pages de quiz sont parties en ligne avec `<title>` = « Quiz » (§69) |
+| **Aucun `Disallow:` de `robots.txt` ne couvre un chemin traité par une redirection de `vercel.json`** | les deux se neutralisent, et le `Disallow` gagne en silence : une URL interdite au crawl ne peut être constatée ni redirigée ni disparue, donc elle reste indéfiniment en « détectée, non indexée » (§79, §93) |
 
 ## Console d'édition
 
