@@ -88,23 +88,25 @@ const faq = [
 
           <div class="content-card">
             <h2>Where to start</h2>
-            <p>Fifteen pages in English, grouped by what you might be looking for.</p>
-            {EN_NAV_CATEGORIES.map((cat) => (
-              <>
-                <h3><Icon name={cat.bi} /> {cat.label}</h3>
-                <div style="display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.2rem;">
-                  {cat.pages.map((p) => (
-                    <a href={p.href} style="display:flex;justify-content:space-between;align-items:center;gap:1rem;text-decoration:none;color:var(--ro-dark);padding:.65rem .85rem;border-radius:12px;background:rgba(123,47,190,.04);">
-                      <span>
-                        <strong style="color:var(--ro-purple);">{p.label}</strong><br/>
-                        <span style="font-size:.82rem;color:var(--ro-muted);">{p.desc}</span>
-                      </span>
-                      <Icon name="arrow-right" style="color:var(--ro-purple);flex-shrink:0;" />
-                    </a>
-                  ))}
+            <p>Everything we publish in English, grouped by what you might be looking for.</p>
+            {/* §92 : cette section listait les 29 pages les unes sous les
+                autres, en cartes de deux lignes — un défilement interminable,
+                sans rapport avec le rythme du reste de la page. Elle tient
+                désormais en cinq cartes de groupe, les pages en pastilles.
+                Même information, une hauteur d'écran au lieu de quatre. */}
+            <div class="ro-portes">
+              {EN_NAV_CATEGORIES.map((cat) => (
+                <div class="ro-porte">
+                  <h3 style="margin:0 0 .15rem;font-size:1rem;"><Icon name={cat.bi} /> {cat.label}</h3>
+                  <p style="margin:0 0 .6rem;font-size:.8rem;color:var(--ro-muted);line-height:1.45;">{cat.intro}</p>
+                  <div style="display:flex;flex-wrap:wrap;gap:.35rem;">
+                    {cat.pages.map((p) => (
+                      <a href={p.href} class="tag-pill" style="text-decoration:none;font-size:.76rem;">{p.label}</a>
+                    ))}
+                  </div>
                 </div>
-              </>
-            ))}
+              ))}
+            </div>
           </div>
 
           <div class="content-card">
@@ -151,3 +153,25 @@ const faq = [
     </div>
   </main>
 </Layout>
+
+<style>
+  /* Deux colonnes dès qu'il y a la place, une seule sur mobile. La dernière
+     carte occupe toute la largeur quand le nombre de groupes est impair —
+     sans quoi elle laisse un vide qui déséquilibre la grille. */
+  .ro-portes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: .8rem;
+    margin-top: 1rem;
+  }
+  .ro-porte {
+    background: linear-gradient(135deg, rgba(123, 47, 190, .05), rgba(255, 60, 172, .035));
+    border: 1px solid rgba(123, 47, 190, .12);
+    border-radius: 16px;
+    padding: 1rem 1.1rem;
+  }
+  .ro-porte :global(svg) { color: var(--ro-purple); }
+  @media (min-width: 576px) {
+    .ro-porte:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  }
+</style>

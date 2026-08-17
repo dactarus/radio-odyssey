@@ -3088,3 +3088,29 @@ Le propriétaire ne voyait qu'un seul quiz en anglais. Vérification faite depui
 ---
 
 *Dernière mise à jour : 2026-08-17, invitation aux quiz sur l'accueil anglais et règle des fiches artistes actée (§91).*
+
+---
+
+## 92. « Where to start » : une liste à la Prévert devient cinq cartes (2026-08-17)
+
+Remarque du propriétaire sur l'accueil anglais : *« le panneau "Where to start" est super long en scroll, ça fait bizarre par rapport au reste de la page, ce n'est pas du tout équilibré, ça fait une liste à la Prévert. »*
+
+Il avait raison, et le chiffre le dit mieux que l'impression : le bloc affichait les **29 pages du menu anglais les unes sous les autres**, chacune en carte de deux lignes avec sa flèche. Il occupait à lui seul près de la moitié de la hauteur de la page, au milieu de sections courtes — un déséquilibre de rythme, pas seulement de longueur.
+
+⚠️ Défaut de conception dès l'origine, aggravé mécaniquement : la section parcourait `EN_NAV_CATEGORIES`, donc **chaque page ajoutée au menu l'allongeait**. Elle est passée de 15 à 29 entrées entre le §82 et le §90 sans que personne y regarde. Une section qui grandit toute seule doit être conçue pour ça dès le départ.
+
+Elle tient désormais en **cinq cartes de groupe** sur deux colonnes, chacune avec son icône, une phrase d'orientation et ses pages en pastilles. La dernière carte s'étend sur toute la largeur quand le nombre de groupes est impair, sinon elle laisse un vide qui déséquilibre la grille à son tour.
+
+Une phrase d'orientation par groupe a été ajoutée à `EN_NAV_CATEGORIES` (`intro`) : sans elle, la carte n'est qu'un tas de pastilles.
+
+Au passage, l'accroche annonçait *« Fifteen pages in English »* — vrai au §82, faux depuis. Elle ne compte plus.
+
+### Vérifications
+
+Build : 291 pages, aucune erreur. Mesuré sur navigateur piloté, à 1280 px : le bloc fait **679 px de haut, soit 13 % de la page**, contre près de la moitié auparavant. Cinq cartes, deux colonnes, 29 pastilles — la même information, sans une seule page perdue.
+
+⚠️ **Deuxième extraction de balisage de la journée, deuxième balise orpheline.** Le découpage a laissé la queue de l'ancien bloc (`</>`, `))}`, un `</div>`), et le build a refusé de compiler. Comme au §91 : une extraction se vérifie par un build, jamais à l'œil. Correction appliquée dans le conteneur de vérification puis rejouée sur la machine du propriétaire, **empreintes MD5 identiques des deux côtés**.
+
+---
+
+*Dernière mise à jour : 2026-08-17, resserrement du bloc « Where to start » (§92).*
