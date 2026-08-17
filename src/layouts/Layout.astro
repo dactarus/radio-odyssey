@@ -280,7 +280,16 @@ const articleSchema = articleDatePublished ? {
        Le garde-fou __roSwRegistered évite un ré-enregistrement lors des
        navigations client-side d'Astro (ClientRouter). -->
   <script is:inline>
-    if ('serviceWorker' in navigator && !window.__roSwRegistered) {
+    /* §87 : le service worker ne s'enregistre que sur le domaine de
+       production. En local (localhost, aperçu Astro) et sur les préversions
+       Vercel, il s'intercalait entre le navigateur et le serveur : cache de
+       l'ancienne structure du site, page « hors ligne » servie dès que
+       l'aperçu redémarre, correctif qu'on croit inopérant alors qu'il est
+       simplement invisible. Deux diagnostics faux en ont découlé (§84, §86).
+       En production, rien ne change : même installation, même
+       fonctionnement hors ligne. */
+    var surLaProd = location.hostname === 'www.radio-odyssey.com';
+    if (surLaProd && 'serviceWorker' in navigator && !window.__roSwRegistered) {
       window.__roSwRegistered = true;
       window.addEventListener('load', function () {
         navigator.serviceWorker.register('/sw.js').catch(function () {

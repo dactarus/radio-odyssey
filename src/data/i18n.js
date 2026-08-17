@@ -198,6 +198,19 @@ export const EN_NAV_CATEGORIES = [
     ],
   },
   {
+    id: 'artists',
+    bi: 'people-fill',
+    label: 'Artists',
+    pages: [
+      { href: '/en/artists-on-radio-odyssey.html', bi: 'music-note-list', label: 'All artists we play', desc: 'The full list, with real play figures' },
+      { href: '/en/artist-madonna.html', bi: 'stars', label: 'Madonna', desc: '8 tracks in rotation' },
+      { href: '/en/artist-queen.html', bi: 'trophy', label: 'Queen', desc: '7 tracks in rotation' },
+      { href: '/en/artist-abba.html', bi: 'disc', label: 'Abba', desc: 'Six tracks, all remixed' },
+      { href: '/en/artist-coldplay.html', bi: 'soundwave', label: 'Coldplay', desc: '8 tracks in rotation' },
+      { href: '/en/artist-dua-lipa.html', bi: 'lightning-charge', label: 'Dua Lipa', desc: '8 tracks in rotation' },
+    ],
+  },
+  {
     id: 'about',
     bi: 'info-circle',
     label: 'About',
