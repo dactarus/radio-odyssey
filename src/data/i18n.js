@@ -281,12 +281,13 @@ export const EN_NAV_CATEGORIES = [
   },
   {
     id: 'quizzes',
-    intro: 'Six quizzes, 120 questions, no sign-up.',
+    intro: 'Seven quizzes, 140 questions, no sign-up.',
     bi: 'trophy',
     label: 'Quizzes',
     pages: [
-      { href: '/en/music-quizzes.html', bi: 'grid', label: 'All six quizzes', desc: 'Six quizzes, 120 questions' },
+      { href: '/en/music-quizzes.html', bi: 'grid', label: 'All seven quizzes', desc: 'Seven quizzes, 140 questions' },
       { href: '/en/music-records-quiz.html', bi: 'trophy', label: 'Music Records Quiz', desc: 'Billboard, Grammys, Eurovision, Live Aid' },
+      { href: '/en/stage-names-quiz.html', bi: 'person-badge', label: 'Stage Names Quiz', desc: 'A jumper, a novel, a football manager' },
       { href: '/en/80s-music-quiz.html', bi: 'clock-history', label: '80s Music Quiz', desc: 'Billie Jean, Take On Me, Cruel Summer…' },
       { href: '/en/90s-music-quiz.html', bi: 'disc', label: '90s Music Quiz', desc: 'Dance floors and big choruses' },
       { href: '/en/2000s-music-quiz.html', bi: 'soundwave', label: '2000s Music Quiz', desc: 'When pop went global' },
