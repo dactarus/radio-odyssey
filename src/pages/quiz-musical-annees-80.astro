@@ -179,7 +179,7 @@ const faq = [
 
             {mainQuestions.map((q, i) => (
               <div class="quiz80-q" data-round="main" data-index={i} style={i === 0 ? '' : 'display:none;'}>
-                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎵 "{q.track}"</p>
+                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎵 Qui chante « {q.track} » ?</p>
                 <div style="display:flex;flex-direction:column;gap:.6rem;">
                   {q.choices.map((c) => (
                     <button
@@ -200,7 +200,7 @@ const faq = [
 
             {bonusQuestions.map((q, i) => (
               <div class="quiz80-q" data-round="bonus" data-index={i} style="display:none;">
-                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎁 🎵 "{q.track}"</p>
+                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎁 🎵 Qui chante « {q.track} » ?</p>
                 <div style="display:flex;flex-direction:column;gap:.6rem;">
                   {q.choices.map((c) => (
                     <button

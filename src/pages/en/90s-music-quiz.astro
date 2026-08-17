@@ -1,16 +1,28 @@
 ---
-import Icon from '../components/Icon.astro';
-import Layout from '../layouts/Layout.astro';
-import PageHero from '../components/PageHero.astro';
-import Sidebar from '../components/Sidebar.astro';
-import FAQBlock from '../components/FAQBlock.astro';
-import RelatedPages from '../components/RelatedPages.astro';
-import NewsletterCapture from '../components/NewsletterCapture.astro';
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
+import NewsletterCapture from '../../components/NewsletterCapture.astro';
 
-// Même principe que le quiz années 80 : chaque artiste/groupe n'apparaît
-// qu'une seule fois comme bonne réponse sur tout le quiz (round principal
-// + round bonus confondus), et chaque titre a été vérifié individuellement
-// par recherche web pour confirmer une sortie réelle dans les années 90.
+/*
+  Quiz des années 80, version anglaise (§89).
+
+  ⚠️ Les questions sont reprises À L'IDENTIQUE de la version française : ce
+  sont des titres de morceaux et des noms d'artistes, ils ne se traduisent
+  pas. Seuls l'habillage et le moteur sont en anglais. Si une question est
+  corrigée d'un côté, la corriger de l'autre — c'est la seule chose qui peut
+  diverger entre les deux pages.
+
+  ⚠️ Le moteur est une copie, comme pour les cinq quiz français par décennie
+  (§69). C'est assumé : le mutualiser obligerait à refondre les six pages.
+*/
+// Chaque artiste/groupe n'apparaît qu'une seule fois comme bonne réponse
+// dans tout le quiz (round principal + round bonus confondus), et chaque
+// titre a été vérifié individuellement par recherche web pour confirmer
+// une sortie réelle dans les années 80.
 const mainQuestions = [
   { track: "Earth Song", correct: 'michael-jackson', choices: [
     { slug: 'elton-john', name: 'Elton John' },
@@ -140,25 +152,26 @@ const bonusQuestions = [
 const TOTAL_ARTISTS = mainQuestions.length + bonusQuestions.length;
 
 const faq = [
-  { q: 'Les titres de ce quiz sont-ils vraiment diffusés sur Radio Odyssey ?', a: "Oui, tous les titres et artistes de ce quiz font partie de notre catalogue réel de programmation — voir notre page <a href='/artistes-diffuses-radio-odyssey.html' style='color:var(--ro-purple);font-weight:700;'>artistes diffusés</a>." },
-  { q: 'Le quiz a-t-il un niveau de difficulté ?', a: "Le round principal réunit des tubes très connus internationalement ; le round bonus va chercher des titres plus difficiles à trouver, entre eurodance culte et tubes plus discrets des années 90." },
-  { q: 'Qu\'est-ce que le round bonus ?', a: "Réussir un score parfait sur les 10 questions du round principal débloque 10 questions bonus supplémentaires, pour un score final possible sur 20." },
-  { q: 'Puis-je refaire le quiz ?', a: "Oui, un bouton \"Recommencer\" est disponible à la fin pour retenter votre chance — l'ordre des questions change à chaque tentative." },
+  { q: 'Are these tracks really played on Radio Odyssey?', a: "Yes — every track and every artist in this quiz is part of our actual schedule. See <a href='/en/artists-on-radio-odyssey.html' style='color:var(--ro-purple);font-weight:700;'>the artists we play</a>." },
+  { q: 'How hard is it?', a: "The main round is made of hits known worldwide; the bonus round digs for tracks that are harder to place, including a few one-summer French hits." },
+  { q: 'What is the bonus round?', a: "A perfect score on the 10 main questions unlocks 10 extra bonus questions, for a possible final score of 20." },
+  { q: 'Can I play again?', a: "Yes — a \"Play again\" button appears at the end, and the questions come in a different order every time." },
 ];
 ---
 <Layout
-  lang="fr"
+  lang="en"
   altLangs={{ fr: '/quiz-musical-annees-90.html', en: '/en/90s-music-quiz.html' }}
-  title="Quiz Musical Années 90 | Radio Odyssey"
-  description="Testez vos connaissances avec ce quiz musical années 90, basé sur les vrais titres diffusés sur Radio Odyssey. 10 questions, un round bonus si score parfait."
+  title="90s Music Quiz — 20 Questions | Radio Odyssey"
+  description="Test your 90s music knowledge with a quiz built from tracks Radio Odyssey actually plays. 10 questions, plus a bonus round if you score perfectly."
 >
   <PageHero
-    gradientFrom="#00C6FF"
-    gradientTo="#7B2FBE"
-    homeLabel="🏠 Accueil"
-    breadcrumbCurrent="Quiz musical années 90"
-    title="Quiz Musical Années 90"
-    text="10 questions, basées sur les vrais titres diffusés sur Radio Odyssey — et 10 de plus si vous faites un sans-faute."
+    gradientFrom="#FFD700"
+    gradientTo="#FF3CAC"
+    homeLabel="🏠 Home"
+    homeHref="/en.html"
+    breadcrumbCurrent="90s music quiz"
+    title="90s Music Quiz"
+    text="10 questions on the 90s, built from tracks we actually play — and 10 more if you get every one right."
   >
     <Fragment slot="icon">
       <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.3"/><path d="M24 14V24L31 28" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M17 8L12 13M31 8L36 13" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round"/></svg>
@@ -171,7 +184,7 @@ const faq = [
         <div class="col-lg-8">
 
           <div class="content-card">
-            <p style="margin:0;">Après les <a href="/quiz-musical-annees-80.html" style="color:var(--ro-purple);font-weight:700;">années 80</a>, place aux années 90 ! Voici {mainQuestions.length} questions basées sur les vrais titres diffusés sur Radio Odyssey — chaque artiste n'apparaît qu'une seule fois, et chaque titre est vérifié comme étant réellement sorti dans les années 90. Un sans-faute débloque {bonusQuestions.length} questions bonus, avec quelques pépites plus difficiles à trouver ! Envie de continuer ? Testez aussi notre <a href="/quiz-musical-annees-2000.html" style="color:var(--ro-purple);font-weight:700;">quiz musical années 2000</a>.</p>
+            <p style="margin:0;">Here are {mainQuestions.length} questions built from the real 90s tracks we play — each artist appears only once, and every track has been checked as a genuine 90s release. A perfect score unlocks {bonusQuestions.length} bonus questions, with some harder ones among them. Want to keep going? See <a href="/en/artists-on-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">all the artists we play</a>, or try our <a href="/en/80s-music-quiz.html" style="color:var(--ro-purple);font-weight:700;">80s quiz</a>.</p>
           </div>
 
           <div class="content-card" id="quiz90">
@@ -179,7 +192,7 @@ const faq = [
 
             {mainQuestions.map((q, i) => (
               <div class="quiz90-q" data-round="main" data-index={i} style={i === 0 ? '' : 'display:none;'}>
-                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎵 Qui chante « {q.track} » ?</p>
+                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎵 Who sings “{q.track}”?</p>
                 <div style="display:flex;flex-direction:column;gap:.6rem;">
                   {q.choices.map((c) => (
                     <button
@@ -194,13 +207,13 @@ const faq = [
                   ))}
                 </div>
                 <p class="quiz90-feedback" style="display:none;margin:.8rem 0 0;font-weight:800;"></p>
-                <button type="button" class="quiz90-next btn-hero-ghost" style="margin-top:.8rem;display:none;">Question suivante →</button>
+                <button type="button" class="quiz90-next btn-hero-ghost" style="margin-top:.8rem;display:none;">Next question →</button>
               </div>
             ))}
 
             {bonusQuestions.map((q, i) => (
               <div class="quiz90-q" data-round="bonus" data-index={i} style="display:none;">
-                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎁 🎵 Qui chante « {q.track} » ?</p>
+                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎁 🎵 Who sings “{q.track}”?</p>
                 <div style="display:flex;flex-direction:column;gap:.6rem;">
                   {q.choices.map((c) => (
                     <button
@@ -215,55 +228,56 @@ const faq = [
                   ))}
                 </div>
                 <p class="quiz90-feedback" style="display:none;margin:.8rem 0 0;font-weight:800;"></p>
-                <button type="button" class="quiz90-next btn-hero-ghost" style="margin-top:.8rem;display:none;">Question suivante →</button>
+                <button type="button" class="quiz90-next btn-hero-ghost" style="margin-top:.8rem;display:none;">Next question →</button>
               </div>
             ))}
 
             <div id="quiz90-bonus-offer" style="display:none;text-align:center;">
-              <p style="font-size:1.4rem;margin-bottom:.3rem;">🎉 Score parfait !</p>
-              <p style="color:var(--ro-muted);margin-bottom:1.3rem;">Vous débloquez {bonusQuestions.length} questions bonus. Score final possible : {TOTAL_ARTISTS}/{TOTAL_ARTISTS}.</p>
+              <p style="font-size:1.4rem;margin-bottom:.3rem;">🎉 Perfect score!</p>
+              <p style="color:var(--ro-muted);margin-bottom:1.3rem;">You have unlocked {bonusQuestions.length} bonus questions. Possible final score: {TOTAL_ARTISTS}/{TOTAL_ARTISTS}.</p>
               <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;">
-                <button type="button" id="quiz90-bonus-start" class="btn-hero">🎁 Tenter le bonus</button>
-                <button type="button" id="quiz90-bonus-skip" class="btn-hero-ghost">Voir mon score</button>
+                <button type="button" id="quiz90-bonus-start" class="btn-hero">🎁 Try the bonus round</button>
+                <button type="button" id="quiz90-bonus-skip" class="btn-hero-ghost">See my score</button>
               </div>
             </div>
 
             <div id="quiz90-results" style="display:none;">
-              <p style="font-size:1.3rem;font-weight:900;color:var(--ro-purple);text-align:center;margin-bottom:.3rem;">Votre score : <span id="quiz90-score">0</span>/<span id="quiz90-max">{mainQuestions.length}</span></p>
+              <p style="font-size:1.3rem;font-weight:900;color:var(--ro-purple);text-align:center;margin-bottom:.3rem;">Your score: <span id="quiz90-score">0</span>/<span id="quiz90-max">{mainQuestions.length}</span></p>
               <p id="quiz90-verdict" style="text-align:center;color:var(--ro-muted);margin-bottom:1.5rem;"></p>
               <div style="display:flex;justify-content:center;">
-                <button type="button" id="quiz90-restart" class="btn-hero">Recommencer</button>
+                <button type="button" id="quiz90-restart" class="btn-hero">Play again</button>
               </div>
-              <NewsletterCapture context="quiz" />
+              <NewsletterCapture context="quiz" lang="en" />
             </div>
           </div>
 
-          <FAQBlock items={faq} idPrefix="quiz90faq" />
+          <FAQBlock items={faq} idPrefix="en-quiz90" lang="en" />
 
           <RelatedPages
+            lang="en"
             alsoLike={[
-              { href: '/quiz-musicaux-radio-odyssey.html', label: 'Tous nos Quiz Musicaux', desc: 'Les cinq décennies réunies, 100 questions' },
-              { href: '/quiz-musical-annees-80.html', label: 'Quiz Musical Années 80', desc: 'Le même défi, une décennie plus tôt' },
-              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les Artistes Diffusés', desc: 'La liste complète, tous styles confondus' },
-              { href: '/titres-les-plus-diffuses-sur-radio-odyssey.html', label: 'Les Titres les Plus Diffusés', desc: 'Le classement réel, tous styles confondus' },
+              { href: '/en/80s-music-quiz.html', label: '80s Music Quiz', desc: '20 questions on the tracks we play' },
+              { href: '/en/artists-on-radio-odyssey.html', label: 'All the Artists We Play', desc: 'The full list, with real play figures' },
+              { href: '/en/feel-good-music-radio.html', label: 'Feel Good Music Radio', desc: 'Pure feel-good music, all day' },
             ]}
             associated={[
-              { href: '/comment-radio-odyssey-utilise-les-remix.html', label: 'Comment Radio Odyssey utilise les remix' },
-              { href: '/styles-musicaux-radio-odyssey.html', label: 'Styles musicaux sur Radio Odyssey' },
-              { href: '/musique-et-energie.html', label: 'Tout le cocon Musique & Énergie' },
+              { href: '/en/artist-madonna.html', label: 'Madonna' },
+              { href: '/en/artist-queen.html', label: 'Queen' },
+              { href: '/en/artist-a-ha.html', label: 'A-ha' },
+              { href: '/en.html', label: 'English home' },
             ]}
           />
 
           <div class="page-cta-bar">
-            <h3>Écoutez ces titres en direct</h3>
+            <h3>Hear these tracks live</h3>
             <a href="#" onclick="roPlayNow(event)" class="btn-hero">
-              <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              <Icon name="broadcast-pin" /> Listen to Radio Odyssey
             </a>
           </div>
 
         </div>
         <div class="col-lg-4">
-          <Sidebar />
+          <Sidebar lang="en" />
         </div>
       </div>
     </div>
@@ -345,25 +359,25 @@ const faq = [
       var maxEl = document.getElementById('quiz90-max');
       var verdictEl = document.getElementById('quiz90-verdict');
       var max = phase === 'bonus' ? totalArtists : mainEls.length;
-      if (typeof roUmamiTrack === 'function') roUmamiTrack('quiz_complete', { quiz: 'quiz-musical-annees-90', round: phase, score: score, max: max });
+      if (typeof roUmamiTrack === 'function') roUmamiTrack('quiz_complete', { quiz: 'quiz-90s-music', round: phase, score: score, max: max });
       if (scoreEl) scoreEl.textContent = String(score);
       if (maxEl) maxEl.textContent = String(max);
       if (verdictEl) {
         var msg;
         if (max === totalArtists && bonusEls.length > 0 && phase === 'bonus') {
           msg = score === totalArtists
-            ? "Score absolument parfait, sur les deux rounds !"
+            ? "An absolutely perfect score, across both rounds!"
             : score >= Math.ceil(totalArtists * 0.7)
-            ? "Très fort sur ce format complet !"
-            : "Belle tentative — vous connaissez déjà bien les années 90 !";
+            ? "Very strong on the full-length version!"
+            : "Good try — press play and listen a while.";
         } else if (score === mainEls.length) {
-          msg = "Score parfait ! (Vous avez choisi de ne pas tenter le bonus.)";
+          msg = "Perfect score! (You chose not to try the bonus round.)";
         } else {
           msg = score >= Math.ceil(mainEls.length * 0.7)
-            ? "Incollable ! Les années 90 n'ont plus aucun secret pour vous."
+            ? "Unbeatable! The 90s hold no secrets for you."
             : score >= Math.ceil(mainEls.length * 0.4)
-            ? "Pas mal ! Encore quelques tubes 90s à réviser."
-            : "Il est temps de réviser en musique — tentez à nouveau votre chance !";
+            ? "Not bad! A little more listening and it will be perfect."
+            : "Time for a musical refresher — press play and listen a while.";
         }
         verdictEl.textContent = msg;
       }
@@ -421,7 +435,7 @@ const faq = [
             btn.classList.add('is-correct');
             btn.querySelector('.quiz90-choice-icon').textContent = '✅ ';
             if (feedback) {
-              feedback.textContent = '✅ Bonne réponse !';
+              feedback.textContent = '✅ Correct!';
               feedback.style.color = '#38a169';
             }
           } else {
@@ -432,7 +446,7 @@ const faq = [
               correctBtn.querySelector('.quiz90-choice-icon').textContent = '✅ ';
             }
             if (feedback) {
-              feedback.textContent = '❌ Raté, la bonne réponse était surlignée en vert.';
+              feedback.textContent = '❌ Not this time — the right answer is highlighted in green.';
               feedback.style.color = '#dc2626';
             }
           }

@@ -1,0 +1,112 @@
+---
+/*
+  Page de regroupement des quiz anglais (§90).
+
+  Le quiz des années 80 était rangé dans le groupe « Artists » du menu — donc
+  invisible pour qui cherche un jeu. Le propriétaire l'a relevé : *« pour la
+  version anglaise le quiz est caché »*. Cinq quiz méritent leur propre
+  entrée, pas une ligne au milieu d'autre chose.
+
+  ⚠️ Les questions des cinq quiz sont reprises à l'identique du français
+  (titres et noms d'artistes ne se traduisent pas) : une correction d'un côté
+  doit être répercutée de l'autre.
+*/
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
+import NewsletterCapture from '../../components/NewsletterCapture.astro';
+
+const quiz = [
+  { href: '/en/80s-music-quiz.html',   titre: '80s Music Quiz',   sous: 'Billie Jean, Take On Me, Cruel Summer…', accent: '#FFD700' },
+  { href: '/en/90s-music-quiz.html',   titre: '90s Music Quiz',   sous: 'The decade of dance floors and big choruses', accent: '#FF3CAC' },
+  { href: '/en/2000s-music-quiz.html', titre: '2000s Music Quiz', sous: 'When pop went global', accent: '#00C6FF' },
+  { href: '/en/2010s-music-quiz.html', titre: '2010s Music Quiz', sous: 'Streaming-era hits you still hear today', accent: '#FF9A3C' },
+  { href: '/en/2020s-music-quiz.html', titre: '2020s Music Quiz', sous: 'The most recent additions to our playlist', accent: '#7B2FBE' },
+];
+
+const faq = [
+  { q: 'How many questions are there in total?', a: "Five quizzes of 20 questions each — 10 in the main round, plus 10 bonus questions unlocked by a perfect score. That is 100 questions across the five decades." },
+  { q: 'Where do the questions come from?', a: "Every track and every artist comes from Radio Odyssey's actual schedule. Nothing was invented for the quiz, and no track appears that has not been on air." },
+  { q: 'Do I need an account?', a: "No. The quizzes run entirely in your browser — nothing to install, nothing to sign up for, and no score is stored anywhere." },
+  { q: 'Can I play more than once?', a: "Yes, and the questions come in a different order each time." },
+];
+---
+<Layout
+  lang="en"
+  title="Music Quizzes — Five Decades, 100 Questions | Radio Odyssey"
+  description="Five music quizzes, from the 80s to the 2020s, built entirely from the tracks Radio Odyssey actually plays. Free, no sign-up, straight in your browser."
+>
+  <PageHero
+    gradientFrom="#7B2FBE"
+    gradientTo="#FFD700"
+    homeLabel="🏠 Home"
+    homeHref="/en.html"
+    breadcrumbCurrent="Music quizzes"
+    title="Music Quizzes"
+    text="Five decades, 100 questions — all of them built from tracks we actually play."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.3"/><path d="M19 19C19 15 29 15 29 19C29 22 24 22 24 26" stroke="white" stroke-width="2.4" stroke-linecap="round" fill="none"/><circle cx="24" cy="32" r="1.6" fill="white"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Five quizzes, one per decade, each with 10 questions and 10 bonus questions unlocked by a perfect score. Every track comes from Radio Odyssey's real schedule — so the quiz doubles as a tour of what the station actually plays. Free, no account, nothing to install.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pick a decade</h2>
+            <div style="display:flex;flex-direction:column;gap:.7rem;margin-top:1rem;">
+              {quiz.map((q) => (
+                <a href={q.href} style={`display:flex;justify-content:space-between;align-items:center;gap:1rem;text-decoration:none;color:inherit;padding:1rem 1.1rem;border-radius:14px;background:linear-gradient(135deg,${q.accent}14,rgba(123,47,190,.05));border:1px solid ${q.accent}33;`}>
+                  <span>
+                    <strong style="color:var(--ro-purple);font-family:'Nunito',sans-serif;font-size:1.05rem;">{q.titre}</strong><br/>
+                    <span style="font-size:.82rem;color:var(--ro-muted);">{q.sous}</span>
+                  </span>
+                  <Icon name="arrow-right" style="color:var(--ro-purple);flex-shrink:0;" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="en-quizzes" lang="en" />
+
+          <NewsletterCapture context="quiz" lang="en" />
+
+          <RelatedPages
+            lang="en"
+            alsoLike={[
+              { href: '/en/artists-on-radio-odyssey.html', label: 'All the Artists We Play', desc: 'The full list, with real play figures' },
+              { href: '/en/80s-throwback-radio-online.html', label: '80s Throwback Radio', desc: 'Classic hits, reimagined' },
+              { href: '/en/feel-good-music-radio.html', label: 'Feel Good Music Radio', desc: 'Pure feel-good music, all day' },
+            ]}
+            associated={[
+              { href: '/en/what-makes-radio-odyssey-different.html', label: 'What Makes Radio Odyssey Different' },
+              { href: '/en/radio-odyssey-faq.html', label: 'Radio Odyssey FAQ' },
+              { href: '/en.html', label: 'English home' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Play the radio while you play the quiz</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Listen to Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar lang="en" />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -22,6 +22,10 @@ const SOURCES = import.meta.glob('../pages/en/*quiz*.astro', {
 // Le libellé ne se déduit pas du nom de fichier : il est déclaré ici.
 const LIBELLES = {
   '80s-music-quiz': 'our 80s music quiz',
+  '90s-music-quiz': 'our 90s music quiz',
+  '2000s-music-quiz': 'our 2000s music quiz',
+  '2010s-music-quiz': 'our 2010s music quiz',
+  '2020s-music-quiz': 'our 2020s music quiz',
 };
 
 function construire() {

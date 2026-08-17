@@ -24,154 +24,154 @@ import NewsletterCapture from '../../components/NewsletterCapture.astro';
 // titre a été vérifié individuellement par recherche web pour confirmer
 // une sortie réelle dans les années 80.
 const mainQuestions = [
-  { track: "Billie Jean", correct: 'michael-jackson', choices: [
-    { slug: 'wham', name: 'Wham!' },
-    { slug: 'michael-jackson', name: 'Michael Jackson' },
-    { slug: 'queen', name: 'Queen' },
-    { slug: 'modern-talking', name: 'Modern Talking' },
+  { track: "Shape of You", correct: 'ed-sheeran', choices: [
+    { slug: 'shawn-mendes', name: 'Shawn Mendes' },
+    { slug: 'ed-sheeran', name: 'Ed Sheeran' },
+    { slug: 'lewis-capaldi', name: 'Lewis Capaldi' },
+    { slug: 'calvin-harris', name: 'Calvin Harris' },
   ]},
-  { track: "I Want To Break Free", correct: 'queen', choices: [
-    { slug: 'wham', name: 'Wham!' },
-    { slug: 'simple-minds', name: 'Simple Minds' },
-    { slug: 'a-ha', name: 'A-ha' },
-    { slug: 'queen', name: 'Queen' },
+  { track: "Chandelier", correct: 'sia', choices: [
+    { slug: 'rihanna', name: 'Rihanna' },
+    { slug: 'dua-lipa', name: 'Dua Lipa' },
+    { slug: 'sia', name: 'Sia' },
+    { slug: 'taylor-swift', name: 'Taylor Swift' },
   ]},
-  { track: "Wake Me Up Before You Go-Go", correct: 'wham', choices: [
-    { slug: 'michael-jackson', name: 'Michael Jackson' },
-    { slug: 'queen', name: 'Queen' },
-    { slug: 'modern-talking', name: 'Modern Talking' },
-    { slug: 'wham', name: 'Wham!' },
+  { track: "We Found Love", correct: 'rihanna', choices: [
+    { slug: 'sia', name: 'Sia' },
+    { slug: 'taylor-swift', name: 'Taylor Swift' },
+    { slug: 'rihanna', name: 'Rihanna' },
+    { slug: 'dua-lipa', name: 'Dua Lipa' },
   ]},
-  { track: "La Isla Bonita", correct: 'madonna', choices: [
-    { slug: 'madonna', name: 'Madonna' },
-    { slug: 'kylie-minogue', name: 'Kylie Minogue' },
-    { slug: 'bananarama', name: 'Bananarama' },
-    { slug: 'kim-wilde', name: 'Kim Wilde' },
+  { track: "Titanium", correct: 'david-guetta', choices: [
+    { slug: 'calvin-harris', name: 'Calvin Harris' },
+    { slug: 'avicii', name: 'Avicii' },
+    { slug: 'robin-schulz', name: 'Robin Schulz' },
+    { slug: 'david-guetta', name: 'David Guetta' },
   ]},
-  { track: "Take On Me", correct: 'a-ha', choices: [
-    { slug: 'modern-talking', name: 'Modern Talking' },
-    { slug: 'kim-wilde', name: 'Kim Wilde' },
-    { slug: 'simple-minds', name: 'Simple Minds' },
-    { slug: 'a-ha', name: 'A-ha' },
+  { track: "Cruel Summer", correct: 'taylor-swift', choices: [
+    { slug: 'dua-lipa', name: 'Dua Lipa' },
+    { slug: 'sia', name: 'Sia' },
+    { slug: 'rihanna', name: 'Rihanna' },
+    { slug: 'taylor-swift', name: 'Taylor Swift' },
   ]},
-  { track: "You're My Heart, You're My Soul", correct: 'modern-talking', choices: [
-    { slug: 'a-ha', name: 'A-ha' },
-    { slug: 'kim-wilde', name: 'Kim Wilde' },
-    { slug: 'baltimora', name: 'Baltimora' },
-    { slug: 'modern-talking', name: 'Modern Talking' },
+  { track: "Don't Start Now", correct: 'dua-lipa', choices: [
+    { slug: 'taylor-swift', name: 'Taylor Swift' },
+    { slug: 'rihanna', name: 'Rihanna' },
+    { slug: 'ava-max', name: 'Ava Max' },
+    { slug: 'dua-lipa', name: 'Dua Lipa' },
   ]},
-  { track: "Cambodia", correct: 'kim-wilde', choices: [
-    { slug: 'madonna', name: 'Madonna' },
-    { slug: 'bananarama', name: 'Bananarama' },
-    { slug: 'kylie-minogue', name: 'Kylie Minogue' },
-    { slug: 'kim-wilde', name: 'Kim Wilde' },
+  { track: "This Is What You Came For", correct: 'calvin-harris', choices: [
+    { slug: 'david-guetta', name: 'David Guetta' },
+    { slug: 'avicii', name: 'Avicii' },
+    { slug: 'robin-schulz', name: 'Robin Schulz' },
+    { slug: 'calvin-harris', name: 'Calvin Harris' },
   ]},
-  { track: "Cruel Summer", correct: 'bananarama', choices: [
-    { slug: 'madonna', name: 'Madonna' },
-    { slug: 'kylie-minogue', name: 'Kylie Minogue' },
-    { slug: 'sade', name: 'Sade' },
-    { slug: 'bananarama', name: 'Bananarama' },
+  { track: "Wake Me Up", correct: 'avicii', choices: [
+    { slug: 'calvin-harris', name: 'Calvin Harris' },
+    { slug: 'david-guetta', name: 'David Guetta' },
+    { slug: 'avicii', name: 'Avicii' },
+    { slug: 'robin-schulz', name: 'Robin Schulz' },
   ]},
-  { track: "I Should Be So Lucky", correct: 'kylie-minogue', choices: [
-    { slug: 'madonna', name: 'Madonna' },
-    { slug: 'bananarama', name: 'Bananarama' },
-    { slug: 'kim-wilde', name: 'Kim Wilde' },
-    { slug: 'kylie-minogue', name: 'Kylie Minogue' },
+  { track: "There's Nothing Holdin' Me Back", correct: 'shawn-mendes', choices: [
+    { slug: 'ed-sheeran', name: 'Ed Sheeran' },
+    { slug: 'lewis-capaldi', name: 'Lewis Capaldi' },
+    { slug: 'shawn-mendes', name: 'Shawn Mendes' },
+    { slug: 'jain', name: 'Jain' },
   ]},
-  { track: "Don't You (Forget About Me)", correct: 'simple-minds', choices: [
-    { slug: 'queen', name: 'Queen' },
-    { slug: 'wham', name: 'Wham!' },
-    { slug: 'a-ha', name: 'A-ha' },
-    { slug: 'simple-minds', name: 'Simple Minds' },
+  { track: "Someone You Loved", correct: 'lewis-capaldi', choices: [
+    { slug: 'ed-sheeran', name: 'Ed Sheeran' },
+    { slug: 'shawn-mendes', name: 'Shawn Mendes' },
+    { slug: 'sia', name: 'Sia' },
+    { slug: 'lewis-capaldi', name: 'Lewis Capaldi' },
   ]},
 ];
 
 const bonusQuestions = [
-  { track: "Two Hearts", correct: 'phil-collins', choices: [
-    { slug: 'sting', name: 'Sting' },
-    { slug: 'elton-john', name: 'Elton John' },
-    { slug: 'queen', name: 'Queen' },
-    { slug: 'phil-collins', name: 'Phil Collins' },
+  { track: "Sugar", correct: 'robin-schulz', choices: [
+    { slug: 'kungs', name: 'Kungs' },
+    { slug: 'ofenbach', name: 'Ofenbach' },
+    { slug: 'lost-frequencies', name: 'Lost Frequencies' },
+    { slug: 'robin-schulz', name: 'Robin Schulz' },
   ]},
-  { track: "Joe Le Taxi", correct: 'vanessa-paradis', choices: [
-    { slug: 'muriel-dacq', name: 'Muriel Dacq' },
-    { slug: 'elegance', name: 'Élégance' },
-    { slug: 'madonna', name: 'Madonna' },
-    { slug: 'vanessa-paradis', name: 'Vanessa Paradis' },
+  { track: "Papaoutai", correct: 'stromae', choices: [
+    { slug: 'jain', name: 'Jain' },
+    { slug: 'the-avener', name: 'The Avener' },
+    { slug: 'ofenbach', name: 'Ofenbach' },
+    { slug: 'stromae', name: 'Stromae' },
   ]},
-  { track: "Au Bout De Mes Rêves", correct: 'jean-jacques-goldman', choices: [
-    { slug: 'laurent-voulzy', name: 'Laurent Voulzy' },
-    { slug: 'christophe-mae', name: 'Christophe Maé' },
-    { slug: 'amir', name: 'Amir' },
-    { slug: 'jean-jacques-goldman', name: 'Jean-Jacques Goldman' },
+  { track: "Be Mine", correct: 'ofenbach', choices: [
+    { slug: 'kungs', name: 'Kungs' },
+    { slug: 'robin-schulz', name: 'Robin Schulz' },
+    { slug: 'lost-frequencies', name: 'Lost Frequencies' },
+    { slug: 'ofenbach', name: 'Ofenbach' },
   ]},
-  { track: "The Sweetest Taboo", correct: 'sade', choices: [
-    { slug: 'vanessa-paradis', name: 'Vanessa Paradis' },
-    { slug: 'shalamar', name: 'Shalamar' },
-    { slug: 'kylie-minogue', name: 'Kylie Minogue' },
-    { slug: 'sade', name: 'Sade' },
+  { track: "This Girl", correct: 'kungs', choices: [
+    { slug: 'ofenbach', name: 'Ofenbach' },
+    { slug: 'robin-schulz', name: 'Robin Schulz' },
+    { slug: 'dj-snake', name: 'DJ Snake' },
+    { slug: 'kungs', name: 'Kungs' },
   ]},
-  { track: "Tropique", correct: 'muriel-dacq', choices: [
-    { slug: 'elegance', name: 'Élégance' },
-    { slug: 'vanessa-paradis', name: 'Vanessa Paradis' },
-    { slug: 'sade', name: 'Sade' },
-    { slug: 'muriel-dacq', name: 'Muriel Dacq' },
+  { track: "Makeba", correct: 'jain', choices: [
+    { slug: 'stromae', name: 'Stromae' },
+    { slug: 'the-avener', name: 'The Avener' },
+    { slug: 'clean-bandit', name: 'Clean Bandit' },
+    { slug: 'jain', name: 'Jain' },
   ]},
-  { track: "Vacances j'oublie tout", correct: 'elegance', choices: [
-    { slug: 'muriel-dacq', name: 'Muriel Dacq' },
-    { slug: 'baltimora', name: 'Baltimora' },
-    { slug: 'fun-fun', name: 'Fun Fun' },
-    { slug: 'elegance', name: 'Élégance' },
+  { track: "Fade Out Lines", correct: 'the-avener', choices: [
+    { slug: 'jain', name: 'Jain' },
+    { slug: 'stromae', name: 'Stromae' },
+    { slug: 'moby', name: 'Moby' },
+    { slug: 'the-avener', name: 'The Avener' },
   ]},
-  { track: "Tarzan Boy", correct: 'baltimora', choices: [
-    { slug: 'fun-fun', name: 'Fun Fun' },
-    { slug: 'scotch', name: 'Scotch' },
-    { slug: 'elegance', name: 'Élégance' },
-    { slug: 'baltimora', name: 'Baltimora' },
+  { track: "Rockabye", correct: 'clean-bandit', choices: [
+    { slug: 'ava-max', name: 'Ava Max' },
+    { slug: 'jain', name: 'Jain' },
+    { slug: 'kungs', name: 'Kungs' },
+    { slug: 'clean-bandit', name: 'Clean Bandit' },
   ]},
-  { track: "Colour My Love", correct: 'fun-fun', choices: [
-    { slug: 'baltimora', name: 'Baltimora' },
-    { slug: 'scotch', name: 'Scotch' },
-    { slug: 'modern-talking', name: 'Modern Talking' },
-    { slug: 'fun-fun', name: 'Fun Fun' },
+  { track: "Sweet But Psycho", correct: 'ava-max', choices: [
+    { slug: 'clean-bandit', name: 'Clean Bandit' },
+    { slug: 'dua-lipa', name: 'Dua Lipa' },
+    { slug: 'taylor-swift', name: 'Taylor Swift' },
+    { slug: 'ava-max', name: 'Ava Max' },
   ]},
-  { track: "Take Me Up", correct: 'scotch', choices: [
-    { slug: 'fun-fun', name: 'Fun Fun' },
-    { slug: 'baltimora', name: 'Baltimora' },
-    { slug: 'modern-talking', name: 'Modern Talking' },
-    { slug: 'scotch', name: 'Scotch' },
+  { track: "Are You With Me", correct: 'lost-frequencies', choices: [
+    { slug: 'robin-schulz', name: 'Robin Schulz' },
+    { slug: 'kungs', name: 'Kungs' },
+    { slug: 'dj-snake', name: 'DJ Snake' },
+    { slug: 'lost-frequencies', name: 'Lost Frequencies' },
   ]},
-  { track: "A Night To Remember", correct: 'shalamar', choices: [
-    { slug: 'sade', name: 'Sade' },
-    { slug: 'phil-collins', name: 'Phil Collins' },
-    { slug: 'jean-jacques-goldman', name: 'Jean-Jacques Goldman' },
-    { slug: 'shalamar', name: 'Shalamar' },
+  { track: "Loco Contigo", correct: 'dj-snake', choices: [
+    { slug: 'lost-frequencies', name: 'Lost Frequencies' },
+    { slug: 'kungs', name: 'Kungs' },
+    { slug: 'ofenbach', name: 'Ofenbach' },
+    { slug: 'dj-snake', name: 'DJ Snake' },
   ]},
 ];
 
 const TOTAL_ARTISTS = mainQuestions.length + bonusQuestions.length;
 
 const faq = [
-  { q: 'Are these tracks really played on Radio Odyssey?', a: "Yes — every track and every artist in this quiz is part of our actual schedule, in the \"80s reimagined\" category. See our <a href='/en/80s-throwback-radio-online.html' style='color:var(--ro-purple);font-weight:700;'>80s throwback radio</a> page." },
-  { q: 'How hard is it?', a: "The main round is made of hits known worldwide; the bonus round digs for tracks that are harder to place, including some italo-disco gems and a few one-summer French hits." },
+  { q: 'Are these tracks really played on Radio Odyssey?', a: "Yes — every track and every artist in this quiz is part of our actual schedule. See <a href='/en/artists-on-radio-odyssey.html' style='color:var(--ro-purple);font-weight:700;'>the artists we play</a>." },
+  { q: 'How hard is it?', a: "The main round is made of hits known worldwide; the bonus round digs for tracks that are harder to place, including a few one-summer French hits." },
   { q: 'What is the bonus round?', a: "A perfect score on the 10 main questions unlocks 10 extra bonus questions, for a possible final score of 20." },
   { q: 'Can I play again?', a: "Yes — a \"Play again\" button appears at the end, and the questions come in a different order every time." },
 ];
 ---
 <Layout
   lang="en"
-  altLangs={{ fr: '/quiz-musical-annees-80.html', en: '/en/80s-music-quiz.html' }}
-  title="80s Music Quiz — 20 Questions | Radio Odyssey"
-  description="Test your 80s knowledge with a quiz built from tracks Radio Odyssey actually plays. 10 questions, plus a bonus round if you score perfectly."
+  altLangs={{ fr: '/quiz-musical-annees-2010.html', en: '/en/2010s-music-quiz.html' }}
+  title="2010s Music Quiz — 20 Questions | Radio Odyssey"
+  description="Test your 2010s music knowledge with a quiz built from tracks Radio Odyssey actually plays. 10 questions, plus a bonus round if you score perfectly."
 >
   <PageHero
     gradientFrom="#FFD700"
     gradientTo="#FF3CAC"
     homeLabel="🏠 Home"
     homeHref="/en.html"
-    breadcrumbCurrent="80s music quiz"
-    title="80s Music Quiz"
-    text="10 questions, built from tracks we actually play — and 10 more if you get every one right."
+    breadcrumbCurrent="2010s music quiz"
+    title="2010s Music Quiz"
+    text="10 questions on the 2010s, built from tracks we actually play — and 10 more if you get every one right."
   >
     <Fragment slot="icon">
       <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.3"/><path d="M24 14V24L31 28" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M17 8L12 13M31 8L36 13" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round"/></svg>
@@ -184,79 +184,79 @@ const faq = [
         <div class="col-lg-8">
 
           <div class="content-card">
-            <p style="margin:0;">The 80s are, unsurprisingly, the favourite subject of music quiz fans. Here are {mainQuestions.length} questions built from the real tracks in our <a href="/en/80s-throwback-radio-online.html" style="color:var(--ro-purple);font-weight:700;">80s selection</a> — each artist appears only once, and every track has been checked as a genuine 80s release. A perfect score unlocks {bonusQuestions.length} bonus questions, with some harder gems among them. Want to keep going? See <a href="/en/artists-on-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">all the artists we play</a>.</p>
+            <p style="margin:0;">Here are {mainQuestions.length} questions built from the real 2010s tracks we play — each artist appears only once, and every track has been checked as a genuine 2010s release. A perfect score unlocks {bonusQuestions.length} bonus questions, with some harder ones among them. Want to keep going? See <a href="/en/artists-on-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">all the artists we play</a>, or try our <a href="/en/80s-music-quiz.html" style="color:var(--ro-purple);font-weight:700;">80s quiz</a>.</p>
           </div>
 
-          <div class="content-card" id="quiz80">
-            <div id="quiz80-progress" style="font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#7B2FBE;margin-bottom:.8rem;">Question 1/{mainQuestions.length}</div>
+          <div class="content-card" id="quiz2010">
+            <div id="quiz2010-progress" style="font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#7B2FBE;margin-bottom:.8rem;">Question 1/{mainQuestions.length}</div>
 
             {mainQuestions.map((q, i) => (
-              <div class="quiz80-q" data-round="main" data-index={i} style={i === 0 ? '' : 'display:none;'}>
+              <div class="quiz2010-q" data-round="main" data-index={i} style={i === 0 ? '' : 'display:none;'}>
                 <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎵 Who sings “{q.track}”?</p>
                 <div style="display:flex;flex-direction:column;gap:.6rem;">
                   {q.choices.map((c) => (
                     <button
                       type="button"
-                      class="quiz80-choice"
+                      class="quiz2010-choice"
                       data-slug={c.slug}
                       data-correct={c.slug === q.correct ? 'true' : 'false'}
                       style="text-align:left;padding:.8rem 1rem;border-radius:12px;border:1.5px solid rgba(123,47,190,.2);background:rgba(123,47,190,.03);font-family:'Nunito',sans-serif;font-weight:700;color:var(--ro-dark);cursor:pointer;transition:background .15s,border-color .15s;width:100%;"
                     >
-                      <span class="quiz80-choice-icon"></span>{c.name}
+                      <span class="quiz2010-choice-icon"></span>{c.name}
                     </button>
                   ))}
                 </div>
-                <p class="quiz80-feedback" style="display:none;margin:.8rem 0 0;font-weight:800;"></p>
-                <button type="button" class="quiz80-next btn-hero-ghost" style="margin-top:.8rem;display:none;">Next question →</button>
+                <p class="quiz2010-feedback" style="display:none;margin:.8rem 0 0;font-weight:800;"></p>
+                <button type="button" class="quiz2010-next btn-hero-ghost" style="margin-top:.8rem;display:none;">Next question →</button>
               </div>
             ))}
 
             {bonusQuestions.map((q, i) => (
-              <div class="quiz80-q" data-round="bonus" data-index={i} style="display:none;">
+              <div class="quiz2010-q" data-round="bonus" data-index={i} style="display:none;">
                 <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:1rem;">🎁 🎵 Who sings “{q.track}”?</p>
                 <div style="display:flex;flex-direction:column;gap:.6rem;">
                   {q.choices.map((c) => (
                     <button
                       type="button"
-                      class="quiz80-choice"
+                      class="quiz2010-choice"
                       data-slug={c.slug}
                       data-correct={c.slug === q.correct ? 'true' : 'false'}
                       style="text-align:left;padding:.8rem 1rem;border-radius:12px;border:1.5px solid rgba(255,215,0,.35);background:rgba(255,215,0,.05);font-family:'Nunito',sans-serif;font-weight:700;color:var(--ro-dark);cursor:pointer;transition:background .15s,border-color .15s;width:100%;"
                     >
-                      <span class="quiz80-choice-icon"></span>{c.name}
+                      <span class="quiz2010-choice-icon"></span>{c.name}
                     </button>
                   ))}
                 </div>
-                <p class="quiz80-feedback" style="display:none;margin:.8rem 0 0;font-weight:800;"></p>
-                <button type="button" class="quiz80-next btn-hero-ghost" style="margin-top:.8rem;display:none;">Next question →</button>
+                <p class="quiz2010-feedback" style="display:none;margin:.8rem 0 0;font-weight:800;"></p>
+                <button type="button" class="quiz2010-next btn-hero-ghost" style="margin-top:.8rem;display:none;">Next question →</button>
               </div>
             ))}
 
-            <div id="quiz80-bonus-offer" style="display:none;text-align:center;">
+            <div id="quiz2010-bonus-offer" style="display:none;text-align:center;">
               <p style="font-size:1.4rem;margin-bottom:.3rem;">🎉 Perfect score!</p>
               <p style="color:var(--ro-muted);margin-bottom:1.3rem;">You have unlocked {bonusQuestions.length} bonus questions. Possible final score: {TOTAL_ARTISTS}/{TOTAL_ARTISTS}.</p>
               <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;">
-                <button type="button" id="quiz80-bonus-start" class="btn-hero">🎁 Try the bonus round</button>
-                <button type="button" id="quiz80-bonus-skip" class="btn-hero-ghost">See my score</button>
+                <button type="button" id="quiz2010-bonus-start" class="btn-hero">🎁 Try the bonus round</button>
+                <button type="button" id="quiz2010-bonus-skip" class="btn-hero-ghost">See my score</button>
               </div>
             </div>
 
-            <div id="quiz80-results" style="display:none;">
-              <p style="font-size:1.3rem;font-weight:900;color:var(--ro-purple);text-align:center;margin-bottom:.3rem;">Your score: <span id="quiz80-score">0</span>/<span id="quiz80-max">{mainQuestions.length}</span></p>
-              <p id="quiz80-verdict" style="text-align:center;color:var(--ro-muted);margin-bottom:1.5rem;"></p>
+            <div id="quiz2010-results" style="display:none;">
+              <p style="font-size:1.3rem;font-weight:900;color:var(--ro-purple);text-align:center;margin-bottom:.3rem;">Your score: <span id="quiz2010-score">0</span>/<span id="quiz2010-max">{mainQuestions.length}</span></p>
+              <p id="quiz2010-verdict" style="text-align:center;color:var(--ro-muted);margin-bottom:1.5rem;"></p>
               <div style="display:flex;justify-content:center;">
-                <button type="button" id="quiz80-restart" class="btn-hero">Play again</button>
+                <button type="button" id="quiz2010-restart" class="btn-hero">Play again</button>
               </div>
               <NewsletterCapture context="quiz" lang="en" />
             </div>
           </div>
 
-          <FAQBlock items={faq} idPrefix="en-quiz80" lang="en" />
+          <FAQBlock items={faq} idPrefix="en-quiz2010" lang="en" />
 
           <RelatedPages
             lang="en"
             alsoLike={[
-              { href: '/en/80s-throwback-radio-online.html', label: '80s Throwback Radio', desc: 'Classic hits, reimagined' },
+              { href: '/en/80s-music-quiz.html', label: '80s Music Quiz', desc: '20 questions on the tracks we play' },
               { href: '/en/artists-on-radio-odyssey.html', label: 'All the Artists We Play', desc: 'The full list, with real play figures' },
               { href: '/en/feel-good-music-radio.html', label: 'Feel Good Music Radio', desc: 'Pure feel-good music, all day' },
             ]}
@@ -284,19 +284,19 @@ const faq = [
   </main>
 
   <style>
-    .quiz80-choice:hover { background: rgba(123,47,190,.08); }
-    .quiz80-choice.is-correct { background: rgba(56,161,105,.15) !important; border-color: #38a169 !important; }
-    .quiz80-choice.is-wrong { background: rgba(220,38,38,.1) !important; border-color: #dc2626 !important; }
-    .quiz80-choice:disabled { cursor: default; opacity: .85; }
+    .quiz2010-choice:hover { background: rgba(123,47,190,.08); }
+    .quiz2010-choice.is-correct { background: rgba(56,161,105,.15) !important; border-color: #38a169 !important; }
+    .quiz2010-choice.is-wrong { background: rgba(220,38,38,.1) !important; border-color: #dc2626 !important; }
+    .quiz2010-choice:disabled { cursor: default; opacity: .85; }
   </style>
 
   <script is:inline>
-  function quiz80Init() {
-    var container = document.getElementById('quiz80');
+  function quiz2010Init() {
+    var container = document.getElementById('quiz2010');
     if (!container) return;
 
-    var mainEls = Array.prototype.slice.call(container.querySelectorAll('.quiz80-q[data-round="main"]'));
-    var bonusEls = Array.prototype.slice.call(container.querySelectorAll('.quiz80-q[data-round="bonus"]'));
+    var mainEls = Array.prototype.slice.call(container.querySelectorAll('.quiz2010-q[data-round="main"]'));
+    var bonusEls = Array.prototype.slice.call(container.querySelectorAll('.quiz2010-q[data-round="bonus"]'));
     var totalArtists = mainEls.length + bonusEls.length;
 
     function shuffledOrder(n) {
@@ -322,9 +322,9 @@ const faq = [
 
     function hideAllScreens() {
       mainEls.concat(bonusEls).forEach(function (q) { q.style.display = 'none'; });
-      var offer = document.getElementById('quiz80-bonus-offer');
+      var offer = document.getElementById('quiz2010-bonus-offer');
       if (offer) offer.style.display = 'none';
-      var results = document.getElementById('quiz80-results');
+      var results = document.getElementById('quiz2010-results');
       if (results) results.style.display = 'none';
     }
 
@@ -334,7 +334,7 @@ const faq = [
       var order = currentOrder();
       var target = els[order[logicalPos]];
       if (target) target.style.display = '';
-      var progress = document.getElementById('quiz80-progress');
+      var progress = document.getElementById('quiz2010-progress');
       if (progress) {
         progress.style.display = '';
         var label = phase === 'bonus' ? '🎁 Bonus — Question ' : 'Question ';
@@ -344,22 +344,22 @@ const faq = [
 
     function showBonusOffer() {
       hideAllScreens();
-      var progress = document.getElementById('quiz80-progress');
+      var progress = document.getElementById('quiz2010-progress');
       if (progress) progress.style.display = 'none';
-      var offer = document.getElementById('quiz80-bonus-offer');
+      var offer = document.getElementById('quiz2010-bonus-offer');
       if (offer) offer.style.display = '';
     }
 
     function showResults() {
       hideAllScreens();
-      var progress = document.getElementById('quiz80-progress');
+      var progress = document.getElementById('quiz2010-progress');
       if (progress) progress.style.display = 'none';
-      var results = document.getElementById('quiz80-results');
-      var scoreEl = document.getElementById('quiz80-score');
-      var maxEl = document.getElementById('quiz80-max');
-      var verdictEl = document.getElementById('quiz80-verdict');
+      var results = document.getElementById('quiz2010-results');
+      var scoreEl = document.getElementById('quiz2010-score');
+      var maxEl = document.getElementById('quiz2010-max');
+      var verdictEl = document.getElementById('quiz2010-verdict');
       var max = phase === 'bonus' ? totalArtists : mainEls.length;
-      if (typeof roUmamiTrack === 'function') roUmamiTrack('quiz_complete', { quiz: 'quiz-80s-music', round: phase, score: score, max: max });
+      if (typeof roUmamiTrack === 'function') roUmamiTrack('quiz_complete', { quiz: 'quiz-2010s-music', round: phase, score: score, max: max });
       if (scoreEl) scoreEl.textContent = String(score);
       if (maxEl) maxEl.textContent = String(max);
       if (verdictEl) {
@@ -369,15 +369,15 @@ const faq = [
             ? "An absolutely perfect score, across both rounds!"
             : score >= Math.ceil(totalArtists * 0.7)
             ? "Very strong on the full-length version!"
-            : "Good try — head over to our 80s page for a refresher.";
+            : "Good try — press play and listen a while.";
         } else if (score === mainEls.length) {
           msg = "Perfect score! (You chose not to try the bonus round.)";
         } else {
           msg = score >= Math.ceil(mainEls.length * 0.7)
-            ? "Unbeatable! The 80s hold no secrets for you."
+            ? "Unbeatable! The 2010s hold no secrets for you."
             : score >= Math.ceil(mainEls.length * 0.4)
-            ? "Not bad! A little session on our 80s page and it will be perfect."
-            : "Time for a musical refresher — head to our 80s page.";
+            ? "Not bad! A little more listening and it will be perfect."
+            : "Time for a musical refresher — press play and listen a while.";
         }
         verdictEl.textContent = msg;
       }
@@ -405,7 +405,7 @@ const faq = [
     }
 
     function shuffleChoices(qEl) {
-      var wrap = qEl.querySelector('.quiz80-choice');
+      var wrap = qEl.querySelector('.quiz2010-choice');
       wrap = wrap && wrap.parentElement;
       if (!wrap) return;
       var buttons = Array.prototype.slice.call(wrap.children);
@@ -418,9 +418,9 @@ const faq = [
 
     function wireQuestion(qEl) {
       shuffleChoices(qEl);
-      var buttons = Array.prototype.slice.call(qEl.querySelectorAll('.quiz80-choice'));
-      var nextBtn = qEl.querySelector('.quiz80-next');
-      var feedback = qEl.querySelector('.quiz80-feedback');
+      var buttons = Array.prototype.slice.call(qEl.querySelectorAll('.quiz2010-choice'));
+      var nextBtn = qEl.querySelector('.quiz2010-next');
+      var feedback = qEl.querySelector('.quiz2010-feedback');
       var answered = false;
 
       buttons.forEach(function (btn) {
@@ -433,17 +433,17 @@ const faq = [
           if (isCorrect) {
             score += 1;
             btn.classList.add('is-correct');
-            btn.querySelector('.quiz80-choice-icon').textContent = '✅ ';
+            btn.querySelector('.quiz2010-choice-icon').textContent = '✅ ';
             if (feedback) {
               feedback.textContent = '✅ Correct!';
               feedback.style.color = '#38a169';
             }
           } else {
             btn.classList.add('is-wrong');
-            btn.querySelector('.quiz80-choice-icon').textContent = '❌ ';
+            btn.querySelector('.quiz2010-choice-icon').textContent = '❌ ';
             if (correctBtn) {
               correctBtn.classList.add('is-correct');
-              correctBtn.querySelector('.quiz80-choice-icon').textContent = '✅ ';
+              correctBtn.querySelector('.quiz2010-choice-icon').textContent = '✅ ';
             }
             if (feedback) {
               feedback.textContent = '❌ Not this time — the right answer is highlighted in green.';
@@ -468,7 +468,7 @@ const faq = [
     mainEls.forEach(wireQuestion);
     bonusEls.forEach(wireQuestion);
 
-    var bonusStartBtn = document.getElementById('quiz80-bonus-start');
+    var bonusStartBtn = document.getElementById('quiz2010-bonus-start');
     if (bonusStartBtn) {
       bonusStartBtn.addEventListener('click', function () {
         phase = 'bonus';
@@ -477,14 +477,14 @@ const faq = [
       });
     }
 
-    var bonusSkipBtn = document.getElementById('quiz80-bonus-skip');
+    var bonusSkipBtn = document.getElementById('quiz2010-bonus-skip');
     if (bonusSkipBtn) {
       bonusSkipBtn.addEventListener('click', function () {
         showResults();
       });
     }
 
-    var restartBtn = document.getElementById('quiz80-restart');
+    var restartBtn = document.getElementById('quiz2010-restart');
     if (restartBtn) {
       restartBtn.addEventListener('click', function () {
         window.location.reload();
@@ -495,9 +495,9 @@ const faq = [
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', quiz80Init);
+    document.addEventListener('DOMContentLoaded', quiz2010Init);
   } else {
-    quiz80Init();
+    quiz2010Init();
   }
   </script>
 </Layout>
