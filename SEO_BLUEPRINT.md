@@ -3227,3 +3227,46 @@ La correction est mécanique : `<!-- … -->` devient `{/* … */}`, la forme JS
 
 *Dernière mise à jour : 2026-08-17, commentaires HTML sortis du site livré (§95).*
 
+---
+
+## 96. Le quiz des noms de scène en anglais : quand un cinquième du quiz ne se joue pas (2026-08-17)
+
+Deuxième quiz thématique traduit, même méthode qu'au §94 — et une confirmation utile : **la part de questions à remplacer augmente avec la charge culturelle du quiz.** Un record se lit partout ; un nom de scène est une histoire locale.
+
+**Quatre questions sur vingt** ont été remplacées, contre une au §94 :
+
+| Question française | Pourquoi elle ne se joue pas en anglais | Remplacée par |
+|---|---|---|
+| Bob Sinclar, pseudonyme tiré du film *Le Magnifique* | Le film est inconnu ; les distracteurs The Avener et Kungs aussi | **Djo** — le nom de scène de Joe Keery, l'acteur de *Stranger Things* |
+| Aya Nakamura, nom pris dans une série | Jain, Zaho, Clara Luciani : quatre noms sur quatre inconnus | **Sade** — un nom de groupe avant d'être celui d'une personne |
+| M. Pokora et le procès de Matt Houston | Entièrement franco-français | **Rick Astley** — le nom devenu une plaisanterie d'Internet |
+| Angèle, fille de Marka et Laurence Bibot | Idem, plus Helena et Santa en distracteurs | **Tears for Fears** — nom tiré de la thérapie primale d'Arthur Janov |
+
+⚠️ **Les quatre faits de remplacement étaient déjà publiés et vérifiés dans `artists.js`.** Aucun n'a été écrit pour l'occasion. C'est la règle du §86, et c'est ce qui distingue un arbitrage éditorial d'une invention.
+
+Effet secondaire heureux : trois des quatre nouveaux — Sade, Rick Astley, Tears for Fears — ont une fiche anglaise, là où aucun des quatre remplacés n'en avait. Le quiz s'accroche donc mieux au reste du silo qu'il ne l'aurait fait par simple traduction.
+
+### Une question reformulée sans changer de réponse
+
+*« Quel artiste belge a pris pour nom le verlan de "maestro" ? »* — le verlan n'existe pas en anglais, et « back slang » ne recouvre pas la même mécanique. La question devient *« the word maestro with its two syllables swapped »* : même fait, même réponse, énoncé jouable. Ce n'est pas une traduction littérale, et c'est volontaire.
+
+⚠️ Les quinze autres questions sont communes aux deux langues : **une correction d'un côté doit être répercutée de l'autre.**
+
+### Vérifications
+
+Build : **293 pages**, aucune erreur, **46 450 liens internes sans une cible absente**. 274 URL au sitemap, toutes présentes dans `dist/`, aucune en `noindex`. Aucun `<title>` de moins de trois mots.
+
+Contrôles propres au quiz, faits par script sur le code source : **20 bonnes réponses, 20 slugs distincts** (règle « un artiste bonne réponse une seule fois »), **aucun slug inconnu d'`artists.js`**, et **aucune question dont la bonne réponse manque à ses propres propositions** — trois erreurs qu'un build ne verrait jamais.
+
+Le bloc « in our quizzes » apparaît sur exactement cinq fiches anglaises : a-ha, rick-astley, sade, simply-red, tears-for-fears — les cinq bonnes réponses qui ont une fiche anglaise, et aucune autre.
+
+⚠️ Effet non prévu mais correct, vérifié au diff : sur la page **française**, le sélecteur de langue ne pointe plus vers l'accueil anglais mais vers `/en/stage-names-quiz.html`. C'est le comportement de `cibleAutreLangue` dès qu'un couple `altLangs` existe (§84). L'accueil français, lui, est **rigoureusement identique** — zéro fragment de différence sur le HTML construit.
+
+### Reste à faire, et ce qu'on en sait
+
+Le troisième quiz thématique — les coulisses — a été relevé : **quatre questions sur vingt** y sont franco-belges (Jain et « Makeba », Jean-Jacques Goldman et l'album *D'eux*, Léopold Nord & Vous, La Femme). Même ratio qu'ici, donc même travail. Les seize autres sont internationales : Sia, Moby, Robert Miles, Earth Wind & Fire, Modern Talking, Bob Marley, Phil Collins, Simple Minds.
+
+---
+
+*Dernière mise à jour : 2026-08-17, quiz des noms de scène en anglais (§96).*
+

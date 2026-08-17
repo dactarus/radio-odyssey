@@ -1,0 +1,250 @@
+---
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
+import QuizBlock from '../../components/QuizBlock.astro';
+
+/*
+  Quiz des noms de scène, version anglaise (§96).
+
+  Deuxième quiz thématique traduit, même méthode qu'au §94 : un énoncé en
+  prose se réévalue au lieu de se traduire.
+
+  ⚠️ QUATRE questions sur vingt sont remplacées — c'est plus qu'au §94, et
+  c'est normal : un quiz de noms de scène est par nature plus culturel qu'un
+  quiz de records. Une question dont les quatre propositions sont inconnues
+  du lecteur ne se joue pas, elle se subit.
+
+    Bob Sinclar (pseudonyme tiré du film Le Magnifique)   → Djo
+    Aya Nakamura (nom pris dans une série)                 → Sade
+    M. Pokora (procès de Matt Houston)                     → Rick Astley
+    Angèle (fille de Marka et Laurence Bibot)              → Tears for Fears
+
+  ⚠️ Les quatre faits de remplacement sont **déjà publiés et vérifiés dans
+  `artists.js`**, côté français. Règle du §86 : on ne crée jamais un fait à
+  l'occasion d'une traduction.
+
+  Une question est reformulée sans changer de réponse : le verlan de
+  « maestro » (Stromae) n'existe pas en anglais, il devient « the word
+  maestro with its two syllables swapped » — même fait, formulation jouable.
+
+  ⚠️ Les quinze autres questions sont communes aux deux langues : une
+  correction d'un côté doit être répercutée de l'autre.
+
+  ⚠️ Chaque artiste n'est bonne réponse qu'une seule fois (20 slugs
+  distincts). `correct` porte le slug de la fiche ; `data/quiz-artistes-en.js`
+  s'en sert pour afficher le quiz sur la fiche anglaise de l'artiste — à
+  condition que le nom du fichier contienne « quiz ».
+*/
+
+const main = [
+  { enonce: "Which artist’s stage name is an acronym for “Someone Who Isn’t Me, Sometimes”?", correct: 'teddy-swims', choices: [
+    { slug: "stromae", name: "Stromae" },
+    { slug: "teddy-swims", name: "Teddy Swims" },
+    { slug: "bob-sinclar", name: "Bob Sinclar" },
+    { slug: "moby", name: "Moby" },
+  ]},
+  { enonce: "Which Belgian artist took as a stage name the word “maestro” with its two syllables swapped?", correct: 'stromae', choices: [
+    { slug: "damiano-david", name: "Damiano David" },
+    { slug: "teddy-swims", name: "Teddy Swims" },
+    { slug: "lost-frequencies", name: "Lost Frequencies" },
+    { slug: "stromae", name: "Stromae" },
+  ]},
+  { enonce: "Which stage name belongs to an actor better known for playing Steve Harrington in Stranger Things?", correct: 'djo', choices: [
+    { slug: "djo", name: "Djo" },
+    { slug: "tame-impala", name: "Tame Impala" },
+    { slug: "the-weeknd", name: "The Weeknd" },
+    { slug: "lewis-capaldi", name: "Lewis Capaldi" },
+  ]},
+  { enonce: "Which British singer owes his nickname to a black-and-yellow striped jumper that made him look like a bee?", correct: 'sting', choices: [
+    { slug: "phil-collins", name: "Phil Collins" },
+    { slug: "elton-john", name: "Elton John" },
+    { slug: "sting", name: "Sting" },
+    { slug: "rod-stewart", name: "Rod Stewart" },
+  ]},
+  { enonce: "Which Swedish DJ named himself after the lowest level of hell in Buddhism?", correct: 'avicii', choices: [
+    { slug: "avicii", name: "Avicii" },
+    { slug: "calvin-harris", name: "Calvin Harris" },
+    { slug: "r3hab", name: "R3HAB" },
+    { slug: "robin-schulz", name: "Robin Schulz" },
+  ]},
+  { enonce: "Which French duo is named after a press review that dismissed their early band as “daft punky thrash”?", correct: 'daft-punk', choices: [
+    { slug: "ofenbach", name: "Ofenbach" },
+    { slug: "modjo", name: "Modjo" },
+    { slug: "the-avener", name: "The Avener" },
+    { slug: "daft-punk", name: "Daft Punk" },
+  ]},
+  { enonce: "Which Scottish band took its name from Wim Wenders’ film Paris, Texas?", correct: 'texas', choices: [
+    { slug: "simply-red", name: "Simply Red" },
+    { slug: "texas", name: "Texas" },
+    { slug: "simple-minds", name: "Simple Minds" },
+    { slug: "the-corrs", name: "The Corrs" },
+  ]},
+  { enonce: "Which American artist is named after a supposed ancestor, the author of Moby-Dick?", correct: 'moby', choices: [
+    { slug: "moby", name: "Moby" },
+    { slug: "lizzo", name: "Lizzo" },
+    { slug: "sting", name: "Sting" },
+    { slug: "the-weeknd", name: "The Weeknd" },
+  ]},
+  { enonce: "Which British band owes its name to the red hair of its singer?", correct: 'simply-red', choices: [
+    { slug: "texas", name: "Texas" },
+    { slug: "jamiroquai", name: "Jamiroquai" },
+    { slug: "m-people", name: "M People" },
+    { slug: "simply-red", name: "Simply Red" },
+  ]},
+  { enonce: "Which British project is named after the manager of the local football club in Crewe?", correct: 'dario-g', choices: [
+    { slug: "clean-bandit", name: "Clean Bandit" },
+    { slug: "corona", name: "Corona" },
+    { slug: "dario-g", name: "Dario G" },
+    { slug: "m-people", name: "M People" },
+  ]},
+];
+
+const bonus = [
+  { enonce: "Which singer was born “Bleta”, a first name that means “bee” in Albanian?", correct: 'bebe-rexha', choices: [
+    { slug: "dua-lipa", name: "Dua Lipa" },
+    { slug: "ava-max", name: "Ava Max" },
+    { slug: "bebe-rexha", name: "Bebe Rexha" },
+    { slug: "sia", name: "Sia" },
+  ]},
+  { enonce: "Which band’s name blends “jam session” with “Iroquois”?", correct: 'jamiroquai', choices: [
+    { slug: "jamiroquai", name: "Jamiroquai" },
+    { slug: "shalamar", name: "Shalamar" },
+    { slug: "delegation", name: "Delegation" },
+    { slug: "earth-wind-and-fire", name: "Earth, Wind & Fire" },
+  ]},
+  { enonce: "Which name is a British band’s before it is a person’s — that of its Nigerian-born singer?", correct: 'sade', choices: [
+    { slug: "anastacia", name: "Anastacia" },
+    { slug: "sade", name: "Sade" },
+    { slug: "lisa-stansfield", name: "Lisa Stansfield" },
+    { slug: "amy-macdonald", name: "Amy Macdonald" },
+  ]},
+  { enonce: "Which British band is named after the initial of its founder, Mike Pickering?", correct: 'm-people', choices: [
+    { slug: "m-people", name: "M People" },
+    { slug: "bananarama", name: "Bananarama" },
+    { slug: "clean-bandit", name: "Clean Bandit" },
+    { slug: "simply-red", name: "Simply Red" },
+  ]},
+  { enonce: "Whose name became an internet prank from 2007 onwards, built on redirecting people to his video?", correct: 'rick-astley', choices: [
+    { slug: "jimmy-somerville", name: "Jimmy Somerville" },
+    { slug: "rick-astley", name: "Rick Astley" },
+    { slug: "level-42", name: "Level 42" },
+    { slug: "fine-young-cannibals", name: "Fine Young Cannibals" },
+  ]},
+  { enonce: "Which French DJ, born Valentin Brunel, broke through at nineteen?", correct: 'kungs', choices: [
+    { slug: "dj-snake", name: "DJ Snake" },
+    { slug: "ofenbach", name: "Ofenbach" },
+    { slug: "kungs", name: "Kungs" },
+    { slug: "the-avener", name: "The Avener" },
+  ]},
+  { enonce: "Which Australian artist has kept her face hidden in public since 2013?", correct: 'sia', choices: [
+    { slug: "kylie-minogue", name: "Kylie Minogue" },
+    { slug: "sia", name: "Sia" },
+    { slug: "tame-impala", name: "Tame Impala" },
+    { slug: "amy-macdonald", name: "Amy Macdonald" },
+  ]},
+  { enonce: "Which British singer put her career on hold to become a landscape gardener?", correct: 'kim-wilde', choices: [
+    { slug: "anastacia", name: "Anastacia" },
+    { slug: "kim-wilde", name: "Kim Wilde" },
+    { slug: "sade", name: "Sade" },
+    { slug: "bananarama", name: "Bananarama" },
+  ]},
+  { enonce: "Which Norwegian trio spent sixteen weeks making a video that mixed live action with pencil animation?", correct: 'a-ha', choices: [
+    { slug: "modern-talking", name: "Modern Talking" },
+    { slug: "simple-minds", name: "Simple Minds" },
+    { slug: "baltimora", name: "Baltimora" },
+    { slug: "a-ha", name: "A-ha" },
+  ]},
+  { enonce: "Which duo took its name from Arthur Janov’s primal therapy?", correct: 'tears-for-fears', choices: [
+    { slug: "eurythmics", name: "Eurythmics" },
+    { slug: "tears-for-fears", name: "Tears for Fears" },
+    { slug: "wham", name: "Wham!" },
+    { slug: "the-cure", name: "The Cure" },
+  ]},
+];
+
+const faq = [
+  { q: 'Can the answers to this quiz change?', a: "No. Every answer is a settled fact — where a name came from, who is behind it. Unlike a play-count chart, nothing here will move next month." },
+  { q: 'Where do these facts come from?', a: "From the artist pages on this site, where every fact was checked individually before publication. Each correct answer points to the artist it belongs to." },
+  { q: 'What is the bonus round?', a: "A perfect score on the 10 main questions unlocks 10 more, for a possible final score of 20." },
+  { q: 'Do these artists really play on Radio Odyssey?', a: "Yes — every artist named here is in our <a href='/en/artists-on-radio-odyssey.html' style='color:var(--ro-purple);font-weight:700;'>real broadcast catalogue</a>, with the tracks we actually air." },
+];
+---
+<Layout
+  lang="en"
+  title="Stage Names Quiz — Whose Name Is That? | Radio Odyssey"
+  description="Free music quiz: 20 stage names to match with the artists Radio Odyssey plays. A striped jumper, a 19th-century novel, a football manager. Bonus round included."
+  altLangs={{ fr: '/quiz-noms-artistes-radio-odyssey.html', en: '/en/stage-names-quiz.html' }}
+>
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#7B2FBE"
+    homeLabel="🏠 Home"
+    homeHref="/en.html"
+    breadcrumbCurrent="Stage names quiz"
+    title="Stage Names Quiz: Whose Name Is That?"
+    text="A striped jumper, a 19th-century novel, a football manager: 20 stage names to place."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.3"/><path d="M19 19a5 5 0 1 1 6.5 4.8c-1 .3-1.5 1-1.5 2v1.2" stroke="white" stroke-width="2.3" stroke-linecap="round" fill="none"/><circle cx="24" cy="32.5" r="1.6" fill="white"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">A striped jumper, a 19th-century novel, a football manager in Crewe, a word with its syllables swapped: stage names usually hide a story. Here are 20 questions on artists we genuinely play. A perfect score on the first 10 unlocks 10 bonus questions. Every answer comes from our <a href="/en/artists-on-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">artist pages</a>, where each fact was checked one by one.</p>
+          </div>
+
+          <div class="content-card">
+            <QuizBlock
+              lang="en"
+              id="en-stage-names-quiz"
+              main={main}
+              bonus={bonus}
+              verdicts={{
+                parfait: 'A clean sweep — you know this station better than we do.',
+                bon: 'A very good score. Two or three stories left to discover.',
+                moyen: 'Solid start! A look around the artist pages and the clean sweep is within reach.',
+                faible: 'It is all on the artist pages — and they are rather pleasant to read.',
+              }}
+            />
+          </div>
+
+          <FAQBlock items={faq} idPrefix="en-stage-names-quiz-faq" lang="en" />
+
+          <RelatedPages
+            lang="en"
+            alsoLike={[
+              { href: '/en/music-records-quiz.html', label: 'Music Records Quiz', desc: 'Billboard, Grammys, Eurovision, Live Aid' },
+              { href: '/en/music-quizzes.html', label: 'All Our Music Quizzes', desc: 'Seven quizzes, 140 questions' },
+              { href: '/en/artists-on-radio-odyssey.html', label: 'All the Artists We Play', desc: 'The full list, with real play figures' },
+            ]}
+            associated={[
+              { href: '/en/what-makes-radio-odyssey-different.html', label: 'What Makes Radio Odyssey Different' },
+              { href: '/en/radio-odyssey-faq.html', label: 'Radio Odyssey FAQ' },
+              { href: '/en.html', label: 'English home' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Listen to these artists live</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Listen to Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar lang="en" />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
