@@ -2874,3 +2874,54 @@ Lot 5 (un ou deux quiz traduits, ce qui fera réapparaître le bloc quiz sur les
 ---
 
 *Dernière mise à jour : 2026-08-17, page de regroupement des artistes anglais et service worker limité à la production (§87).*
+
+---
+
+## 88. La pause depuis l'écran verrouillé ne tenait pas — et le correctif était déjà dans le dépôt, retiré pour la mauvaise raison (2026-08-17)
+
+Signalé par le propriétaire en testant l'appli installée après le déploiement : *« si je n'appuie pas sur play, et que j'ouvre l'iPhone, au bout de 3 ou 4 secondes, la diffusion de l'appli reprend. »* Précision décisive apportée ensuite : **la reprise ne se produit qu'après déverrouillage**, jamais téléphone verrouillé.
+
+Cette précision élimine iOS comme cause. Si le système rendait la session audio de lui-même, la musique repartirait sans qu'on touche à rien. Ce qui déclenche, c'est le retour de l'appli au premier plan — donc du code, donc réparable.
+
+### L'enchaînement
+
+1. Pause depuis l'écran verrouillé → le gestionnaire Media Session appelait `player.pause()`, **sans marquer que la pause venait de l'auditeur**.
+2. L'événement `pause` remonté par l'élément devenait alors indiscernable d'une **interruption système** (appel, Siri, Bluetooth). Le gestionnaire d'interruption faisait son travail : garder `playing = true` pour reprendre plus tard. Comportement voulu, et juste — dans ce cas-là.
+3. Téléphone verrouillé, la tentative de reprise échouait : iOS avait donné la session à l'app Musique.
+4. Au déverrouillage, l'écouteur `visibilitychange` voyait `playing === true` et `player.paused === true`, et relançait la lecture. Avec la temporisation de 1,2 s et la mise en mémoire : les trois à quatre secondes observées.
+
+### Le correctif existait, et son retrait avait coûté ce défaut
+
+Le commentaire du §77.1, en tête du bloc Media Session, listait comme contournement raté n°1 : *« Poser `userPaused` pour que la pause tienne : Musique démarre. »*
+
+⚠️ **C'est exact, et c'était mal classé.** Ce contournement avait été évalué sur sa capacité à empêcher l'app Musique de démarrer — il échoue, c'est établi et ça n'est pas remis en cause. Mais il ne servait pas qu'à ça : il empêchait aussi la lecture de repartir seule au déverrouillage. En le retirant, on n'a réglé aucun problème et on en a rouvert un. **Deux symptômes distincts avaient été confondus sous un seul verdict.**
+
+Rétabli, pour cette raison-là uniquement :
+
+```js
+navigator.mediaSession.setActionHandler('pause', () => { userPaused = true; player.pause(); });
+```
+
+Le commentaire du §77.1 a été réécrit en conséquence : le point n°1 porte désormais un avertissement explicite pour qu'il ne soit pas re-supprimé un jour comme un contournement inopérant.
+
+**Ce qui change** : la pause tient. La lecture ne repart plus au déverrouillage, et RadioKing cesse de compter comme temps d'écoute une lecture que personne n'a demandée — ce qui n'est pas anodin quand on arbitre sur les 35 % d'écoutes de moins de 30 secondes et sur l'écart de durée moyenne entre le site et l'appli.
+
+**Ce qui ne change pas** : l'app Musique démarre toujours. ⚠️ Le §77.1 reste vrai dans son ensemble, l'impasse n'est pas rouverte.
+
+**Ce qui est préservé** : une vraie interruption ne passe pas par ce gestionnaire — la reprise automatique continue donc de jouer son rôle là où elle sert.
+
+### Relevé au passage
+
+⚠️ La copie de sauvegarde faite avant modification (`index.html.avant-…`, ce dépôt n'ayant pas de dépôt distant) **aurait été publiée et lisible publiquement** : `npx vercel --prod` envoie le dossier entier, et `.vercelignore` prévient explicitement de ce piège en tête de fichier. Trois règles y ont été ajoutées (`*.avant-*`, `*.backup`, `*.bak`).
+
+`CACHE_VERSION` passée de `v20` à `v21`, comme l'impose `CLAUDE.md` à chaque publication.
+
+### À vérifier avant publication
+
+Test iPhone obligatoire, sur l'appli **installée depuis son icône**, pas dans Safari : lancer la lecture, verrouiller, mettre en pause depuis l'écran verrouillé, déverrouiller, et **attendre dix secondes sans rien toucher**. La lecture ne doit pas repartir. Puis vérifier qu'un appui sur play la relance normalement.
+
+⚠️ Le dépôt de l'appli n'a toujours pas de dépôt distant (§76). Ce correctif n'existe que sur la machine du propriétaire.
+
+---
+
+*Dernière mise à jour : 2026-08-17, pause de l'écran verrouillé qui tient enfin (§88).*
