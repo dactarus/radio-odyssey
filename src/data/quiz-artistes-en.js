@@ -28,6 +28,7 @@ const LIBELLES = {
   '2020s-music-quiz': 'our 2020s music quiz',
   'music-records-quiz': 'our music records quiz',
   'stage-names-quiz': 'our stage names quiz',
+  'behind-the-scenes-quiz': 'our behind the scenes quiz',
 };
 
 function construire() {

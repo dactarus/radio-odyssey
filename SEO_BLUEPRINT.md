@@ -3270,3 +3270,51 @@ Le troisième quiz thématique — les coulisses — a été relevé : **quatre 
 
 *Dernière mise à jour : 2026-08-17, quiz des noms de scène en anglais (§96).*
 
+---
+
+## 97. Le quiz des coulisses, et un arbitrage qui revient au propriétaire (2026-08-17)
+
+Troisième et dernier quiz thématique traduit. **Les huit quiz anglais sont désormais au complet** : cinq décennies, records, noms de scène, coulisses.
+
+### Le tri que je n'aurais pas fait correctement
+
+En annonçant ce lot, j'avais relevé **quatre** questions franco-belges sur vingt. Le propriétaire en a corrigé une, sans détour : *« Jain est connu à l'international, pas les 3 autres. »*
+
+Il avait raison, et l'erreur est instructive : j'avais classé par **nationalité de l'artiste**, lui a classé par **notoriété réelle hors de France**. Ce ne sont pas les mêmes critères, et c'est le second qui compte. « Makeba » est un succès mondial porté par les réseaux sociaux six ans après sa sortie ; l'artiste est française, la chanson ne l'est pas.
+
+⚠️ **À retenir pour la suite du chantier anglais : « artiste français » n'est pas synonyme de « inconnu à l'international ».** Le critère est la notoriété de l'œuvre chez le lecteur visé, pas le passeport. C'est exactement la logique que le propriétaire avait déjà posée pour les fiches artistes (§91) — je ne l'avais pas transposée aux quiz.
+
+Trois questions remplacées, donc :
+
+| Retirée | Remplacée par | Fait, déjà publié en français |
+|---|---|---|
+| Jean-Jacques Goldman, auteur de l'album *D'eux* | **Queen** | « Bohemian Rhapsody » dure 5 min 55, durée jugée impossible pour la radio à l'époque |
+| Muriel Dacq, productrice de Léopold Nord & Vous | **Eurythmics** | Le solo d'harmonica de « There Must Be an Angel » est de Stevie Wonder |
+| Clara Luciani, ex-guitariste de La Femme | **The Beatles** | Le catalogue récent est remixé depuis les bandes d'origine par le fils de leur producteur |
+
+⚠️ Les trois faits sont **déjà publiés et vérifiés dans `artists.js`** (lignes 219, 2041, 2270). Règle du §86 tenue pour la troisième fois : aucun fait n'est créé à l'occasion d'une traduction.
+
+Effet cherché et obtenu : les trois remplaçants sont de très gros noms **avec fiche anglaise**, là où les trois retirés n'en avaient aucune. C'est la cible du chantier telle que le propriétaire l'a définie — *« à l'international on ratisse plus large avec des très gros artistes »*.
+
+### Bilan des trois traductions thématiques
+
+| Quiz | Questions communes | Réarbitrées | Pourquoi |
+|---|---|---|---|
+| Records (§94) | 19/20 | 1 | Un record se lit partout |
+| Noms de scène (§96) | 16/20 | 4 | Un nom de scène est une histoire locale |
+| Coulisses (§97) | 17/20 | 3 | Une histoire de studio voyage bien |
+
+⚠️ La conclusion tient en une ligne : **un quiz thématique ne se traduit pas, il se réévalue question par question** — et le taux de remplacement dépend de la charge culturelle du thème, pas de la langue.
+
+### Vérifications
+
+Build : **294 pages**, aucune erreur. Liens internes vérifiés sans une cible absente. 275 URL au sitemap, toutes présentes dans `dist/`, aucune en `noindex`.
+
+Trois contrôles par script sur la page, qu'aucun build ne fait : **20 bonnes réponses toutes distinctes**, aucun slug inconnu d'`artists.js`, et chaque bonne réponse présente dans ses propres propositions.
+
+Le maillage entre les trois quiz thématiques a été refait dans la foulée : chacun renvoie désormais aux deux autres et au regroupement, au lieu de pointer vers le quiz des années 80 par héritage.
+
+---
+
+*Dernière mise à jour : 2026-08-17, quiz des coulisses en anglais — les trois quiz thématiques sont traduits (§97).*
+
