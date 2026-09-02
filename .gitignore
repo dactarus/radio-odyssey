@@ -26,3 +26,8 @@ npm-debug.log*
 # rapports de diffusion RadioKing (source de artists.js, ~29 Mo)
 # À conserver en local, hors dépôt : ils se réexportent depuis le manager.
 report-from-*.csv
+
+# catalogue de travail fusionné à partir de plusieurs exports RadioKing
+# (voir programmation/README.md) — dérivé de données brutes déjà exclues
+# ci-dessus, régénérable, jamais buildé ni déployé : reste local.
+programmation/*.csv
