@@ -4,11 +4,11 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-08-17 (§97).*
+*Dernière mise à jour de ce fichier : 2026-09-03 (§98).*
 
 ## Objectif du projet
 
-Faire de **radio-odyssey.com** un site de contenu riche — objectif des 100 pages thématiques **atteint et dépassé** (258 pages générées, 240 au sitemap) — organisé en catégories :
+Faire de **radio-odyssey.com** un site de contenu riche — objectif des 100 pages thématiques **atteint et dépassé** (294 pages générées, 276 au sitemap) — organisé en catégories :
 - Musique et bien-être
 - Respiration et cohérence cardiaque
 - Playlists selon les moments de la journée
@@ -40,9 +40,9 @@ Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → U
 
 ## Architecture actuelle du site
 
-**240 URL au sitemap** (258 pages générées, dont 18 fiches artistes volontairement désindexées — §61, §63), réparties en deux silos :
+**276 URL au sitemap** (294 pages générées, dont 18 fiches artistes volontairement désindexées — §61, §63), réparties en deux silos :
 
-- **113 pages éditoriales** (108 + les 5 pages anglaises du §82) — organisées en 7 catégories définies dans `src/data/navigation.js` : Bien-être & Santé (18), Musique & Énergie (26), Playlists du Jour (6), Artistes & Styles (10), Conseils d'Écoute (8), Les Coulisses (12), International (13 pages en `lang="en"`, servies sous `/en/<slug>.html` depuis le §81). S'y ajoutent l'accueil, `/plan-du-site.html`, `/quiz-musicaux-radio-odyssey.html` et les deux pages légales.
+- **Pages éditoriales** — organisées en 7 catégories définies dans `src/data/navigation.js` : Bien-être & Santé (18), Musique & Énergie (30, dont le quiz « Cette année-là » depuis le §98), Playlists du Jour (6), Artistes & Styles (10), Conseils d'Écoute (8), Les Coulisses (12), International (13 pages en `lang="en"`, servies sous `/en/<slug>.html` depuis le §81). S'y ajoutent l'accueil, `/plan-du-site.html`, `/quiz-musicaux-radio-odyssey.html` et les deux pages légales. ⚠️ Le total exact de ce silo n'a pas été recompté dans son ensemble depuis un moment — seuls les chiffres ci-dessus ont été vérifiés directement dans `navigation.js` au §98 ; se fier au compte réel (`sitemap.xml`, `dist/`) plutôt qu'à un total additionné à la main avant de trancher une décision qui en dépend.
 - **147 fiches artistes** — générées par la route dynamique `src/pages/artiste-[slug].astro` à partir de `src/data/artists.js`. **129 indexées, 18 en `noindex, follow`** selon la constante `SEUIL_INDEXATION_TITRES` (§61, §63). On y accède depuis `/artistes-diffuses-radio-odyssey.html` et `/plan-du-site.html`.
 
 **Composants clés** (`src/components/`) :

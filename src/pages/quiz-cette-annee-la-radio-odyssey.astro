@@ -1,0 +1,407 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import NewsletterCapture from '../components/NewsletterCapture.astro';
+
+// Neuvième quiz du site, et premier d'un genre différent des huit
+// précédents : ici, l'artiste est donné dans l'énoncé — il faut deviner
+// l'année de sortie du titre, parmi 3 propositions (pas 4, comme les huit
+// autres quiz). Chaque titre est réellement diffusé sur Radio Odyssey, et
+// chaque date a été vérifiée individuellement par recherche web avant
+// d'être retenue — plusieurs dates réutilisent des faits déjà vérifiés et
+// publiés lors de la série par décennie (§52, §53, §47) ; les autres ont
+// été vérifiées spécifiquement pour ce quiz. Même règle que les huit
+// précédents : un artiste n'apparaît qu'une seule fois comme bonne réponse
+// sur tout le quiz (round principal + round bonus confondus).
+//
+// Format des objets : { track, correct, name, year, choices }. Les deux
+// premiers champs (track/correct) suivent la convention attendue par
+// data/quiz-artistes.js pour le croisement automatique quiz ↔ fiches —
+// correct porte le slug de l'artiste, pas l'année. Le jeu compare la
+// réponse cliquée à `year`, jamais à `correct`.
+const mainQuestions = [
+  { track: "Billie Jean", correct: 'michael-jackson', name: 'Michael Jackson', year: 1983, choices: [1982, 1983, 1986] },
+  { track: "Radio Ga Ga", correct: 'queen', name: 'Queen', year: 1984, choices: [1981, 1984, 1986] },
+  { track: "Crazy In Love", correct: 'beyonce', name: 'Beyoncé', year: 2003, choices: [2002, 2003, 2005] },
+  { track: "Whenever, Wherever", correct: 'shakira', name: 'Shakira', year: 2001, choices: [1998, 2001, 2004] },
+  { track: "Genie In A Bottle", correct: 'christina-aguilera', name: 'Christina Aguilera', year: 1999, choices: [1998, 1999, 2002] },
+  { track: "We Found Love", correct: 'rihanna', name: 'Rihanna', year: 2011, choices: [2009, 2011, 2012] },
+  { track: "Shape of You", correct: 'ed-sheeran', name: 'Ed Sheeran', year: 2017, choices: [2014, 2017, 2019] },
+  { track: "As It Was", correct: 'harry-styles', name: 'Harry Styles', year: 2022, choices: [2019, 2020, 2022] },
+  { track: "Die With A Smile", correct: 'bruno-mars', name: 'Bruno Mars', year: 2024, choices: [2016, 2020, 2024] },
+  { track: "Paint The Town Red", correct: 'doja-cat', name: 'Doja Cat', year: 2023, choices: [2019, 2020, 2023] },
+];
+
+const bonusQuestions = [
+  { track: "The Sweetest Taboo", correct: 'sade', name: 'Sade', year: 1985, choices: [1982, 1985, 1988] },
+  { track: "Fields Of Gold", correct: 'sting', name: 'Sting', year: 1993, choices: [1990, 1993, 1996] },
+  { track: "J'envoie valser", correct: 'zazie', name: 'Zazie', year: 1995, choices: [1992, 1995, 1998] },
+  { track: "Angels", correct: 'robbie-williams', name: 'Robbie Williams', year: 1997, choices: [1994, 1996, 1997] },
+  { track: "Fill Me In", correct: 'craig-david', name: 'Craig David', year: 2000, choices: [1998, 2000, 2002] },
+  { track: "Double Je", correct: 'christophe-willem', name: 'Christophe Willem', year: 2007, choices: [2006, 2007, 2009] },
+  { track: "Papaoutai", correct: 'stromae', name: 'Stromae', year: 2013, choices: [2010, 2013, 2016] },
+  { track: "Makeba", correct: 'jain', name: 'Jain', year: 2015, choices: [2012, 2015, 2018] },
+  { track: "Bruxelles je t'aime", correct: 'angele', name: 'Angèle', year: 2021, choices: [2019, 2020, 2021] },
+  { track: "Baddies", correct: 'aya-nakamura', name: 'Aya Nakamura', year: 2025, choices: [2018, 2019, 2025] },
+];
+
+const TOTAL_ARTISTS = mainQuestions.length + bonusQuestions.length;
+
+const faq = [
+  { q: 'Comment fonctionne ce quiz, par rapport aux huit autres ?', a: "Dans les huit premiers quiz du site, il fallait deviner l'artiste. Ici, l'artiste est donné dans la question — c'est l'année de sortie du titre qu'il faut trouver, parmi 3 propositions." },
+  { q: 'Les titres de ce quiz sont-ils vraiment diffusés sur Radio Odyssey ?', a: "Oui, tous les titres et artistes de ce quiz font partie de notre catalogue réel de programmation — voir notre page <a href='/artistes-diffuses-radio-odyssey.html' style='color:var(--ro-purple);font-weight:700;'>artistes diffusés</a>." },
+  { q: 'Les dates sont-elles fiables ?', a: "Chaque date a été vérifiée individuellement par recherche web avant d'être retenue — soit spécifiquement pour ce quiz, soit reprise de la série par décennie, où elle avait déjà été vérifiée." },
+  { q: 'Qu\'est-ce que le round bonus ?', a: "Réussir un score parfait sur les 10 questions du round principal débloque 10 questions bonus supplémentaires, pour un score final possible sur 20." },
+  { q: 'Puis-je refaire le quiz ?', a: "Oui, un bouton \"Recommencer\" est disponible à la fin pour retenter votre chance — l'ordre des questions et des propositions change à chaque tentative." },
+];
+---
+<Layout
+  lang="fr"
+  title="Quiz Musical « Cette Année-Là » | Radio Odyssey"
+  description="En quelle année cet artiste chantait ce titre ? Un quiz musical à 3 propositions, basé sur les vrais titres diffusés sur Radio Odyssey, dates vérifiées une par une."
+>
+  <PageHero
+    gradientFrom="#00C6FF"
+    gradientTo="#FFD700"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Quiz musical « Cette année-là »"
+    title="Quiz Musical « Cette Année-Là »"
+    text="En quelle année cet artiste chantait ce titre ? 10 questions, 3 propositions, basées sur les vrais titres diffusés sur Radio Odyssey."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><rect x="10" y="12" width="28" height="24" rx="3" stroke="white" stroke-width="2.3"/><path d="M10 20H38" stroke="white" stroke-width="2.3"/><path d="M16 8V14M32 8V14" stroke="white" stroke-width="2.3" stroke-linecap="round"/><circle cx="18" cy="27" r="1.8" fill="white"/><circle cx="24" cy="27" r="1.8" fill="rgba(255,255,255,.6)"/><circle cx="30" cy="27" r="1.8" fill="rgba(255,255,255,.6)"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Après huit quiz où il fallait deviner l'artiste, celui-ci renverse la question : l'artiste est donné, c'est <strong>l'année de sortie</strong> qu'il faut trouver, parmi 3 propositions. {mainQuestions.length} questions, basées sur les vrais titres diffusés sur <a href="/quiz-musicaux-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Radio Odyssey</a> — chaque artiste n'apparaît qu'une seule fois, et chaque date a été vérifiée individuellement avant d'être retenue. Un sans-faute débloque {bonusQuestions.length} questions bonus !</p>
+          </div>
+
+          <div class="content-card" id="quizannee">
+            <div id="quizannee-progress" style="font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#7B2FBE;margin-bottom:.8rem;">Question 1/{mainQuestions.length}</div>
+
+            {mainQuestions.map((q, i) => (
+              <div class="quizannee-q" data-round="main" data-index={i} style={i === 0 ? '' : 'display:none;'}>
+                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:.4rem;">🎵 En quelle année {q.name} chantait « {q.track} » ?</p>
+                <p style="margin:0 0 1rem;font-size:.85rem;">
+                  <a href={`/artiste-${q.correct}.html`} style="color:var(--ro-purple);font-weight:700;">→ Découvrir {q.name} sur Radio Odyssey</a>
+                </p>
+                <div style="display:flex;flex-direction:column;gap:.6rem;">
+                  {q.choices.map((y) => (
+                    <button
+                      type="button"
+                      class="quizannee-choice"
+                      data-year={y}
+                      data-correct={y === q.year ? 'true' : 'false'}
+                      style="text-align:left;padding:.8rem 1rem;border-radius:12px;border:1.5px solid rgba(123,47,190,.2);background:rgba(123,47,190,.03);font-family:'Nunito',sans-serif;font-weight:700;color:var(--ro-dark);cursor:pointer;transition:background .15s,border-color .15s;width:100%;"
+                    >
+                      <span class="quizannee-choice-icon"></span>{y}
+                    </button>
+                  ))}
+                </div>
+                <p class="quizannee-feedback" style="display:none;margin:.8rem 0 0;font-weight:800;"></p>
+                <button type="button" class="quizannee-next btn-hero-ghost" style="margin-top:.8rem;display:none;">Question suivante →</button>
+              </div>
+            ))}
+
+            {bonusQuestions.map((q, i) => (
+              <div class="quizannee-q" data-round="bonus" data-index={i} style="display:none;">
+                <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:.4rem;">🎁 🎵 En quelle année {q.name} chantait « {q.track} » ?</p>
+                <p style="margin:0 0 1rem;font-size:.85rem;">
+                  <a href={`/artiste-${q.correct}.html`} style="color:var(--ro-purple);font-weight:700;">→ Découvrir {q.name} sur Radio Odyssey</a>
+                </p>
+                <div style="display:flex;flex-direction:column;gap:.6rem;">
+                  {q.choices.map((y) => (
+                    <button
+                      type="button"
+                      class="quizannee-choice"
+                      data-year={y}
+                      data-correct={y === q.year ? 'true' : 'false'}
+                      style="text-align:left;padding:.8rem 1rem;border-radius:12px;border:1.5px solid rgba(255,215,0,.35);background:rgba(255,215,0,.05);font-family:'Nunito',sans-serif;font-weight:700;color:var(--ro-dark);cursor:pointer;transition:background .15s,border-color .15s;width:100%;"
+                    >
+                      <span class="quizannee-choice-icon"></span>{y}
+                    </button>
+                  ))}
+                </div>
+                <p class="quizannee-feedback" style="display:none;margin:.8rem 0 0;font-weight:800;"></p>
+                <button type="button" class="quizannee-next btn-hero-ghost" style="margin-top:.8rem;display:none;">Question suivante →</button>
+              </div>
+            ))}
+
+            <div id="quizannee-bonus-offer" style="display:none;text-align:center;">
+              <p style="font-size:1.4rem;margin-bottom:.3rem;">🎉 Score parfait !</p>
+              <p style="color:var(--ro-muted);margin-bottom:1.3rem;">Vous débloquez {bonusQuestions.length} questions bonus. Score final possible : {TOTAL_ARTISTS}/{TOTAL_ARTISTS}.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;">
+                <button type="button" id="quizannee-bonus-start" class="btn-hero">🎁 Tenter le bonus</button>
+                <button type="button" id="quizannee-bonus-skip" class="btn-hero-ghost">Voir mon score</button>
+              </div>
+            </div>
+
+            <div id="quizannee-results" style="display:none;">
+              <p style="font-size:1.3rem;font-weight:900;color:var(--ro-purple);text-align:center;margin-bottom:.3rem;">Votre score : <span id="quizannee-score">0</span>/<span id="quizannee-max">{mainQuestions.length}</span></p>
+              <p id="quizannee-verdict" style="text-align:center;color:var(--ro-muted);margin-bottom:1.5rem;"></p>
+              <div style="display:flex;justify-content:center;">
+                <button type="button" id="quizannee-restart" class="btn-hero">Recommencer</button>
+              </div>
+              <NewsletterCapture context="quiz" />
+            </div>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="quizanneefaq" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/quiz-musicaux-radio-odyssey.html', label: 'Tous nos Quiz Musicaux', desc: 'Les huit autres quiz du site, 160 questions' },
+              { href: '/quiz-musical-annees-2020.html', label: 'Quiz Musical Années 2020', desc: 'La décennie en cours, à l\'ancienne formule' },
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Tous les Artistes Diffusés', desc: 'Les fiches de chaque artiste cité dans ce quiz' },
+              { href: '/titres-les-plus-diffuses-sur-radio-odyssey.html', label: 'Les Titres les Plus Diffusés', desc: 'Le classement réel, tous styles confondus' },
+            ]}
+            associated={[
+              { href: '/styles-musicaux-radio-odyssey.html', label: 'Styles musicaux sur Radio Odyssey' },
+              { href: '/comment-radio-odyssey-choisit-sa-musique.html', label: 'Comment Radio Odyssey choisit sa musique' },
+              { href: '/musique-et-energie.html', label: 'Tout le cocon Musique & Énergie' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Écoutez ces titres en direct</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <style>
+    .quizannee-choice:hover { background: rgba(123,47,190,.08); }
+    .quizannee-choice.is-correct { background: rgba(56,161,105,.15) !important; border-color: #38a169 !important; }
+    .quizannee-choice.is-wrong { background: rgba(220,38,38,.1) !important; border-color: #dc2626 !important; }
+    .quizannee-choice:disabled { cursor: default; opacity: .85; }
+  </style>
+
+  <script is:inline>
+  function quizanneeInit() {
+    var container = document.getElementById('quizannee');
+    if (!container) return;
+
+    var mainEls = Array.prototype.slice.call(container.querySelectorAll('.quizannee-q[data-round="main"]'));
+    var bonusEls = Array.prototype.slice.call(container.querySelectorAll('.quizannee-q[data-round="bonus"]'));
+    var totalArtists = mainEls.length + bonusEls.length;
+
+    function shuffledOrder(n) {
+      var order = [];
+      for (var k = 0; k < n; k++) order.push(k);
+      for (var i = order.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = order[i]; order[i] = order[j]; order[j] = tmp;
+      }
+      return order;
+    }
+
+    var mainOrder = shuffledOrder(mainEls.length);
+    var bonusOrder = shuffledOrder(bonusEls.length);
+
+    var phase = 'main'; // 'main' | 'bonus' | 'done'
+    var pos = 0;
+    var score = 0;
+    var pendingTimer = null;
+
+    function currentEls() { return phase === 'bonus' ? bonusEls : mainEls; }
+    function currentOrder() { return phase === 'bonus' ? bonusOrder : mainOrder; }
+
+    function hideAllScreens() {
+      mainEls.concat(bonusEls).forEach(function (q) { q.style.display = 'none'; });
+      var offer = document.getElementById('quizannee-bonus-offer');
+      if (offer) offer.style.display = 'none';
+      var results = document.getElementById('quizannee-results');
+      if (results) results.style.display = 'none';
+    }
+
+    function showQuestion(logicalPos) {
+      hideAllScreens();
+      var els = currentEls();
+      var order = currentOrder();
+      var target = els[order[logicalPos]];
+      if (target) target.style.display = '';
+      var progress = document.getElementById('quizannee-progress');
+      if (progress) {
+        progress.style.display = '';
+        var label = phase === 'bonus' ? '🎁 Bonus — Question ' : 'Question ';
+        progress.textContent = label + (logicalPos + 1) + '/' + els.length;
+      }
+    }
+
+    function showBonusOffer() {
+      hideAllScreens();
+      var progress = document.getElementById('quizannee-progress');
+      if (progress) progress.style.display = 'none';
+      var offer = document.getElementById('quizannee-bonus-offer');
+      if (offer) offer.style.display = '';
+    }
+
+    function showResults() {
+      hideAllScreens();
+      var progress = document.getElementById('quizannee-progress');
+      if (progress) progress.style.display = 'none';
+      var results = document.getElementById('quizannee-results');
+      var scoreEl = document.getElementById('quizannee-score');
+      var maxEl = document.getElementById('quizannee-max');
+      var verdictEl = document.getElementById('quizannee-verdict');
+      var max = phase === 'bonus' ? totalArtists : mainEls.length;
+      if (typeof roUmamiTrack === 'function') roUmamiTrack('quiz_complete', { quiz: 'quiz-cette-annee-la-radio-odyssey', round: phase, score: score, max: max });
+      if (scoreEl) scoreEl.textContent = String(score);
+      if (maxEl) maxEl.textContent = String(max);
+      if (verdictEl) {
+        var msg;
+        if (max === totalArtists && bonusEls.length > 0 && phase === 'bonus') {
+          msg = score === totalArtists
+            ? "Score absolument parfait, sur les deux rounds !"
+            : score >= Math.ceil(totalArtists * 0.7)
+            ? "Très fort sur ce format complet !"
+            : "Belle tentative — dater une chanson n'est pas si simple !";
+        } else if (score === mainEls.length) {
+          msg = "Score parfait ! (Vous avez choisi de ne pas tenter le bonus.)";
+        } else {
+          msg = score >= Math.ceil(mainEls.length * 0.7)
+            ? "Incollable ! Les dates n'ont plus aucun secret pour vous."
+            : score >= Math.ceil(mainEls.length * 0.4)
+            ? "Pas mal ! Quelques dates à réviser."
+            : "Il est temps de réviser en musique — tentez à nouveau votre chance !";
+        }
+        verdictEl.textContent = msg;
+      }
+      if (results) results.style.display = '';
+    }
+
+    function advance() {
+      if (pendingTimer) { clearTimeout(pendingTimer); pendingTimer = null; }
+      pos += 1;
+      var els = currentEls();
+      if (pos < els.length) {
+        showQuestion(pos);
+        return;
+      }
+      // Fin du round en cours.
+      if (phase === 'main') {
+        if (score === mainEls.length && bonusEls.length > 0) {
+          showBonusOffer();
+        } else {
+          showResults();
+        }
+      } else {
+        showResults();
+      }
+    }
+
+    function shuffleChoices(qEl) {
+      var wrap = qEl.querySelector('.quizannee-choice');
+      wrap = wrap && wrap.parentElement;
+      if (!wrap) return;
+      var buttons = Array.prototype.slice.call(wrap.children);
+      for (var i = buttons.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = buttons[i]; buttons[i] = buttons[j]; buttons[j] = tmp;
+      }
+      buttons.forEach(function (b) { wrap.appendChild(b); });
+    }
+
+    function wireQuestion(qEl) {
+      shuffleChoices(qEl);
+      var buttons = Array.prototype.slice.call(qEl.querySelectorAll('.quizannee-choice'));
+      var nextBtn = qEl.querySelector('.quizannee-next');
+      var feedback = qEl.querySelector('.quizannee-feedback');
+      var answered = false;
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          if (answered) return;
+          answered = true;
+          var isCorrect = btn.getAttribute('data-correct') === 'true';
+          var correctBtn = buttons.filter(function (b) { return b.getAttribute('data-correct') === 'true'; })[0];
+
+          if (isCorrect) {
+            score += 1;
+            btn.classList.add('is-correct');
+            btn.querySelector('.quizannee-choice-icon').textContent = '✅ ';
+            if (feedback) {
+              feedback.textContent = '✅ Bonne réponse !';
+              feedback.style.color = '#38a169';
+            }
+          } else {
+            btn.classList.add('is-wrong');
+            btn.querySelector('.quizannee-choice-icon').textContent = '❌ ';
+            if (correctBtn) {
+              correctBtn.classList.add('is-correct');
+              correctBtn.querySelector('.quizannee-choice-icon').textContent = '✅ ';
+            }
+            if (feedback) {
+              feedback.textContent = '❌ Raté, la bonne réponse était surlignée en vert.';
+              feedback.style.color = '#dc2626';
+            }
+          }
+          if (feedback) feedback.style.display = '';
+          buttons.forEach(function (b) { b.disabled = true; });
+          if (nextBtn) nextBtn.style.display = 'inline-block';
+
+          // Avance automatiquement après un court délai — l'utilisateur
+          // peut aussi cliquer "Question suivante" pour ne pas attendre.
+          pendingTimer = setTimeout(advance, 1600);
+        });
+      });
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', advance);
+      }
+    }
+
+    mainEls.forEach(wireQuestion);
+    bonusEls.forEach(wireQuestion);
+
+    var bonusStartBtn = document.getElementById('quizannee-bonus-start');
+    if (bonusStartBtn) {
+      bonusStartBtn.addEventListener('click', function () {
+        phase = 'bonus';
+        pos = 0;
+        showQuestion(0);
+      });
+    }
+
+    var bonusSkipBtn = document.getElementById('quizannee-bonus-skip');
+    if (bonusSkipBtn) {
+      bonusSkipBtn.addEventListener('click', function () {
+        showResults();
+      });
+    }
+
+    var restartBtn = document.getElementById('quizannee-restart');
+    if (restartBtn) {
+      restartBtn.addEventListener('click', function () {
+        window.location.reload();
+      });
+    }
+
+    showQuestion(0);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', quizanneeInit);
+  } else {
+    quizanneeInit();
+  }
+  </script>
+</Layout>

@@ -3318,3 +3318,29 @@ Le maillage entre les trois quiz thématiques a été refait dans la foulée : c
 
 *Dernière mise à jour : 2026-08-17, quiz des coulisses en anglais — les trois quiz thématiques sont traduits (§97).*
 
+---
+
+## 98. Neuvième quiz, et premier d'un genre différent : « Cette année-là » (2026-09-03)
+
+Le propriétaire a proposé un nouveau format de quiz : au lieu de deviner l'artiste (les huit quiz existants), l'artiste est donné dans l'énoncé — « En quelle année {artiste} chantait « {titre} » ? » — et c'est l'**année de sortie** qu'il faut trouver, parmi **3 propositions** (et non 4, comme les huit autres). Toujours construit sur les vrais titres diffusés, toujours maillé vers les fiches artistes.
+
+**Source des dates : deux voies, jamais de mémoire.** Sur les 20 titres retenus, 10 réutilisent des dates déjà vérifiées et publiées dans la série par décennie (§47, §52, §53) — pas de nouvelle vérification nécessaire, ce sont des faits acquis du projet. Les 10 autres (Michael Jackson *Billie Jean*, Beyoncé *Crazy In Love*, Shakira *Whenever, Wherever*, Christina Aguilera *Genie In A Bottle*, Sting *Fields Of Gold*, Zazie *J'envoie valser*, Robbie Williams *Angels*, Craig David *Fill Me In*, Christophe Willem *Double Je*) ont été vérifiées individuellement par recherche web avant d'être retenues. Une correction utile en cours de route : *Double Je* de Christophe Willem est daté à tort de 2006 dans la mémoire courante (année de sa victoire à la Nouvelle Star) — la recherche confirme que le single est sorti en **2007**, un an plus tard.
+
+**Choix du panel de 20** : les 20 artistes, chacun n'apparaissant qu'une fois (même règle que les huit autres quiz), ont été choisis pour que les **20 années correctes soient toutes distinctes** — de 1983 (Michael Jackson) à 2025 (Aya Nakamura), aucune décennie n'est concentrée sur une seule question. Un choix délibéré : un joueur qui retient une réponse d'une question ne peut pas s'en servir comme indice sur une autre.
+
+**Distracteurs** : pour chaque question, les deux propositions fausses ont été choisies à la main (jamais par un décalage fixe, pour éviter qu'un joueur attentif reconnaisse un motif), et systématiquement vérifiées pour ne **jamais reprendre l'année correcte d'une autre question du même quiz** — un distracteur qui serait la bonne réponse ailleurs dans le quiz créerait une contradiction perçue par un joueur qui aurait déjà répondu à cette question-là.
+
+**Maillage vers les fiches artistes, à deux niveaux** :
+- Un lien direct « → Découvrir {artiste} sur Radio Odyssey » apparaît sous chaque question, vers `/artiste-{slug}.html` — visible immédiatement, pas seulement après avoir répondu, puisque l'artiste est déjà nommé dans l'énoncé.
+- Croisement automatique via `data/quiz-artistes.js` (§69) : le fichier suit la convention `{ track: "…", correct: 'slug' }` en tête de chaque objet (le champ `correct` porte le slug, pas l'année — le jeu compare la réponse cliquée au champ `year` séparé), ce qui permet à l'extraction au build de fonctionner sans changement. ⚠️ Comme ce quiz n'est ni un quiz par décennie ni déjà répertorié dans `THEMATIQUES`, il aurait été ignoré silencieusement par `construire()` sans l'ajout explicite d'une entrée `'quiz-cette-annee-la-radio-odyssey': 'dates de sortie'` — vérifié après coup sur la fiche Christina Aguilera, qui affiche bien « quiz des dates de sortie ».
+
+**Page de série mise à jour** (`quiz-musicaux-radio-odyssey.astro`) : une troisième famille ajoutée à côté des « cinq quiz par décennie » et des « trois quiz sur l'univers de la radio », avec sa propre section, sa propre carte, et son entrée dans le schéma `ItemList`. Toutes les occurrences de « huit »/« cinq »/« 100 »/« 160 » dans les paragraphes ont été revues une par une plutôt que de risquer un remplacement global — dont la phrase sur les « quatre propositions » mélangées à chaque partie, désormais correcte pour huit quiz sur neuf seulement.
+
+**Vérifié après build (294 pages, +1, aucune erreur)** : script de contrôle confirmant les 20 slugs distincts, les 20 années correctes distinctes, et la présence de l'année correcte dans ses propres propositions pour chacune des 20 questions ; parcours réel testé dans le navigateur (build statique servi localement) — mélange des propositions à chaque rechargement, clic sur la bonne réponse déclenchant l'avancée automatique, lien vers la fiche artiste fonctionnel ; croisement automatique vérifié sur une fiche artiste réelle.
+
+⚠️ **Réconciliation de comptage faite au passage** : le total de pages éditoriales que portait `CLAUDE.md` (113, détaillé par catégorie) n'était plus à jour — la recompte réelle de `navigation.js` au moment de ce lot donnait déjà 29 pages en Musique & Énergie, pas 26. Écart antérieur à ce lot, pas causé par lui. Les totaux globaux (sitemap, pages générées) ont été recalés sur les chiffres réels (`sitemap.xml`, sortie de build) plutôt que sur un total additionné à la main ; le détail par catégorie reste à recompter entièrement une prochaine fois.
+
+---
+
+*Dernière mise à jour : 2026-09-03, quiz « Cette année-là » — neuvième quiz, premier à trois propositions (§98).*
+
