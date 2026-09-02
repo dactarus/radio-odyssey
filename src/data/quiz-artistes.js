@@ -38,6 +38,7 @@ const THEMATIQUES = {
   'quiz-noms-artistes-radio-odyssey': 'noms de scène',
   'quiz-records-radio-odyssey': 'records',
   'quiz-coulisses-artistes-radio-odyssey': 'coulisses',
+  'quiz-cette-annee-la-radio-odyssey': 'dates de sortie',
 };
 
 function construire() {
