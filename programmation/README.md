@@ -7,6 +7,15 @@ buildé ni déployé) — c'est une base de travail pour toi et Claude, à consu
 proposer un fait de programmation (nouvelle fiche artiste, nouveau quiz, vérification d'une
 reprise...).
 
+`catalogue-radio-odyssey.xlsx` : la même donnée, mise en forme pour un usage humain — envoyée
+directement au propriétaire (pas de lien public), 4 onglets (Résumé, Titres, Artistes,
+Méthode), tableaux triables/filtrables, deux colonnes de l'onglet Artistes calculées par
+formule (`COUNTIF`/`SUMIF`) à partir de l'onglet Titres plutôt que figées. ⚠️ Les formules
+n'ont **pas** pu être vérifiées par recalcul automatique (LibreOffice absent de cette machine)
+— seules des fonctions standards (`SUM`, `COUNTIF`, `SUMIF`, `SUBTOTAL`) ont été utilisées,
+et Excel les recalcule à l'ouverture, mais un premier coup d'œil aux totaux vaut la peine.
+Ni l'un ni l'autre fichier ne sont suivis dans Git (voir `.gitignore`) : à conserver en local.
+
 ⚠️ Ne pas confondre avec `src/data/artists.js`, qui ne retient — volontairement — que les
 147 artistes ayant une fiche, au plus 8 titres chacun, sur la seule fenêtre glissante du
 14 mai au 13 août 2026. Ce fichier-ci est bien plus large : tout artiste et tout titre vus

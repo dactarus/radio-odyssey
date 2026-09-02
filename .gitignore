@@ -31,3 +31,4 @@ report-from-*.csv
 # (voir programmation/README.md) — dérivé de données brutes déjà exclues
 # ci-dessus, régénérable, jamais buildé ni déployé : reste local.
 programmation/*.csv
+programmation/*.xlsx
