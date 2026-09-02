@@ -19,20 +19,26 @@ interface Props {
   href: string;
   quiz: { href: string; nom: string; sous: string }[];
   boutonNombre: number;
+  totalQuestions?: number;
 }
-const { lang = 'fr', href, quiz, boutonNombre } = Astro.props;
+// ⚠️ Ne plus supposer 20 questions par quiz : le quiz "Artiste ou groupe
+// original" (§99) n'en compte que 11, faute de round bonus. `totalQuestions`
+// permet de passer le vrai total ; à défaut, on retombe sur l'ancienne
+// hypothèse (boutonNombre * 20), qui reste juste tant que tous les quiz
+// affichés en comptent 20.
+const { lang = 'fr', href, quiz, boutonNombre, totalQuestions = boutonNombre * 20 } = Astro.props;
 
 const T = lang === 'en'
   ? {
       chapeau: 'Play with us',
       titreAvant: 'Our free ', titreFort: 'music quizzes', titreApres: '',
-      accroche: `${boutonNombre} quizzes, ${boutonNombre * 20} questions, built from the tracks and artists we actually play. No sign-up, straight in your browser.`,
+      accroche: `${boutonNombre} quizzes, ${totalQuestions} questions, built from the tracks and artists we actually play. No sign-up, straight in your browser.`,
       bouton: `See all ${boutonNombre}`,
     }
   : {
       chapeau: 'Jouez avec nous',
       titreAvant: 'Nos ', titreFort: 'quiz musicaux', titreApres: ' gratuits',
-      accroche: `${boutonNombre} quiz, ${boutonNombre * 20} questions, construites à partir des titres et des artistes réellement diffusés sur l'antenne. Sans inscription, directement dans votre navigateur.`,
+      accroche: `${boutonNombre} quiz, ${totalQuestions} questions, construites à partir des titres et des artistes réellement diffusés sur l'antenne. Sans inscription, directement dans votre navigateur.`,
       bouton: `Voir les ${boutonNombre} quiz`,
     };
 ---
