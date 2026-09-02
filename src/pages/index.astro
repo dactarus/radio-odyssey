@@ -8,10 +8,10 @@ import { NAV_CATEGORIES } from '../data/navigation.js';
 const title = 'Radio Odyssey – Web Radio Bien-être & Bonne Humeur 24h/24';
 const description = "Radio Odyssey, votre web radio 100% positive ! Hits des années 80, dance, easy listening, cohérence cardiaque. Gratuite, sans pub, non-stop 24h/24.";
 
-// Les neuf quiz mis en avant sur l'accueil (§98 : neuvième quiz ajouté).
+// Les dix quiz mis en avant sur l'accueil (§99 : dixième quiz ajouté).
 // Ordre choisi : les décennies d'abord (les plus jouées et les plus
-// recherchées), puis les trois quiz sur l'univers de la radio, puis le
-// quiz transversal, le plus récent.
+// recherchées), puis les trois quiz sur l'univers de la radio, puis les
+// deux quiz transversaux, les plus récents.
 const QUIZ_ACCUEIL = [
   { href: '/quiz-musical-annees-80.html', nom: 'Années 80', sous: 'Le plus joué' },
   { href: '/quiz-musical-annees-90.html', nom: 'Années 90', sous: 'Eurodance & ballades' },
@@ -22,6 +22,7 @@ const QUIZ_ACCUEIL = [
   { href: '/quiz-records-radio-odyssey.html', nom: 'Records', sous: 'Qui détient cet exploit ?' },
   { href: '/quiz-coulisses-artistes-radio-odyssey.html', nom: 'Coulisses', sous: 'Qui se cache derrière ?' },
   { href: '/quiz-cette-annee-la-radio-odyssey.html', nom: 'Cette année-là', sous: "L'artiste est donné, à vous l'année" },
+  { href: '/quiz-artiste-original-radio-odyssey.html', nom: 'Artiste original', sous: 'Cette reprise cache un original' },
 ];
 const ogTitle = 'Radio Odyssey – Positive Web Radio';
 const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse, bien-être, gratuite.";
@@ -254,7 +255,7 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
      Placé juste après le bandeau cohérence cardiaque, mais
      volontairement plus léger que les deux encarts qui précèdent :
      trois bandeaux pleine largeur d'affilée feraient mur. Fond
-     blanc, une seule ligne de titre, les neuf quiz listés en
+     blanc, une seule ligne de titre, les dix quiz listés en
      pastilles cliquables — on entre dans le jeu, on ne lit pas un
      argumentaire de plus.
 
@@ -265,7 +266,7 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
      ============================================================ */}
 <section class="ro-section" style="padding-top:2.4rem;padding-bottom:2.4rem;">
   <div class="container">
-    <QuizInvite href="/quiz-musicaux-radio-odyssey.html" quiz={QUIZ_ACCUEIL} boutonNombre={9} />
+    <QuizInvite href="/quiz-musicaux-radio-odyssey.html" quiz={QUIZ_ACCUEIL} boutonNombre={10} totalQuestions={192} />
   </div>
 </section>
 
