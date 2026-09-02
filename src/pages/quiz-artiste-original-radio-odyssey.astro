@@ -22,37 +22,48 @@ import NewsletterCapture from '../components/NewsletterCapture.astro';
 // n'ont donc pas de fiche sur le site. En revanche, chaque question renvoie
 // vers la fiche de l'artiste réellement diffusé — le lien utile ici.
 //
-// ⚠️ Recherche menée titre par titre dans les 522 titres réels du catalogue
-// (`artists.js`), pas de mémoire : plusieurs pistes plausibles ont été
-// vérifiées puis écartées faute de confirmation (Bob Sinclar "I Feel For
-// You" n'a aucun rapport avec le standard de Prince/Chaka Khan malgré le
-// titre identique ; "Take Me To Your Heart" de Rick Astley et "Put A Little
-// Love On Me" de Delegation sont bien des originaux, pas des reprises).
-// Cinq pistes du propriétaire ont donné les meilleures trouvailles :
-// "Comme Caroline" de Zaho reprend bien "Caroline" de MC Solaar (1991),
-// "Toutes les femmes de ta vie" de Julien Doré (qu'on aurait pu croire
-// originale) reprend en réalité le tube 2001 du groupe L5 — extrait de son
-// album de reprises "Imposteur" (2024) —, "San Francisco" de Sound Of
-// Legend (2026) reprend le classique hippie de Scott McKenzie (1967),
-// "Paradise" de DJ Snake (2025) reprend "Another Day In Paradise" de Phil
-// Collins (1989), et "Forever Young" de David Guetta (avec Ava Max, 2024)
-// reprend le tube 1984 du groupe allemand Alphaville — ce dernier titre
-// n'apparaît pas encore dans `artists.js` (fenêtre de l'export RadioKing
-// non à jour) mais le propriétaire a confirmé sa diffusion réelle ; il n'a
-// donc pas été ajouté à `tracks` (ce champ ne se saisit qu'au rapport,
-// jamais à la main), seulement à ce quiz, qui est un contenu édité comme
-// les fiches Découvertes. Une autre piste avancée pour "Coco Câline" (un
-// possible original de Lio) n'a pas été confirmée : la chanson est bien un
-// original de Julien Doré (2017), donc écartée.
+// ⚠️ Recherche menée titre par titre, pas de mémoire : plusieurs pistes
+// plausibles ont été vérifiées puis écartées faute de confirmation (Bob
+// Sinclar "I Feel For You" n'a aucun rapport avec le standard de
+// Prince/Chaka Khan malgré le titre identique ; "Take Me To Your Heart" de
+// Rick Astley et "Put A Little Love On Me" de Delegation sont bien des
+// originaux, pas des reprises). Cinq pistes du propriétaire ont donné les
+// meilleures trouvailles : "Comme Caroline" de Zaho reprend bien "Caroline"
+// de MC Solaar (1991), "Toutes les femmes de ta vie" de Julien Doré (qu'on
+// aurait pu croire originale) reprend en réalité le tube 2001 du groupe L5
+// — extrait de son album de reprises "Imposteur" (2024) —, "San Francisco"
+// de Sound Of Legend (2026) reprend le classique hippie de Scott McKenzie
+// (1967), "Paradise" de DJ Snake (2025) reprend "Another Day In Paradise"
+// de Phil Collins (1989), et "Forever Young" de David Guetta (avec Ava Max,
+// 2024) reprend le tube 1984 du groupe allemand Alphaville — ce dernier
+// titre n'apparaît pas dans `artists.js` (fenêtre de l'export RadioKing qui
+// l'alimente non à jour dessus) mais le propriétaire, programmateur réel de
+// l'antenne, a confirmé sa diffusion effective ; il n'a donc pas été ajouté
+// à `tracks` (ce champ ne se saisit qu'au rapport, jamais à la main),
+// seulement à ce quiz, qui est un contenu édité comme les fiches
+// Découvertes. Une autre piste avancée pour "Coco Câline" (un possible
+// original de Lio) n'a pas été confirmée : la chanson est bien un original
+// de Julien Doré (2017), donc écartée.
 //
-// Conséquence assumée sur la taille du quiz : le réservoir de reprises
-// réellement identifiables dans le catalogue est plus mince que pour les
-// autres formats. Plutôt que de forcer 20 questions avec des pistes
-// fragiles, ce premier lot s'arrête à 12 questions vérifiées, sans round
-// bonus — voir la FAQ. Un artiste diffusé n'apparaît qu'une fois, à
-// l'exception assumée de Jimmy Somerville (deux reprises distinctes,
-// aucun conflit possible puisque les bonnes réponses — les originaux —
-// sont différentes).
+// ⚠️ Ce premier lot a été construit à partir des 522 titres d'`artists.js`
+// — 8 par fiche au plus, sur une seule fenêtre de trois mois. Le vrai
+// catalogue est bien plus large : `programmation/catalogue-titres-radioking.csv`
+// (§99bis, hors dépôt — voir son README) recense 2016 couples (artiste,
+// titre) distincts à partir de six exports RadioKing bruts, couvrant début
+// 2025 à mi-2026. Le réservoir de reprises n'a donc pas été épuisé : une
+// deuxième vérification menée sur ce fichier plus complet trouvera
+// vraisemblablement d'autres candidats (ex. "Santa Baby" de Robbie Williams,
+// original Eartha Kitt 1953 — vérifié mais non intégré ici : Robbie
+// Williams porte déjà une question, et une deuxième exception à la règle
+// "un artiste diffusé, une fois" après Jimmy Somerville aurait été de trop
+// pour un même quiz).
+//
+// Conséquence assumée sur la taille de ce premier lot : plutôt que de
+// forcer 20 questions avec des pistes fragiles, il s'arrête à 12 questions
+// vérifiées, sans round bonus — voir la FAQ. Un artiste diffusé n'apparaît
+// qu'une fois, à l'exception assumée de Jimmy Somerville (deux reprises
+// distinctes, aucun conflit possible puisque les bonnes réponses — les
+// originaux — sont différentes).
 const questions = [
   {
     titre: "Venus",
@@ -159,7 +170,7 @@ const faq = [
   },
   {
     q: 'Pourquoi ce quiz n\'a-t-il pas de round bonus ?',
-    a: "Parce que le catalogue réel de Radio Odyssey ne contient pas encore 20 reprises identifiables avec certitude. Plusieurs pistes plausibles ont été vérifiées puis écartées faute de preuve solide, plutôt que d'être forcées dans le quiz. Douze questions vérifiées valent mieux que vingt approximatives — un round bonus rejoindra ce quiz si de nouvelles reprises apparaissent dans la programmation.",
+    a: "Parce que ce premier lot n'a pas encore identifié 20 reprises avec certitude. Plusieurs pistes plausibles ont été vérifiées puis écartées faute de preuve solide, plutôt que d'être forcées dans le quiz. Douze questions vérifiées valent mieux que vingt approximatives — un round bonus rejoindra ce quiz au fil des vérifications suivantes.",
   },
   {
     q: 'Ces reprises sont-elles vraiment diffusées sur Radio Odyssey ?',

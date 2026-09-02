@@ -3368,3 +3368,47 @@ Le propriétaire a proposé un dixième quiz d'un genre encore différent : Radi
 
 *Dernière mise à jour : 2026-09-03, quiz « Artiste ou groupe original » — dixième quiz, une chasse aux reprises (§99).*
 
+---
+
+## 99bis. Le catalogue `artists.js` n'était qu'un dixième du vrai catalogue diffusé (2026-09-03)
+
+En construisant le §99, la recherche s'est limitée aux 522 titres présents dans `artists.js`
+(8 par fiche au plus, sur la fenêtre de trois mois qui alimente les 147 fiches). Le
+propriétaire a signalé que le vrai total dépasse largement les 1000 titres — et il avait
+raison : les exports RadioKing bruts disponibles en local (`~/Downloads`, six fichiers,
+couvrant janvier 2025 à mi-2026 avec quelques trous) recensent **2016 couples (artiste,
+titre) distincts**, soit près de quatre fois plus.
+
+**Nouveau fichier de travail** : `programmation/catalogue-titres-radioking.csv` (racine du
+dépôt, **hors `src/`/`public/`, jamais buildé ni déployé, et volontairement hors dépôt git**
+— voir `.gitignore` et `programmation/README.md` pour la méthode complète et les fenêtres
+couvertes). Fusionne six exports RadioKing différents (trois "détail", un passage par ligne ;
+trois "fréquence", déjà agrégés), avec une règle simple pour ne jamais gonfler un chiffre :
+somme des fenêtres qui ne se recoupent pas, maximum entre exports qui couvrent la même
+période. Le `Plays_observes` qui en résulte est une reconstitution défendable, pas un
+compteur RadioKing officiel — le README le précise explicitement.
+
+**Pourquoi cette différence d'échelle ne remet pas en cause `artists.js`** : les deux fichiers
+répondent à des besoins différents. `artists.js` sert les 147 fiches et l'affichage de rang/
+part d'antenne — un plafond à 8 titres et une fenêtre courte, glissante et documentée sont ce
+qui le rend fiable et comparable dans le temps (§63 tient toujours). Le catalogue élargi sert
+la recherche éditoriale ponctuelle (repérer une reprise, vérifier qu'un titre a bien tourné,
+retrouver un artiste jamais fiché) — un usage où l'exhaustivité prime sur la fraîcheur d'une
+fenêtre glissante.
+
+**Cas concret qui a motivé sa création** : "Forever Young" (David Guetta) n'apparaît pas dans
+`artists.js` mais confirmé diffusé par le propriétaire — retrouvé dans le catalogue élargi
+avec 188 passages sur la période couverte, largement au-dessus du bruit.
+
+**Conséquence pour la suite du quiz "Artiste ou groupe original"** : le réservoir de reprises
+n'est probablement pas épuisé après seulement 12 questions vérifiées sur un dixième du vrai
+catalogue. Un candidat déjà repéré et vérifié pour un futur lot : "Santa Baby" de Robbie
+Williams (avec Helene Fischer), reprise du standard de Noël d'Eartha Kitt (1953) — non
+intégré au §99 car Robbie Williams y porte déjà une question ("Somethin' Stupid"), et une
+deuxième exception à la règle "un artiste diffusé, une fois" (après Jimmy Somerville) aurait
+été de trop pour un même lot.
+
+---
+
+*Dernière mise à jour : 2026-09-03, le vrai catalogue fait 2016 titres, pas 522 (§99bis).*
+
