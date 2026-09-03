@@ -3412,3 +3412,40 @@ deuxième exception à la règle "un artiste diffusé, une fois" (après Jimmy S
 
 *Dernière mise à jour : 2026-09-03, le vrai catalogue fait 2016 titres, pas 522 (§99bis).*
 
+---
+
+## 99ter. Treizième question du quiz reprises, et un lien de fiche désormais conditionnel
+
+Le propriétaire a fourni une sixième piste en cours de route : "Barbra Streisand" de Duck
+Sauce (2010) échantillonne "Gotta Go Home" de Boney M. (1979), qui reprend elle-même "Hallo
+Bimmelbahn" de Nighttrain (1973, Allemagne) — une chaîne à deux maillons, confirmée par
+plusieurs sources concordantes (Wikipedia, Songfacts, WhoSampled, b-sting.com). La bonne
+réponse retenue est le maillon le plus ancien, Nighttrain — Boney M. sert de piège plausible
+dans les propositions, puisque c'est le lien le plus connu mais pas l'original.
+
+**Un fait corrigé au passage** : le propriétaire décrivait "Hallo Bimmelbahn" comme un
+instrumental. La recherche montre que Heinz Huth, chanteur et leader de Nighttrain, y chante
+bel et bien — une histoire de train et de romance. Sans incidence sur la question (la formule
+« quel artiste avait chanté ce titre » reste juste), mais à ne pas répéter de mémoire ailleurs.
+
+**Premier cas d'un artiste diffusé sans fiche sur le site** : Duck Sauce ne fait pas partie des
+147 fiches. Le lien « → Découvrir X sur Radio Odyssey », jusqu'ici affiché sans condition sur
+chaque question, est devenu conditionnel (`{q.artiste && (...)}`, avec `artiste: null` pour
+Duck Sauce) plutôt que de générer un lien mort. Précédent utile : les 1899 artistes du
+catalogue élargi (§99bis) dépassent largement les 147 fiches, d'autres cas de ce genre sont à
+attendre dans les prochains lots.
+
+**Quiz porté à 13 questions** (193 questions sur les dix quiz du site, page de série et
+accueil mis à jour en conséquence). Toujours sans round bonus — voir §99, la règle n'a pas
+changé : mieux vaut treize questions vérifiées que forcer un compte rond.
+
+**Vérifié après build (295 pages, aucune erreur)** : script de contrôle confirmant les 13
+originaux tous distincts, la bonne réponse présente dans ses 4 propositions ; parcours complet
+testé dans le navigateur (build statique servi localement) — score final 13/13 confirmé, et
+vérification spécifique que le paragraphe de lien vers la fiche ne s'affiche pas pour la
+question Duck Sauce (`artiste: null`).
+
+---
+
+*Dernière mise à jour : 2026-09-03, quiz reprises porté à 13 questions, lien de fiche conditionnel (§99ter).*
+

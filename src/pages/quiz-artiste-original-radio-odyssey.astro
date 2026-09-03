@@ -20,46 +20,55 @@ import NewsletterCapture from '../components/NewsletterCapture.astro';
 // des artistes originaux ici (Shocking Blue, les Valentine Brothers, Harold
 // Melvin & The Blue Notes...) ne sont pas diffusés sur Radio Odyssey et
 // n'ont donc pas de fiche sur le site. En revanche, chaque question renvoie
-// vers la fiche de l'artiste réellement diffusé — le lien utile ici.
+// vers la fiche de l'artiste réellement diffusé — le lien utile ici. ⚠️ Ce
+// lien est conditionnel (`{q.artiste && (...)}`) : certains artistes bien
+// réellement diffusés (ex. Duck Sauce) n'ont pas encore de fiche parmi les
+// 147 — `artiste: null` dans ce cas, le paragraphe ne s'affiche simplement
+// pas pour cette question plutôt que de pointer vers une page inexistante.
 //
 // ⚠️ Recherche menée titre par titre, pas de mémoire : plusieurs pistes
 // plausibles ont été vérifiées puis écartées faute de confirmation (Bob
 // Sinclar "I Feel For You" n'a aucun rapport avec le standard de
 // Prince/Chaka Khan malgré le titre identique ; "Take Me To Your Heart" de
 // Rick Astley et "Put A Little Love On Me" de Delegation sont bien des
-// originaux, pas des reprises). Cinq pistes du propriétaire ont donné les
+// originaux, pas des reprises). Six pistes du propriétaire ont donné les
 // meilleures trouvailles : "Comme Caroline" de Zaho reprend bien "Caroline"
 // de MC Solaar (1991), "Toutes les femmes de ta vie" de Julien Doré (qu'on
 // aurait pu croire originale) reprend en réalité le tube 2001 du groupe L5
 // — extrait de son album de reprises "Imposteur" (2024) —, "San Francisco"
 // de Sound Of Legend (2026) reprend le classique hippie de Scott McKenzie
 // (1967), "Paradise" de DJ Snake (2025) reprend "Another Day In Paradise"
-// de Phil Collins (1989), et "Forever Young" de David Guetta (avec Ava Max,
+// de Phil Collins (1989), "Forever Young" de David Guetta (avec Ava Max,
 // 2024) reprend le tube 1984 du groupe allemand Alphaville — ce dernier
 // titre n'apparaît pas dans `artists.js` (fenêtre de l'export RadioKing qui
 // l'alimente non à jour dessus) mais le propriétaire, programmateur réel de
 // l'antenne, a confirmé sa diffusion effective ; il n'a donc pas été ajouté
 // à `tracks` (ce champ ne se saisit qu'au rapport, jamais à la main),
 // seulement à ce quiz, qui est un contenu édité comme les fiches
-// Découvertes. Une autre piste avancée pour "Coco Câline" (un possible
-// original de Lio) n'a pas été confirmée : la chanson est bien un original
-// de Julien Doré (2017), donc écartée.
+// Découvertes —, et "Barbra Streisand" de Duck Sauce (2010) échantillonne
+// "Gotta Go Home" de Boney M. (1979), qui reprend elle-même "Hallo
+// Bimmelbahn" de Nighttrain (1973, Allemagne) : c'est ce premier maillon,
+// le plus ancien, qui est la bonne réponse — Boney M. sert de piège
+// plausible dans les propositions. ⚠️ Fait corrigé au passage : le
+// propriétaire décrivait "Hallo Bimmelbahn" comme un instrumental, mais la
+// recherche montre que Heinz Huth (chanteur de Nighttrain) y chante belle
+// et bien — une histoire de train et de romance. Une autre piste avancée
+// pour "Coco Câline" (un possible original de Lio) n'a pas été confirmée :
+// la chanson est bien un original de Julien Doré (2017), donc écartée.
 //
-// ⚠️ Ce premier lot a été construit à partir des 522 titres d'`artists.js`
-// — 8 par fiche au plus, sur une seule fenêtre de trois mois. Le vrai
-// catalogue est bien plus large : `programmation/catalogue-titres-radioking.csv`
-// (§99bis, hors dépôt — voir son README) recense 2016 couples (artiste,
-// titre) distincts à partir de six exports RadioKing bruts, couvrant début
-// 2025 à mi-2026. Le réservoir de reprises n'a donc pas été épuisé : une
-// deuxième vérification menée sur ce fichier plus complet trouvera
-// vraisemblablement d'autres candidats (ex. "Santa Baby" de Robbie Williams,
-// original Eartha Kitt 1953 — vérifié mais non intégré ici : Robbie
-// Williams porte déjà une question, et une deuxième exception à la règle
-// "un artiste diffusé, une fois" après Jimmy Somerville aurait été de trop
-// pour un même quiz).
+// ⚠️ Ce premier lot a été construit d'abord à partir des 522 titres
+// d'`artists.js` (8 par fiche au plus, sur une seule fenêtre de trois
+// mois), puis complété via `programmation/catalogue-titres-radioking.csv`
+// (§99bis, hors dépôt — voir son README) : 1899 couples (artiste, titre)
+// distincts sur vingt mois complets et continus (janvier 2025 à septembre
+// 2026), sans plafond par artiste. Le réservoir de reprises n'est
+// vraisemblablement pas épuisé : "Santa Baby" de Robbie Williams (original
+// Eartha Kitt, 1953) reste vérifié mais non intégré — Robbie Williams porte
+// déjà une question, et une deuxième exception à la règle "un artiste
+// diffusé, une fois" après Jimmy Somerville aurait été de trop pour ce lot.
 //
 // Conséquence assumée sur la taille de ce premier lot : plutôt que de
-// forcer 20 questions avec des pistes fragiles, il s'arrête à 12 questions
+// forcer 20 questions avec des pistes fragiles, il s'arrête à 13 questions
 // vérifiées, sans round bonus — voir la FAQ. Un artiste diffusé n'apparaît
 // qu'une fois, à l'exception assumée de Jimmy Somerville (deux reprises
 // distinctes, aucun conflit possible puisque les bonnes réponses — les
@@ -161,6 +170,14 @@ const questions = [
     annee: '1984',
     choices: ['Alphaville', 'Depeche Mode', 'A-ha', 'Duran Duran'],
   },
+  {
+    titre: "Barbra Streisand",
+    artiste: null,
+    nomArtiste: 'Duck Sauce',
+    correct: 'Nighttrain',
+    annee: '1973',
+    choices: ['Nighttrain', 'Boney M.', 'Dschinghis Khan', 'Silver Convention'],
+  },
 ];
 
 const faq = [
@@ -170,15 +187,15 @@ const faq = [
   },
   {
     q: 'Pourquoi ce quiz n\'a-t-il pas de round bonus ?',
-    a: "Parce que ce premier lot n'a pas encore identifié 20 reprises avec certitude. Plusieurs pistes plausibles ont été vérifiées puis écartées faute de preuve solide, plutôt que d'être forcées dans le quiz. Douze questions vérifiées valent mieux que vingt approximatives — un round bonus rejoindra ce quiz au fil des vérifications suivantes.",
+    a: "Parce que ce premier lot n'a pas encore identifié 20 reprises avec certitude. Plusieurs pistes plausibles ont été vérifiées puis écartées faute de preuve solide, plutôt que d'être forcées dans le quiz. Treize questions vérifiées valent mieux que vingt approximatives — un round bonus rejoindra ce quiz au fil des vérifications suivantes.",
   },
   {
     q: 'Ces reprises sont-elles vraiment diffusées sur Radio Odyssey ?',
-    a: "Oui : les versions citées dans les questions (Bananarama, Robbie Williams, Jimmy Somerville, Simply Red, Christina Aguilera, Joe Cocker, Zaho, Julien Doré, Sound Of Legend, DJ Snake, David Guetta) sont toutes de vrais titres de notre catalogue — voir notre page <a href='/artistes-diffuses-radio-odyssey.html' style='color:var(--ro-purple);font-weight:700;'>artistes diffusés</a>. Les artistes originaux, eux, ne sont pas nécessairement présents sur l'antenne.",
+    a: "Oui : les versions citées dans les questions (Bananarama, Robbie Williams, Jimmy Somerville, Simply Red, Christina Aguilera, Joe Cocker, Zaho, Julien Doré, Sound Of Legend, DJ Snake, David Guetta, Duck Sauce) sont toutes de vrais titres de notre catalogue — voir notre page <a href='/artistes-diffuses-radio-odyssey.html' style='color:var(--ro-purple);font-weight:700;'>artistes diffusés</a>. Les artistes originaux, eux, ne sont pas nécessairement présents sur l'antenne.",
   },
   {
     q: 'Les artistes originaux sont-ils vérifiés ?',
-    a: "Chacun a été confirmé individuellement par recherche web avant d'être retenu. Cinq pistes du propriétaire ont directement mené à cinq des douze questions : « Comme Caroline » de Zaho (reprise de MC Solaar), « Toutes les femmes de ta vie » de Julien Doré (reprise du groupe L5, extrait de son album de reprises « Imposteur »), « San Francisco » de Sound Of Legend (reprise de Scott McKenzie, 1967), « Paradise » de DJ Snake (reprise de « Another Day In Paradise », Phil Collins, 1989) et « Forever Young » de David Guetta (reprise du groupe allemand Alphaville, 1984).",
+    a: "Chacun a été confirmé individuellement par recherche web avant d'être retenu. Six pistes du propriétaire ont directement mené à six des treize questions : « Comme Caroline » de Zaho (reprise de MC Solaar), « Toutes les femmes de ta vie » de Julien Doré (reprise du groupe L5, extrait de son album de reprises « Imposteur »), « San Francisco » de Sound Of Legend (reprise de Scott McKenzie, 1967), « Paradise » de DJ Snake (reprise de « Another Day In Paradise », Phil Collins, 1989), « Forever Young » de David Guetta (reprise du groupe allemand Alphaville, 1984) et « Barbra Streisand » de Duck Sauce (échantillonne « Gotta Go Home » de Boney M., elle-même reprise de « Hallo Bimmelbahn » de Nighttrain, 1973).",
   },
   {
     q: 'Puis-je refaire le quiz ?',
@@ -189,7 +206,7 @@ const faq = [
 <Layout
   lang="fr"
   title="Quiz « Artiste ou Groupe Original » | Radio Odyssey"
-  description="Radio Odyssey diffuse parfois une reprise. Sauriez-vous retrouver l'artiste ou le groupe qui a chanté l'original ? 12 questions vérifiées, catalogue réel."
+  description="Radio Odyssey diffuse parfois une reprise. Sauriez-vous retrouver l'artiste ou le groupe qui a chanté l'original ? 13 questions vérifiées, catalogue réel."
 >
   <PageHero
     gradientFrom="#FF9A3C"
@@ -219,9 +236,11 @@ const faq = [
             {questions.map((q, i) => (
               <div class="quizorig-q" data-index={i} style={i === 0 ? '' : 'display:none;'}>
                 <p style="font-size:1.15rem;font-weight:800;color:var(--ro-dark);margin-bottom:.4rem;">🎵 Radio Odyssey diffuse « {q.titre} » par <strong>{q.nomArtiste}</strong> — quel artiste ou groupe l'avait chanté à l'origine, en {q.annee} ?</p>
-                <p style="margin:0 0 1rem;font-size:.85rem;">
-                  <a href={`/artiste-${q.artiste}.html`} style="color:var(--ro-purple);font-weight:700;">→ Découvrir {q.nomArtiste} sur Radio Odyssey</a>
-                </p>
+                {q.artiste && (
+                  <p style="margin:0 0 1rem;font-size:.85rem;">
+                    <a href={`/artiste-${q.artiste}.html`} style="color:var(--ro-purple);font-weight:700;">→ Découvrir {q.nomArtiste} sur Radio Odyssey</a>
+                  </p>
+                )}
                 <div style="display:flex;flex-direction:column;gap:.6rem;">
                   {q.choices.map((c) => (
                     <button

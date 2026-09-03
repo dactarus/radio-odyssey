@@ -70,7 +70,7 @@ export const NAV_CATEGORIES = [
       { href: '/radio-dance-energisante.html', bi: 'disc', label: 'Dance Énergisante', desc: "L'énergie dance pour faire bouger votre corps !" },
       { href: '/musique-pour-se-concentrer.html', bi: 'bullseye', label: 'Concentration', desc: 'La playlist idéale pour travailler efficacement' },
       { href: '/radio-pour-travailler.html', bi: 'laptop', label: 'Pour Travailler', desc: 'Restez focus et productif avec les bons beats' },
-      { href: '/quiz-musicaux-radio-odyssey.html', bi: 'trophy', label: 'Tous nos Quiz Musicaux', desc: 'Dix quiz, 192 questions, basées sur la programmation réelle' },
+      { href: '/quiz-musicaux-radio-odyssey.html', bi: 'trophy', label: 'Tous nos Quiz Musicaux', desc: 'Dix quiz, 193 questions, basées sur la programmation réelle' },
       { href: '/musique-pour-faire-du-sport.html', bi: 'lightning-charge', label: 'Pour Faire du Sport', desc: 'Le flux énergisant pour muscu, cardio et échauffement' },
       { href: '/musique-pour-courir.html', bi: 'stopwatch', label: 'Pour Courir', desc: 'Le tempo qui accompagne vos sorties running' },
       { href: '/musique-pour-une-soiree-entre-amis.html', bi: 'people-fill', label: 'Pour une Soirée entre Amis', desc: "L'ambiance festive qui plaît à tout le monde" },
