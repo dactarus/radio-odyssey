@@ -109,7 +109,7 @@ const QUIZ_TRANSVERSAUX = [
     titre: 'Quiz « Artiste ou groupe original » : qui l\'a chanté en premier ?',
     exemples: 'Bananarama, Simply Red, Christina Aguilera, Julien Doré',
     accroche: "Radio Odyssey diffuse parfois une reprise sans le préciser. L'artiste diffusé est donné, l'original est à deviner.",
-    meta: '12 questions, sans round bonus',
+    meta: '13 questions, sans round bonus',
     from: '#FF9A3C', to: '#00C6FF',
   },
 ];
@@ -135,7 +135,7 @@ const serieSchema = {
 const faq = [
   {
     q: 'Combien de quiz musicaux propose Radio Odyssey ?',
-    a: "Dix en tout. Cinq par décennie (années 80, 90, 2000, 2010 et 2020), trois sur l'univers de la radio (noms de scène, records, coulisses), et deux transversaux : « Cette année-là », où l'artiste est donné et c'est l'année qu'il faut trouver, et « Artiste ou groupe original », où l'artiste diffusé est donné et c'est l'original de sa reprise qu'il faut retrouver. Les huit premiers comportent 10 questions, plus un round bonus de 10 questions supplémentaires débloqué en cas de sans-faute ; « Artiste ou groupe original » n'en compte pour l'instant que 12, sans round bonus — soit 192 questions au total.",
+    a: "Dix en tout. Cinq par décennie (années 80, 90, 2000, 2010 et 2020), trois sur l'univers de la radio (noms de scène, records, coulisses), et deux transversaux : « Cette année-là », où l'artiste est donné et c'est l'année qu'il faut trouver, et « Artiste ou groupe original », où l'artiste diffusé est donné et c'est l'original de sa reprise qu'il faut retrouver. Les huit premiers comportent 10 questions, plus un round bonus de 10 questions supplémentaires débloqué en cas de sans-faute ; « Artiste ou groupe original » n'en compte pour l'instant que 13, sans round bonus — soit 193 questions au total.",
   },
   {
     q: "D'où viennent les titres utilisés dans les questions ?",
@@ -161,8 +161,8 @@ const faq = [
 ---
 <Layout
   lang="fr"
-  title="Les Quiz Musicaux de Radio Odyssey — 10 quiz, 192 questions"
-  description="Dix quiz musicaux gratuits : cinq par décennie, trois sur l'univers de la radio, et deux transversaux. 192 questions basées sur les titres réellement diffusés sur Radio Odyssey."
+  title="Les Quiz Musicaux de Radio Odyssey — 10 quiz, 193 questions"
+  description="dix quiz musicaux gratuits : cinq par décennie, trois sur l'univers de la radio, et deux transversaux. 193 questions basées sur les titres réellement diffusés sur Radio Odyssey."
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(serieSchema)} />
@@ -174,7 +174,7 @@ const faq = [
     homeLabel="🏠 Accueil"
     breadcrumbCurrent="Les quiz musicaux de Radio Odyssey"
     title="Les Quiz Musicaux de Radio Odyssey"
-    text="Dix quiz, 192 questions — toutes construites à partir des titres réellement diffusés sur l'antenne."
+    text="Dix quiz, 193 questions — toutes construites à partir des titres réellement diffusés sur l'antenne."
   >
     <Fragment slot="icon">
       <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.3"/><path d="M19 18C19 15.8 21 14 24 14C27 14 29 15.8 29 18C29 21 24 21.5 24 25" stroke="white" stroke-width="2.4" stroke-linecap="round" fill="none"/><circle cx="24" cy="31" r="1.8" fill="white"/></svg>
@@ -187,7 +187,7 @@ const faq = [
         <div class="col-lg-8">
 
           <div class="content-card">
-            <p style="margin:0;">Radio Odyssey propose <strong>dix quiz musicaux gratuits</strong>, répartis en trois familles : <strong>cinq quiz par décennie</strong>, des années 80 aux années 2020, où il faut retrouver l'interprète d'un titre ; <strong>trois quiz sur l'univers de la radio</strong>, où les questions portent sur les artistes eux-mêmes ; et <strong>deux quiz transversaux</strong> — « Cette année-là », où l'artiste est donné et c'est l'année de sortie qu'il faut trouver, et « Artiste ou groupe original », où l'artiste diffusé est donné et c'est l'original de sa reprise qu'il faut retrouver. Les huit premiers comportent 10 questions, et un round bonus de 10 questions se débloque en cas de sans-faute ; « Artiste ou groupe original » n'en compte pour l'instant que 12, sans round bonus — soit <strong>192 questions au total</strong>. Aucune inscription, aucune application : tout se joue dans le navigateur.</p>
+            <p style="margin:0;">Radio Odyssey propose <strong>dix quiz musicaux gratuits</strong>, répartis en trois familles : <strong>cinq quiz par décennie</strong>, des années 80 aux années 2020, où il faut retrouver l'interprète d'un titre ; <strong>trois quiz sur l'univers de la radio</strong>, où les questions portent sur les artistes eux-mêmes ; et <strong>deux quiz transversaux</strong> — « Cette année-là », où l'artiste est donné et c'est l'année de sortie qu'il faut trouver, et « Artiste ou groupe original », où l'artiste diffusé est donné et c'est l'original de sa reprise qu'il faut retrouver. Les huit premiers comportent 10 questions, et un round bonus de 10 questions se débloque en cas de sans-faute ; « Artiste ou groupe original » n'en compte pour l'instant que 13, sans round bonus — soit <strong>193 questions au total</strong>. Aucune inscription, aucune application : tout se joue dans le navigateur.</p>
           </div>
 
           <div class="content-card">
