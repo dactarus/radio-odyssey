@@ -1,6 +1,6 @@
 # Catalogue des titres RadioKing — fichier de travail
 
-`catalogue-titres-radioking.csv` : **1900 couples (artiste, titre) distincts, 1205 artistes**,
+`catalogue-titres-radioking.csv` : **1899 couples (artiste, titre) distincts, 1204 artistes**,
 tous réellement diffusés sur Radio Odyssey au moins une fois entre le 1er janvier 2025 et le
 2 septembre 2026. Ce n'est **pas** un fichier livré au site (hors `src/` et `public/`, jamais
 buildé ni déployé) — c'est une base de travail pour toi et Claude, à consulter avant de
@@ -21,11 +21,17 @@ Ni l'un ni l'autre fichier ne sont suivis dans Git (voir `.gitignore`) : à cons
 14 mai au 13 août 2026. Ce fichier-ci est bien plus large : tout artiste et tout titre vus
 dans les exports, sans plafond, sur vingt mois complets et continus.
 
-## D'où viennent les 1900 lignes
+## D'où viennent les 1899 lignes
 
 Quatre exports RadioKing "fréquence" (déjà agrégés par le manager, un `Play frequency` par
 couple artiste/titre), fournis par le propriétaire, couvrant quatre semestres **continus et
-non chevauchants** — d'où une simple somme, sans risque de double comptage :
+non chevauchants** — d'où une simple somme, sans risque de double comptage. Depuis le
+2026-09-03, ils sont conservés dans un dossier stable (contrairement aux pièces jointes du
+chat, voir plus bas) :
+
+```
+~/Downloads/Radio Odyssey CATALOGUE DIFF totale PRog 2025 aout 2026/
+```
 
 | Fichier | Fenêtre |
 |---|---|
@@ -68,6 +74,12 @@ Recherché sur l'ensemble du fichier (même titre de base, crédits d'artiste qu
 La colonne `Variantes_fusionnees` du CSV (et « Variantes fusionnées » du classeur Excel) garde
 la trace des crédits d'origine pour chacun — rien n'est perdu, juste regroupé.
 
+⚠️ La correction est **codée en dur** dans le script de fusion (25 couples artiste/titre
+canoniques, chacun avec la liste exacte de ses variantes d'origine) — elle n'est pas détectée
+automatiquement à chaque régénération. Si un nouvel export révèle un titre fragmenté du même
+genre, il faut l'ajouter à la liste avant de relancer le script, sans quoi il resterait
+fragmenté dans le nouveau fichier.
+
 **Deux cas volontairement laissés distincts** : « Holiday » (Madonna) et « Don't Start Now »
 (Dua Lipa) ont des lignes qui sont en réalité des **mashups** combinant le titre avec une autre
 chanson (ex. un DJ mashup « Holiday x Don't Start Now ») — ce n'est pas le même enregistrement,
@@ -75,14 +87,28 @@ donc pas fusionné.
 
 ## Historique
 
-Une première version de ce fichier (2026-09-03, avant-midi) fusionnait des exports plus
-hétérogènes — trois "détail" (une ligne par passage) et trois "fréquence" déjà agrégés, avec
-des fenêtres qui se recoupaient par endroits (fin 2025, deux exports différents pour S1 2026)
-et un trou entre juillet et septembre 2026. Elle donnait 2016 titres, un chiffre moins fiable
-(recours à un maximum plutôt qu'une somme sur les fenêtres redondantes). Remplacée le jour
-même par une version à partir des quatre exports "fréquence" complets et continus fournis par
-le propriétaire (1931 titres), elle-même corrigée dans la foulée pour les 25 titres fragmentés
-ci-dessus (1900 titres, total des passages inchangé : 242 740).
+Trois versions le même jour (2026-09-03), chacune corrigeant un défaut de la précédente :
+
+1. Fusion d'exports hétérogènes — trois "détail" (une ligne par passage) et trois "fréquence"
+   déjà agrégés, avec des fenêtres qui se recoupaient par endroits (fin 2025, deux exports
+   différents pour S1 2026) et un trou entre juillet et septembre 2026. **2016 titres**, un
+   chiffre peu fiable (recours à un maximum plutôt qu'une somme sur les fenêtres redondantes).
+2. Reconstruite à partir des quatre exports "fréquence" complets et continus fournis par le
+   propriétaire, puis corrigée pour les 25 titres fragmentés ci-dessus — mais les CSV bruts
+   avaient disparu de `~/Downloads` entre-temps (voir avertissement plus bas), donc la
+   correction a dû partir du fichier déjà agrégé plutôt que des quatre exports, avec un vrai
+   bug d'encodage au passage (voir ci-dessous). **1900 titres.**
+3. **Version actuelle** : les quatre exports ont été rejoints une seconde fois par le
+   propriétaire, dans le dossier stable listé plus haut — reconstruite en repartant des quatre
+   fichiers bruts avec la correction des 25 titres appliquée dès le départ (normalisation
+   Unicode systématique, plus de risque du bug ci-dessous). **1899 titres, 1204 artistes,
+   total des passages inchangé : 242 740.**
+
+⚠️ **Bug rencontré et corrigé en cours de route** : `Diabaté` existait sous deux formes Unicode
+différentes selon la ligne source (é composé vs é décomposé, visuellement identiques) — la
+comparaison de chaînes échouait donc silencieusement sur ce cas précis, et "Bal de Bamako"
+n'a pas fusionné à la première tentative de correction. Toutes les chaînes sont maintenant
+normalisées (NFC) avant comparaison.
 
 ## Comment le régénérer
 
@@ -93,7 +119,9 @@ nouveaux exports) est plus simple que de retrouver l'ancien script — préciser
 couverte par chaque nouveau fichier pour confirmer qu'elle ne chevauche pas les précédentes
 avant de sommer.
 
-⚠️ Les CSV transmis via le chat (pièces jointes `@fichier.csv`) ne restent pas forcément dans
-`~/Downloads` après traitement — les quatre exports "fréquence" du 2026-09-03 ont disparu du
-dossier une fois utilisés une première fois. Si Claude doit les retraiter plus tard sans les
-retrouver sur disque, il faudra les rejoindre à nouveau au chat.
+⚠️ Un CSV transmis via le chat (pièce jointe `@fichier.csv`) ne reste pas forcément dans
+`~/Downloads` après traitement — c'est ce qui est arrivé aux quatre exports du 2026-09-03,
+disparus une fois utilisés une première fois (voir Historique). Le propriétaire les a
+sauvegardés une seconde fois dans un dossier nommé dédié (voir plus haut), ce qui règle le
+problème pour ces quatre-là : à réexporter dans ce même dossier la prochaine fois, plutôt que
+de les rejoindre au chat sans les sauvegarder sur disque.
