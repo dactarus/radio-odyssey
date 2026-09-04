@@ -1,6 +1,6 @@
 # Catalogue des titres RadioKing — fichier de travail
 
-`catalogue-titres-radioking.csv` : **1899 couples (artiste, titre) distincts, 1204 artistes**,
+`catalogue-titres-radioking.csv` : **1889 couples (artiste, titre) distincts, 1204 artistes**,
 tous réellement diffusés sur Radio Odyssey au moins une fois entre le 1er janvier 2025 et le
 2 septembre 2026. Ce n'est **pas** un fichier livré au site (hors `src/` et `public/`, jamais
 buildé ni déployé) — c'est une base de travail pour toi et Claude, à consulter avant de
@@ -21,7 +21,7 @@ Ni l'un ni l'autre fichier ne sont suivis dans Git (voir `.gitignore`) : à cons
 14 mai au 13 août 2026. Ce fichier-ci est bien plus large : tout artiste et tout titre vus
 dans les exports, sans plafond, sur vingt mois complets et continus.
 
-## D'où viennent les 1899 lignes
+## D'où viennent les 1889 lignes
 
 Quatre exports RadioKing "fréquence" (déjà agrégés par le manager, un `Play frequency` par
 couple artiste/titre), fournis par le propriétaire, couvrant quatre semestres **continus et
@@ -84,6 +84,34 @@ fragmenté dans le nouveau fichier.
 (Dua Lipa) ont des lignes qui sont en réalité des **mashups** combinant le titre avec une autre
 chanson (ex. un DJ mashup « Holiday x Don't Start Now ») — ce n'est pas le même enregistrement,
 donc pas fusionné.
+
+## Correction des titres fragmentés par la casse ou un tag technique (9 titres)
+
+Même défaut que ci-dessus, mais côté **titre** cette fois plutôt que crédit d'artiste — repéré
+parce que le propriétaire écoute sa radio et a remarqué que « MmmBop » (Hanson) et « Price Tag »
+(Jessie J) semblaient n'avoir été diffusés qu'une seule fois, alors qu'il les entend
+régulièrement. Vérification faite : les deux titres étaient bien fragmentés.
+
+- **MmmBop (Hanson)** : `MmmBop (House remix)` (301 passages), `Mmmbop` (20), `MMMBop` (1) —
+  **322 passages réels**, pas 1.
+- **Price Tag (Jessie J)** : `Price Tag (Feat. B.O.B)` (80 passages), `Price Tag (ft. B.o.B
+  remastered)` (1) — **81 passages réels**, pas 1.
+
+**7 autres titres** trouvés par la même vérification, où le titre ne diffère que par la casse,
+un espace en trop, ou un tag d'encodage (`(128kbit_AAC)`) — jamais par un mot qui indiquerait
+un remix réellement différent : Sophie Ellis-Bextor "Murder On The Dancefloor", No Doubt "Don't
+Speak", Teddy Swims "The Door (Cyril Remix)", Gayle "Abcdefu", Texas "Summer Son", Chic "Good
+Times (Extended Ethan Wood Rework Edit)", Sabrina Carpenter "Espresso (Official Video)".
+
+⚠️ **Gisement plus large repéré, mais volontairement pas traité** : la même recherche élargie
+aux cas où le titre diffère par un mot (pas seulement la casse) — donc potentiellement un vrai
+remix différent, ou juste un intitulé mal saisi une deuxième fois — remonte **79 groupes,
+~16 000 passages concernés**. Exemple typique : `Messy` (354) / `Messy (Dj Dark Remix)` (316)
+chez Lola Young — est-ce le même enregistrement compté deux fois, ou deux fichiers réellement
+distincts dans la playlist ? Impossible à trancher depuis les exports seuls. **Pas fusionné
+sans ton avis** : fusionner à tort effacerait une vraie distinction entre versions ; ne pas
+fusionner laisse peut-être d'autres cas comme MmmBop non détectés. À examiner ensemble si tu
+veux aller plus loin — la liste complète peut être régénérée sur demande.
 
 ## Historique
 
