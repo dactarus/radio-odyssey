@@ -36,16 +36,40 @@ with open(SRC, encoding="utf-8") as fh:
 
 rows.sort(key=lambda x: -x[2])
 
+# Politique actée le 2026-09-03 : même artiste + même titre de base (parenthèses
+# ignorées) = toujours le même titre pour le décompte, quelle que soit la
+# version/remix en rotation à un instant donné — Radio Odyssey change
+# régulièrement de version d'un même titre, ce n'est pas une différence qui
+# doit fragmenter le total. Fusion appliquée directement ici, plus de revue
+# manuelle groupe par groupe (l'ancien onglet "À trancher" a été retiré une
+# fois les 72 groupes de la première revue tranchés en bloc).
 def base_title(t):
     t2 = re.sub(r'\s*[\(\[][^)\]]*[\)\]]\s*', ' ', t)
     return re.sub(r'\s+', ' ', t2).strip().lower()
 
 _groups_map = defaultdict(list)
 for artist, track, plays, composer, sem, variantes in rows:
-    _groups_map[(artist.strip().lower(), base_title(track))].append((artist, track, plays))
-REVIEW_GROUPS = [items for items in _groups_map.values() if len(items) >= 2]
-REVIEW_GROUPS.sort(key=lambda items: -sum(p for _, _, p in items))
-N_A_TRANCHER = len(REVIEW_GROUPS)
+    _groups_map[(artist.strip().lower(), base_title(track))].append((artist, track, plays, composer, sem, variantes))
+
+_merged_rows = []
+for items in _groups_map.values():
+    if len(items) == 1:
+        _merged_rows.append(items[0])
+        continue
+    items_sorted = sorted(items, key=lambda x: -x[2])
+    canon_artist, canon_track = items_sorted[0][0], items_sorted[0][1]
+    total = sum(x[2] for x in items)
+    sem_max = max(x[4] for x in items)
+    composer = next((x[3] for x in items if x[3]), "")
+    variantes_set = set()
+    for a, t, p, c, s, v in items:
+        if v:
+            variantes_set.update(v.split(" | "))
+        else:
+            variantes_set.add(f"{a} — {t}")
+    _merged_rows.append((canon_artist, canon_track, total, composer, sem_max, " | ".join(sorted(variantes_set))))
+
+rows = sorted(_merged_rows, key=lambda x: -x[2])
 
 by_artist = defaultdict(lambda: {"titres": 0, "passages": 0})
 for artist, track, plays, composer, sem, variantes in rows:
@@ -95,7 +119,7 @@ stats = [
     ("Total des passages observés", "=SUM(Titres[Passages])"),
     ("Titres diffusés sur les 4 semestres (en continu)", "=COUNTIF(Titres[Semestres couverts],4)"),
     ("Titres vus sur 1 seul semestre (ponctuels)", "=COUNTIF(Titres[Semestres couverts],1)"),
-    ("Titres corrigés (crédits d'artiste fusionnés)", f"={n_fusions}"),
+    ("Titres regroupés (plusieurs variantes fusionnées)", f"={n_fusions}"),
 ]
 r = 9
 label(ws0, f"B{r}", "Chiffres clés", size=13, color=PURPLE)
@@ -109,12 +133,12 @@ for lbl, formula in stats:
     r += 1
 
 r += 1
-label(ws0, f"B{r}", "⚠️ Onglet \"À trancher\"", size=12, color=PURPLE)
+label(ws0, f"B{r}", "⚠️ Politique de fusion", size=12, color=PURPLE)
 r += 1
-ws0[f"B{r}"] = (f"{N_A_TRANCHER} groupes de titres où un mot diffère (souvent un remix) restent "
-                "à décider un par un : même enregistrement compté deux fois, ou deux versions "
-                "réellement distinctes ? Impossible à trancher depuis les exports seuls — la "
-                "décision revient au propriétaire, groupe par groupe (onglet \"À trancher\").")
+ws0[f"B{r}"] = ("Même artiste + même titre de base (parenthèses ignorées) = un seul titre, "
+                "quelle que soit la version/remix en rotation à un instant donné. Radio Odyssey "
+                "change régulièrement de version d'un même titre — ce n'est pas une raison de "
+                "fragmenter son décompte. Décidé le 2026-09-03, après revue de 72 groupes.")
 ws0[f"B{r}"].font = Font(name=FONT_NAME, size=10.5, color=DARK)
 ws0[f"B{r}"].alignment = Alignment(wrap_text=True, vertical="top")
 ws0.merge_cells(f"B{r}:H{r}")
@@ -165,7 +189,7 @@ r = 4
 meth = [
     ("Quatre exports RadioKing", "\"fréquence\", un par semestre : 2025-01-01→2025-06-30, 2025-07-01→2025-12-31, 2026-01-01→2026-06-30, 2026-07-01→2026-09-02. Fenêtres continues et non chevauchantes, fournies par le propriétaire."),
     ("Fusion des semestres", "regroupement par (Artiste, Titre) exact ; \"Passages\" = somme du Play frequency des quatre exports pour ce couple — une simple addition suffit puisque les périodes ne se recoupent pas."),
-    (f"Correction des crédits d'artiste ({n_fusions} titres)", "RadioKing traite parfois \"Artiste A\" et \"Artiste A, Artiste B\" comme deux entités distinctes pour un même enregistrement — le propriétaire ajuste en cours d'année en ne laissant que l'artiste principal dans la colonne Artiste et en déplaçant le featuring dans le titre (\"Ft ...\"). Ce qui fragmentait un même titre en plusieurs lignes a été identifié (chevauchement de crédit entre deux lignes de même titre) et regroupé, sur validation du propriétaire — voir la colonne \"Variantes fusionnées\" de l'onglet Titres pour la trace de chaque fusion. Les cas ambigus (mashups combinant deux chansons différentes, ex. \"Holiday\" x \"Don't Start Now\") ont volontairement été laissés distincts."),
+    (f"Politique de fusion ({n_fusions} titres regroupés)", "Même artiste + même titre de base (parenthèses ignorées, donc peu importe le nom du remix) = un seul titre, quelle que soit la version en rotation à un instant donné — décidé par le propriétaire le 2026-09-03 : Radio Odyssey change régulièrement de version d'un même titre, ce n'est pas une raison de fragmenter son décompte. Appliqué automatiquement à chaque régénération (fonction `base_title` du script), plus de revue manuelle. La colonne \"Variantes fusionnées\" de l'onglet Titres garde la trace de chaque fusion — rien n'est perdu. Racine du problème, repérée avant la décision générale : RadioKing traite parfois \"Artiste A\" et \"Artiste A, Artiste B\" comme deux entités distinctes pour un même enregistrement (25 cas), et un même titre peut être saisi avec une casse différente (9 cas) — dans les deux cas, la même fusion s'applique maintenant. Deux cas restent volontairement à part : \"Holiday\" (Madonna) et \"Don't Start Now\" (Dua Lipa) ont des lignes qui sont en réalité des mashups combinant le titre avec une autre chanson — ce n'est pas le même enregistrement."),
     ("Ce que ce fichier n'est PAS", "un compteur RadioKing officiel en temps réel : c'est une reconstitution à partir d'exports, avec une correction manuelle documentée. Pour un chiffre certifié à un instant donné, un nouvel export direct depuis RadioKing reste la seule source qui fasse foi."),
     ("Différence avec artists.js (le site)", "le site radio-odyssey.com n'affiche que 147 fiches artistes, au plus 8 titres chacune, sur une fenêtre glissante de 3 mois (14 mai → 13 août 2026) — pour rester comparable dans le temps sur les fiches publiées. Ce classeur-ci n'a pas cette contrainte : tout artiste et tout titre vus dans les quatre exports, sans plafond, sur 20 mois."),
     ("Confidentialité", "ce fichier n'est ni publié sur le site, ni suivi dans le dépôt Git du projet (exclu via .gitignore) — à garder en local, hors accès public : c'est la programmation réelle et complète de l'antenne."),
@@ -230,72 +254,9 @@ for sheet in (ws1, ws2):
         cell.alignment = Alignment(vertical="center")
     sheet.row_dimensions[1].height = 20
 
-# ---------------------------------------------------------------- À trancher
-from openpyxl.styles import Border, Side
-
-ws3 = wb.create_sheet("À trancher")
-ws3.sheet_view.showGridLines = False
-
-ws3["B2"] = "Titres à trancher : fusionner ou garder séparés ?"
-ws3["B2"].font = Font(name=FONT_NAME, size=14, bold=True, color=PURPLE)
-ws3["B3"] = ("Même artiste, même titre de base, mais un mot diffère (souvent un nom de remix) — "
-             "impossible de savoir depuis les exports seuls si c'est le même enregistrement compté "
-             "deux fois ou deux versions réellement distinctes dans la playlist.")
-ws3["B3"].font = Font(name=FONT_NAME, size=10.5, color=DARK, italic=True)
-ws3["B3"].alignment = Alignment(wrap_text=True, vertical="top")
-ws3.merge_cells("B3:F3")
-ws3.row_dimensions[3].height = 32
-ws3["B4"] = "Pour chaque groupe : écris \"Fusionner\" ou \"Garder séparé\" dans la colonne Décision (une seule fois par groupe, sur sa première ligne)."
-ws3["B4"].font = Font(name=FONT_NAME, size=10.5, color=DARK, bold=True)
-ws3.merge_cells("B4:F4")
-ws3.row_dimensions[4].height = 18
-
-headers3 = ["N°", "Artiste", "Titre (variante)", "Passages", "Total du groupe", "Décision (Fusionner / Garder séparé)"]
-header_row = 6
-for ci, h in enumerate(headers3, start=2):
-    c = ws3.cell(row=header_row, column=ci, value=h)
-    c.font = Font(name=FONT_NAME, size=11, bold=True, color="FFFFFF")
-    c.fill = PatternFill(start_color=PURPLE, end_color=PURPLE, fill_type="solid")
-    c.alignment = Alignment(vertical="center", wrap_text=True)
-ws3.row_dimensions[header_row].height = 32
-
-thin = Side(style="thin", color="D9D2E9")
-cell_border = Border(left=thin, right=thin, top=thin, bottom=thin)
-yellow_fill = PatternFill(start_color="FFF3B0", end_color="FFF3B0", fill_type="solid")
-
-rr = header_row + 1
-for gid, items in enumerate(REVIEW_GROUPS, start=1):
-    start_row = rr
-    total = sum(p for _, _, p in items)
-    for artist, track, plays in items:
-        ws3.cell(row=rr, column=3, value=artist).font = Font(name=FONT_NAME, size=10.5, color=DARK)
-        ws3.cell(row=rr, column=4, value=track).font = Font(name=FONT_NAME, size=10.5, color=DARK)
-        ws3.cell(row=rr, column=5, value=plays).font = Font(name=FONT_NAME, size=10.5, color=DARK)
-        for col in (2, 3, 4, 5, 6, 7):
-            ws3.cell(row=rr, column=col).border = cell_border
-        rr += 1
-    end_row = rr - 1
-    ws3.cell(row=start_row, column=2, value=gid).font = Font(name=FONT_NAME, size=10.5, bold=True, color=PURPLE)
-    ws3.cell(row=start_row, column=6, value=total).font = Font(name=FONT_NAME, size=10.5, bold=True, color=PURPLE)
-    dcell = ws3.cell(row=start_row, column=7)
-    dcell.fill = yellow_fill
-    dcell.font = Font(name=FONT_NAME, size=10.5, color=DARK)
-    dcell.alignment = Alignment(vertical="center")
-    if end_row > start_row:
-        ws3.merge_cells(start_row=start_row, start_column=2, end_row=end_row, end_column=2)
-        ws3.merge_cells(start_row=start_row, start_column=6, end_row=end_row, end_column=6)
-        ws3.merge_cells(start_row=start_row, start_column=7, end_row=end_row, end_column=7)
-        ws3.cell(row=start_row, column=2).alignment = Alignment(vertical="center", horizontal="center")
-        ws3.cell(row=start_row, column=6).alignment = Alignment(vertical="center", horizontal="center")
-
-widths3 = {2: 6, 3: 24, 4: 52, 5: 12, 6: 14, 7: 34}
-for col, w in widths3.items():
-    ws3.column_dimensions[get_column_letter(col)].width = w
-ws3.freeze_panes = f"C{header_row+1}"
-
-order = [ws0, ws1, ws3, ws2, ws_m]
+order = [ws0, ws1, ws2, ws_m]
 wb._sheets = order
 wb.active = 0
 
 wb.save(OUT)
-print("Écrit:", OUT, "-", len(rows), "titres,", len(artist_rows), "artistes,", n_fusions, "corrigés,", N_A_TRANCHER, "groupes à trancher")
+print("Écrit:", OUT, "-", len(rows), "titres,", len(artist_rows), "artistes,", n_fusions, "corrigés")
