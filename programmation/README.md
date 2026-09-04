@@ -1,6 +1,6 @@
 # Catalogue des titres RadioKing — fichier de travail
 
-`catalogue-titres-radioking.csv` : **1888 couples (artiste, titre) distincts, 1204 artistes**,
+`catalogue-titres-radioking.csv` : **1812 couples (artiste, titre) distincts, 1204 artistes**,
 tous réellement diffusés sur Radio Odyssey au moins une fois entre le 1er janvier 2025 et le
 2 septembre 2026. Ce n'est **pas** un fichier livré au site (hors `src/` et `public/`, jamais
 buildé ni déployé) — c'est une base de travail pour toi et Claude, à consulter avant de
@@ -8,15 +8,11 @@ proposer un fait de programmation (nouvelle fiche artiste, nouveau quiz, vérifi
 reprise...).
 
 `catalogue-radio-odyssey.xlsx` : la même donnée, mise en forme pour un usage humain — envoyée
-directement au propriétaire (pas de lien public), 5 onglets (Résumé, Titres, **À trancher**,
-Artistes, Méthode), tableaux triables/filtrables, deux colonnes de l'onglet Artistes calculées
-par formule (`COUNTIF`/`SUMIF`) à partir de l'onglet Titres plutôt que figées. L'onglet
-**« À trancher »** liste les groupes de titres où un mot diffère (souvent un remix) sans qu'on
-puisse savoir depuis les exports seuls si c'est le même enregistrement ou deux versions
-distinctes — une ligne par variante, une cellule jaune « Décision » par groupe à remplir
-(« Fusionner » / « Garder séparé ») ; voir la section dédiée plus bas. ⚠️ Les formules n'ont
-**pas** pu être vérifiées par recalcul automatique (LibreOffice absent de cette machine) —
-seules des fonctions standards (`SUM`, `COUNTIF`, `SUMIF`, `SUBTOTAL`) ont été utilisées, et
+directement au propriétaire (pas de lien public), 4 onglets (Résumé, Titres, Artistes,
+Méthode), tableaux triables/filtrables, deux colonnes de l'onglet Artistes calculées par
+formule (`COUNTIF`/`SUMIF`) à partir de l'onglet Titres plutôt que figées. ⚠️ Les formules
+n'ont **pas** pu être vérifiées par recalcul automatique (LibreOffice absent de cette machine)
+— seules des fonctions standards (`SUM`, `COUNTIF`, `SUMIF`, `SUBTOTAL`) ont été utilisées, et
 Excel les recalcule à l'ouverture, mais un premier coup d'œil aux totaux vaut la peine.
 `build_catalogue_xlsx.py` régénère ce classeur depuis le CSV — voir « Comment le régénérer ».
 Aucun de ces trois fichiers n'est suivi dans Git à l'exception du script (voir `.gitignore`) :
@@ -27,7 +23,7 @@ CSV et xlsx restent en local.
 14 mai au 13 août 2026. Ce fichier-ci est bien plus large : tout artiste et tout titre vus
 dans les exports, sans plafond, sur vingt mois complets et continus.
 
-## D'où viennent les 1888 lignes
+## D'où viennent les 1812 lignes
 
 Quatre exports RadioKing "fréquence" (déjà agrégés par le manager, un `Play frequency` par
 couple artiste/titre), fournis par le propriétaire, couvrant quatre semestres **continus et
@@ -65,119 +61,99 @@ Les lignes `Chroniques — Météo` / `Chroniques — Horoscope` (si présentes)
 **segments parlés**, pas des titres musicaux : à filtrer pour tout travail éditorial sur la
 musique.
 
-## Correction des crédits d'artiste (25 titres)
+## Politique de fusion : même artiste + même titre de base = un seul titre
 
-RadioKing traite parfois « Artiste A » et « Artiste A, Artiste B » comme deux entités
-distinctes pour le **même enregistrement** — le propriétaire ajuste ça en cours d'année en ne
-laissant que l'artiste principal dans la colonne Artiste et en déplaçant le featuring dans le
-titre (« Ft ... »). Résultat : un même titre finissait fragmenté en plusieurs lignes, avec les
-passages répartis entre elles au lieu d'être comptés ensemble — cas repéré en premier sur
-« Bal de Bamako » (`-M-` : 84 passages / `M-, Toumani & Sidiki Diabaté` : 8 passages, alors que
-c'est le même titre, 92 passages réels).
+**Décidée par le propriétaire le 2026-09-03** : Radio Odyssey change régulièrement de version
+d'un même titre (remix, édit, remaster...) — ce n'est pas une raison de fragmenter son
+décompte de diffusion. Le script (`base_title()` dans `build_catalogue_xlsx.py`) ignore tout
+ce qui est entre parenthèses ou crochets dans le titre, et fusionne automatiquement toutes les
+lignes qui partagent le même artiste (exact) et le même titre de base — **appliqué à chaque
+régénération, plus de revue manuelle groupe par groupe.**
 
-Recherché sur l'ensemble du fichier (même titre de base, crédits d'artiste qui se recoupent) :
-**25 titres concernés**, tous vérifiés puis fusionnés avec l'accord du propriétaire (2026-09-03).
-La colonne `Variantes_fusionnees` du CSV (et « Variantes fusionnées » du classeur Excel) garde
-la trace des crédits d'origine pour chacun — rien n'est perdu, juste regroupé.
+**Comment on y est arrivé, en trois temps** :
 
-⚠️ La correction est **codée en dur** dans le script de fusion (25 couples artiste/titre
-canoniques, chacun avec la liste exacte de ses variantes d'origine) — elle n'est pas détectée
-automatiquement à chaque régénération. Si un nouvel export révèle un titre fragmenté du même
-genre, il faut l'ajouter à la liste avant de relancer le script, sans quoi il resterait
-fragmenté dans le nouveau fichier.
+1. **Crédits d'artiste fragmentés (25 titres)** — RadioKing traite parfois « Artiste A » et
+   « Artiste A, Artiste B » comme deux entités distinctes pour le même enregistrement, quand le
+   propriétaire ajuste en cours d'année en ne laissant que l'artiste principal dans la colonne
+   Artiste (featuring déplacé dans le titre). Repéré sur « Bal de Bamako » (`-M-` : 84 passages
+   / `M-, Toumani & Sidiki Diabaté` : 8 — 92 passages réels), puis 24 autres cas trouvés et
+   fusionnés.
+2. **Titres fragmentés par la casse ou un tag technique (9 titres)** — le propriétaire a
+   remarqué à l'oreille que « MmmBop » (Hanson) et « Price Tag » (Jessie J) semblaient
+   n'avoir été diffusés qu'une fois d'après le fichier, alors qu'il les entend régulièrement.
+   MmmBop : `MmmBop (House remix)` (301) + `Mmmbop` (20) + `MMMBop` (1) = **322 passages
+   réels**. Price Tag : `Price Tag (Feat. B.O.B)` (80) + `Price Tag (ft. B.o.B remastered)` (1)
+   = **81 passages réels**. 7 autres titres du même genre trouvés dans la foulée.
+3. **Généralisation (72 groupes de plus)** — même défaut, mais avec un mot qui diffère (souvent
+   un nom de remix) plutôt qu'une simple faute de casse. Premier cas confirmé : « Messy » (Lola
+   Young, `Messy` 354 + `Messy (Dj Dark Remix)` 316 = 670 passages, même enregistrement). Plutôt
+   que trancher les 71 autres un par un, le propriétaire a posé la règle générale ci-dessus —
+   « c'est aussi la philosophie de Radio Odyssey de changer les versions ».
 
-**Deux cas volontairement laissés distincts** : « Holiday » (Madonna) et « Don't Start Now »
-(Dua Lipa) ont des lignes qui sont en réalité des **mashups** combinant le titre avec une autre
-chanson (ex. un DJ mashup « Holiday x Don't Start Now ») — ce n'est pas le même enregistrement,
-donc pas fusionné.
+La colonne `Variantes_fusionnees` du CSV (et « Variantes fusionnées » de l'onglet Titres du
+classeur) garde la trace des crédits/titres d'origine pour chaque titre regroupé — rien n'est
+perdu, juste additionné.
 
-## Correction des titres fragmentés par la casse ou un tag technique (9 titres)
-
-Même défaut que ci-dessus, mais côté **titre** cette fois plutôt que crédit d'artiste — repéré
-parce que le propriétaire écoute sa radio et a remarqué que « MmmBop » (Hanson) et « Price Tag »
-(Jessie J) semblaient n'avoir été diffusés qu'une seule fois, alors qu'il les entend
-régulièrement. Vérification faite : les deux titres étaient bien fragmentés.
-
-- **MmmBop (Hanson)** : `MmmBop (House remix)` (301 passages), `Mmmbop` (20), `MMMBop` (1) —
-  **322 passages réels**, pas 1.
-- **Price Tag (Jessie J)** : `Price Tag (Feat. B.O.B)` (80 passages), `Price Tag (ft. B.o.B
-  remastered)` (1) — **81 passages réels**, pas 1.
-
-**7 autres titres** trouvés par la même vérification, où le titre ne diffère que par la casse,
-un espace en trop, ou un tag d'encodage (`(128kbit_AAC)`) — jamais par un mot qui indiquerait
-un remix réellement différent : Sophie Ellis-Bextor "Murder On The Dancefloor", No Doubt "Don't
-Speak", Teddy Swims "The Door (Cyril Remix)", Gayle "Abcdefu", Texas "Summer Son", Chic "Good
-Times (Extended Ethan Wood Rework Edit)", Sabrina Carpenter "Espresso (Official Video)".
-
-## Le gisement plus large : 72 groupes restants, en cours d'arbitrage (onglet « À trancher »)
-
-La même recherche élargie aux cas où le titre diffère par un mot (pas seulement la casse) —
-donc potentiellement un vrai remix différent, ou juste un intitulé mal saisi une deuxième fois
-— remonte un groupe bien plus large. Le propriétaire a tranché le premier cas signalé,
-« Messy » (Lola Young : `Messy` 354 + `Messy (Dj Dark Remix)` 316 = **670 passages**, même
-enregistrement) et a demandé à examiner le reste au cas par cas.
-
-**72 groupes restent ouverts**, listés dans l'onglet **« À trancher »** du classeur Excel —
-c'est le moyen prévu pour les passer en revue : une cellule jaune « Décision » par groupe, à
-remplir avec « Fusionner » ou « Garder séparé ». Une fois les décisions prises, les transmettre
-(le fichier rempli, ou juste la liste des décisions) pour régénérer le catalogue en conséquence
-via `build_catalogue_xlsx.py`.
-
-⚠️ Fusionner à tort effacerait une vraie distinction entre deux versions réellement diffusées
-séparément ; ne pas fusionner laisse peut-être d'autres cas comme MmmBop non corrigés. Aucun
-des deux sens d'erreur n'est anodin — d'où l'arbitrage groupe par groupe plutôt qu'une règle
-automatique.
+**Deux cas restent volontairement à part**, parce que ce ne sont pas des versions du même
+titre mais des mashups combinant deux chansons différentes : « Holiday » (Madonna) x « Don't
+Start Now » (Dua Lipa) dans un DJ mashup, et l'inverse. Le script ne les fusionne pas de
+lui-même non plus : leur artiste crédité diffère trop (`DJ Surda / Madonna vs. Dua Lipa` ne
+correspond ni à `Madonna` ni à `Dua Lipa`) pour matcher la règle "même artiste".
 
 ## Historique
 
-Trois versions le même jour (2026-09-03), chacune corrigeant un défaut de la précédente :
+Cinq versions le même jour (2026-09-03), chacune corrigeant un défaut de la précédente :
 
 1. Fusion d'exports hétérogènes — trois "détail" (une ligne par passage) et trois "fréquence"
-   déjà agrégés, avec des fenêtres qui se recoupaient par endroits (fin 2025, deux exports
-   différents pour S1 2026) et un trou entre juillet et septembre 2026. **2016 titres**, un
-   chiffre peu fiable (recours à un maximum plutôt qu'une somme sur les fenêtres redondantes).
-2. Reconstruite à partir des quatre exports "fréquence" complets et continus fournis par le
-   propriétaire, puis corrigée pour les 25 titres fragmentés ci-dessus — mais les CSV bruts
-   avaient disparu de `~/Downloads` entre-temps (voir avertissement plus bas), donc la
-   correction a dû partir du fichier déjà agrégé plutôt que des quatre exports, avec un vrai
-   bug d'encodage au passage (voir ci-dessous). **1900 titres.**
-3. Les quatre exports ont été rejoints une seconde fois par le propriétaire, dans le dossier
-   stable listé plus haut — reconstruite en repartant des quatre fichiers bruts avec la
-   correction des 25 titres appliquée dès le départ (normalisation Unicode systématique, plus
-   de risque du bug ci-dessous). **1899 titres.**
-4. **Version actuelle** : 9 titres fragmentés par la casse/un tag d'encodage corrigés (MmmBop,
-   Price Tag, 7 autres — signalés par le propriétaire, qui a remarqué à l'oreille que MmmBop et
-   Price Tag semblaient sous-comptés), puis « Messy » fusionné sur confirmation du propriétaire.
-   **1888 titres, 1204 artistes, total des passages inchangé : 242 740.** Script de fusion
-   conservé cette fois (`build_catalogue_xlsx.py`) plutôt que jeté après usage.
+   déjà agrégés, avec des fenêtres qui se recoupaient par endroits et un trou entre juillet et
+   septembre 2026. **2016 titres**, chiffre peu fiable (maximum plutôt que somme sur les
+   fenêtres redondantes).
+2. Reconstruite à partir des quatre exports "fréquence" complets et continus, puis corrigée
+   pour 25 titres fragmentés — mais les CSV bruts avaient disparu de `~/Downloads` entre-temps,
+   donc la correction est partie du fichier déjà agrégé, avec un bug d'encodage au passage
+   (voir plus bas). **1900 titres.**
+3. Les quatre exports rejoints une seconde fois par le propriétaire (dossier stable listé plus
+   haut) — reconstruite en repartant des fichiers bruts, correction des 25 titres appliquée dès
+   le départ, bug d'encodage résolu (normalisation Unicode systématique). **1899 titres.**
+4. 9 titres fragmentés par la casse corrigés (MmmBop, Price Tag, 7 autres), « Messy » fusionné
+   sur confirmation ponctuelle du propriétaire, ajout d'un onglet « À trancher » pour les 72
+   autres groupes repérés. **1888 titres.**
+5. **Version actuelle** : le propriétaire tranche pour tous — politique de fusion générale
+   (voir section ci-dessus) plutôt qu'un arbitrage groupe par groupe. L'onglet « À trancher »,
+   devenu inutile, est retiré. **1812 titres, 1204 artistes, total des passages inchangé :
+   242 740.**
 
-⚠️ **Bug rencontré et corrigé en cours de route** : `Diabaté` existait sous deux formes Unicode
-différentes selon la ligne source (é composé vs é décomposé, visuellement identiques) — la
-comparaison de chaînes échouait donc silencieusement sur ce cas précis, et "Bal de Bamako"
-n'a pas fusionné à la première tentative de correction. Toutes les chaînes sont maintenant
-normalisées (NFC) avant comparaison.
+⚠️ **Bug rencontré et corrigé en cours de route (version 3)** : `Diabaté` existait sous deux
+formes Unicode différentes selon la ligne source (é composé vs é décomposé, visuellement
+identiques) — la comparaison de chaînes échouait donc silencieusement sur ce cas précis, et
+"Bal de Bamako" n'a pas fusionné à la première tentative de correction. Toutes les chaînes sont
+maintenant normalisées (NFC) avant comparaison.
 
 ## Comment le régénérer
 
-Le classeur Excel (Résumé, Titres, À trancher, Artistes, Méthode) se régénère depuis le CSV
-avec :
+Le classeur Excel (Résumé, Titres, Artistes, Méthode) se régénère depuis le CSV avec :
 
 ```
 python3 programmation/build_catalogue_xlsx.py
 ```
 
-Pour le CSV lui-même : lire les quatre exports RadioKing avec le module `csv` de Python,
-regrouper par `(Artist, Track)` normalisé (NFC), sommer `Play frequency` sur les quatre
-fichiers, trier par total décroissant, puis réappliquer les corrections déjà actées (25 crédits
-d'artiste + 9 titres de casse + Messy — voir les sections ci-dessus) avant de relancer le
-script Excel. Demander à Claude de le faire (avec les nouveaux exports, et les décisions prises
-dans l'onglet « À trancher ») reste plus simple que de le refaire à la main — préciser la
-fenêtre couverte par chaque nouveau fichier pour confirmer qu'elle ne chevauche pas les
-précédentes avant de sommer.
+Ce script applique **automatiquement** la politique de fusion ci-dessus (fonction
+`base_title()`) — aucune revue manuelle nécessaire pour ce type de doublon. Il reste
+utile de relire ses résultats (nombre de titres, d'artistes, total des passages) avant de
+renvoyer le fichier, au cas où une fusion produirait un résultat inattendu.
+
+Pour le CSV lui-même, à partir de nouveaux exports RadioKing : lire les fichiers avec le
+module `csv` de Python, regrouper par `(Artist, Track)` normalisé (NFC), sommer `Play
+frequency` sur les fichiers dont les fenêtres ne se chevauchent pas, trier par total
+décroissant, puis relancer `build_catalogue_xlsx.py` — la fusion des titres se fait au moment
+de la construction du classeur, pas besoin de la refaire à la main sur le CSV. Demander à
+Claude de le faire (avec les nouveaux exports) reste plus simple que de le refaire seul —
+préciser la fenêtre couverte par chaque nouveau fichier pour confirmer qu'elle ne chevauche
+pas les précédentes avant de sommer.
 
 ⚠️ Un CSV transmis via le chat (pièce jointe `@fichier.csv`) ne reste pas forcément dans
 `~/Downloads` après traitement — c'est ce qui est arrivé aux quatre exports du 2026-09-03,
-disparus une fois utilisés une première fois (voir Historique). Le propriétaire les a
-sauvegardés une seconde fois dans un dossier nommé dédié (voir plus haut), ce qui règle le
-problème pour ces quatre-là : à réexporter dans ce même dossier la prochaine fois, plutôt que
-de les rejoindre au chat sans les sauvegarder sur disque.
+disparus une fois utilisés une première fois. Le propriétaire les a resauvegardés dans un
+dossier nommé dédié (voir plus haut), ce qui règle le problème pour ces quatre-là : à
+réexporter dans ce même dossier la prochaine fois, plutôt que de les rejoindre au chat sans
+les sauvegarder sur disque.
