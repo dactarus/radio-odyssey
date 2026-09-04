@@ -1,6 +1,6 @@
 # Catalogue des titres RadioKing — fichier de travail
 
-`catalogue-titres-radioking.csv` : **1889 couples (artiste, titre) distincts, 1204 artistes**,
+`catalogue-titres-radioking.csv` : **1888 couples (artiste, titre) distincts, 1204 artistes**,
 tous réellement diffusés sur Radio Odyssey au moins une fois entre le 1er janvier 2025 et le
 2 septembre 2026. Ce n'est **pas** un fichier livré au site (hors `src/` et `public/`, jamais
 buildé ni déployé) — c'est une base de travail pour toi et Claude, à consulter avant de
@@ -8,20 +8,26 @@ proposer un fait de programmation (nouvelle fiche artiste, nouveau quiz, vérifi
 reprise...).
 
 `catalogue-radio-odyssey.xlsx` : la même donnée, mise en forme pour un usage humain — envoyée
-directement au propriétaire (pas de lien public), 4 onglets (Résumé, Titres, Artistes,
-Méthode), tableaux triables/filtrables, deux colonnes de l'onglet Artistes calculées par
-formule (`COUNTIF`/`SUMIF`) à partir de l'onglet Titres plutôt que figées. ⚠️ Les formules
-n'ont **pas** pu être vérifiées par recalcul automatique (LibreOffice absent de cette machine)
-— seules des fonctions standards (`SUM`, `COUNTIF`, `SUMIF`, `SUBTOTAL`) ont été utilisées,
-et Excel les recalcule à l'ouverture, mais un premier coup d'œil aux totaux vaut la peine.
-Ni l'un ni l'autre fichier ne sont suivis dans Git (voir `.gitignore`) : à conserver en local.
+directement au propriétaire (pas de lien public), 5 onglets (Résumé, Titres, **À trancher**,
+Artistes, Méthode), tableaux triables/filtrables, deux colonnes de l'onglet Artistes calculées
+par formule (`COUNTIF`/`SUMIF`) à partir de l'onglet Titres plutôt que figées. L'onglet
+**« À trancher »** liste les groupes de titres où un mot diffère (souvent un remix) sans qu'on
+puisse savoir depuis les exports seuls si c'est le même enregistrement ou deux versions
+distinctes — une ligne par variante, une cellule jaune « Décision » par groupe à remplir
+(« Fusionner » / « Garder séparé ») ; voir la section dédiée plus bas. ⚠️ Les formules n'ont
+**pas** pu être vérifiées par recalcul automatique (LibreOffice absent de cette machine) —
+seules des fonctions standards (`SUM`, `COUNTIF`, `SUMIF`, `SUBTOTAL`) ont été utilisées, et
+Excel les recalcule à l'ouverture, mais un premier coup d'œil aux totaux vaut la peine.
+`build_catalogue_xlsx.py` régénère ce classeur depuis le CSV — voir « Comment le régénérer ».
+Aucun de ces trois fichiers n'est suivi dans Git à l'exception du script (voir `.gitignore`) :
+CSV et xlsx restent en local.
 
 ⚠️ Ne pas confondre avec `src/data/artists.js`, qui ne retient — volontairement — que les
 147 artistes ayant une fiche, au plus 8 titres chacun, sur la seule fenêtre glissante du
 14 mai au 13 août 2026. Ce fichier-ci est bien plus large : tout artiste et tout titre vus
 dans les exports, sans plafond, sur vingt mois complets et continus.
 
-## D'où viennent les 1889 lignes
+## D'où viennent les 1888 lignes
 
 Quatre exports RadioKing "fréquence" (déjà agrégés par le manager, un `Play frequency` par
 couple artiste/titre), fournis par le propriétaire, couvrant quatre semestres **continus et
@@ -103,15 +109,24 @@ un remix réellement différent : Sophie Ellis-Bextor "Murder On The Dancefloor"
 Speak", Teddy Swims "The Door (Cyril Remix)", Gayle "Abcdefu", Texas "Summer Son", Chic "Good
 Times (Extended Ethan Wood Rework Edit)", Sabrina Carpenter "Espresso (Official Video)".
 
-⚠️ **Gisement plus large repéré, mais volontairement pas traité** : la même recherche élargie
-aux cas où le titre diffère par un mot (pas seulement la casse) — donc potentiellement un vrai
-remix différent, ou juste un intitulé mal saisi une deuxième fois — remonte **79 groupes,
-~16 000 passages concernés**. Exemple typique : `Messy` (354) / `Messy (Dj Dark Remix)` (316)
-chez Lola Young — est-ce le même enregistrement compté deux fois, ou deux fichiers réellement
-distincts dans la playlist ? Impossible à trancher depuis les exports seuls. **Pas fusionné
-sans ton avis** : fusionner à tort effacerait une vraie distinction entre versions ; ne pas
-fusionner laisse peut-être d'autres cas comme MmmBop non détectés. À examiner ensemble si tu
-veux aller plus loin — la liste complète peut être régénérée sur demande.
+## Le gisement plus large : 72 groupes restants, en cours d'arbitrage (onglet « À trancher »)
+
+La même recherche élargie aux cas où le titre diffère par un mot (pas seulement la casse) —
+donc potentiellement un vrai remix différent, ou juste un intitulé mal saisi une deuxième fois
+— remonte un groupe bien plus large. Le propriétaire a tranché le premier cas signalé,
+« Messy » (Lola Young : `Messy` 354 + `Messy (Dj Dark Remix)` 316 = **670 passages**, même
+enregistrement) et a demandé à examiner le reste au cas par cas.
+
+**72 groupes restent ouverts**, listés dans l'onglet **« À trancher »** du classeur Excel —
+c'est le moyen prévu pour les passer en revue : une cellule jaune « Décision » par groupe, à
+remplir avec « Fusionner » ou « Garder séparé ». Une fois les décisions prises, les transmettre
+(le fichier rempli, ou juste la liste des décisions) pour régénérer le catalogue en conséquence
+via `build_catalogue_xlsx.py`.
+
+⚠️ Fusionner à tort effacerait une vraie distinction entre deux versions réellement diffusées
+séparément ; ne pas fusionner laisse peut-être d'autres cas comme MmmBop non corrigés. Aucun
+des deux sens d'erreur n'est anodin — d'où l'arbitrage groupe par groupe plutôt qu'une règle
+automatique.
 
 ## Historique
 
@@ -126,11 +141,15 @@ Trois versions le même jour (2026-09-03), chacune corrigeant un défaut de la p
    avaient disparu de `~/Downloads` entre-temps (voir avertissement plus bas), donc la
    correction a dû partir du fichier déjà agrégé plutôt que des quatre exports, avec un vrai
    bug d'encodage au passage (voir ci-dessous). **1900 titres.**
-3. **Version actuelle** : les quatre exports ont été rejoints une seconde fois par le
-   propriétaire, dans le dossier stable listé plus haut — reconstruite en repartant des quatre
-   fichiers bruts avec la correction des 25 titres appliquée dès le départ (normalisation
-   Unicode systématique, plus de risque du bug ci-dessous). **1899 titres, 1204 artistes,
-   total des passages inchangé : 242 740.**
+3. Les quatre exports ont été rejoints une seconde fois par le propriétaire, dans le dossier
+   stable listé plus haut — reconstruite en repartant des quatre fichiers bruts avec la
+   correction des 25 titres appliquée dès le départ (normalisation Unicode systématique, plus
+   de risque du bug ci-dessous). **1899 titres.**
+4. **Version actuelle** : 9 titres fragmentés par la casse/un tag d'encodage corrigés (MmmBop,
+   Price Tag, 7 autres — signalés par le propriétaire, qui a remarqué à l'oreille que MmmBop et
+   Price Tag semblaient sous-comptés), puis « Messy » fusionné sur confirmation du propriétaire.
+   **1888 titres, 1204 artistes, total des passages inchangé : 242 740.** Script de fusion
+   conservé cette fois (`build_catalogue_xlsx.py`) plutôt que jeté après usage.
 
 ⚠️ **Bug rencontré et corrigé en cours de route** : `Diabaté` existait sous deux formes Unicode
 différentes selon la ligne source (é composé vs é décomposé, visuellement identiques) — la
@@ -140,12 +159,21 @@ normalisées (NFC) avant comparaison.
 
 ## Comment le régénérer
 
-Lire les quatre CSV avec le module `csv` de Python, regrouper par `(Artist, Track)` normalisé,
-sommer `Play frequency` sur les quatre fichiers, trier par total décroissant, puis réappliquer
-la correction des 25 crédits d'artiste ci-dessus. Demander à Claude de le refaire (avec les
-nouveaux exports) est plus simple que de retrouver l'ancien script — préciser la fenêtre
-couverte par chaque nouveau fichier pour confirmer qu'elle ne chevauche pas les précédentes
-avant de sommer.
+Le classeur Excel (Résumé, Titres, À trancher, Artistes, Méthode) se régénère depuis le CSV
+avec :
+
+```
+python3 programmation/build_catalogue_xlsx.py
+```
+
+Pour le CSV lui-même : lire les quatre exports RadioKing avec le module `csv` de Python,
+regrouper par `(Artist, Track)` normalisé (NFC), sommer `Play frequency` sur les quatre
+fichiers, trier par total décroissant, puis réappliquer les corrections déjà actées (25 crédits
+d'artiste + 9 titres de casse + Messy — voir les sections ci-dessus) avant de relancer le
+script Excel. Demander à Claude de le faire (avec les nouveaux exports, et les décisions prises
+dans l'onglet « À trancher ») reste plus simple que de le refaire à la main — préciser la
+fenêtre couverte par chaque nouveau fichier pour confirmer qu'elle ne chevauche pas les
+précédentes avant de sommer.
 
 ⚠️ Un CSV transmis via le chat (pièce jointe `@fichier.csv`) ne reste pas forcément dans
 `~/Downloads` après traitement — c'est ce qui est arrivé aux quatre exports du 2026-09-03,
