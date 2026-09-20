@@ -1,0 +1,202 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+
+// Page « Coulisses » d'un genre différent des autres : pas une explication
+// sur la fabrication de l'antenne, mais une astuce personnelle du
+// propriétaire, dans l'esprit bien-être qui définit la radio (moins de
+// lumière agressive le soir). Publiée pour son potentiel d'acquisition —
+// « atténuer la luminosité d'une horloge LED » est une recherche fréquente,
+// sur un problème qui touche un très grand nombre de modèles, pas seulement
+// celui testé ici.
+//
+// Les 5 photos (fournies par le propriétaire, numérotées dans l'ordre du
+// pas-à-pas) sont recadrées, compressées en WebP et marquées du logo Radio
+// Odyssey — voir public/assets/images/coulisses/. Aucune n'est publiée
+// sans ce tatouage, à sa demande explicite.
+
+const faq = [
+  {
+    q: "Quel est le rapport entre cette horloge et les studios de radio ?",
+    a: "Le modèle testé (cadran rond, secondes en couronne de points lumineux, chiffres rouges) reprend les codes visuels des horloges professionnelles de studio, dont la référence s'appelle Gorgy Timing — leur première horloge à LED, en 1974, avait été conçue pour la Maison de la Radio, et la marque équipe encore des stations comme Sud Radio aujourd'hui. Un modèle comparable de leur gamme se facture autour de 550 € HT, contre une trentaine d'euros pour la version grand public utilisée ici.",
+  },
+  {
+    q: "Pourquoi les horloges et réveils à LED sont-ils souvent si lumineux la nuit ?",
+    a: "Les fabricants calibrent la luminosité pour qu'elle reste lisible de loin, en pleine lumière du jour — l'usage nocturne, dans le noir d'une chambre, n'est pas la priorité de conception. Les modèles d'entrée de gamme n'ont ni capteur de luminosité automatique, ni bouton de réglage manuel : c'est tout ou rien.",
+  },
+  {
+    q: "Pourquoi coller le filtre à l'intérieur du boîtier plutôt que sur la vitre extérieure ?",
+    a: "Pour que l'horloge garde son aspect d'origine. Un film collé sur la face visible se voit immédiatement — celui posé à l'intérieur, juste derrière la fenêtre d'affichage, est totalement invisible de l'extérieur : seule la lumière qui traverse change.",
+  },
+  {
+    q: "Cette astuce fonctionne-t-elle sur toutes les horloges à LED ?",
+    a: "Sur tout modèle dont le boîtier s'ouvre — la plupart des horloges murales et des réveils numériques ont un panneau arrière démontable, avec l'électronique et les fenêtres d'affichage accessibles une fois les vis retirées. Elle ne fonctionne pas sur les boîtiers scellés ou collés, qu'on ne peut pas rouvrir sans les abîmer.",
+  },
+  {
+    q: "Le filtre abîme-t-il l'horloge ou annule-t-il la garantie ?",
+    a: "Le film ne touche à aucun composant électronique — il se pose sur la vitre plastique de la fenêtre d'affichage, à l'intérieur du boîtier. Il reste que l'ouverture d'un appareil sous garantie peut, selon le fabricant, en affecter les conditions : à vérifier avant de se lancer sur un appareil récent encore couvert.",
+  },
+  {
+    q: "Où trouver ce type de film teinté autocollant ?",
+    a: "En droguerie, dans les rayons décoration/bricolage, ou en ligne — sous forme de rouleaux ou de feuilles autocollantes teintées, généralement vendus pour d'autres usages (vitrage, éclairage, déco). Comptez une poignée d'euros pour de quoi traiter plusieurs appareils.",
+  },
+];
+---
+<Layout
+  lang="fr"
+  title="Atténuer la Luminosité d'une Horloge à LED : l'Astuce à 8 €"
+  description="Réveil ou horloge à LED trop lumineux la nuit ? Un film teinté autocollant posé à l'intérieur du boîtier suffit à atténuer l'éblouissement, sans rien changer à l'aspect extérieur — pour 8 €, en photos étape par étape."
+  articleDatePublished="2026-09-20"
+  ogImage="/assets/images/og/attenuer-luminosite-horloge-led.jpg"
+>
+  <PageHero
+    gradientFrom="#0b1c2d"
+    gradientTo="#FFD700"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent="Atténuer la luminosité d'une horloge LED"
+    title="Atténuer la Luminosité d'une Horloge à LED"
+    text="Un réveil ou une horloge murale qui éblouit toute la chambre la nuit ? Voici l'astuce testée à la maison, invisible de l'extérieur, pour 8 € — en photos, étape par étape."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="20" cy="24" r="13" stroke="white" stroke-width="2.3"/><path d="M20 17V24L25 27" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M33 14L37 10M36 20H42M33 34L37 38" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-linecap="round"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <p style="margin:0;">Ce n'est pas un article sur la fabrication de l'antenne, mais ça reste dans l'esprit bien-être qui définit Radio Odyssey : moins de lumière agressive le soir, pour de meilleures soirées et de meilleures nuits. Après avoir cherché une solution à un réveil à LED bien trop lumineux dans la chambre, voici l'astuce testée à la maison — <strong>8 € et vingt minutes</strong>, sans rien changer à l'aspect extérieur de l'appareil.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Pourquoi cette astuce a sa place dans les Coulisses</h2>
+            <p>Le modèle testé ici n'est pas choisi au hasard : cadran rond, secondes matérialisées par une couronne de points lumineux, chiffres rouges bien lisibles au centre — cette horloge reprend les codes visuels des <strong>horloges de studio professionnelles</strong>, celles qu'on trouve dans les régies des radios. La référence du genre s'appelle <strong>Gorgy Timing</strong> : sa première horloge à LED, avec sa « vague lumineuse » de secondes, a été conçue en 1974 pour la Maison de la Radio, et la marque équipe encore aujourd'hui des stations comme Sud Radio. Un modèle comparable de leur gamme LEDI se facture autour de <strong>550 € HT</strong> — quand la version grand public, elle, se trouve pour une trentaine d'euros.</p>
+            <p style="margin-bottom:0;">L'astuce qui suit s'applique à l'identique sur ce type d'horloge : le principe (un film à l'intérieur du boîtier) ne dépend pas du prix de l'appareil, seulement de la possibilité de l'ouvrir.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Le problème : des horloges pensées pour être vues de loin, pas pour la nuit</h2>
+            <p>Une horloge ou un réveil à LED est calibré pour rester lisible <strong>de loin, en pleine lumière</strong> — pas pour la pénombre d'une chambre à coucher. Résultat : posée sur une table de nuit ou face au lit, l'intensité des diodes devient un vrai problème, capable de gêner l'endormissement ou de réveiller en pleine nuit.</p>
+            <p style="margin-bottom:0;">Les modèles d'entrée de gamme n'ont ni capteur de luminosité automatique ni bouton de réglage manuel : c'est allumé plein pot, ou éteint. Un défaut de conception qui revient sur énormément de modèles différents, pas seulement sur celui-ci.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Les solutions habituelles, et pourquoi elles déçoivent</h2>
+            <ul style="margin-bottom:0;">
+              <li><strong>Tourner l'horloge</strong> : elle n'éblouit plus, mais elle ne sert plus à rien non plus — impossible de lire l'heure d'un coup d'œil.</li>
+              <li><strong>La couvrir</strong> (tissu, ruban adhésif sur la vitre) : ça marche, mais ça se voit, et ça vieillit mal avec la chaleur des LED.</li>
+              <li><strong>La débrancher la nuit</strong> : efficace, mais ça revient à se priver de réveil — pas vraiment une solution.</li>
+              <li><strong>Racheter un modèle « à luminosité réglable »</strong> : ça existe, mais à un tarif largement supérieur aux 8 € de cette astuce.</li>
+            </ul>
+          </div>
+
+          <div class="content-card">
+            <h2>L'astuce à 8 € : un film teinté, collé à l'intérieur du boîtier</h2>
+            <p>Le principe : un <strong>film autocollant teinté</strong> — le genre qu'on trouve pour assombrir un vitrage ou un éclairage — posé directement <strong>à l'intérieur du boîtier</strong>, juste derrière la fenêtre où s'affichent les chiffres. Pas sur la face visible : à l'intérieur.</p>
+            <p style="margin-bottom:0;">C'est ce détail qui fait toute la différence. Collé dessus, le film se verrait immédiatement. Collé dedans, l'horloge garde exactement son aspect d'origine de l'extérieur — seule l'intensité de la lumière qui traverse la vitre change.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Le pas-à-pas, en photos</h2>
+            <p>Démonstration sur une horloge murale à LED classique (Lunartec, modèle NC-7268-675), avec un film teinté autocollant acheté séparément.</p>
+
+            <div class="ro-steps">
+              <figure class="ro-step">
+                <img src="/assets/images/coulisses/attenuer-luminosite-horloge-led-1.webp" alt="Horloge à LED ouverte et feuilles de film teinté autocollant prêtes à découper" width="900" height="1600" loading="lazy" />
+                <figcaption><strong>1.</strong> Le matériel : l'horloge (vis du boîtier arrière retirées) et le film teinté autocollant, ici en feuilles.</figcaption>
+              </figure>
+              <figure class="ro-step">
+                <img src="/assets/images/coulisses/attenuer-luminosite-horloge-led-2.webp" alt="Intérieur du boîtier ouvert, montrant les deux fenêtres d'affichage des chiffres LED" width="900" height="1600" loading="lazy" />
+                <figcaption><strong>2.</strong> Boîtier ouvert : on repère les fenêtres plastiques derrière lesquelles s'allument les chiffres.</figcaption>
+              </figure>
+              <figure class="ro-step">
+                <img src="/assets/images/coulisses/attenuer-luminosite-horloge-led-3.webp" alt="Film teinté découpé à la taille d'une fenêtre d'affichage et posé dessus, à l'intérieur du boîtier" width="900" height="1600" loading="lazy" />
+                <figcaption><strong>3.</strong> Le film est découpé à la taille de chaque fenêtre, puis collé par l'intérieur. À ajuster : une ou plusieurs épaisseurs, selon l'atténuation recherchée.</figcaption>
+              </figure>
+              <figure class="ro-step">
+                <img src="/assets/images/coulisses/attenuer-luminosite-horloge-led-4.webp" alt="Boîtier de l'horloge refermé, film invisible de l'extérieur" width="900" height="1600" loading="lazy" />
+                <figcaption><strong>4.</strong> Boîtier refermé. De l'extérieur, rien n'a changé — le film est totalement invisible.</figcaption>
+              </figure>
+            </div>
+
+            <div class="ro-result">
+              <img src="/assets/images/coulisses/attenuer-luminosite-horloge-led-5.webp" alt="Horloge LED allumée dans le noir après pose du film : les chiffres sont lisibles mais n'éblouissent plus" width="900" height="1600" loading="lazy" />
+              <p><strong>5. Le résultat</strong>, dans le noir complet : les chiffres restent parfaitement lisibles, mais n'éblouissent plus. Pour 8 € de film.</p>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>Sur quels modèles ça marche</h2>
+            <p>Le principe s'applique à <strong>tout appareil dont le boîtier s'ouvre</strong> — la grande majorité des horloges murales à LED et des réveils numériques, une fois les vis du panneau arrière retirées. L'électronique et les fenêtres d'affichage sont alors directement accessibles.</p>
+            <p style="margin-bottom:0;">Seule vraie limite : les boîtiers <strong>scellés ou collés</strong>, qu'on ne peut pas rouvrir sans les abîmer. Avant de se lancer, mieux vaut débrancher l'appareil et vérifier que son ouverture n'affecte pas une garantie encore active.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="horlogeled" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/coherence-cardiaque-pour-dormir.html', label: 'Cohérence Cardiaque pour Dormir', desc: 'Une routine du soir pour mieux s\'endormir' },
+              { href: '/radio-detente-moderne.html', label: 'Détente Moderne', desc: 'Musique apaisante pour se ressourcer après la journée' },
+              { href: '/coulisses-de-radio-odyssey.html', label: 'Toutes les Coulisses', desc: "D'autres explications et astuces de l'équipe de Radio Odyssey" },
+            ]}
+            associated={[
+              { href: '/radio-bien-etre-en-ligne.html', label: 'Bien-être en Ligne' },
+              { href: '/pourquoi-radio-odyssey-est-differente.html', label: 'Pourquoi Radio Odyssey est Différente' },
+              { href: '/faq-radio-odyssey.html', label: 'Questions Fréquentes' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Une bonne nuit commence par une bonne ambiance</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <style>
+    .ro-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin: 1.4rem 0;
+    }
+    .ro-step img, .ro-result img {
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      display: block;
+      box-shadow: 0 6px 20px rgba(45, 45, 58, .12);
+    }
+    .ro-step figcaption {
+      margin-top: .6rem;
+      font-size: .84rem;
+      line-height: 1.5;
+      color: var(--ro-muted);
+    }
+    .ro-result {
+      max-width: 340px;
+      margin: 1.6rem auto 0;
+      text-align: center;
+    }
+    .ro-result p {
+      margin-top: .8rem;
+      font-size: .92rem;
+      color: var(--ro-dark);
+    }
+  </style>
+</Layout>

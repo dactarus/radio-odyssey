@@ -182,6 +182,7 @@ export const NAV_CATEGORIES = [
       { href: '/comment-radio-odyssey-enchaine-ses-titres.html', bi: 'arrow-right-circle-fill', label: 'Comment on Enchaîne les Titres', desc: "Le rythme invisible de l'antenne" },
       { href: '/comment-radio-odyssey-utilise-les-remix.html', bi: 'disc', label: 'Comment on Utilise les Remix', desc: 'Quand un remix mérite vraiment l\'antenne, et quand il ne la mérite pas' },
       { href: '/faq-radio-odyssey.html', bi: 'chat-dots', label: 'Questions Fréquentes', desc: 'Gratuité, publicité, application, écoute à l\'étranger...' },
+      { href: '/attenuer-luminosite-horloge-led.html', bi: 'moon-stars', label: 'Atténuer une Horloge LED trop Lumineuse', desc: 'Un film autocollant posé à l\'intérieur du boîtier, invisible de l\'extérieur — 8 €' },
     ],
   },
   {

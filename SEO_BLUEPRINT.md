@@ -3447,5 +3447,54 @@ question Duck Sauce (`artiste: null`).
 
 ---
 
-*Dernière mise à jour : 2026-09-03, quiz reprises porté à 13 questions, lien de fiche conditionnel (§99ter).*
+## 100. Nouvelle page Coulisses : atténuer la luminosité d'une horloge à LED (2026-09-20)
+
+Première page du site à partir d'une astuce personnelle du propriétaire, avec ses propres
+photos. Horloge Lunartec achetée sur Amazon, trop lumineuse la nuit ; un film autocollant
+teinté (également acheté sur Amazon), collé **à l'intérieur du boîtier** plutôt que sur la
+vitre extérieure (« ça serait vu »), règle le problème pour environ 8 €. Page publiée sous
+`/attenuer-luminosite-horloge-led.html`, catégorie Les Coulisses (13e page de la catégorie).
+
+**Pourquoi cette page** : requête à fort volume de recherche générique (« horloge LED trop
+lumineuse », toutes marques confondues), sans rapport direct avec le nom de la radio — exactement
+le type de porte d'entrée visée par l'objectif du site (attirer des internautes qui ne
+cherchent pas Radio Odyssey). Cinq photos fournies par le propriétaire, dans leur ordre de
+numérotation, illustrant le pas-à-pas.
+
+**Photos** : récupérées dans `~/Downloads/1.jpeg` à `5.jpeg` (pièces jointes du chat, retrouvées
+par recherche sur date de modification récente). Chacune retaillée (largeur max 900 px),
+compressée en WebP (qualité 82), et **tatouée du logo Radio Odyssey** — badge circulaire semi-
+transparent (~85 % opacité) avec ombre portée douce, composité en bas à droite via Pillow.
+Image OG dédiée (1200×630, recadrage centré sur les chiffres lumineux de la photo « après »,
+même badge agrandi à 130 px) — cinq itérations de cadrage avant un centrage vertical correct
+(`cy = h × 0.62`).
+
+**Lien avec l'identité Coulisses, ajouté à la demande du propriétaire** : le modèle d'horloge
+utilisé reprend les codes visuels des horloges professionnelles de studio — cadran rond,
+secondes en couronne de points lumineux, chiffres rouges. La référence du genre, **Gorgy
+Timing**, a conçu sa première horloge à LED en 1974 pour la Maison de la Radio et équipe
+encore des stations comme Sud Radio aujourd'hui ; un modèle comparable de leur gamme LEDI se
+facture autour de 550 € HT, contre une trentaine d'euros pour la version grand public utilisée
+ici (faits vérifiés par recherche avant rédaction, comme toute fiche/page du site). Ce
+rapprochement, absent de la première version de la page, a été ajouté en tête de page et dans
+le FAQBlock sur demande explicite : *« le modèle d'horloge que j'ai utilisé est celui que
+toutes les radios professionnelles utilisent mais avec la marque Gorgy... c'est aussi pourquoi
+on a mis cette page dans les coulisses de la radio, ça a du sens »*.
+
+**Contenu** : intro, section Gorgy Timing, problème (horloges pensées pour être vues de loin),
+solutions habituelles et leurs limites, l'astuce à 8 €, pas-à-pas en photos (grille `.ro-steps`
+2 colonnes pour les 4 premières, photo « résultat » centrée en pleine largeur), modèles
+compatibles. `FAQBlock` à 6 questions (Gorgy Timing en premier, puis luminosité nocturne,
+pourquoi coller à l'intérieur, compatibilité, garantie, où trouver le film). `RelatedPages`
+vers cohérence cardiaque, radio détente, Coulisses de Radio Odyssey. Pas de lien Amazon direct
+dans le texte (formulation générique « en droguerie... ou en ligne »).
+
+**Avant publication** : aperçu demandé explicitement par le propriétaire (*« avant de publier,
+je veux voir le résultat »*) — validé (*« c'est parfait »*) avant tout commit. Build vérifié
+(296 pages, aucune erreur), page testée au navigateur (ordinateur et mobile), `navigation.js` et
+`sitemap.xml` mis à jour.
+
+---
+
+*Dernière mise à jour : 2026-09-20, nouvelle page Coulisses sur l'atténuation des horloges LED, lien Gorgy Timing (§100).*
 
