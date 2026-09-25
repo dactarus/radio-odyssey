@@ -4,6 +4,7 @@ import MegaNav from './MegaNav.astro';
 import RadioPlayer from './RadioPlayer.astro';
 import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
 import { EN_NAV_CATEGORIES, ACCUEIL, AUTRE_LANGUE, cibleAutreLangue, t } from '../data/i18n.js';
+import { GROUPE } from '../data/groupe.js';
 
 /*
   §81 (lot 2) : la navigation était écrite en dur en français. Les 13 pages
@@ -98,6 +99,20 @@ const accueil = ACCUEIL[lang];
 
     <span class="nav-cat"><Icon name="house-door-fill" /> {L.accueil}</span>
     <a class="nav-link" href={accueil}><span class="ni"><Icon name="house-door-fill" /></span> {L.pageAccueil}</a>
+
+    {/* Groupe Radio Odyssey : voir src/data/groupe.js. Français seulement.
+        Placé juste sous l'accueil : en bas d'une liste de ~40 liens, il
+        passerait inaperçu. */}
+    {lang === 'fr' && (
+      <>
+        <span class="nav-cat"><Icon name="broadcast" /> {GROUPE.label}</span>
+        <a class="nav-link" href={GROUPE.soeur.href}
+           onclick="if(typeof roUmamiTrack==='function')roUmamiTrack('groupe_click',{cible:'relax',source:'offcanvas-menu'});">
+          <span class="ni"><Icon name="arrow-right" /></span>
+          <span><strong>{GROUPE.soeur.nom}</strong><br /><small style="opacity:.75;">{GROUPE.soeur.desc}</small></span>
+        </a>
+      </>
+    )}
 
     {/* Aperçu des MENU_APERCU premières pages par catégorie, comme sur le
         méga-menu desktop. Le reste passe par le hub de catégorie et par le

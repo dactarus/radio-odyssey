@@ -4,7 +4,7 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-09-20 (§100).*
+*Dernière mise à jour de ce fichier : 2026-09-25 (§101).*
 
 ## Objectif du projet
 
@@ -138,6 +138,8 @@ Depuis le 2026-08-09, l'iframe RadioKing est **remplacée par un lecteur natif**
 > ⚠️ **`roPlayNow(event)` est appelée en `onclick` depuis 258 pages** (dont les 147 fiches artistes) et depuis `Sidebar.astro`. Son nom et sa signature ne doivent pas changer. Elle est définie dans `Footer.astro` et délègue à `window.roPlayerToggle`.
 
 ## Points de vigilance techniques
+
+- **Groupe Radio Odyssey (§101)** : l'entrée de menu vers `relax.radio-odyssey.com` est pilotée par `src/data/groupe.js`. ⚠️ Passer `RELAX_LANCEE` à `true` le 17 novembre 2026 (lancement public de Relax). Jumeau côté dépôt `radio-odyssey-relax`, même chemin, rôles inversés.
 
 - ⚠️ **Poids du HTML** : une explication va dans le **frontmatter** d'un composant, ou en `{/* … */}` dans le gabarit — **jamais dans une zone que le build recopie telle quelle**. Un commentaire placé dans un `<script>` en ligne est téléchargé par toutes les pages (2 339 o récupérés au §85) ; un commentaire `<!-- … -->` aussi (**1 048 Ko récupérés au §95**, la même erreur sous une autre forme). Seul `{/* … */}` est retiré à la construction. Même vigilance sur les icônes SVG rendues en ligne : `globe` pèse 1 098 octets pièce.
 - ⚠️⚠️ **Navigation client-side (`ClientRouter`) : tout écouteur doit être délégué à `document`.** `ClientRouter` remplace le corps du document **sans réexécuter** un script en ligne dont le contenu n'a pas changé. Un écouteur posé sur un élément précis (`bouton.addEventListener(...)`) est donc perdu dès la première navigation — **sans aucune erreur en console**, donc sans aucun signal. C'est ce qui rendait la recherche interne et les boutons du bandeau cookies inertes sur tout le site depuis des mois (§84). Corollaires : ne jamais mémoriser un élément dans une variable au chargement (le relire à chaque usage), et **réappliquer sur `astro:after-swap` tout état visuel qui doit survivre** — ⚠️ `ClientRouter` recopie aussi les attributs du `<html>` entrant, donc une classe posée sur `<html>` à l'exécution est effacée à chaque page. ⚠️ Ne pas employer `define:vars` sur un script de composant de mise en page : le contenu du script change alors d'une page à l'autre, il **est** réexécuté, et le `const` généré lève une `SyntaxError` de redéclaration. Passer par des attributs `data-`.
