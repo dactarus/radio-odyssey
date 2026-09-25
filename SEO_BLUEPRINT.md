@@ -3494,7 +3494,36 @@ je veux voir le résultat »*) — validé (*« c'est parfait »*) avant tout co
 (296 pages, aucune erreur), page testée au navigateur (ordinateur et mobile), `navigation.js` et
 `sitemap.xml` mis à jour.
 
+## 101. Entrée « Groupe Radio Odyssey » vers Radio Odyssey Relax (2026-09-25)
+
+Radio Odyssey Relax, seconde station du groupe, est en ligne depuis le 2026-09-25 sur
+`relax.radio-odyssey.com` (dépôt séparé `dactarus/radio-odyssey-relax`, voie A : aucun code
+partagé), en mode « Prochainement » jusqu'au lancement public du 17 novembre 2026. La décision
+d'architecture prévoyait **une seule modification côté Odyssey** pour faire exister le groupe :
+une entrée « Groupe Radio Odyssey » dans la navigation — jamais en pied de page seul.
+
+**Ce qui a changé** :
+- Nouveau `src/data/groupe.js` : libellés et lien de la station sœur, et un drapeau
+  `RELAX_LANCEE` (faux) qui fait afficher « Nouvelle station — lancement le 17 novembre 2026 ».
+  ⚠️ À passer à `true` le jour du lancement public.
+- `MegaNav.astro` (ordinateur) : menu déroulant « Groupe Radio Odyssey », poussé à droite (la
+  marge automatique passe du lien « English » au groupe), aligné à droite
+  (`dropdown-menu-end`). Deux lignes : Radio Odyssey « Vous y êtes » (non cliquable), et Radio
+  Odyssey Relax →.
+- `Header.astro` (panneau mobile) : même entrée, placée **juste sous l'accueil** — en bas d'une
+  liste d'une quarantaine de liens, elle serait passée inaperçue.
+- Pages françaises seulement (`lang === 'fr'`) : Relax n'a pas de pages anglaises.
+- Événement Umami `groupe_click` (`cible: 'relax'`, `source: 'mega-nav' | 'offcanvas-menu'`)
+  pour mesurer ce que le lien apporte à Relax.
+
+Le jumeau existe côté Relax (`src/data/groupe.js`, rôles inversés) : changer une formulation
+d'un côté = la changer de l'autre.
+
+**Vérifié** : build complet sans erreur ; menu testé au navigateur à 1280 px (une ligne), 1024 px
+(le menu passait déjà sur deux lignes avant l'ajout — le groupe se range à droite de la seconde),
+et sur mobile.
+
 ---
 
-*Dernière mise à jour : 2026-09-20, nouvelle page Coulisses sur l'atténuation des horloges LED, lien Gorgy Timing (§100).*
+*Dernière mise à jour : 2026-09-25, entrée « Groupe Radio Odyssey » vers Radio Odyssey Relax (§101).*
 

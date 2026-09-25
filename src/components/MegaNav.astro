@@ -2,6 +2,7 @@
 import Icon from './Icon.astro';
 import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
 import { EN_NAV_CATEGORIES, ACCUEIL, AUTRE_LANGUE, cibleAutreLangue, t } from '../data/i18n.js';
+import { GROUPE } from '../data/groupe.js';
 
 // §81 (lot 2) : voir l'en-tête de Header.astro. Côté anglais, structure
 // propre et courte, pas la traduction du menu français.
@@ -81,6 +82,12 @@ const accueil = ACCUEIL[lang];
     background: rgba(123,47,190,.08);
     color: var(--ro-purple);
   }
+  .ro-mega-nav .dropdown-item.ro-groupe-ici,
+  .ro-mega-nav .dropdown-item.ro-groupe-ici:hover {
+    background: rgba(123,47,190,.06);
+    color: var(--ro-dark);
+    cursor: default;
+  }
   .ro-mega-nav .dropdown-item.ro-hub-link {
     color: var(--ro-purple);
     font-weight: 800;
@@ -122,7 +129,32 @@ const accueil = ACCUEIL[lang];
           </ul>
         </li>
       ))}
-      <li class="ro-mega-nav-search-item">
+      {/* Groupe Radio Odyssey : voir src/data/groupe.js. Poussé à droite
+          (la marge auto passe de la langue au groupe), menu aligné à droite
+          pour ne pas déborder de l'écran. Français seulement. */}
+      {lang === 'fr' && (
+        <li class="dropdown ro-mega-nav-search-item">
+          <button class="ro-mega-nav-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {GROUPE.label} <Icon name="chevron-down" style="font-size:.65rem;" />
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <span class="dropdown-item ro-groupe-ici" aria-current="true">
+                <strong>{GROUPE.ici.nom}</strong>
+                <small>{GROUPE.ici.desc}</small>
+              </span>
+            </li>
+            <li>
+              <a class="dropdown-item" href={GROUPE.soeur.href}
+                 onclick="if(typeof roUmamiTrack==='function')roUmamiTrack('groupe_click',{cible:'relax',source:'mega-nav'});">
+                <strong>{GROUPE.soeur.nom} <Icon name="arrow-right" style="font-size:.75rem;margin-left:.2rem;" /></strong>
+                <small>{GROUPE.soeur.desc}</small>
+              </a>
+            </li>
+          </ul>
+        </li>
+      )}
+      <li class={lang === 'fr' ? '' : 'ro-mega-nav-search-item'}>
         <a class="ro-mega-nav-toggle" href={hrefAutreLangue} data-astro-reload
            hreflang={autreLangue.code} lang={autreLangue.code} aria-label={autreLangue.aria}>
           {autreLangue.label}
