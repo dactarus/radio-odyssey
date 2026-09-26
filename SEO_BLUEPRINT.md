@@ -3523,7 +3523,12 @@ d'un côté = la changer de l'autre.
 (le menu passait déjà sur deux lignes avant l'ajout — le groupe se range à droite de la seconde),
 et sur mobile.
 
+**Correctif du 2026-09-26 (décision D18 du journal commun de Relax)** : le libellé prévu pour
+l'après-lancement (`RELAX_LANCEE = true`) disait « respiration 4/6 chaque heure » — faux, la grille
+des séquences suit la journée et n'est pas arrêtée. Remplacé par « à heure ronde ». Rien de visible
+aujourd'hui (le drapeau est à `false`).
+
 ---
 
-*Dernière mise à jour : 2026-09-25, entrée « Groupe Radio Odyssey » vers Radio Odyssey Relax (§101).*
+*Dernière mise à jour : 2026-09-26, correctif D18 sur le libellé Relax de `groupe.js` (§101).*
 
