@@ -27,7 +27,7 @@ export const GROUPE = {
     nom: 'Radio Odyssey Relax',
     href: 'https://relax.radio-odyssey.com/',
     desc: RELAX_LANCEE
-      ? 'Musique apaisante et respiration 4/6 chaque heure'
+      ? 'Musique apaisante et respiration 4/6 à heure ronde'
       : 'Nouvelle station — lancement le 17 novembre 2026',
   },
 };
