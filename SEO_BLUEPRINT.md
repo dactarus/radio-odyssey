@@ -3532,3 +3532,35 @@ aujourd'hui (le drapeau est à `false`).
 
 *Dernière mise à jour : 2026-09-26, correctif D18 sur le libellé Relax de `groupe.js` (§101).*
 
+---
+
+## 102. Nouvelle Découverte : Charlie-Lou (2026-09-29)
+
+Cinquième fiche « Découverte » : Charlie-Lou, autrice-compositrice-interprète parisienne
+(ex-juriste, deux ans à Londres), en rotation sur l'antenne à partir du **jeudi 1ᵉʳ octobre
+2026**. Deux titres en rotation : « Visions » (premier single, mai 2026, folk pop) et « Hate me
+now » (deuxième single, sorti le 25 septembre 2026, dark pop/indie rock).
+
+**Source des faits** : dossier de presse et biographie courte fournis par le propriétaire
+(`Charlie-lou/` — PDF presskit, bio courte, cover du single), comme pour les quatre précédentes
+Découvertes. Recherche web de vérification faite avant publication (§ règle « jamais un fait de
+mémoire ») : présence en ligne confirmée quasi-absente — seul un Linktree et les plateformes de
+streaming, aucune biographie existante en français. `scarcity: 'quasi-absente'`, cohérent avec
+Tom York et Tree Gees.
+
+**Ajout mécanique, sans nouveau fichier de page** : comme prévu par le commentaire en tête de
+`discoveries.js`, une seule entrée ajoutée au tableau `DISCOVERIES` suffit — la route dynamique
+`decouverte-[slug].astro` génère `/decouverte-charlie-lou.html` automatiquement. URL ajoutée à
+`sitemap.xml` (le seul geste manuel restant, ces fiches n'étant pas dans `navigation.js`).
+
+Lien de rebond choisi : `/radio-pop-francaise-en-ligne.html` (chanson française, voix actuelles)
+— cohérent avec son écriture en français/anglais, contrairement à Tom York ou Tree Gees.
+
+**Vérifié après build (297 pages, aucune erreur)** : `/decouverte-charlie-lou.html` généré,
+apparaît sur `decouvertes-radio-odyssey.html` (section « Actuellement sur l'antenne »), aucun
+lien interne cassé.
+
+---
+
+*Dernière mise à jour : 2026-09-29, cinquième Découverte — Charlie-Lou (§102).*
+

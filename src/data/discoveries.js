@@ -88,4 +88,23 @@ export const DISCOVERIES = [
     linkHref: '/styles-musicaux-radio-odyssey.html',
     linkLabel: 'styles musicaux Radio Odyssey',
   },
+  {
+    slug: 'charlie-lou',
+    name: 'Charlie-Lou',
+    genre: 'Indie pop / folk',
+    origin: 'France',
+    active: true,
+    since: 'octobre 2026',
+    scarcity: 'quasi-absente',
+    tracks: ['Visions', 'Hate me now'],
+    facts: [
+      'Autrice-compositrice-interprète parisienne : après quatre années de droit, dont deux passées à Londres, elle a quitté la stabilité d\'une carrière juridique pour se consacrer à la musique, entre anglais et français, folk et indie rock, mais toujours résolument pop.',
+      'Son deuxième single "Hate me now" (25 septembre 2026) explore une rupture amoureuse sur des sonorités dark pop et indie rock — une écriture rapprochée d\'Olivia Rodrigo, Billie Eilish et Holly Humberstone.',
+      'Elle a aussi coécrit les slams du ballet contemporain "Juliette et Roméo" (Fabrice Aboulker et Tamara Fernando), qui tournera dans toute la France en 2027 après son succès à Avignon — mais il n\'existe quasiment aucune biographie à son sujet en dehors des plateformes de streaming.',
+    ],
+    portrait: "Charlie-Lou est une autrice-compositrice-interprète parisienne. Après quatre années d'études de droit, dont deux passées à Londres, elle a choisi de laisser derrière elle la stabilité d'une carrière juridique pour suivre sa véritable vocation : la musique. Sa plume, sincère et inspirée, y dévoile ses rêves, ses peines de cœur et son regard sur le monde qui l'entoure — entre anglais et français, un brin folk et indie rock, mais toujours résolument pop. Elle sort son premier single, \"Visions\", en mai 2026, un titre de folk pop qui invite à suivre ses rêves. Avec \"Hate me now\", son deuxième single sorti le 25 septembre 2026, elle plonge dans les tourmentes amoureuses sur des sonorités dark pop et indie rock — une écriture sensible et personnelle qui rappelle Olivia Rodrigo, portée par une production en crescendo évoquant Billie Eilish et un solo de guitare électrique dans l'esprit de Holly Humberstone. Charlie-Lou a également coécrit les slams du ballet contemporain \"Juliette et Roméo\", une création de Fabrice Aboulker et Tamara Fernando qui se produira dans toute la France en 2027 après son succès à Avignon. En dehors de ses profils sur les plateformes de streaming et les réseaux sociaux, aucune biographie complète ne lui est encore consacrée en ligne.",
+    why: "L'écriture sincère et la pop indie soignée de Charlie-Lou incarnent une scène française émergente que Radio Odyssey aime mettre en avant — une découverte à suivre dès son arrivée sur l'antenne le 1ᵉʳ octobre 2026.",
+    linkHref: '/radio-pop-francaise-en-ligne.html',
+    linkLabel: 'radio pop française en ligne',
+  },
 ];
