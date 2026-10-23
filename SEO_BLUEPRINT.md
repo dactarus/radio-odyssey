@@ -3564,3 +3564,38 @@ lien interne cassé.
 
 *Dernière mise à jour : 2026-09-29, cinquième Découverte — Charlie-Lou (§102).*
 
+---
+
+## 103. Nouvelle Découverte : Azizzi Romeo (2026-10-23)
+
+Sixième fiche « Découverte » : Azizzi Romeo, artiste et producteur jamaïcain (reggae roots / dub),
+fils de Max Romeo. Titre en rotation : « Signs Of The Time » (feat. Max Romeo & Guiding Star
+Orchestra), extrait de son premier album du même nom, sorti le 2 octobre 2026 chez Recall
+Reality (Copenhague).
+
+**Source des faits** : communiqué du label transmis par e-mail (United Music Society) et page
+Bandcamp de l'album, recoupés par recherche web avant publication (règle « jamais un fait de
+mémoire ») : tracklist de 11 titres, date de sortie, producteurs (CHLLNGR, Jaszol, Thomas
+Leholt), Prince Fatty au mix et au mastering. Décès de Max Romeo (11 avril 2025, 80 ans)
+confirmé par plusieurs médias.
+
+**`scarcity: 'partielle'`, contrairement à Tom York, Tree Gees ou Charlie-Lou** : la presse reggae
+spécialisée (Reggae Vibes, Reggaeville, DancehallMag) couvre déjà l'artiste et l'album. La fiche
+affiche donc la note « présence en ligne établie, Radio Odyssey y ajoute ses données de
+diffusion », comme pour Rémi Dorage — pas la revendication « l'une des rares sources ».
+
+**Deux points laissés de côté volontairement** : (1) Reggae Vibes crédite Morten McCoy du mixage,
+quand le label et Bandcamp créditent Prince Fatty — la fiche suit le label, source primaire ;
+(2) « l'une de ses dernières apparitions vocales » (Max Romeo) ne repose que sur Reggae Vibes,
+donc non repris.
+
+Ajout mécanique dans `discoveries.js`, URL au sitemap, lien de rebond vers « Styles musicaux »
+(aucune page reggae dédiée sur le site).
+
+**Vérifié après build (298 pages, aucune erreur)** : `/decouverte-azizzi-romeo.html` généré,
+présent sur la page hub, sans `noindex`, sitemap cohérent avec `dist/`.
+
+---
+
+*Dernière mise à jour : 2026-10-23, sixième Découverte — Azizzi Romeo (§103).*
+
