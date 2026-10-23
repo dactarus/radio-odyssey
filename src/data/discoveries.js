@@ -107,4 +107,23 @@ export const DISCOVERIES = [
     linkHref: '/radio-pop-francaise-en-ligne.html',
     linkLabel: 'radio pop française en ligne',
   },
+  {
+    slug: 'azizzi-romeo',
+    name: 'Azizzi Romeo',
+    genre: 'Reggae roots / dub',
+    origin: 'Jamaïque',
+    active: true,
+    since: 'octobre 2026',
+    scarcity: 'partielle',
+    tracks: ['Signs Of The Time (feat. Max Romeo & Guiding Star Orchestra)'],
+    facts: [
+      'Jeune artiste et producteur jamaïcain, élevé à Linstead (paroisse de Sainte-Catherine) et fils de l’icône du reggae roots Max Romeo : chanteur principal du duo Rominal avec son frère dès l’âge de huit ans, il a ensuite tourné à l’international avec son père avant de se lancer en solo.',
+      'Son premier album, "Signs of the Time" (11 titres, sorti le 2 octobre 2026 chez Recall Reality, label de Copenhague), a été enregistré avec le groupe danois Guiding Star Orchestra, produit par CHLLNGR, Jaszol et Thomas Leholt, puis mixé et masterisé par le producteur britannique Prince Fatty.',
+      'Le titre "Signs Of The Time" l’associe à son père Max Romeo, disparu en avril 2025 à 80 ans — un duo père-fils, porté par les instruments joués en direct du Guiding Star Orchestra.',
+    ],
+    portrait: "Azizzi Romeo est un jeune artiste et producteur jamaïcain, élevé dans la campagne de Linstead, dans la paroisse de Sainte-Catherine. Fils de l'icône du reggae roots Max Romeo, il est tombé dans la musique très tôt : à huit ans, il est déjà chanteur principal du duo Rominal, aux côtés de son frère. Il a ensuite tourné à l'international avec son père, avant de tracer sa propre route en solo, avec une mixtape en 2018, \"The Progeny\". Son univers mêle le roots reggae engagé des origines à des touches électroniques modernes et introspectives. Le 2 octobre 2026, il publie \"Signs of the Time\", son premier album complet : onze titres produits par CHLLNGR, Jaszol et Thomas Leholt, avec les instruments joués en direct par le Guiding Star Orchestra, groupe danois, et un mixage et mastering signés Prince Fatty, producteur et ingénieur britannique réputé. Le disque est sorti sur Recall Reality, un nouveau label basé à Copenhague. Dans son communiqué, Azizzi explique avoir voulu faire un album qui prête attention à ce qui se passe autour de nous, \"honnête et intemporel\" tout en reflétant le moment que nous vivons. Le titre \"Signs Of The Time\" y réunit le fils et son père Max Romeo, disparu en avril 2025 à l'âge de 80 ans : un moment fort pour un artiste qui construit sa propre identité tout en prolongeant la lignée musicale de sa famille.",
+    why: "Le reggae roots chaleureux et organique d'Azizzi Romeo, avec ses instruments joués en direct, apporte une couleur soul et apaisante à la programmation — et ce duo avec Max Romeo en fait un moment musical qui a du sens.",
+    linkHref: '/styles-musicaux-radio-odyssey.html',
+    linkLabel: 'styles musicaux Radio Odyssey',
+  },
 ];
