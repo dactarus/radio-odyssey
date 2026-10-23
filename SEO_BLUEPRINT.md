@@ -3599,3 +3599,39 @@ présent sur la page hub, sans `noindex`, sitemap cohérent avec `dist/`.
 
 *Dernière mise à jour : 2026-10-23, sixième Découverte — Azizzi Romeo (§103).*
 
+---
+
+## 104. Version anglaise de la fiche Azizzi Romeo — première Découverte traduite (2026-10-23)
+
+Demande du propriétaire : la fiche Azizzi Romeo (§103) doit exister en anglais — artiste jamaïcain,
+presse spécialisée anglophone, public naturel hors France. C'est la **première** Découverte
+traduite : aucune des cinq précédentes n'a de version anglaise.
+
+**Mécanique, calquée sur les fiches artistes anglaises (§86)** :
+- `src/data/discoveries-en.js` : textes écrits à la main (genre, origine, faits, biographie,
+  « pourquoi ») ; la présence d'un slug décide qu'une page anglaise existe.
+- `src/pages/en/discovery-[slug].astro` : jumeau de `decouverte-[slug].astro`, mêmes blocs,
+  source unique (nom, titres, statut, rareté) toujours `discoveries.js`.
+- `decouverte-[slug].astro` déclare désormais le `hreflang` français ↔ anglais, mais **uniquement**
+  pour les slugs listés dans `discoveries-en.js` — un `hreflang` vers une page absente est une
+  erreur Search Console. Les cinq autres fiches françaises restent sans `hreflang`, ce qui est correct.
+
+**Traduction, pas création** : les textes anglais reprennent la fiche française sans fait nouveau
+(règle du §86). Les titres de morceaux ne se traduisent pas.
+
+**Règle du §82 respectée** : aucun lien vers du français depuis la page anglaise, hors sélecteur
+de langue et pages légales (exceptions déjà prévues). Le hub « Découvertes » n'existant qu'en
+français, la page anglaise ne le lie pas, et renvoie vers `/en/feel-good-music-radio.html`.
+
+**Limite assumée** : pas de hub « Discoveries » en anglais. La page est atteignable par le
+sélecteur de langue depuis la fiche française, le sitemap et `hreflang`, mais aucun lien
+interne anglais n'y mène. À créer si d'autres Découvertes sont traduites.
+
+**Vérifié après build (299 pages, aucune erreur)** : `/en/discovery-azizzi-romeo.html` générée,
+`hreflang` réciproque fr/en/x-default sur les deux pages, `lang="en"`, canonical correct,
+sitemap cohérent (281 URL).
+
+---
+
+*Dernière mise à jour : 2026-10-23, version anglaise de la Découverte Azizzi Romeo (§104).*
+

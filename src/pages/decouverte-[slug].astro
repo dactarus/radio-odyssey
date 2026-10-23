@@ -6,6 +6,7 @@ import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
 import { DISCOVERIES } from '../data/discoveries.js';
+import { SLUGS_DISCOVERIES_EN } from '../data/discoveries-en.js';
 
 export function getStaticPaths() {
   return DISCOVERIES.map((artist) => ({
@@ -27,6 +28,13 @@ const description = isScarce
 const scarcityNote = isScarce
   ? `Il existe très peu, voire aucune biographie complète de ${artist.name} en français ailleurs en ligne — cette fiche est l'une des rares sources qui lui soit consacrée.`
   : `${artist.name} bénéficie déjà d'une présence en ligne établie ; Radio Odyssey y ajoute ses propres données réelles de diffusion, que personne d'autre ne publie.`;
+
+// §104 : paire de langue, uniquement pour les fiches dont la version anglaise
+// existe réellement — un `hreflang` vers une page absente est une erreur que
+// la Search Console remonte, la liste de discoveries-en.js fait foi des deux côtés.
+const altLangs = SLUGS_DISCOVERIES_EN.includes(artist.slug)
+  ? { fr: `/decouverte-${artist.slug}.html`, en: `/en/discovery-${artist.slug}.html` }
+  : undefined;
 
 const schema = {
   '@context': 'https://schema.org',
@@ -57,7 +65,7 @@ const faq = [
   },
 ];
 ---
-<Layout lang="fr" title={title} description={description}>
+<Layout lang="fr" title={title} description={description} altLangs={altLangs}>
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
   </Fragment>

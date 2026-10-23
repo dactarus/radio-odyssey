@@ -1,0 +1,177 @@
+---
+/*
+  Fiche « Découverte » anglaise (§104).
+
+  Jumelle de `decouverte-[slug].astro` : mêmes blocs, mêmes règles, textes
+  traduits. La source unique (slug, nom, titres, statut, rareté) reste
+  `discoveries.js` ; seuls les textes écrits à la main vivent dans
+  `discoveries-en.js`, et c'est la présence d'un slug dans ce fichier qui
+  décide qu'une page anglaise existe.
+
+  ⚠️ Aucun lien vers le français depuis cette page (§82) : le hub
+  « Découvertes » n'existe qu'en français, il n'est donc pas lié ici. Le
+  visiteur qui veut la page française passe par le sélecteur de langue,
+  alimenté par `altLangs`.
+*/
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
+import { DISCOVERIES } from '../../data/discoveries.js';
+import { DISCOVERIES_EN, SLUGS_DISCOVERIES_EN } from '../../data/discoveries-en.js';
+
+export function getStaticPaths() {
+  return SLUGS_DISCOVERIES_EN.map((slug) => ({
+    params: { slug },
+    props: { artist: DISCOVERIES.find((a) => a.slug === slug) },
+  }));
+}
+
+const { artist } = Astro.props;
+const en = DISCOVERIES_EN[artist.slug];
+
+const isScarce = artist.scarcity !== 'partielle';
+
+const title = `${artist.name}: Biography & News — Radio Odyssey`;
+const description = isScarce
+  ? `Who is ${artist.name}? Biography, tracks played and news — Radio Odyssey is one of the few sources to cover this artist (${en.genre}).`
+  : `${artist.name} (${en.genre}): biography, tracks played on Radio Odyssey, and the real airplay data the radio is one of the only places to publish.`;
+
+const scarcityNote = isScarce
+  ? `There is very little, if any, complete biography of ${artist.name} elsewhere online — this page is one of the few sources dedicated to the artist.`
+  : `${artist.name} already has an established online presence; Radio Odyssey adds its own real airplay data, which nobody else publishes.`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicGroup',
+  name: artist.name,
+  genre: en.genre,
+  foundingLocation: en.origin,
+};
+
+const statusSentence = artist.active
+  ? `Yes — ${artist.name} is one of the Radio Odyssey Discoveries still in rotation on air (since ${en.since}).`
+  : `${artist.name} was one of the Radio Odyssey Discoveries featured on air in ${en.since}.`;
+
+const faq = [
+  {
+    q: `Who is ${artist.name}?`,
+    a: isScarce
+      ? `${en.facts[0]} There is very little information about the artist outside streaming platforms — Radio Odyssey offers one of the most complete biographies available.`
+      : `${en.facts[0]} Radio Odyssey offers a biography here, along with the real airplay data from our broadcast.`,
+  },
+  {
+    q: `Which ${artist.name} tracks does Radio Odyssey play?`,
+    a: `${artist.tracks.map((t) => `<em>${t}</em>`).join(', ')}. The best way to hear them is to listen live — press play on any page of this site.`,
+  },
+  {
+    q: `Is ${artist.name} still played on Radio Odyssey?`,
+    a: statusSentence,
+  },
+];
+---
+<Layout
+  lang="en"
+  altLangs={{ fr: `/decouverte-${artist.slug}.html`, en: `/en/discovery-${artist.slug}.html` }}
+  title={title}
+  description={description}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+  </Fragment>
+
+  <PageHero
+    gradientFrom="#FFD700"
+    gradientTo="#00C6FF"
+    homeLabel="🏠 Home"
+    homeHref="/en.html"
+    breadcrumbCurrent={`${artist.name} — Radio Odyssey Discovery`}
+    title={artist.name}
+    text={`${en.genre} — ${en.origin}. ${isScarce ? 'Biography and news — one of the few sources on this artist.' : 'Biography, tracks and real airplay data.'}`}
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 6L27.5 18.5L40 22L27.5 25.5L24 38L20.5 25.5L8 22L20.5 18.5L24 6Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card" style="border-left:3px solid var(--ro-gold, #FFD700);">
+            <p style="margin:0 0 .6rem;font-size:.86rem;color:var(--ro-muted);">
+              <Icon name="stars" style="color:var(--ro-gold, #FFD700);" />
+              This page is part of the <strong>Radio Odyssey Discoveries</strong> — emerging artists the radio chooses to support, regardless of any audience ranking.
+            </p>
+            <p style="margin:0;font-size:.86rem;color:var(--ro-muted);">
+              <Icon name="search" style="color:var(--ro-purple);" />
+              {scarcityNote}
+            </p>
+          </div>
+
+          <div class="content-card">
+            <h2>3 things worth knowing about {artist.name}</h2>
+            <ul>
+              {en.facts.map((fact) => <li set:html={fact} />)}
+            </ul>
+          </div>
+
+          <div class="content-card">
+            <h2>{artist.name} tracks played on air</h2>
+            <p style="margin-bottom:1rem;">Taken from the real Radio Odyssey schedule:</p>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+              {artist.tracks.map((track) => (
+                <span class="tag-pill">♪ {track}</span>
+              ))}
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h2>{artist.name} biography</h2>
+            <p>{en.portrait}</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Why Radio Odyssey supports {artist.name}</h2>
+            <p set:html={en.why} />
+            <p>More of this on our <a href={en.linkHref} style="color:var(--ro-purple);font-weight:700;">{en.linkLabel}</a> page.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix={`en-discovery-${artist.slug}`} lang="en" />
+
+          <RelatedPages
+            lang="en"
+            alsoLike={[]}
+            associated={[
+              { href: en.linkHref, label: en.linkLabel },
+              { href: '/en/artists-on-radio-odyssey.html', label: 'All the artists we play' },
+              { href: '/en.html', label: 'English home' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Hear {artist.name} live on Radio Odyssey</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Listen to Radio Odyssey
+              </a>
+              <a href="https://app.radio-odyssey.com/" target="_blank" rel="noopener" class="btn-hero-ghost">
+                <Icon name="phone" /> Get the app
+              </a>
+              <a href="/en.html" class="btn-hero-ghost">
+                <Icon name="grid" /> Everything in English
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar lang="en" />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
