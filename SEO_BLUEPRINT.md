@@ -3635,3 +3635,39 @@ sitemap cohérent (281 URL).
 
 *Dernière mise à jour : 2026-10-23, version anglaise de la Découverte Azizzi Romeo (§104).*
 
+---
+
+## 105. Version anglaise de la fiche Tom York (2026-10-24)
+
+Deuxième Découverte traduite, choisie parce que l'artiste est anglophone : Tom York, pop rock
+anglais. Même mécanique qu'au §104 — entrée dans `discoveries-en.js`, la page
+`/en/discovery-tom-york.html` se génère seule, `hreflang` réciproque fr/en/x-default.
+
+**Traduction fidèle, avec une adaptation documentée** : la fiche française se termine par
+« il n'existe quasiment aucune biographie complète à son sujet **en français** ». Cette
+affirmation ne dit rien d'un lecteur anglophone, et elle est elle-même fragile : une recherche
+du 2026-10-24 trouve une interview française (La Parisienne Life, novembre 2024) en plus des
+profils Bandcamp, Deezer et Apple Music. Deux conséquences :
+- la clause « en français » est retirée du troisième fait anglais (rien d'ajouté, une clause en moins) ;
+- nouveau champ facultatif `scarcityNote` dans `discoveries-en.js`, qui remplace la phrase de
+  rareté calculée. Pour Tom York : « Outside streaming platforms, Bandcamp and the odd
+  interview, very little is written about Tom York online ». Vérifiable, sans « l'une des rares
+  sources » qui promettrait plus que ce qu'on a contrôlé.
+
+**À reprendre côté français (non fait, décision du propriétaire)** : la fiche française de Tom
+York affirme toujours « quasiment aucune biographie complète en français » alors qu'une interview
+française existe. Écart de formulation à arbitrer, pas une erreur avérée : une interview n'est pas
+une biographie complète.
+
+**Écarté volontairement de ce lot** : Tree Gees (groupe italien), Charlie-Lou (Parisienne qui
+chante en anglais et en français) et les deux artistes français ne sont pas anglophones au sens
+de la demande ; non traduits sans nouvel accord.
+
+**Vérifié après build (300 pages, aucune erreur)** : page générée, `hreflang` réciproque, aucun
+lien vers le français hors sélecteur de langue et pages légales, titres de morceaux intacts,
+sitemap cohérent (282 URL).
+
+---
+
+*Dernière mise à jour : 2026-10-24, version anglaise de la Découverte Tom York (§105).*
+

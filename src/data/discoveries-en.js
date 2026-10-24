@@ -17,12 +17,32 @@
   nouveaux : corriger une erreur d'un côté impose de la corriger de l'autre.
   Même règle qu'au §86 et que pour `artists-en.js`.
 
+  `scarcityNote` (facultatif) remplace la phrase de rareté calculée par le gabarit
+  quand la rareté constatée ne se formule pas pareil en anglais : celle de
+  `discoveries.js` peut porter sur le français (« pas de biographie en
+  français »), qui ne dit rien d'un lecteur anglophone.
+
   ⚠️ `linkHref` doit pointer vers une page anglaise. Un lien vers le français
   depuis une page anglaise est proscrit (§82) — d'où l'absence de lien vers
   la page hub « Découvertes », qui n'existe qu'en français.
 */
 
 export const DISCOVERIES_EN = {
+  'tom-york': {
+    genre: 'English pop rock',
+    origin: 'United Kingdom',
+    since: 'March 2025',
+    scarcityNote: 'Outside streaming platforms, Bandcamp and the odd interview, very little is written about Tom York online — this page brings together what is known about him in one place.',
+    facts: [
+      'English pop rock singer with a positive tone, signed to the label D.A Red Wolf Records, also known as a remixer for artists such as OneRepublic and Lara Fabian.',
+      'His track "Close To Me" has been played on more than a hundred radio stations in France, Belgium and Switzerland.',
+      'His videos air on channels such as C Star, Clubbing TV and Bblack Africa.',
+    ],
+    portrait: "Tom York cultivates an English pop rock with a resolutely positive mood, somewhere between ballads and more upbeat tracks. Beyond his career as a singer, he is also a remixer for other artists, including OneRepublic and Lara Fabian, and his videos circulate on music channels such as C Star, Clubbing TV and Bblack Africa. His track \"Close To Me\" has been played on more than a hundred radio stations in France, Belgium and Switzerland. Signed to the label D.A Red Wolf Records, he released a string of tracks in 2025: \"Close To Me\" in March, \"Sunscreen\" in July, then \"I Can't Stay\" (feat. Noize). Spotted early by Radio Odyssey, he is one of those discoveries who found their audience: more than a year after arriving on air, he is still played regularly. Another particularity: online, very few sources cover him beyond streaming platforms — and his name is easily confused with that of Thom Yorke, the Radiohead singer, who is an entirely different artist.",
+    why: 'The positive mood and pop rock ballads of Tom York fit the musical colour of the station perfectly — a discovery that has proved itself over time.',
+    linkHref: '/en/feel-good-music-radio.html',
+    linkLabel: 'feel-good music radio',
+  },
   'azizzi-romeo': {
     genre: 'Roots reggae / dub',
     origin: 'Jamaica',

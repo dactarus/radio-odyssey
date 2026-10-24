@@ -39,9 +39,9 @@ const description = isScarce
   ? `Who is ${artist.name}? Biography, tracks played and news — Radio Odyssey is one of the few sources to cover this artist (${en.genre}).`
   : `${artist.name} (${en.genre}): biography, tracks played on Radio Odyssey, and the real airplay data the radio is one of the only places to publish.`;
 
-const scarcityNote = isScarce
+const scarcityNote = en.scarcityNote ?? (isScarce
   ? `There is very little, if any, complete biography of ${artist.name} elsewhere online — this page is one of the few sources dedicated to the artist.`
-  : `${artist.name} already has an established online presence; Radio Odyssey adds its own real airplay data, which nobody else publishes.`;
+  : `${artist.name} already has an established online presence; Radio Odyssey adds its own real airplay data, which nobody else publishes.`);
 
 const schema = {
   '@context': 'https://schema.org',
