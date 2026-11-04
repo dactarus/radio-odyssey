@@ -3783,5 +3783,35 @@ comme celle de Relax, « le flux audio est fourni par RadioKing ».
 
 ---
 
-*Dernière mise à jour : 2026-11-04, Umami mentionné dans les politiques de confidentialité (§108).*
+## 109. Faire exister Radio Odyssey Relax dans le référencement (brief du 4 novembre, 2026-11-05)
+
+Brief : `Brief Odyssey - faire exister Relax dans le referencement.md` (dossier Relax). Principe : **on
+ne transmet pas des mots-clés, on transmet de l'autorité et une identité de marque.** Aucun ajout de
+mot-clé de détente aux pages d'Odyssey, aucune URL de Relax dans `SAME_AS`, aucune canonique d'un
+site vers l'autre.
+
+### 3.1 — Lien de groupe réciproque (fait, en ligne)
+
+Avant : Relax déclarait appartenir à Radio Odyssey (`isPartOf`, `publisher`), Odyssey ne disait rien
+de Relax. Ajouts dans `Layout.astro`, **sans drapeau `RELAX_LANCEE`** (les données structurées sont
+lues par les robots, et Google met des semaines à relier deux entités) :
+
+- sur l'`Organization` (l'association) : `subOrganization` = ses deux stations, par `@id` ;
+- sur la `RadioStation` d'Odyssey : `subOrganization` vers la `RadioStation` de Relax ;
+- côté Relax (dépôt `radio-odyssey-relax`) : `parentOrganization` vers la station d'Odyssey, en plus
+  de l'`isPartOf` existant.
+
+⚠️ **Écart avec le brief, volontaire.** Le brief demandait `hasPart` sur la `RadioStation`. Or
+`hasPart` (comme `isPartOf`) n'existe que sur `CreativeWork` dans schema.org (vérifié sur
+schema.org/hasPart le 5 novembre 2026) : sur une organisation il serait ignoré, voire signalé. Entre
+deux **organisations**, la paire valide est `subOrganization` / `parentOrganization`. L'intention du
+brief (déclaration réciproque) est tenue avec les bonnes propriétés.
+
+Vérifié après build : trois blocs JSON-LD valides, `subOrganization` présent sur 251 des 252 pages
+(l'exception est la page de repli hors ligne, sans données structurées), et **aucune** URL de Relax
+dans `sameAs`.
+
+---
+
+*Dernière mise à jour : 2026-11-05, lien de groupe réciproque dans les données structurées (§109, point 3.1).*
 
