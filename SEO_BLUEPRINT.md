@@ -3887,8 +3887,21 @@ Le verbe (« ouvre » / « a ouvert », « guidera » / « guide ») suit `RELAX
 `DATE_LANCEMENT_RELAX` : un report du lancement ne demande qu'un changement. Un seul lien vers Relax
 par page.
 
-**Pas encore fait, volontairement** (« progressivement, au fil des pages qu'on touche ») : un encart du
-groupe sur l'accueil, `radio-sans-publicite`, `avis-radio-odyssey-bien-etre`, les pages d'écoute (mobile,
+**Encart du groupe sur l'accueil (ajouté le même jour, à la demande de Frédéric).** Section « Le groupe —
+Deux stations, une même association » entre le partenaire et la FAQ : deux cartes (Radio Odyssey,
+Radio Odyssey Relax), un lien vers la page du groupe, **un seul lien vers Relax** (« En savoir plus sur
+Radio Odyssey Relax », « Écouter Radio Odyssey Relax » après le lancement), événements Umami
+`groupe_click` / `accueil-encart`.
+
+**Décision : l'encart est SANS DATE** (« arrive prochainement »). Question posée par Frédéric : attendre
+la date définitive, ou communiquer l'existence de la station quitte à changer la date ? Réponse retenue :
+**on communique sans attendre**, car Google met des semaines à apprendre une marque et le jour exact lui
+importe peu ; mais la page la plus vue ne porte pas de jour tant que le lancement n'est pas certain
+(report possible au 5 décembre). Le jour précis reste sur les pages pilotées par `DATE_LANCEMENT_RELAX`.
+**À reprendre** : une fois la date confirmée par RadioKing (abonnement pris), ajouter la date à l'encart si
+Frédéric le souhaite ; sinon, le verbe suit `RELAX_LANCEE` (« est ouverte »).
+
+**Pas encore fait, volontairement** (« progressivement, au fil des pages qu'on touche ») : `radio-sans-publicite`, `avis-radio-odyssey-bien-etre`, les pages d'écoute (mobile,
 voiture, enceinte), `suivez-le-guide`, `pourquoi-radio-odyssey-est-differente`. Chacune est une décision
 éditoriale : le brief préfère peu de mentions justes à beaucoup de mentions forcées.
 
