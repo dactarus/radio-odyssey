@@ -6,6 +6,8 @@ import Sidebar from '../components/Sidebar.astro';
 import ContentIllustration from '../components/ContentIllustration.astro';
 import AuthorReview from '../components/AuthorReview.astro';
 import SourcesBlock from '../components/SourcesBlock.astro';
+import RenvoiRelax from '../components/RenvoiRelax.astro';
+import { GROUPE } from '../data/groupe.js';
 import { DATE_REVISION_BIEN_ETRE_LABEL, SOURCES_COHERENCE_CARDIAQUE } from '../data/reviewer.js';
 ---
 <Layout
@@ -102,6 +104,12 @@ import { DATE_REVISION_BIEN_ETRE_LABEL, SOURCES_COHERENCE_CARDIAQUE } from '../d
           </div>
 
           <SourcesBlock sources={SOURCES_COHERENCE_CARDIAQUE} />
+
+          <RenvoiRelax
+            titre="La station dédiée"
+            texte="Pour une écoute entièrement consacrée à la détente, le groupe a ouvert une seconde antenne : Radio Odyssey Relax, avec des séquences de respiration guidée chaque jour, de 7 h à 23 h."
+            href={GROUPE.soeur.href}
+          />
 
           <div class="page-cta-bar">
             <h3>D&#233;compressez maintenant avec Radio Odyssey</h3>

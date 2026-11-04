@@ -9,6 +9,8 @@ import RelatedPages from '../components/RelatedPages.astro';
 import ContentIllustration from '../components/ContentIllustration.astro';
 import AuthorReview from '../components/AuthorReview.astro';
 import SourcesBlock from '../components/SourcesBlock.astro';
+import RenvoiRelax from '../components/RenvoiRelax.astro';
+import { GROUPE } from '../data/groupe.js';
 import { ELISABETH_REVIEWER, DATE_REVISION_BIEN_ETRE_LABEL, SOURCES_COHERENCE_CARDIAQUE } from '../data/reviewer.js';
 
 const faq = [
@@ -94,6 +96,12 @@ const faq = [
               { href: '/coherence-cardiaque-au-bureau.html', label: 'Cohérence cardiaque au bureau' },
               { href: '/bien-etre-et-sante.html', label: 'Tout le cocon Bien-être' },
             ]}
+          />
+
+          <RenvoiRelax
+            titre="Une séquence du soir, à l'antenne"
+            texte="Radio Odyssey Relax, la seconde station du groupe, diffuse chaque soir une séquence guidée de dix minutes à 21 h, 22 h et 23 h — quatre secondes d'inspiration, huit secondes d'expiration. Puis plus un seul message parlé jusqu'à 7 h du matin."
+            href={GROUPE.soeur.href}
           />
 
           <div class="page-cta-bar">

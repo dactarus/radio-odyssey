@@ -3669,5 +3669,53 @@ sitemap cohérent (282 URL).
 
 ---
 
-*Dernière mise à jour : 2026-10-24, version anglaise de la Découverte Tom York (§105).*
+## 106. Cinq renvois vers Radio Odyssey Relax, et lancement décalé au 28 novembre (2026-11-04)
+
+**Décalage de la date.** RadioKing a annoncé une offre à −50 % sur un nouvel abonnement webradio
+pour le Black Friday (vendredi 27 novembre). Le propriétaire reporte donc le lancement public de
+Radio Odyssey Relax au **samedi 28 novembre 2026** (au lieu du mardi 17 novembre) : l'économie
+justifie l'attente. La date étant publique, elle est corrigée dans `src/data/groupe.js`
+(« Nouvelle station — lancement le 28 novembre 2026 ») et dans le `CLAUDE.md`. Les §101 et
+précédents gardent « 17 novembre » : c'était la date en vigueur à l'époque.
+⚠️ Conséquence à ne pas perdre de vue : l'abonnement ne sera pris que le 27 novembre, donc le
+rodage à l'antenne et la validation des annuaires (deux à quatre semaines avec un flux actif)
+ne précéderont plus le lancement public.
+
+**Les cinq renvois.** Nouveau composant `src/components/RenvoiRelax.astro`, paramétré par un titre
+et un texte, rendu **seulement si `RELAX_LANCEE` est vrai** — le jour J, ils apparaissent tous avec
+la station. Placés en fin de contenu, juste avant la barre d'appel (jamais en bandeau, jamais au
+milieu du texte, un seul par page), dans le dégradé adouci de Relax (charte Relax §03) : encart
+nacré, barre dégradée à gauche, texte en encre, lien en lavande.
+
+| Page | Titre du renvoi |
+|---|---|
+| `coherence-cardiaque-pour-dormir` | Une séquence du soir, à l'antenne |
+| `musique-pour-la-nuit` | Huit heures sans une parole — **sans lien pour l'instant** |
+| `radio-anti-stress-gratuite` | Aller plus loin |
+| `radio-bien-etre-en-ligne` | Deux stations, un même groupe |
+| `radio-detente-moderne` | La station dédiée |
+
+Textes validés par le propriétaire le 4 novembre, avec trois écarts par rapport au brief initial :
+« du réveil jusqu'à la nuit » (4.4 : Relax diffuse dès 7 h, pas seulement le soir), « préconisées
+par » Elisabeth Bélot-Grimaud (4.3) et « de 7 h à 23 h » à la place de « à heure ronde » seul (4.5).
+Le propriétaire a gardé « aucune coupure » et « aucun message parlé » : le jargon est connu des
+auditeurs. ⚠️ Le nom d'Elisabeth apparaît sur `radio-anti-stress-gratuite`, qui est signée
+« Rédaction Radio Odyssey » : décision du propriétaire, qui précise qu'elle suit et vérifie
+régulièrement.
+
+**⚠️ À faire : le lien de `musique-pour-la-nuit`.** Il doit pointer vers la page « Nuit » de Radio
+Odyssey Relax, qui n'existe pas encore. Renseigner `href` dans la page dès qu'elle est en ligne,
+sans jamais deviner l'adresse. En attendant, le texte s'affiche sans lien.
+
+**Mesure.** Le clic sur un renvoi déclenche l'événement Umami `relax_renvoi_click` (`Footer.astro`,
+écouteur délégué existant), distinct du lien de menu : c'est ce qui dira lesquels des cinq sont
+cliqués avant d'en ajouter d'autres.
+
+**Vérifié après build (300 pages, aucune erreur)** : drapeau faux → aucun bloc dans `dist/` ;
+drapeau vrai → un bloc sur chacune des cinq pages, avant la barre d'appel, sans lien sur la page
+Nuit. Drapeau remis à `false`.
+
+---
+
+*Dernière mise à jour : 2026-11-04, renvois vers Radio Odyssey Relax et lancement décalé au 28 novembre (§106).*
 

@@ -11,9 +11,11 @@
   chemin, avec les rôles inversés (Relax « vous y êtes », Odyssey en lien).
   Changer une formulation ici = la changer là-bas.
 
-  ⚠️ À mettre à jour le jour du lancement public (17 novembre 2026) :
-  passer RELAX_LANCEE à true — la mention « Lancement le… » disparaît et
-  le lien propose d'écouter.
+  ⚠️ À mettre à jour le jour du lancement public (samedi 28 novembre 2026,
+  décalé du 17 novembre le 4 novembre pour l'offre RadioKing du Black Friday) :
+  passer RELAX_LANCEE à true — la mention « Lancement le… » disparaît, le lien
+  propose d'écouter, et les cinq renvois de `RenvoiRelax.astro` apparaissent
+  en fin de page.
 */
 export const RELAX_LANCEE = false;
 
@@ -28,6 +30,6 @@ export const GROUPE = {
     href: 'https://relax.radio-odyssey.com/',
     desc: RELAX_LANCEE
       ? 'Musique apaisante et respiration 4/6 à heure ronde'
-      : 'Nouvelle station — lancement le 17 novembre 2026',
+      : 'Nouvelle station — lancement le 28 novembre 2026',
   },
 };

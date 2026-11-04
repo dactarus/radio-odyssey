@@ -7,6 +7,8 @@ import CoherenceExercise from '../components/CoherenceExercise.astro';
 import ContentIllustration from '../components/ContentIllustration.astro';
 import AuthorReview from '../components/AuthorReview.astro';
 import SourcesBlock from '../components/SourcesBlock.astro';
+import RenvoiRelax from '../components/RenvoiRelax.astro';
+import { GROUPE } from '../data/groupe.js';
 import { ELISABETH_REVIEWER, DATE_REVISION_BIEN_ETRE_LABEL, SOURCES_COHERENCE_CARDIAQUE } from '../data/reviewer.js';
 
 const howToSchema = {
@@ -219,6 +221,12 @@ const howToSchema = {
           </div>
 
           <SourcesBlock sources={SOURCES_COHERENCE_CARDIAQUE} />
+
+          <RenvoiRelax
+            titre="Deux stations, un même groupe"
+            texte="Radio Odyssey porte l'énergie, Radio Odyssey Relax porte le calme : même exigence, programmation apaisée et respiration guidée, du réveil jusqu'à la nuit."
+            href={GROUPE.soeur.href}
+          />
 
           <div class="page-cta-bar">
             <h3>Votre journ&#233;e commence bien mieux avec Radio Odyssey</h3>
