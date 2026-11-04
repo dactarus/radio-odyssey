@@ -93,7 +93,7 @@ import NewsletterCapture from './NewsletterCapture.astro';
 
     function tick(){
       if(phase==='inhale'){
-        var p=(IN-cnt)/IN;
+        var p=(IN-cnt+1)/IN;
         var sz=Math.round(110+p*70)+'px';
         lbl.textContent='INSPIREZ'; lbl.style.color='#90e0ff';
         num.textContent=cnt; unt.textContent=cnt>1?'secondes':'seconde';
@@ -102,10 +102,10 @@ import NewsletterCapture from './NewsletterCapture.astro';
           'radial-gradient(circle at 40% 35%,#3ac8f5,#1e7fcb)');
         dot(Math.min(4,Math.floor(cycle*5/TOTAL)));
         cnt--;
-        if(cnt<0){phase='exhale';cnt=OUT;}
+        if(cnt<1){phase='exhale';cnt=OUT;}
 
       }else if(phase==='exhale'){
-        var p2=(OUT-cnt)/OUT;
+        var p2=(OUT-cnt+1)/OUT;
         var sz2=Math.round(180-p2*70)+'px';
         lbl.textContent='EXPIREZ'; lbl.style.color='#a8f0c8';
         num.textContent=cnt; unt.textContent=cnt>1?'secondes':'seconde';
@@ -113,7 +113,7 @@ import NewsletterCapture from './NewsletterCapture.astro';
           '0 0 '+(65-Math.round(p2*35))+'px rgba(30,127,203,'+(0.8-p2*0.4).toFixed(2)+')',
           'radial-gradient(circle at 40% 35%,#3a9fd8,#1a5fa8)');
         cnt--;
-        if(cnt<0){
+        if(cnt<1){
           cycle++; dot(Math.min(4,cycle));
           if(cycle>=TOTAL){
             // §72 : suivi de fin d'exercice — uniquement à l'issue d'un cycle

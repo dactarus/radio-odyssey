@@ -4,7 +4,7 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-11-04 (§106).*
+*Dernière mise à jour de ce fichier : 2026-11-04 (§107).*
 
 ## Objectif du projet
 
@@ -53,7 +53,7 @@ Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → U
 | `Header.astro` | Barre lecteur fixe, méga-menu, panneau latéral mobile |
 | `MegaNav.astro` | Menu déroulant desktop — 5 pages par catégorie + lien hub |
 | `index.astro` | ⚠️ L'ordre des pages dans `navigation.js` décide de ce qui est **visible dans le menu** : seules les 5 premières de chaque catégorie s'affichent (§60). Une page reléguée au-delà n'est plus atteignable que par le hub — c'est ce qui rendait les 8 quiz invisibles jusqu'au §71 |
-| `CoherenceExercise.astro` | Exercice de respiration guidée, présent sur 8 pages |
+| `CoherenceExercise.astro` | Exercice de respiration guidée, présent sur 8 pages. Rythme **5 s / 5 s, 6 cycles** (§107). ⚠️ Le décompte s'arrête à 1 (`if(cnt<1)`) et la progression du disque est `(IN-cnt+1)/IN` : l'ancienne version comptait jusqu'à 0 et faisait tourner le « 5/5 » à 6/6, en contradiction avec le texte des pages. Si `IN`/`OUT` changent, le texte éditorial des 8 pages doit suivre. Jumeau côté `radio-odyssey-relax` : à corriger des deux côtés ensemble |
 | `CookieConsent.astro` | Bandeau RGPD — GA4 n'est chargé qu'après acceptation |
 | `WebviewBanner.astro` | Alerte navigateur intégré (Facebook/Instagram) |
 | `SearchModal.astro` | Recherche interne (Pagefind) |
