@@ -3811,7 +3811,42 @@ Vérifié après build : trois blocs JSON-LD valides, `subOrganization` présent
 (l'exception est la page de repli hors ligne, sans données structurées), et **aucune** URL de Relax
 dans `sameAs`.
 
+### 3.6 — Search Console : la propriété de domaine existe déjà (vérifié le 5 novembre)
+
+Rien à déclarer : la propriété **`sc-domain:radio-odyssey.com`** (compte `dactarus@gmail.com`) couvre
+déjà le site mère et tous ses sous-domaines, dont Relax. Trois plans du site y sont déclarés :
+`radio-odyssey.com/sitemap.xml` (282 pages découvertes), `www.radio-odyssey.com/sitemap.xml` (282) et
+`relax.radio-odyssey.com/sitemap.xml` (7 pages, lu le 4 novembre — la page Nuit y est). Le plan du site
+sans `www` fait doublon avec celui en `www` : sans conséquence, à nettoyer un jour.
+
+**État de départ (3 août → 2 novembre 2026, tout le domaine)** : 332 clics, 9,72 k impressions, CTR
+3,4 %, position moyenne 8,3. Requêtes principales : « radio odyssey » (79 clics, 278 impressions),
+« cohérence cardiaque gratuite musicale » (15 clics, 1 754 impressions), « odyssey radio » (10). **Aucune
+requête « relax » dans le haut du classement** : la marque n'existe pas encore pour Google.
+
+**Protocole mensuel** (le brief : « c'est le seul moyen de repérer les requêtes sur lesquelles les deux
+sites apparaissent en même temps ») :
+1. *Performances → Requêtes*, 28 jours. Filtre **Page contient** `relax.radio-odyssey.com`, noter les
+   requêtes ; puis **Page contient** `www.radio-odyssey.com`. Toute requête présente dans les deux
+   listes est une alerte : l'un des deux sites est en trop.
+2. Requête exacte **« radio odyssey relax »** → onglet *Pages* : c'est **l'accueil de Relax** qui doit
+   arriver en tête, pas la page de groupe d'Odyssey. Si c'est l'inverse, alléger l'optimisation de la
+   page de groupe.
+3. **Part du trafic de Relax qui vient d'Odyssey** : ce n'est pas la Search Console qui la mesure mais
+   **Umami** (identifiant partagé, §108) : filtre Host = `relax.radio-odyssey.com`, rubrique Sources.
+
+### 3.5 — Audit du contenu dupliqué : liste produite, rien réécrit
+
+Détail dans **`AUDIT-CONTENU-DUPLIQUE-RELAX.md`** (à transmettre à la session de `radio-odyssey-relax`).
+Méthode : texte visible des pages construites (301 pages d'Odyssey contre 7 de Relax), comparaison de
+blocs identiques, de phrases identiques et de recouvrement par séquences de 5 mots. Résultat :
+**aucun** paragraphe d'accueil, de pied de page ni de « qui sommes-nous » dupliqué ; **aucun titre ni
+aucune description** identique ; **trois passages à réécrire** côté Relax, tous sur la page pro et la
+page respiration (fiche d'Elisabeth, introduction de la vidéo partenaire, un paragraphe sur le rythme
+de six cycles). Le reste est du texte commun volontaire (avertissement santé, attribution, deux
+références) ou de l'interface (alerte navigateur, bandeau cookies), ou des pages légales exclues.
+
 ---
 
-*Dernière mise à jour : 2026-11-05, lien de groupe réciproque dans les données structurées (§109, point 3.1).*
+*Dernière mise à jour : 2026-11-05, lien de groupe (3.1), Search Console (3.6) et audit des doublons (3.5), §109.*
 
