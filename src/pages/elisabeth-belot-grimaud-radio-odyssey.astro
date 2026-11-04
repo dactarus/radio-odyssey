@@ -6,6 +6,7 @@ import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
 import PartnerVideo from '../components/PartnerVideo.astro';
+import { GROUPE, RELAX_LANCEE, DATE_LANCEMENT_RELAX } from '../data/groupe.js';
 
 const faq = [
   { q: 'Qui est Elisabeth Bélot-Grimaud ?', a: "Docteure en psychologie cognitive, elle est chercheuse et enseignante en psychologie, spécialisée en santé mentale positive, autrice de « Programmez votre cerveau pour le bonheur » et conférencière TEDx à deux reprises. Elle anime aussi le podcast « L'instant Beau Bien Bon »." },
@@ -85,6 +86,7 @@ const personSchema = {
             <h2>Son travail au-delà de Radio Odyssey</h2>
             <p>Sur son site <a href="https://santementalepositive.fr/" target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">santementalepositive.fr</a>, Elisabeth Bélot-Grimaud propose des ressources gratuites organisées autour de trois piliers : les ressources biologiques (sommeil, mouvement, alimentation, respiration), cognitives (mémoire, attention, apprentissage) et psychologiques (émotions, relations, sens). Elle y décrit notamment la cohérence cardiaque comme <em>« l'un des outils les plus simples et les mieux documentés pour réguler le stress »</em>.</p>
             <p><a href="https://santementalepositive.fr/" target="_blank" rel="noopener" class="btn-ro" style="margin-top:.5rem;"><Icon name="box-arrow-up-right" />&nbsp;Découvrir santementalepositive.fr</a></p>
+            <p style="margin-bottom:0;">Sa voix {RELAX_LANCEE ? 'guide' : 'guidera'} aussi les séquences de la seconde station du groupe, qui {RELAX_LANCEE ? 'a ouvert' : 'ouvre'} le {DATE_LANCEMENT_RELAX}&nbsp;: <a href={GROUPE.soeur.href} style="color:var(--ro-purple);font-weight:700;">découvrir Radio Odyssey Relax</a>.</p>
           </div>
 
           <FAQBlock items={faq} idPrefix="ebg" />

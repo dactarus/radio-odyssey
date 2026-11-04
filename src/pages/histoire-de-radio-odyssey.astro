@@ -5,6 +5,7 @@ import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
+import { GROUPE, RELAX_LANCEE, DATE_LANCEMENT_RELAX, PAGE_GROUPE } from '../data/groupe.js';
 
 const faq = [
   { q: "Radio Odyssey a-t-elle toujours été une web radio ?", a: "Non. L'association est née le 12 août 1994 dans le Pas-de-Calais, avec une diffusion en FM (dont une fréquence temporaire obtenue pour une quinzaine commerciale). Elle s'est ensuite mise en sommeil pendant plus de 25 ans, avant de revenir exclusivement sur le web le 19 janvier 2025." },
@@ -81,6 +82,12 @@ const faq = [
           <div class="content-card">
             <h2>Une fierté : un concept unique</h2>
             <p>En un peu plus d'un an et demi depuis son retour, Radio Odyssey s'est dotée d'un site internet et d'une application professionnelle, et a construit une base d'auditeurs fidèles. Mais la vraie fierté reste ailleurs : avoir mis en place, revendiqué comme un vrai totem, une séquence de cohérence cardiaque diffusée à chaque début d'heure, toute la journée, au sein d'une programmation musicale enjouée et positive — un concept unique en France, et probablement au-delà. Radio Odyssey est aujourd'hui diffusée sur les plus importantes plateformes internationales de web radios.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une seconde station pour le groupe</h2>
+            <p>L'histoire se poursuit avec une seconde station. Le {DATE_LANCEMENT_RELAX}, l'association {RELAX_LANCEE ? 'a ouvert' : 'ouvre'} <a href={GROUPE.soeur.href} style="color:var(--ro-purple);font-weight:700;">la station Radio Odyssey Relax</a>, avec sa propre antenne et son propre site&nbsp;: même exigence musicale, un autre moment d'écoute.</p>
+            <p style="margin-bottom:0;"><a href={PAGE_GROUPE.href} style="color:var(--ro-purple);font-weight:700;">Voir la présentation du groupe Radio Odyssey →</a></p>
           </div>
 
           <FAQBlock items={faq} idPrefix="histoire" />
