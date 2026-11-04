@@ -3690,7 +3690,7 @@ nacré, barre dégradée à gauche, texte en encre, lien en lavande.
 | Page | Titre du renvoi |
 |---|---|
 | `coherence-cardiaque-pour-dormir` | Une séquence du soir, à l'antenne |
-| `musique-pour-la-nuit` | Huit heures sans une parole — **sans lien pour l'instant** |
+| `musique-pour-la-nuit` | Huit heures sans une parole — lien vers `relax.radio-odyssey.com/la-nuit.html` |
 | `radio-anti-stress-gratuite` | Aller plus loin |
 | `radio-bien-etre-en-ligne` | Deux stations, un même groupe |
 | `radio-detente-moderne` | La station dédiée |
@@ -3703,9 +3703,10 @@ auditeurs. ⚠️ Le nom d'Elisabeth apparaît sur `radio-anti-stress-gratuite`,
 « Rédaction Radio Odyssey » : décision du propriétaire, qui précise qu'elle suit et vérifie
 régulièrement.
 
-**⚠️ À faire : le lien de `musique-pour-la-nuit`.** Il doit pointer vers la page « Nuit » de Radio
-Odyssey Relax, qui n'existe pas encore. Renseigner `href` dans la page dès qu'elle est en ligne,
-sans jamais deviner l'adresse. En attendant, le texte s'affiche sans lien.
+**Le lien de `musique-pour-la-nuit`** — d'abord laissé vide faute de page —, pointe depuis le
+4 novembre vers `https://relax.radio-odyssey.com/la-nuit.html`. Adresse validée par Frédéric, page
+en ligne côté Relax (vérifiée en HTTP 200 avant de renseigner le lien) ; le renvoi reste invisible
+tant que `RELAX_LANCEE` est faux.
 
 **Mesure.** Le clic sur un renvoi déclenche l'événement Umami `relax_renvoi_click` (`Footer.astro`,
 écouteur délégué existant), distinct du lien de menu : c'est ce qui dira lesquels des cinq sont
