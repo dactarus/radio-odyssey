@@ -103,6 +103,18 @@ const associationSchema = {
     '@type': 'PostalAddress',
     addressCountry: 'FR',
   },
+  // §109 (brief « faire exister Relax dans le référencement », 3.1) : la
+  // maison mère déclare ses DEUX stations. Volontairement SANS drapeau
+  // RELAX_LANCEE : les données structurées sont lues par les robots, pas par
+  // les visiteurs, et Google met des semaines à relier deux entités.
+  // ⚠️ Références par @id vers des entités DÉCLARÉES ailleurs (la station
+  // d'Odyssey ci-dessous, celle de Relax dans le Layout de radio-odyssey-relax).
+  // Ne jamais mettre l'URL de Relax dans SAME_AS : ce serait fusionner deux
+  // marques qu'on veut distinctes.
+  subOrganization: [
+    { '@id': 'https://www.radio-odyssey.com/#radiostation' },
+    { '@id': 'https://relax.radio-odyssey.com/#radiostation' },
+  ],
   sameAs: SAME_AS,
 };
 
@@ -134,6 +146,11 @@ const organizationSchema = {
   },
   url: 'https://www.radio-odyssey.com',
   publisher: { '@id': 'https://www.radio-odyssey.com/#organization' },
+  // Réciproque de `isPartOf` côté Relax (§109). Le brief demandait `hasPart`,
+  // mais cette propriété n'existe que sur CreativeWork dans schema.org (vérifié
+  // le 5 novembre 2026) : entre deux ORGANISATIONS, la propriété valide est
+  // `subOrganization` (réciproque : `parentOrganization`).
+  subOrganization: { '@id': 'https://relax.radio-odyssey.com/#radiostation' },
   logo: {
     '@type': 'ImageObject',
     url: 'https://www.radio-odyssey.com/assets/images/logo.png',
