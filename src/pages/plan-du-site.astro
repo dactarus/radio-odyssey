@@ -29,7 +29,7 @@ const totalPages =
   NAV_CATEGORIES.reduce((n, c) => n + c.pages.length, 0) +
   artistesTries.length +
   decouvertesTriees.length +
-  3;                                             // plan du site + 2 pages légales
+  4;                                             // plan du site + 2 pages légales + page du groupe
 ---
 <Layout
   lang="fr"
@@ -60,6 +60,7 @@ const totalPages =
         <h2>Accueil</h2>
         <ul class="ro-plan-liste">
           <li><a href="/">Page d'accueil</a></li>
+          <li><a href="/le-groupe-radio-odyssey.html">Le groupe Radio Odyssey</a></li>
         </ul>
       </div>
 
