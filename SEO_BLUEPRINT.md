@@ -3868,6 +3868,34 @@ son lien, trois dates (12 août 1994, 19 janvier 2025, ouverture de Relax), la p
 - ⚠️ **À surveiller** (brief 3.6) : sur la requête « radio odyssey relax », **l'accueil de Relax** doit
   arriver en tête, pas cette page. Sinon, alléger son optimisation.
 
+### 3.4 — Mentions de la marque dans les pages existantes (première série, 2026-11-05)
+
+Règles du brief : nom **complet** « Radio Odyssey Relax » (jamais « Relax » seul) ; **jamais forcé**
+(« si la phrase n'avait pas besoin du nom, on ne le met pas ») ; **ancres variées** qui contiennent le
+nom ; **aucun mot-clé de détente** ajouté. Série limitée aux pages d'identité, où la phrase est
+naturelle et vraie :
+
+| Page | Ajout | Ancre |
+|---|---|---|
+| `faq-radio-odyssey` | Nouvelle question « Radio Odyssey a-t-elle d'autres stations ? » (et sa réponse dans la `FAQPage`), avec un lien vers la page du groupe | « Radio Odyssey Relax » |
+| `histoire-de-radio-odyssey` | Carte « Une seconde station pour le groupe » : la suite de l'histoire | « la station Radio Odyssey Relax » |
+| `elisabeth-belot-grimaud-radio-odyssey` | Une phrase : sa voix guide aussi les séquences de la seconde station | « découvrir Radio Odyssey Relax » |
+| `mentions-legales` | L'association édite aussi le site de Relax (information légale, utile aux deux sites) | « relax.radio-odyssey.com » |
+| `llms.txt` | Phrase sur le groupe et le site de Relax, sans date (donc sans risque de péremption) | — |
+
+Le verbe (« ouvre » / « a ouvert », « guidera » / « guide ») suit `RELAX_LANCEE`, la date suit
+`DATE_LANCEMENT_RELAX` : un report du lancement ne demande qu'un changement. Un seul lien vers Relax
+par page.
+
+**Pas encore fait, volontairement** (« progressivement, au fil des pages qu'on touche ») : un encart du
+groupe sur l'accueil, `radio-sans-publicite`, `avis-radio-odyssey-bien-etre`, les pages d'écoute (mobile,
+voiture, enceinte), `suivez-le-guide`, `pourquoi-radio-odyssey-est-differente`. Chacune est une décision
+éditoriale : le brief préfère peu de mentions justes à beaucoup de mentions forcées.
+
+**À vérifier un jour** : la fiche d'Elisabeth dit toujours qu'elle est « la partenaire **exclusive** de
+Radio Odyssey » (question fréquente et chapô), alors qu'elle est aussi la partenaire santé du groupe, donc
+de Relax. Non modifié : à arbitrer avec elle.
+
 ### Décision du 5 novembre : les profils de Relax quittent l'entité « association »
 
 Le Layout de Relax redéclarait l'`Organization` d'Odyssey (même `@id`) avec **les profils de Relax**
@@ -3884,5 +3912,5 @@ supports (site Relax, appli, documents) — voir `groupe.js`.
 
 ---
 
-*Dernière mise à jour : 2026-11-05, page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+*Dernière mise à jour : 2026-11-05, mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 

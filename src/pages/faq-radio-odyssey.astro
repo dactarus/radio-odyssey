@@ -5,12 +5,14 @@ import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
+import { GROUPE, RELAX_LANCEE, DATE_LANCEMENT_RELAX, PAGE_GROUPE } from '../data/groupe.js';
 
 const faq = [
   { q: 'Radio Odyssey est-elle vraiment gratuite ?', a: "Oui, entièrement et sans limite de temps — aucun abonnement, aucune version payante. Radio Odyssey est portée par une association loi 1901 à but non lucratif, pas par un modèle commercial classique." },
   { q: 'Y a-t-il de la publicité sur l\'antenne ?', a: "Non. Radio Odyssey est et reste sans coupure publicitaire — voir le détail sur notre page <a href='/radio-sans-publicite.html' style='color:var(--ro-purple);font-weight:700;'>radio sans publicité</a>." },
   { q: 'Faut-il créer un compte pour écouter ?', a: "Non, aucune inscription n'est nécessaire. Il suffit de cliquer sur \"Écouter en Direct\" depuis n'importe quelle page du site." },
   { q: 'Qui se cache derrière Radio Odyssey ?', a: "Radio Odyssey est éditée par une association loi 1901 à but non lucratif. Retrouvez les coulisses de sa fabrication sur notre page <a href='/comment-radio-odyssey-choisit-sa-musique.html' style='color:var(--ro-purple);font-weight:700;'>comment on choisit la musique</a>." },
+  { q: "Radio Odyssey a-t-elle d'autres stations ?", a: `Oui. Radio Odyssey fait partie du <a href='${PAGE_GROUPE.href}' style='color:var(--ro-purple);font-weight:700;'>groupe Radio Odyssey</a>, qui compte une seconde station, <a href='${GROUPE.soeur.href}' style='color:var(--ro-purple);font-weight:700;'>Radio Odyssey Relax</a>, ${RELAX_LANCEE ? 'ouverte' : 'qui ouvre'} le ${DATE_LANCEMENT_RELAX}. Les deux sont éditées par la même association.` },
   { q: 'Peut-on écouter Radio Odyssey depuis l\'étranger ?', a: "Oui, la diffusion est accessible partout dans le monde avec une connexion internet — c'est aussi pour cela que Radio Odyssey propose des pages dédiées à son public international, comme notre <a href='/en/positive-european-music-station.html' style='color:var(--ro-purple);font-weight:700;'>version européenne en anglais</a>." },
   { q: 'Comment soutenir Radio Odyssey ?', a: "Le plus simple : partagez la radio autour de vous, restez à l'écoute et suivez les réseaux sociaux. Chaque nouvel auditeur compte pour une radio associative indépendante." },
   { q: 'Y a-t-il une application mobile ?', a: "Oui, une application est disponible sans passer par l'App Store ou le Google Play Store — voir le détail sur notre page <a href='/ecouter-radio-odyssey-sur-mobile.html' style='color:var(--ro-purple);font-weight:700;'>écouter sur mobile</a>." },
