@@ -4,7 +4,7 @@ import MegaNav from './MegaNav.astro';
 import RadioPlayer from './RadioPlayer.astro';
 import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
 import { EN_NAV_CATEGORIES, ACCUEIL, AUTRE_LANGUE, cibleAutreLangue, t } from '../data/i18n.js';
-import { GROUPE } from '../data/groupe.js';
+import { GROUPE, PAGE_GROUPE } from '../data/groupe.js';
 
 /*
   §81 (lot 2) : la navigation était écrite en dur en français. Les 13 pages
@@ -110,6 +110,11 @@ const accueil = ACCUEIL[lang];
            onclick="if(typeof roUmamiTrack==='function')roUmamiTrack('groupe_click',{cible:'relax',source:'offcanvas-menu'});">
           <span class="ni"><Icon name="arrow-right" /></span>
           <span><strong>{GROUPE.soeur.nom}</strong><br /><small style="opacity:.75;">{GROUPE.soeur.desc}</small></span>
+        </a>
+        <a class="nav-link" href={PAGE_GROUPE.href}
+           onclick="if(typeof roUmamiTrack==='function')roUmamiTrack('groupe_click',{cible:'page-groupe',source:'offcanvas-menu'});">
+          <span class="ni"><Icon name="info-circle" /></span>
+          <span><strong>{PAGE_GROUPE.label}</strong><br /><small style="opacity:.75;">Deux stations, une même association</small></span>
         </a>
       </>
     )}

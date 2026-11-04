@@ -1,0 +1,154 @@
+---
+/*
+  Page de présentation du groupe Radio Odyssey (§109, brief « faire exister
+  Relax dans le référencement », 3.2). Texte validé par Frédéric le 5 novembre
+  2026 ; adresse figée.
+
+  Elle porte le NOM DE LA MARQUE « Radio Odyssey Relax » pendant les semaines où
+  Relax n'a aucune notoriété — et rien d'autre.
+
+  ⚠️ RÈGLES DU BRIEF, à ne jamais enfreindre ici :
+    · AUCUN mot-clé thématique de détente : ni « relaxation », « détente »,
+      « musique pour dormir », ni « cohérence cardiaque » ou « respiration
+      guidée » comme sujet, ni « bien-être ». Cette page parle d'un groupe,
+      pas d'un bien-être. (Contrôlé par script à chaque modification.)
+    · Toujours « Radio Odyssey Relax » en entier, jamais « Relax » seul ; les
+      ancres des liens VARIENT et contiennent le nom.
+    · Aucune canonique, aucune URL de Relax dans SAME_AS : deux entités.
+    · Sur la requête « radio odyssey relax », c'est l'ACCUEIL DE RELAX qui doit
+      arriver en tête, pas cette page. Sinon, alléger son optimisation.
+
+  Le verbe de l'ouverture de Relax suit RELAX_LANCEE (« ouvre » avant,
+  « a ouvert » après) ; la date vient de groupe.js — jamais retapée.
+
+  Données structurées : une AboutPage qui pointe vers l'Organization EXISTANTE
+  (même @id que dans Layout.astro, qui porte déjà ses deux stations en
+  subOrganization, §109 point 3.1) — pas une nouvelle entité.
+*/
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import { GROUPE, RELAX_LANCEE, DATE_LANCEMENT_RELAX, PAGE_GROUPE } from '../data/groupe.js';
+
+const title = 'Le groupe Radio Odyssey : deux stations, une association';
+const description = 'Radio Odyssey et Radio Odyssey Relax, les deux stations du groupe : une même association née en 1994, une même exigence musicale.';
+
+const ouvertureRelax = RELAX_LANCEE ? `a ouvert le ${DATE_LANCEMENT_RELAX}` : `ouvre le ${DATE_LANCEMENT_RELAX}`;
+const ouverteRelax = RELAX_LANCEE ? `ouverte le ${DATE_LANCEMENT_RELAX}` : `qui ouvre le ${DATE_LANCEMENT_RELAX}`;
+
+const faq = [
+  {
+    q: 'Quelles sont les stations du groupe Radio Odyssey ?',
+    a: `Radio Odyssey, la web radio positive, et Radio Odyssey Relax, ${ouverteRelax}.`,
+  },
+  {
+    q: 'Qui édite Radio Odyssey et Radio Odyssey Relax ?',
+    a: "L'association Radio Odyssey, association loi 1901 à but non lucratif, née en 1994.",
+  },
+];
+
+const aboutPage = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  '@id': `https://www.radio-odyssey.com${PAGE_GROUPE.href}#webpage`,
+  url: `https://www.radio-odyssey.com${PAGE_GROUPE.href}`,
+  name: title,
+  description,
+  inLanguage: 'fr',
+  about: { '@id': 'https://www.radio-odyssey.com/#organization' },
+  isPartOf: { '@id': 'https://www.radio-odyssey.com/#website' },
+};
+---
+<Layout lang="fr" title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(aboutPage)} />
+  </Fragment>
+
+  <PageHero
+    gradientFrom="#7B2FBE"
+    gradientTo="#FF9A3C"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent={PAGE_GROUPE.label}
+    title="Le groupe Radio Odyssey"
+    text="Deux stations, une même association, une même exigence musicale."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="17" cy="24" r="10" stroke="white" stroke-width="2.2"/><circle cx="31" cy="24" r="10" stroke="white" stroke-width="2.2"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>Une association, deux stations</h2>
+            <p>Radio Odyssey est une association loi 1901 à but non lucratif. Elle édite deux web radios, gratuites et sans publicité&nbsp;: Radio Odyssey porte l'énergie, Radio Odyssey Relax porte le calme. Même exigence musicale, deux façons d'écouter.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Radio Odyssey — La Positive Radio</h2>
+            <p>La web radio positive française, en direct 24&nbsp;h/24&nbsp;: hits des années 80, dance, easy listening.</p>
+            <p style="margin-bottom:0;"><a href="/" style="color:var(--ro-purple);font-weight:700;">Écouter Radio Odyssey →</a></p>
+          </div>
+
+          <div class="content-card">
+            <h2>Radio Odyssey Relax</h2>
+            <p>La seconde station du groupe&nbsp;: une musique apaisante, sans publicité, et une séquence guidée à chaque heure ronde, préconisée par Elisabeth Bélot-Grimaud. Elle {ouvertureRelax}.</p>
+            <p style="margin-bottom:0;"><a href={GROUPE.soeur.href} style="color:var(--ro-purple);font-weight:700;">Découvrir Radio Odyssey Relax →</a></p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une histoire commencée en 1994</h2>
+            <ul>
+              <li><strong>12 août 1994</strong> : naissance de l'association Radio Odyssey dans le Pas-de-Calais, avec une diffusion en FM.</li>
+              <li><strong>19 janvier 2025</strong> : retour de Radio Odyssey, exclusivement sur le web.</li>
+              <li><strong>{DATE_LANCEMENT_RELAX}</strong> : ouverture de Radio Odyssey Relax, seconde station du groupe.</li>
+            </ul>
+            <p style="margin-bottom:0;"><a href="/histoire-de-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">L'histoire de Radio Odyssey →</a></p>
+          </div>
+
+          <div class="content-card">
+            <h2>Une partenaire commune</h2>
+            <p>Elisabeth Bélot-Grimaud, docteure en psychologie cognitive, est la partenaire santé du groupe&nbsp;: sa voix guide les séquences diffusées sur les deux antennes.</p>
+            <p style="margin-bottom:0;"><a href="/elisabeth-belot-grimaud-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Faire connaissance avec Elisabeth Bélot-Grimaud →</a></p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="groupe" />
+
+          <RelatedPages
+            alsoLike={[
+              { href: '/histoire-de-radio-odyssey.html', label: "L'Histoire de Radio Odyssey", desc: 'De 1994 à la web radio d\'aujourd\'hui' },
+              { href: '/pourquoi-radio-odyssey-est-differente.html', label: 'Pourquoi Radio Odyssey est Différente', desc: 'Notre mission et nos choix' },
+              { href: '/suivez-le-guide-radio-odyssey.html', label: 'Suivez le Guide', desc: 'Six façons de découvrir Radio Odyssey' },
+            ]}
+            associated={[
+              { href: '/artistes-diffuses-radio-odyssey.html', label: 'Les artistes diffusés' },
+              { href: '/coulisses-de-radio-odyssey.html', label: 'Les Coulisses de Radio Odyssey' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Deux stations, à vous de choisir</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey
+              </a>
+              <a href={GROUPE.soeur.href} class="btn-hero-ghost">
+                <Icon name="arrow-right" /> La station Radio Odyssey Relax
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

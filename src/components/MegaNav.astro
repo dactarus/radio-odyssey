@@ -2,7 +2,7 @@
 import Icon from './Icon.astro';
 import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
 import { EN_NAV_CATEGORIES, ACCUEIL, AUTRE_LANGUE, cibleAutreLangue, t } from '../data/i18n.js';
-import { GROUPE } from '../data/groupe.js';
+import { GROUPE, PAGE_GROUPE } from '../data/groupe.js';
 
 // §81 (lot 2) : voir l'en-tête de Header.astro. Côté anglais, structure
 // propre et courte, pas la traduction du menu français.
@@ -149,6 +149,14 @@ const accueil = ACCUEIL[lang];
                  onclick="if(typeof roUmamiTrack==='function')roUmamiTrack('groupe_click',{cible:'relax',source:'mega-nav'});">
                 <strong>{GROUPE.soeur.nom} <Icon name="arrow-right" style="font-size:.75rem;margin-left:.2rem;" /></strong>
                 <small>{GROUPE.soeur.desc}</small>
+              </a>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" href={PAGE_GROUPE.href}
+                 onclick="if(typeof roUmamiTrack==='function')roUmamiTrack('groupe_click',{cible:'page-groupe',source:'mega-nav'});">
+                <strong>{PAGE_GROUPE.label} <Icon name="arrow-right" style="font-size:.75rem;margin-left:.2rem;" /></strong>
+                <small>Deux stations, une même association</small>
               </a>
             </li>
           </ul>

@@ -3846,7 +3846,43 @@ page respiration (fiche d'Elisabeth, introduction de la vidéo partenaire, un pa
 de six cycles). Le reste est du texte commun volontaire (avertissement santé, attribution, deux
 références) ou de l'interface (alerte navigateur, bandeau cookies), ou des pages légales exclues.
 
+### 3.2 — La page du groupe : `/le-groupe-radio-odyssey.html` (texte validé par Frédéric le 5 novembre)
+
+Texte proposé puis validé, adresse figée. Contenu : une association loi 1901, deux stations (Radio
+Odyssey porte l'énergie, Radio Odyssey Relax porte le calme), une présentation courte de chacune avec
+son lien, trois dates (12 août 1994, 19 janvier 2025, ouverture de Relax), la partenaire commune
+(Elisabeth Bélot-Grimaud), deux questions. Faits repris de pages déjà publiées.
+
+- **Aucun mot-clé de détente** : contrôlé par script sur le titre, la description et le texte
+  (« relaxation », « détente », « dormir », « cohérence cardiaque », « respiration », « bien-être »,
+  « sommeil »… : aucun). Seul le menu latéral, commun à toutes les pages, porte « Bien-être & Santé ».
+- **Ancres variées contenant le nom** : « Découvrir Radio Odyssey Relax », « La station Radio Odyssey
+  Relax » ; jamais « Relax » seul.
+- **Le verbe suit `RELAX_LANCEE`** (« ouvre le 28 novembre 2026 » → « a ouvert… ») et la date vient
+  de `DATE_LANCEMENT_RELAX` (`groupe.js`), nouvelle source unique côté Odyssey.
+- **Données structurées** : une `AboutPage` qui pointe vers l'`Organization` existante par son `@id`,
+  plus la `FAQPage`. Pas de nouvelle entité.
+- **Points d'entrée** : entrée « Le groupe Radio Odyssey » dans le menu « Groupe Radio Odyssey »
+  (bureau et panneau mobile, événement Umami `groupe_click` / `page-groupe`), plan du site, sitemap
+  (283 URL).
+- ⚠️ **À surveiller** (brief 3.6) : sur la requête « radio odyssey relax », **l'accueil de Relax** doit
+  arriver en tête, pas cette page. Sinon, alléger son optimisation.
+
+### Décision du 5 novembre : les profils de Relax quittent l'entité « association »
+
+Le Layout de Relax redéclarait l'`Organization` d'Odyssey (même `@id`) avec **les profils de Relax**
+(Facebook, Instagram, YouTube) en `sameAs`. C'était mélanger les deux marques sur l'entité légale, ce
+que le brief interdit côté Odyssey. **Retirés** de l'association ; ils restent sur la `RadioStation` de
+Relax, qui est leur place.
+
+### Information sur le calendrier (Frédéric, 5 novembre)
+
+Si RadioKing ne permet pas d'ouvrir la radio gratuitement avant le 28 novembre, le lancement serait
+**reporté au samedi 5 décembre 2026**. **Pour le moment, on garde le 28 novembre.** Pour qu'un report soit
+rapide, la date d'Odyssey est désormais dans une seule constante ; elle vit encore sur trois autres
+supports (site Relax, appli, documents) — voir `groupe.js`.
+
 ---
 
-*Dernière mise à jour : 2026-11-05, lien de groupe (3.1), Search Console (3.6) et audit des doublons (3.5), §109.*
+*Dernière mise à jour : 2026-11-05, page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
