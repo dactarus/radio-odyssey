@@ -3750,5 +3750,38 @@ portent le correctif et aucune ne contient plus `if(cnt<0)`. `sw.js` non modifi�
 
 ---
 
-*Dernière mise à jour : 2026-11-04, exercice de cohérence cardiaque ramené à son vrai rythme 5/5 (§107).*
+## 108. Politique de confidentialité : Umami enfin mentionné, sur Odyssey et sur Relax (2026-11-04)
+
+**Constat.** Le site et l'application d'Odyssey envoient des événements à Umami depuis le §72 (août
+2026), et Relax le fait depuis le 4 novembre avec le **même identifiant** (décision de Frédéric : la
+formule gratuite n'autorise qu'une propriété, les sites se lisent par le filtre « Host »). Or les
+deux politiques de confidentialité ne citaient que Google Analytics.
+
+**Ajouté** à « Cookies et mesure d'audience », sur les deux sites : un paragraphe « Mesure des
+usages, sans cookie ». Il est écrit d'après les documents **officiels** d'Umami (pas d'après des
+comparatifs tiers, qui se contredisaient) :
+- le traceur n'utilise **aucun cookie** (FAQ de la documentation) ;
+- l'adresse IP **n'est pas conservée** dans les données d'analyse mais **traitée de façon
+  transitoire** (identifiant de visiteur, localisation approximative), et peut figurer dans des
+  journaux d'exploitation (politique de confidentialité d'Umami) ;
+- le sous-traitant est **Umami Software, Inc., San Francisco** ; son infrastructure mêle des
+  prestataires de l'**UE** (Hetzner) et des **États-Unis** (AWS, Cloudflare, Axiom, Vercel…) ; les
+  transferts sont encadrés par les **clauses contractuelles types** de l'accord de traitement.
+
+⚠️ **Deux formulations écartées** : « hébergé dans l'Union européenne » (faux : prestataires
+américains) et « ne collecte aucune donnée d'identification » (trop fort : l'IP est traitée).
+La mention de l'application sur Odyssey vient de ce que la même propriété mesure
+`app.radio-odyssey.com`, dont les mentions légales renvoient vers les pages du site.
+
+**Non tranché, volontairement** : la ligne n'affirme pas que la mesure est dispensée de
+consentement. Les dispositions applicables dépendent de la configuration et de l'usage ; à valider
+par Frédéric si besoin (CNIL).
+
+**À reprendre côté Odyssey (non fait)** : la politique décrit toujours le lecteur comme un « player
+intégré (iframe) » de RadioKing, alors que le lecteur est natif depuis le 9 août. Celle de Relax dit
+déjà « le flux audio est fourni par RadioKing ».
+
+---
+
+*Dernière mise à jour : 2026-11-04, Umami mentionné dans les politiques de confidentialité (§108).*
 
