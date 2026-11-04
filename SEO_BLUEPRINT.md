@@ -3718,5 +3718,37 @@ Nuit. Drapeau remis à `false`.
 
 ---
 
-*Dernière mise à jour : 2026-11-04, renvois vers Radio Odyssey Relax et lancement décalé au 28 novembre (§106).*
+## 107. Exercice de cohérence cardiaque : le « 5/5 » tournait à 6/6 (2026-11-04)
+
+**Constat.** En chronométrant l'exercice jumeau côté Radio Odyssey Relax, on a vu que le décompte de
+`CoherenceExercise.astro` comptait `IN, IN-1, …, 1, 0` : **IN + 1 ticks d'une seconde par phase**.
+Avec `IN = OUT = 5`, chaque phase durait 6 s, le cycle 12 s, soit 5 respirations par minute — alors
+que les 8 pages qui l'incluent annoncent 5 s d'inspiration, 5 s d'expiration et six respirations
+par minute. Le texte éditorial était juste, c'est l'exercice qui ne le respectait pas.
+
+**Correction (script seul, aucun texte éditorial touché).** Dans `tick()` : les deux tests
+`if(cnt<0)` deviennent `if(cnt<1)` (la phase s'arrête quand le compteur atteint 0, sans l'afficher),
+et la progression du disque devient `(IN-cnt+1)/IN` à l'inspiration, `(OUT-cnt+1)/OUT` à
+l'expiration — sans quoi le disque n'atteindrait jamais sa taille maximale/minimale. Même correctif
+que côté Relax.
+
+**Mesuré dans le navigateur** (aperçu local, page `comment-pratiquer-la-coherence-cardiaque`, un
+exercice complet) : phases INSPIREZ/EXPIREZ à 0, 5, 10, … 55 s, soit **5,0 s chacune** ; 60 ticks ;
+disque de 110 à 180 px (extrêmes atteints) ; les cinq pastilles s'allument dans l'ordre ;
+`exercise_start` à 0 s puis `exercise_complete` une seule fois à la fin ; le bloc newsletter
+s'affiche ; le bouton redevient « Recommencer ».
+⚠️ Le retour à l'état « PRÊT » survient à **59 s**, pas à 60 s : le dernier tick affiche « 1 » et
+remet aussitôt l'exercice à zéro dans la même seconde, si bien que la dernière seconde du dernier
+souffle n'est jamais montrée. Défaut cosmétique (le rythme, lui, est exact), repris tel quel pour
+rester identique à Relax ; à traiter des deux côtés ensemble si on y touche.
+
+**Vérifié après build** (300 pages, aucune erreur) : 282 URL au sitemap toutes présentes dans
+`dist/`, aucune en `noindex` ; 18 fiches artistes en `noindex` (attendu) ; aucun `<title>` de moins
+de trois mots ; 48 698 liens internes, aucun cassé ; `robots.txt` inchangé ; les 8 pages
+portent le correctif et aucune ne contient plus `if(cnt<0)`. `sw.js` non modifié, donc
+`CACHE_VERSION` inchangé (le HTML est de toute façon servi *network-first*).
+
+---
+
+*Dernière mise à jour : 2026-11-04, exercice de cohérence cardiaque ramené à son vrai rythme 5/5 (§107).*
 
