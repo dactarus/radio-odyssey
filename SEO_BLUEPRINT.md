@@ -3777,9 +3777,9 @@ La mention de l'application sur Odyssey vient de ce que la même propriété mes
 consentement. Les dispositions applicables dépendent de la configuration et de l'usage ; à valider
 par Frédéric si besoin (CNIL).
 
-**À reprendre côté Odyssey (non fait)** : la politique décrit toujours le lecteur comme un « player
-intégré (iframe) » de RadioKing, alors que le lecteur est natif depuis le 9 août. Celle de Relax dit
-déjà « le flux audio est fourni par RadioKing ».
+**Corrigé le même jour, à la demande de Frédéric** : la politique décrivait le lecteur comme un
+« player intégré (iframe) » de RadioKing, alors qu'il est natif depuis le 9 août. Elle dit désormais,
+comme celle de Relax, « le flux audio est fourni par RadioKing ».
 
 ---
 
