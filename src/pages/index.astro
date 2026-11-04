@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import NowPlaying from '../components/NowPlaying.astro';
 import QuizInvite from '../components/QuizInvite.astro';
 import { NAV_CATEGORIES } from '../data/navigation.js';
+import { GROUPE, RELAX_LANCEE, PAGE_GROUPE } from '../data/groupe.js';
 
 const title = 'Radio Odyssey – Web Radio Bien-être & Bonne Humeur 24h/24';
 const description = "Radio Odyssey, votre web radio 100% positive ! Hits des années 80, dance, easy listening, cohérence cardiaque. Gratuite, sans pub, non-stop 24h/24.";
@@ -444,6 +445,50 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+
+{/* ============================================================
+     GROUPE — encart de présentation des deux stations (§109, brief 3.4)
+
+     SANS DATE, volontairement : tant que la date d'ouverture de Radio Odyssey
+     Relax n'est pas certaine (report possible au 5 décembre), l'accueil — la
+     page la plus vue — dit « prochainement ». Le jour précis reste sur les
+     pages pilotées par DATE_LANCEMENT_RELAX (menu, page du groupe…). Le verbe
+     suit RELAX_LANCEE. Règles du brief : nom complet, aucun mot-clé de
+     détente, un seul lien vers Relax, ancre variée.
+     ============================================================ */}
+<section class="ro-section" style="padding-top:2.6rem;padding-bottom:2.6rem;">
+  <div class="container">
+    <div class="text-center mb-4">
+      <span class="section-eyebrow">Le groupe</span>
+      <h2>Deux stations, <span class="highlight">une même association</span></h2>
+    </div>
+    <div class="row justify-content-center g-4">
+      <div class="col-md-5">
+        <div class="partner-card text-center" style="height:100%;">
+          <h3 class="mb-2">Radio Odyssey</h3>
+          <p style="color:var(--ro-muted);font-size:.9rem;margin-bottom:0;">La Positive Radio : l'énergie, en direct 24&nbsp;h/24 — vous y êtes.</p>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="partner-card text-center" style="height:100%;">
+          <h3 class="mb-2">Radio Odyssey Relax</h3>
+          <p style="color:var(--ro-muted);font-size:.9rem;">La seconde station du groupe, tournée vers le calme, {RELAX_LANCEE ? 'est ouverte' : 'arrive prochainement'}.</p>
+          <a href={GROUPE.soeur.href} class="btn-ro-outline"
+             onclick="if(typeof roUmamiTrack==='function')roUmamiTrack('groupe_click',{cible:'relax',source:'accueil-encart'});">
+            {RELAX_LANCEE ? 'Écouter Radio Odyssey Relax' : 'En savoir plus sur Radio Odyssey Relax'}
+          </a>
+        </div>
+      </div>
+    </div>
+    <p class="text-center mt-4" style="margin-bottom:0;">
+      <a href={PAGE_GROUPE.href} style="color:var(--ro-purple);font-weight:700;text-decoration:none;"
+         onclick="if(typeof roUmamiTrack==='function')roUmamiTrack('groupe_click',{cible:'page-groupe',source:'accueil-encart'});">
+        Découvrir le groupe Radio Odyssey <Icon name="arrow-right" />
+      </a>
+    </p>
   </div>
 </section>
 
