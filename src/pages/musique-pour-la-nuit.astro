@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import DayScheduleNav from '../components/DayScheduleNav.astro';
+import RenvoiRelax from '../components/RenvoiRelax.astro';
 ---
 <Layout
   lang="fr"
@@ -58,6 +59,13 @@ import DayScheduleNav from '../components/DayScheduleNav.astro';
           </div>
 
           <DayScheduleNav current="/musique-pour-la-nuit.html" />
+
+          {/* ⚠️ Pas de `href` : le lien attend la page « Nuit » de Radio Odyssey Relax, dont l'adresse n'est pas encore connue. Le renseigner (href="https://relax.radio-odyssey.com/…") dès qu'elle est en ligne — ne jamais deviner l'URL (§106). */}
+          <RenvoiRelax
+            titre="Huit heures sans une parole"
+            texte="Sur Radio Odyssey Relax, de 23 h 10 à 7 h : aucun message parlé, aucune publicité, aucune coupure. Une seule tranche continue, un niveau sonore constant."
+            libelle="Découvrir la nuit sur Radio Odyssey Relax"
+          />
 
           <div class="page-cta-bar">
             <h3>Prolongez la bonne humeur toute la nuit</h3>

@@ -235,6 +235,10 @@ document.addEventListener('click', function (e) {
     roUmamiTrack('app_download_click', { page: location.pathname });
     return;
   }
+  if (a.closest('.renvoi-relax')) {
+    roUmamiTrack('relax_renvoi_click', { page: location.pathname });
+    return;
+  }
   for (var host in PLATEFORMES) {
     if (href.indexOf(host) !== -1) {
       roUmamiTrack('external_platform_click', { platform: PLATEFORMES[host], page: location.pathname });

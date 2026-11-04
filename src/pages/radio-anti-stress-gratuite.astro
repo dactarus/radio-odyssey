@@ -6,6 +6,8 @@ import Sidebar from '../components/Sidebar.astro';
 import ContentIllustration from '../components/ContentIllustration.astro';
 import AuthorReview from '../components/AuthorReview.astro';
 import SourcesBlock from '../components/SourcesBlock.astro';
+import RenvoiRelax from '../components/RenvoiRelax.astro';
+import { GROUPE } from '../data/groupe.js';
 import { DATE_REVISION_BIEN_ETRE_LABEL, SOURCES_COHERENCE_CARDIAQUE } from '../data/reviewer.js';
 ---
 <Layout
@@ -103,6 +105,12 @@ import { DATE_REVISION_BIEN_ETRE_LABEL, SOURCES_COHERENCE_CARDIAQUE } from '../d
           </div>
 
           <SourcesBlock sources={SOURCES_COHERENCE_CARDIAQUE} />
+
+          <RenvoiRelax
+            titre="Aller plus loin"
+            texte="Radio Odyssey Relax prolonge cette écoute avec dix-sept séquences de respiration guidée par jour, de 7 h à 23 h, préconisées par Elisabeth Bélot-Grimaud, docteure en psychologie cognitive."
+            href={GROUPE.soeur.href}
+          />
 
           <div class="page-cta-bar">
             <h3>Rel&#226;chez la pression maintenant &#8212; gratuitement</h3>
