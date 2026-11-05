@@ -3968,7 +3968,30 @@ Si RadioKing ne permet pas d'ouvrir la radio gratuitement avant le 28 novembre, 
 rapide, la date d'Odyssey est désormais dans une seule constante ; elle vit encore sur trois autres
 supports (site Relax, appli, documents) — voir `groupe.js`.
 
+### Signalement Bing sur Relax (5 novembre) : trois corrections côté `radio-odyssey-relax`
+
+Bing Webmaster Tools a signalé « 1 problème SEO/GEO » sur `relax.radio-odyssey.com` : **une image sans texte
+alternatif descriptif**. C'était le logo du halo de respiration de l'accueil (`alt=""`), la seule des sept
+pages concernée. Corrigé (commit `3751023`), puis deux écarts relevés au passage (commit `e726200`) :
+
+- **`isPartOf` retiré** de la `RadioStation` de Relax. Cette propriété n'est définie que pour les œuvres
+  (même règle qu'au point 3.1 côté Odyssey) ; `parentOrganization` reste, c'est la propriété valide entre
+  organisations.
+- **`public/llms.txt` créé** côté Relax (il répondait 404, Odyssey en a un). Contenu : station, deux rythmes
+  avec leurs bornes (4/6 de 7 h à 20 h, 4/8 à 21 h, 22 h, 23 h, rien après), éditeur, lien vers la page du
+  groupe, pages de contenu, mentions. **Volontairement sans date de lancement**, comme celui d'Odyssey.
+
+Contrôlés **en ligne** après déploiement : `alt=""` = 0, `isPartOf` = 0, `/llms.txt` = 200. ⚠️ Deux pièges
+rencontrés : (1) l'alerte Bing ne disparaît qu'à la prochaine exploration (ou par une demande de
+réindexation dans l'inspection d'URL) ; (2) le jour du déploiement, Vercel a eu un incident de builds
+retardés (déploiement « Initializing » pendant ~17 min au lieu de ~10 s) et mes requêtes `curl` répétées ont
+déclenché son écran anti-robots : **vérifier en ligne avec un vrai navigateur, pas en boucle avec `curl`.**
+Le code collé depuis Bing montrait une version antérieure de l'accueil de Relax (« 17 novembre »,
+identifiants factices) : c'est l'état exploré avant les corrections du 4-5 novembre, pas la version en ligne.
+Même constat pour une affirmation de « Brave » disant qu'Odyssey affichait encore le 17 novembre : aucune
+occurrence visible côté Odyssey, Relax ou appli (seuls des commentaires de code rappellent le décalage).
+
 ---
 
-*Dernière mise à jour : 2026-11-05, article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+*Dernière mise à jour : 2026-11-05, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
