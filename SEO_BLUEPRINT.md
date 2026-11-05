@@ -3846,6 +3846,12 @@ page respiration (fiche d'Elisabeth, introduction de la vidéo partenaire, un pa
 de six cycles). Le reste est du texte commun volontaire (avertissement santé, attribution, deux
 références) ou de l'interface (alerte navigateur, bandeau cookies), ou des pages légales exclues.
 
+**Transmission à la session de Relax (5 novembre)** : brief **`BRIEF-RELAX-REECRITURES-DOUBLONS.md`**
+(les trois passages, plus une phrase d'attribution à faible enjeu, avec texte actuel, piste de réécriture
+et garde-fous — dont la relecture d'Elisabeth avant publication). L'audit est **rejouable** :
+`python3 -I scripts/audit-doublons.py` (les deux sites construits ; il sépare le texte à revoir, le texte
+volontairement commun et l'interface). Attendu après réécriture : A1 à A3 disparus de la liste.
+
 ### 3.2 — La page du groupe : `/le-groupe-radio-odyssey.html` (texte validé par Frédéric le 5 novembre)
 
 Texte proposé puis validé, adresse figée. Contenu : une association loi 1901, deux stations (Radio
