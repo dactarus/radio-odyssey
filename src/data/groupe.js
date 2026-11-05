@@ -31,12 +31,30 @@ export const RELAX_LANCEE = false;
   novembre : pour le moment on garde le 28 novembre). Si la date bouge, les
   corriger tous.
 */
-export const DATE_LANCEMENT_RELAX = '28 novembre 2026';
+// SOURCE UNIQUE : la forme ISO. Les libellés français en sont DÉRIVÉS (« 28 novembre
+// 2026 », « samedi 28 novembre 2026 ») — un report ne change que cette ligne.
+export const DATE_LANCEMENT_RELAX_ISO = '2026-11-28';
+const _jour = new Date(`${DATE_LANCEMENT_RELAX_ISO}T12:00:00`);
+export const DATE_LANCEMENT_RELAX = _jour.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+export const JOUR_LANCEMENT_RELAX = _jour.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+
+// Garde-fou : un environnement de build sans les données de langue française
+// écrirait « November » dans le site. On préfère un build qui échoue.
+if (!/^\d{1,2} (janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre) \d{4}$/.test(DATE_LANCEMENT_RELAX)) {
+  throw new Error(`Date de lancement mal formatée (« ${DATE_LANCEMENT_RELAX} ») : l'environnement de build n'a pas les données de langue française.`);
+}
 
 // Page de présentation du groupe (§109, brief 3.2). Adresse figée.
 export const PAGE_GROUPE = {
   href: '/le-groupe-radio-odyssey.html',
   label: 'Le groupe Radio Odyssey',
+};
+
+// Article d'annonce du lancement (§109, brief 3.3). La page N'EXISTE PAS tant que
+// RELAX_LANCEE est faux (route dynamique sans chemin) : elle naît avec le drapeau.
+export const ARTICLE_LANCEMENT = {
+  href: '/ouverture-de-radio-odyssey-relax.html',
+  label: 'Radio Odyssey Relax est ouverte',
 };
 
 export const GROUPE = {

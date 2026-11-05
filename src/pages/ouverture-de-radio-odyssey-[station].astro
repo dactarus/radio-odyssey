@@ -1,0 +1,126 @@
+---
+/*
+  Article d'annonce de l'ouverture de Radio Odyssey Relax (§109, brief « faire
+  exister Relax dans le référencement », 3.3).
+
+  « À publier le jour du lancement public, pas avant. » D'où le mécanisme :
+  c'est une route DYNAMIQUE dont getStaticPaths ne renvoie AUCUN chemin tant que
+  RELAX_LANCEE est faux. Avant le lancement, la page n'existe pas dans le build
+  (ni dans le site en ligne) ; le jour J, le même geste qui passe RELAX_LANCEE à
+  `true` — menu, renvois, page du groupe — la fait naître. Le paramètre
+  `station` ne sert qu'à produire l'adresse exacte
+  /ouverture-de-radio-odyssey-relax.html.
+
+  ⚠️ Le jour J, ajouter aussi l'URL au sitemap (écrit à la main) — voir CLAUDE.md,
+  « Jour du lancement ». Une URL de sitemap sans page est une erreur ; une page
+  sans sitemap n'existe pas pour Google.
+
+  La date vient de groupe.js (DATE_LANCEMENT_RELAX_ISO) : si le lancement glisse,
+  l'article suit sans retouche. Texte écrit au PASSÉ (« a ouvert ») : il sera lu
+  bien après le jour J.
+
+  Règles du brief : nom complet « Radio Odyssey Relax », jamais « Relax » seul ;
+  aucun mot-clé de détente (ni « relaxation », « détente », « dormir »,
+  « cohérence cardiaque », « bien-être »…) ; ancres des liens variées.
+*/
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import {
+  GROUPE, RELAX_LANCEE, PAGE_GROUPE, ARTICLE_LANCEMENT,
+  DATE_LANCEMENT_RELAX, DATE_LANCEMENT_RELAX_ISO, JOUR_LANCEMENT_RELAX,
+} from '../data/groupe.js';
+
+export function getStaticPaths() {
+  return RELAX_LANCEE ? [{ params: { station: 'relax' } }] : [];
+}
+
+const title = `Radio Odyssey Relax est ouverte : la seconde station du groupe Radio Odyssey`;
+const description = `Le ${JOUR_LANCEMENT_RELAX}, le groupe Radio Odyssey a ouvert Radio Odyssey Relax, sa seconde station : gratuite, sans publicité, avec une séquence guidée à chaque heure ronde.`;
+const A = 'color:var(--ro-purple);font-weight:700;';
+---
+<Layout
+  lang="fr"
+  title={title}
+  description={description}
+  articleDatePublished={DATE_LANCEMENT_RELAX_ISO}
+>
+  <PageHero
+    gradientFrom="#7B2FBE"
+    gradientTo="#FF9A3C"
+    homeLabel="🏠 Accueil"
+    breadcrumbCurrent={ARTICLE_LANCEMENT.label}
+    title="Radio Odyssey Relax est ouverte"
+    text={`Le ${JOUR_LANCEMENT_RELAX}, le groupe Radio Odyssey a ouvert sa seconde station.`}
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="17" cy="24" r="10" stroke="white" stroke-width="2.2"/><circle cx="31" cy="24" r="10" stroke="white" stroke-width="2.2"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <article>
+            <div class="content-card">
+              <p style="font-size:.86rem;color:var(--ro-muted);margin-bottom:.8rem;">
+                Publié le <time datetime={DATE_LANCEMENT_RELAX_ISO}>{DATE_LANCEMENT_RELAX}</time> par l'association Radio Odyssey
+              </p>
+              <h2>Une seconde antenne pour le groupe</h2>
+              <p>Née en 1994 dans le Pas-de-Calais, de retour sur le web depuis janvier 2025, l'association Radio Odyssey a ouvert le <strong>{JOUR_LANCEMENT_RELAX}</strong> une seconde station : <strong>Radio Odyssey Relax</strong>.</p>
+              <p style="margin-bottom:0;">Radio Odyssey garde l'énergie, Radio Odyssey Relax prend le calme. Même association, même exigence musicale, deux façons d'écouter. <a href={PAGE_GROUPE.href} style={A}>Découvrir le groupe Radio Odyssey →</a></p>
+            </div>
+
+            <div class="content-card">
+              <h2>Ce que vous y trouverez</h2>
+              <ul>
+                <li>Une musique apaisante, <strong>gratuite et sans publicité</strong>.</li>
+                <li>Une <strong>séquence guidée à chaque heure ronde de 7&nbsp;h à 20&nbsp;h</strong>, puis à 21&nbsp;h, 22&nbsp;h et 23&nbsp;h. La voix qui les guide est celle d'<a href="/elisabeth-belot-grimaud-radio-odyssey.html" style={A}>Elisabeth Bélot-Grimaud</a>, docteure en psychologie cognitive et partenaire santé du groupe, qui les préconise.</li>
+                <li>Une nuit sans message parlé ni publicité, de 23&nbsp;h&nbsp;10 à 7&nbsp;h : <a href="https://relax.radio-odyssey.com/la-nuit.html" style={A}>la nuit sur Radio Odyssey Relax</a>.</li>
+              </ul>
+              <p style="margin-bottom:0;">Les tranches de la journée, du réveil jusqu'à la nuit, sont détaillées dans <a href="https://relax.radio-odyssey.com/programmes.html" style={A}>la grille de Radio Odyssey Relax</a>.</p>
+            </div>
+
+            <div class="content-card">
+              <h2>Où l'écouter</h2>
+              <p style="margin-bottom:0;">En direct sur <a href={GROUPE.soeur.href} style={A}>relax.radio-odyssey.com</a>, sans rien installer, et dans <a href="https://app.radio-odyssey.com/" style={A}>l'application Radio Odyssey</a>, qui propose désormais les deux stations.</p>
+            </div>
+          </article>
+
+          <RelatedPages
+            alsoLike={[
+              { href: PAGE_GROUPE.href, label: 'Le groupe Radio Odyssey', desc: 'Deux stations, une même association' },
+              { href: '/histoire-de-radio-odyssey.html', label: "L'Histoire de Radio Odyssey", desc: "De 1994 à aujourd'hui" },
+              { href: '/elisabeth-belot-grimaud-radio-odyssey.html', label: 'Notre Partenaire Elisabeth Bélot-Grimaud', desc: 'La voix des séquences guidées' },
+            ]}
+            associated={[
+              { href: '/faq-radio-odyssey.html', label: 'Questions fréquentes' },
+              { href: '/suivez-le-guide-radio-odyssey.html', label: 'Suivez le Guide' },
+            ]}
+          />
+
+          <div class="page-cta-bar">
+            <h3>Deux stations, à vous de choisir</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;">
+              <a href={GROUPE.soeur.href} class="btn-hero"
+                 onclick="if(typeof roUmamiTrack==='function')roUmamiTrack('groupe_click',{cible:'relax',source:'article-annonce'});">
+                <Icon name="broadcast-pin" /> Écouter Radio Odyssey Relax
+              </a>
+              <a href="#" onclick="roPlayNow(event)" class="btn-hero-ghost">
+                <Icon name="arrow-right" /> Écouter Radio Odyssey
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

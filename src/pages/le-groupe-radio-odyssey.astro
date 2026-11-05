@@ -31,7 +31,7 @@ import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
-import { GROUPE, RELAX_LANCEE, DATE_LANCEMENT_RELAX, PAGE_GROUPE } from '../data/groupe.js';
+import { GROUPE, RELAX_LANCEE, DATE_LANCEMENT_RELAX, PAGE_GROUPE, ARTICLE_LANCEMENT } from '../data/groupe.js';
 
 const title = 'Le groupe Radio Odyssey : deux stations, une association';
 const description = 'Radio Odyssey et Radio Odyssey Relax, les deux stations du groupe : une même association née en 1994, une même exigence musicale.';
@@ -122,6 +122,8 @@ const aboutPage = {
 
           <RelatedPages
             alsoLike={[
+              // L'article d'annonce n'existe qu'après le lancement (RELAX_LANCEE) : jamais de lien vers une page absente.
+              ...(RELAX_LANCEE ? [{ href: ARTICLE_LANCEMENT.href, label: ARTICLE_LANCEMENT.label, desc: "L'annonce de l'ouverture" }] : []),
               { href: '/histoire-de-radio-odyssey.html', label: "L'Histoire de Radio Odyssey", desc: 'De 1994 à la web radio d\'aujourd\'hui' },
               { href: '/pourquoi-radio-odyssey-est-differente.html', label: 'Pourquoi Radio Odyssey est Différente', desc: 'Notre mission et nos choix' },
               { href: '/suivez-le-guide-radio-odyssey.html', label: 'Suivez le Guide', desc: 'Six façons de découvrir Radio Odyssey' },
