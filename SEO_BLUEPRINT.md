@@ -3991,7 +3991,34 @@ identifiants factices) : c'est l'état exploré avant les corrections du 4-5 nov
 Même constat pour une affirmation de « Brave » disant qu'Odyssey affichait encore le 17 novembre : aucune
 occurrence visible côté Odyssey, Relax ou appli (seuls des commentaires de code rappellent le décalage).
 
+### Lien permanent vers l'autre station dans la barre du haut (5 novembre)
+
+Demande de Frédéric : pouvoir passer d'une station à l'autre **depuis n'importe quelle page**. Un bouton
+arrondi (logo + nom de l'autre station) est posé à l'extrême droite de la barre `#topRadioBar`, des deux côtés
+(commits `b38f63f` Odyssey, `25cf063` Relax) : **« Radio Odyssey Relax » chez Odyssey, « Radio Odyssey » chez
+Relax.** La barre portant `transition:persist`, le lien est rendu une fois et vaut pour toutes les pages.
+
+- **Ordinateur** : logo + nom. **Mobile (≤ 991 px)** : logo seul, à gauche du menu — le nom est masqué pour ne pas
+  écraser le lecteur. ⚠️ À 375 px, le texte du lecteur de Relax est plus tronqué (« Prochainemen… » avant
+  lancement) : le logo prend 43 px. Si cela gêne, réduire le logo avant de retirer le lien.
+- **Pages françaises seulement chez Odyssey** (comme le menu « Groupe ») : Relax n'a pas de pages anglaises.
+- **Visible dès maintenant chez Odyssey, avant le lancement** (comme l'entrée de menu, qui porte déjà la date).
+  Pour ne l'afficher qu'à partir du 28 novembre : une condition sur `RELAX_LANCEE` autour du lien dans
+  `Header.astro`. L'infobulle (`title`) reprend `GROUPE.soeur.desc`, donc la date suit `groupe.js`.
+- **Texte alternatif de l'image = nom de la station** (jamais `alt=""` : c'est ce que Bing venait de signaler,
+  voir le bloc ci-dessus). Le nom visible est en `aria-hidden` pour ne pas être lu deux fois.
+- **Mesure** : événement Umami existant `groupe_click`, avec `cible` (`relax` / `odyssey`) et **`source: 'barre'`**.
+  À lire après quelques jours : c'est la réponse à « les visiteurs passent-ils d'une station à l'autre ? ».
+- **Fichiers** : `src/components/Header.astro` (balisage + `<style is:global>`, jumeaux des deux côtés) et un
+  logo de 72 px en webp (~2 Ko) dans chaque dépôt — `logo-relax-72.webp` chez Odyssey, `logo-odyssey-72.webp`
+  chez Relax. Les images sont **copiées**, pas appelées sur l'autre domaine.
+- **Référencement** : lien de gabarit (nom de la station en ancre, sur toutes les pages), qui s'ajoute au lien du
+  menu « Groupe ». Pas de `nofollow` ; aucune canonique ni `SAME_AS` touchés. Il ne contredit pas la règle
+  « un seul lien vers Relax par page » du point 3.4, qui vise les liens **dans le texte**.
+- ⚠️ **Si la barre change**, les deux `Header.astro` doivent rester d'accord : même classe `bar-groupe`, même
+  gabarit, mêmes mesures.
+
 ---
 
-*Dernière mise à jour : 2026-11-05, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+*Dernière mise à jour : 2026-11-05, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
