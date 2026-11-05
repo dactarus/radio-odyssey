@@ -3852,6 +3852,13 @@ et garde-fous — dont la relecture d'Elisabeth avant publication). L'audit est 
 `python3 -I scripts/audit-doublons.py` (les deux sites construits ; il sépare le texte à revoir, le texte
 volontairement commun et l'interface). Attendu après réécriture : A1 à A3 disparus de la liste.
 
+**Réécritures publiées (5 novembre, relues et validées par Elisabeth Bélot-Grimaud)** : `radio-odyssey-relax`,
+commit `15c985b` — fiche d'Elisabeth sur `/pro` (résumée, avec renvoi vers sa fiche chez Odyssey),
+introduction de la vidéo partenaire, paragraphe sur les six cycles de `/respiration-4-6` (raccourci,
+renvoi vers « les bienfaits de la cohérence cardiaque »), phrase d'attribution de l'accueil et de la page
+respiration. **L'audit rejoué donne 0 bloc à revoir.** Vérifié en ligne : nouveaux textes servis, anciens retirés,
+pages en 200, `lastmod` du sitemap à jour. Point 3.5 **terminé**.
+
 ### 3.2 — La page du groupe : `/le-groupe-radio-odyssey.html` (texte validé par Frédéric le 5 novembre)
 
 Texte proposé puis validé, adresse figée. Contenu : une association loi 1901, deux stations (Radio
