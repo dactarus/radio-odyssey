@@ -3915,6 +3915,38 @@ voiture, enceinte), `suivez-le-guide`, `pourquoi-radio-odyssey-est-differente`. 
 Radio Odyssey » (question fréquente et chapô), alors qu'elle est aussi la partenaire santé du groupe, donc
 de Relax. Non modifié : à arbitrer avec elle.
 
+### 3.3 — L'article d'annonce du lancement : prêt, invisible jusqu'au jour J (2026-11-05)
+
+Page `src/pages/ouverture-de-radio-odyssey-[station].astro` → **`/ouverture-de-radio-odyssey-relax.html`**.
+« À publier le jour du lancement, pas avant » : c'est une **route dynamique dont `getStaticPaths` ne renvoie
+aucun chemin tant que `RELAX_LANCEE` est faux**. Avant le lancement, la page n'existe ni dans le build ni
+en ligne ; elle naît avec le même geste qui fait apparaître le menu, les renvois et la page du groupe.
+Vérifié dans les deux états : drapeau faux → aucune page, aucun lien, aucun avertissement de build ;
+drapeau vrai → page, `Article` (`datePublished` ISO), lien depuis la page du groupe.
+
+- **Texte au passé** (« a ouvert le samedi 28 novembre 2026 ») : il sera lu bien après le jour J. Contenu :
+  une seconde antenne pour le groupe ; ce qu'on y trouve (gratuite et sans publicité, une séquence guidée
+  à chaque heure ronde de 7 h à 20 h puis à 21 h, 22 h, 23 h — avec la voix d'Elisabeth Bélot-Grimaud —,
+  une nuit sans message parlé de 23 h 10 à 7 h) ; où l'écouter (site de Relax et application).
+- **Marque et règles du brief** : « Radio Odyssey Relax » en entier ; aucun mot de détente ; ancres variées
+  (« la nuit sur Radio Odyssey Relax », « la grille de Radio Odyssey Relax », « relax.radio-odyssey.com »,
+  « Écouter Radio Odyssey Relax »).
+- **La date devient dérivée** : `groupe.js` ne porte plus qu'une source, `DATE_LANCEMENT_RELAX_ISO`
+  (`2026-11-28`) ; « 28 novembre 2026 » et « samedi 28 novembre 2026 » en sont calculés, avec un garde-fou
+  de build si l'environnement n'a pas les données de langue française. **Un report au 5 décembre ne change
+  que cette ligne** (côté Odyssey).
+
+**Jour du lancement, côté Odyssey** (voir aussi `BRANCHEMENT-FLUX.md` dans `radio-odyssey-relax`) :
+1. `RELAX_LANCEE = true` dans `src/data/groupe.js` (et la date ISO si elle a glissé).
+2. **Ajouter l'article au `sitemap.xml`** (écrit à la main) : `<loc>https://www.radio-odyssey.com/ouverture-de-radio-odyssey-relax.html</loc>`,
+   `lastmod` = la date ISO, `monthly`, `0.8`.
+3. `npm run build`, contrôles de publication (dont « toutes les URL du sitemap existent dans `dist/` »), push.
+4. Vérifier en ligne : l'article répond 200, la page du groupe dit « a ouvert », l'accueil dit « est ouverte »,
+   les cinq renvois sont visibles.
+5. Search Console : *Inspection de l'URL* sur l'article, puis *Demander l'indexation*.
+
+---
+
 ### Décision du 5 novembre : les profils de Relax quittent l'entité « association »
 
 Le Layout de Relax redéclarait l'`Organization` d'Odyssey (même `@id`) avec **les profils de Relax**
@@ -3931,5 +3963,5 @@ supports (site Relax, appli, documents) — voir `groupe.js`.
 
 ---
 
-*Dernière mise à jour : 2026-11-05, mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+*Dernière mise à jour : 2026-11-05, article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
