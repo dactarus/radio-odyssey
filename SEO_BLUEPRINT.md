@@ -3964,7 +3964,7 @@ Relax, qui est leur place.
 ### Information sur le calendrier (Frédéric, 5 novembre)
 
 Si RadioKing ne permet pas d'ouvrir la radio gratuitement avant le 28 novembre, le lancement serait
-**reporté au samedi 5 décembre 2026**. **Pour le moment, on garde le 28 novembre.** Le scénario est inscrit au journal des décisions de Relax sous **D42** (ouverture technique le 28 novembre, lancement public le 5 décembre ; décision conditionnelle). Pour qu'un report soit
+**reporté au samedi 5 décembre 2026**. **Mise à jour le même jour (D43) : RadioKing a ACCORDÉ l'offre gratuite** — Radio Odyssey Relax existe chez RadioKing avant l'abonnement Start du **16 novembre** (tarif Black Friday, code en primeur) ; **le lancement reste le 28 novembre**, avec près de deux semaines de rodage au lieu d'un jour ; le repli ci-dessous n'a plus lieu d'être sauf autre obstacle. Seul bémol : 1 Go d'espace avant le 16. *Texte d'origine :* **Pour le moment, on garde le 28 novembre.** Le scénario est inscrit au journal des décisions de Relax sous **D42** (ouverture technique le 28 novembre, lancement public le 5 décembre ; décision conditionnelle). Pour qu'un report soit
 rapide, la date d'Odyssey est désormais dans une seule constante ; elle vit encore sur trois autres
 supports (site Relax, appli, documents) — voir `groupe.js`.
 
