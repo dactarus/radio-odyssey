@@ -26,10 +26,10 @@ export const RELAX_LANCEE = false;
   ⚠️ Elle vit aussi sur trois autres supports : `DATE_LANCEMENT` dans
   radio-odyssey-relax/src/data/station.js, `DATE_LANCEMENT_RELAX` dans l'appli
   (Appli Radio Odyssey V8/index.html) et les documents du dossier Relax.
-  Le 5 novembre (D44), RadioKing a REFUSÉ l'offre gratuite : la radio n'existe qu'à la
-  souscription, le 16 novembre si le code Black Friday est accordé en primeur, sinon
-  le 27. Le lancement reste affiché au 28 novembre ; le repli du SAMEDI 5 DÉCEMBRE
-  2026 (journal Relax D42) redevient d'actualité si la souscription n'a lieu que le 27.
+  Le 5 novembre (D44, D45), RadioKing a REFUSÉ l'offre gratuite mais ACCORDE le code Black
+  Friday pour le 16 novembre : la radio est créée ce jour-là, le lancement reste le 28
+  novembre. Le repli du SAMEDI 5 DÉCEMBRE 2026 (journal Relax D42) n'est qu'un filet de
+  sécurité.
   Si la date bouge, les corriger tous.
 */
 // SOURCE UNIQUE : la forme ISO. Les libellés français en sont DÉRIVÉS (« 28 novembre
