@@ -3917,7 +3917,7 @@ de Relax. Non modifié : à arbitrer avec elle.
 
 ### 3.3 — L'article d'annonce du lancement : prêt, invisible jusqu'au jour J (2026-11-05)
 
-Page `src/pages/ouverture-de-radio-odyssey-[station].astro` → **`/ouverture-de-radio-odyssey-relax.html`**.
+Page `src/pages/ouverture-de-radio-odyssey-[station].astro` → **`/ouverture-de-radio-odyssey-relax.html`** (adresse validée par Frédéric le 5 novembre, figée).
 « À publier le jour du lancement, pas avant » : c'est une **route dynamique dont `getStaticPaths` ne renvoie
 aucun chemin tant que `RELAX_LANCEE` est faux**. Avant le lancement, la page n'existe ni dans le build ni
 en ligne ; elle naît avec le même geste qui fait apparaître le menu, les renvois et la page du groupe.

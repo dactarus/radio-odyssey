@@ -50,7 +50,9 @@ export const PAGE_GROUPE = {
   label: 'Le groupe Radio Odyssey',
 };
 
-// Article d'annonce du lancement (§109, brief 3.3). La page N'EXISTE PAS tant que
+// Article d'annonce du lancement (§109, brief 3.3). Adresse validée par Frédéric le
+// 5 novembre 2026 : FIGÉE (une fois indexée, elle ne se change plus sans redirection 301).
+// La page N'EXISTE PAS tant que
 // RELAX_LANCEE est faux (route dynamique sans chemin) : elle naît avec le drapeau.
 export const ARTICLE_LANCEMENT = {
   href: '/ouverture-de-radio-odyssey-relax.html',
