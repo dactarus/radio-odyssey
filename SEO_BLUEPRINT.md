@@ -4018,7 +4018,26 @@ Relax.** La barre portant `transition:persist`, le lien est rendu une fois et va
 - ⚠️ **Si la barre change**, les deux `Header.astro` doivent rester d'accord : même classe `bar-groupe`, même
   gabarit, mêmes mesures.
 
+### Décision du 5 novembre : pas de version anglaise de Relax avant le lancement
+
+Question de Frédéric, par souci de cohérence avec les pages anglaises d'Odyssey : Relax devrait-il aussi exister
+en anglais ? **Réponse : pas avant le 28 novembre.** Aucun code touché.
+
+- **Les séquences guidées sont dites en français** (confirmé par Frédéric). Un auditeur anglophone entendrait la
+  voix sans la comprendre ; ne resteraient que le rythme et la musique. Promesse plus faible que sur le site
+  français, avec un risque sur la durée d'écoute, mesure sur laquelle tout le reste est arbitré.
+- **L'asymétrie actuelle est voulue, pas un oubli** : une page anglaise d'Odyssey n'affiche un lien que si sa cible
+  existe en anglais, donc le bouton de la barre (ci-dessus) n'y figure pas. Le §81 a retenu une *sélection* de
+  portes d'entrée anglophones, pas une traduction du site ; Odyssey en a déjà deux sur le thème de Relax
+  (*heart-coherence-breathing-radio*, *heart-coherence-breathing-at-work*) et *european-chill-radio*.
+- **Le code de Relax est prêt** (`lang`, `hreflang`, `UI.en` minimal dans `i18n.js`) : le coût serait l'écriture et
+  la relecture, pas la technique.
+- **À reprendre après le lancement**, avec les données d'Umami et de la Search Console : y a-t-il des visiteurs
+  anglophones sur Relax ? Si oui, **une seule page anglaise** (accueil), qui **dit clairement que les séquences
+  sont en français**, renvoie vers les pages anglaises d'Odyssey sur la respiration, avec `hreflang` ; le bouton
+  de la barre réapparaîtrait alors sur les pages anglaises d'Odyssey. **Aucune traduction complète.**
+
 ---
 
-*Dernière mise à jour : 2026-11-05, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+*Dernière mise à jour : 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
