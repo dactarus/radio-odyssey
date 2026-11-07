@@ -4134,5 +4134,45 @@ l'antenne (8 novembre), comme sa fiche qui annonce déjà la date.
 
 ---
 
-*Dernière mise à jour : 2026-11-07, Découvertes visibles : menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+## 113. Les Découvertes visibles aussi en anglais : page d'ensemble, menu, accueil (2026-11-07)
+
+Suite du §112, à la demande de Frédéric : même difficulté à trouver les artistes mis en avant sur le
+site anglais. **Pied de page français : rien à faire** — « Découvertes Radio Odyssey » y figurait déjà,
+le pied de page affichant les 4 premières pages de chaque catégorie et le §112 l'avait remontée en 3ᵉ.
+
+Côté anglais, **il n'existait pas de page d'ensemble** (la limite signalée au §104). Créée :
+`/en/discoveries.html`, jumelle de `decouvertes-radio-odyssey.astro`, qui ne liste que les fiches
+réellement traduites (`discoveries-en.js` : Åírös, Azizzi Romeo, Tom York), la plus récente d'abord.
+`hreflang` réciproque fr / en / x-default (le hub français déclare désormais son jumeau).
+
+**Une phrase adaptée, pas traduite** : la page française affirme « il n'existe parfois aucune biographie
+complète en français », ce qui ne dit rien d'un lecteur anglophone et n'est pas vérifié artiste par
+artiste (cf. §105). Le bloc anglais devient « A page for each artist » et ne décrit que la méthode
+(informations de première main, données de diffusion réelles). Le reste est traduit fidèlement ; texte
+validé par Frédéric avant publication.
+
+**Autres changements** :
+- entrée « Discoveries » dans le groupe « Artists » de `EN_NAV_CATEGORIES` (`i18n.js`), en 2ᵉ position :
+  le menu et le pied de page anglais affichent **toutes** les pages d'un groupe (`apercu = 99`), donc
+  aucune page n'est sortie du menu — contrairement au français (§112) ;
+- `DecouvertesAccueil.astro` devient bilingue : props `lang` et `variante` (`section` pleine largeur en
+  français, `carte` dans la colonne de l'accueil anglais), comme `NowPlaying.astro`. Côté anglais, il ne
+  montre que les fiches traduites, avec les libellés de genre et d'origine anglais ;
+- chaque fiche anglaise renvoie vers le hub anglais (le commentaire du gabarit, qui disait le hub
+  inexistant en anglais, est corrigé) ;
+- URL au `sitemap.xml`.
+
+**Limite assumée** : les quatre autres Découvertes (Charlie-Lou, Tree Gees, Tony Jay, Rémi Dorage) n'ont
+pas de version anglaise et n'apparaissent donc pas côté anglais. Tree Gees (groupe italien disco-funk)
+serait le candidat naturel si Frédéric veut en traduire une de plus (même règle qu'aux §104-105 : une
+traduction, jamais un fait nouveau).
+
+**Vérifié après build (304 pages, aucune erreur)** : hub anglais généré, `lang="en"`, sans `noindex`,
+canonical correct, `hreflang` réciproque sur les deux hubs, seuls liens hors `/en` = sélecteur de langue et
+pages légales (exceptions prévues §82), bandeau présent sur `/en.html`, 286 URL au sitemap toutes
+présentes dans `dist/`.
+
+---
+
+*Dernière mise à jour : 2026-11-07, Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 

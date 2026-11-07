@@ -8,10 +8,10 @@
   `discoveries-en.js`, et c'est la présence d'un slug dans ce fichier qui
   décide qu'une page anglaise existe.
 
-  ⚠️ Aucun lien vers le français depuis cette page (§82) : le hub
-  « Découvertes » n'existe qu'en français, il n'est donc pas lié ici. Le
-  visiteur qui veut la page française passe par le sélecteur de langue,
-  alimenté par `altLangs`.
+  ⚠️ Aucun lien vers le français depuis cette page (§82). Depuis le §113, le
+  hub « Découvertes » existe en anglais (`/en/discoveries.html`) et est lié
+  ici. Le visiteur qui veut la page française passe par le sélecteur de
+  langue, alimenté par `altLangs`.
 */
 import Icon from '../../components/Icon.astro';
 import Layout from '../../layouts/Layout.astro';
@@ -146,6 +146,7 @@ const faq = [
             lang="en"
             alsoLike={[]}
             associated={[
+              { href: '/en/discoveries.html', label: 'All Radio Odyssey Discoveries' },
               { href: en.linkHref, label: en.linkLabel },
               { href: '/en/artists-on-radio-odyssey.html', label: 'All the artists we play' },
               { href: '/en.html', label: 'English home' },

@@ -18,6 +18,7 @@ import FAQBlock from '../../components/FAQBlock.astro';
 import { EN_NAV_CATEGORIES } from '../../data/i18n.js';
 import NowPlaying from '../../components/NowPlaying.astro';
 import QuizInvite from '../../components/QuizInvite.astro';
+import DecouvertesAccueil from '../../components/DecouvertesAccueil.astro';
 
 // Les huit quiz anglais, pour l'invitation de l'accueil : les cinq décennies
 // et les trois quiz thématiques — records (§94), noms de scène (§96) et
@@ -90,6 +91,8 @@ const faq = [
           </div>
 
           <QuizInvite lang="en" href="/en/music-quizzes.html" quiz={QUIZ_EN} boutonNombre={8} />
+
+          <DecouvertesAccueil lang="en" variante="carte" />
 
           <div class="content-card">
             <h2>Where to start</h2>
