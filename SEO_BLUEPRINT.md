@@ -4104,5 +4104,25 @@ dans `dist/`, 51 pages anglaises.
 
 ---
 
+## 112. Les Découvertes enfin visibles : menu, puis accueil (2026-11-07)
+
+Constat de Frédéric (responsable de la radio) : impossible de trouver les pages Découvertes depuis
+l'accueil. Vérifié : `/decouvertes-radio-odyssey.html` n'était liée **ni depuis l'accueil, ni depuis le
+menu** (8ᵉ page sur 10 de « Artistes & Styles », et le menu n'affiche que les 5 premières, §60) ;
+16 pages seulement y renvoyaient, surtout des fiches artistes et des articles Coulisses. Accès réel :
+tuile « Artistes & Styles » → page de catégorie → 8ᵉ ligne.
+
+**Lot 1 — menu (publié)** : « Découvertes Radio Odyssey » passe en 3ᵉ position de « Artistes & Styles »
+(`navigation.js`), donc dans l'aperçu du menu bureau et mobile, sur toutes les pages. Contrepartie :
+**« Radio Pop en Ligne » sort de l'aperçu** (elle passe de la 3ᵉ à la 6ᵉ place) ; elle reste sur la page
+de catégorie, le plan du site et les fiches. Choisie plutôt que « Radio Dance & Électro » (cœur de
+l'antenne) ou « Radio Pop Française ». ⚠️ **Si Radio Pop en Ligne est une page de capture importante
+dans la Search Console, la remonter et sortir une autre page** : le maillage du menu lui donnait un lien
+sur chaque page du site.
+
+**Lot 2 — bandeau sur l'accueil** : en cours, texte à valider par Frédéric avant publication.
+
+---
+
 *Dernière mise à jour : 2026-11-07, Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
