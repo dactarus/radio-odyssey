@@ -1,0 +1,137 @@
+---
+/*
+  Page d'ensemble anglaise des « Découvertes » (§113).
+
+  Jumelle de `decouvertes-radio-odyssey.astro`, mais elle ne liste que les
+  fiches qui existent réellement en anglais (`discoveries-en.js`) : un lien vers
+  une fiche française depuis une page anglaise est proscrit (§82).
+
+  ⚠️ Texte traduit de la page française, sauf une phrase volontairement
+  adaptée : la page française dit qu'il n'existe parfois « aucune biographie
+  complète en français », ce qui ne dit rien d'un lecteur anglophone et n'est
+  pas vérifié pour chaque artiste (cf. §105, Tom York). Ici, seule la méthode
+  est décrite.
+*/
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import { DISCOVERIES } from '../../data/discoveries.js';
+import { DISCOVERIES_EN, SLUGS_DISCOVERIES_EN } from '../../data/discoveries-en.js';
+
+// Les fiches qui ont une version anglaise, la plus récente d'abord (ordre
+// inverse de `discoveries.js`, où la dernière entrée est la plus récente).
+const traduites = DISCOVERIES.filter((a) => SLUGS_DISCOVERIES_EN.includes(a.slug)).reverse();
+const active = traduites.filter((a) => a.active);
+const past = traduites.filter((a) => !a.active);
+
+const faq = [
+  {
+    q: 'How does Radio Odyssey choose its Discoveries?',
+    a: "Radio Odyssey is regularly approached by record companies, labels and independent artists. Every submission is listened to, and those that fit the station's musical colour and positive spirit can join the programming, on the same footing as established artists.",
+  },
+  {
+    q: 'How can I submit an artist or a track to Radio Odyssey?',
+    a: 'Record companies, labels and artists can send their submission by e-mail to <a href="mailto:odysseylaradio@gmail.com" style="color:var(--ro-purple);font-weight:700;">odysseylaradio@gmail.com</a>. Radio Odyssey is always on the lookout for emerging artists who match the positive, uplifting spirit of the station.',
+  },
+];
+---
+<Layout
+  lang="en"
+  altLangs={{ fr: '/decouvertes-radio-odyssey.html', en: '/en/discoveries.html' }}
+  title="Radio Odyssey Discoveries — Emerging Artists"
+  description="Emerging artists Radio Odyssey chooses to support, outside any audience ranking: biographies, tracks played on air, and how to submit your music."
+>
+  <PageHero
+    gradientFrom="#FFD700"
+    gradientTo="#00C6FF"
+    homeLabel="🏠 Home"
+    homeHref="/en.html"
+    breadcrumbCurrent="Radio Odyssey Discoveries"
+    title="Radio Odyssey Discoveries"
+    text="Radio Odyssey supports emerging artists and the music scene — these are the ones the station has chosen to feature, outside any audience ranking."
+  >
+    <Fragment slot="icon">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 6L27.5 18.5L40 22L27.5 25.5L24 38L20.5 25.5L8 22L20.5 18.5L24 6Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg>
+    </Fragment>
+  </PageHero>
+
+  <main class="ro-section" data-pagefind-body>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+
+          <div class="content-card">
+            <h2>A radio on the lookout for new talent</h2>
+            <p>Beyond the artists already established on air, Radio Odyssey sets out to support the emerging music scene. Regularly approached by record companies and independent artists, the station listens to every submission and chooses, case by case, those that fit its musical colour and positive spirit — without worrying about how many followers or streams an artist already has.</p>
+            <p style="margin-bottom:0;">Some of these Discoveries find a lasting audience and join the regular programming; others remain highlights of a season. Either way, they are real editorial risks, taken by the station's team.</p>
+          </div>
+
+          <div class="content-card" style="background:linear-gradient(135deg,rgba(255,215,0,.08),rgba(123,47,190,.06));border:1.5px solid rgba(255,215,0,.2);">
+            <h2>A page for each artist</h2>
+            <p style="margin-bottom:0;">Each Discovery has its own page, built from first-hand information (press kits, direct knowledge of the artist's work) and the real airplay data from our broadcast log. That is also the role of a radio that discovers: giving visibility to artists that few others are telling the story of yet.</p>
+          </div>
+
+          {active.length > 0 && (
+            <div class="content-card">
+              <h3 style="font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7B2FBE;margin-bottom:1rem;">ON AIR RIGHT NOW</h3>
+              <div class="row g-3">
+                {active.map((a) => (
+                  <div class="col-md-6">
+                    <a href={`/en/discovery-${a.slug}.html`} style="display:block;text-decoration:none;color:inherit;background:linear-gradient(135deg,rgba(255,215,0,.1),rgba(0,198,255,.08));border-radius:14px;padding:1rem 1.2rem;height:100%;">
+                      <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--ro-dark);">✨ {a.name} <Icon name="arrow-right" style="font-size:.75rem;color:var(--ro-purple);" /></div>
+                      <div style="font-size:.82rem;color:var(--ro-muted);margin-top:.2rem;">{DISCOVERIES_EN[a.slug].genre} — {DISCOVERIES_EN[a.slug].origin}</div>
+                      <div style="font-size:.76rem;color:var(--ro-purple);margin-top:.5rem;font-style:italic;">♪ {a.tracks[0]}</div>
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {past.length > 0 && (
+            <div class="content-card">
+              <h3 style="font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7B2FBE;margin-bottom:1rem;">DISCOVERIES THAT LEFT THEIR MARK ON AIR</h3>
+              <div class="row g-3">
+                {past.map((a) => (
+                  <div class="col-md-6">
+                    <a href={`/en/discovery-${a.slug}.html`} style="display:block;text-decoration:none;color:inherit;background:rgba(123,47,190,.05);border-radius:14px;padding:1rem 1.2rem;height:100%;">
+                      <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--ro-dark);">{a.name} <Icon name="arrow-right" style="font-size:.75rem;color:var(--ro-purple);" /></div>
+                      <div style="font-size:.82rem;color:var(--ro-muted);margin-top:.2rem;">{DISCOVERIES_EN[a.slug].genre} — {DISCOVERIES_EN[a.slug].origin}</div>
+                      <div style="font-size:.76rem;color:var(--ro-purple);margin-top:.5rem;font-style:italic;">♪ {a.tracks[0]}</div>
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div class="content-card" style="background:linear-gradient(135deg,rgba(255,215,0,.08),rgba(0,198,255,.06));border:1.5px solid rgba(0,198,255,.15);">
+            <h2>Are you a record company or an artist?</h2>
+            <p>Radio Odyssey is on the lookout for emerging artists who match the musical colour and positive spirit of the station. If you would like to submit a track or an artist, send your request by e-mail to <a href="mailto:odysseylaradio@gmail.com" style="color:var(--ro-purple);font-weight:700;">odysseylaradio@gmail.com</a>.</p>
+            <p style="margin-bottom:0;">Every submission is listened to carefully — that is how all the Discoveries on this page came about.</p>
+          </div>
+
+          <FAQBlock items={faq} idPrefix="en-discoveries-hub" lang="en" />
+
+          <div class="content-card">
+            <h2>Keep exploring</h2>
+            <p>Browse everyone we play on our <a href="/en/artists-on-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">artists on Radio Odyssey</a> page, or head back to the <a href="/en.html" style="color:var(--ro-purple);font-weight:700;">English home</a>.</p>
+          </div>
+
+          <div class="page-cta-bar">
+            <h3>Hear the Discoveries live</h3>
+            <a href="#" onclick="roPlayNow(event)" class="btn-hero">
+              <Icon name="broadcast-pin" /> Listen to Radio Odyssey
+            </a>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <Sidebar lang="en" />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

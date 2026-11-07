@@ -272,6 +272,7 @@ export const EN_NAV_CATEGORIES = [
     label: 'Artists',
     pages: [
       { href: '/en/artists-on-radio-odyssey.html', bi: 'music-note-list', label: 'All artists we play', desc: 'The full list, with real play figures' },
+      { href: '/en/discoveries.html', bi: 'stars', label: 'Discoveries', desc: 'Emerging artists we choose to support' },
       { href: '/en/artist-madonna.html', bi: 'stars', label: 'Madonna', desc: '8 tracks in rotation' },
       { href: '/en/artist-queen.html', bi: 'trophy', label: 'Queen', desc: '7 tracks in rotation' },
       { href: '/en/artist-abba.html', bi: 'disc', label: 'Abba', desc: 'Six tracks, all remixed' },
