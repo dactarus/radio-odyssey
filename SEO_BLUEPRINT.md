@@ -4079,5 +4079,30 @@ erreur)** : page générée, sans `noindex`, présente sur la page hub, liée de
 
 ---
 
-*Dernière mise à jour : 2026-11-07, septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+## 111. Version anglaise de la fiche Åírös (2026-11-07)
+
+Troisième Découverte traduite, à la demande de Frédéric : artiste américain, public naturel
+anglophone, fiche française publiée le jour même (§110). Même mécanique qu'aux §104-105 : entrée
+`airos` dans `discoveries-en.js`, la page `/en/discovery-airos.html` se génère seule, `hreflang`
+réciproque fr / en / x-default, URL au sitemap.
+
+**Traduction fidèle, aucun fait nouveau** (règle du §86) : les trois faits, la biographie et le
+« pourquoi » reprennent la version française. Les **précautions d'attribution sont conservées
+telles quelles** : « according to his biography » (soutien de DJ, synchronisations Disney et jeux
+vidéo), « his 2026 press kit also claims » (100 millions de vues, « figures supplied by the artist,
+reported here as they are »), « he states that he does not use AI » (affirmation de l'artiste).
+Si la phrase sur l'IA est retirée un jour, **la retirer des deux versions ensemble**.
+
+**Pas de `scarcityNote` propre** : la phrase calculée par le gabarit (« présence en ligne établie »)
+convient, la fiche étant en `scarcity: 'partielle'`. Lien de rebond :
+`/en/feel-good-music-radio.html` (aucune page anglaise sur la dance).
+
+**Vérifié après build (303 pages, aucune erreur)** : page générée, `lang="en"`, sans `noindex`,
+canonical correct, `hreflang` réciproque sur les deux pages, seul lien vers le français = sélecteur
+de langue (plus les deux pages légales, exceptions prévues), 285 URL au sitemap toutes présentes
+dans `dist/`, 51 pages anglaises.
+
+---
+
+*Dernière mise à jour : 2026-11-07, Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
