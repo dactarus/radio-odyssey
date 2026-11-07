@@ -4039,5 +4039,45 @@ en anglais ? **Réponse : pas avant le 28 novembre.** Aucun code touché.
 
 ---
 
-*Dernière mise à jour : 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+## 110. Nouvelle Découverte : Åírös (2026-11-07)
+
+Septième fiche « Découverte » : **Åírös**, producteur, auteur-compositeur et interprète américain
+(scène underground de Dallas, Texas), house / pop / funk. Titre en rotation à partir du **dimanche
+8 novembre 2026** : « Summer55 ». Adresse : `/decouverte-airos.html` (slug sans diacritiques).
+
+**Sources des faits** : dossier de presse « Modern EPK 2026 » (lien Google Drive transmis par Frédéric)
+et biographie courte envoyée par Frédéric le jour même (soutien de DJ internationaux, synchronisations
+Disney et jeux vidéo, pas d'IA dans les enregistrements). Recoupement web avant publication :
+profil SoundCloud (« music placements on hulu », labels cités), Linktree, interview de We Rave You
+(6 septembre 2025, single « Ooo! »). **Les chiffres du dossier de presse (plus de 100 millions de vues
+de vidéos courtes sur « Da Dance », « Every Other One » dans une production Disney sur Hulu) n'ont pas
+pu être vérifiés de façon indépendante** : la fiche les attribue à l'artiste (« selon son dossier de
+presse », « chiffres fournis par l'artiste, rapportés tels quels »). Même précaution pour
+« n'utilise pas d'IA » : formulé comme **une affirmation de l'artiste**, jamais comme un fait établi.
+
+**Points laissés de côté volontairement** : le soutien de DJ nommés (Don Diablo, Fish56Octagon) et la
+citation de presse du dossier (non vérifiables, et la seconde porte sur un titre au nom grossier) ;
+les années de sortie des labels (le dossier précise lui-même que « les dates peuvent renvoyer à des
+éditions antérieures »).
+
+**« Summer55 » ne figure ni dans le dossier de presse ni sur le web** (aucun résultat à la date de
+la fiche) : titre à venir côté artiste. La fiche ne le décrit pas (ni style, ni date de sortie) et se
+contente de dire qu'il entre à l'antenne le 8 novembre. Orthographe retenue : « Summer55 » (à confirmer
+sur la pochette).
+
+**`scarcity: 'partielle'`** : présence en ligne établie (SoundCloud, plateformes, interview, dossier de
+presse). Je n'ai pas cherché de biographie française : la revendication « l'une des rares sources en
+français » n'est donc pas faite. Lien de rebond : `/radio-dance-energisante.html`.
+
+**Correction de gabarit au passage** : `decouverte-[slug].astro` écrivait « présente depuis… » pour
+toutes les fiches actives (accord au féminin, faux pour Tom York, Tree Gees, Azizzi Romeo et Åírös) ;
+remplacé par « depuis… », neutre.
+
+Ajout mécanique dans `discoveries.js` + URL au `sitemap.xml`. **Vérifié après build (302 pages, aucune
+erreur)** : page générée, sans `noindex`, présente sur la page hub, liée depuis les autres fiches, les
+284 URL du sitemap existent dans `dist/`.
+
+---
+
+*Dernière mise à jour : 2026-11-07, septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
