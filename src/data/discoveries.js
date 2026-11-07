@@ -126,4 +126,23 @@ export const DISCOVERIES = [
     linkHref: '/styles-musicaux-radio-odyssey.html',
     linkLabel: 'styles musicaux Radio Odyssey',
   },
+  {
+    slug: 'airos',
+    name: 'Åírös',
+    genre: 'House / Pop / Funk',
+    origin: 'États-Unis',
+    active: true,
+    since: 'novembre 2026',
+    scarcity: 'partielle',
+    tracks: ['Summer55'],
+    facts: [
+      'Producteur, auteur-compositeur et interprète américain, formé à la scène underground de Dallas (Texas) : sa musique se situe à la croisée de la house, du rock, du funk, de la pop et de l’indie, avec des guitares et des saxophones qui réchauffent un son né dans les clubs.',
+      'Il collabore régulièrement avec l’auteure et chanteuse LUCOA et avec le producteur DNJER, et a sorti des titres chez des labels comme Loudkult Records, Blanco y Negro Music, Lovestyle Records, Ninety9Lives ou Oriental Star.',
+      'D’après sa biographie, sa musique a reçu le soutien de DJ internationaux et a été utilisée en synchronisation dans des projets Disney et des projets liés aux jeux vidéo ; il affirme ne pas utiliser d’IA dans ses enregistrements, et privilégier la mélodie, le groove et la personnalité.',
+    ],
+    portrait: "Åírös est un producteur, auteur-compositeur et interprète américain, formé à la scène underground de Dallas, au Texas. Sa musique se situe à la croisée de la house, du rock, du funk, de la pop et de l'indie : nourri de funk, de soul et de disques de dance, il associe des grooves puissants à des mélodies accrocheuses, et les guitares, les saxophones et l'écriture pop apportent de la chaleur à un son pensé pour les clubs. Il travaille régulièrement avec l'auteure et chanteuse LUCOA et avec le producteur DNJER, avec qui il signe des morceaux qui vont de la pop émotionnelle à la house de fin de nuit. Son catalogue s'est construit au fil de sorties chez des labels comme Loudkult Records, Blanco y Negro Music, Lovestyle Records, Ninety9Lives ou Oriental Star. D'après sa biographie, sa musique a reçu le soutien de DJ internationaux et a été utilisée en synchronisation dans des projets Disney et des projets liés aux jeux vidéo ; son dossier de presse 2026 avance aussi que \"Da Dance\", enregistré avec LUCOA, cumule plus de 100 millions de vues de vidéos courtes sur YouTube Shorts, Instagram Reels et TikTok — des chiffres fournis par l'artiste, que nous rapportons tels quels. Åírös affirme ne pas utiliser d'IA dans ses enregistrements et privilégier la mélodie, le groove et la personnalité. En 2025, le magazine We Rave You lui a consacré une interview à l'occasion de son single \"Ooo!\" et le présente comme un producteur venu de l'underground et passé à la pop commerciale. Radio Odyssey l'accueille sur son antenne à partir du 8 novembre 2026 avec son titre \"Summer55\".",
+    why: "La house mélodique à l'énergie pop d'Åírös, entre guitares, saxophones et refrains accrocheurs, prolonge la sélection dance de l'antenne avec une couleur club venue de Dallas — une découverte à suivre dès son arrivée le 8 novembre 2026.",
+    linkHref: '/radio-dance-energisante.html',
+    linkLabel: 'radio dance énergisante',
+  },
 ];
