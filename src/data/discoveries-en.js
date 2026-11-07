@@ -57,6 +57,20 @@ export const DISCOVERIES_EN = {
     linkHref: '/en/feel-good-music-radio.html',
     linkLabel: 'feel-good music radio',
   },
+  'airos': {
+    genre: 'House / Pop / Funk',
+    origin: 'United States',
+    since: 'November 2026',
+    facts: [
+      'American producer, songwriter and performer shaped by the underground scene in Dallas, Texas: his music sits at the crossroads of house, rock, funk, pop and indie, with guitars and saxophones that warm up a sound born in the clubs.',
+      'He works regularly with writer and vocalist LUCOA and with producer DNJER, and has released tracks on labels such as Loudkult Records, Blanco y Negro Music, Lovestyle Records, Ninety9Lives and Oriental Star.',
+      'According to his biography, his music has been backed by international DJs and used in sync placements in Disney projects and video-game-related projects; he states that he does not use AI in his recordings, and puts melody, groove and personality first.',
+    ],
+    portrait: "Åírös is an American producer, songwriter and performer shaped by the underground scene in Dallas, Texas. His music sits at the crossroads of house, rock, funk, pop and indie: raised on funk, soul and dance records, he pairs driving grooves with catchy melodies, and the guitars, saxophones and pop songwriting bring warmth to a sound built for the clubs. He works regularly with writer and vocalist LUCOA and with producer DNJER, with whom he makes records that range from emotional pop to late-night house. His catalogue has been built through releases on labels such as Loudkult Records, Blanco y Negro Music, Lovestyle Records, Ninety9Lives and Oriental Star. According to his biography, his music has been backed by international DJs and used in sync placements in Disney projects and video-game-related projects; his 2026 press kit also claims that \"Da Dance\", recorded with LUCOA, has gathered more than 100 million views of short videos on YouTube Shorts, Instagram Reels and TikTok — figures supplied by the artist, reported here as they are. Åírös states that he does not use AI in his recordings and puts melody, groove and personality first. In 2025, the magazine We Rave You interviewed him on the occasion of his single \"Ooo!\" and describes him as a producer who came up in the underground and moved into commercial pop. Radio Odyssey welcomes him on air from 8 November 2026 with his track \"Summer55\".",
+    why: 'The melodic, pop-energy house of Åírös, with its guitars, saxophones and catchy hooks, extends the station\'s dance selection with a club colour from Dallas — a discovery to follow from his arrival on 8 November 2026.',
+    linkHref: '/en/feel-good-music-radio.html',
+    linkLabel: 'feel-good music radio',
+  },
 };
 
 export const SLUGS_DISCOVERIES_EN = Object.keys(DISCOVERIES_EN);
