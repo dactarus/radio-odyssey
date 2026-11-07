@@ -3,6 +3,7 @@ import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 import NowPlaying from '../components/NowPlaying.astro';
 import QuizInvite from '../components/QuizInvite.astro';
+import DecouvertesAccueil from '../components/DecouvertesAccueil.astro';
 import { NAV_CATEGORIES } from '../data/navigation.js';
 import { GROUPE, RELAX_LANCEE, PAGE_GROUPE } from '../data/groupe.js';
 
@@ -303,6 +304,11 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
     </div>
   </div>
 </section>
+
+{/* ============================================================
+     DÉCOUVERTES — les trois plus récentes (§112)
+     ============================================================ */}
+<DecouvertesAccueil />
 
 {/* ============================================================
      PLANNING — aperçu compact, détail sur Playlists du Jour

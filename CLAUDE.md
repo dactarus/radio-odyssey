@@ -4,7 +4,7 @@ Ce fichier décrit **l'état actuel du projet** et les décisions structurantes.
 
 > **Journal des travaux** : chaque lot de modifications est consigné dans `SEO_BLUEPRINT.md`, sous forme de paragraphes numérotés (`## N. Titre (date)`). Les messages de commit y renvoient par `(§N)`. Pour savoir *ce qui a été fait et pourquoi*, c'est là qu'il faut chercher — ce fichier-ci ne décrit que le résultat.
 
-*Dernière mise à jour de ce fichier : 2026-11-07 (§111, Åírös en anglais).*
+*Dernière mise à jour de ce fichier : 2026-11-07 (§112, Découvertes visibles).*
 
 ## Objectif du projet
 
@@ -68,6 +68,7 @@ Le site tourne sous **Astro** (v7, sortie statique, `build.format: 'file'` → U
 | `i18n.js` (dans `src/data/`) | **Source unique des libellés d'interface** (§82) — `UI.fr`/`UI.en`, helper `t(lang)`, `QUIZ_UI`/`quizT(lang)` pour le moteur de quiz (§94), et `EN_NAV_CATEGORIES`, la navigation anglaise. ⚠️ Toute chaîne visible ajoutée à un composant de mise en page doit passer par là, sinon elle réapparaît en français sur les 18 pages anglaises |
 | `AuthorReview.astro`, `SourcesBlock.astro` | Bloc E-E-A-T (§72, bilingues depuis le §83) — auteur/relecteur + date de vérification, sources externes. Sur **11 pages françaises et 2 anglaises**. Alimentés par `data/reviewer.js`, qui porte les deux jeux de libellés. ⚠️ Sur une page anglaise, `ELISABETH_REVIEWER_EN` renvoie vers sa fiche anglaise : ne jamais laisser un bloc « Reviewed by » pointer vers du français |
 | `NewsletterCapture.astro` | Capture e-mail minimale (§74) — formulaire natif posté vers Brevo (double opt-in), sur les 10 pages de quiz et les 8 pages avec exercice de cohérence cardiaque |
+| `DecouvertesAccueil.astro` | Bandeau « Les talents que nous soutenons » de l'accueil français (§112) — les trois Découvertes les plus récentes en rotation, lues dans `discoveries.js` (aucune donnée propre). ⚠️ Accueil français seulement : le hub « Découvertes » n'existe pas en anglais. `decouvertes-radio-odyssey.html` est aussi dans l'aperçu du menu (3ᵉ de « Artistes & Styles »), « Radio Pop en Ligne » en est sortie |
 | `RenvoiRelax.astro` | Renvoi de fin de page vers Radio Odyssey Relax (§106) — paramétré par `titre`, `texte` et un `href` facultatif, **rendu seulement si `RELAX_LANCEE` est vrai**. Sur 5 pages. Habillage : dégradé adouci de Relax (charte Relax §03), pas celui d'Odyssey |
 
 **Données** (`src/data/`) : `artists-en.js` (§86 — **contenu anglais des fiches artistes** ; ⚠️ la présence d'un slug y décide qu'une fiche anglaise existe, et les `facts` sont des traductions de la version française, jamais des textes nouveaux), `navigation.js` (menu, hubs, pied de page), `artists.js` (147 fiches — **source unique** des passages), `genres.js`, `discoveries.js`, `icons.js`, `reviewer.js` (attribution et sources des pages bien-être, §72).
