@@ -4120,9 +4120,19 @@ l'antenne) ou « Radio Pop Française ». ⚠️ **Si Radio Pop en Ligne est une
 dans la Search Console, la remonter et sortir une autre page** : le maillage du menu lui donnait un lien
 sur chaque page du site.
 
-**Lot 2 — bandeau sur l'accueil** : en cours, texte à valider par Frédéric avant publication.
+**Lot 2 — bandeau sur l'accueil (publié après validation du texte par Frédéric)** : composant
+`DecouvertesAccueil.astro`, placé sous les tuiles de thématiques. Il montre les **trois Découvertes
+les plus récentes encore en rotation** (`active`, lues dans l'ordre de `discoveries.js`, la dernière
+entrée d'abord) : nom, genre — origine, premier titre diffusé (coupé à la première parenthèse, la
+fiche donne le titre complet), avec « Voir toutes les Découvertes » et « Artiste, label ou maison de
+disques ? Proposez-nous un titre » vers le hub. **Aucune maintenance** : ajouter une entrée à
+`discoveries.js` suffit à la faire apparaître, la plus ancienne sort du bandeau (elle reste sur le hub).
+Accueil français seulement (pas de hub anglais, §82). Pas de CSS global : `page-card` et
+`section-eyebrow` existent déjà, le reste est en ligne. Vérifié : 3 cartes, aucun débordement
+horizontal à 375 px. Åírös y figure dès la publication (7 novembre), un jour avant son entrée à
+l'antenne (8 novembre), comme sa fiche qui annonce déjà la date.
 
 ---
 
-*Dernière mise à jour : 2026-11-07, Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+*Dernière mise à jour : 2026-11-07, Découvertes visibles : menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
