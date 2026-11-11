@@ -50,7 +50,7 @@ const schema = {
   '@type': 'MusicGroup',
   name: artist.name,
   genre: en.genre,
-  foundingLocation: en.origin,
+  ...(artist.sansOrigine ? {} : { foundingLocation: en.origin }),
 };
 
 const statusSentence = artist.active

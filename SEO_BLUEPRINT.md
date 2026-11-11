@@ -4311,5 +4311,44 @@ au sitemap toutes présentes dans `dist/`, 55 pages anglaises.
 
 ---
 
-*Dernière mise à jour : 2026-11-11, Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+## 118. Nouvelle Découverte : Sephra, « Woke Up » — en français et en anglais (2026-11-11)
+
+Dixième fiche « Découverte », publiée d'emblée dans les deux langues (validé par Frédéric) : **Sephra**,
+electro house / deep house, chant en anglais et en français. Titre en rotation à partir du **vendredi
+13 novembre 2026** : « Woke Up ». Adresses : `/decouverte-sephra.html` et `/en/discovery-sephra.html`
+(hreflang réciproque, deux URL au sitemap, 293 au total).
+
+**Source : un texte de présentation transmis par Frédéric** (genre, langues, « produite par Bruno, paroles
+de Nikki Grace », slogan « I don't breathe, I just flow », « plus de 18 000 auditeurs mensuels », deux titres
+à découvrir : « What Do You Want » et « Game »), sans autre information.
+
+**Vérifications, qui ont conduit à des écarts assumés** (le lien Spotify fourni pointe bien vers le bon
+profil — « Woke Up », « Game » et « What Do You Want ? » y figurent, singles de 2026) :
+- **Audience : 16 602 auditeurs mensuels** sur Spotify le 11 novembre 2026, pas « plus de 18 000 ». La
+  fiche publie le chiffre vérifié, **daté** (« plus de 16 000 … au 11 novembre 2026 »), jamais le 18 000.
+- **⚠️ Contradiction non résolue sur le genre** : la biographie du profil Spotify décrit « Cinematic Gospel,
+  Deep Soul, Spiritual Blues » (chœurs de basses, trombone basse), à l'opposé de l'electro house de la
+  présentation ; le catalogue est hétéroclite (un « Feel Me » electronic, un « Yeah Yeah Yeah » signé Nia
+  Storm, des titres nommés « eMastered_Eagle Flight copie_HD copie (mp3cut.net) »). Frédéric, qui a écouté
+  « Woke Up », a tranché pour la description de la présentation : **le genre est donc attribué à « sa
+  présentation »** et la biographie Spotify n'est pas citée. À revoir si le profil Spotify est corrigé.
+- Bruno, Nikki Grace et le slogan : aucun résultat en ligne ; attribués à la présentation, sans détail
+  (Bruno n'a pas de nom de famille).
+
+**Pas d'origine géographique connue** : le champ affiché « genre — pays » reçoit « chant en anglais et en
+français » (« sung in English and French »). **Nouveau champ `sansOrigine: true`** dans `discoveries.js` :
+les deux gabarits n'émettent alors pas `foundingLocation` dans les données structurées (l'origine affichée
+n'est pas un lieu). Non-régression vérifiée : les autres fiches gardent leur `foundingLocation`.
+
+**`scarcity: 'quasi-absente'`** (hors Spotify, rien trouvé), `scarcityNote` anglaise sur ce constat.
+Nom écrit « Sephra » (casse du profil Spotify), pas « SEPHRA ».
+
+**Vérifié après build (311 pages, aucune erreur)** : deux pages générées, `lang` corrects, sans `noindex`,
+hreflang et canonical corrects, aucune mention de 18 000, seuls liens hors `/en` côté anglais = sélecteur
+de langue et pages légales, présente sur les deux hubs, les deux accueils (en tête des bandeaux) et le plan
+du site, 293 URL au sitemap toutes présentes dans `dist/`, 56 pages anglaises.
+
+---
+
+*Dernière mise à jour : 2026-11-11, dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 

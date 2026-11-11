@@ -107,6 +107,21 @@ export const DISCOVERIES_EN = {
     linkHref: '/en/feel-good-music-radio.html',
     linkLabel: 'feel-good music radio',
   },
+  'sephra': {
+    genre: 'Electro house / Deep house',
+    origin: 'sung in English and French',
+    since: 'November 2026',
+    scarcityNote: 'Outside streaming platforms, very little is published online about Sephra — this page brings together what is known about her in one place.',
+    facts: [
+      'Electro house and deep house artist who sings in English and French: according to her presentation, her pulsing bass and grooves move between late-night drives and club sets.',
+      'Her presentation credits production to Bruno and lyrics to Nikki Grace, and sums up her world with a slogan: "I don\'t breathe, I just flow."',
+      'Her Spotify profile had more than 16,000 monthly listeners on 11 November 2026; "Game" and "What Do You Want ?" are among her 2026 singles.',
+    ],
+    portrait: "Sephra is an electro house and deep house artist who sings in English and French. According to her presentation, her music blends pulsing bass and grooves, somewhere between late-night drives and club sets, and boils down to a slogan: \"I don't breathe, I just flow.\" Again according to her presentation, her tracks are produced by Bruno, with lyrics by Nikki Grace. On Spotify, where she released several singles in 2026, her profile had more than 16,000 monthly listeners as of 11 November 2026; her presentation highlights two tracks to discover, \"What Do You Want ?\" and \"Game\". These details come from her presentation: outside streaming platforms, very few sources cover her online, and we have not been able to cross-check them. Radio Odyssey welcomes her on air from 13 November 2026 with \"Woke Up\".",
+    why: 'The pulsing bass and the electro house and deep house grooves of Sephra extend the station\'s dance selection — a discovery to follow from her arrival on 13 November 2026.',
+    linkHref: '/en/feel-good-music-radio.html',
+    linkLabel: 'feel-good music radio',
+  },
   'dj-next-level': {
     genre: 'Afro / Latin house',
     origin: 'United States',

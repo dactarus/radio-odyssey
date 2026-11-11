@@ -183,4 +183,26 @@ export const DISCOVERIES = [
     linkHref: '/styles-musicaux-radio-odyssey.html',
     linkLabel: 'styles musicaux Radio Odyssey',
   },
+  {
+    slug: 'sephra',
+    name: 'Sephra',
+    genre: 'Electro house / Deep house',
+    // Aucun pays connu : on affiche la langue de chant à la place, et `sansOrigine`
+    // évite de la déclarer comme lieu de fondation (données structurées).
+    origin: 'chant en anglais et en français',
+    sansOrigine: true,
+    active: true,
+    since: 'novembre 2026',
+    scarcity: 'quasi-absente',
+    tracks: ['Woke Up'],
+    facts: [
+      'Artiste electro house et deep house qui chante en anglais et en français : d’après sa présentation, ses basses pulsées et ses grooves oscillent entre virées nocturnes et sets de club.',
+      'Sa présentation indique une production signée Bruno et des paroles écrites par Nikki Grace, et résume son univers par un slogan : "I don’t breathe, I just flow."',
+      'Son profil Spotify comptait plus de 16 000 auditeurs mensuels le 11 novembre 2026 ; "Game" et "What Do You Want ?" figurent parmi ses singles de 2026.',
+    ],
+    portrait: "Sephra est une artiste electro house et deep house qui chante en anglais et en français. D'après sa présentation, sa musique mêle basses pulsées et grooves, entre virées nocturnes et sets de club, et se résume en un slogan : \"I don't breathe, I just flow.\" Toujours selon sa présentation, ses titres sont produits par Bruno, sur des paroles de Nikki Grace. Sur Spotify, où elle a sorti plusieurs singles en 2026, son profil comptait plus de 16 000 auditeurs mensuels au 11 novembre 2026 ; sa présentation met en avant deux titres à découvrir, \"What Do You Want ?\" et \"Game\". Ces éléments proviennent de sa présentation : en dehors des plateformes de streaming, très peu de sources s'intéressent à elle en ligne, et nous n'avons pas pu les recouper. Radio Odyssey l'accueille sur son antenne à partir du 13 novembre 2026 avec \"Woke Up\".",
+    why: "Les basses pulsées et les grooves electro house et deep house de Sephra prolongent la sélection dance de l'antenne — une découverte à suivre dès son arrivée le 13 novembre 2026.",
+    linkHref: '/radio-dance-electro-en-ligne.html',
+    linkLabel: 'radio dance & électro',
+  },
 ];

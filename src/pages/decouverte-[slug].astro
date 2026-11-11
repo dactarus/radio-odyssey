@@ -41,7 +41,9 @@ const schema = {
   '@type': 'MusicGroup',
   name: artist.name,
   genre: artist.genre,
-  foundingLocation: artist.origin,
+  // `sansOrigine` : l'« origine » affichée n'est pas un lieu (Sephra, §118) — ne pas
+  // la déclarer comme lieu de fondation dans les données structurées.
+  ...(artist.sansOrigine ? {} : { foundingLocation: artist.origin }),
 };
 
 const statusSentence = artist.active
