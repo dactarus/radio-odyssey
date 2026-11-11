@@ -164,4 +164,23 @@ export const DISCOVERIES = [
     linkHref: '/radio-dance-energisante.html',
     linkLabel: 'radio dance énergisante',
   },
+  {
+    slug: 'roxy-ana',
+    name: 'Roxy Ana',
+    genre: 'Pop latine',
+    origin: 'Cuba (installée en France)',
+    active: true,
+    since: 'novembre 2026',
+    scarcity: 'quasi-absente',
+    tracks: ['Bloqueame'],
+    facts: [
+      'Chanteuse et autrice d’origine cubaine, née à Santa Clara et installée en France : d’après son dossier de presse, elle mêle pop latine, racines cubaines et rythmes urbains.',
+      'Après une première passion pour la danse classique, elle suit sept années de formation musicale à Santa Clara et débute comme chanteuse professionnelle au sein de RicoSon, puis se produit en France, en Suisse, en Belgique, en Allemagne et en Italie, selon son dossier de presse.',
+      'Son single "Bloqueame", sorti le 4 novembre 2026, est le premier extrait d’un album envisagé pour le printemps 2027 ; ses arrangements sont signés Julien Marius (Jalex Record), d’après son dossier de presse.',
+    ],
+    portrait: "Roxy Ana est une chanteuse et autrice d'origine cubaine, née à Santa Clara et installée en France. D'après son dossier de presse, elle est d'abord attirée par la danse classique avant de trouver dans la musique son langage : elle suit sept années de formation musicale à Santa Clara, puis débute comme chanteuse professionnelle au sein de RicoSon, immersion dans la scène musicale de La Havane. Elle poursuit ensuite sa carrière entre Cuba et l'Europe et se produit en France, en Suisse, en Belgique, en Allemagne et en Italie. En 2018, elle publie \"Déjate llevar\", un album de huit titres enregistré aux studios Efesmusic, à Thonon-les-Bains, et sa rencontre avec Ken Allen, producteur et éditeur (DEPKALL), qui l'accompagne depuis dans son développement artistique, marque un tournant. Aujourd'hui, elle nourrit son activité de scène avec plusieurs formations, notamment Latin Flow Band. Son single \"Bloqueame\", disponible depuis le 4 novembre 2026, mêle selon son dossier de presse une énergie festive, des sonorités pop latines et des influences urbaines, au service d'un message de liberté et d'affirmation de soi ; ses arrangements sont signés Julien Marius (Jalex Record). Il ouvre le chemin d'un album envisagé pour le printemps 2027, que d'autres singles doivent précéder. Ces éléments biographiques proviennent de son dossier de presse : hors des plateformes de streaming, très peu de sources s'intéressent à elle en ligne, et nous n'avons pas pu les recouper. Radio Odyssey l'accueille sur son antenne à partir du 13 novembre 2026 avec \"Bloqueame\".",
+    why: "La pop latine festive et les racines cubaines de Roxy Ana apportent une couleur caribéenne à la sélection de l'antenne — une découverte à suivre dès son arrivée le 13 novembre 2026.",
+    linkHref: '/styles-musicaux-radio-odyssey.html',
+    linkLabel: 'styles musicaux Radio Odyssey',
+  },
 ];

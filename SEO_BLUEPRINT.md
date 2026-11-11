@@ -4247,5 +4247,42 @@ Azizzi Romeo et Åírös aussi.
 
 ---
 
-*Dernière mise à jour : 2026-11-11, Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+## 116. Nouvelle Découverte : Roxy Ana, « Bloqueame » (2026-11-11)
+
+Neuvième fiche « Découverte » : **Roxy Ana**, chanteuse et autrice d'origine cubaine (née à Santa Clara,
+installée en France), pop latine. Titre en rotation à partir du **vendredi 13 novembre 2026** :
+« Bloqueame » (graphie du single, sans accent). Adresse : `/decouverte-roxy-ana.html`. **Français
+seulement** : artiste francophone, dossier de presse en français ; version anglaise proposée à Frédéric,
+non demandée à ce stade (donc pas de `hreflang`, pas d'entrée dans `discoveries-en.js`).
+
+**Source unique : le « book presse » de l'artiste** (PDF de neuf pages, `Downloads/ROXY_ANA_BLOQUEAME_Book_
+Presse_Radios_TV.pdf`, production DEPKALL). **Un seul fait recoupé en ligne** : le single « Bloqueame »
+existe sur Spotify, crédité Roxy Ana, daté du 4 novembre 2026 (lien Spotify tiré du PDF), et la page de
+distribution LANDR existe. Recherches web sur son nom, l'album « Déjate llevar », RicoSon, Latin Flow Band,
+Ken Allen / DEPKALL : **aucun résultat**.
+
+**Tout le reste est attribué à l'artiste** (« d'après son dossier de presse », « selon son dossier de
+presse ») : formation à Santa Clara, débuts avec RicoSon, concerts en France, Suisse, Belgique, Allemagne
+et Italie, album de 2018 (huit titres, studios Efesmusic à Thonon-les-Bains), rencontre avec Ken Allen
+(producteur et éditeur), Latin Flow Band, arrangements de Julien Marius (Jalex Record), album envisagé
+pour le printemps 2027. La biographie le dit elle-même : « ces éléments proviennent de son dossier de
+presse (…) nous n'avons pas pu les recouper ».
+
+**Volontairement absent** : coordonnées de Ken Allen (courriel, téléphone) ; **année de naissance** (le
+dossier la donne, la fiche non : inutile à la compréhension, donnée personnelle) ; **détails sur la famille**
+(mère danseuse du Ballet national de Cuba, père militaire : personnes privées, non vérifiables) ; **extrait
+du refrain** (paroles) ; photographies (le dossier précise lui-même « crédits photographiques à confirmer
+avant diffusion »).
+
+**`scarcity: 'quasi-absente'`** : hors Spotify et LANDR, rien trouvé. Lien de rebond : `/styles-musicaux-
+radio-odyssey.html` (aucune page dédiée à la pop latine sur le site).
+
+**Vérifié après build (308 pages, aucune erreur)** : page générée, `lang="fr"`, sans `noindex`, canonical
+correct, aucune coordonnée ni année de naissance publiées, présente sur le hub, le plan du site et
+l'accueil (elle prend la place de la plus ancienne dans le bandeau), 290 URL au sitemap toutes présentes
+dans `dist/`. Accueil anglais et hub anglais inchangés.
+
+---
+
+*Dernière mise à jour : 2026-11-11, neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
