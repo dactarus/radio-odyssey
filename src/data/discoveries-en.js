@@ -122,6 +122,21 @@ export const DISCOVERIES_EN = {
     linkHref: '/en/feel-good-music-radio.html',
     linkLabel: 'feel-good music radio',
   },
+  'deep-rage': {
+    genre: 'Deep house / Afro house / Electro',
+    origin: 'United States (Miami)',
+    since: 'November 2026',
+    scarcityNote: 'Outside streaming platforms, very little is published online about Deep Rage — this page brings together what is known about him in one place.',
+    facts: [
+      'Miami-based DJ and producer working across deep house, Afro house and electro: according to his Spotify biography, he was born and raised there, and draws on the city\'s blend of cultures, rhythms and nightlife.',
+      'His music is made for the dancefloor: his presentation speaks of hypnotic percussion, rolling bass and late-night energy.',
+      'According to his presentation, a first wave of 15 tracks is out, including "Lose Control", "Timeless Love" and "Where Do We Go"; "Timeless Love" is listed on Spotify among his October 2026 singles.',
+    ],
+    portrait: "Deep Rage is a Miami-based DJ and producer project, working across deep house, Afro house and electro. According to his Spotify biography, he was born and raised in Miami and draws on the blend of cultures, rhythms and nightlife of his city; his music is made for the dancefloor, from intimate late-night rooms to open-air terraces under the Florida sky. His presentation speaks of hypnotic percussion, rolling bass and late-night energy. It is an ongoing project: according to that presentation, a first wave of 15 tracks is out, including \"Lose Control\", \"Timeless Love\" and \"Where Do We Go\", and his biography announces new releases to come. \"Timeless Love\" is listed on Spotify among his October 2026 singles. These details come from the artist himself, through his presentation and his Spotify biography: outside streaming platforms, very few sources cover him online, and only the existence of the tracks \"Timeless Love\" and \"Lose Control\" and their release year could be cross-checked (Spotify). Radio Odyssey welcomes him on air from 13 November 2026 with \"Timeless Love\".",
+    why: 'The deep house, Afro house and electro of Deep Rage, from Miami, extend the station\'s dance selection — a discovery to follow from his arrival on 13 November 2026.',
+    linkHref: '/en/feel-good-music-radio.html',
+    linkLabel: 'feel-good music radio',
+  },
   'dj-next-level': {
     genre: 'Afro / Latin house',
     origin: 'United States',

@@ -4390,5 +4390,45 @@ pas une erreur de Frédéric.
 
 ---
 
-*Dernière mise à jour : 2026-11-11, Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+## 120. Nouvelle Découverte : Deep Rage, « Timeless Love » — en français et en anglais (2026-11-11)
+
+Onzième fiche « Découverte », publiée d'emblée dans les deux langues : **Deep Rage**, DJ et producteur
+basé à Miami, deep house / Afro house / electro. Titre en rotation à partir du **vendredi 13 novembre 2026** :
+« Timeless Love ». Adresses : `/decouverte-deep-rage.html` et `/en/discovery-deep-rage.html` (hreflang
+réciproque, deux URL au sitemap, 295 au total). Origine : « États-Unis (Miami) » / « United States (Miami) ».
+
+**Source : le texte de présentation transmis par Frédéric, rédigé à la première personne par l'artiste**
+(« mon propre projet »), **recoupé avec la biographie du profil Spotify**, qui dit la même chose (Miami, trois
+genres) et que l'artiste signe lui-même. Les deux sources viennent donc de lui : la fiche l'écrit.
+
+**Recoupé sur Spotify** : le profil « Deep Rage » existe ; « Timeless Love » existe (trois fiches de single, dont
+deux du 9 octobre et une du 17 octobre 2026) et « Lose Control » (2026) ; un 5ᵉ titre listé n'est pas nécessaire.
+**Non recoupé** : « Where Do We Go » (non cherché), et surtout **le chiffre de « 15 titres »** — la page de
+discographie du profil n'en affichait que cinq (EMI avec Nia Storm, Fall For You, Sunset Love, Black Light,
+Gravity), aucun des trois titres cités ; la fiche écrit « selon sa présentation ».
+
+**Volontairement absent** : l'**audience** (5 auditeurs mensuels le 11 novembre 2026, profil très récent —
+non publiée, rien ne l'exige) ; l'identifiant TikTok de la biographie Spotify (il contient le nom d'une
+personne) ; « Rage Music » (titulaire des droits d'une partie des singles).
+
+**⚠️ À signaler à Frédéric (fait, non reproché)** : **mêmes noms que Sephra (§118-119)**. « Timeless Love » est
+crédité © 2026 Bruno Gondel sur l'une de ses trois fiches Spotify (et © 2026 Rage Music sur les deux autres) —
+Bruno Gondel est aussi titulaire des droits de « Woke Up » de Sephra ; l'identifiant TikTok de la biographie
+Spotify contient « nikkigrace » (Nikki Grace est le parolier crédité de Sephra) ; Nia Storm figure sur les
+deux profils. Ce sont des recoupements de **noms**, sans plus : on ne peut pas en conclure qui est qui. Mais
+deux « Découvertes » présentées comme indépendantes semblent sortir du même cercle de production, et le
+hub dit « les artistes que la radio a choisi de soutenir » : décision éditoriale de Frédéric, pas de la
+mienne. Les fiches ne disent rien de ce lien (non vérifié).
+
+**`scarcity: 'quasi-absente'`** (rien hors Spotify) et `scarcityNote` anglaise. Lien de rebond français :
+`/radio-dance-electro-en-ligne.html`.
+
+**Vérifié après build (313 pages, aucune erreur)** : deux pages générées, `lang` corrects, sans `noindex`,
+hreflang et canonical corrects, aucune coordonnée ni identifiant de réseau de l'artiste, seuls liens hors
+`/en` côté anglais = sélecteur de langue et pages légales, présente sur les deux hubs, les deux accueils et
+le plan du site, 295 URL au sitemap toutes présentes dans `dist/`, 57 pages anglaises.
+
+---
+
+*Dernière mise à jour : 2026-11-11, onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 

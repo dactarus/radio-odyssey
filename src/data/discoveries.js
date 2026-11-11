@@ -205,4 +205,23 @@ export const DISCOVERIES = [
     linkHref: '/radio-pop-rnb-en-ligne.html',
     linkLabel: 'radio pop et R&B',
   },
+  {
+    slug: 'deep-rage',
+    name: 'Deep Rage',
+    genre: 'Deep house / Afro house / Electro',
+    origin: 'États-Unis (Miami)',
+    active: true,
+    since: 'novembre 2026',
+    scarcity: 'quasi-absente',
+    tracks: ['Timeless Love'],
+    facts: [
+      'DJ et producteur basé à Miami, entre deep house, Afro house et electro : d’après sa biographie Spotify, il y est né et y a grandi, et puise dans le mélange de cultures, de rythmes et de vie nocturne de sa ville.',
+      'Sa musique est pensée pour le dancefloor : sa présentation parle de percussions hypnotiques, de basses roulantes et d’une énergie de fin de nuit.',
+      'Selon sa présentation, une première vague de 15 titres est sortie, dont "Lose Control", "Timeless Love" et "Where Do We Go" ; "Timeless Love" est référencé sur Spotify parmi ses singles d’octobre 2026.',
+    ],
+    portrait: "Deep Rage est un projet de DJ et producteur basé à Miami, entre deep house, Afro house et electro. D'après sa biographie Spotify, il est né et a grandi à Miami et puise dans le mélange de cultures, de rythmes et de vie nocturne de sa ville ; sa musique est pensée pour le dancefloor, des salles intimes de fin de nuit aux terrasses en plein air sous le ciel de Floride. Sa présentation parle de percussions hypnotiques, de basses roulantes et d'une énergie de fin de nuit. C'est un projet en cours : d'après cette présentation, une première vague de 15 titres est sortie, dont \"Lose Control\", \"Timeless Love\" et \"Where Do We Go\", et sa biographie annonce de nouvelles sorties à venir. \"Timeless Love\" est référencé sur Spotify parmi ses singles d'octobre 2026. Ces éléments proviennent de l'artiste lui-même, par sa présentation et sa biographie Spotify : en dehors des plateformes de streaming, très peu de sources s'intéressent à lui en ligne, et seuls l'existence des titres \"Timeless Love\" et \"Lose Control\" et leur année de sortie ont pu être recoupés (Spotify). Radio Odyssey l'accueille sur son antenne à partir du 13 novembre 2026 avec \"Timeless Love\".",
+    why: "La deep house, l'Afro house et l'electro de Deep Rage, venues de Miami, prolongent la sélection dance de l'antenne — une découverte à suivre dès son arrivée le 13 novembre 2026.",
+    linkHref: '/radio-dance-electro-en-ligne.html',
+    linkLabel: 'radio dance & électro',
+  },
 ];
