@@ -4464,7 +4464,29 @@ aucune coordonnée, le chiffre de 18 000.
 et canonical corrects, « virtuelle » présent sur les deux, présentes sur les deux hubs et les deux accueils,
 297 URL au sitemap toutes présentes dans `dist/`, 58 pages anglaises.
 
+## 122. Sephra, Deep Rage, Nia Storm : la nature virtuelle (IA) est dite sur les trois fiches (2026-11-11)
+
+**Réponse de l'expéditeur** (question posée au §121) : « Sephra and Deep Rage are also virtual projects, like Nia
+Storm. All three are produced by me for my label, Rage Music. » Le cercle de noms relevé aux §120-121 était donc
+bien un seul producteur, un seul label.
+
+**Décision de Frédéric** : il faut le préciser, **et dire que c'est de l'IA**. Les trois fiches (français et
+anglais, six pages) portent désormais « artiste virtuelle / projet virtuel (IA) » dans le libellé d'origine —
+donc aussi sur les deux hubs et les deux accueils —, et « autrement dit une création d'intelligence artificielle »
+dans le premier fait et dans le portrait, avec l'attribution : c'est le **producteur** qui a confirmé le caractère
+virtuel et le label Rage Music.
+⚠️ L'expéditeur a écrit « virtual », pas « AI » : « IA » est la lecture éditoriale de la radio, assumée par
+Frédéric. Si un doute subsiste, le demander explicitement au producteur.
+
+**Sephra** : origine « artiste virtuelle (IA) » (genre « UK R&B / Soul » inchangé, voulu par Frédéric) ; plus de
+« management » ni de « pays inconnu » : un projet virtuel n'a pas d'origine à attribuer. **Deep Rage** : origine
+« projet virtuel (IA) », `sansOrigine` ; « né et a grandi à Miami » est devenu *le récit du projet*, plus une
+biographie ; Miami reste mentionnée comme ancrage revendiqué. **Nia Storm** : portrait et fait n°2 alignés
+(producteur + label), mêmes mots. Aucune date de confirmation n'est écrite dans les pages.
+
+**Toujours absents** : coordonnées, identifiant TikTok/Instagram, le chiffre de 18 000 auditeurs.
+
 ---
 
-*Dernière mise à jour : 2026-11-11, douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+*Dernière mise à jour : 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
