@@ -4199,8 +4199,9 @@ pas la phrase par défaut. Phrase ajoutée à la biographie : le nom de scène, 
 facilement avec d'autres DJ ; « Mi Amore » et Los Angeles aident à le retrouver.
 
 **Volontairement absent** : l'adresse e-mail de contact du dossier de presse (publique pour la presse,
-pas pour le site) ; aucune date d'entrée à l'antenne (« novembre 2026 », la date précise n'a pas été
-donnée).
+pas pour le site). **Entrée à l'antenne : vendredi 13 novembre 2026** (précisée par Frédéric après la
+première publication, qui disait seulement « novembre 2026 ») ; `since` reste « novembre 2026 », comme
+pour Åírös.
 
 **Vérifié après build (306 pages, aucune erreur)** : deux pages générées, `lang` correct, sans `noindex`,
 hreflang et canonical corrects, aucun courriel publié, seuls liens hors `/en` côté anglais = sélecteur de
