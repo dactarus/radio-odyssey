@@ -186,7 +186,7 @@ export const DISCOVERIES = [
   {
     slug: 'sephra',
     name: 'Sephra',
-    genre: 'Electro house / Deep house',
+    genre: 'UK R&B / Soul',
     // Aucun pays connu : on affiche la langue de chant à la place, et `sansOrigine`
     // évite de la déclarer comme lieu de fondation (données structurées).
     origin: 'chant en anglais et en français',
@@ -196,13 +196,13 @@ export const DISCOVERIES = [
     scarcity: 'quasi-absente',
     tracks: ['Woke Up'],
     facts: [
-      'Artiste electro house et deep house qui chante en anglais et en français : d’après sa présentation, ses basses pulsées et ses grooves oscillent entre virées nocturnes et sets de club.',
-      'Sa présentation indique une production signée Bruno et des paroles écrites par Nikki Grace, et résume son univers par un slogan : "I don’t breathe, I just flow."',
-      'Son profil Spotify comptait plus de 16 000 auditeurs mensuels le 11 novembre 2026 ; "Game" et "What Do You Want ?" figurent parmi ses singles de 2026.',
+      'Son single "Woke Up", sorti le 30 mai 2026, mêle selon sa description des influences de UK R&B et de soul classique, autour de l’émancipation personnelle et de l’amour de soi.',
+      'Toujours d’après la description du titre, "Woke Up" est écrit par Nikki Grace Lambert et composé par Bruno Gondel, qui figure aussi comme titulaire des droits (© ℗ 2026) sur Spotify.',
+      'Sa présentation évoque par ailleurs un univers electro house et deep house, chanté en anglais et en français ("Game", "What Do You Want ?") ; son profil Spotify comptait plus de 16 000 auditeurs mensuels le 11 novembre 2026.',
     ],
-    portrait: "Sephra est une artiste electro house et deep house qui chante en anglais et en français. D'après sa présentation, sa musique mêle basses pulsées et grooves, entre virées nocturnes et sets de club, et se résume en un slogan : \"I don't breathe, I just flow.\" Toujours selon sa présentation, ses titres sont produits par Bruno, sur des paroles de Nikki Grace. Sur Spotify, où elle a sorti plusieurs singles en 2026, son profil comptait plus de 16 000 auditeurs mensuels au 11 novembre 2026 ; sa présentation met en avant deux titres à découvrir, \"What Do You Want ?\" et \"Game\". Ces éléments proviennent de sa présentation : en dehors des plateformes de streaming, très peu de sources s'intéressent à elle en ligne, et nous n'avons pas pu les recouper. Radio Odyssey l'accueille sur son antenne à partir du 13 novembre 2026 avec \"Woke Up\".",
-    why: "Les basses pulsées et les grooves electro house et deep house de Sephra prolongent la sélection dance de l'antenne — une découverte à suivre dès son arrivée le 13 novembre 2026.",
-    linkHref: '/radio-dance-electro-en-ligne.html',
-    linkLabel: 'radio dance & électro',
+    portrait: "Sephra est une artiste dont le single \"Woke Up\", sorti le 30 mai 2026, mêle selon sa description des influences de UK R&B et de soul classique. Les paroles, d'après cette même description, racontent l'histoire d'une femme qui tourne la page d'une relation passée pour retrouver sa paix intérieure et sa confiance en elle : un titre sur l'émancipation personnelle et l'amour de soi. Il est écrit par Nikki Grace Lambert et composé par Bruno Gondel, qui figure aussi comme titulaire des droits (© ℗ 2026) sur Spotify. Sa présentation décrit par ailleurs un univers electro house et deep house, chanté en anglais et en français, aux basses pulsées et aux grooves entre virées nocturnes et sets de club, résumé par un slogan : \"I don't breathe, I just flow.\" Elle y met en avant deux autres titres, \"What Do You Want ?\" et \"Game\". Sur Spotify, où elle a sorti plusieurs singles en 2026, son profil comptait plus de 16 000 auditeurs mensuels au 11 novembre 2026. Sa biographie personnelle reste très discrète : nous n'avons trouvé aucune source précisant son pays ou sa ville d'origine. Ces éléments proviennent des descriptions du titre et de l'artiste : en dehors des plateformes de streaming, très peu de sources s'intéressent à elle en ligne, et seule la date de sortie de \"Woke Up\" a pu être recoupée (Spotify). Radio Odyssey l'accueille sur son antenne à partir du 13 novembre 2026 avec \"Woke Up\".",
+    why: "La soul et le UK R&B de \"Woke Up\", sur le thème de l'émancipation et de l'amour de soi, élargissent la palette de l'antenne — une découverte à suivre dès son arrivée le 13 novembre 2026.",
+    linkHref: '/radio-pop-rnb-en-ligne.html',
+    linkLabel: 'radio pop et R&B',
   },
 ];

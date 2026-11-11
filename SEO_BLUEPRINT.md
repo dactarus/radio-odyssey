@@ -4350,5 +4350,35 @@ du site, 293 URL au sitemap toutes présentes dans `dist/`, 56 pages anglaises.
 
 ---
 
-*Dernière mise à jour : 2026-11-11, dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+## 119. Sephra : le genre de « Woke Up » corrigé après de nouvelles informations (2026-11-11)
+
+Frédéric a transmis, après la publication du §118, une description de « Woke Up » (texte collé, qui a
+l'allure d'un résumé généré par un moteur de recherche) : **single sorti le 30 mai 2026, UK R&B et soul
+classique**, thème de l'émancipation et de l'amour de soi (une femme tourne la page d'une relation pour
+retrouver sa paix intérieure), « écrit par Nikki Grace Lambert, composé par Bruno Gondel » ; origine
+géographique **non confirmée** (« très discrète »).
+
+**Ce qui a pu être recoupé** (page Spotify de l'album « Woke Up ») : **date de sortie 2026-05-30**, et
+**« © ℗ 2026 Bruno Gondel »** (titulaire des droits). **Non recoupé** : le genre du titre, le thème, le crédit
+d'écriture de Nikki Grace Lambert, la mention « composé par ». La fiche les attribue à « la description du
+titre » et le dit : « seule la date de sortie de "Woke Up" a pu être recoupée (Spotify) ». Les phrases de
+conjecture du texte (« ce qui suggère des connexions avec les scènes musicales européennes et
+britanniques ») **ne sont pas reprises** : « UK R&B » est un nom de style, pas une origine.
+
+**Réconciliation des deux sources** : la présentation d'origine (§118) décrit l'artiste comme electro house /
+deep house, la description de « Woke Up » comme UK R&B / soul, et la biographie Spotify comme gospel /
+deep soul (§118). La fiche retient **le genre du titre diffusé** (`genre: 'UK R&B / Soul'`, ce qui s'affiche
+sur les cartes et dans les données structurées) et **garde l'univers electro house / deep house en
+attribution** (« sa présentation décrit par ailleurs… »), avec les titres « Game » et « What Do You
+Want ? ». Lien de rebond : `/radio-pop-rnb-en-ligne.html` (français) ; anglais inchangé.
+
+**Toujours absents** : le chiffre de 18 000 auditeurs, toute origine géographique (le champ `sansOrigine` du
+§118 reste en place), toute coordonnée. Mise à jour faite sur les deux langues en même temps.
+
+**Vérifié après build (311 pages, aucune erreur)** : fiches FR/EN régénérées, genre cohérent partout (cartes,
+hubs, accueils, données structurées), aucune coordonnée d'artiste, 293 URL au sitemap toutes présentes.
+
+---
+
+*Dernière mise à jour : 2026-11-11, Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
