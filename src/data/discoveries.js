@@ -224,4 +224,26 @@ export const DISCOVERIES = [
     linkHref: '/radio-dance-electro-en-ligne.html',
     linkLabel: 'radio dance & électro',
   },
+  {
+    slug: 'nia-storm',
+    name: 'Nia Storm',
+    genre: 'Pop / Soul / R&B',
+    // Artiste présentée comme virtuelle : pas de pays, on l'écrit à la place du pays
+    // (`sansOrigine` : ce n'est pas un lieu, pas de foundingLocation).
+    origin: 'artiste virtuelle',
+    sansOrigine: true,
+    active: true,
+    since: 'novembre 2026',
+    scarcity: 'quasi-absente',
+    tracks: ['Almost Love'],
+    facts: [
+      'Artiste virtuelle d’après sa présentation, qui chante la pop, la soul et le R&B sur des basses profondes et des grooves nocturnes ; sa biographie Spotify la dit « conceptualisée, écrite et incarnée » par Nikki Grace.',
+      'Selon cette biographie, Nikki Grace imagine chaque projet et écrit toutes les paroles, l’amour étant la matière première ; la présentation envoyée à la radio ajoute une production signée Bruno.',
+      '"Almost Love" est sorti le 24 septembre 2026, après "Kiss Me Dirty" (29 août 2026) ; son profil Spotify comptait plus de 16 000 auditeurs mensuels le 11 novembre 2026.',
+    ],
+    portrait: "Nia Storm est présentée comme une artiste virtuelle, dans un univers pop, soul et R&B : une voix décrite comme sensuelle, sur des basses profondes et des grooves nocturnes, produite par Bruno et écrite par Nikki Grace d'après la présentation envoyée à la radio. Sa biographie Spotify précise que le projet est « conceptualisé, écrit et incarné » par Nikki Grace, qui en imagine chaque chanson et en écrit toutes les paroles ; l'amour, l'attirance et le chagrin en sont la matière première, entre refrains pop et chaleur soul. Ses singles de 2026, dont \"Kiss Me Dirty\" (29 août) puis \"Almost Love\" (24 septembre), sont référencés sur Spotify, où son profil comptait plus de 16 000 auditeurs mensuels au 11 novembre 2026. Ces éléments proviennent de la présentation envoyée à la radio et de la biographie Spotify, toutes deux issues du projet lui-même : en dehors des plateformes de streaming, très peu de sources s'intéressent à elle en ligne, et seules les dates de sortie de \"Kiss Me Dirty\" et de \"Almost Love\" et l'audience ont pu être recoupées (Spotify). Radio Odyssey l'accueille sur son antenne à partir du 13 novembre 2026 avec \"Almost Love\".",
+    why: "La pop, la soul et le R&B de Nia Storm, artiste virtuelle aux grooves nocturnes, élargissent la sélection de l'antenne — une découverte à suivre dès son arrivée le 13 novembre 2026.",
+    linkHref: '/radio-pop-rnb-en-ligne.html',
+    linkLabel: 'radio pop et R&B',
+  },
 ];

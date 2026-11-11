@@ -137,6 +137,21 @@ export const DISCOVERIES_EN = {
     linkHref: '/en/feel-good-music-radio.html',
     linkLabel: 'feel-good music radio',
   },
+  'nia-storm': {
+    genre: 'Pop / Soul / R&B',
+    origin: 'virtual artist',
+    since: 'November 2026',
+    scarcityNote: 'Outside streaming platforms, very little is published online about Nia Storm — this page brings together what is known about her in one place.',
+    facts: [
+      'A virtual artist according to her presentation, singing pop, soul and R&B over deep bass and nocturnal grooves; her Spotify biography describes her as "conceptualized, written, and embodied" by Nikki Grace.',
+      'According to that biography, Nikki Grace conceives each project and writes every lyric, with love as the raw material; the presentation sent to the radio adds a production credited to Bruno.',
+      '"Almost Love" was released on 24 September 2026, after "Kiss Me Dirty" (29 August 2026); her Spotify profile had more than 16,000 monthly listeners on 11 November 2026.',
+    ],
+    portrait: "Nia Storm is presented as a virtual artist, in a pop, soul and R&B world: a voice described as sensual, over deep bass and nocturnal grooves, produced by Bruno and written by Nikki Grace according to the presentation sent to the radio. Her Spotify biography specifies that the project is \"conceptualized, written, and embodied\" by Nikki Grace, who conceives each song and writes every lyric; love, attraction and heartbreak are the raw material, between pop hooks and soulful warmth. Her 2026 singles, including \"Kiss Me Dirty\" (29 August) and then \"Almost Love\" (24 September), are listed on Spotify, where her profile had more than 16,000 monthly listeners as of 11 November 2026. These details come from the presentation sent to the radio and from the Spotify biography, both of which come from the project itself: outside streaming platforms, very few sources cover her online, and only the release dates of \"Kiss Me Dirty\" and \"Almost Love\" and the audience figure could be cross-checked (Spotify). Radio Odyssey welcomes her on air from 13 November 2026 with \"Almost Love\".",
+    why: 'The pop, soul and R&B of Nia Storm, a virtual artist with nocturnal grooves, widen the station\'s selection — a discovery to follow from her arrival on 13 November 2026.',
+    linkHref: '/en/feel-good-music-radio.html',
+    linkLabel: 'feel-good music radio',
+  },
   'dj-next-level': {
     genre: 'Afro / Latin house',
     origin: 'United States',

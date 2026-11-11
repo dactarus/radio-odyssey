@@ -4430,5 +4430,41 @@ le plan du site, 295 URL au sitemap toutes présentes dans `dist/`, 57 pages ang
 
 ---
 
-*Dernière mise à jour : 2026-11-11, onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+## 121. Nouvelle Découverte : Nia Storm, « Almost Love » — artiste virtuelle, en français et en anglais (2026-11-11)
+
+Douzième fiche « Découverte », dans les deux langues : **Nia Storm**, pop / soul / R&B, **présentée comme une
+artiste virtuelle**. Titre en rotation à partir du **vendredi 13 novembre 2026** : « Almost Love ». Adresses :
+`/decouverte-nia-storm.html` et `/en/discovery-nia-storm.html` (hreflang réciproque, 297 URL au sitemap).
+
+**La fiche dit « artiste virtuelle »** (mot du texte de présentation transmis par Frédéric) et, d'après la
+biographie Spotify, que le projet est « conceptualisé, écrit et incarné » par Nikki Grace. Présenter ce
+projet comme une chanteuse sans le dire aurait été trompeur ; le champ « origine » affiche donc « artiste
+virtuelle » / « virtual artist » (`sansOrigine: true`, pas de lieu de fondation dans les données structurées).
+Le mot « IA » n'est pas employé : la fiche reprend la formulation de la source, rien de plus.
+
+**Recoupé sur Spotify** : « Kiss Me Dirty » du **29 août 2026** et « Almost Love » du **24 septembre 2026**
+(deux fiches de single chacun) ; **16 800 auditeurs mensuels** (donc « plus de 16 000 », daté du 11 novembre,
+et non « plus de 18 000 » — même écart que pour Sephra, §118). Biographie : Nikki Grace est « the voice, the
+pen, and the architect ». **Non recoupé** : « produite par Bruno » (attribué à la présentation).
+
+**⚠️ Le cercle de noms se confirme et devient central** (voir §120) : Nikki Grace, Bruno Gondel (© 2026 sur
+une des deux fiches de chaque single) et « Rage Music » (© sur l'autre) apparaissent sur **Sephra, Deep Rage
+et Nia Storm** ; Nia Storm figure sur deux singles de Deep Rage (« EMI », « Love Me ») et la pochette « Yeah
+Yeah Yeah » du profil Sephra porte son nom. Le texte de Deep Rage est écrit à la première personne
+(« mon propre projet ») avec un identifiant TikTok contenant « nikkigrace ». **Conséquence éditoriale, à
+trancher par Frédéric** : si Nia Storm est un projet virtuel de Nikki Grace, les fiches **Sephra** (« une
+artiste… ») et **Deep Rage** (« né et a grandi à Miami ») pourraient présenter comme des personnes des
+projets de même nature. Les fiches actuelles n'affirment rien de faux sur chaque source citée, mais elles
+n'indiquent pas la nature des projets. À vérifier auprès de l'expéditeur avant toute modification.
+
+**Volontairement absent** : le compte Instagram de la biographie Spotify (contient un nom de personne),
+aucune coordonnée, le chiffre de 18 000.
+
+**Vérifié après build (315 pages, aucune erreur)** : deux pages générées, `lang` corrects, sans `noindex`, hreflang
+et canonical corrects, « virtuelle » présent sur les deux, présentes sur les deux hubs et les deux accueils,
+297 URL au sitemap toutes présentes dans `dist/`, 58 pages anglaises.
+
+---
+
+*Dernière mise à jour : 2026-11-11, douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
