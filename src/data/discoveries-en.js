@@ -92,6 +92,21 @@ export const DISCOVERIES_EN = {
     linkHref: '/en/80s-throwback-radio-online.html',
     linkLabel: '80s throwback radio',
   },
+  'roxy-ana': {
+    genre: 'Latin pop',
+    origin: 'Cuba (based in France)',
+    since: 'November 2026',
+    scarcityNote: 'Outside streaming platforms, very little is published online about Roxy Ana — this page brings together what is known about her in one place.',
+    facts: [
+      'Singer and songwriter of Cuban origin, born in Santa Clara and now based in France: according to her press kit, she blends Latin pop, Cuban roots and urban rhythms.',
+      'After a first passion for classical dance, she studied music for seven years in Santa Clara and began her professional singing career with RicoSon, then performed in France, Switzerland, Belgium, Germany and Italy, according to her press kit.',
+      'Her single "Bloqueame", released on 4 November 2026, is the first release from an album planned for spring 2027; its arrangements are credited to Julien Marius (Jalex Record), according to her press kit.',
+    ],
+    portrait: "Roxy Ana is a singer and songwriter of Cuban origin, born in Santa Clara and now based in France. According to her press kit, she was first drawn to classical dance before finding in music the language that suited her: she studied music for seven years in Santa Clara, then began her professional singing career with RicoSon, an immersion in Havana's music scene. She went on to build a career between Cuba and Europe, performing in France, Switzerland, Belgium, Germany and Italy. In 2018 she released \"Déjate llevar\", an eight-track album recorded at the Efesmusic studios in Thonon-les-Bains, and her meeting with Ken Allen, producer and publisher (DEPKALL), who has supported her artistic development since, marked a turning point. Today she feeds her stage activity through several bands, notably Latin Flow Band. Her single \"Bloqueame\", available since 4 November 2026, blends, according to her press kit, a festive energy, Latin pop sounds and urban influences, in the service of a message of freedom and self-assertion; its arrangements are credited to Julien Marius (Jalex Record). It opens the way for an album planned for spring 2027, which more singles are due to precede. These biographical details come from her press kit: outside streaming platforms, very few sources cover her online, and we have not been able to cross-check them. Radio Odyssey welcomes her on air from 13 November 2026 with \"Bloqueame\".",
+    why: 'The festive Latin pop and Cuban roots of Roxy Ana bring a Caribbean colour to the station\'s selection — a discovery to follow from her arrival on 13 November 2026.',
+    linkHref: '/en/feel-good-music-radio.html',
+    linkLabel: 'feel-good music radio',
+  },
   'dj-next-level': {
     genre: 'Afro / Latin house',
     origin: 'United States',

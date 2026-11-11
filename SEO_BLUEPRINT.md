@@ -4252,8 +4252,8 @@ Azizzi Romeo et Åírös aussi.
 Neuvième fiche « Découverte » : **Roxy Ana**, chanteuse et autrice d'origine cubaine (née à Santa Clara,
 installée en France), pop latine. Titre en rotation à partir du **vendredi 13 novembre 2026** :
 « Bloqueame » (graphie du single, sans accent). Adresse : `/decouverte-roxy-ana.html`. **Français
-seulement** : artiste francophone, dossier de presse en français ; version anglaise proposée à Frédéric,
-non demandée à ce stade (donc pas de `hreflang`, pas d'entrée dans `discoveries-en.js`).
+d'abord** : artiste francophone, dossier de presse en français ; la version anglaise a été demandée par
+Frédéric dans la foulée (§117).
 
 **Source unique : le « book presse » de l'artiste** (PDF de neuf pages, `Downloads/ROXY_ANA_BLOQUEAME_Book_
 Presse_Radios_TV.pdf`, production DEPKALL). **Un seul fait recoupé en ligne** : le single « Bloqueame »
@@ -4284,5 +4284,32 @@ dans `dist/`. Accueil anglais et hub anglais inchangés.
 
 ---
 
-*Dernière mise à jour : 2026-11-11, neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+## 117. Version anglaise de la fiche Roxy Ana (2026-11-11)
+
+Cinquième Découverte traduite après Azizzi Romeo, Tom York, Åírös, DJ Next Level et Tree Gees (six avec
+elle), à la demande de Frédéric, quelques heures après la fiche française (§116). Même mécanique : entrée
+`roxy-ana` dans `discoveries-en.js`, `/en/discovery-roxy-ana.html` générée seule, hreflang réciproque avec
+la fiche française (qui n'en avait pas jusque-là), URL au sitemap (291 URL). Lien de rebond :
+`/en/feel-good-music-radio.html`.
+
+**Traduction fidèle, sans fait nouveau** : mêmes attributions que le français (« according to her press
+kit »), même phrase finale (« we have not been able to cross-check them »). Les titres (« Bloqueame »,
+« Déjate llevar ») et les noms propres ne se traduisent pas ; origine rendue « Cuba (based in France) ».
+
+**Rareté** : `scarcityNote` propre (« Outside streaming platforms, very little is published online about
+Roxy Ana ») plutôt que la phrase par défaut — la rareté constatée en français (§116) l'a aussi été en
+anglais : mêmes recherches, aucun résultat hors Spotify et LANDR. Contrairement à Tree Gees (§115), pas
+besoin de surcharger `scarcity`.
+
+**Toujours absents** (comme en français) : coordonnées de Ken Allen, année de naissance, détails sur la
+famille, extrait du refrain, photographies.
+
+**Vérifié après build (309 pages, aucune erreur)** : page générée, `lang="en"`, sans `noindex`, canonical
+et hreflang corrects, aucune coordonnée ni année de naissance, seuls liens hors `/en` = sélecteur de
+langue et pages légales, présente sur le hub anglais et en tête du bandeau de l'accueil anglais, 291 URL
+au sitemap toutes présentes dans `dist/`, 55 pages anglaises.
+
+---
+
+*Dernière mise à jour : 2026-11-11, Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
