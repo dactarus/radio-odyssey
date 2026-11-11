@@ -4378,6 +4378,16 @@ Want ? ». Lien de rebond : `/radio-pop-rnb-en-ligne.html` (français) ; anglais
 **Vérifié après build (311 pages, aucune erreur)** : fiches FR/EN régénérées, genre cohérent partout (cartes,
 hubs, accueils, données structurées), aucune coordonnée d'artiste, 293 URL au sitemap toutes présentes.
 
+**Précision de Frédéric, le même jour : la première description (electro house / deep house, « produite par
+Bruno, paroles de Nikki Grace », slogan, 18 000 auditeurs) a été envoyée par le management de l'artiste.**
+C'est une source de première main, plus solide qu'un texte anonyme : les fiches la nomment désormais
+(« la présentation envoyée par son management » / « the presentation sent by her management »), au lieu
+de « sa présentation ». La description de « Woke Up » (UK R&B / soul, thème, crédits) reste attribuée à
+« une description du titre ». **Les deux se concilient** : le catalogue Spotify mêle des titres electronic
+(« Feel Me ») et des titres soul, « Woke Up » étant du second type ; le genre des cartes reste celui du titre
+diffusé. Le chiffre de 18 000 reste exclu (Spotify : 16 602), mais c'est une **revendication du management**,
+pas une erreur de Frédéric.
+
 ---
 
 *Dernière mise à jour : 2026-11-11, Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
