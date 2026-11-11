@@ -145,4 +145,23 @@ export const DISCOVERIES = [
     linkHref: '/radio-dance-energisante.html',
     linkLabel: 'radio dance énergisante',
   },
+  {
+    slug: 'dj-next-level',
+    name: 'DJ Next Level',
+    genre: 'Afro / Latin house',
+    origin: 'États-Unis',
+    active: true,
+    since: 'novembre 2026',
+    scarcity: 'quasi-absente',
+    tracks: ['Mi Amore'],
+    facts: [
+      'DJ et producteur basé à Los Angeles : Aryan, connu sous le nom de DJ Next Level, présente avec "Mi Amore" un titre dans l’univers Afro / Latin house, à 110 BPM selon son dossier de presse.',
+      'Le titre est référencé sur Spotify sous le nom "DJ Next Level", avec une date de sortie au 24 juin 2026.',
+      'Selon son dossier de presse, "Mi Amore" a été utilisé dans 348 Reels Instagram, dont un affichant 2,1 millions de vues — des chiffres affichés sur Instagram au 9 novembre 2026, fournis par l’artiste et rapportés tels quels.',
+    ],
+    portrait: "Aryan, connu sous le nom de DJ Next Level, est un DJ et producteur basé à Los Angeles. Avec \"Mi Amore\", il présente un titre dans l'univers Afro / Latin house, à 110 BPM d'après son dossier de presse. Le titre est référencé sur Spotify avec une date de sortie au 24 juin 2026. Selon ce même dossier de presse, \"Mi Amore\" a été utilisé dans 348 Reels Instagram, dont un affichant 2,1 millions de vues : ce sont des chiffres affichés sur Instagram au 9 novembre 2026, fournis par l'artiste, que nous rapportons tels quels. En dehors de Spotify et d'Instagram, très peu de sources s'intéressent à lui en ligne, et son nom de scène, très générique, se confond facilement avec d'autres : le titre \"Mi Amore\" et Los Angeles aident à le retrouver. Radio Odyssey l'accueille sur son antenne en novembre 2026 avec son titre \"Mi Amore\".",
+    why: "L'Afro / Latin house de DJ Next Level élargit la sélection dance de l'antenne avec une couleur venue de Los Angeles — une découverte à suivre dès son arrivée en novembre 2026.",
+    linkHref: '/radio-dance-energisante.html',
+    linkLabel: 'radio dance énergisante',
+  },
 ];

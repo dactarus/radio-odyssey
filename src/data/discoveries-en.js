@@ -71,6 +71,21 @@ export const DISCOVERIES_EN = {
     linkHref: '/en/feel-good-music-radio.html',
     linkLabel: 'feel-good music radio',
   },
+  'dj-next-level': {
+    genre: 'Afro / Latin house',
+    origin: 'United States',
+    since: 'November 2026',
+    scarcityNote: 'Outside Spotify and Instagram, very little is published online about DJ Next Level — this page brings together what is known about him in one place.',
+    facts: [
+      'Los Angeles-based DJ and producer: Aryan, known as DJ Next Level, presents with "Mi Amore" a track in the Afro / Latin house world, at 110 BPM according to his press kit.',
+      'The track is listed on Spotify under the name "DJ Next Level", with a release date of 24 June 2026.',
+      'According to his press kit, "Mi Amore" has been used in 348 Instagram Reels, including one showing 2.1 million views — figures shown on Instagram as of 9 November 2026, supplied by the artist and reported here as they are.',
+    ],
+    portrait: "Aryan, known as DJ Next Level, is a DJ and producer based in Los Angeles. With \"Mi Amore\", he presents a track in the Afro / Latin house world, at 110 BPM according to his press kit. The track is listed on Spotify with a release date of 24 June 2026. According to that same press kit, \"Mi Amore\" has been used in 348 Instagram Reels, including one showing 2.1 million views: these are figures shown on Instagram as of 9 November 2026, supplied by the artist, which we report as they are. Outside Spotify and Instagram, very few sources cover him online, and his very generic stage name is easily confused with others: the track \"Mi Amore\" and Los Angeles help to find him. Radio Odyssey welcomes him on air in November 2026 with his track \"Mi Amore\".",
+    why: 'The Afro / Latin house of DJ Next Level widens the station\'s dance selection with a colour from Los Angeles — a discovery to follow from his arrival in November 2026.',
+    linkHref: '/en/feel-good-music-radio.html',
+    linkLabel: 'feel-good music radio',
+  },
 };
 
 export const SLUGS_DISCOVERIES_EN = Object.keys(DISCOVERIES_EN);

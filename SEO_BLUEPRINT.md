@@ -4174,5 +4174,40 @@ présentes dans `dist/`.
 
 ---
 
-*Dernière mise à jour : 2026-11-07, Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+## 114. Nouvelle Découverte : DJ Next Level, « Mi Amore » — en français et en anglais (2026-11-11)
+
+Huitième fiche « Découverte », publiée d'emblée dans les deux langues à la demande de Frédéric :
+**DJ Next Level** (Aryan), DJ et producteur basé à Los Angeles, Afro / Latin house. Titre en rotation :
+« Mi Amore ». Adresses : `/decouverte-dj-next-level.html` et `/en/discovery-dj-next-level.html`
+(hreflang réciproque, deux URL au sitemap). Ajout mécanique dans `discoveries.js` et
+`discoveries-en.js` : le hub français, le hub anglais et les deux bandeaux d'accueil la listent d'eux-mêmes.
+
+**Source unique : le dossier de presse envoyé par l'artiste** (PDF d'une page, version anglaise et
+française, `Downloads/DJ-Next-Level-Mi-Amore-Press-Kit.pdf`). **Un seul fait recoupé en ligne** : le titre
+« Mi Amore » existe sur Spotify, crédité « DJ Next Level », daté du 24 juin 2026 (lien Spotify tiré du PDF,
+métadonnées de la page). Recherches web sur le nom, Los Angeles et Aryan : **aucun résultat** — nom de
+scène très générique, plusieurs DJ homonymes ; aucun n'a pu être rattaché à celui-ci.
+
+**Tout le reste est attribué à l'artiste** : Los Angeles, Afro / Latin house, 110 BPM, prénom « Aryan »
+(« selon son dossier de presse »), et les chiffres Instagram (348 Reels, dont un à 2,1 millions de vues,
+« affichés au 9 novembre 2026, fournis par l'artiste, rapportés tels quels »). Aucune formulation ne
+décrit le son du titre au-delà de ce que dit le dossier, aucune carrière ni label inventés.
+
+**`scarcity: 'quasi-absente'`** : hors Spotify et Instagram, rien trouvé. Côté anglais, `scarcityNote`
+reformulée sur ce qui a été constaté (« Outside Spotify and Instagram, very little is published online »),
+pas la phrase par défaut. Phrase ajoutée à la biographie : le nom de scène, très générique, se confond
+facilement avec d'autres DJ ; « Mi Amore » et Los Angeles aident à le retrouver.
+
+**Volontairement absent** : l'adresse e-mail de contact du dossier de presse (publique pour la presse,
+pas pour le site) ; aucune date d'entrée à l'antenne (« novembre 2026 », la date précise n'a pas été
+donnée).
+
+**Vérifié après build (306 pages, aucune erreur)** : deux pages générées, `lang` correct, sans `noindex`,
+hreflang et canonical corrects, aucun courriel publié, seuls liens hors `/en` côté anglais = sélecteur de
+langue et pages légales, présente sur les deux hubs et les deux accueils (elle prend la place de la plus
+ancienne dans les bandeaux), 288 URL au sitemap toutes présentes dans `dist/`, 53 pages anglaises.
+
+---
+
+*Dernière mise à jour : 2026-11-11, huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
