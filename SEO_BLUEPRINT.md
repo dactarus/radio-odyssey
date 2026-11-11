@@ -4228,8 +4228,9 @@ Bee Gees, partout dans le monde). Même mécanique qu'aux §104-105 : entrée `t
 
 **Deux adaptations, pas de fait nouveau** :
 1. **Anecdote « Sweet Embrace » attribuée** côté anglais : « *According to the band's press materials*, the
-   most striking proof is… ». Ajout d'une attribution, pas d'un fait. ⚠️ **La fiche française l'énonce
-   toujours sans réserve** : écart à arbitrer par Frédéric (je propose la même attribution en français).
+   most striking proof is… ». Ajout d'une attribution, pas d'un fait. **Même attribution ajoutée côté français
+   le jour même, sur accord de Frédéric** (« Selon le dossier de presse du groupe, la preuve la plus frappante
+   reste l'histoire de leur titre… ») : les deux versions disent la même chose.
 2. **Rareté** : la fiche française dit « quasi-absente en français » (`scarcity`), ce qui ne vaut pas pour un
    lecteur anglophone — Tree Gees est très présent sur les sites de billetterie européens. Nouveau champ
    facultatif **`scarcity` dans `discoveries-en.js`**, qui remplace celui de `discoveries.js` côté anglais
