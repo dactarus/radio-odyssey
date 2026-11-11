@@ -22,6 +22,12 @@
   `discoveries.js` peut porter sur le français (« pas de biographie en
   français »), qui ne dit rien d'un lecteur anglophone.
 
+  `scarcity` (facultatif) remplace celle de `discoveries.js` côté anglais, et pas
+  seulement la phrase de rareté : c'est elle qui décide si la page affiche « l'une
+  des rares sources » (titre, description, premier paragraphe de la FAQ) ou « présence
+  en ligne établie ». À renseigner (`'partielle'`) quand l'artiste n'est rare qu'en
+  français — Tree Gees, §115.
+
   ⚠️ `linkHref` doit pointer vers une page anglaise. Un lien vers le français
   depuis une page anglaise est proscrit (§82) — d'où l'absence de lien vers
   la page hub « Découvertes », qui n'existe qu'en français.
@@ -70,6 +76,21 @@ export const DISCOVERIES_EN = {
     why: 'The melodic, pop-energy house of Åírös, with its guitars, saxophones and catchy hooks, extends the station\'s dance selection with a club colour from Dallas — a discovery to follow from his arrival on 8 November 2026.',
     linkHref: '/en/feel-good-music-radio.html',
     linkLabel: 'feel-good music radio',
+  },
+  'tree-gees': {
+    genre: 'Disco-funk pop, 70s style',
+    origin: 'Italy',
+    since: 'June 2025',
+    scarcity: 'partielle',
+    facts: [
+      'Italian group formed in 1997, widely regarded as one of the best Bee Gees tributes in Europe, with more than 1,400 concerts around the world.',
+      'Four musicians: Alex Sammarini (vocals, guitar), Paolo Amati (vocals, bass), Franz Bancalari (vocals, keyboards) and Ezio Zaccagnini (drums).',
+      'They also write 100% original tracks in the disco-funk spirit of the Gibb brothers — a fresh, modern production.',
+    ],
+    portrait: "The Tree Gees are an Italian group formed in 1997, made up of Alex Sammarini (vocals, guitar), Paolo Amati (vocals, bass), Franz Bancalari (vocals, keyboards) and Ezio Zaccagnini (drums). Recognised as one of the best Bee Gees tributes in Europe, with more than 1,400 concerts to their name, they go beyond covers: they also compose and produce entirely original pieces in the inimitable style of the Gibb brothers. According to the band's press materials, the most striking proof is the story of their track \"Sweet Embrace\", which appeared online with no credited author: thousands of listeners around the world took it for a lost Bee Gees recording, before it was revealed to be an original Tree Gees composition. On air on Radio Odyssey since June 2025 with \"Sunday For Lovin'\", the group is still played there today.",
+    why: 'The unapologetic disco-funk mood and modern production of the Tree Gees make a perfect nod for listeners nostalgic for the 70s and 80s.',
+    linkHref: '/en/80s-throwback-radio-online.html',
+    linkLabel: '80s throwback radio',
   },
   'dj-next-level': {
     genre: 'Afro / Latin house',

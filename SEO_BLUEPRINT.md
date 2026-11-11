@@ -4210,5 +4210,41 @@ ancienne dans les bandeaux), 288 URL au sitemap toutes présentes dans `dist/`, 
 
 ---
 
-*Dernière mise à jour : 2026-11-11, huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+## 115. Version anglaise de la fiche Tree Gees (2026-11-11)
+
+Quatrième Découverte traduite, à la demande de Frédéric (groupe italien, public naturel : les amateurs de
+Bee Gees, partout dans le monde). Même mécanique qu'aux §104-105 : entrée `tree-gees` dans
+`discoveries-en.js`, `/en/discovery-tree-gees.html` générée seule, hreflang réciproque, URL au sitemap
+(289 URL). Lien de rebond : `/en/80s-throwback-radio-online.html`.
+
+**Recoupement avant publication (fiche lue par un public qui connaît bien les Bee Gees)** :
+- **confirmé** : formé en 1997 (plusieurs fiches de salles), plus de 1 400 concerts (billetterie française,
+  chiffre du groupe lui-même), Ezio Zaccagnini à la batterie (sa propre biographie), musique originale en
+  plus des reprises (Partyflock : single « Love Plan », chanson de Noël avec Bruno Zambrini) ;
+- **non retrouvé** : l'histoire de « Sweet Embrace » (titre prétendument pris pour un inédit des Bee Gees) —
+  aucune source fiable en ligne, seulement du contenu opportuniste sur de faux « inédits » ; et les noms de
+  trois des quatre musiciens (Sammarini, Amati, Bancalari), que cette recherche n'a pas rattachés au groupe.
+  Ces éléments viennent du dossier de presse transmis par Frédéric (§ de la fiche française).
+
+**Deux adaptations, pas de fait nouveau** :
+1. **Anecdote « Sweet Embrace » attribuée** côté anglais : « *According to the band's press materials*, the
+   most striking proof is… ». Ajout d'une attribution, pas d'un fait. ⚠️ **La fiche française l'énonce
+   toujours sans réserve** : écart à arbitrer par Frédéric (je propose la même attribution en français).
+2. **Rareté** : la fiche française dit « quasi-absente en français » (`scarcity`), ce qui ne vaut pas pour un
+   lecteur anglophone — Tree Gees est très présent sur les sites de billetterie européens. Nouveau champ
+   facultatif **`scarcity` dans `discoveries-en.js`**, qui remplace celui de `discoveries.js` côté anglais
+   (gabarit `discovery-[slug].astro`) et pilote le titre, la description et la FAQ, pas seulement la note de
+   rareté : Tree Gees y passe en `'partielle'` (« présence en ligne établie, Radio Odyssey y ajoute ses
+   données de diffusion »). Et, comme pour Tom York (§105), la clause « aucune biographie en français » du
+   troisième fait est retirée (une clause en moins, rien d'ajouté).
+
+**Vérifié après build (307 pages, aucune erreur)** : page générée, `lang="en"`, sans `noindex`, canonical et
+hreflang corrects, plus aucune formule « one of the few sources », seuls liens hors `/en` = sélecteur de
+langue et pages légales, présente sur le hub anglais, 289 URL au sitemap toutes présentes dans `dist/`,
+54 pages anglaises. Non-régression : Tom York et DJ Next Level gardent leur formulation de rareté,
+Azizzi Romeo et Åírös aussi.
+
+---
+
+*Dernière mise à jour : 2026-11-11, Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 

@@ -32,7 +32,9 @@ export function getStaticPaths() {
 const { artist } = Astro.props;
 const en = DISCOVERIES_EN[artist.slug];
 
-const isScarce = artist.scarcity !== 'partielle';
+// La rareté de `discoveries.js` peut ne valoir qu'en français (« pas de biographie
+// en français ») : `scarcity` dans `discoveries-en.js` la remplace côté anglais.
+const isScarce = (en.scarcity ?? artist.scarcity) !== 'partielle';
 
 const title = `${artist.name}: Biography & News — Radio Odyssey`;
 const description = isScarce
