@@ -1351,6 +1351,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.radio-odyssey.com/decouverte-lakes-and-fires.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.radio-odyssey.com/en/discovery-lakes-and-fires.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.radio-odyssey.com/decouverte-deep-rage.html</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>

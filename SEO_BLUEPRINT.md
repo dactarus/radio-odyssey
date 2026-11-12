@@ -4486,7 +4486,32 @@ biographie ; Miami reste mentionnée comme ancrage revendiqué. **Nia Storm** : 
 
 **Toujours absents** : coordonnées, identifiant TikTok/Instagram, le chiffre de 18 000 auditeurs.
 
+## 123. Treizième Découverte : Lakes & Fires, « Before The Sun Will Rise », en français et en anglais (2026-11-12)
+
+Fiche créée sur demande de Frédéric à partir d'un communiqué reçu par la radio (titre diffusé **à partir du 15
+novembre 2026**), publiée d'emblée dans les deux langues : `/decouverte-lakes-and-fires.html` et
+`/en/discovery-lakes-and-fires.html` (`hreflang` posé, hub FR et EN, accueils, sitemap : 299 URL, 317 pages,
+59 pages anglaises). Genre « Indie-groove / funk pop », origine Danemark, rareté « quasi-absente en français »
+(côté anglais : `scarcity: 'partielle'`, car le groupe a une présence en anglais). Lien : `radio-pop-en-ligne` /
+`positive-european-music-station`.
+
+**Vérifié** (sources indépendantes) : trio danois Shaka Loveless, Lasse Boman, Birk Nevel, « près de 25 ans »
+ensemble, collectif Gypsies et groupe Are We Brothers, prix cités (Danish Music Award 2013, Gaffa Award 2023),
+« Lagoon » sorti le 14 février 2025 — le tout sur la page **Bandcamp** du groupe ; album éponyme 2025 et profil
+**Spotify** (43,1 K auditeurs mensuels le 12 novembre) ; Drew Sycamore, chanteuse danoise primée aux Gaffa
+Awards 2022 (Wikipédia).
+
+**Non recoupé, donc attribué au communiqué** : « Before The Sun Will Rise » (**pas encore sur Spotify** ni
+ailleurs : date de sortie inconnue), l'album 2027, la comparaison avec Jungle, « plus d'un million d'écoutes »,
+« 46 000 auditeurs mensuels » (le profil en affichait **43 100** : la fiche donne « plus de 43 000 » et signale
+l'écart). **Volontairement omis** : la mention X Factor (non confirmée pour Lasse Boman), le nom de l'A&R
+signataire du mail, toute coordonnée, et la date de formation « 2024 » d'une page de festival (en contradiction
+avec Bandcamp).
+
+⚠️ À contrôler après le 15 novembre : si le single est sorti, ajouter sa date de sortie vérifiée sur Spotify
+dans les deux langues et retirer la phrase « n'était pas encore référencé ».
+
 ---
 
-*Dernière mise à jour : 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+*Dernière mise à jour : 2026-11-12, treizième Découverte — Lakes & Fires (§123) ; précédemment 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 

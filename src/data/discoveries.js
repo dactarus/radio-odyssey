@@ -247,4 +247,23 @@ export const DISCOVERIES = [
     linkHref: '/radio-pop-rnb-en-ligne.html',
     linkLabel: 'radio pop et R&B',
   },
+  {
+    slug: 'lakes-and-fires',
+    name: 'Lakes & Fires',
+    genre: 'Indie-groove / funk pop',
+    origin: 'Danemark',
+    active: true,
+    since: 'novembre 2026',
+    scarcity: 'quasi-absente en français',
+    tracks: ['Before The Sun Will Rise (feat. Drew Sycamore)'],
+    facts: [
+      'Trio danois réuni autour de Shaka Loveless, Lasse Boman et Birk Nevel, trois amis qui jouent ensemble depuis près de vingt-cinq ans, notamment dans le collectif hip-hop Gypsies et le groupe indie pop/rock Are We Brothers (d’après la page Bandcamp du groupe).',
+      'Parcours de la scène danoise, toujours d’après cette page : Shaka Loveless, Danish Music Award du meilleur artiste masculin en 2013 ; Lasse Boman, auteur de tubes multiplatine avec des artistes comme Drew Sycamore ; Birk Nevel, producteur et batteur, Gaffa Award du meilleur live danois en 2023 avec Benjamin Hav og Familien.',
+      '"Before The Sun Will Rise", avec la chanteuse danoise Drew Sycamore, est présenté dans le communiqué reçu par la radio comme le premier single de leur prochain album, prévu en 2027 ; leur profil Spotify comptait plus de 43 000 auditeurs mensuels le 12 novembre 2026.',
+    ],
+    portrait: "Lakes & Fires est un trio danois formé de Shaka Loveless, Lasse Boman et Birk Nevel. D'après la page Bandcamp du groupe, ces trois amis jouent ensemble depuis près de vingt-cinq ans, notamment dans le collectif hip-hop Gypsies et dans le groupe indie pop/rock Are We Brothers, et ce projet est un retour à une liberté créative et à une indépendance totales. Chacun a un parcours reconnu sur la scène danoise : Shaka Loveless a lancé sa carrière solo en 2012 et reçu le Danish Music Award du meilleur artiste masculin en 2013 ; Lasse Boman a écrit des tubes multiplatine avec des artistes comme Drew Sycamore ; Birk Nevel, producteur et batteur, a reçu un Gaffa Award du meilleur live danois en 2023 avec Benjamin Hav og Familien. Leur premier single, \"Lagoon\", est sorti le 14 février 2025 ; leur album éponyme, paru en 2025, est référencé sur Spotify, où le profil du groupe comptait plus de 43 000 auditeurs mensuels au 12 novembre 2026. Leur nouveau single, \"Before The Sun Will Rise\", est chanté avec Drew Sycamore, chanteuse et autrice-compositrice danoise primée aux Gaffa Awards en 2022. Selon le communiqué envoyé à la radio, il mêle le funk organique moderne et la chaleur de groupes comme Jungle à une écriture pop soignée, se prête à une programmation de jour comme de soir, et ouvre la voie à un album prévu en 2027. Le communiqué avance aussi que l'album éponyme a dépassé le million d'écoutes et fidélisé 46 000 auditeurs mensuels sur Spotify : nous n'avons pas pu recouper le million d'écoutes, et le profil affichait 43 000 auditeurs mensuels à la date de consultation. Ces éléments proviennent du communiqué et de la page Bandcamp du groupe ; le nouveau single n'était pas encore référencé sur les plateformes que nous avons consultées, et sa date de sortie n'a pas pu être recoupée. Radio Odyssey l'accueille sur son antenne à partir du 15 novembre 2026 avec \"Before The Sun Will Rise\".",
+    why: "Le funk organique et la pop soignée de Lakes & Fires, portés par la voix de la chanteuse danoise Drew Sycamore, prolongent la sélection pop de l'antenne, de jour comme de soir — une découverte à suivre dès son arrivée le 15 novembre 2026.",
+    linkHref: '/radio-pop-en-ligne.html',
+    linkLabel: 'radio pop en ligne',
+  },
 ];

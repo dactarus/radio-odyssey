@@ -167,6 +167,21 @@ export const DISCOVERIES_EN = {
     linkHref: '/en/feel-good-music-radio.html',
     linkLabel: 'feel-good music radio',
   },
+  'lakes-and-fires': {
+    genre: 'Indie-groove / funk pop',
+    origin: 'Denmark',
+    since: 'November 2026',
+    scarcity: 'partielle',
+    facts: [
+      'Danish trio of Shaka Loveless, Lasse Boman and Birk Nevel, three friends who have played together for almost 25 years, including in the hip hop collective Gypsies and the indie pop/rock band Are We Brothers (according to the band\'s Bandcamp page).',
+      'Careers from the Danish scene, according to that same page: Shaka Loveless, Danish Music Award for best male artist in 2013; Lasse Boman, writer of multiplatinum hits with artists like Drew Sycamore; Birk Nevel, producer and drummer, Gaffa Award for best Danish live act in 2023 with Benjamin Hav og Familien.',
+      '"Before The Sun Will Rise", with Danish singer Drew Sycamore, is presented in the press release sent to the radio as the first single from their next album, planned for 2027; their Spotify profile had more than 43,000 monthly listeners on 12 November 2026.',
+    ],
+    portrait: "Lakes & Fires is a Danish trio made up of Shaka Loveless, Lasse Boman and Birk Nevel. According to the band's Bandcamp page, the three friends have played together for almost 25 years, notably in the hip hop collective Gypsies and in the indie pop/rock band Are We Brothers, and this project is a return to absolute creative freedom and independence. Each has a recognised career on the Danish scene: Shaka Loveless launched his solo career in 2012 and won the Danish Music Award for best male artist in 2013; Lasse Boman has written multiplatinum hits with artists like Drew Sycamore; Birk Nevel, a producer and drummer, won a Gaffa Award for best Danish live act in 2023 with Benjamin Hav og Familien. Their first single, \"Lagoon\", came out on 14 February 2025; their self-titled album, released in 2025, is listed on Spotify, where the band's profile had more than 43,000 monthly listeners as of 12 November 2026. Their new single, \"Before The Sun Will Rise\", is sung with Drew Sycamore, a Danish singer and songwriter who won Gaffa Awards in 2022. According to the press release sent to the radio, it blends modern organic funk and the warmth of bands like Jungle with polished pop writing, suits daytime and evening programming alike, and opens the way for an album planned for 2027. The press release also states that the self-titled album has passed one million streams and built 46,000 monthly listeners on Spotify: we could not cross-check the million streams, and the profile showed 43,000 monthly listeners on the day we looked. These details come from the press release and the band's Bandcamp page; the new single was not yet listed on the platforms we checked, and its release date could not be cross-checked. Radio Odyssey welcomes them on air from 15 November 2026 with \"Before The Sun Will Rise\".",
+    why: 'The organic funk and polished pop of Lakes & Fires, carried by the voice of Danish singer Drew Sycamore, extend the station\'s pop selection, day and night — a discovery to follow from their arrival on 15 November 2026.',
+    linkHref: '/en/positive-european-music-station.html',
+    linkLabel: 'positive European music station',
+  },
 };
 
 export const SLUGS_DISCOVERIES_EN = Object.keys(DISCOVERIES_EN);
