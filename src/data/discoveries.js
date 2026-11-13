@@ -266,4 +266,23 @@ export const DISCOVERIES = [
     linkHref: '/radio-pop-en-ligne.html',
     linkLabel: 'radio pop en ligne',
   },
+  {
+    slug: 'valerian',
+    name: 'Valérian',
+    genre: 'Électro mélodique / cinématique',
+    origin: 'France',
+    active: true,
+    since: 'novembre 2026',
+    scarcity: 'quasi-absente',
+    tracks: ['Feels Like Home'],
+    facts: [
+      'Sound designer, compositeur et musicien français, Valérian explore, d’après sa présentation, les frontières entre musique électronique, sonorités cinématiques et mélodies intimistes, entre textures atmosphériques, piano mélodique et expérimentations sonores.',
+      'Après plusieurs années consacrées à la création musicale pour l’image, il dit développer aujourd’hui davantage son propre projet musical.',
+      '"Feels Like Home", réalisé avec sa petite sœur Meije, est sorti le 6 novembre 2026 sur Spotify (3 min 05) ; d’après Valérian, il a été composé à l’origine pour un documentaire autour d’une runneuse, qui n’est pas encore sorti.',
+    ],
+    portrait: "Valérian se présente comme un sound designer, compositeur et musicien français. Son univers explore, d'après lui, les frontières entre musique électronique, sonorités cinématiques et mélodies intimistes : son travail navigue entre textures atmosphériques, piano mélodique et expérimentations sonores, et mêle son expérience du sound design à une approche personnelle de la musique. Après plusieurs années consacrées à la création musicale pour l'image, il développe aujourd'hui davantage son propre projet musical. \"Feels Like Home\", réalisé en collaboration avec sa petite sœur Meije, est un morceau à l'atmosphère douce et contemplative, qui mêle électronique mélodique, piano et textures cinématiques ; il évoque, selon Valérian, le besoin de s'évader, de retrouver la nature et de prendre le temps de se ressourcer. Le titre a été composé à l'origine pour un documentaire autour d'une runneuse, qui n'est pas encore sorti, et trouve aujourd'hui une nouvelle vie dans cette collaboration entre frère et sœur. Sur Spotify, \"Feels Like Home\" est crédité à Valérian et Meije, sorti le 6 novembre 2026 et d'une durée de 3 min 05 ; c'est, à ce jour, le seul morceau mis en avant sur leurs deux profils. Ces éléments biographiques proviennent de Valérian lui-même : en dehors des plateformes de streaming, très peu de sources s'intéressent à lui en ligne, et seuls l'existence du titre, ses deux interprètes crédités, sa date de sortie et sa durée ont pu être recoupés (Spotify). Radio Odyssey l'accueille dans ses Découvertes en novembre 2026 avec \"Feels Like Home\".",
+    why: "L'électro mélodique de Valérian, nourrie de piano et de textures cinématiques, apporte une respiration douce et contemplative à la sélection de l'antenne — une découverte à écouter en prenant le temps de se ressourcer.",
+    linkHref: '/radio-detente-moderne.html',
+    linkLabel: 'radio détente moderne',
+  },
 ];

@@ -4511,7 +4511,26 @@ avec Bandcamp).
 ⚠️ À contrôler après le 15 novembre : si le single est sorti, ajouter sa date de sortie vérifiée sur Spotify
 dans les deux langues et retirer la phrase « n'était pas encore référencé ».
 
+## 124. Quatorzième Découverte : Valérian, « Feels Like Home », en français et en anglais (2026-11-13)
+
+Fiche créée sur demande de Frédéric à partir de la présentation envoyée par l'artiste lui-même, publiée dans les
+deux langues : `/decouverte-valerian.html` et `/en/discovery-valerian.html` (`hreflang`, hubs, accueils,
+sitemap : 301 URL, 319 pages, 60 pages anglaises). Genre « Électro mélodique / cinématique », origine France,
+rareté « quasi-absente », liens `radio-detente-moderne` / `european-chill-radio`.
+
+**Vérifié (Spotify)** : le titre, ses deux interprètes crédités (Valérian et Meije), sa sortie le **6 novembre
+2026**, sa durée (3 min 05), et que c'est le seul morceau mis en avant sur les deux profils. **Attribué à
+Valérian, non recoupable** : tout le reste (sound designer/compositeur, travail pour l'image, la petite sœur, le
+documentaire sur une runneuse jamais sorti, le thème du titre). Une recherche web n'a rien donné de plus (le
+nom renvoie au film *Valérian*) : la fiche le dit (« très peu de sources »).
+
+**Volontairement absent** : le nom de famille (il figure dans le © ℗ Spotify, pas dans la présentation de
+l'artiste), le chiffre d'auditeurs (50 par profil), toute coordonnée.
+
+⚠️ **Aucune date d'entrée à l'antenne n'a été donnée** : la fiche dit « accueille dans ses Découvertes en
+novembre 2026 », sans « à partir du… ». Si Frédéric en fixe une, la remplacer dans les deux langues.
+
 ---
 
-*Dernière mise à jour : 2026-11-12, treizième Découverte — Lakes & Fires (§123) ; précédemment 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+*Dernière mise à jour : 2026-11-13, quatorzième Découverte — Valérian (§124) ; précédemment 2026-11-12, treizième Découverte — Lakes & Fires (§123) ; précédemment 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
