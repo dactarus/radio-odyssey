@@ -4527,8 +4527,9 @@ nom renvoie au film *Valérian*) : la fiche le dit (« très peu de sources »).
 **Volontairement absent** : le nom de famille (il figure dans le © ℗ Spotify, pas dans la présentation de
 l'artiste), le chiffre d'auditeurs (50 par profil), toute coordonnée.
 
-⚠️ **Aucune date d'entrée à l'antenne n'a été donnée** : la fiche dit « accueille dans ses Découvertes en
-novembre 2026 », sans « à partir du… ». Si Frédéric en fixe une, la remplacer dans les deux langues.
+**Date d'entrée à l'antenne** : d'abord non donnée (la fiche disait « accueille dans ses Découvertes en novembre
+2026 »), puis fixée par Frédéric au **15 novembre 2026** (2026-11-13) : « à partir du 15 novembre 2026 » dans les
+deux langues.
 
 ---
 
