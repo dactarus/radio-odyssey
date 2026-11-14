@@ -4683,7 +4683,38 @@ demander l'indexation, et prévoir la relecture de l'article 50 et de l'Omnibus 
 
 ---
 
+## 130. Transparence sur l'IA dans ce que la radio fabrique : mentions légales, article, jingles (2026-11-14)
+
+Suite du §129. Frédéric a précisé ce qui est fait avec l'IA **chez Radio Odyssey elle-même** : **les jingles chantés**
+(voix **et** musique) et **une partie des musiques d'accompagnement des séquences de cohérence cardiaque** ; les voix
+des séquences de respiration et des autres jingles (courts, acapella) sont **humaines**. Le site a été développé avec
+l'aide de l'IA (code entièrement), et ses textes rédigés avec elle, **sous la direction et la validation de Frédéric**,
+qui insiste : « derrière tout cela, c'est moi, un humain qui décide ». Décisions de Frédéric : le signaler **dans les
+mentions légales** et l'article, **discrètement** (pas de promotion, pas de mention de chaque jingle à l'antenne) ;
+**ne nommer aucun outil** (« secret industriel »). Il a vérifié que la licence payante de l'outil utilisé couvre la
+diffusion professionnelle (non écrit dans les textes).
+
+**Ce que le §129 avait de faux sans cela** : les règles 1 (« nous le disons toujours ») et 4 (IA « dans les Découvertes
+et pas ailleurs ») ne valaient que pour les **titres d'artistes**. Corrigées en ce sens, avec une section « Ce que nous
+produisons nous-mêmes » (FR + EN) qui dit les jingles chantés, une partie de la musique des séquences, les voix
+humaines, la responsabilité éditoriale humaine, et le développement du site avec l'IA.
+
+**Modifications** : `mentions-legales.astro` (nouvelle section « Intelligence artificielle », avec renvoi vers l'article) ;
+article FR + EN ; `comment-radio-odyssey-fabrique-ses-jingles` (paragraphe + réponse de FAQ « interprétés par de vrais
+chanteurs ? » : c'était « produits en studio », devenu « Non, réalisés avec l'aide d'outils d'IA ») ; `elisabeth-belot-
+grimaud-radio-odyssey` FR + EN : « Pas d'intelligence artificielle ni de robot » devenu « Ni voix de synthèse ni robot »
+(la phrase visait la voix, mais pouvait se lire comme visant toute la séquence).
+
+⚠️ **À surveiller** : (1) la formule « une partie des musiques d'accompagnement des séquences de cohérence cardiaque » est
+**volontairement vague** (Frédéric a d'abord dit « les musiques de cohérence cardiaque », puis « ceux qui sont chantés
+avec musique » pour les jingles) : à préciser s'il le souhaite ; (2) **le Top Horaire** (jingle « chanté en chœurs, sans
+batterie » dans `le-jingle-top-horaire-de-radio-odyssey`) n'a pas été touché : à confirmer s'il est de la famille IA ;
+(3) **aucun nom d'outil ne doit apparaître sur le site** ; ⚠️ le **nom de l'outil figure encore dans ce journal**, aux entrées de juillet 2026 sur les jingles (§ de l'article « Comment on fabrique nos jingles » et l'interview associée) : à retirer si le dépôt GitHub est ou devient public (visibilité non vérifiée) ; (3 bis) **ce §130 renverse la décision de juillet 2026** de rester vague sur les jingles (« produits en studio », ni le mot « IA » ni l'outil) : décision de Frédéric, prise le 2026-11-14 au nom de la transparence ; (4) les mentions légales n'ont pas d'équivalent anglais
+(les pages anglaises y renvoient en français, exception légale prévue).
+
 ---
 
-*Dernière mise à jour : 2026-11-14, article « Coulisses » sur l'IA préparé, non publié (§129) ; précédemment dix-huitième Découverte préparée, non publiée — aKa Sci Music (§128) ; précédemment dix-septième Découverte — Paul Stone (§127) ; précédemment seizième Découverte — Calum Wood (§126) ; précédemment quinzième Découverte — Jeff Levy (§125) ; précédemment 2026-11-13, quatorzième Découverte — Valérian (§124) ; précédemment 2026-11-12, treizième Découverte — Lakes & Fires (§123) ; précédemment 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+---
+
+*Dernière mise à jour : 2026-11-14, transparence sur l'IA dans ce que la radio fabrique (§130) ; précédemment article « Coulisses » sur l'IA préparé, non publié (§129) ; précédemment dix-huitième Découverte préparée, non publiée — aKa Sci Music (§128) ; précédemment dix-septième Découverte — Paul Stone (§127) ; précédemment seizième Découverte — Calum Wood (§126) ; précédemment quinzième Découverte — Jeff Levy (§125) ; précédemment 2026-11-13, quatorzième Découverte — Valérian (§124) ; précédemment 2026-11-12, treizième Découverte — Lakes & Fires (§123) ; précédemment 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
