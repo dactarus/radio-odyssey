@@ -238,6 +238,20 @@ export const DISCOVERIES_EN = {
     linkHref: '/en/what-makes-radio-odyssey-different.html',
     linkLabel: 'what makes Radio Odyssey different',
   },
+  'aka-sci-music': {
+    genre: 'R&B / dance pop / UK garage',
+    origin: 'Germany',
+    since: 'November 2026',
+    facts: [
+      'aKa Sci Music is the project of Sylejman Makasci, an independent songwriter and producer based in Germany; the vocals are AI-assisted, which he presents openly, and in the now-playing display his name is followed by the mention "(IA)" for the information of listeners, while he says he writes the lyrics himself, designs the structures and arrangements and decides when a track is finished.',
+      '"Half Awake" was released on 18 September 2026 (2 min 34): it is the eleventh of the 13 tracks on the album "Vol 5" on Spotify, which does hold the 13 tracks the artist mentions.',
+      'According to him, the project blends warm R&B, dance pop and UK garage; his Spotify profile had 345 monthly listeners on 14 November 2026, and the "more than 100,000 streams" and "more than 400 radio plays" he mentions are cumulative figures supplied by the artist, which we could not cross-check.',
+    ],
+    portrait: "aKa Sci Music is the project of Sylejman Makasci, an independent songwriter and producer based in Germany. His music blends, according to him, warm R&B, dance pop and UK garage, with excursions into melodic house, Afrobeats and Mediterranean influences. The vocals are AI-assisted, which he presents openly: he explains that he writes the lyrics himself, develops the ideas, shapes the structures and arrangements, and decides when each song is finished, with AI serving mainly as a production tool, particularly for the voice. Writing a lyric and directing an arrangement is not the same as singing the final vocal: we say so that listeners know what they are hearing, which is why Radio Odyssey follows his name with the mention \"(IA)\" (the French abbreviation for AI) in the now-playing display. \"Half Awake\", released on 18 September 2026 and running 2 min 34, is on \"Vol 5\", a 13-track album; the artist names it among his three starting points into his catalogue, along with \"Neon Rain\" and \"Window Seat\". He also puts forward more than 100,000 streams and more than 400 radio plays worldwide, according to his own tracking. He describes \"Half Awake\" as the slightly floating feeling of coming home after a good night out, and \"Vol 5\" as an album of melodic tracks between house and R&B. These details come from the artist and from an article on the Jack Righteous website (27 October 2026), devoted to creators working with AI, which rests on his own submission and attributes his credits to him alone: it is not an independent source. We were able to check on Spotify the existence of the track, its release date, its length, its place on the album \"Vol 5\" and its 13 tracks, as well as the profile's audience (345 monthly listeners as of 14 November 2026); the stream and radio-play figures could not be cross-checked. Radio Odyssey welcomes him on air from 16 November 2026 with \"Half Awake\".",
+    why: 'The warm R&B and dance pop of aKa Sci Music, whose AI-assisted vocals are presented with full transparency, add a bright, danceable touch to the station — a discovery to follow from its arrival on 16 November 2026.',
+    linkHref: '/en/ai-music-on-radio-odyssey.html',
+    linkLabel: 'AI music on Radio Odyssey',
+  },
 };
 
 export const SLUGS_DISCOVERIES_EN = Object.keys(DISCOVERIES_EN);

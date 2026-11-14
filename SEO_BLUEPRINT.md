@@ -4606,7 +4606,7 @@ la page Ditto.fm affichait encore « Coming Soon ».
 des deux entreprises, les noms des musiciens (les articles ne les donnent pas tous de la même façon), la
 mention « ne constitue pas du contenu canadien ».
 
-## 128. Dix-huitième Découverte : aKa Sci Music, « Half Awake », en français et en anglais (2026-11-14) — PRÉPARÉE, NON PUBLIÉE
+## 128. Dix-huitième Découverte : aKa Sci Music, « Half Awake », en français et en anglais (2026-11-14) — PUBLIÉE
 
 Fiche préparée sur demande de Frédéric, **à ne pousser qu'après réception du mp3** (le titre passera à l'antenne
 à ce moment-là). Fichiers : `/decouverte-aka-sci-music.html` et `/en/discovery-aka-sci-music.html` (`hreflang`,
@@ -4645,6 +4645,15 @@ Nia Storm ne mentionnent pas ce marquage.
 **Volontairement absent** : l'adresse e-mail, le détail de l'intérêt pour des remixes cité par l'article, les
 autres titres de l'album hors « Neon Rain » et « Window Seat » (les deux autres titres d'entrée cités).
 
+
+**Publication (2026-11-14)** : Frédéric a reçu le **mp3** de l'artiste (mail de remerciement de Sylejman Makasci, qui propose d'envoyer d'autres
+titres du « Vol 5 » et de suivre la radio) ; **diffusion à partir du 16 novembre 2026**. Date ajoutée au portrait et au `why` (FR + EN),
+ainsi que deux précisions attribuées à l'artiste (le titre décrit comme « la sensation un peu flottante du retour à la maison après une
+belle soirée », le « Vol 5 » comme des morceaux mélodiques entre house et R&B). **« À l'antenne » devient « dans l'affichage du titre en
+cours »** (même correction que dans l'article, §131) ; le « (IA) » doit bien être posé dans la fiche RadioKing. Le lien de la fiche
+renvoie vers l'article sur l'IA (§129). **Sitemap : 311 URL, 329 pages ; pages anglaises : 65.** L'accueil montre désormais Paul Stone,
+Calum Wood et aKa Sci Music (Jeff Levy sort du bandeau). ⚠️ **Le mail de l'artiste ne contient ni déclaration des droits ni autorisation
+de diffusion** : à demander avec le mail de confirmation prévu au §131 (Frédéric l'envoie aux titres IA des Découvertes).
 ---
 
 ## 129. Article « Coulisses » sur la musique faite avec l'intelligence artificielle, FR + EN (2026-11-14)
@@ -4765,5 +4774,5 @@ publication) sont une question distincte, déjà traitée autrement dans les men
 
 ---
 
-*Dernière mise à jour : 2026-11-14, relecture juridique de l'article sur l'IA intégrée (§131) ; précédemment transparence sur l'IA dans ce que la radio fabrique (§130) ; précédemment article « Coulisses » sur l'IA préparé, non publié (§129) ; précédemment dix-huitième Découverte préparée, non publiée — aKa Sci Music (§128) ; précédemment dix-septième Découverte — Paul Stone (§127) ; précédemment seizième Découverte — Calum Wood (§126) ; précédemment quinzième Découverte — Jeff Levy (§125) ; précédemment 2026-11-13, quatorzième Découverte — Valérian (§124) ; précédemment 2026-11-12, treizième Découverte — Lakes & Fires (§123) ; précédemment 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+*Dernière mise à jour : 2026-11-14, Découverte aKa Sci Music publiée (§128) ; précédemment relecture juridique de l'article sur l'IA intégrée (§131) ; précédemment transparence sur l'IA dans ce que la radio fabrique (§130) ; précédemment article « Coulisses » sur l'IA préparé, non publié (§129) ; précédemment dix-huitième Découverte préparée, non publiée — aKa Sci Music (§128) ; précédemment dix-septième Découverte — Paul Stone (§127) ; précédemment seizième Découverte — Calum Wood (§126) ; précédemment quinzième Découverte — Jeff Levy (§125) ; précédemment 2026-11-13, quatorzième Découverte — Valérian (§124) ; précédemment 2026-11-12, treizième Découverte — Lakes & Fires (§123) ; précédemment 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
