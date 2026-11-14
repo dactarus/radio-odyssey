@@ -4721,13 +4721,18 @@ et sur `quel-style-de-musique-pour-la-coherence-cardiaque` (qui disait « compos
 cahier des charges », ce qui pouvait laisser croire à des compositeurs). **La phrase « site développé avec l'IA » n'est plus que
 dans les mentions légales** (décision de Frédéric : pas dans l'article).
 
-⚠️ **Le dépôt GitHub `dactarus/radio-odyssey` est PUBLIC** (vérifié le 2026-11-14 : l'API répond sans authentification). Conséquences :
-(1) **le nom de l'outil figurait dans ce journal depuis juillet 2026** : retiré de la version courante, mais **toujours présent
-dans l'historique git** (commits `524cc99` et `e65783e`), donc lisible publiquement ; l'effacer demanderait de réécrire
-l'historique avec un force-push, opération lourde et risquée que je n'ai **pas** faite ; (2) tout ce qui est commité est public, y
-compris ce journal : **ne jamais y écrire de coordonnée privée ni de nom d'outil** ; (3) `PLAN_ARTICLE_IA.md` et
-`BROUILLON_ARTICLE_IA.md` restent hors dépôt (le brouillon contient des notes internes) ; (4) aucun nom d'outil ne doit apparaître
-sur le site, ce qui est vérifié au build ; (5) les mentions légales n'ont pas d'équivalent anglais (exception légale prévue).
+⚠️ **Le dépôt GitHub `dactarus/radio-odyssey` est PUBLIC** (vérifié le 2026-11-14 : l'API répond sans authentification, 0 fork,
+0 étoile). Conséquences : (1) **le nom de l'outil figurait dans ce journal depuis juillet 2026** ; **purgé de tout l'historique le
+2026-11-14** à la demande de Frédéric : réécriture de l'historique (215 commits touchés, tous les identifiants depuis le 11 juillet
+ont changé, contenu des fichiers, auteurs, dates et messages inchangés), puis push forcé sur `main`. ⚠️ **GitHub continue de servir les
+anciens commits à qui connaît leur identifiant** tant que ses serveurs ne les ont pas supprimés ; une demande d'effacement auprès du
+support GitHub (« remove cached views / sensitive data ») est la seule façon de l'obtenir, elle est à la main de Frédéric. Une copie de
+sauvegarde de l'ancien historique (qui contient encore le nom) est hors dépôt, dans les Téléchargements de Frédéric : à supprimer
+quand il est satisfait ; (2) tout ce qui est commité est public, y compris ce journal : **ne jamais y écrire de coordonnée privée,
+de nom d'outil ni d'identifiant de commit qui pointerait vers l'ancien historique** ; (3) `PLAN_ARTICLE_IA.md`,
+`BROUILLON_ARTICLE_IA.md` et `INSTRUCTIONS_RELECTURE_JURIDIQUE.md` restent hors dépôt (le brouillon contient des notes internes) ;
+(4) aucun nom d'outil ne doit apparaître sur le site, ce qui est vérifié au build ; (5) les mentions légales n'ont pas d'équivalent
+anglais (exception légale prévue).
 
 ---
 
