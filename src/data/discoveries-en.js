@@ -196,6 +196,20 @@ export const DISCOVERIES_EN = {
     linkHref: '/en/european-chill-radio.html',
     linkLabel: 'European chill radio',
   },
+  'jeff-levy': {
+    genre: 'Folk pop / singer-songwriter',
+    origin: 'United States',
+    since: 'November 2026',
+    facts: [
+      'A singer-songwriter and producer from the San Francisco Bay Area in California, and a retired anesthesiologist, Jeff Levy has worked in the studio without ever touring, according to his press kit.',
+      'A friend who introduced him to the radio says he has played, written and sung for more than thirty years, without ever having a record deal or a big success; his press kit speaks of forty years of studio work.',
+      '"Big Chill Car Trip" was released on 14 August 2026 on Spotify (3 min 47); his profile there had 15 monthly listeners on 14 November 2026.',
+    ],
+    portrait: "Jeff Levy presents himself, in his press kit, as a singer-songwriter and producer from the San Francisco Bay Area in California. He has worked in the studio for more than forty years, alongside a now-finished career as an anesthesiologist, and has never been a touring artist: he describes himself as a studio craftsman. His repertoire blends folk, pop, rock, country and electronics, with, for the project he is putting forward in spring 2026, a guitar-driven sound. The friend who introduced him to the radio describes him as someone who has played, written and sung for more than thirty years, who has never been in the spotlight or signed a record deal, and whose talent he rates very highly. The press kit adds that he was, in the late 1980s, one of the early MIDI pioneers and worked with MidiQuest on the programming of synthesizers such as the Oberheim Xpander, the Casio CZ-101, the Voyetra Eight and the Kawai K5, and that he now reworks his tracks with modern production tools. \"Big Chill Car Trip\" was released on 14 August 2026 on Spotify and runs 3 min 47; the artist's profile there had 15 monthly listeners as of 14 November 2026. These details come from the press kit and from the friend who introduced him: outside streaming platforms, we found no independent source about him (his name is also very common), and only the existence of the track, its performer, its release date, its length and the audience figure could be cross-checked (Spotify). The press kit also mentions several thousand cumulative streams, which we could not verify, and the two sources do not give the same length of career (thirty years on one side, forty on the other). Radio Odyssey welcomes him on air from 16 November 2026 with \"Big Chill Car Trip\".",
+    why: 'The folk pop of Jeff Levy, a Bay Area songwriter who stayed away from the spotlight, adds a studio craftsman\'s voice to the station\'s selection — a discovery to follow from his arrival on 16 November 2026.',
+    linkHref: '/en/feel-good-music-radio.html',
+    linkLabel: 'feel-good music radio',
+  },
 };
 
 export const SLUGS_DISCOVERIES_EN = Object.keys(DISCOVERIES_EN);

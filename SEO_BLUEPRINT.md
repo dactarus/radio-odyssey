@@ -4531,7 +4531,29 @@ l'artiste), le chiffre d'auditeurs (50 par profil), toute coordonnée.
 2026 »), puis fixée par Frédéric au **15 novembre 2026** (2026-11-13) : « à partir du 15 novembre 2026 » dans les
 deux langues.
 
+## 125. Quinzième Découverte : Jeff Levy, « Big Chill Car Trip », en français et en anglais (2026-11-14)
+
+Fiche créée sur demande de Frédéric à partir du dossier de presse (PDF) de l'artiste et du message d'un ami
+facebookien qui le présente, en deux langues : `/decouverte-jeff-levy.html` et `/en/discovery-jeff-levy.html`
+(`hreflang`, hubs, accueils, plan du site, sitemap : 303 URL, 321 pages, 61 pages anglaises). Genre « Folk pop / auteur-compositeur »,
+origine États-Unis, rareté « quasi-absente », liens `musique-pour-un-road-trip` / `feel-good-music-radio`
+(pas d'équivalent anglais de la page road trip). Entrée à l'antenne : **16 novembre 2026**.
+
+**Vérifié (Spotify)** : le titre, son interprète, sa sortie le **14 août 2026**, sa durée (3 min 47), les
+**15 auditeurs mensuels** du profil au 14 novembre 2026. ⚠️ Le titre ne figure **pas** dans le dossier de presse,
+qui met en avant un autre projet (printemps 2026) : il vient de Frédéric et de Spotify. **Attribué, non
+recoupable** : tout le reste (baie de San Francisco, médecin anesthésiste retraité, studio, MidiQuest et
+synthétiseurs, « plusieurs milliers d'écoutes »). La fiche le dit, et signale que les deux sources divergent sur
+l'ancienneté (plus de trente ans pour l'ami, quarante pour le dossier).
+
+**Volontairement absent** : adresse e-mail et téléphone du dossier, la photo, « anciennement Nitrous », les
+louanges de pairs non sourcées, l'appel de l'ami à « lui donner sa chance ».
+
+**À trancher** : une page de l'annuaire d'un site tiers (Lunar Boom Music) classe Jeff Levy parmi les « AI Music
+Artists », avec un texte identique à celui du dossier de presse ; plusieurs titres du profil Spotify (« AI
+Anthem », « The New Token ») vont dans ce sens, sans rien prouver. La fiche ne l'affirme pas et ne le nie pas.
+
 ---
 
-*Dernière mise à jour : 2026-11-13, quatorzième Découverte — Valérian (§124) ; précédemment 2026-11-12, treizième Découverte — Lakes & Fires (§123) ; précédemment 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+*Dernière mise à jour : 2026-11-14, quinzième Découverte — Jeff Levy (§125) ; précédemment 2026-11-13, quatorzième Découverte — Valérian (§124) ; précédemment 2026-11-12, treizième Découverte — Lakes & Fires (§123) ; précédemment 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 

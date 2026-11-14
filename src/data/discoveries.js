@@ -285,4 +285,23 @@ export const DISCOVERIES = [
     linkHref: '/radio-detente-moderne.html',
     linkLabel: 'radio détente moderne',
   },
+  {
+    slug: 'jeff-levy',
+    name: 'Jeff Levy',
+    genre: 'Folk pop / auteur-compositeur',
+    origin: 'États-Unis',
+    active: true,
+    since: 'novembre 2026',
+    scarcity: 'quasi-absente',
+    tracks: ['Big Chill Car Trip'],
+    facts: [
+      'Auteur-compositeur-interprète et producteur de la baie de San Francisco, en Californie, médecin anesthésiste aujourd’hui retraité, Jeff Levy travaille en studio sans avoir jamais fait de tournée, d’après son dossier de presse.',
+      'Un ami qui le présente à la radio dit qu’il joue, écrit et chante depuis plus de trente ans, sans jamais avoir eu de contrat d’enregistrement ni connu le grand succès ; son dossier de presse parle de quarante ans de travail en studio.',
+      '"Big Chill Car Trip" est sorti le 14 août 2026 sur Spotify (3 min 47) ; son profil y comptait 15 auditeurs mensuels le 14 novembre 2026.',
+    ],
+    portrait: "Jeff Levy se présente, dans son dossier de presse, comme un auteur-compositeur-interprète et producteur de la baie de San Francisco, en Californie. Il travaille en studio depuis plus de quarante ans, en parallèle d'une carrière de médecin anesthésiste aujourd'hui terminée, et n'a jamais été un artiste de tournée : il se décrit comme un artisan de studio. Son répertoire mêle le folk, la pop, le rock, la country et l'électronique, avec, pour le projet qu'il met en avant au printemps 2026, un son porté par la guitare. L'ami qui l'a présenté à la radio le décrit comme quelqu'un qui joue, écrit et chante depuis plus de trente ans, qui n'a jamais été sous les projecteurs ni signé de contrat d'enregistrement, et dont il juge le talent considérable. Le dossier de presse ajoute qu'il aurait été, à la fin des années 1980, l'un des pionniers du MIDI et aurait collaboré avec MidiQuest à la programmation de synthétiseurs comme l'Oberheim Xpander, le Casio CZ-101, le Voyetra Eight et le Kawai K5, et qu'il retravaille aujourd'hui ses morceaux avec des outils de production modernes. \"Big Chill Car Trip\" est sorti le 14 août 2026 sur Spotify et dure 3 min 47 ; le profil de l'artiste y comptait 15 auditeurs mensuels au 14 novembre 2026. Ces éléments proviennent du dossier de presse et de l'ami qui le présente : en dehors des plateformes de streaming, nous n'avons trouvé aucune source indépendante à son sujet (son nom est par ailleurs très répandu), et seuls l'existence du titre, son interprète, sa date de sortie, sa durée et l'audience ont pu être recoupés (Spotify). Le dossier évoque aussi plusieurs milliers d'écoutes cumulées, que nous n'avons pas pu vérifier, et les deux sources ne donnent pas la même ancienneté (trente ans d'un côté, quarante de l'autre). Radio Odyssey l'accueille sur son antenne à partir du 16 novembre 2026 avec \"Big Chill Car Trip\".",
+    why: "Le folk pop de Jeff Levy, auteur-compositeur de la baie de San Francisco resté loin des projecteurs, ajoute une voix d'artisan de studio à la sélection de l'antenne — une découverte à suivre dès son arrivée le 16 novembre 2026.",
+    linkHref: '/musique-pour-un-road-trip.html',
+    linkLabel: 'musique pour un road trip',
+  },
 ];
