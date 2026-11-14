@@ -29,7 +29,7 @@ const faq = [
   },
   {
     q: "How do you know a track is made with AI?",
-    a: "We rely on what the artist or label tells us. We have no detection tool, and we cannot guarantee that tracks without the mention contain no AI.",
+    a: "We rely on what the artist or label tells us, and we cross-check what we can. We have no detection tool, and we cannot guarantee that tracks without the mention contain no AI.",
   },
   {
     q: "Is an artist who uses AI any less of an artist?",
@@ -37,11 +37,11 @@ const faq = [
   },
   {
     q: "Would you play a track that imitates an existing artist?",
-    a: "No. We refuse imitations, copies and identity theft.",
+    a: "No. We accept neither imitations, nor copies, nor identity theft.",
   },
   {
     q: "What happens if you find out you were misled?",
-    a: "We remove the track from the air and its page from the site.",
+    a: "If a serious element shows it, we suspend the broadcast of the track and question the artist or the label. If the omission is confirmed, we remove the track from the air and its page from the site.",
   },
   {
     q: "Can I ask not to hear tracks made with AI?",
@@ -53,7 +53,8 @@ const sources = [
   { label: "BBC — \"The BBC's policy on AI in music\" (Lorna Clarke, July 2026)", url: 'https://www.bbc.co.uk/mediacentre/articles/2026/bbc-policy-on-ai-music' },
   { label: 'YouTube — "YouTube Music adds new labels for AI music" (14 October 2026)', url: 'https://blog.youtube/news-and-events/youtube-music-ai-labels/' },
   { label: 'Deezer — "AI music has surpassed 50% of new music uploads for the first time" (21 July 2026, including the Ipsos survey of November 2025)', url: 'https://newsroom-deezer.com/2026/07/ai-music-exceeds-50-percent-daily-uploads-deezer/' },
-  { label: 'Regulation (EU) 2024/1689 on artificial intelligence — Article 50, transparency obligations', url: 'https://artificialintelligenceact.eu/article/50/' },
+  { label: 'Regulation (EU) 2024/1689 on artificial intelligence — Article 50, transparency obligations (European Commission, AI Act Service Desk)', url: 'https://ai-act-service-desk.ec.europa.eu/fr/ai-act/article-50' },
+  { label: 'ActuIA — AI Act timeline after the omnibus, Regulation (EU) 2026/1744, in French (updated 6 October 2026)', url: 'https://www.actuia.com/actualite/calendrier-ai-act-ce-qui-sapplique-ce-que-lomnibus-reporte/' },
   { label: 'Apple Music transparency tags (March 2026) — Music Business Worldwide', url: 'https://www.musicbusinessworldwide.com/apple-music-launches-ai-transparency-tags/' },
   { label: 'Apple Music transparency tags (4 March 2026) — 9to5Mac', url: 'https://9to5mac.com/2026/03/04/apple-music-introduces-metadata-tags-to-disclose-ai-generated-content/' },
   { label: 'iHeartMedia, "Guaranteed Human" (November 2025) — RadioInsight', url: 'https://radioinsight.com/headlines/322054/iheart-launches-anti-ai-guaranteed-human-campaign/' },
@@ -90,7 +91,7 @@ const sources = [
 
           <div class="content-card">
             <p style="margin:0 0 .6rem;font-size:.9rem;color:var(--ro-muted);">By the management of Radio Odyssey · 14 November 2026</p>
-            <p style="margin:0;">Radio Odyssey plays tracks made with artificial intelligence. Not everywhere, and not on the quiet: in our "Discoveries" sequence, and always flagged. This article is about the tracks of the artists we play; what we make ourselves is covered further down. It explains what we do, why, the rules we set ourselves, and above all what we cannot guarantee. We would rather you heard it from us.</p>
+            <p style="margin:0;">Radio Odyssey plays tracks made with artificial intelligence. Not everywhere, and not on the quiet: in our "Discoveries" sequence, and flagged. This article is about the tracks of the artists we play; what we make ourselves is covered further down. It explains what we do, why, the rules we set ourselves, and above all what we cannot guarantee. We would rather you heard it from us.</p>
           </div>
 
           <div class="content-card">
@@ -111,12 +112,12 @@ const sources = [
           <div class="content-card">
             <h2>Our rules</h2>
             <ol style="margin-bottom:0;">
-              <li><strong>We always say so</strong>, for the tracks of the artists we play: (IA) on air, details on the artist's page.</li>
+              <li><strong>We flag it.</strong> For the tracks of the artists we play: (IA) in the now-playing display, details on the artist's page.</li>
               <li><strong>There must be someone real behind it</strong>: a real artist, a real label, or a real artistic project.</li>
-              <li><strong>No imitation, no copying, no identity theft.</strong> An AI track is presented as an AI track. It does not imitate the voice of an existing artist and does not pass itself off as a person.</li>
+              <li><strong>No imitation, no copying, no identity theft.</strong> We do not accept a track that imitates the voice of an existing artist, copies an existing work or passes itself off as a person. An AI track is presented as an AI track.</li>
               <li><strong>In Discoveries, and nowhere else.</strong> Artists' tracks made with AI belong in the "Discoveries" sequence. Outside it, we do not play any, except a track that breaks through in the charts and that the public has embraced.</li>
-              <li><strong>Rights.</strong> We stick to the law in force at the time of the request and of the broadcast. We rely on the declaration of the artist or label, which we cannot check ourselves.</li>
-              <li><strong>If we are misled, we remove.</strong> If we learn that a track was submitted to us without the AI being disclosed, we remove it from the air, along with its page on the site.</li>
+              <li><strong>Rights.</strong> For a track submitted by an artist or a label, we rely on their declaration about the origin of the track and the rights attached to it. We cross-check what we can, without being able to verify everything: the declaration binds the person who makes it. We aim to respect the law in force for as long as a track stays on air.</li>
+              <li><strong>If a declaration is inaccurate, we remove.</strong> If a serious element shows that a track was submitted to us without the use of AI being disclosed, we suspend its broadcast and question the artist or the label. If the omission is confirmed, we remove the track from the air, along with its page on the site.</li>
             </ol>
           </div>
 
@@ -130,7 +131,7 @@ const sources = [
           <div class="content-card">
             <h2>We can be fooled</h2>
             <p>Let us be clear: <strong>we cannot guarantee that no track was made with AI without our knowing.</strong> The human ear is no longer enough. In a survey commissioned by Deezer and run by Ipsos among 9,000 people in eight countries, 97% of respondents could not tell, in a blind test, fully AI-generated songs from a human-made one.</p>
-            <p>Detectors exist, but none is infallible. Deezer uses a tool that spots traces left by certain generators, inaudible to the ear. YouTube Music relies both on its partners' declarations and on its own detection tools. Apple Music, for its part, has introduced labels that record labels and distributors must fill in themselves, with no detection by Apple. In other words, labelling rests largely on what each party declares.</p>
+            <p>Detectors exist, but none is infallible. As of the date of this article, Deezer uses a tool that spots traces left by certain generators, inaudible to the ear. YouTube Music relies both on its partners' declarations and on its own detection tools. Apple Music, for its part, has introduced labels that record labels and distributors must fill in themselves, with no detection by Apple. In other words, labelling rests largely on what each party declares.</p>
             <p>We have already had to set aside a track whose origin looked doubtful: an AI-generated version of an upcoming track, released before the official release, which closely resembled the real version published shortly after. These cases will multiply.</p>
             <p>This is how we work:</p>
             <ul>
@@ -138,12 +139,12 @@ const sources = [
               <li>we cross-check what we can (the track's presence on streaming platforms, its release date, its audience, the press);</li>
               <li>on our pages, we write "according to their press kit" for what we could not verify.</li>
             </ul>
-            <p style="margin-bottom:0;">When a track carries no (IA) mention, it means no AI was reported to us. It is not a guarantee, and we do not want to present it as one. If an error is brought to our attention, we correct it: the track and its page are removed.</p>
+            <p style="margin-bottom:0;">When a track carries no (IA) mention, it means no AI was reported to us. It is not a guarantee, and we do not want to present it as one. If an error is brought to our attention, we look into it: if it is confirmed, we remove the track and its page, or we correct the mention.</p>
           </div>
 
           <div class="content-card">
             <h2>What others do</h2>
-            <p>The movement is general, and the choices differ.</p>
+            <p>Here is, as of the date of this article, what others do. The movement is general, and the choices differ.</p>
             <ul>
               <li><strong>The BBC</strong> published its policy on AI in music in July 2026. It gives priority to human creativity, accepts that artists use AI tools as long as they do not replace their creative work, requires artists and partners who submit tracks to say whether and how they used AI, and promises never to knowingly broadcast generated music that would infringe copyright.</li>
               <li><strong>YouTube Music</strong> began on 14 October 2026 to display a label on tracks created primarily with generative AI, for instance when the composition and vocals are generated. The label appears on the player page and opens an explanation.</li>
@@ -156,13 +157,13 @@ const sources = [
 
           <div class="content-card">
             <h2>And the law?</h2>
-            <p>The legal framework is taking shape. The European regulation on artificial intelligence contains, in its Article 50, transparency obligations that have applied since 2 August 2026: providers of tools that generate sound, images or text must mark the outputs in a machine-readable way, and those who publish "deepfake" content must disclose that it is generated; for an artistic or creative work, this disclosure must be made in a way that does not hamper the display or enjoyment of the work.</p>
+            <p>The legal framework is taking shape. The European regulation on artificial intelligence contains, in its Article 50, transparency obligations that have applied since 2 August 2026. Providers of tools that generate sound, images or text must mark the outputs in a machine-readable way; a grace period nevertheless runs until 2 December 2026 for tools already on the market before 2 August. Those who use an AI tool to generate or manipulate "deepfake" content (image, sound or video that resembles real people, places or events and could falsely appear authentic) must disclose that it is generated; for an artistic or creative work, this disclosure must be made in a way that does not hamper the display or enjoyment of the work.</p>
             <p style="margin-bottom:0;">We are not lawyers and we do not claim to say how these rules apply to a web radio. All of this is moving fast: we follow these developments, we will adapt our practices accordingly, and this article will be updated. Until then, flagging AI, as we do, is the common-sense rule that several major players in the sector have adopted.</p>
           </div>
 
           <div class="content-card">
             <h2>What we produce ourselves</h2>
-            <p>Part of what the station makes itself is produced with the help of artificial intelligence tools: all the sung jingles, voices and music, and all the music of the heart coherence breathing sequences. The voices of the breathing sequences and of the other jingles are human. We do not flag every jingle on air; we say so here and in our legal notice.</p>
+            <p>Part of what the station makes itself is produced with the help of artificial intelligence tools: all the sung jingles, voices and music, and all the music of the heart coherence breathing sequences. The sung voices of these jingles are synthetic; the voices of the breathing sequences and of the other jingles are human. These elements are not announced one by one on air; the information is given here and in our legal notice.</p>
             <p style="margin-bottom:0;">Behind all of this, humans decide. All editorial decisions, programming, choice of tracks and published content, are made by the management of Radio Odyssey, which takes responsibility for them. Artificial intelligence tools assist; they do not decide.</p>
           </div>
 
@@ -173,13 +174,17 @@ const sources = [
 
           <div class="content-card">
             <h2>Important note</h2>
-            <p style="margin-bottom:0;">Information about the origin of a track, notably any use of artificial intelligence, and about the rights attached to it, is supplied by artists, labels or rights holders. Radio Odyssey relays it in good faith, without being able to verify its accuracy, and cannot be held responsible for an inaccurate or incomplete declaration made by a third party. This article describes our practices as of its publication date: they may change with the law and with the technology. Anyone who believes that a track we have broadcast infringes their rights, or that a mention is inaccurate, can write to us at the address shown at the bottom of the page: we review every request promptly and, where appropriate, remove the track.</p>
+            <p>Last updated: 14 November 2026.</p>
+            <p>Radio Odyssey chooses the tracks it plays and takes editorial responsibility for them.</p>
+            <p>Information about the origin of a track, notably any use of artificial intelligence, and about the rights attached to it, is declared to us by artists, labels or their representatives. These declarations bind those who make them. We cross-check what we can, without being able to verify everything. The absence of an (IA) mention means that no AI was reported to us, not that there is none.</p>
+            <p>This article describes our practices as of the date shown above. They may change with the law and with the technology.</p>
+            <p style="margin-bottom:0;">If you believe that a track we have broadcast infringes your rights, your voice or your image, or that a mention is inaccurate, write to us at <a href="mailto:odysseylaradio@gmail.com" style={lien}>odysseylaradio@gmail.com</a> stating the track concerned and the reason. We reply to every specific request. When it is serious, we suspend the broadcast of the track while we examine it. If it is well founded, we remove the track and its page, or we correct the mention.</p>
           </div>
 
           <FAQBlock items={faq} idPrefix="en-ia" lang="en" />
 
           <SourcesBlock sources={sources} lang="en" />
-          <p style="font-size:.85rem;color:var(--ro-muted);margin:-.4rem 0 1.4rem;">Sources consulted on 14 November 2026. Information about Apple Music and iHeartMedia comes from the trade press.</p>
+          <p style="font-size:.85rem;color:var(--ro-muted);margin:-.4rem 0 1.4rem;">Sources consulted on 14 November 2026. Information about Apple Music and iHeartMedia comes from the trade press. In case of any difference between this translation and the French version, the French version prevails.</p>
 
           <RelatedPages
             lang="en"

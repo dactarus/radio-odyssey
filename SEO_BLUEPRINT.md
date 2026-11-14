@@ -4722,7 +4722,48 @@ sur le site, ce qui est vérifié au build ; (5) les mentions légales n'ont pas
 
 ---
 
+## 131. Relecture juridique de l'article sur l'IA par un second modèle, et intégration (2026-11-14)
+
+Frédéric n'a pas de juriste et ne peut pas en payer un : il a fait relire les textes du §129-§130 par un autre modèle (Fable 5.2)
+à partir d'instructions préparées (`INSTRUCTIONS_RELECTURE_JURIDIQUE.md`, local). Sa réponse est un **second regard, pas un avis
+juridique** ; elle est conservée hors dépôt (fichier « Relecture des textes … » dans les Téléchargements de Frédéric).
+
+**Intégré** : (1) règle 1 : « Nous l'indiquons » (plus de « toujours », plus de « à l'antenne » qui laissait croire à une annonce
+parlée) ; (2) règle 3 : devenue un **critère d'acceptation** (« nous n'acceptons pas… ») au lieu d'une garantie sur chaque titre ;
+(3) règle 5 : « nous nous appuyons sur la déclaration… nous recoupons ce que nous pouvons… cette déclaration engage celui qui la
+fait… aussi longtemps qu'un titre reste à l'antenne » (plus de « que nous ne pouvons pas vérifier », qui contredisait la section
+« On peut nous tromper ») ; (4) règle 6 : **un seul régime de retrait**, répété à l'identique dans la règle, la clause, la FAQ et
+la section « On peut nous tromper » : élément sérieux → suspension et question à l'artiste ou au label → si l'omission est
+confirmée, retrait du titre et de sa page, ou correction de la mention ; (5) **clause « Précision importante » refaite** : « ne
+saurait être tenue responsable » et « de bonne foi » supprimés, « Dernière mise à jour : 14 novembre 2026 », « Radio Odyssey choisit
+les titres qu'elle diffuse et en assume la responsabilité éditoriale », adresse de signalement écrite en toutes lettres ;
+(6) « Ce que nous produisons nous-mêmes » : formule positive (« ne sont pas annoncés un par un »), précision que les **voix chantées
+des jingles sont synthétiques** ; (7) **« Et la loi ? » corrigée** : l'obligation sur les contenus « hypertruqués » pèse sur ceux
+qui **utilisent** un outil pour les générer (« déployeurs »), pas sur « ceux qui diffusent » (**inexactitude de ma rédaction du §129**) ;
+et le marquage par les fournisseurs a un **délai jusqu'au 2 décembre 2026** pour les outils déjà commercialisés avant le 2 août
+(règlement (UE) 2026/1744, lu via ActuIA, non lu au Journal officiel) ; (8) pratiques des plateformes datées « à la date de cet
+article » ; (9) mentions légales : section réécrite (décisions éditoriales, site et textes relus par la direction, éléments sonores
+sous licence, voix chantées synthétiques, titres des artistes, **signalement**, **langue** : la version française fait foi) ;
+(10) source officielle : page de la Commission (AI Act Service Desk) à la place de la page tierce ; (11) version anglaise : phrase
+« la version française fait foi ».
+
+**Non retenu ou à confirmer** : « n'imitent aucune personne existante » (voix chantées des jingles) : **non écrit**, Fable
+demande de ne le garder que si Frédéric en est sûr ; titres du Top Horaire etc. inchangés.
+
+⚠️ **Le point juridique le plus sérieux n'est pas dans les textes** : (a) Frédéric **n'a pas toujours de déclaration écrite sur les
+droits** (les mails reçus indiquent l'IA, rarement la titularité et l'autorisation de diffusion) ; Fable propose un **mail type
+de confirmation** à envoyer à chaque artiste (droits, autorisation de diffusion gratuite à l'antenne et de présentation sur le
+site, part d'IA) ; (b) la **couverture par les licences de diffusion** (Sacem, producteurs) **des titres IA** est incertaine (une
+source citée dit que la Sacem refuse la déclaration d'œuvres identifiées comme générées par IA : **non vérifié à la source**) ;
+l'autorisation viendrait alors du mail de l'artiste ; (c) **voix humaines** : accord écrit d'Elisabeth Bélot-Grimaud à prévoir ;
+(d) Fable a listé des points « à vérifier par un humain » (articles du Code de la propriété intellectuelle, loi de 1881, déclaration
+Arcom d'une web radio…) : **aucun n'a été vérifié par moi** ; (e) des consultations juridiques gratuites existent dans les
+points-justice (indiqué par Fable, non vérifié). **Les mentions obligatoires d'un site éditeur** (nom, siège, directeur de la
+publication) sont une question distincte, déjà traitée autrement dans les mentions légales (adresse non publiée, §…) : **non touchée**.
+
 ---
 
-*Dernière mise à jour : 2026-11-14, transparence sur l'IA dans ce que la radio fabrique (§130) ; précédemment article « Coulisses » sur l'IA préparé, non publié (§129) ; précédemment dix-huitième Découverte préparée, non publiée — aKa Sci Music (§128) ; précédemment dix-septième Découverte — Paul Stone (§127) ; précédemment seizième Découverte — Calum Wood (§126) ; précédemment quinzième Découverte — Jeff Levy (§125) ; précédemment 2026-11-13, quatorzième Découverte — Valérian (§124) ; précédemment 2026-11-12, treizième Découverte — Lakes & Fires (§123) ; précédemment 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+---
+
+*Dernière mise à jour : 2026-11-14, relecture juridique de l'article sur l'IA intégrée (§131) ; précédemment transparence sur l'IA dans ce que la radio fabrique (§130) ; précédemment article « Coulisses » sur l'IA préparé, non publié (§129) ; précédemment dix-huitième Découverte préparée, non publiée — aKa Sci Music (§128) ; précédemment dix-septième Découverte — Paul Stone (§127) ; précédemment seizième Découverte — Calum Wood (§126) ; précédemment quinzième Découverte — Jeff Levy (§125) ; précédemment 2026-11-13, quatorzième Découverte — Valérian (§124) ; précédemment 2026-11-12, treizième Découverte — Lakes & Fires (§123) ; précédemment 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 

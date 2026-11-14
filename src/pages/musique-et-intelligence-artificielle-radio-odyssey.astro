@@ -30,7 +30,7 @@ const faq = [
   },
   {
     q: "Comment savez-vous qu'un titre est fait avec l'IA ?",
-    a: "Nous nous appuyons sur ce que l'artiste ou le label nous déclare. Nous ne disposons pas d'outil de détection, et nous ne pouvons pas garantir l'absence d'IA dans les titres sans mention.",
+    a: "Nous nous appuyons sur ce que l'artiste ou le label nous déclare, et nous recoupons ce que nous pouvons. Nous ne disposons pas d'outil de détection, et nous ne pouvons pas garantir l'absence d'IA dans les titres sans mention.",
   },
   {
     q: "Un artiste qui utilise l'IA est-il moins un artiste ?",
@@ -38,11 +38,11 @@ const faq = [
   },
   {
     q: "Pouvez-vous diffuser un titre qui imite un artiste existant ?",
-    a: "Non. Nous refusons les imitations, les copies et les usurpations d'identité.",
+    a: "Non. Nous n'acceptons ni les imitations, ni les copies, ni les usurpations d'identité.",
   },
   {
     q: "Que se passe-t-il si vous découvrez qu'on vous a trompés ?",
-    a: "Nous retirons le titre de l'antenne et sa page du site.",
+    a: "Si un élément sérieux le montre, nous suspendons la diffusion du titre et interrogeons l'artiste ou le label. Si l'omission est confirmée, nous retirons le titre de l'antenne et sa page du site.",
   },
   {
     q: "Puis-je demander à ne pas entendre de titres faits avec l'IA ?",
@@ -54,7 +54,8 @@ const sources = [
   { label: "BBC — « The BBC's policy on AI in music » (Lorna Clarke, juillet 2026)", url: 'https://www.bbc.co.uk/mediacentre/articles/2026/bbc-policy-on-ai-music' },
   { label: 'YouTube — « YouTube Music adds new labels for AI music » (14 octobre 2026)', url: 'https://blog.youtube/news-and-events/youtube-music-ai-labels/' },
   { label: 'Deezer — « AI music has surpassed 50% of new music uploads for the first time » (21 juillet 2026, avec l\'enquête Ipsos de novembre 2025)', url: 'https://newsroom-deezer.com/2026/07/ai-music-exceeds-50-percent-daily-uploads-deezer/' },
-  { label: 'Règlement (UE) 2024/1689 sur l\'intelligence artificielle — article 50, obligations de transparence', url: 'https://artificialintelligenceact.eu/article/50/' },
+  { label: 'Règlement (UE) 2024/1689 sur l\'intelligence artificielle — article 50, obligations de transparence (Commission européenne, AI Act Service Desk)', url: 'https://ai-act-service-desk.ec.europa.eu/fr/ai-act/article-50' },
+  { label: 'ActuIA — Calendrier de l\'AI Act après l\'omnibus, règlement (UE) 2026/1744 (mis à jour le 6 octobre 2026)', url: 'https://www.actuia.com/actualite/calendrier-ai-act-ce-qui-sapplique-ce-que-lomnibus-reporte/' },
   { label: 'Apple Music, étiquettes de transparence (mars 2026) — Music Business Worldwide', url: 'https://www.musicbusinessworldwide.com/apple-music-launches-ai-transparency-tags/' },
   { label: 'Apple Music, étiquettes de transparence (4 mars 2026) — 9to5Mac', url: 'https://9to5mac.com/2026/03/04/apple-music-introduces-metadata-tags-to-disclose-ai-generated-content/' },
   { label: 'iHeartMedia, « Guaranteed Human » (novembre 2025) — RadioInsight', url: 'https://radioinsight.com/headlines/322054/iheart-launches-anti-ai-guaranteed-human-campaign/' },
@@ -90,7 +91,7 @@ const sources = [
 
           <div class="content-card">
             <p style="margin:0 0 .6rem;font-size:.9rem;color:var(--ro-muted);">Par la direction de Radio Odyssey · 14 novembre 2026</p>
-            <p style="margin:0;">Radio Odyssey diffuse des titres faits avec l'intelligence artificielle. Pas partout, pas en cachette : dans notre séquence « Découvertes », et toujours signalés. Cet article porte sur les titres des artistes que nous diffusons ; ce que nous fabriquons nous-mêmes est traité plus bas. Il explique ce que nous faisons, pourquoi, quelles règles nous nous donnons, et surtout ce que nous ne pouvons pas garantir. Nous préférons que vous l'appreniez de nous.</p>
+            <p style="margin:0;">Radio Odyssey diffuse des titres faits avec l'intelligence artificielle. Pas partout, pas en cachette : dans notre séquence « Découvertes », et signalés. Cet article porte sur les titres des artistes que nous diffusons ; ce que nous fabriquons nous-mêmes est traité plus bas. Il explique ce que nous faisons, pourquoi, quelles règles nous nous donnons, et surtout ce que nous ne pouvons pas garantir. Nous préférons que vous l'appreniez de nous.</p>
           </div>
 
           <div class="content-card">
@@ -111,12 +112,12 @@ const sources = [
           <div class="content-card">
             <h2>Nos règles</h2>
             <ol style="margin-bottom:0;">
-              <li><strong>Nous le disons toujours</strong>, pour les titres des artistes que nous diffusons : (IA) à l'antenne, précision sur la page de l'artiste.</li>
+              <li><strong>Nous l'indiquons.</strong> Pour les titres des artistes que nous diffusons : (IA) dans l'affichage du titre en cours, précision sur la page de l'artiste.</li>
               <li><strong>Il faut quelqu'un de réel derrière</strong> : un artiste réel, un label réel, ou une démarche artistique réelle.</li>
-              <li><strong>Ni imitation, ni copie, ni usurpation d'identité.</strong> Un titre IA est présenté comme un titre IA. Il n'imite pas la voix d'un artiste existant et ne se fait pas passer pour une personne.</li>
+              <li><strong>Ni imitation, ni copie, ni usurpation d'identité.</strong> Nous n'acceptons pas un titre qui imite la voix d'un artiste existant, qui copie une œuvre existante ou qui se fait passer pour une personne. Un titre IA est présenté comme un titre IA.</li>
               <li><strong>Dans les Découvertes, et pas ailleurs.</strong> Les titres d'artistes faits avec l'IA ont leur place dans la séquence « Découvertes ». En dehors de cette séquence, nous n'en diffusons pas, sauf un titre qui s'impose dans les classements et que le public a adopté.</li>
-              <li><strong>Les droits.</strong> Nous nous en tenons au droit en vigueur au moment de la demande et de la diffusion. Nous comptons sur la déclaration de l'artiste ou du label, que nous ne pouvons pas vérifier nous-mêmes.</li>
-              <li><strong>En cas de tromperie, nous retirons.</strong> Si nous apprenons qu'un titre nous a été présenté sans que l'IA soit signalée, nous le retirons de l'antenne, ainsi que sa page sur le site.</li>
+              <li><strong>Les droits.</strong> Pour un titre proposé par un artiste ou un label, nous nous appuyons sur sa déclaration sur l'origine du titre et sur les droits qui s'y attachent. Nous recoupons ce que nous pouvons, sans pouvoir tout vérifier : cette déclaration engage celui qui la fait. Nous veillons à respecter le droit en vigueur aussi longtemps qu'un titre reste à l'antenne.</li>
+              <li><strong>En cas de déclaration inexacte, nous retirons.</strong> Si un élément sérieux montre qu'un titre nous a été présenté sans que le recours à l'IA soit signalé, nous suspendons sa diffusion et interrogeons l'artiste ou le label. Si l'omission est confirmée, nous retirons le titre de l'antenne, ainsi que sa page sur le site.</li>
             </ol>
           </div>
 
@@ -130,7 +131,7 @@ const sources = [
           <div class="content-card">
             <h2>On peut nous tromper</h2>
             <p>Soyons clairs : <strong>nous ne pouvons pas garantir qu'aucun titre n'a été fait avec l'IA sans que nous le sachions.</strong> Une oreille humaine ne suffit plus. Dans une enquête commandée par Deezer et menée par Ipsos auprès de 9 000 personnes dans huit pays, 97 % des répondants n'ont pas su distinguer, à l'aveugle, des chansons entièrement générées par IA d'une chanson humaine.</p>
-            <p>Les détecteurs existent, mais aucun n'est infaillible. Deezer utilise un outil qui repère des traces laissées par certains générateurs, invisibles à l'oreille. YouTube Music s'appuie à la fois sur les déclarations de ses partenaires et sur ses propres outils de détection. Apple Music, de son côté, a mis en place des étiquettes que les labels et les distributeurs doivent renseigner eux-mêmes, sans détection par Apple. Autrement dit, l'étiquetage repose largement sur ce que chacun déclare.</p>
+            <p>Les détecteurs existent, mais aucun n'est infaillible. À la date de cet article, Deezer utilise un outil qui repère des traces laissées par certains générateurs, invisibles à l'oreille. YouTube Music s'appuie à la fois sur les déclarations de ses partenaires et sur ses propres outils de détection. Apple Music, de son côté, a mis en place des étiquettes que les labels et les distributeurs doivent renseigner eux-mêmes, sans détection par Apple. Autrement dit, l'étiquetage repose largement sur ce que chacun déclare.</p>
             <p>Il nous est déjà arrivé d'écarter un titre dont l'origine nous paraissait douteuse : une version générée par IA d'un titre à venir, diffusée avant la sortie officielle, qui ressemblait beaucoup à la version réelle publiée peu après. Ces cas se multiplieront.</p>
             <p>Nous, nous procédons ainsi :</p>
             <ul>
@@ -138,12 +139,12 @@ const sources = [
               <li>nous recoupons ce que nous pouvons (la présence du titre sur les plateformes, sa date de sortie, son audience, la presse) ;</li>
               <li>sur nos pages, nous écrivons « d'après son dossier » pour ce que nous n'avons pas pu vérifier.</li>
             </ul>
-            <p style="margin-bottom:0;">Quand un titre n'est accompagné d'aucune mention (IA), cela veut dire qu'aucune IA ne nous a été signalée. Ce n'est pas une garantie, et nous ne voulons pas la présenter comme telle. Si une erreur nous est signalée, nous la corrigeons : le titre et sa page sont retirés.</p>
+            <p style="margin-bottom:0;">Quand un titre n'est accompagné d'aucune mention (IA), cela veut dire qu'aucune IA ne nous a été signalée. Ce n'est pas une garantie, et nous ne voulons pas la présenter comme telle. Si une erreur nous est signalée, nous l'examinons : si elle est confirmée, nous retirons le titre et sa page, ou nous corrigeons la mention.</p>
           </div>
 
           <div class="content-card">
             <h2>Ce que font les autres</h2>
-            <p>Le mouvement est général, et les choix diffèrent.</p>
+            <p>Voici, à la date de cet article, ce que font les autres. Le mouvement est général, et les choix diffèrent.</p>
             <ul>
               <li><strong>La BBC</strong> a publié en juillet 2026 sa politique sur l'IA dans la musique. Elle donne la priorité à la création humaine, accepte que des artistes utilisent des outils d'IA à condition qu'ils ne remplacent pas leur travail créatif, exige que les artistes et partenaires qui lui soumettent des titres indiquent s'ils ont utilisé l'IA et comment, et promet de ne jamais diffuser sciemment une musique générée qui enfreindrait le droit d'auteur.</li>
               <li><strong>YouTube Music</strong> a commencé le 14 octobre 2026 à afficher une étiquette sur les titres créés principalement avec l'IA générative, par exemple lorsque la composition et la voix sont générées. L'étiquette s'affiche sur la page du lecteur et ouvre une explication.</li>
@@ -156,13 +157,13 @@ const sources = [
 
           <div class="content-card">
             <h2>Et la loi ?</h2>
-            <p>Le cadre juridique se met en place. Le règlement européen sur l'intelligence artificielle contient, à son article 50, des obligations de transparence qui s'appliquent depuis le 2 août 2026 : les fournisseurs d'outils qui génèrent des sons, des images ou des textes doivent en marquer les résultats de façon lisible par machine, et ceux qui diffusent des contenus « hypertruqués » doivent signaler qu'ils sont générés ; pour une œuvre artistique ou créative, cette mention doit se faire d'une manière qui ne gêne pas la lecture ou l'écoute de l'œuvre.</p>
+            <p>Le cadre juridique se met en place. Le règlement européen sur l'intelligence artificielle contient, à son article 50, des obligations de transparence applicables depuis le 2 août 2026. Les fournisseurs d'outils qui génèrent des sons, des images ou des textes doivent en marquer les résultats de façon lisible par machine ; un délai court toutefois jusqu'au 2 décembre 2026 pour les outils déjà commercialisés avant le 2 août. Ceux qui utilisent un outil d'IA pour générer ou manipuler un contenu « hypertruqué » (image, son ou vidéo qui ressemble à des personnes, des lieux ou des événements réels et pourrait passer pour authentique) doivent signaler qu'il est généré ; pour une œuvre artistique ou créative, cette mention doit se faire d'une manière qui ne gêne pas la lecture ou l'écoute de l'œuvre.</p>
             <p style="margin-bottom:0;">Nous ne sommes pas juristes et nous ne prétendons pas dire comment ces règles s'appliquent à une web radio. Tout cela évolue vite : nous suivons ces évolutions, nous adapterons nos pratiques en conséquence, et cet article sera mis à jour. D'ici là, signaler l'IA, comme nous le faisons, est la règle de bon sens que plusieurs grands acteurs du secteur ont adoptée.</p>
           </div>
 
           <div class="content-card">
             <h2>Ce que nous produisons nous-mêmes</h2>
-            <p>Une partie de ce que la radio fabrique elle-même est réalisée avec l'aide d'outils d'intelligence artificielle : tous les jingles chantés, voix et musique, et toutes les musiques des séquences de cohérence cardiaque. Les voix des séquences de respiration et des autres jingles sont humaines. Nous ne signalons pas chaque jingle à l'antenne ; nous le disons ici et dans nos <a href="/mentions-legales.html" style={lien}>mentions légales</a>.</p>
+            <p>Une partie de ce que la radio fabrique elle-même est réalisée avec l'aide d'outils d'intelligence artificielle : tous les jingles chantés, voix et musique, et toutes les musiques des séquences de cohérence cardiaque. Les voix chantées de ces jingles sont synthétiques ; les voix des séquences de respiration et des autres jingles sont humaines. Ces éléments ne sont pas annoncés un par un à l'antenne ; l'information figure ici et dans nos <a href="/mentions-legales.html" style={lien}>mentions légales</a>.</p>
             <p style="margin-bottom:0;">Derrière tout cela, ce sont des humains qui décident. Toutes les décisions éditoriales, programmation, choix des titres et contenus publiés, sont prises par la direction de Radio Odyssey, qui en assume la responsabilité. Les outils d'intelligence artificielle assistent ; ils ne décident pas.</p>
           </div>
 
@@ -173,7 +174,11 @@ const sources = [
 
           <div class="content-card">
             <h2>Précision importante</h2>
-            <p style="margin-bottom:0;">Les informations relatives à l'origine d'un titre, notamment l'usage éventuel de l'intelligence artificielle, et aux droits qui s'y attachent, sont fournies par les artistes, les labels ou les ayants droit. Radio Odyssey les relaie de bonne foi, sans pouvoir en vérifier l'exactitude, et ne saurait être tenue responsable d'une déclaration inexacte ou incomplète faite par un tiers. Cet article décrit nos pratiques à la date de sa publication : elles peuvent évoluer avec le droit et avec la technique. Toute personne qui estime qu'un titre diffusé porte atteinte à ses droits, ou qu'une mention est inexacte, peut nous écrire à l'adresse indiquée en bas de page : nous examinons chaque demande rapidement et, le cas échéant, retirons le titre.</p>
+            <p>Dernière mise à jour : 14 novembre 2026.</p>
+            <p>Radio Odyssey choisit les titres qu'elle diffuse et en assume la responsabilité éditoriale.</p>
+            <p>Les informations sur l'origine d'un titre, notamment l'usage de l'intelligence artificielle, et sur les droits qui s'y attachent nous sont déclarées par les artistes, les labels ou leurs représentants. Ces déclarations engagent ceux qui les font. Nous recoupons ce que nous pouvons, sans pouvoir tout vérifier. L'absence de mention (IA) signifie qu'aucune IA ne nous a été signalée, pas qu'il n'y en a aucune.</p>
+            <p>Cet article décrit nos pratiques à la date indiquée ci-dessus. Elles peuvent évoluer avec le droit et avec la technique.</p>
+            <p style="margin-bottom:0;">Si vous estimez qu'un titre diffusé porte atteinte à vos droits, à votre voix ou à votre image, ou qu'une mention est inexacte, écrivez-nous à <a href="mailto:odysseylaradio@gmail.com" style={lien}>odysseylaradio@gmail.com</a> en indiquant le titre concerné et le motif. Nous répondons à toute demande précise. Lorsqu'elle est sérieuse, nous suspendons la diffusion du titre le temps de l'examiner. Si elle est fondée, nous retirons le titre et sa page, ou nous corrigeons la mention.</p>
           </div>
 
           <FAQBlock items={faq} idPrefix="ia" />
