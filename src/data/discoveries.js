@@ -202,8 +202,8 @@ export const DISCOVERIES = [
     ],
     portrait: "Sephra est une artiste virtuelle, autrement dit une création d'intelligence artificielle : son producteur a confirmé à la radio qu'il s'agit d'un projet virtuel, produit pour son label Rage Music, comme Deep Rage et Nia Storm. Son single \"Woke Up\", sorti le 30 mai 2026, mêle selon sa description des influences de UK R&B et de soul classique. Les paroles, d'après cette même description, racontent l'histoire d'une femme qui tourne la page d'une relation passée pour retrouver sa paix intérieure et sa confiance en elle : un titre sur l'émancipation personnelle et l'amour de soi. Il est écrit par Nikki Grace Lambert et composé par Bruno Gondel, qui figure aussi comme titulaire des droits (© ℗ 2026) sur Spotify. La présentation envoyée à la radio décrit par ailleurs un univers electro house et deep house, chanté en anglais et en français, aux basses pulsées et aux grooves entre virées nocturnes et sets de club, résumé par un slogan : \"I don't breathe, I just flow.\" Ce document met en avant deux autres titres, \"What Do You Want ?\" et \"Game\". Sur Spotify, où elle a sorti plusieurs singles en 2026, son profil comptait plus de 16 000 auditeurs mensuels au 11 novembre 2026. S'agissant d'un projet virtuel, il n'y a ni pays ni ville d'origine à lui attribuer. Ces éléments proviennent du producteur lui-même, par sa présentation et la description du titre : en dehors des plateformes de streaming, très peu de sources s'intéressent à elle en ligne, et seule la date de sortie de \"Woke Up\" a pu être recoupée (Spotify). Radio Odyssey l'accueille sur son antenne à partir du 13 novembre 2026 avec \"Woke Up\".",
     why: "La soul et le UK R&B de \"Woke Up\", chantés par une artiste virtuelle sur le thème de l'émancipation et de l'amour de soi, élargissent la palette de l'antenne — une découverte à suivre dès son arrivée le 13 novembre 2026.",
-    linkHref: '/radio-pop-rnb-en-ligne.html',
-    linkLabel: 'radio pop et R&B',
+    linkHref: '/musique-et-intelligence-artificielle-radio-odyssey.html',
+    linkLabel: 'musique et intelligence artificielle sur Radio Odyssey',
   },
   {
     slug: 'deep-rage',
@@ -222,8 +222,8 @@ export const DISCOVERIES = [
     ],
     portrait: "Deep Rage est un projet virtuel de DJ et producteur, autrement dit une création d'intelligence artificielle, entre deep house, Afro house et electro : son producteur a confirmé à la radio qu'il est produit pour son label Rage Music, comme Sephra et Nia Storm. Le récit du projet le place à Miami : d'après sa biographie Spotify, il y serait né et y aurait grandi, et il puiserait dans le mélange de cultures, de rythmes et de vie nocturne de la ville. Sa musique est pensée pour le dancefloor, des salles intimes de fin de nuit aux terrasses en plein air sous le ciel de Floride. Sa présentation parle de percussions hypnotiques, de basses roulantes et d'une énergie de fin de nuit. C'est un projet en cours : d'après cette présentation, une première vague de 15 titres est sortie, dont \"Lose Control\", \"Timeless Love\" et \"Where Do We Go\", et sa biographie annonce de nouvelles sorties à venir. \"Timeless Love\" est référencé sur Spotify parmi ses singles d'octobre 2026. Ces éléments proviennent du producteur lui-même, par sa présentation et la biographie Spotify : en dehors des plateformes de streaming, très peu de sources s'intéressent à ce projet en ligne, et seuls l'existence des titres \"Timeless Love\" et \"Lose Control\" et leur année de sortie ont pu être recoupés (Spotify). Radio Odyssey l'accueille sur son antenne à partir du 13 novembre 2026 avec \"Timeless Love\".",
     why: "La deep house, l'Afro house et l'electro de Deep Rage, projet virtuel qui se réclame de Miami, prolongent la sélection dance de l'antenne — une découverte à suivre dès son arrivée le 13 novembre 2026.",
-    linkHref: '/radio-dance-electro-en-ligne.html',
-    linkLabel: 'radio dance & électro',
+    linkHref: '/musique-et-intelligence-artificielle-radio-odyssey.html',
+    linkLabel: 'musique et intelligence artificielle sur Radio Odyssey',
   },
   {
     slug: 'nia-storm',
@@ -244,8 +244,8 @@ export const DISCOVERIES = [
     ],
     portrait: "Nia Storm est une artiste virtuelle, autrement dit une création d'intelligence artificielle, dans un univers pop, soul et R&B — son producteur l'a confirmé à la radio, ainsi que pour Sephra et Deep Rage, tous trois produits pour son label Rage Music : une voix décrite comme sensuelle, sur des basses profondes et des grooves nocturnes, produite par Bruno et écrite par Nikki Grace d'après la présentation envoyée à la radio. Sa biographie Spotify précise que le projet est « conceptualisé, écrit et incarné » par Nikki Grace, qui en imagine chaque chanson et en écrit toutes les paroles ; l'amour, l'attirance et le chagrin en sont la matière première, entre refrains pop et chaleur soul. Ses singles de 2026, dont \"Kiss Me Dirty\" (29 août) puis \"Almost Love\" (24 septembre), sont référencés sur Spotify, où son profil comptait plus de 16 000 auditeurs mensuels au 11 novembre 2026. Ces éléments proviennent de la présentation envoyée à la radio et de la biographie Spotify, toutes deux issues du projet lui-même : en dehors des plateformes de streaming, très peu de sources s'intéressent à elle en ligne, et seules les dates de sortie de \"Kiss Me Dirty\" et de \"Almost Love\" et l'audience ont pu être recoupées (Spotify). Radio Odyssey l'accueille sur son antenne à partir du 13 novembre 2026 avec \"Almost Love\".",
     why: "La pop, la soul et le R&B de Nia Storm, artiste virtuelle aux grooves nocturnes, élargissent la sélection de l'antenne — une découverte à suivre dès son arrivée le 13 novembre 2026.",
-    linkHref: '/radio-pop-rnb-en-ligne.html',
-    linkLabel: 'radio pop et R&B',
+    linkHref: '/musique-et-intelligence-artificielle-radio-odyssey.html',
+    linkLabel: 'musique et intelligence artificielle sur Radio Odyssey',
   },
   {
     slug: 'lakes-and-fires',

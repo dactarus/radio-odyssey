@@ -305,6 +305,7 @@ export const EN_NAV_CATEGORIES = [
     pages: [
       { href: '/en/the-story-of-radio-odyssey.html', bi: 'book', label: 'Our Story', desc: 'How a family project became a radio station' },
       { href: '/en/what-makes-radio-odyssey-different.html', bi: 'stars', label: 'What Makes Us Different', desc: 'Why this is not another playlist' },
+      { href: '/en/ai-music-on-radio-odyssey.html', bi: 'soundwave', label: 'AI Music on Radio Odyssey', desc: 'What we play, our rules, what we cannot guarantee' },
       { href: '/en/radio-odyssey-faq.html', bi: 'chat-dots', label: 'FAQ', desc: 'Everything you might want to ask' },
       { href: '/en/elisabeth-belot-grimaud-radio-odyssey.html', bi: 'person-badge', label: 'Our Health Partner', desc: 'The psychologist behind the breathing sequences' },
       { href: '/en/listen-on-tunein.html', bi: 'phone', label: 'How to Listen on TuneIn', desc: 'The easiest way to tune in worldwide' },
