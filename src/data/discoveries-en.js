@@ -210,6 +210,20 @@ export const DISCOVERIES_EN = {
     linkHref: '/en/feel-good-music-radio.html',
     linkLabel: 'feel-good music radio',
   },
+  'calum-wood': {
+    genre: 'Christmas folk',
+    origin: 'Scotland',
+    since: 'December 2026',
+    facts: [
+      'A Scottish singer-songwriter and producer born in Aberdeen, formerly of The Banana Sessions (who, according to his biography, have played Glastonbury and T in the Park), Calum Wood now lives and records in Brunei, according to his press release.',
+      '"Ding Dong! Merrily on High!" comes from his second Christmas album, "Christmas Songs from the Kitchen Table, Vol. 2", announced for 13 November 2026 on Magic Park Records, digital only: guitar, voice, glockenspiel and an old Casio keyboard; the file supplied to the radio runs 2 min 44.',
+      'The first volume, released on 28 November 2025, gathers traditional Christmas carols on guitar and voice, recorded around the kitchen table; his Spotify profile had about 5,500 monthly listeners on 14 November 2026.',
+    ],
+    portrait: "Calum Wood is a Scottish singer-songwriter and producer, born in Aberdeen, who draws on folk traditions and storytelling. According to his press release, he now lives and records in Brunei; he was a member of The Banana Sessions, whose biography cites appearances at Glastonbury and T in the Park, and has released several albums and singles in recent years, including \"Patterns\" (2025) and \"Songs from the Soapbox\" (2026). His \"Christmas Songs from the Kitchen Table\" series revisits the carols he heard as a child at school, in church and at home: the first volume, released on 28 November 2025, was recorded on guitar and voice, keeping the sound of the room and the hum of the fridge. The second, \"Christmas Songs from the Kitchen Table, Vol. 2\", is announced for 13 November 2026 on Magic Park Records, digital only; it adds glockenspiel and an old Casio keyboard to guitar and voice, and features familiar songs such as \"We Three Kings\", \"Jingle Bells\", \"In the Bleak Midwinter\" and \"Silent Night\". \"Ding Dong! Merrily on High!\" is a carol whose tune comes from a sixteenth-century French dance and whose best-known harmonisation, published in 1924, is by the composer Charles Wood (not to be confused with Calum Wood): the artist gives his own version of it here, in the same homemade spirit. These details come from the press release and the artist's website. We were able to check that his Spotify profile exists and had about 5,500 monthly listeners as of 14 November 2026, whereas the press release mentions a peak of about 25,000 monthly listeners and more than a quarter of a million streams, figures we could not cross-check; we could not find the second album on Spotify either, nor confirm its release date. Radio Odyssey welcomes him in its Christmas programming throughout December 2026 with \"Ding Dong! Merrily on High!\".",
+    why: "The homemade folk of Calum Wood, on guitar, voice and glockenspiel, brings a craftsman's warmth to the station's Christmas selection — a discovery to hear throughout December 2026.",
+    linkHref: '/en/what-makes-radio-odyssey-different.html',
+    linkLabel: 'what makes Radio Odyssey different',
+  },
 };
 
 export const SLUGS_DISCOVERIES_EN = Object.keys(DISCOVERIES_EN);

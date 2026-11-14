@@ -4556,7 +4556,31 @@ d'IA. Ce mail met en avant « Old Man's Lament » et « Rebels on the Road », a
 d'un certain Eric Lastick) : **non reprises**, sources non vérifiables ; le titre diffusé reste « Big Chill Car
 Trip », comme demandé.
 
+## 126. Seizième Découverte : Calum Wood, « Ding Dong! Merrily on High! » (Noël), en français et en anglais (2026-11-14)
+
+Fiche créée sur demande de Frédéric à partir du communiqué de presse (PDF), du kit promo (WAV) et du mail de
+l'artiste, publiée dans les deux langues : `/decouverte-calum-wood.html` et `/en/discovery-calum-wood.html`
+(`hreflang`, hubs, accueils, plan du site, sitemap : 305 URL, 323 pages, 62 pages anglaises). Genre « Folk de
+Noël », origine Écosse, rareté « quasi-absente en français ». Titre passé **en décembre 2026, dans la playlist
+de Noël** (pas de date d'entrée précise : « pendant le mois de décembre 2026 »). Lien : la page
+`comment-radio-odyssey-choisit-sa-musique` (elle parle de la programmation de Noël ; le site n'a aucune page
+dédiée à Noël) ; côté anglais `what-makes-radio-odyssey-different`.
+
+**Vérifié** : le profil Spotify existe, **~5 500 auditeurs mensuels** au 14 novembre 2026 ; la durée du fichier
+fourni (2 min 44, lue dans le WAV) ; le Vol. 1 sorti le 28 novembre 2025 (site de l'artiste) ; une critique du
+Vol. 1 existe (Jesus Freak Hideout). **Non retrouvé** : le Vol. 2 sur Spotify (ni sa date, ni son titre) — la
+fiche écrit « annoncé pour le 13 novembre 2026 » et le dit. **Attribué** : tout le reste (Aberdeen, Brunei,
+Banana Sessions, label Magic Park Records, pic de 25 000 auditeurs, plus d'un quart de million d'écoutes).
+
+**Divergence entre sources, non tranchée** : le mail de l'artiste recommande « The Christmas Ramblers » comme
+« réinterprétation d'un vieux chant de Noël » ; le communiqué dit que c'est **une chanson originale**. La fiche
+n'en parle pas (le titre diffusé est « Ding Dong! »). **Homonyme** : Charles Wood, qui a harmonisé ce chant
+(publié en 1924) : la fiche le signale, comme pour Tom York.
+
+**Volontairement absent** : l'adresse e-mail, la mention des deux jeunes fils de l'artiste qui jouent sur le
+disque, les citations de critiques non relues (Folk & Honey, FATEA, Folking.com).
+
 ---
 
-*Dernière mise à jour : 2026-11-14, quinzième Découverte — Jeff Levy (§125) ; précédemment 2026-11-13, quatorzième Découverte — Valérian (§124) ; précédemment 2026-11-12, treizième Découverte — Lakes & Fires (§123) ; précédemment 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+*Dernière mise à jour : 2026-11-14, seizième Découverte — Calum Wood (§126) ; précédemment quinzième Découverte — Jeff Levy (§125) ; précédemment 2026-11-13, quatorzième Découverte — Valérian (§124) ; précédemment 2026-11-12, treizième Découverte — Lakes & Fires (§123) ; précédemment 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
