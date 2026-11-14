@@ -4580,7 +4580,33 @@ n'en parle pas (le titre diffusé est « Ding Dong! »). **Homonyme** : Charles 
 **Volontairement absent** : l'adresse e-mail, la mention des deux jeunes fils de l'artiste qui jouent sur le
 disque, les citations de critiques non relues (Folk & Honey, FATEA, Folking.com).
 
+## 127. Dix-septième Découverte : Paul Stone & The Basement Collective, « What Does Christmas Mean To You? » (Noël), en français et en anglais (2026-11-14)
+
+Fiche créée sur demande de Frédéric à partir du mail reçu de Beechwood Music Group, publiée dans les deux langues :
+`/decouverte-paul-stone.html` et `/en/discovery-paul-stone.html` (`hreflang`, hubs, accueils, plan du site,
+sitemap : 307 URL, 325 pages, 63 pages anglaises). Genre « Pop adulte / soul-jazz », origine Royaume-Uni, rareté
+**« partielle »** (contrairement aux deux fiches de Noël précédentes : la presse régionale britannique en parle).
+Titre passé en **décembre 2026, dans la playlist de Noël**. Même lien interne que Calum Wood (§126).
+
+**Vérifié (Spotify)** : le titre, ses deux crédits (Paul Stone et The Basement Collective), sa sortie le
+**6 novembre 2026**, sa durée (2 min 44), l'audience du profil (~1 700 auditeurs mensuels au 14 novembre 2026).
+**Recoupé par la presse** (Yorkshire Evening Post et reprises, Skope, Yorkshire Post — lus par extraits, certains
+sites bloquent la lecture) : le Yorkshire, le studio sous la maison, le Leeds College of Music, l'existence du
+titre de Noël. **Attribué** : le mélange pop adulte/soul/jazz, le message, « écrite, interprétée et produite par
+des musiciens », et le soutien de Jazz FM / BBC Radio (la fiche dit qu'il n'a pas été recoupé à la source).
+
+⚠️ **Le mail précise que l'expéditeur utilise un assistant IA pour l'administratif et les prises de contact avec
+les radios**, et affirme que la chanson, elle, est faite par de vraies personnes. Ce n'est pas un projet virtuel
+(contrairement à Sephra, Deep Rage, Nia Storm) : la fiche **ne mentionne pas** l'assistant, mais attribue
+explicitement la phrase sur l'écriture, l'interprétation et la production à l'artiste. À reconsidérer si une
+source venait à la contredire. Les liens du mail (Dropbox, Ditto.fm, YouTube) n'ont pas été téléchargés ;
+la page Ditto.fm affichait encore « Coming Soon ».
+
+**Volontairement absent** : adresse e-mail, liens de téléchargement, code ISRC, la mention des quatre enfants et
+des deux entreprises, les noms des musiciens (les articles ne les donnent pas tous de la même façon), la
+mention « ne constitue pas du contenu canadien ».
+
 ---
 
-*Dernière mise à jour : 2026-11-14, seizième Découverte — Calum Wood (§126) ; précédemment quinzième Découverte — Jeff Levy (§125) ; précédemment 2026-11-13, quatorzième Découverte — Valérian (§124) ; précédemment 2026-11-12, treizième Découverte — Lakes & Fires (§123) ; précédemment 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+*Dernière mise à jour : 2026-11-14, dix-septième Découverte — Paul Stone (§127) ; précédemment seizième Découverte — Calum Wood (§126) ; précédemment quinzième Découverte — Jeff Levy (§125) ; précédemment 2026-11-13, quatorzième Découverte — Valérian (§124) ; précédemment 2026-11-12, treizième Découverte — Lakes & Fires (§123) ; précédemment 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 

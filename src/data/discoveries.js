@@ -323,4 +323,23 @@ export const DISCOVERIES = [
     linkHref: '/comment-radio-odyssey-choisit-sa-musique.html',
     linkLabel: 'comment Radio Odyssey choisit sa musique',
   },
+  {
+    slug: 'paul-stone',
+    name: 'Paul Stone & The Basement Collective',
+    genre: 'Pop adulte / soul-jazz',
+    origin: 'Royaume-Uni',
+    active: true,
+    since: 'décembre 2026',
+    scarcity: 'partielle',
+    tracks: ['What Does Christmas Mean To You?'],
+    facts: [
+      'Auteur-compositeur du Yorkshire, Paul Stone enregistre avec The Basement Collective dans un studio analogique qu’il a construit sous sa maison familiale, d’où le nom du groupe ; la presse régionale britannique, dont le Yorkshire Evening Post, a relayé la sortie de ce titre de Noël.',
+      '"What Does Christmas Mean To You?" est sorti le 6 novembre 2026 (2 min 44) ; d’après l’artiste, il mêle pop adulte contemporaine, soul et influences jazz, autour d’un message d’espoir, de compassion et de solidarité.',
+      'Né, selon Paul Stone, d’un regard posé sur sa propre famille, puis sur ceux qui passent Noël seuls, le titre pose la question qui lui donne son nom ; le profil Spotify de Paul Stone comptait environ 1 700 auditeurs mensuels le 14 novembre 2026.',
+    ],
+    portrait: "Paul Stone est un auteur-compositeur du Yorkshire, au Royaume-Uni, qui enregistre avec The Basement Collective, un groupe de musiciens réunis par d'anciennes amitiés de la scène du nord de l'Angleterre. D'après la presse régionale britannique, il a étudié au Leeds College of Music et construit un studio d'enregistrement professionnel sous sa maison familiale, d'où le nom du groupe. Leur précédent single, « Embers », est sorti en novembre 2025 ; selon la presse et l'artiste, leurs titres ont été soutenus par Jazz FM, BBC Radio et d'autres radios. \"What Does Christmas Mean To You?\" est sorti le 6 novembre 2026 et dure 2 min 44. Paul Stone raconte l'avoir écrit l'année précédente en regardant sa famille et en prenant conscience que l'essentiel était d'être ensemble, ce qui l'a fait penser aux autres familles, aux personnes âgées et à celles qui passent Noël seules : de là vient la question du titre. Il le décrit comme un mélange de pop adulte contemporaine, de soul et d'influences jazz, joué par des musiciens ensemble, avec un message d'espoir, de compassion et de solidarité, et affirme que la chanson a été écrite, interprétée et produite par des musiciens, dans leur studio. Ces éléments proviennent de l'artiste et d'articles de presse britanniques, dont le Yorkshire Evening Post. Nous avons pu vérifier sur Spotify l'existence du titre, ses deux crédits (Paul Stone et The Basement Collective), sa date de sortie, sa durée et l'audience du profil (environ 1 700 auditeurs mensuels au 14 novembre 2026) ; le soutien des radios cité n'a pas été recoupé à la source. Radio Odyssey l'accueille dans sa programmation de Noël pendant le mois de décembre 2026 avec \"What Does Christmas Mean To You?\".",
+    why: "La pop adulte, la soul et les touches jazz de Paul Stone & The Basement Collective, portées par une question simple sur le sens de Noël, ajoutent une chanson originale à la sélection de Noël de l'antenne — une découverte à écouter pendant tout le mois de décembre 2026.",
+    linkHref: '/comment-radio-odyssey-choisit-sa-musique.html',
+    linkLabel: 'comment Radio Odyssey choisit sa musique',
+  },
 ];
