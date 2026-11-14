@@ -4775,6 +4775,14 @@ Arcom d'une web radio…) : **aucun n'a été vérifié par moi** ; (e) des cons
 points-justice (indiqué par Fable, non vérifié). **Les mentions obligatoires d'un site éditeur** (nom, siège, directeur de la
 publication) sont une question distincte, déjà traitée autrement dans les mentions légales (adresse non publiée, §…) : **non touchée**.
 
+
+✅ **Suite (2026-11-14) : confirmation écrite reçue pour Sephra, Deep Rage et Nia Storm.** Frédéric a envoyé le mail de confirmation
+au **producteur, le même pour les trois projets** (label Rage Music). Réponse écrite : (1) il **détient tous les droits nécessaires**
+sur les trois pistes (composition, paroles, enregistrement et chant) ; (2) il **autorise Radio Odyssey à les diffuser gratuitement** et
+à les **présenter sur son site** ; (3) il **confirme que Sephra, Deep Rage et Nia Storm sont des projets virtuels, produits par lui pour
+son label**. Conforme aux fiches (§118-§122) : aucune modification du site. Le mail est conservé dans la boîte de Frédéric, rien n'en
+est publié (ni nom, ni coordonnée). **aKa Sci Music : mail envoyé, réponse attendue.** À consigner ici quand elle arrive ; jusque-là, la
+règle 5 de l'article (§129) repose sur sa déclaration d'origine et d'IA, sans autorisation écrite de diffusion.
 ---
 
 ---
