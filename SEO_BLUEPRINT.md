@@ -4549,9 +4549,12 @@ l'ancienneté (plus de trente ans pour l'ami, quarante pour le dossier).
 **Volontairement absent** : adresse e-mail et téléphone du dossier, la photo, « anciennement Nitrous », les
 louanges de pairs non sourcées, l'appel de l'ami à « lui donner sa chance ».
 
-**À trancher** : une page de l'annuaire d'un site tiers (Lunar Boom Music) classe Jeff Levy parmi les « AI Music
-Artists », avec un texte identique à celui du dossier de presse ; plusieurs titres du profil Spotify (« AI
-Anthem », « The New Token ») vont dans ce sens, sans rien prouver. La fiche ne l'affirme pas et ne le nie pas.
+**Tranché (2026-11-14)** : une page de l'annuaire d'un site tiers (Lunar Boom Music) classait Jeff Levy parmi les
+« AI Music Artists », avec un texte identique à celui du dossier de presse. Frédéric a répondu : **c'est une vraie
+personne** (confirmé par le mail complet de la personne qui le propose). La fiche reste telle quelle, sans mention
+d'IA. Ce mail met en avant « Old Man's Lament » et « Rebels on the Road », avec des critiques de tiers (dont une
+d'un certain Eric Lastick) : **non reprises**, sources non vérifiables ; le titre diffusé reste « Big Chill Car
+Trip », comme demandé.
 
 ---
 
