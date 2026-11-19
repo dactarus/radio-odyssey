@@ -38,12 +38,12 @@ const isScarce = (en.scarcity ?? artist.scarcity) !== 'partielle';
 
 const title = `${artist.name}: Biography & News — Radio Odyssey`;
 const description = isScarce
-  ? `Who is ${artist.name}? Biography, tracks played and news — Radio Odyssey is one of the few sources to cover this artist (${en.genre}).`
+  ? `Who is ${artist.name}? Biography, tracks played and news (${en.genre}) — Radio Odyssey is one of the few media outlets to feature ${artist.name}.`
   : `${artist.name} (${en.genre}): biography, tracks played on Radio Odyssey, and the real airplay data the radio is one of the only places to publish.`;
 
 const scarcityNote = en.scarcityNote ?? (isScarce
-  ? `There is very little, if any, complete biography of ${artist.name} elsewhere online — this page is one of the few sources dedicated to the artist.`
-  : `${artist.name} already has an established online presence; Radio Odyssey adds its own real airplay data, which nobody else publishes.`);
+  ? `Radio Odyssey is one of the few media outlets to feature ${artist.name}, with a biography built from first-hand information.`
+  : `${artist.name} already has an established online presence; Radio Odyssey adds its own real airplay data.`);
 
 const schema = {
   '@context': 'https://schema.org',
@@ -61,7 +61,7 @@ const faq = [
   {
     q: `Who is ${artist.name}?`,
     a: isScarce
-      ? `${en.facts[0]} There is very little information about the artist outside streaming platforms — Radio Odyssey offers one of the most complete biographies available.`
+      ? `${en.facts[0]} Radio Odyssey is one of the few media outlets to feature ${artist.name}: here you will find the biography and the tracks played on air.`
       : `${en.facts[0]} Radio Odyssey offers a biography here, along with the real airplay data from our broadcast.`,
   },
   {
@@ -91,7 +91,7 @@ const faq = [
     homeHref="/en.html"
     breadcrumbCurrent={`${artist.name} — Radio Odyssey Discovery`}
     title={artist.name}
-    text={`${en.genre} — ${en.origin}. ${isScarce ? 'Biography and news — one of the few sources on this artist.' : 'Biography, tracks and real airplay data.'}`}
+    text={`${en.genre} — ${en.origin}. ${isScarce ? 'Biography, tracks played and news.' : 'Biography, tracks and real airplay data.'}`}
   >
     <Fragment slot="icon">
       <svg viewBox="0 0 48 48" fill="none"><path d="M24 6L27.5 18.5L40 22L27.5 25.5L24 38L20.5 25.5L8 22L20.5 18.5L24 6Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg>

@@ -22,12 +22,12 @@ const isScarce = artist.scarcity !== 'partielle';
 
 const title = `${artist.name} : Biographie & Actualité — Radio Odyssey`;
 const description = isScarce
-  ? `Qui est ${artist.name} ? Biographie, titres diffusés et actualité — Radio Odyssey est l'une des rares sources en français à s'intéresser à cet artiste (${artist.genre}).`
+  ? `Qui est ${artist.name} ? Biographie, titres diffusés et actualité (${artist.genre}) : Radio Odyssey fait partie des quelques médias à mettre ${artist.name} à l'honneur.`
   : `${artist.name} (${artist.genre}) : biographie, titres diffusés sur Radio Odyssey, et les données réelles de diffusion que la radio est l'une des seules à publier.`;
 
 const scarcityNote = isScarce
-  ? `Il existe très peu, voire aucune biographie complète de ${artist.name} en français ailleurs en ligne — cette fiche est l'une des rares sources qui lui soit consacrée.`
-  : `${artist.name} bénéficie déjà d'une présence en ligne établie ; Radio Odyssey y ajoute ses propres données réelles de diffusion, que personne d'autre ne publie.`;
+  ? `Radio Odyssey fait partie des quelques médias à mettre ${artist.name} à l'honneur, avec une biographie construite à partir d'informations de première main.`
+  : `${artist.name} bénéficie déjà d'une présence en ligne établie ; Radio Odyssey y ajoute ses propres données réelles de diffusion.`;
 
 // §104 : paire de langue, uniquement pour les fiches dont la version anglaise
 // existe réellement — un `hreflang` vers une page absente est une erreur que
@@ -54,7 +54,7 @@ const faq = [
   {
     q: `Qui est ${artist.name} ?`,
     a: isScarce
-      ? `${artist.facts[0]} Il existe très peu d'informations à son sujet en dehors des plateformes de streaming — Radio Odyssey vous propose ici l'une des biographies les plus complètes disponibles en français.`
+      ? `${artist.facts[0]} Radio Odyssey fait partie des quelques médias à mettre ${artist.name} à l'honneur : retrouvez ici sa biographie et ses titres diffusés sur l'antenne.`
       : `${artist.facts[0]} Radio Odyssey vous propose ici sa biographie ainsi que ses données réelles de diffusion sur l'antenne.`,
   },
   {
@@ -78,7 +78,7 @@ const faq = [
     homeLabel="🏠 Accueil"
     breadcrumbCurrent={`${artist.name} — Découverte Radio Odyssey`}
     title={`${artist.name}`}
-    text={`${artist.genre} — ${artist.origin}. ${isScarce ? "Biographie et actualité — l'une des rares sources en français sur cet artiste." : 'Biographie, titres et données réelles de diffusion.'}`}
+    text={`${artist.genre} — ${artist.origin}. ${isScarce ? 'Biographie, titres diffusés et actualité.' : 'Biographie, titres et données réelles de diffusion.'}`}
   >
     <Fragment slot="icon">
       <svg viewBox="0 0 48 48" fill="none"><path d="M24 6L27.5 18.5L40 22L27.5 25.5L24 38L20.5 25.5L8 22L20.5 18.5L24 6Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg>
