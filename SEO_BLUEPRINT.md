@@ -4783,9 +4783,73 @@ sur les trois pistes (composition, paroles, enregistrement et chant) ; (2) il **
 son label**. Conforme aux fiches (§118-§122) : aucune modification du site. Le mail est conservé dans la boîte de Frédéric, rien n'en
 est publié (ni nom, ni coordonnée). **aKa Sci Music : mail envoyé, réponse attendue.** À consigner ici quand elle arrive ; jusque-là, la
 règle 5 de l'article (§129) repose sur sa déclaration d'origine et d'IA, sans autorisation écrite de diffusion.
----
 
 ---
 
-*Dernière mise à jour : 2026-11-14, Découverte aKa Sci Music publiée (§128) ; précédemment relecture juridique de l'article sur l'IA intégrée (§131) ; précédemment transparence sur l'IA dans ce que la radio fabrique (§130) ; précédemment article « Coulisses » sur l'IA préparé, non publié (§129) ; précédemment dix-huitième Découverte préparée, non publiée — aKa Sci Music (§128) ; précédemment dix-septième Découverte — Paul Stone (§127) ; précédemment seizième Découverte — Calum Wood (§126) ; précédemment quinzième Découverte — Jeff Levy (§125) ; précédemment 2026-11-13, quatorzième Découverte — Valérian (§124) ; précédemment 2026-11-12, treizième Découverte — Lakes & Fires (§123) ; précédemment 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
+---
+
+## 132. Fermeture de Radioline, fiche radio.net corrigée, et la règle de source unique des annuaires (2026-11-18)
+
+**Radioline a cessé son activité le lundi 16 novembre 2026** et renvoie ses utilisateurs vers TuneIn (racheté par le groupe
+canadien Stingray en décembre 2025). Source : article de Lawebradio.com du 10 novembre 2026, lu le 18 novembre. L'article ne
+documente **ni rachat de Radioline, ni migration automatique des fiches** : les favoris des auditeurs ne sont pas transférés et
+rien n'est dit du sort des stations référencées. Ne pas attendre qu'Odyssey « arrive » sur TuneIn par ce canal.
+
+**Conséquence sur TuneIn.** Odyssey y figure sous la fiche `s339104`, créée sans intervention de notre part et **rattachée à aucun
+compte diffuseur** — donc ni logo, ni description, ni flux sous notre contrôle, au moment précis où l'audience de Radioline y est
+poussée. Le portail `broadcasters.tunein.com` n'offre **aucun formulaire de revendication** : il ne propose que « ajouter une
+station » (qui créerait un doublon) et « modifier une station » (qui ne liste que les stations déjà rattachées au compte).
+**Courriel de revendication envoyé le 18 novembre** à `broadcaster-support@tunein.com` depuis `odysseylaradio@gmail.com`, objet
+« Station claim request — Radio Odyssey (s339104) », facture RadioKing proposée comme preuve de propriété. Relancer si rien au
+28 novembre ; **ne jamais créer la fiche par « ajouter une station »**.
+
+**radio.net n'est pas Radioline** — confusion à ne pas refaire. radio.net est édité par **radio.de GmbH**, Hambourg, du groupe de
+presse Madsack (Hanovre) : une vingtaine de sites nationaux, quinze langues, toujours en activité. Aucun lien capitalistique
+documenté avec Radioline. Odyssey y a une fiche : `radio.net/s/odyssey`.
+
+⚠️ **Cette fiche était fausse, et la source, c'est nous.** Elle affichait le nom en capitales (« RADIO ODYSSEY ») et les genres
+*Dance, Charts, 80s, Easy Listening, DJ, Meditation*, d'où un classement en « stations similaires » à côté de FG Tech House,
+FG David Guetta et Sunshine Live — un public club et électro. **Les annuaires recopient la fiche d'identité RadioKing** (nom,
+slogan, description, genres, site, logo) : c'est la **source unique**, et toute correction se fait là, pas chez l'annuaire. Même
+constat le même jour sur Relax, dont le nom ressortait en capitales chez myTuner, de la même origine.
+
+**Fait le 18 novembre.** (1) **Description RadioKing réécrite** : l'ancienne contenait une phrase cassée (« 24h/24.puissants, »)
+et enfermait la station dans « radio années 80 » alors qu'elle diffuse des années 80 à aujourd'hui avec les nouveautés du moment.
+La nouvelle tient dans les **500 signes** du champ, en trois langues séparées par `— EN —` et `— ES —`, et présente la cohérence
+cardiaque comme une singularité, sans promesse d'effet de santé. (2) **Genres** : *Dance / Clubbing* **conservé sur décision de
+Frédéric** ; les cinq restent *Dance / Clubbing, Pop, Hits, Hits 80s, Gold*. (3) **Ticket radio.net déposé** via
+`radio.zendesk.com` (formulaire « I am a radio station operator », motif *update my station*) : nom à corriger, genres à aligner,
+*DJ* et *Meditation* à retirer, description à remplacer — et une question sur la marche à suivre pour faire référencer Radio
+Odyssey Relax chez eux, maintenant que Radioline a fermé.
+
+✅ **Relax soumise à radio.net le 18 novembre.** Chez eux, ajouter une station ne passe pas par l'assistance mais par un
+contrat, le *Linking Agreement* — gratuit, non exclusif, résiliable à tout moment, droit allemand et tribunal de Hambourg, les
+droits des sociétés de gestion restant à notre charge. Identifiant demandé : `odyssey-relax`, en écho au `odyssey` d'Odyssey.
+**Le contrat n'est conclu qu'à leur acceptation par courriel.** Détail des valeurs déposées dans le point de situation de Relax,
+section 6 ter. À noter pour Odyssey : **sa fiche existe chez eux sans qu'aucun contrat ait été signé** — si l'on veut un jour la
+maîtriser pleinement, c'est le même formulaire qu'il faudra remplir, en *Update your station*.
+
+🔧 **À faire dans le dépôt, non fait à ce jour** : retirer les **dix occurrences de Radioline**, qui pointent toutes vers un
+service fermé. Liste fichier par fichier et arbitrages à rendre dans **`BRIEF-RADIOLINE-NETTOYAGE.md`** (racine du dépôt). La plus
+nuisible est `src/layouts/Layout.astro` ligne 82 : l'URL Radioline figure dans la liste `sameAs` des données structurées — on
+déclare donc à Google un profil officiel qui mène à un site mort.
+
+---
+
+
+## 133. Découvertes : la force de la station plutôt que le manque des autres (2026-11-19)
+
+**Décision de Frédéric**, prise sur les Signatures de Radio Odyssey Relax et étendue aux Découvertes : on n'écrit plus « il n'existe aucune biographie ailleurs », « l'une des rares sources », « très peu de sources s'intéressent à lui » — « cette transparence n'est pas un usage éditorial courant ». On écrit ce que la station fait : **« Radio Odyssey fait partie des quelques médias à mettre {artiste} à l'honneur »** (« one of the few media outlets to feature… » en anglais), « et ça, c'est une de nos forces ».
+
+**Ce qui change** (français et anglais) :
+- Gabarits `decouverte-[slug].astro` et `en/discovery-[slug].astro` : description Google, sous-titre, encart sous l'en-tête et première question fréquente. Le champ `scarcity` garde son rôle (il choisit la formulation), seule la formulation change ; la version « présence établie » ne dit plus « que personne d'autre ne publie ».
+- Pages d'ensemble : le bloc « Une information que vous ne trouverez pas ailleurs » devient « Des artistes que Radio Odyssey met à l'honneur » ; la description Google ne dit plus « parfois absents du reste d'internet ».
+- Fiches (`discoveries.js`, `discoveries-en.js`) : phrases de rareté retirées des faits et biographies (Tom York, Tree Gees, Tony Jay, Charlie-Lou, DJ Next Level, Roxy Ana, Sephra, Deep Rage, Nia Storm, Valérian, Paul Stone…) ; les six `scarcityNote` anglaises réécrites.
+- **Conservé volontairement** : les attributions de source et les vérifications (« ces éléments proviennent de son dossier de presse », « seule la date de sortie a pu être recoupée », « nous n'avons pas pu recouper ce chiffre ») — c'est l'usage éditorial normal et ce qui protège l'exactitude des fiches. Et la phrase de Rémi Dorage, qui dit une force de la station (« une donnée que personne d'autre ne publie : ses vraies statistiques de diffusion »).
+
+**Règle pour toute nouvelle Découverte** : vérifier toujours ce qui existe ailleurs avant de remplir `scarcity` (§6ter), mais ne jamais l'écrire sous la forme d'un manque.
+
+---
+
+*Dernière mise à jour : 2026-11-19, Découvertes : la force de la station plutôt que le manque des autres (§133) ; précédemment 2026-11-18, fermeture de Radioline, fiche radio.net corrigée et règle de source unique des annuaires (§132) ; précédemment 2026-11-14, Découverte aKa Sci Music publiée (§128) ; précédemment relecture juridique de l'article sur l'IA intégrée (§131) ; précédemment transparence sur l'IA dans ce que la radio fabrique (§130) ; précédemment article « Coulisses » sur l'IA préparé, non publié (§129) ; précédemment dix-huitième Découverte préparée, non publiée — aKa Sci Music (§128) ; précédemment dix-septième Découverte — Paul Stone (§127) ; précédemment seizième Découverte — Calum Wood (§126) ; précédemment quinzième Découverte — Jeff Levy (§125) ; précédemment 2026-11-13, quatorzième Découverte — Valérian (§124) ; précédemment 2026-11-12, treizième Découverte — Lakes & Fires (§123) ; précédemment 2026-11-11, nature virtuelle (IA) dite sur Sephra, Deep Rage et Nia Storm (§122) ; précédemment douzième Découverte — Nia Storm (§121) ; précédemment onzième Découverte — Deep Rage (§120) ; précédemment Sephra : genre corrigé (§119) ; précédemment dixième Découverte — Sephra (§118) ; précédemment Roxy Ana en anglais (§117) ; précédemment neuvième Découverte — Roxy Ana (§116) ; précédemment Tree Gees en anglais (§115) ; précédemment huitième Découverte — DJ Next Level (§114) ; précédemment Découvertes visibles en anglais (§113) ; précédemment menu et accueil (§112) ; précédemment Åírös en anglais (§111) ; précédemment septième Découverte — Åírös (§110) ; précédemment 2026-11-05, décision sur l'anglais de Relax, lien permanent dans la barre du haut, signalement Bing sur Relax (alt, isPartOf, llms.txt), article d'annonce prêt (3.3), mentions de la marque (3.4), page du groupe (3.2), lien de groupe (3.1), Search Console (3.6), audit des doublons (3.5), §109.*
 
