@@ -4829,7 +4829,7 @@ droits des sociétés de gestion restant à notre charge. Identifiant demandé :
 section 6 ter. À noter pour Odyssey : **sa fiche existe chez eux sans qu'aucun contrat ait été signé** — si l'on veut un jour la
 maîtriser pleinement, c'est le même formulaire qu'il faudra remplir, en *Update your station*.
 
-🔧 **À faire dans le dépôt, non fait à ce jour** : retirer les **dix occurrences de Radioline**, qui pointent toutes vers un
+✅ **Fait le 20 novembre : le brief de nettoyage a été exécuté en entier (§135), et les liens World Radios ont été posés (§134).** `BRIEF-RADIOLINE-NETTOYAGE.md` peut être archivé. *Pour mémoire, ce qu'il restait à faire :* retirer les **dix occurrences de Radioline**, qui pointent toutes vers un
 service fermé. Liste fichier par fichier et arbitrages à rendre dans **`BRIEF-RADIOLINE-NETTOYAGE.md`** (racine du dépôt). La plus
 nuisible est `src/layouts/Layout.astro` ligne 82 : l'URL Radioline figure dans la liste `sameAs` des données structurées — on
 déclare donc à Google un profil officiel qui mène à un site mort.
@@ -4871,6 +4871,7 @@ déclare donc à Google un profil officiel qui mène à un site mort.
 - **Pastille de l'accueil** (`index.astro`) : gardée, comme arbitré le 18 novembre — libellé **radio.net**, lien vers la fiche ; l'icône à trois traits est inchangée. Toujours cinq pastilles.
 - **Pages anglaises** : `en/index.astro` (FAQ et liste d'écoute), `en/radio-odyssey-faq.astro` — libellé et lien passés à radio.net ; `feel-good-music-radio`, `keep-listening-radio-odyssey`, `positive-european-music-station`, `listen-on-tunein` — le libellé « Radio.net » était déjà juste, **seule l'URL** a été corrigée.
 - **Vérifications** : `grep -ri radioline src/` ne renvoie plus rien ; les données structurées de l'accueil portent bien radio.net et World Radios dans `sameAs` ; la fiche radio.net s'ouvre (vérifiée dans un vrai navigateur — radio.net refuse les requêtes automatiques, d'où un 403 en ligne de commande, sans conséquence pour les visiteurs).
+- **Brief archivé** : `archives/briefs/BRIEF-RADIOLINE-NETTOYAGE.md` (déplacé depuis la racine du dépôt le 21 novembre, à la demande de Claude conversation).
 - **Non touché, comme demandé** : la colonne « Écouter sur » n'a pas reçu radio.net (elle a reçu World Radios au §134, sur brief distinct) ; aucune fiche radio.net pour Relax ; myTuner inchangé. La fiche radio.net affiche encore les anciens genres (DJ, Meditation…) : c'est le ticket du 18 novembre, côté radio.net.
 
 ---
