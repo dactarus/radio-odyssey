@@ -55,6 +55,7 @@ const limitePages = enAnglais ? 99 : FOOTER_PAGE_LIMIT;
         <h5>{L.ecouterSur}</h5>
         <a href="https://link.radioking.com/radio-odyssey" target="_blank" rel="noopener">RadioKing</a>
         <a href="https://tunein.com/radio/RADIO-ODYSSEY-s339104/" target="_blank" rel="noopener">TuneIn</a>
+        <a href={enAnglais ? 'https://worldradios.app/en/station/15858/radio-odyssey' : 'https://worldradios.app/fr/station/15858/radio-odyssey'} target="_blank" rel="noopener">World Radios</a>
         <a href="https://www.deezer.com/search/radio%20odyssey/livestream" target="_blank" rel="noopener">Deezer</a>
         <a href="https://fr.welove.radio/radio/radio-odyssey/" target="_blank" rel="noopener">WeLoveRadio</a>
         <a href="https://radio.orange.com/radios/radio_odyssey" target="_blank" rel="noopener">Orange</a>
@@ -224,7 +225,7 @@ var PLATEFORMES = {
   'deezer.com': 'deezer',
   'welove.radio': 'welove',
   'radio.orange.com': 'orange',
-  'radioline.co': 'radioline',
+  'worldradios.app': 'worldradios',
   'mytuner-radio.com': 'mytuner',
 };
 document.addEventListener('click', function (e) {
