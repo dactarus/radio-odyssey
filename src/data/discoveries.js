@@ -104,6 +104,9 @@ export const DISCOVERIES = [
     since: 'octobre 2026',
     scarcity: 'quasi-absente',
     tracks: ['Hate me now'],
+    // Photo envoyée par Frédéric le 21 novembre 2026.
+    photo: '/assets/images/decouvertes/charlie-lou.webp',
+    photoAlt: 'Portrait de Charlie-Lou',
     facts: [
       'Autrice-compositrice-interprète parisienne : après quatre années de droit, dont deux passées à Londres, elle a quitté la stabilité d\'une carrière juridique pour se consacrer à la musique, entre anglais et français, folk et indie rock, mais toujours résolument pop.',
       'Son deuxième single "Hate me now" (25 septembre 2026) explore une rupture amoureuse sur des sonorités dark pop et indie rock — une écriture rapprochée d\'Olivia Rodrigo, Billie Eilish et Holly Humberstone.',
