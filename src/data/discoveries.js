@@ -126,6 +126,9 @@ export const DISCOVERIES = [
     since: 'octobre 2026',
     scarcity: 'partielle',
     tracks: ['Signs Of The Time (feat. Max Romeo & Guiding Star Orchestra)'],
+    // Photo envoyée par Frédéric le 21 novembre 2026.
+    photo: '/assets/images/decouvertes/azizzi-romeo.webp',
+    photoAlt: 'Portrait d’Azizzi Romeo',
     facts: [
       'Jeune artiste et producteur jamaïcain, élevé à Linstead (paroisse de Sainte-Catherine) et fils de l’icône du reggae roots Max Romeo : chanteur principal du duo Rominal avec son frère dès l’âge de huit ans, il a ensuite tourné à l’international avec son père avant de se lancer en solo.',
       'Son premier album, "Signs of the Time" (11 titres, sorti le 2 octobre 2026 chez Recall Reality, label de Copenhague), a été enregistré avec le groupe danois Guiding Star Orchestra, produit par CHLLNGR, Jaszol et Thomas Leholt, puis mixé et masterisé par le producteur britannique Prince Fatty.',

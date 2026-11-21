@@ -51,6 +51,7 @@ export const DISCOVERIES_EN = {
     linkLabel: 'feel-good music radio',
   },
   'azizzi-romeo': {
+    photoAlt: 'Portrait of Azizzi Romeo',
     genre: 'Roots reggae / dub',
     origin: 'Jamaica',
     since: 'October 2026',
