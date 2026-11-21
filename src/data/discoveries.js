@@ -21,6 +21,10 @@ export const DISCOVERIES = [
     since: 'mars 2025',
     scarcity: 'quasi-absente',
     tracks: ['Close To Me', 'Sunscreen', 'I Can’t Stay'],
+    // Pas de photo officielle (Frédéric, 21 novembre 2026) : pochette du single
+    // « Close To Me », qui porte son nom — utile face aux homonymes (Thom Yorke…).
+    photo: '/assets/images/decouvertes/tom-york-close-to-me.webp',
+    photoAlt: 'Pochette du single « Close To Me » de Tom York',
     facts: [
       'Chanteur pop rock anglais au ton positif, signé chez le label D.A Red Wolf Records, également connu comme remixeur pour des artistes comme OneRepublic et Lara Fabian.',
       'Son titre "Close To Me" a été diffusé sur plus d’une centaine de radios en France, en Belgique et en Suisse.',

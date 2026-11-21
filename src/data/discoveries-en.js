@@ -35,6 +35,7 @@
 
 export const DISCOVERIES_EN = {
   'tom-york': {
+    photoAlt: 'Cover of the single "Close To Me" by Tom York',
     genre: 'English pop rock',
     origin: 'United Kingdom',
     since: 'March 2025',
