@@ -7,9 +7,17 @@ import FAQBlock from '../components/FAQBlock.astro';
 import { DISCOVERIES, HEURES_DECOUVERTES_TEXTE } from '../data/discoveries.js';
 
 const active = DISCOVERIES.filter((a) => a.active);
+// Découvertes conçues avec l'IA : déduites des fiches (elles le disent toutes),
+// jamais listées à la main (§139).
+const estIA = (a) => /intelligence artificielle|\(IA\)/i.test(`${a.origin} ${a.facts.join(' ')}`);
+const projetsIA = DISCOVERIES.filter(estIA);
 const past = DISCOVERIES.filter((a) => !a.active);
 
 const faq = [
+  {
+    q: 'Radio Odyssey diffuse-t-elle des artistes créés avec l’intelligence artificielle ?',
+    a: 'Oui, parfois, et toujours en le disant. Radio Odyssey privilégie les artistes réels ; quand elle retient un projet conçu avec l’intelligence artificielle, c’est parce qu’il y a une vraie démarche artistique derrière, et non un produit fabriqué à la chaîne. Sa démarche est expliquée sur la page <a href="/musique-et-intelligence-artificielle-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Musique et intelligence artificielle</a>.',
+  },
   {
     q: 'À quelle heure passe la playlist Découvertes ?',
     a: `Tous les jours à ${HEURES_DECOUVERTES_TEXTE}, sur Radio Odyssey. Les artistes de la playlist et leurs titres y sont en rotation.`,
@@ -57,6 +65,16 @@ const faq = [
           <div class="content-card">
             <h2>La playlist Découvertes, tous les jours</h2>
             <p style="margin-bottom:0;">La playlist Découvertes passe <strong>tous les jours à {HEURES_DECOUVERTES_TEXTE}</strong>. Les artistes et leurs titres sont en rotation sur ces horaires : quatre rendez-vous par jour pour les entendre sur Radio Odyssey.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Et l'intelligence artificielle ?</h2>
+            <p>Radio Odyssey privilégie les artistes réels : des musiciens, des chanteuses et des chanteurs qui écrivent, jouent et enregistrent. Mais elle n'écarte pas par principe les projets conçus avec l'intelligence artificielle.</p>
+            <p>Quand elle en retient un, c'est qu'il y a une <strong>vraie démarche artistique</strong> derrière : des personnes qui écrivent les textes, choisissent un style, dirigent les arrangements et décident du résultat. Pas un produit lambda fabriqué à la chaîne. Et Radio Odyssey le dit toujours : chaque fiche précise la part de l'IA, pour que l'auditeur sache ce qu'il écoute.</p>
+            {projetsIA.length > 0 && (
+              <p>Parmi les Découvertes, les projets conçus avec l'IA : {projetsIA.map((a, i) => <>{i > 0 && ', '}<a href={`/decouverte-${a.slug}.html`} style="color:var(--ro-purple);font-weight:700;">{a.name}</a></>)}.</p>
+            )}
+            <p style="margin-bottom:0;"><a href="/musique-et-intelligence-artificielle-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">Musique et intelligence artificielle : la démarche de Radio Odyssey →</a></p>
           </div>
 
           <div class="content-card" style="background:linear-gradient(135deg,rgba(255,215,0,.08),rgba(123,47,190,.06));border:1.5px solid rgba(255,215,0,.2);">

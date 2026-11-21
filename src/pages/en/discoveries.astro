@@ -24,8 +24,15 @@ import { DISCOVERIES_EN, SLUGS_DISCOVERIES_EN } from '../../data/discoveries-en.
 const traduites = DISCOVERIES.filter((a) => SLUGS_DISCOVERIES_EN.includes(a.slug)).reverse();
 const active = traduites.filter((a) => a.active);
 const past = traduites.filter((a) => !a.active);
+// AI-made Discoveries, derived from the French entries (they all say so), §139.
+const estIA = (a) => /intelligence artificielle|\(IA\)/i.test(`${a.origin} ${a.facts.join(' ')}`);
+const projetsIA = traduites.filter(estIA);
 
 const faq = [
+  {
+    q: 'Does Radio Odyssey play artists created with artificial intelligence?',
+    a: 'Yes, sometimes, and always saying so. Radio Odyssey favours real artists; when it picks a project made with artificial intelligence, it is because there is a genuine artistic approach behind it, not a mass-produced product. Its approach is explained on the page <a href="/en/ai-music-on-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">AI music on Radio Odyssey</a>.',
+  },
   {
     q: 'When is the Discoveries playlist on air?',
     a: `Every day at ${HEURES_DECOUVERTES_TEXTE_EN} (Paris time), on Radio Odyssey. The artists in the playlist and their tracks rotate across these slots.`,
@@ -74,6 +81,16 @@ const faq = [
           <div class="content-card">
             <h2>The Discoveries playlist, every day</h2>
             <p style="margin-bottom:0;">The Discoveries playlist is on air <strong>every day at {HEURES_DECOUVERTES_TEXTE_EN} (Paris time)</strong>. The artists and their tracks rotate across these slots: four daily chances to hear them on Radio Odyssey.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>What about artificial intelligence?</h2>
+            <p>Radio Odyssey favours real artists: musicians and singers who write, play and record. But it does not rule out, on principle, projects made with artificial intelligence.</p>
+            <p>When it picks one, it is because there is a <strong>genuine artistic approach</strong> behind it: people who write the lyrics, choose a style, direct the arrangements and decide on the result. Not a run-of-the-mill, mass-produced product. And Radio Odyssey always says so: each page states the part played by AI, so that listeners know what they are hearing.</p>
+            {projetsIA.length > 0 && (
+              <p>Among the Discoveries, the projects made with AI: {projetsIA.map((a, i) => <>{i > 0 && ', '}<a href={`/en/discovery-${a.slug}.html`} style="color:var(--ro-purple);font-weight:700;">{a.name}</a></>)}.</p>
+            )}
+            <p style="margin-bottom:0;"><a href="/en/ai-music-on-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">AI music: Radio Odyssey's approach →</a></p>
           </div>
 
           <div class="content-card" style="background:linear-gradient(135deg,rgba(255,215,0,.08),rgba(123,47,190,.06));border:1.5px solid rgba(255,215,0,.2);">
