@@ -31,6 +31,9 @@ const ogDescription = "Web radio musicale positive en streaming 24h/24. Joyeuse,
 ---
 <Layout lang="fr" altLangs={{ fr: '/', en: '/en.html' }} title={title} description={description} ogTitle={ogTitle} ogDescription={ogDescription} ogImage="/assets/images/og/home.jpg">
   <Fragment slot="head">
+    {/* Vérification de propriété Radioguide.fm (Frédéric, 21 novembre 2026) —
+        provisoire : à RETIRER une fois le badge « Propriétaire vérifié » obtenu (§136). */}
+    <meta name="radioguide-verification" content="rg-bba245bd8452f62c" />
   <style is:global>
     /* ── SVG icon wrappers ── */
     .svg-icon {
