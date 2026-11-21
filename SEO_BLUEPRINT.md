@@ -4900,6 +4900,8 @@ déclare donc à Google un profil officiel qui mène à un site mort.
 
 **Azizzi Romeo** (même jour) : portrait envoyé par Frédéric, recadré sur le visage ; fiches française et anglaise.
 
+**Åírös** (même jour) : portrait envoyé par Frédéric, recadré sur le visage ; fiches française et anglaise.
+
 
 ## 138. Les horaires de la playlist Découvertes : tous les jours à 5 h 30, 10 h 30, 15 h 30 et 20 h 30 (2026-11-21)
 

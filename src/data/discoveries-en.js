@@ -66,6 +66,7 @@ export const DISCOVERIES_EN = {
     linkLabel: 'feel-good music radio',
   },
   'airos': {
+    photoAlt: 'Portrait of Åírös',
     genre: 'House / Pop / Funk',
     origin: 'United States',
     since: 'November 2026',

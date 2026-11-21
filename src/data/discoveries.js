@@ -148,6 +148,9 @@ export const DISCOVERIES = [
     since: 'novembre 2026',
     scarcity: 'partielle',
     tracks: ['Summer55'],
+    // Photo envoyée par Frédéric le 21 novembre 2026.
+    photo: '/assets/images/decouvertes/airos.webp',
+    photoAlt: 'Portrait d’Åírös',
     facts: [
       'Producteur, auteur-compositeur et interprète américain, formé à la scène underground de Dallas (Texas) : sa musique se situe à la croisée de la house, du rock, du funk, de la pop et de l’indie, avec des guitares et des saxophones qui réchauffent un son né dans les clubs.',
       'Il collabore régulièrement avec l’auteure et chanteuse LUCOA et avec le producteur DNJER, et a sorti des titres chez des labels comme Loudkult Records, Blanco y Negro Music, Lovestyle Records, Ninety9Lives ou Oriental Star.',
