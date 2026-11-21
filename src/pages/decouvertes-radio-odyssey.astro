@@ -4,12 +4,16 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
-import { DISCOVERIES } from '../data/discoveries.js';
+import { DISCOVERIES, HEURES_DECOUVERTES_TEXTE } from '../data/discoveries.js';
 
 const active = DISCOVERIES.filter((a) => a.active);
 const past = DISCOVERIES.filter((a) => !a.active);
 
 const faq = [
+  {
+    q: 'À quelle heure passe la playlist Découvertes ?',
+    a: `Tous les jours à ${HEURES_DECOUVERTES_TEXTE}, sur Radio Odyssey. Les artistes de la playlist et leurs titres y sont en rotation.`,
+  },
   {
     q: 'Comment Radio Odyssey choisit-elle ses Découvertes ?',
     a: "Radio Odyssey est régulièrement sollicitée par des maisons de disques, des labels et des artistes indépendants. Chaque proposition est écoutée, et celles qui correspondent à la couleur musicale et à l'univers positif de l'antenne peuvent rejoindre la programmation, au même titre que les artistes déjà installés.",
@@ -48,6 +52,11 @@ const faq = [
             <h2>Une radio à l'affût de nouveaux talents</h2>
             <p>Au-delà des artistes déjà installés sur l'antenne, Radio Odyssey se donne pour mission de soutenir la scène musicale émergente. Régulièrement sollicitée par des maisons de disques et des artistes indépendants, la radio écoute chaque proposition et choisit, au cas par cas, celles qui correspondent à sa couleur musicale et à son esprit positif — sans se soucier du nombre de followers ou de streams déjà acquis.</p>
             <p style="margin-bottom:0;">Certaines de ces Découvertes trouvent durablement leur public et rejoignent la programmation régulière ; d'autres restent des moments forts d'une saison. Dans tous les cas, ce sont de vraies prises de risque éditoriales, assumées par l'équipe de la radio.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>La playlist Découvertes, tous les jours</h2>
+            <p style="margin-bottom:0;">La playlist Découvertes passe <strong>tous les jours à {HEURES_DECOUVERTES_TEXTE}</strong>. Les artistes et leurs titres sont en rotation sur ces horaires : quatre rendez-vous par jour pour les entendre sur Radio Odyssey.</p>
           </div>
 
           <div class="content-card" style="background:linear-gradient(135deg,rgba(255,215,0,.08),rgba(123,47,190,.06));border:1.5px solid rgba(255,215,0,.2);">

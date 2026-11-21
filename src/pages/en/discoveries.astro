@@ -16,7 +16,7 @@ import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/PageHero.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import FAQBlock from '../../components/FAQBlock.astro';
-import { DISCOVERIES } from '../../data/discoveries.js';
+import { DISCOVERIES, HEURES_DECOUVERTES_TEXTE_EN } from '../../data/discoveries.js';
 import { DISCOVERIES_EN, SLUGS_DISCOVERIES_EN } from '../../data/discoveries-en.js';
 
 // Les fiches qui ont une version anglaise, la plus récente d'abord (ordre
@@ -26,6 +26,10 @@ const active = traduites.filter((a) => a.active);
 const past = traduites.filter((a) => !a.active);
 
 const faq = [
+  {
+    q: 'When is the Discoveries playlist on air?',
+    a: `Every day at ${HEURES_DECOUVERTES_TEXTE_EN} (Paris time), on Radio Odyssey. The artists in the playlist and their tracks rotate across these slots.`,
+  },
   {
     q: 'How does Radio Odyssey choose its Discoveries?',
     a: "Radio Odyssey is regularly approached by record companies, labels and independent artists. Every submission is listened to, and those that fit the station's musical colour and positive spirit can join the programming, on the same footing as established artists.",
@@ -65,6 +69,11 @@ const faq = [
             <h2>A radio on the lookout for new talent</h2>
             <p>Beyond the artists already established on air, Radio Odyssey sets out to support the emerging music scene. Regularly approached by record companies and independent artists, the station listens to every submission and chooses, case by case, those that fit its musical colour and positive spirit — without worrying about how many followers or streams an artist already has.</p>
             <p style="margin-bottom:0;">Some of these Discoveries find a lasting audience and join the regular programming; others remain highlights of a season. Either way, they are real editorial risks, taken by the station's team.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>The Discoveries playlist, every day</h2>
+            <p style="margin-bottom:0;">The Discoveries playlist is on air <strong>every day at {HEURES_DECOUVERTES_TEXTE_EN} (Paris time)</strong>. The artists and their tracks rotate across these slots: four daily chances to hear them on Radio Odyssey.</p>
           </div>
 
           <div class="content-card" style="background:linear-gradient(135deg,rgba(255,215,0,.08),rgba(123,47,190,.06));border:1.5px solid rgba(255,215,0,.2);">

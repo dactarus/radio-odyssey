@@ -399,3 +399,12 @@ export const DISCOVERIES = [
     linkLabel: 'musique et intelligence artificielle sur Radio Odyssey',
   },
 ];
+
+// Horaires de la playlist Découvertes — SOURCE UNIQUE (Frédéric, 21 novembre
+// 2026) : tous les jours, les artistes et leurs titres sont en rotation sur ces
+// rendez-vous. Toute page qui affiche ces heures les lit ici.
+export const HEURES_DECOUVERTES = [[5, 30], [10, 30], [15, 30], [20, 30]];
+const NB = '\u00a0';
+const liste = (items, et) => `${items.slice(0, -1).join(', ')} ${et} ${items[items.length - 1]}`;
+export const HEURES_DECOUVERTES_TEXTE = liste(HEURES_DECOUVERTES.map(([h, m]) => `${h}${NB}h${NB}${String(m).padStart(2, '0')}`), 'et');
+export const HEURES_DECOUVERTES_TEXTE_EN = liste(HEURES_DECOUVERTES.map(([h, m]) => `${h % 12 || 12}:${String(m).padStart(2, '0')}${NB}${h < 12 ? 'am' : 'pm'}`), 'and');
