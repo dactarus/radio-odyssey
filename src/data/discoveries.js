@@ -44,6 +44,9 @@ export const DISCOVERIES = [
     since: 'juin 2025',
     scarcity: 'quasi-absente en français',
     tracks: ['Sunday For Lovin’'],
+    // Photo de concert envoyée par Frédéric le 21 novembre 2026.
+    photo: '/assets/images/decouvertes/tree-gees-concert.webp',
+    photoAlt: 'Les Tree Gees en concert, devant leur logo projeté sur scène',
     facts: [
       'Groupe italien formé en 1997, largement considéré comme l’un des meilleurs hommages aux Bee Gees en Europe, avec plus de 1400 concerts à travers le monde.',
       'Composé de quatre musiciens : Alex Sammarini (chant, guitare), Paolo Amati (chant, basse), Franz Bancalari (chant, claviers) et Ezio Zaccagnini (batterie).',

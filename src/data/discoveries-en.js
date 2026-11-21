@@ -79,6 +79,7 @@ export const DISCOVERIES_EN = {
     linkLabel: 'feel-good music radio',
   },
   'tree-gees': {
+    photoAlt: 'Tree Gees in concert, in front of their logo projected on stage',
     genre: 'Disco-funk pop, 70s style',
     origin: 'Italy',
     since: 'June 2025',
