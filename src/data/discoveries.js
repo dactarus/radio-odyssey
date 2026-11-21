@@ -361,4 +361,28 @@ export const DISCOVERIES = [
     linkHref: '/musique-et-intelligence-artificielle-radio-odyssey.html',
     linkLabel: 'musique et intelligence artificielle sur Radio Odyssey',
   },
+  {
+    slug: 'ligne-sure',
+    name: 'LIGNE SÛRE',
+    genre: 'Afrobeats francophone',
+    origin: 'projet IA (Auriax Records)',
+    sansOrigine: true,
+    active: true,
+    since: 'novembre 2026', // à l'antenne à partir du 23 novembre 2026 (Frédéric)
+    scarcity: 'quasi-absente',
+    tracks: ['Pas unanimes'],
+    // Pochette de l'album dans le cercle du hero (projet IA : pas de photo
+    // d'artiste). Présentation sur le site autorisée par écrit par le label.
+    photo: '/assets/images/decouvertes/ligne-sure-pas-unanimes.webp',
+    photoAlt: 'Pochette de l’album « Pas unanimes » de LIGNE SÛRE : des chaises pliantes en cercle sur un terrain de sport',
+    facts: [
+      'LIGNE SÛRE est un projet musical francophone du label Auriax Records, aux influences afrobeats, urbaines et électroniques ; le label a confirmé par écrit à Radio Odyssey que la production fait appel à des outils d’intelligence artificielle, sous sa direction artistique, que la voix du titre est synthétique et que les paroles ont été écrites par une personne du label ; dans l’affichage du titre en cours, son nom est suivi de la mention « (IA) » à l’attention des auditeurs.',
+      '« Pas unanimes » est un titre afrobeats chanté en français, mid-tempo, porté par le groove : 2 min 11, onzième et dernier titre de l’album du même nom, paru le 21 août 2026 — vérifié sur Spotify, qui compte bien les onze titres.',
+      'Le profil Spotify du projet comptait environ 2 200 auditeurs mensuels le 21 novembre 2026.',
+    ],
+    portrait: "LIGNE SÛRE est un projet musical francophone du label Auriax Records, aux influences afrobeats, urbaines et électroniques. C'est un projet d'intelligence artificielle, et le label le dit clairement : la production fait appel à des outils d'IA, sous sa direction artistique ; la voix du titre est synthétique ; les paroles, elles, ont été écrites par une personne du label. Une voix générée, des choix humains — c'est ce qui intéresse Radio Odyssey dans ce projet : il montre ce qu'on peut faire aujourd'hui avec un outil d'IA, quand une direction artistique décide du texte, du style et du résultat. Le projet ne s'en tient pas à un titre isolé : il a déjà construit un catalogue, dont l'album « Pas unanimes », onze titres, paru le 21 août 2026. Le titre qui lui donne son nom est un afrobeats chanté en français, mid-tempo, porté par le groove, de 2 min 11. Ces éléments proviennent du label, qui nous a proposé le titre ; nous avons pu vérifier sur Spotify l'existence du titre, sa durée, sa date de sortie, sa place sur l'album et ses onze titres, ainsi que l'audience du profil (environ 2 200 auditeurs mensuels au 21 novembre 2026). Pour que l'auditeur sache ce qu'il écoute, Radio Odyssey fait suivre son nom de la mention « (IA) » dans l'affichage du titre en cours. Radio Odyssey l'accueille sur son antenne à partir du 23 novembre 2026 avec « Pas unanimes ».",
+    why: "L'afrobeats en français de LIGNE SÛRE, projet d'intelligence artificielle présenté en toute transparence, apporte du groove et une couleur urbaine à l'antenne — et montre qu'une direction artistique humaine peut tirer d'un outil d'IA une vraie identité musicale — une découverte à suivre dès son arrivée le 23 novembre 2026.",
+    linkHref: '/musique-et-intelligence-artificielle-radio-odyssey.html',
+    linkLabel: 'musique et intelligence artificielle sur Radio Odyssey',
+  },
 ];

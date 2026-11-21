@@ -39,6 +39,7 @@ const altLangs = SLUGS_DISCOVERIES_EN.includes(artist.slug)
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'MusicGroup',
+  ...(artist.photo ? { image: `https://www.radio-odyssey.com${artist.photo}` } : {}),
   name: artist.name,
   genre: artist.genre,
   // `sansOrigine` : l'« origine » affichée n'est pas un lieu (Sephra, §118) — ne pas
@@ -90,7 +91,9 @@ const faq = [
       <div class="row gy-4">
         <div class="col-lg-8">
 
-          <div class="content-card" style="border-left:3px solid var(--ro-gold, #FFD700);">
+          <div class="content-card" style={`border-left:3px solid var(--ro-gold, #FFD700);${artist.photo ? 'display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;' : ''}`}>
+            {artist.photo && <img src={artist.photo} style="flex:none;width:120px;height:120px;border-radius:50%;object-fit:cover;display:block;" alt={artist.photoAlt} width="120" height="120" loading="eager" />}
+            <div style="flex:1 1 260px;">
             <p style="margin:0 0 .6rem;font-size:.86rem;color:var(--ro-muted);">
               <Icon name="stars" style="color:var(--ro-gold, #FFD700);" />
               Cette fiche fait partie des <strong>Découvertes Radio Odyssey</strong> — des artistes émergents que la radio choisit de soutenir, en dehors de tout classement par audience. <a href="/decouvertes-radio-odyssey.html" style="color:var(--ro-purple);font-weight:700;">En savoir plus sur la démarche →</a>
@@ -99,6 +102,7 @@ const faq = [
               <Icon name="search" style="color:var(--ro-purple);" />
               {scarcityNote}
             </p>
+            </div>
           </div>
 
           <div class="content-card">

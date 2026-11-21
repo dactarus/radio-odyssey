@@ -48,6 +48,7 @@ const scarcityNote = en.scarcityNote ?? (isScarce
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'MusicGroup',
+  ...(artist.photo ? { image: `https://www.radio-odyssey.com${artist.photo}` } : {}),
   name: artist.name,
   genre: en.genre,
   ...(artist.sansOrigine ? {} : { foundingLocation: en.origin }),
@@ -103,7 +104,9 @@ const faq = [
       <div class="row gy-4">
         <div class="col-lg-8">
 
-          <div class="content-card" style="border-left:3px solid var(--ro-gold, #FFD700);">
+          <div class="content-card" style={`border-left:3px solid var(--ro-gold, #FFD700);${artist.photo ? 'display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;' : ''}`}>
+            {artist.photo && <img src={artist.photo} style="flex:none;width:120px;height:120px;border-radius:50%;object-fit:cover;display:block;" alt={(en.photoAlt || artist.photoAlt)} width="120" height="120" loading="eager" />}
+            <div style="flex:1 1 260px;">
             <p style="margin:0 0 .6rem;font-size:.86rem;color:var(--ro-muted);">
               <Icon name="stars" style="color:var(--ro-gold, #FFD700);" />
               This page is part of the <strong>Radio Odyssey Discoveries</strong> — emerging artists the radio chooses to support, regardless of any audience ranking.
@@ -112,6 +115,7 @@ const faq = [
               <Icon name="search" style="color:var(--ro-purple);" />
               {scarcityNote}
             </p>
+            </div>
           </div>
 
           <div class="content-card">
