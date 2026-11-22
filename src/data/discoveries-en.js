@@ -301,6 +301,21 @@ export const DISCOVERIES_EN = {
     linkHref: '/en/feel-good-music-radio.html',
     linkLabel: 'feel-good music radio',
   },
+  'dj-keanu': {
+    genre: 'House / dance',
+    origin: 'Netherlands',
+    since: 'November 2026',
+    photoAlt: 'Black-and-white portrait of DJ Keanu, his hand under his chin',
+    facts: [
+      'DJ Keanu has been active on the dance scene since the early 1990s, in clubs and festivals in the Netherlands, Spain, New Zealand and elsewhere; he spent many years as a DJ at Bob’s Saloon, a club he describes as legendary, and also plays festivals, weddings and beach parties.',
+      '"Say Less, Pull Closer" was released on 6 November 2026 on Orovaya Records; its radio version runs 3 min 23 on Spotify, and the artist confirmed in writing to Radio Odyssey that he holds all the rights to the track and does not use AI tools.',
+      'According to his biography, he has played at Pacha and Es Paradis in Ibiza, at ADE (Amsterdam Dance Event) and AIR Amsterdam, among others, and launched his own concept, "The Sound of Ibiza"; his Spotify profile had 1,211 monthly listeners on 22 November 2026.',
+    ],
+    portrait: "DJ Keanu has been active on the dance scene since the early 1990s, in clubs and festivals in the Netherlands, Spain, New Zealand and elsewhere. His mixing style, his biography says, is a perfect fit for the Ibiza house scene. After many years as a DJ at Bob's Saloon, which he presents as a legendary club, he became a regular at festivals, weddings and beach parties. His sets range from the 1990s to today, across house and dance classics: uplifting, groovy and funky house with a touch of Latin beats, fine melodies, vocals and big basslines. Among the places he has played, he names The Sound of Ibiza, Es Paradis and Pacha in Ibiza, Escape, AIR Amsterdam, ADE, the Heineken Music Hall, Beachclub Vroeger, Putumayo Ibiza, Ibiza Xperience and Taste Amsterdam. For his own concept, \"The Sound of Ibiza\", he says he works with big names of the house scene such as Roog, José, La Fuente, Glenn Helder and Mark van Dale. Away from the clubs, he can also be found behind the decks at beach pavilions, in the Netherlands and abroad, for calmer deep house, beach house or lounge sets. \"Say Less, Pull Closer\", his latest single, was released on 6 November 2026 on Orovaya Records, in a radio version and an extended version. The artist confirmed in writing to Radio Odyssey that he holds all the rights to the track and that no artificial intelligence was used. These details come from the artist and his biography. We were able to check on Spotify the existence of the track, its release date, its label, the length of the radio version (3 min 23) and the audience of his profile (1,211 monthly listeners as of 22 November 2026); his background as a DJ at Bob's Saloon since the early 1990s is also mentioned on his SoundCloud profile. Radio Odyssey welcomes him on air from 24 November 2026 with \"Say Less, Pull Closer\".",
+    why: "The groovy, sun-soaked house of DJ Keanu, shaped by thirty years of clubs and beach parties, brings danceable energy and a touch of Ibiza to the station — a discovery to follow from his arrival on 24 November 2026.",
+    linkHref: '/en/feel-good-music-radio.html',
+    linkLabel: 'feel-good music radio',
+  },
 };
 
 export const SLUGS_DISCOVERIES_EN = Object.keys(DISCOVERIES_EN);

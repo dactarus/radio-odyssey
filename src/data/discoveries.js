@@ -452,6 +452,28 @@ export const DISCOVERIES = [
     linkHref: '/radio-pop-rnb-en-ligne.html',
     linkLabel: 'radio pop/R&B en ligne',
   },
+  {
+    slug: 'dj-keanu',
+    name: 'DJ Keanu',
+    genre: 'House / dance',
+    origin: 'Pays-Bas',
+    active: true,
+    since: 'novembre 2026', // à l'antenne à partir du 24 novembre 2026 (Frédéric)
+    scarcity: 'quasi-absente en français',
+    tracks: ['Say Less, Pull Closer (Radio Edit)'],
+    // Photo envoyée par Frédéric le 22 novembre 2026, recadrée sur le visage.
+    photo: '/assets/images/decouvertes/dj-keanu.webp',
+    photoAlt: 'Portrait en noir et blanc de DJ Keanu, la main sous le menton',
+    facts: [
+      'DJ Keanu est un DJ actif sur la scène dance depuis le début des années 1990, dans des clubs et des festivals aux Pays-Bas, en Espagne, en Nouvelle-Zélande et ailleurs ; il a longtemps été DJ au Bob’s Saloon, un club qu’il qualifie de légendaire, et anime aussi des festivals, des mariages et des fêtes de plage.',
+      '« Say Less, Pull Closer » est sorti le 6 novembre 2026 chez Orovaya Records ; sa version radio dure 3 min 23 sur Spotify, et l’artiste a confirmé par écrit à Radio Odyssey détenir tous les droits sur le titre et ne pas avoir recours à des outils d’IA.',
+      'Selon sa biographie, il a joué notamment au Pacha et à l’Es Paradis à Ibiza, à l’ADE (Amsterdam Dance Event) et à l’AIR Amsterdam, et a lancé son propre concept, « The Sound of Ibiza » ; son profil Spotify comptait 1 211 auditeurs mensuels le 22 novembre 2026.',
+    ],
+    portrait: "DJ Keanu est actif sur la scène dance depuis le début des années 1990, dans des clubs et des festivals aux Pays-Bas, en Espagne, en Nouvelle-Zélande et ailleurs. Sa façon de mixer, dit sa biographie, colle parfaitement à la house d'Ibiza. Après de longues années comme DJ au Bob's Saloon, qu'il présente comme un club légendaire, il est devenu un habitué des festivals, des mariages et des fêtes de plage. Ses sets mêlent les années 1990 à aujourd'hui, la house et les classiques de la dance : une house entraînante, groovy et funky, avec une touche de rythmes latins, des mélodies soignées, des voix et de grosses lignes de basse. Il cite parmi les lieux où il a joué The Sound of Ibiza, l'Es Paradis et le Pacha à Ibiza, Escape, l'AIR Amsterdam, l'ADE, le Heineken Music Hall, le Beachclub Vroeger, Putumayo Ibiza, Ibiza Xperience ou Taste Amsterdam. Pour son propre concept, « The Sound of Ibiza », il dit travailler avec de grands noms de la house comme Roog, José, La Fuente, Glenn Helder ou Mark van Dale. En dehors des clubs, on le retrouve aussi aux platines des paillotes de plage, aux Pays-Bas et à l'étranger, pour des sets plus calmes de deep house, de beach house ou de lounge. « Say Less, Pull Closer », son dernier single, est sorti le 6 novembre 2026 chez Orovaya Records, en version radio et en version longue. L'artiste a confirmé par écrit à Radio Odyssey qu'il détient tous les droits sur ce titre et qu'il n'a pas utilisé d'intelligence artificielle. Ces éléments proviennent de l'artiste et de sa biographie. Nous avons pu vérifier sur Spotify l'existence du titre, sa date de sortie, son label, la durée de la version radio (3 min 23) et l'audience de son profil (1 211 auditeurs mensuels au 22 novembre 2026) ; son passé de DJ au Bob's Saloon depuis le début des années 1990 est également mentionné sur son profil SoundCloud. Radio Odyssey l'accueille sur son antenne à partir du 24 novembre 2026 avec « Say Less, Pull Closer ».",
+    why: "La house groovy et ensoleillée de DJ Keanu, nourrie par trente ans de clubs et de fêtes de plage, apporte une énergie dansante et une touche d'Ibiza à l'antenne — une découverte à suivre dès son arrivée le 24 novembre 2026.",
+    linkHref: '/radio-dance-electro-en-ligne.html',
+    linkLabel: 'radio dance et électro en ligne',
+  },
 ];
 
 // Horaires de la playlist Découvertes — SOURCE UNIQUE (Frédéric, 21 novembre
