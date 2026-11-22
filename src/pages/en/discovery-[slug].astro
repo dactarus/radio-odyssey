@@ -19,7 +19,7 @@ import PageHero from '../../components/PageHero.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import FAQBlock from '../../components/FAQBlock.astro';
 import RelatedPages from '../../components/RelatedPages.astro';
-import { DISCOVERIES } from '../../data/discoveries.js';
+import { DISCOVERIES, DIFFUSION_NOEL, noelEnCours } from '../../data/discoveries.js';
 import { DISCOVERIES_EN, SLUGS_DISCOVERIES_EN } from '../../data/discoveries-en.js';
 
 export function getStaticPaths() {
@@ -134,6 +134,14 @@ const faq = [
               ))}
             </div>
           </div>
+
+          {/* Christmas 2026 airplay — card to remove on 4 January 2027 (see DIFFUSION_NOEL) */}
+          {noelEnCours(artist) && (
+            <div class="content-card" style="border-left:3px solid #C8102E;">
+              <h2>On air for Christmas</h2>
+              <p style="margin:0;">{DIFFUSION_NOEL.texteEn}</p>
+            </div>
+          )}
 
           <div class="content-card">
             <h2>{artist.name} biography</h2>

@@ -5,7 +5,7 @@ import PageHero from '../components/PageHero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import RelatedPages from '../components/RelatedPages.astro';
-import { DISCOVERIES } from '../data/discoveries.js';
+import { DISCOVERIES, DIFFUSION_NOEL, noelEnCours } from '../data/discoveries.js';
 import { SLUGS_DISCOVERIES_EN } from '../data/discoveries-en.js';
 
 export function getStaticPaths() {
@@ -121,6 +121,14 @@ const faq = [
               ))}
             </div>
           </div>
+
+          {/* Diffusion de Noël 2026 — encart à retirer le 4 janvier 2027 (voir DIFFUSION_NOEL) */}
+          {noelEnCours(artist) && (
+            <div class="content-card" style="border-left:3px solid #C8102E;">
+              <h2>À l'antenne pour Noël</h2>
+              <p style="margin:0;">{DIFFUSION_NOEL.texte}</p>
+            </div>
+          )}
 
           <div class="content-card">
             <h2>Biographie de {artist.name}</h2>

@@ -327,16 +327,17 @@ export const DISCOVERIES = [
     genre: 'Folk de Noël',
     origin: 'Écosse',
     active: true,
-    since: 'décembre 2026',
+    since: 'novembre 2026',
     scarcity: 'quasi-absente en français',
     tracks: ['Ding Dong! Merrily on High!'],
+    noel: true, // mention « Diffusion de Noël » (DIFFUSION_NOEL, plus bas) — à retirer le 4 janvier 2027
     facts: [
       'Auteur-compositeur et producteur écossais né à Aberdeen, ancien membre des Banana Sessions (qui, d’après sa biographie, ont joué à Glastonbury et à T in the Park), Calum Wood vit et enregistre aujourd’hui à Brunei, selon son communiqué.',
       '"Ding Dong! Merrily on High!" est tiré de son second album de Noël, « Christmas Songs from the Kitchen Table, Vol. 2 », annoncé pour le 13 novembre 2026 chez Magic Park Records, en numérique seulement : guitare, voix, glockenspiel et un vieux clavier Casio ; le fichier fourni à la radio dure 2 min 44.',
       'Le premier volume, sorti le 28 novembre 2025, réunit des chants de Noël traditionnels à la guitare et à la voix, enregistrés autour de la table de cuisine ; son profil Spotify comptait environ 5 500 auditeurs mensuels le 14 novembre 2026.',
     ],
-    portrait: "Calum Wood est un auteur-compositeur et producteur écossais, né à Aberdeen, qui puise dans les traditions du folk et le récit. D'après son communiqué, il vit et enregistre aujourd'hui à Brunei ; il a fait partie des Banana Sessions, dont la biographie cite des passages à Glastonbury et à T in the Park, et a publié ces dernières années plusieurs albums et singles, dont « Patterns » (2025) et « Songs from the Soapbox » (2026). Sa série « Christmas Songs from the Kitchen Table » revisite les chants de Noël qu'il a entendus enfant, à l'école, à l'église et à la maison : le premier volume, sorti le 28 novembre 2025, a été enregistré à la guitare et à la voix, en gardant le bruit de la pièce et le ronronnement du réfrigérateur. Le second, « Christmas Songs from the Kitchen Table, Vol. 2 », est annoncé pour le 13 novembre 2026 chez Magic Park Records, en numérique seulement ; il ajoute le glockenspiel et un vieux clavier Casio à la guitare et à la voix, et fait entendre des chants familiers comme « We Three Kings », « Jingle Bells », « In the Bleak Midwinter » ou « Silent Night ». « Ding Dong! Merrily on High! » est un chant de Noël dont la mélodie vient d'une danse française du XVIe siècle et dont l'harmonisation la plus connue, publiée en 1924, est celle du compositeur Charles Wood (à ne pas confondre avec Calum Wood) : l'artiste en donne ici sa version, dans cet esprit fait maison. Ces éléments proviennent du communiqué de presse et du site de l'artiste. Nous avons pu vérifier que son profil Spotify existe et comptait environ 5 500 auditeurs mensuels au 14 novembre 2026, alors que le communiqué parle d'un pic d'environ 25 000 auditeurs mensuels et de plus d'un quart de million d'écoutes, chiffres que nous n'avons pas pu recouper ; nous n'avons pas non plus pu retrouver le second album sur Spotify ni confirmer sa date de sortie. Radio Odyssey l'accueille dans sa programmation de Noël pendant le mois de décembre 2026 avec \"Ding Dong! Merrily on High!\".",
-    why: "Le folk fait maison de Calum Wood, à la guitare, à la voix et au glockenspiel, apporte une chaleur d'artisan à la sélection de Noël de l'antenne — une découverte à écouter pendant tout le mois de décembre 2026.",
+    portrait: "Calum Wood est un auteur-compositeur et producteur écossais, né à Aberdeen, qui puise dans les traditions du folk et le récit. D'après son communiqué, il vit et enregistre aujourd'hui à Brunei ; il a fait partie des Banana Sessions, dont la biographie cite des passages à Glastonbury et à T in the Park, et a publié ces dernières années plusieurs albums et singles, dont « Patterns » (2025) et « Songs from the Soapbox » (2026). Sa série « Christmas Songs from the Kitchen Table » revisite les chants de Noël qu'il a entendus enfant, à l'école, à l'église et à la maison : le premier volume, sorti le 28 novembre 2025, a été enregistré à la guitare et à la voix, en gardant le bruit de la pièce et le ronronnement du réfrigérateur. Le second, « Christmas Songs from the Kitchen Table, Vol. 2 », est annoncé pour le 13 novembre 2026 chez Magic Park Records, en numérique seulement ; il ajoute le glockenspiel et un vieux clavier Casio à la guitare et à la voix, et fait entendre des chants familiers comme « We Three Kings », « Jingle Bells », « In the Bleak Midwinter » ou « Silent Night ». « Ding Dong! Merrily on High! » est un chant de Noël dont la mélodie vient d'une danse française du XVIe siècle et dont l'harmonisation la plus connue, publiée en 1924, est celle du compositeur Charles Wood (à ne pas confondre avec Calum Wood) : l'artiste en donne ici sa version, dans cet esprit fait maison. Ces éléments proviennent du communiqué de presse et du site de l'artiste. Nous avons pu vérifier que son profil Spotify existe et comptait environ 5 500 auditeurs mensuels au 14 novembre 2026, alors que le communiqué parle d'un pic d'environ 25 000 auditeurs mensuels et de plus d'un quart de million d'écoutes, chiffres que nous n'avons pas pu recouper ; nous n'avons pas non plus pu retrouver le second album sur Spotify ni confirmer sa date de sortie. Radio Odyssey l'accueille dans sa programmation de Noël avec \"Ding Dong! Merrily on High!\".",
+    why: "Le folk fait maison de Calum Wood, à la guitare, à la voix et au glockenspiel, apporte une chaleur d'artisan à la sélection de Noël de l'antenne — une découverte à écouter pendant les fêtes.",
     linkHref: '/comment-radio-odyssey-choisit-sa-musique.html',
     linkLabel: 'comment Radio Odyssey choisit sa musique',
   },
@@ -346,16 +347,17 @@ export const DISCOVERIES = [
     genre: 'Pop adulte / soul-jazz',
     origin: 'Royaume-Uni',
     active: true,
-    since: 'décembre 2026',
+    since: 'novembre 2026',
     scarcity: 'partielle',
     tracks: ['What Does Christmas Mean To You?'],
+    noel: true, // mention « Diffusion de Noël » (DIFFUSION_NOEL, plus bas) — à retirer le 4 janvier 2027
     facts: [
       'Auteur-compositeur du Yorkshire, Paul Stone enregistre avec The Basement Collective dans un studio analogique qu’il a construit sous sa maison familiale, d’où le nom du groupe ; la presse régionale britannique, dont le Yorkshire Evening Post, a relayé la sortie de ce titre de Noël.',
       '"What Does Christmas Mean To You?" est sorti le 6 novembre 2026 (2 min 44) ; d’après l’artiste, il mêle pop adulte contemporaine, soul et influences jazz, autour d’un message d’espoir, de compassion et de solidarité.',
       'Né, selon Paul Stone, d’un regard posé sur sa propre famille, puis sur ceux qui passent Noël seuls, le titre pose la question qui lui donne son nom ; le profil Spotify de Paul Stone comptait environ 1 700 auditeurs mensuels le 14 novembre 2026.',
     ],
-    portrait: "Paul Stone est un auteur-compositeur du Yorkshire, au Royaume-Uni, qui enregistre avec The Basement Collective, un groupe de musiciens réunis par d'anciennes amitiés de la scène du nord de l'Angleterre. D'après la presse régionale britannique, il a étudié au Leeds College of Music et construit un studio d'enregistrement professionnel sous sa maison familiale, d'où le nom du groupe. Leur précédent single, « Embers », est sorti en novembre 2025 ; selon la presse et l'artiste, leurs titres ont été soutenus par Jazz FM, BBC Radio et d'autres radios. \"What Does Christmas Mean To You?\" est sorti le 6 novembre 2026 et dure 2 min 44. Paul Stone raconte l'avoir écrit l'année précédente en regardant sa famille et en prenant conscience que l'essentiel était d'être ensemble, ce qui l'a fait penser aux autres familles, aux personnes âgées et à celles qui passent Noël seules : de là vient la question du titre. Il le décrit comme un mélange de pop adulte contemporaine, de soul et d'influences jazz, joué par des musiciens ensemble, avec un message d'espoir, de compassion et de solidarité, et affirme que la chanson a été écrite, interprétée et produite par des musiciens, dans leur studio. Ces éléments proviennent de l'artiste et d'articles de presse britanniques, dont le Yorkshire Evening Post. Nous avons pu vérifier sur Spotify l'existence du titre, ses deux crédits (Paul Stone et The Basement Collective), sa date de sortie, sa durée et l'audience du profil (environ 1 700 auditeurs mensuels au 14 novembre 2026) ; le soutien des radios cité n'a pas été recoupé à la source. Radio Odyssey l'accueille dans sa programmation de Noël pendant le mois de décembre 2026 avec \"What Does Christmas Mean To You?\".",
-    why: "La pop adulte, la soul et les touches jazz de Paul Stone & The Basement Collective, portées par une question simple sur le sens de Noël, ajoutent une chanson originale à la sélection de Noël de l'antenne — une découverte à écouter pendant tout le mois de décembre 2026.",
+    portrait: "Paul Stone est un auteur-compositeur du Yorkshire, au Royaume-Uni, qui enregistre avec The Basement Collective, un groupe de musiciens réunis par d'anciennes amitiés de la scène du nord de l'Angleterre. D'après la presse régionale britannique, il a étudié au Leeds College of Music et construit un studio d'enregistrement professionnel sous sa maison familiale, d'où le nom du groupe. Leur précédent single, « Embers », est sorti en novembre 2025 ; selon la presse et l'artiste, leurs titres ont été soutenus par Jazz FM, BBC Radio et d'autres radios. \"What Does Christmas Mean To You?\" est sorti le 6 novembre 2026 et dure 2 min 44. Paul Stone raconte l'avoir écrit l'année précédente en regardant sa famille et en prenant conscience que l'essentiel était d'être ensemble, ce qui l'a fait penser aux autres familles, aux personnes âgées et à celles qui passent Noël seules : de là vient la question du titre. Il le décrit comme un mélange de pop adulte contemporaine, de soul et d'influences jazz, joué par des musiciens ensemble, avec un message d'espoir, de compassion et de solidarité, et affirme que la chanson a été écrite, interprétée et produite par des musiciens, dans leur studio. Ces éléments proviennent de l'artiste et d'articles de presse britanniques, dont le Yorkshire Evening Post. Nous avons pu vérifier sur Spotify l'existence du titre, ses deux crédits (Paul Stone et The Basement Collective), sa date de sortie, sa durée et l'audience du profil (environ 1 700 auditeurs mensuels au 14 novembre 2026) ; le soutien des radios cité n'a pas été recoupé à la source. Radio Odyssey l'accueille dans sa programmation de Noël avec \"What Does Christmas Mean To You?\".",
+    why: "La pop adulte, la soul et les touches jazz de Paul Stone & The Basement Collective, portées par une question simple sur le sens de Noël, ajoutent une chanson originale à la sélection de Noël de l'antenne — une découverte à écouter pendant les fêtes.",
     linkHref: '/comment-radio-odyssey-choisit-sa-musique.html',
     linkLabel: 'comment Radio Odyssey choisit sa musique',
   },
@@ -402,6 +404,30 @@ export const DISCOVERIES = [
     linkHref: '/musique-et-intelligence-artificielle-radio-odyssey.html',
     linkLabel: 'musique et intelligence artificielle sur Radio Odyssey',
   },
+  {
+    slug: 'stefano-cece',
+    name: 'Stefano Cece',
+    genre: 'Pop soul de Noël',
+    origin: 'Italie',
+    active: true,
+    since: 'novembre 2026', // à l'antenne à partir du 28 novembre 2026, playlist Noël (Frédéric)
+    scarcity: 'quasi-absente en français',
+    tracks: ['Christmas Is Coming (feat. Maria Grazia Cece)'],
+    noel: true, // mention « Diffusion de Noël » (DIFFUSION_NOEL, plus bas) — à retirer le 4 janvier 2027
+    // Photo envoyée par Frédéric le 22 novembre 2026 (dossier de presse ;
+    // crédit indiqué par le communiqué : Simoneta Spinelli).
+    photo: '/assets/images/decouvertes/stefano-cece-christmas-is-coming.webp',
+    photoAlt: 'Stefano Cece et sa sœur Maria Grazia Cece devant des illuminations de Noël',
+    facts: [
+      'Auteur-compositeur, guitariste et producteur de Foggia, dans les Pouilles, Stefano Cece écrit en italien et en anglais ; il dit avoir été formé à Berklee Online, et a écrit, produit et interprété « Christmas Is Coming » dans son studio de Foggia, The23Music Studio.',
+      '« Christmas Is Coming » est un duo chanté en anglais avec sa sœur, Maria Grazia Cece, chanteuse et musicothérapeute : la veille de Noël, deux personnes qui l’ont passé ensemble racontent la même séparation, chacune dans son couplet, et confient ce qui leur manque ; une pop teintée de soul, de 3 min 01, sortie sur Spotify le 5 décembre 2025.',
+      'D’après son dossier de presse, il a sorti l’album « Fuori dal Cassetto » en 2018, publié en 2019 un livre sur l’écriture de chansons, « The Smart Songwriter », et assuré la première partie de la chanteuse italienne Chiara Galiazzo ; son profil Spotify comptait environ 49 400 auditeurs mensuels le 22 novembre 2026.',
+    ],
+    portrait: "Stefano Cece est un auteur-compositeur, guitariste et producteur de Foggia, dans les Pouilles, au sud-est de l'Italie. Il écrit en italien et en anglais, et explique avoir été formé à Berklee Online, la formation en ligne de l'école de musique américaine Berklee. Selon son dossier de presse, il est diplômé en lettres, sa musique réunit la tradition mélodique italienne et la pop-rock internationale, il a sorti l'album « Fuori dal Cassetto » en 2018 et publié en 2019 « The Smart Songwriter », un livre sur l'écriture de chansons ; il a joué au Medimex de Foggia et assuré, seul à la guitare, la première partie de la chanteuse Chiara Galiazzo devant plus de cinq mille personnes. Il écrit et produit aussi pour d'autres artistes, dans son studio, The23Music Studio. « Christmas Is Coming », il l'a écrite, produite et interprétée lui-même, en anglais, avec une touche soul. C'est un duo : sa sœur, Maria Grazia Cece, chanteuse et musicothérapeute, chante l'autre partie de l'histoire. La veille de Noël, deux personnes qui se sont aimées et ont passé cette fête ensemble racontent la même séparation, chacune de son point de vue, et confient ce qui leur manque ; la chaleur de Noël rend l'absence plus vive encore. L'idée d'inviter sa sœur lui est venue d'un souvenir des Noëls dans les Pouilles, quand les voix de la famille se mêlaient autour de la table ; selon le communiqué, elle a enregistré sa partie en une seule prise. Ces éléments proviennent de l'artiste et de son dossier de presse. Nous avons pu vérifier sur Spotify l'existence du titre, ses deux interprètes (Stefano Cece et Maria Grazia Cece), sa date de sortie (5 décembre 2025), sa durée (3 min 01) et l'audience du profil de Stefano Cece (environ 49 400 auditeurs mensuels au 22 novembre 2026), portée surtout par « Tell Me Why », un titre de 2023 enregistré avec Groove Crackers. Radio Odyssey l'accueille dans sa programmation de Noël avec « Christmas Is Coming ».",
+    why: "Le duo pop soul de Stefano Cece et de sa sœur Maria Grazia, qui raconte Noël du côté de ceux à qui quelqu'un manque, apporte une chanson originale et une émotion rare à la sélection de Noël de l'antenne — une découverte à écouter pendant les fêtes.",
+    linkHref: '/comment-radio-odyssey-choisit-sa-musique.html',
+    linkLabel: 'comment Radio Odyssey choisit sa musique',
+  },
 ];
 
 // Horaires de la playlist Découvertes — SOURCE UNIQUE (Frédéric, 21 novembre
@@ -412,3 +438,17 @@ const NB = '\u00a0';
 const liste = (items, et) => `${items.slice(0, -1).join(', ')} ${et} ${items[items.length - 1]}`;
 export const HEURES_DECOUVERTES_TEXTE = liste(HEURES_DECOUVERTES.map(([h, m]) => `${h}${NB}h${NB}${String(m).padStart(2, '0')}`), 'et');
 export const HEURES_DECOUVERTES_TEXTE_EN = liste(HEURES_DECOUVERTES.map(([h, m]) => `${h % 12 || 12}:${String(m).padStart(2, '0')}${NB}${h < 12 ? 'am' : 'pm'}`), 'and');
+
+// Diffusion de Noël 2026 — SOURCE UNIQUE (Frédéric, 22 novembre 2026). Les
+// fiches qui portent `noel: true` affichent un encart « À l'antenne pour Noël »
+// avec ce texte (français et anglais).
+// ⚠️ À RETIRER LE 4 JANVIER 2027 (la période de Noël est finie) : supprimer ce
+// bloc, les `noel: true` des fiches et l'encart dans les deux gabarits
+// (decouverte-[slug].astro, en/discovery-[slug].astro). Filet de sécurité :
+// passé `fin`, l'encart disparaît de lui-même au build suivant.
+export const DIFFUSION_NOEL = {
+  fin: '2027-01-04',
+  texte: "À partir du 28 novembre 2026, ce titre est diffusé dans la playlist Noël de Radio Odyssey, en tant que Découverte : un titre Découverte par heure, en début d'heure, juste après la séquence de cohérence cardiaque.",
+  texteEn: 'From 28 November 2026, this song is played in the Radio Odyssey Christmas playlist as a Discovery: one Discovery track every hour, at the top of the hour, right after the heart coherence breathing sequence.',
+};
+export const noelEnCours = (artist) => Boolean(artist.noel) && new Date() < new Date(`${DIFFUSION_NOEL.fin}T00:00:00+01:00`);
