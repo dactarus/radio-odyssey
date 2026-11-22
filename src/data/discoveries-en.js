@@ -290,7 +290,7 @@ export const DISCOVERIES_EN = {
     genre: 'Romantic R&B / soul',
     origin: 'Guadeloupe',
     since: 'November 2026',
-    photoAlt: 'Cover of the single "Beautiful Love" by TYRIICK and TIZEN, in silver lettering against a pink sky',
+    photoAlt: 'Portrait of TYRIICK by the sea, in front of palm trees',
     facts: [
       'TYRIICK is an independent artist, songwriter, producer and sound engineer: born in Martinique, he lived in Saint-Martin and now lives in Le Lamentin, Guadeloupe; his sound blends, in his words, melodic R&B/soul and Caribbean influences.',
       '"Beautiful Love" is a romantic R&B/soul duet with the artist TIZEN, released on 14 February 2025 (2 min 55 on Spotify); the official video is online on YouTube, and the artist specifies that neither the vocals nor the music were created with an AI tool.',

@@ -437,11 +437,11 @@ export const DISCOVERIES = [
     since: 'novembre 2026', // à l'antenne à partir du 23 novembre 2026 (Frédéric)
     scarcity: 'quasi-absente',
     tracks: ['Beautiful Love (feat. TIZEN)'],
-    // Pochette du single dans le cercle : la photo de presse envoyée par
-    // l'artiste doit garder sa signature visible (demande écrite), ce que le
-    // recadrage rond sur le visage ne permet pas.
-    photo: '/assets/images/decouvertes/tyriick-beautiful-love.webp',
-    photoAlt: 'Pochette du single « Beautiful Love » de TYRIICK et TIZEN, en lettres argentées sur un ciel rose',
+    // Photo de presse de l'artiste (TYRIICK_PRESS_PHOTO_01_BORD_DE_MER), recadrée
+    // sur le visage à la demande de Frédéric (22 novembre 2026). La signature du
+    // photographe, en bas de la photo d'origine, sort du cadre rond.
+    photo: '/assets/images/decouvertes/tyriick.webp',
+    photoAlt: 'Portrait de TYRIICK au bord de la mer, devant des palmiers',
     facts: [
       'TYRIICK est un artiste indépendant, auteur-compositeur, producteur et ingénieur du son : né en Martinique, il a vécu à Saint-Martin et vit aujourd’hui au Lamentin, en Guadeloupe ; son univers mêle, selon lui, R&B/soul mélodique et influences caribéennes.',
       '« Beautiful Love » est un duo R&B/soul romantique avec l’artiste TIZEN, sorti le 14 février 2025 (2 min 55 sur Spotify) ; le clip officiel est en ligne sur YouTube, et l’artiste précise que ni les voix ni la musique n’ont été créées avec un outil d’IA.',
