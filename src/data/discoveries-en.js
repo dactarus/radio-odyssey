@@ -286,6 +286,21 @@ export const DISCOVERIES_EN = {
     linkHref: '/en/what-makes-radio-odyssey-different.html',
     linkLabel: 'what makes Radio Odyssey different',
   },
+  'tyriick': {
+    genre: 'Romantic R&B / soul',
+    origin: 'Guadeloupe',
+    since: 'November 2026',
+    photoAlt: 'Cover of the single "Beautiful Love" by TYRIICK and TIZEN, in silver lettering against a pink sky',
+    facts: [
+      'TYRIICK is an independent artist, songwriter, producer and sound engineer: born in Martinique, he lived in Saint-Martin and now lives in Le Lamentin, Guadeloupe; his sound blends, in his words, melodic R&B/soul and Caribbean influences.',
+      '"Beautiful Love" is a romantic R&B/soul duet with the artist TIZEN, released on 14 February 2025 (2 min 55 on Spotify); the official video is online on YouTube, and the artist specifies that neither the vocals nor the music were created with an AI tool.',
+      'Since then, he has released "Lwen" with Sad Jo, on 23 October 2026, and announces a solo single, "Love Hurts", for 27 November 2026; his Spotify profile had 123 monthly listeners on 22 November 2026.',
+    ],
+    portrait: "TYRIICK is an independent artist from the French Caribbean: a songwriter, producer and sound engineer, he takes his songs from the writing all the way to the final sound. Born in Martinique, he lived in Saint-Martin before continuing his path in Guadeloupe, where he now lives, in Le Lamentin. His sound blends, in his own words, melodic R&B/soul and Caribbean influences. \"Beautiful Love\", the song Radio Odyssey has chosen, is a duet with the artist TIZEN: an R&B/soul love song, released on 14 February 2025, Valentine's Day, and accompanied by an official video. The artist states that no artificial intelligence was used for this song, neither for the vocals nor for the music, and says the work has been registered with SACEM, the French music rights society. Since then, he has released \"Lwen\", with Sad Jo, on 23 October 2026; he announces a solo single, \"Love Hurts\", for 27 November 2026, and another track with Sad Jo, with no date yet. These details come from the artist. We were able to check on Spotify the existence of \"Beautiful Love\", its two performers (TYRIICK and TIZEN), its release date and its length (2 min 55; the artist gives 2 min 56 for the file supplied), the release of \"Lwen\" on 23 October 2026, and the audience of his profile (123 monthly listeners as of 22 November 2026); the video is indeed online on YouTube. Radio Odyssey welcomes him on air from 23 November 2026 with \"Beautiful Love\".",
+    why: "The romantic R&B/soul of TYRIICK and TIZEN, a love song with Caribbean colours carried by two voices, brings softness and warmth to the station — a discovery to follow from his arrival on 23 November 2026.",
+    linkHref: '/en/feel-good-music-radio.html',
+    linkLabel: 'feel-good music radio',
+  },
 };
 
 export const SLUGS_DISCOVERIES_EN = Object.keys(DISCOVERIES_EN);
