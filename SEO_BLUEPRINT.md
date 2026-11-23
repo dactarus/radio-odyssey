@@ -4999,6 +4999,7 @@ Lancé par Frédéric le 23 novembre pour Radio Odyssey Relax (journal de Relax,
 - **Site** : l'adresse de la fiche ouvre le tableau `SAME_AS` (Organization et RadioStation). Ce n'est pas une plateforme d'écoute : rien dans `PLATEFORMES` ni dans « Écouter sur ».
 - ⚠️ Ton neutre à garder sur la fiche : aucune formule publicitaire, sinon risque de suppression.
 - Reste : fiche de Radio Odyssey Relax le 28 novembre, puis relier les deux fiches (organisation fille / organisation mère).
+- **Complément du même soir** : la fiche de Radio Odyssey Relax est créée sans attendre le lancement (Frédéric) : **Q142266799**, date de création « novembre 2026 », organisation mère = Q142266673. Sur la fiche d'Odyssey : **organisation fille (P355) = Q142266799**, source : la page du groupe.
 
 ---
 
