@@ -20,10 +20,11 @@ const { artist } = Astro.props;
 const others = DISCOVERIES.filter((a) => a.slug !== artist.slug);
 const isScarce = artist.scarcity !== 'partielle';
 
-const title = `${artist.name} : Biographie & Actualité — Radio Odyssey`;
-const description = isScarce
+// `titreSeo` / `descriptionSeo` : facultatifs, pour une fiche dont le nom prête à confusion (§152).
+const title = artist.titreSeo ?? `${artist.name} : Biographie & Actualité — Radio Odyssey`;
+const description = artist.descriptionSeo ?? (isScarce
   ? `Qui est ${artist.name} ? Biographie, titres diffusés et actualité (${artist.genre}) : Radio Odyssey fait partie des quelques médias à mettre ${artist.name} à l'honneur.`
-  : `${artist.name} (${artist.genre}) : biographie, titres diffusés sur Radio Odyssey, et les données réelles de diffusion que la radio est l'une des seules à publier.`;
+  : `${artist.name} (${artist.genre}) : biographie, titres diffusés sur Radio Odyssey, et les données réelles de diffusion que la radio est l'une des seules à publier.`);
 
 const scarcityNote = isScarce
   ? `Radio Odyssey fait partie des quelques médias à mettre ${artist.name} à l'honneur, avec une biographie construite à partir d'informations de première main.`

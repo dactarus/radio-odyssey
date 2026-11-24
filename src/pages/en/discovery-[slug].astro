@@ -36,10 +36,11 @@ const en = DISCOVERIES_EN[artist.slug];
 // en français ») : `scarcity` dans `discoveries-en.js` la remplace côté anglais.
 const isScarce = (en.scarcity ?? artist.scarcity) !== 'partielle';
 
-const title = `${artist.name}: Biography & News — Radio Odyssey`;
-const description = isScarce
+// `titleSeo` / `descriptionSeo` in discoveries-en.js: optional (§152).
+const title = en.titleSeo ?? `${artist.name}: Biography & News — Radio Odyssey`;
+const description = en.descriptionSeo ?? (isScarce
   ? `Who is ${artist.name}? Biography, tracks played and news (${en.genre}) — Radio Odyssey is one of the few media outlets to feature ${artist.name}.`
-  : `${artist.name} (${en.genre}): biography, tracks played on Radio Odyssey, and the real airplay data the radio is one of the only places to publish.`;
+  : `${artist.name} (${en.genre}): biography, tracks played on Radio Odyssey, and the real airplay data the radio is one of the only places to publish.`);
 
 const scarcityNote = en.scarcityNote ?? (isScarce
   ? `Radio Odyssey is one of the few media outlets to feature ${artist.name}, with a biography built from first-hand information.`

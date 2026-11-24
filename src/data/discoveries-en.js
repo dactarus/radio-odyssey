@@ -35,6 +35,8 @@
 
 export const DISCOVERIES_EN = {
   'tom-york': {
+    titleSeo: 'Tom York, English pop rock singer (Close To Me) — Radio Odyssey',
+    descriptionSeo: 'Tom York, the English pop rock singer behind "Close To Me", "Sunscreen" and "I Can’t Stay": biography and tracks played on Radio Odyssey. Not to be confused with Thom Yorke of Radiohead.',
     photoAlt: 'Cover of the single "Close To Me" by Tom York',
     genre: 'English pop rock',
     origin: 'United Kingdom',

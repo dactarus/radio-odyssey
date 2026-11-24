@@ -20,6 +20,10 @@ export const DISCOVERIES = [
     active: true,
     // Toujours diffusée, mais classée parmi les Découvertes qui ont marqué l'antenne (§151).
     marquante: true,
+    // Titre et description Google sur mesure : la plupart des recherches « tom york »
+    // visent sans doute Thom Yorke (Radiohead) — on dit tout de suite qui il est (§152).
+    titreSeo: 'Tom York, chanteur pop rock anglais (Close To Me) — Radio Odyssey',
+    descriptionSeo: 'Tom York, chanteur pop rock anglais de « Close To Me », « Sunscreen » et « I Can’t Stay » : biographie et titres diffusés sur Radio Odyssey. À ne pas confondre avec Thom Yorke, de Radiohead.',
     since: 'mars 2025',
     scarcity: 'quasi-absente',
     tracks: ['Close To Me', 'Sunscreen', 'I Can’t Stay'],
