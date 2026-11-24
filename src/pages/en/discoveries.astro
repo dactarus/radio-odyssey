@@ -22,8 +22,9 @@ import { DISCOVERIES_EN, SLUGS_DISCOVERIES_EN } from '../../data/discoveries-en.
 // Les fiches qui ont une version anglaise, la plus récente d'abord (ordre
 // inverse de `discoveries.js`, où la dernière entrée est la plus récente).
 const traduites = DISCOVERIES.filter((a) => SLUGS_DISCOVERIES_EN.includes(a.slug)).reverse();
-const active = traduites.filter((a) => a.active);
-const past = traduites.filter((a) => !a.active);
+const active = traduites.filter((a) => a.active && !a.marquante);
+// Ordre du fichier français ici (Tom York en tête), comme sur la page française.
+const past = traduites.filter((a) => !a.active || a.marquante).reverse();
 // AI-made Discoveries, derived from the French entries (they all say so), §139.
 const estIA = (a) => /intelligence artificielle|\(IA\)/i.test(`${a.origin} ${a.facts.join(' ')}`);
 const projetsIA = traduites.filter(estIA);

@@ -18,6 +18,8 @@ export const DISCOVERIES = [
     genre: 'Pop rock anglais',
     origin: 'Royaume-Uni',
     active: true,
+    // Toujours diffusée, mais classée parmi les Découvertes qui ont marqué l'antenne (§151).
+    marquante: true,
     since: 'mars 2025',
     scarcity: 'quasi-absente',
     tracks: ['Close To Me', 'Sunscreen', 'I Can’t Stay'],
@@ -41,6 +43,8 @@ export const DISCOVERIES = [
     genre: 'Pop disco-funk (années 70)',
     origin: 'Italie',
     active: true,
+    // Toujours diffusée, mais classée parmi les Découvertes qui ont marqué l'antenne (§151).
+    marquante: true,
     since: 'juin 2025',
     scarcity: 'quasi-absente en français',
     tracks: ['Sunday For Lovin’'],

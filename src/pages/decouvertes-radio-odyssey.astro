@@ -6,12 +6,13 @@ import Sidebar from '../components/Sidebar.astro';
 import FAQBlock from '../components/FAQBlock.astro';
 import { DISCOVERIES, HEURES_DECOUVERTES_TEXTE } from '../data/discoveries.js';
 
-const active = DISCOVERIES.filter((a) => a.active);
+// `marquante` : encore diffusée, mais présentée avec celles qui ont marqué l'antenne (§151).
+const active = DISCOVERIES.filter((a) => a.active && !a.marquante);
 // Découvertes conçues avec l'IA : déduites des fiches (elles le disent toutes),
 // jamais listées à la main (§139).
 const estIA = (a) => /intelligence artificielle|\(IA\)/i.test(`${a.origin} ${a.facts.join(' ')}`);
 const projetsIA = DISCOVERIES.filter(estIA);
-const past = DISCOVERIES.filter((a) => !a.active);
+const past = DISCOVERIES.filter((a) => !a.active || a.marquante);
 
 const faq = [
   {
