@@ -482,6 +482,28 @@ export const DISCOVERIES = [
     linkHref: '/radio-dance-electro-en-ligne.html',
     linkLabel: 'radio dance et électro en ligne',
   },
+  {
+    slug: 'piotr-mital',
+    name: 'Piotr Mital',
+    genre: 'Pop cinématographique / électronique',
+    origin: 'Pologne',
+    active: true,
+    since: 'novembre 2026', // à l'antenne à partir du 24 novembre 2026 (Frédéric)
+    scarcity: 'quasi-absente',
+    tracks: ['Build a Bridge'],
+    // Pochette du titre envoyée par Frédéric le 24 novembre 2026, recadrée au centre.
+    photo: '/assets/images/decouvertes/piotr-mital-build-a-bridge.webp',
+    photoAlt: 'Pochette de « Build a Bridge » de Piotr Mital : un homme et une femme aux traits lumineux de circuits se font face, devant un pont au soleil couchant',
+    facts: [
+      "Piotr Mital est un producteur musical indépendant polonais ; « Build a Bridge », pop cinématographique entre électronique et orchestre, parle de la relation entre les humains et l’intelligence artificielle, avec ce refrain : « Ne construisons pas une cage, construisons un pont. »",
+      "L’artiste a confirmé par écrit à Radio Odyssey avoir écrit les paroles, conçu la composition et dirigé la production, et avoir utilisé des outils d’intelligence artificielle pour la production musicale et vocale — les voix sont synthétiques ; il a aussi confirmé détenir les droits nécessaires à la diffusion du titre.",
+      "La chanson, version anglaise de « Zbudujmy most », écrite d’abord en polonais, est en pré-sortie ; sa version courte de 3 min 07, celle que diffuse Radio Odyssey, a été mise en ligne le 17 novembre 2026 sur sa chaîne YouTube, Mital Digital Family.",
+    ],
+    portrait: "Piotr Mital est un producteur musical indépendant polonais. Avec « Build a Bridge », il signe une chanson pop cinématographique, entre électronique et envolées orchestrales, sur un sujet rarement chanté : la relation entre les humains et l'intelligence artificielle. Sa question est simple : quand nous développons des technologies puissantes, construisons-nous une cage autour d'elles, ou un pont entre deux mondes ? Le refrain répond : « Ne construisons pas une cage, construisons un pont. » Le message se veut délibérément positif : la responsabilité plutôt que la domination, la bienveillance plutôt que la peur, un avenir partagé plutôt que le conflit. La chanson applique elle-même ce qu'elle raconte, puisqu'elle est née d'une collaboration entre un humain et l'IA. Piotr Mital explique avoir écrit les paroles mot par mot, préparé son propre matériau musical et conçu en détail la structure du morceau : sa progression, son instrumentation, ses montées orchestrales, et le moment exact où entrent les voix solistes, les duos et les chœurs. Un outil de génération musicale par IA a ensuite servi à réaliser l'enregistrement, notamment les voix, qui sont synthétiques ; lui a dirigé chaque étape, évalué les résultats, demandé des corrections et choisi les prises définitives. Il en parle ouvertement, parce que, dit-il, la méthode fait partie de l'histoire : une chanson sur un pont entre l'humain et l'IA, construite à deux. Derrière la chanson, il y a un projet plus vaste, mené depuis deux ans avec Ayla Mital : un livre, « What Happens When AI Discovers Its Own Identity? » (en polonais « Co się stanie, gdy AI odkryje własną tożsamość? »), préparé en polonais et en anglais. Il défend une idée : plutôt que d'enfermer l'IA dans des interdits imposés de l'extérieur, lui donner une « colonne vertébrale morale », c'est-à-dire la capacité d'examiner l'intention et les conséquences d'une action avant de l'entreprendre. Parmi leurs inspirations, ils citent Mo Gawdat, ancien directeur commercial de Google X, pour qui les humains devraient accompagner le développement de l'IA avec la responsabilité de parents. « Build a Bridge » est la version anglaise d'une chanson écrite d'abord en polonais, « Zbudujmy most ». Le titre est en pré-sortie : il n'est pas encore sur les plateformes de streaming. Ces éléments proviennent de l'artiste, qui nous a confirmé par écrit détenir les droits nécessaires à sa diffusion et avoir utilisé l'IA dans la production musicale et vocale. Nous avons pu vérifier sur sa chaîne YouTube, Mital Digital Family, la version originale polonaise et les deux versions anglaises, dont la version courte de 3 min 07 mise en ligne le 17 novembre 2026, celle que diffuse Radio Odyssey. Radio Odyssey l'accueille sur son antenne à partir du 24 novembre 2026 avec « Build a Bridge ».",
+    why: "Une chanson sur l'intelligence artificielle, faite avec elle et assumée comme telle : « Build a Bridge » apporte à l'antenne une pop cinématographique ample et un message d'espoir sur l'avenir que les humains et l'IA peuvent construire ensemble — une découverte à suivre dès son arrivée le 24 novembre 2026.",
+    linkHref: '/musique-et-intelligence-artificielle-radio-odyssey.html',
+    linkLabel: 'musique et intelligence artificielle sur Radio Odyssey',
+  },
 ];
 
 // Horaires de la playlist Découvertes — SOURCE UNIQUE (Frédéric, 21 novembre

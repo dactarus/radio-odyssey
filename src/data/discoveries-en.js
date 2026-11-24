@@ -318,6 +318,21 @@ export const DISCOVERIES_EN = {
     linkHref: '/en/feel-good-music-radio.html',
     linkLabel: 'feel-good music radio',
   },
+  'piotr-mital': {
+    genre: 'Cinematic pop / electronic',
+    origin: 'Poland',
+    since: 'November 2026',
+    photoAlt: 'Cover of "Build a Bridge" by Piotr Mital: a man and a woman with glowing circuit-like features face each other, in front of a bridge at sunset',
+    facts: [
+      "Piotr Mital is an independent music producer from Poland; \"Build a Bridge\", cinematic pop between electronic and orchestral, is about the relationship between humans and artificial intelligence, with this chorus: \"Don't build a cage, let's build a bridge.\"",
+      "The artist confirmed in writing to Radio Odyssey that he wrote the lyrics, designed the composition and directed the production, and that artificial intelligence tools were used for the music and vocal production — the vocals are synthetic; he also confirmed that he holds the rights needed for the track to be broadcast.",
+      "The song, the English version of \"Zbudujmy most\", first written in Polish, is a pre-release; its short version, 3 min 07, the one Radio Odyssey plays, was posted on 17 November 2026 on his YouTube channel, Mital Digital Family.",
+    ],
+    portrait: "Piotr Mital is an independent music producer from Poland. With \"Build a Bridge\", he delivers a cinematic pop song, between electronic textures and orchestral swells, on a subject rarely sung about: the relationship between humans and artificial intelligence. His question is simple: when we develop powerful technologies, are we building a cage around them, or a bridge between two worlds? The chorus answers: \"Don't build a cage, let's build a bridge.\" The message is deliberately positive: responsibility rather than domination, kindness rather than fear, a shared future rather than conflict. The song practises what it preaches, since it was born of a collaboration between a human and AI. Piotr Mital explains that he wrote the lyrics word by word, prepared his own musical material and designed the structure of the track in detail: its progression, its instrumentation, its orchestral build-ups, and the exact moment the solo voices, duets and choirs come in. An AI music generation tool was then used to produce the recording, including the vocals, which are synthetic; he directed each stage, assessed the results, asked for changes and chose the final takes. He talks about it openly because, he says, the method is part of the story: a song about a bridge between humans and AI, built by both. Behind the song lies a wider project, pursued for two years with Ayla Mital: a book, \"What Happens When AI Discovers Its Own Identity?\" (in Polish, \"Co się stanie, gdy AI odkryje własną tożsamość?\"), prepared in Polish and English. It argues for one idea: rather than confining AI with restrictions imposed from outside, giving it a \"moral backbone\", meaning the ability to examine the intent and consequences of an action before taking it. Among their inspirations, they cite Mo Gawdat, former chief business officer of Google X, who believes humans should approach the development of AI with the responsibility of parents. \"Build a Bridge\" is the English version of a song first written in Polish, \"Zbudujmy most\". The track is a pre-release: it is not yet on streaming platforms. These details come from the artist, who confirmed to us in writing that he holds the rights needed for it to be broadcast and that AI was used in the music and vocal production. We were able to check on his YouTube channel, Mital Digital Family, the original Polish version and the two English versions, including the 3 min 07 short version posted on 17 November 2026, the one Radio Odyssey plays. Radio Odyssey welcomes him on air from 24 November 2026 with \"Build a Bridge\".",
+    why: "A song about artificial intelligence, made with it and openly so: \"Build a Bridge\" brings sweeping cinematic pop to the station and a hopeful message about the future humans and AI can build together — a discovery to follow from his arrival on 24 November 2026.",
+    linkHref: '/en/ai-music-on-radio-odyssey.html',
+    linkLabel: 'AI music on Radio Odyssey',
+  },
 };
 
 export const SLUGS_DISCOVERIES_EN = Object.keys(DISCOVERIES_EN);
