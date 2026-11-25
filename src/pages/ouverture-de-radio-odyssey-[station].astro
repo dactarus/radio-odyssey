@@ -21,7 +21,8 @@
 
   Règles du brief : nom complet « Radio Odyssey Relax », jamais « Relax » seul ;
   aucun mot-clé de détente (ni « relaxation », « détente », « dormir »,
-  « cohérence cardiaque », « bien-être »…) ; ancres des liens variées.
+  « cohérence cardiaque », « bien-être »…) — « respiration guidée » est admis
+  (Frédéric, 25 novembre 2026) ; ancres des liens variées.
 */
 import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
@@ -38,7 +39,7 @@ export function getStaticPaths() {
 }
 
 const title = `Radio Odyssey Relax est ouverte : la seconde station du groupe Radio Odyssey`;
-const description = `Le ${JOUR_LANCEMENT_RELAX}, le groupe Radio Odyssey a ouvert Radio Odyssey Relax, sa seconde station : gratuite, sans publicité, avec une séquence guidée à chaque heure ronde.`;
+const description = `Le ${JOUR_LANCEMENT_RELAX}, le groupe Radio Odyssey a ouvert sa seconde station, Radio Odyssey Relax : gratuite, sans publicité, avec une séquence de respiration guidée à chaque heure ronde, de 7 h à 23 h.`;
 const A = 'color:var(--ro-purple);font-weight:700;';
 ---
 <Layout
@@ -79,7 +80,7 @@ const A = 'color:var(--ro-purple);font-weight:700;';
               <h2>Ce que vous y trouverez</h2>
               <ul>
                 <li>Une musique apaisante, <strong>gratuite et sans publicité</strong>.</li>
-                <li>Une <strong>séquence guidée à chaque heure ronde de 7&nbsp;h à 20&nbsp;h</strong>, puis à 21&nbsp;h, 22&nbsp;h et 23&nbsp;h. La voix qui les guide est celle d'<a href="/elisabeth-belot-grimaud-radio-odyssey.html" style={A}>Elisabeth Bélot-Grimaud</a>, docteure en psychologie cognitive et partenaire santé du groupe, qui les préconise.</li>
+                <li>Une <strong>séquence de respiration guidée à chaque heure ronde de 7&nbsp;h à 20&nbsp;h</strong>, au rythme 4/6, puis à 21&nbsp;h, 22&nbsp;h et 23&nbsp;h, au rythme 4/8. La voix qui les guide est celle d'<a href="/elisabeth-belot-grimaud-radio-odyssey.html" style={A}>Elisabeth Bélot-Grimaud</a>, docteure en psychologie cognitive et partenaire santé du groupe, qui les préconise.</li>
                 <li>Une nuit sans message parlé ni publicité, de 23&nbsp;h&nbsp;10 à 7&nbsp;h : <a href="https://relax.radio-odyssey.com/la-nuit.html" style={A}>la nuit sur Radio Odyssey Relax</a>.</li>
               </ul>
               <p style="margin-bottom:0;">Les tranches de la journée, du réveil jusqu'à la nuit, sont détaillées dans <a href="https://relax.radio-odyssey.com/programmes.html" style={A}>la grille de Radio Odyssey Relax</a>.</p>

@@ -514,7 +514,11 @@ Page créée : `/musique-pour-faire-le-menage.html`, ajoutée au cocon Musique &
 
 ---
 
-*Dernière mise à jour : 2026-07-04, retour sur "musique et ménage" avec validation partenaire (§17).*
+## 155. Article d'annonce de Radio Odyssey Relax relu (2026-11-25)
+
+Relu par Frédéric : « séquence de respiration guidée » (au lieu de « séquence guidée »), rythmes 4/6 et 4/8 cités, description Google « à chaque heure ronde, de 7 h à 23 h » (bornes ajoutées). « Née en 1994 » confirmé. Toujours invisible jusqu'à `RELAX_LANCEE = true`.
+
+*Dernière mise à jour : 2026-11-25, article d'annonce de Relax relu (§155) ; précédemment 2026-07-04, retour sur "musique et ménage" avec validation partenaire (§17).*
 
 ---
 
