@@ -33,6 +33,8 @@
   la page hub « Découvertes », qui n'existe qu'en français.
 */
 
+import { DISCOVERIES } from './discoveries.js';
+
 export const DISCOVERIES_EN = {
   'tom-york': {
     titleSeo: 'Tom York, English pop rock singer (Close To Me) — Radio Odyssey',
@@ -333,6 +335,24 @@ export const DISCOVERIES_EN = {
     linkHref: '/en/ai-music-on-radio-odyssey.html',
     linkLabel: 'AI music on Radio Odyssey',
   },
+  'dominik-friz': {
+    // ⚠️ BROUILLON (§156) : la fiche n'existe que si `discoveries.js` la publie.
+    genre: 'Organic house / melodic house',
+    origin: 'Austria',
+    since: 'November 2026',
+    photoAlt: 'Portrait of Dominik Friz in blue light',
+    facts: [
+      "Dominik Friz is an Austrian producer and DJ from Innsbruck, now living in Brasília, Brazil; according to his presentation, he has been producing electronic music since 2008, first in harder styles and progressive house, now somewhere between deep house, melodic house and afro house.",
+      "\"Lifelines\", an independent instrumental single, is built on the piano of Martin Herzberg, a German pianist and composer, which Dominik Friz kept up front while adding, in Brasília, a subtle organic house groove.",
+      "On Spotify, \"Lifelines\" (Dominik Friz and Martin Herzberg) was released as a single on 30 October 2026 and runs 4 min 26; Dominik Friz's profile had 39,623 monthly listeners on 26 November 2026.",
+    ],
+    portrait: "Dominik Friz is an Austrian electronic music producer and DJ from Innsbruck, in Tyrol, now living in Brasília, Brazil. According to his presentation, he has been producing since 2008 and has kept his sound moving: starting from harder electronic styles and progressive house, he has gradually turned to a deeper, more melodic direction, somewhere between deep house, melodic house and afro house. Since moving to Brazil, his music has taken on a new character: emotional melodies, piano, warm grooves, organic percussion, and the atmosphere of a life shared between Europe and South America. His goal, he says, has stayed the same: making electronic music that carries emotion, whether in a club, on headphones or far away from home. He says he has passed 2.5 million Spotify streams, led by \"City Lights\", \"Badsomnia\" and \"Not A Dream\", the last of which was featured on Spotify's New Music Friday Maghreb; he also cites airplay on the German stations bigFM and Fritz (rbb), and chart entries on Apple Music, iTunes and Shazam. \"Lifelines\" began with a piano: that of Martin Herzberg, a Berlin pianist and composer. Dominik Friz kept it up front and added, in Brasília, a subtle organic house groove, with no vocals. He himself describes this independent instrumental single as being in the melodic, cinematic vein of \"Feels Like Home\" by Valérian, another Radio Odyssey Discovery. These details come from the artist and his Spotify presentation, and we could not cross-check his streaming figures or his radio airplay. We were able to check on Spotify the track, its two credited performers (Dominik Friz and Martin Herzberg), its release as a single on 30 October 2026, its length (4 min 26) and the audience of both profiles as of 26 November 2026: 39,623 monthly listeners for Dominik Friz, 101,912 for Martin Herzberg.",
+    why: 'A piano up front, an understated organic house groove: "Lifelines" brings melodic, cinematic house to the station, between Europe and Brazil — a discovery to enjoy while taking your time.',
+    linkHref: '/en/european-chill-radio.html',
+    linkLabel: 'European chill radio',
+  },
 };
 
-export const SLUGS_DISCOVERIES_EN = Object.keys(DISCOVERIES_EN);
+// Les fiches en brouillon de `discoveries.js` (§156) n'ont pas de page anglaise
+// non plus : sans ce filtre, le gabarit anglais chercherait une fiche absente.
+export const SLUGS_DISCOVERIES_EN = Object.keys(DISCOVERIES_EN).filter((slug) => DISCOVERIES.some((fiche) => fiche.slug === slug));

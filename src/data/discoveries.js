@@ -10,8 +10,14 @@
 //
 // Pour ajouter une découverte : ajouter une entrée ici (aucune autre
 // édition de code nécessaire) — voir src/pages/decouverte-[slug].astro.
+//
+// `brouillon: true` (§156) : la fiche n'existe que dans l'aperçu local
+// (`npm run dev`, ou un build lancé avec BROUILLONS=1). Le build de production
+// — celui de Vercel — l'ignore entièrement : ni page française ni anglaise, ni
+// hub, ni accueil, ni plan du site. Retirer le drapeau pour publier, et ajouter
+// alors les deux URL au sitemap, écrit à la main.
 
-export const DISCOVERIES = [
+const FICHES = [
   {
     slug: 'tom-york',
     name: 'Tom York',
@@ -504,7 +510,37 @@ export const DISCOVERIES = [
     linkHref: '/musique-et-intelligence-artificielle-radio-odyssey.html',
     linkLabel: 'musique et intelligence artificielle sur Radio Odyssey',
   },
+  {
+    slug: 'dominik-friz',
+    name: 'Dominik Friz',
+    // ⚠️ BROUILLON (§156) — en attente : titre confirmé par Frédéric, réponse de
+    // l'artiste au questionnaire de la station (IA, droits), date d'entrée à
+    // l'antenne. Ne rien affirmer sur l'IA avant cette réponse.
+    brouillon: true,
+    genre: 'Organic house / house mélodique',
+    origin: 'Autriche',
+    active: true,
+    since: 'novembre 2026', // ⚠️ provisoire : à caler sur la date d'entrée à l'antenne
+    scarcity: 'quasi-absente',
+    tracks: ['Lifelines'],
+    // Portrait envoyé par Frédéric le 26 novembre 2026, recadré sur le visage.
+    photo: '/assets/images/decouvertes/dominik-friz.webp',
+    photoAlt: 'Portrait de Dominik Friz en lumière bleue',
+    facts: [
+      "Dominik Friz est un producteur et DJ autrichien, originaire d’Innsbruck et installé à Brasília, au Brésil ; d’après sa présentation, il produit de la musique électronique depuis 2008, d’abord dans des styles plus durs et la progressive house, aujourd’hui entre deep house, melodic house et afro house.",
+      "« Lifelines », titre instrumental et indépendant, part du piano de Martin Herzberg, pianiste et compositeur allemand, que Dominik Friz a gardé au premier plan en y ajoutant à Brasília une rythmique organic house discrète.",
+      "Sur Spotify, « Lifelines » (Dominik Friz et Martin Herzberg) est sorti en single le 30 octobre 2026, pour 4 min 26 ; le profil de Dominik Friz comptait 39 623 auditeurs mensuels le 26 novembre 2026.",
+    ],
+    portrait: "Dominik Friz est un producteur de musique électronique et DJ autrichien, originaire d'Innsbruck, dans le Tyrol, et installé aujourd'hui à Brasília, au Brésil. D'après sa présentation, il produit depuis 2008 et n'a cessé de faire évoluer son son : parti de styles électroniques plus durs et de la progressive house, il s'est peu à peu tourné vers une direction plus profonde et plus mélodique, quelque part entre deep house, melodic house et afro house. Depuis son installation au Brésil, sa musique a pris un autre caractère : mélodies chargées d'émotion, piano, grooves chaleureux, percussions organiques, et l'atmosphère d'une vie partagée entre l'Europe et l'Amérique du Sud. Son but, dit-il, n'a pas changé : faire une musique électronique qui porte une émotion, qu'on l'écoute en club, au casque ou loin de chez soi. Il indique avoir dépassé 2,5 millions d'écoutes sur Spotify, portées par \"City Lights\", \"Badsomnia\" et \"Not A Dream\", ce dernier ayant figuré dans la sélection New Music Friday Maghreb de Spotify ; il cite aussi des diffusions sur les radios allemandes bigFM et Fritz (rbb), et des entrées dans les classements d'Apple Music, d'iTunes et de Shazam. \"Lifelines\" est né d'un piano : celui de Martin Herzberg, pianiste et compositeur berlinois. Dominik Friz l'a gardé au premier plan et y a ajouté, à Brasília, une rythmique organic house discrète, sans voix. Il présente lui-même ce single instrumental et indépendant dans la veine mélodique et cinématographique de \"Feels Like Home\", de Valérian, autre Découverte de Radio Odyssey. Ces éléments proviennent de l'artiste et de sa présentation sur Spotify, et nous n'avons pas pu recouper ses chiffres d'écoute ni ses diffusions radio. Nous avons pu vérifier sur Spotify le titre, ses deux interprètes crédités (Dominik Friz et Martin Herzberg), sa sortie en single le 30 octobre 2026, sa durée (4 min 26) et l'audience des deux profils au 26 novembre 2026 : 39 623 auditeurs mensuels pour Dominik Friz, 101 912 pour Martin Herzberg.",
+    why: "Un piano au premier plan, une rythmique organic house tout en retenue : \"Lifelines\" apporte à l'antenne une house mélodique et cinématographique, entre l'Europe et le Brésil — une découverte à écouter en prenant le temps.",
+    linkHref: '/radio-dance-electro-en-ligne.html',
+    linkLabel: 'radio dance et électro en ligne',
+  },
 ];
+
+// Le build de production ignore les fiches en brouillon (voir l'en-tête).
+const AFFICHER_BROUILLONS = import.meta.env?.DEV === true || globalThis.process?.env?.BROUILLONS === '1';
+export const DISCOVERIES = FICHES.filter((fiche) => !fiche.brouillon || AFFICHER_BROUILLONS);
 
 // Horaires de la playlist Découvertes — SOURCE UNIQUE (Frédéric, 21 novembre
 // 2026) : tous les jours, les artistes et leurs titres sont en rotation sur ces
