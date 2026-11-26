@@ -350,6 +350,21 @@ export const DISCOVERIES_EN = {
     linkHref: '/en/european-chill-radio.html',
     linkLabel: 'European chill radio',
   },
+  'chefcarmine': {
+    genre: 'Italian song / jazz',
+    origin: 'United States',
+    since: 'November 2026',
+    photoAlt: 'Chefcarmine in a chef’s hat and apron',
+    facts: [
+      "Chefcarmine is a chef and independent artist from Winston-Salem, North Carolina; he writes all his lyrics and composes all his songs, but the singing is a synthetic voice created with artificial intelligence, which he confirmed in writing to Radio Odyssey, adding that he holds all the rights to the track.",
+      "\"Napoli — La Pizza Più Buona del Mondo\" (\"Naples, the best pizza in the world\") was released as a single on 19 November 2025 and runs 2 min 20 on Spotify (© STUGOTZ STUDIO): it is the most played track on his profile.",
+      "He invites listeners to use his songs in their videos and reposts the best ones; according to him, his fans have made more than 1,300 of them on Facebook and Instagram, a figure we could not verify; his Spotify profile had 78 monthly listeners on 26 November 2026.",
+    ],
+    portrait: "Some artists sing about love, the road or the night. Chefcarmine sings about pizza. A chef and independent artist from Winston-Salem, North Carolina, he describes himself on Spotify as a \"chef and rapper\", the loudmouth of his kitchen: he cooks, he rants, and he turns all of it into songs. \"Napoli — La Pizza Più Buona del Mondo\" (\"Naples, the best pizza in the world\") is a love letter to the city and its most famous dish, sung in Italian; it is, he says, the Italian song his audience uses the most. Because Chefcarmine has his own way of getting his music around: he invites everyone to use it as the soundtrack to their videos, and reposts the best ones. According to him, his fans have already made more than 1,300 of them on Facebook and Instagram; his website shows counters that point the same way, but we could not verify the figure. The pizza is no accident in his repertoire: he cites other Italian songs, \"La Pizza E Pronta\", \"Strada Musica e Pizza Pronta\", \"Fuga o Sforzo\" and \"Baby Ti Amo\", and his Spotify profile also includes \"La Vera Pizza\", alongside more personal songs in English. One thing to say clearly, as Radio Odyssey does for every Discovery concerned: Chefcarmine writes all his lyrics and composes all his songs, but the voice that sings is a synthetic voice, created with artificial intelligence. Writing a song is not the same as singing it: we point it out so that listeners know what they are hearing. The artist confirmed to us in writing that he holds the rights to the composition, lyrics, recording and vocals, and allows Radio Odyssey to play the track and present it here. We were able to check on Spotify and Apple Music the track, its release as a single on 19 November 2025, its length (2 min 20) and the audience of his profile (78 monthly listeners as of 26 November 2026). It is a Discovery a little out of the ordinary, and we own it: a song that makes you hungry, by a chef who sings what he cooks.",
+    why: 'An ode to Naples and its pizza, written by a chef who sings what he cooks: "Napoli — La Pizza Più Buona del Mondo" is the proudly eccentric pick of the Discoveries playlist — to enjoy with a smile, and to share.',
+    linkHref: '/en/ai-music-on-radio-odyssey.html',
+    linkLabel: 'AI music on Radio Odyssey',
+  },
 };
 
 // Les fiches en brouillon de `discoveries.js` (§156) n'ont pas de page anglaise
