@@ -513,9 +513,9 @@ const FICHES = [
   {
     slug: 'dominik-friz',
     name: 'Dominik Friz',
-    // ⚠️ BROUILLON (§156) — en attente : titre confirmé par Frédéric, réponse de
-    // l'artiste au questionnaire de la station (IA, droits), date d'entrée à
-    // l'antenne. Ne rien affirmer sur l'IA avant cette réponse.
+    // ⚠️ BROUILLON (§156) — titre « Lifelines » confirmé par Frédéric (26 novembre).
+    // En attente : réponse de l'artiste au questionnaire de la station (IA, droits),
+    // date d'entrée à l'antenne. Ne rien affirmer sur l'IA avant cette réponse.
     brouillon: true,
     genre: 'Organic house / house mélodique',
     origin: 'Autriche',
