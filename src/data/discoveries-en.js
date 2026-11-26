@@ -365,6 +365,21 @@ export const DISCOVERIES_EN = {
     linkHref: '/en/ai-music-on-radio-odyssey.html',
     linkLabel: 'AI music on Radio Odyssey',
   },
+  'jyun': {
+    genre: 'R&B / pop',
+    origin: 'Japan',
+    since: 'November 2026',
+    photoAlt: 'Cover of the single "Say You Want Me" by JYUN',
+    facts: [
+      "JYUN is an independent artist and producer based in Tokyo, Japan, who releases his music on his own label; he told Radio Odyssey of his own accord that he writes his lyrics, and composes, produces and arranges each track with artificial intelligence production tools, under his artistic direction: the sung vocals are AI-generated.",
+      "\"Say You Want Me\", an R&B / pop single, was released on 5 October 2026; the main version runs 4 min 00 and comes with two remixes, \"After Midnight Disco Mix\" and \"Neon Hi-NRG Mix\" (℗ 2026 JYUN Label).",
+      "His catalogue includes several singles and EPs released since 2024; he also mentions another single, \"Happy Birthday Party\", released on 1 November 2026.",
+    ],
+    portrait: "JYUN is an independent artist and producer based in Tokyo, Japan. He releases his music on his own label, JYUN Label, and \"Say You Want Me\", released on 5 October 2026, is an R&B / pop single with a chorus made for nights in the city. The single brings together the main version (4 min 00, the one Radio Odyssey plays) and two remixes that take the track to the dance floor: an \"After Midnight Disco Mix\" and a \"Neon Hi-NRG Mix\". His catalogue includes several singles and EPs released since 2024, and he mentions another single, \"Happy Birthday Party\", released on 1 November 2026. He explained the way he works to Radio Odyssey of his own accord, after reading what the station says about artificial intelligence: he writes his lyrics, then composes, produces and arranges each track with artificial intelligence production tools, under his artistic direction; the sung vocals are AI-generated. He counts himself among the artists who use AI as a tool, and wants his listeners to know it: Radio Odyssey says so here, as for every Discovery concerned. Radio Odyssey welcomes him in its Discoveries playlist from 30 November 2026 with \"Say You Want Me\".",
+    why: 'Night-time R&B / pop from Tokyo, made with artificial intelligence and openly so: "Say You Want Me" brings a touch of neon and city nights to the station — a discovery to follow from his arrival on 30 November 2026.',
+    linkHref: '/en/ai-music-on-radio-odyssey.html',
+    linkLabel: 'AI music on Radio Odyssey',
+  },
 };
 
 // Les fiches en brouillon de `discoveries.js` (§156) n'ont pas de page anglaise

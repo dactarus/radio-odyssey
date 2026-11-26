@@ -556,6 +556,32 @@ const FICHES = [
     linkHref: '/musique-et-intelligence-artificielle-radio-odyssey.html',
     linkLabel: 'musique et intelligence artificielle sur Radio Odyssey',
   },
+  {
+    slug: 'jyun',
+    name: 'JYUN',
+    genre: 'R&B / pop',
+    origin: 'Japon',
+    active: true,
+    since: 'novembre 2026', // playlist Découvertes à partir du 30 novembre 2026 (Frédéric)
+    // ⚠️ Droits (§158) : réponse aux points 1 et 2 du questionnaire (droits,
+    // autorisation de diffuser et de présenter sur le site) EN ATTENTE — Frédéric
+    // publie quand même. Ne rien écrire sur les droits avant cette réponse.
+    scarcity: 'quasi-absente',
+    tracks: ['Say You Want Me'],
+    // Pochette envoyée par Frédéric, recadrée sur le titre et le nom « JYUN » :
+    // la personne de l'image n'est pas l'artiste (producteur), ne jamais la décrire.
+    photo: '/assets/images/decouvertes/jyun-say-you-want-me.webp',
+    photoAlt: 'Pochette du single « Say You Want Me » de JYUN',
+    facts: [
+      "JYUN est un artiste-producteur indépendant basé à Tokyo, au Japon, qui publie sa musique sous son propre label ; il a déclaré de lui-même à Radio Odyssey écrire ses paroles, et composer, produire et réaliser chaque morceau avec des outils de production à base d’intelligence artificielle, sous sa direction artistique : les voix chantées sont générées par l’IA.",
+      "« Say You Want Me », single R&B / pop, est sorti le 5 octobre 2026 ; la version principale dure 4 min 00 et s’accompagne de deux remixes, « After Midnight Disco Mix » et « Neon Hi-NRG Mix » (℗ 2026 JYUN Label).",
+      "Son catalogue compte plusieurs singles et EP parus depuis 2024 ; il annonce aussi un autre single, « Happy Birthday Party », sorti le 1er novembre 2026.",
+    ],
+    portrait: "JYUN est un artiste-producteur indépendant installé à Tokyo, au Japon. Il publie sa musique sous son propre label, JYUN Label, et « Say You Want Me », sorti le 5 octobre 2026, est un single R&B / pop au refrain taillé pour les nuits en ville. Le single réunit la version principale (4 min 00, celle que diffuse Radio Odyssey) et deux remixes qui tirent le titre vers la piste de danse : un « After Midnight Disco Mix » et un « Neon Hi-NRG Mix ». Son catalogue compte plusieurs singles et EP parus depuis 2024, et il annonce un autre single, « Happy Birthday Party », sorti le 1er novembre 2026. Sa façon de travailler, il l'a exposée de lui-même à Radio Odyssey, après avoir lu ce que la station dit de l'intelligence artificielle : il écrit ses paroles, puis compose, produit et réalise chaque morceau avec des outils de production à base d'intelligence artificielle, sous sa direction artistique ; les voix chantées sont générées par l'IA. Il se range parmi les artistes qui s'appuient sur l'IA comme outil, et tient à ce que ses auditeurs le sachent : Radio Odyssey le dit ici, comme pour chaque Découverte concernée. Radio Odyssey l'accueille dans sa playlist Découvertes à partir du 30 novembre 2026 avec « Say You Want Me ».",
+    why: "Un R&B / pop nocturne venu de Tokyo, conçu avec l'intelligence artificielle et assumé comme tel : « Say You Want Me » apporte à l'antenne une touche de néon et de nuit en ville — une découverte à suivre dès son arrivée le 30 novembre 2026.",
+    linkHref: '/musique-et-intelligence-artificielle-radio-odyssey.html',
+    linkLabel: 'musique et intelligence artificielle sur Radio Odyssey',
+  },
 ];
 
 // Le build de production ignore les fiches en brouillon (voir l'en-tête).
