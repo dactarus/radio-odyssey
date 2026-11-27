@@ -19,6 +19,7 @@ import { EN_NAV_CATEGORIES } from '../../data/i18n.js';
 import NowPlaying from '../../components/NowPlaying.astro';
 import QuizInvite from '../../components/QuizInvite.astro';
 import DecouvertesAccueil from '../../components/DecouvertesAccueil.astro';
+import { GROUPE, RELAX_LANCEE } from '../../data/groupe.js';
 
 // Les huit quiz anglais, pour l'invitation de l'accueil : les cinq décennies
 // et les trois quiz thématiques — records (§94), noms de scène (§96) et
@@ -126,6 +127,19 @@ const faq = [
               <li><a href="https://app.radio-odyssey.com" target="_blank" rel="noopener" style="color:var(--ro-purple);font-weight:700;">The free app</a> — one screen, one button</li>
             </ul>
             <p>This site can also be installed on your phone or computer straight from your browser, and keeps working offline for everything but the stream itself.</p>
+          </div>
+
+          {/* GROUPE — jumeau anglais de l'encart de l'accueil français (27 novembre
+              2026, Frédéric). Mêmes règles : nom complet, aucun mot-clé de détente,
+              un seul lien vers Relax ; le verbe suit RELAX_LANCEE. Lien vers
+              l'accueil ANGLAIS de Relax. */}
+          <div class="content-card">
+            <h2>Two stations, one non-profit</h2>
+            <p>Radio Odyssey is the first station of the Radio Odyssey group. The second one, <strong>Radio Odyssey Relax</strong>, devoted to calm, {RELAX_LANCEE ? 'is now on air' : 'is coming soon'} — free and ad-free as well, with its own website in English.</p>
+            <a href={`${GROUPE.soeur.href}en.html`} class="btn-ro-outline"
+               onclick="if(typeof roUmamiTrack==='function')roUmamiTrack('groupe_click',{cible:'relax',source:'accueil-en'});">
+              {RELAX_LANCEE ? 'Listen to Radio Odyssey Relax' : 'Discover Radio Odyssey Relax'}
+            </a>
           </div>
 
           <FAQBlock items={faq} idPrefix="en-home" lang="en" />
