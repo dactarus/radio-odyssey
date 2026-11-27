@@ -4,8 +4,10 @@
   Seule modification prévue côté Odyssey pour faire exister le groupe
   (décision d'architecture, voie A : voir le CLAUDE.md du dépôt
   radio-odyssey-relax). Utilisé par MegaNav.astro (ordinateur) et
-  Header.astro (panneau mobile), pages françaises seulement : Relax n'a
-  pas de pages anglaises.
+  Header.astro (barre du haut, panneau mobile), en français ET en anglais
+  depuis le 27 novembre 2026 (§162) : Relax est bilingue depuis le 20 novembre.
+  Les pages anglaises lisent GROUPE_EN (lien vers l'accueil anglais de Relax) ;
+  la page du groupe n'existe qu'en français, elle n'y figure pas.
 
   ⚠️ Le jumeau de ce fichier existe dans radio-odyssey-relax, sous le même
   chemin, avec les rôles inversés (Relax « vous y êtes », Odyssey en lien).
@@ -74,3 +76,22 @@ export const GROUPE = {
       : `Nouvelle station — lancement le ${DATE_LANCEMENT_RELAX}`,
   },
 };
+
+// Version anglaise (27 novembre 2026, §162) — jumelle de GROUPE_EN côté Relax.
+const DATE_LANCEMENT_RELAX_EN = _jour.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+export const GROUPE_EN = {
+  label: 'Radio Odyssey group',
+  ici: {
+    nom: 'Radio Odyssey',
+    desc: 'You are here — The Positive Radio',
+  },
+  soeur: {
+    nom: 'Radio Odyssey Relax',
+    href: 'https://relax.radio-odyssey.com/en.html',
+    desc: RELAX_LANCEE
+      ? 'Calming music and guided breathing on the hour'
+      : `New station — launching on ${DATE_LANCEMENT_RELAX_EN}`,
+  },
+};
+
+export const groupe = (lang) => (lang === 'en' ? GROUPE_EN : GROUPE);

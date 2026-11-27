@@ -4,7 +4,7 @@ import MegaNav from './MegaNav.astro';
 import RadioPlayer from './RadioPlayer.astro';
 import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
 import { EN_NAV_CATEGORIES, ACCUEIL, AUTRE_LANGUE, cibleAutreLangue, t } from '../data/i18n.js';
-import { GROUPE, PAGE_GROUPE } from '../data/groupe.js';
+import { groupe, PAGE_GROUPE } from '../data/groupe.js';
 
 /*
   §81 (lot 2) : la navigation était écrite en dur en français. Les 13 pages
@@ -18,6 +18,7 @@ import { GROUPE, PAGE_GROUPE } from '../data/groupe.js';
 */
 interface Props { lang?: 'fr' | 'en'; altLangs?: Partial<Record<'fr' | 'en', string>>; }
 const { lang = 'fr', altLangs } = Astro.props;
+const GROUPE = groupe(lang);
 const autreLangue = AUTRE_LANGUE[lang];
 const hrefAutreLangue = cibleAutreLangue(lang, altLangs);
 const L = t(lang);
@@ -57,9 +58,10 @@ const accueil = ACCUEIL[lang];
     <span></span><span></span><span></span><span></span>
   </div>
   {/* Passage direct vers la station sœur, présent sur toutes les pages
-       françaises (la barre est persistante). Anglais exclu : Relax n'a pas de
-       pages anglaises. Logo + nom sur ordinateur, logo seul sur mobile. */}
-  {lang === 'fr' && (
+       (la barre est persistante), français et anglais depuis le 27 novembre
+       2026 (§162) : en anglais, vers l'accueil anglais de Relax.
+       Logo + nom sur ordinateur, logo seul sur mobile. */}
+  {(
     <a class="bar-groupe" href={GROUPE.soeur.href} title={GROUPE.soeur.desc}
        onclick="if(typeof roUmamiTrack==='function')roUmamiTrack('groupe_click',{cible:'relax',source:'barre'});">
       <img src="/assets/images/logo-relax-72.webp" alt={GROUPE.soeur.nom} width="36" height="36" />
@@ -110,10 +112,11 @@ const accueil = ACCUEIL[lang];
     <span class="nav-cat"><Icon name="house-door-fill" /> {L.accueil}</span>
     <a class="nav-link" href={accueil}><span class="ni"><Icon name="house-door-fill" /></span> {L.pageAccueil}</a>
 
-    {/* Groupe Radio Odyssey : voir src/data/groupe.js. Français seulement.
+    {/* Groupe Radio Odyssey : voir src/data/groupe.js. Français et anglais
+        (§162) ; la page du groupe n'existe qu'en français.
         Placé juste sous l'accueil : en bas d'une liste de ~40 liens, il
         passerait inaperçu. */}
-    {lang === 'fr' && (
+    {(
       <>
         <span class="nav-cat"><Icon name="broadcast" /> {GROUPE.label}</span>
         <a class="nav-link" href={GROUPE.soeur.href}
@@ -121,11 +124,13 @@ const accueil = ACCUEIL[lang];
           <span class="ni"><Icon name="arrow-right" /></span>
           <span><strong>{GROUPE.soeur.nom}</strong><br /><small style="opacity:.75;">{GROUPE.soeur.desc}</small></span>
         </a>
+        {lang === 'fr' && (
         <a class="nav-link" href={PAGE_GROUPE.href}
            onclick="if(typeof roUmamiTrack==='function')roUmamiTrack('groupe_click',{cible:'page-groupe',source:'offcanvas-menu'});">
           <span class="ni"><Icon name="info-circle" /></span>
           <span><strong>{PAGE_GROUPE.label}</strong><br /><small style="opacity:.75;">Deux stations, une même association</small></span>
         </a>
+        )}
       </>
     )}
 

@@ -2,7 +2,7 @@
 import Icon from './Icon.astro';
 import { NAV_CATEGORIES, MENU_APERCU } from '../data/navigation.js';
 import { EN_NAV_CATEGORIES, ACCUEIL, AUTRE_LANGUE, cibleAutreLangue, t } from '../data/i18n.js';
-import { GROUPE, PAGE_GROUPE } from '../data/groupe.js';
+import { groupe, PAGE_GROUPE } from '../data/groupe.js';
 
 // §81 (lot 2) : voir l'en-tête de Header.astro. Côté anglais, structure
 // propre et courte, pas la traduction du menu français.
@@ -12,6 +12,7 @@ const autreLangue = AUTRE_LANGUE[lang];
 const hrefAutreLangue = cibleAutreLangue(lang, altLangs);
 const L = t(lang);
 const categories = lang === 'en' ? EN_NAV_CATEGORIES : NAV_CATEGORIES;
+const GROUPE = groupe(lang);
 const apercu = lang === 'en' ? 99 : MENU_APERCU;
 const avecHub = lang !== 'en';
 const accueil = ACCUEIL[lang];
@@ -131,8 +132,8 @@ const accueil = ACCUEIL[lang];
       ))}
       {/* Groupe Radio Odyssey : voir src/data/groupe.js. Poussé à droite
           (la marge auto passe de la langue au groupe), menu aligné à droite
-          pour ne pas déborder de l'écran. Français seulement. */}
-      {lang === 'fr' && (
+          pour ne pas déborder de l'écran. Français et anglais (§162) ; la page
+          du groupe n'existe qu'en français. */}
         <li class="dropdown ro-mega-nav-search-item">
           <button class="ro-mega-nav-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             {GROUPE.label} <Icon name="chevron-down" style="font-size:.65rem;" />
@@ -151,6 +152,7 @@ const accueil = ACCUEIL[lang];
                 <small>{GROUPE.soeur.desc}</small>
               </a>
             </li>
+            {lang === 'fr' && (<>
             <li><hr class="dropdown-divider" /></li>
             <li>
               <a class="dropdown-item" href={PAGE_GROUPE.href}
@@ -159,10 +161,10 @@ const accueil = ACCUEIL[lang];
                 <small>Deux stations, une même association</small>
               </a>
             </li>
+            </>)}
           </ul>
         </li>
-      )}
-      <li class={lang === 'fr' ? '' : 'ro-mega-nav-search-item'}>
+      <li>
         <a class="ro-mega-nav-toggle" href={hrefAutreLangue} data-astro-reload
            hreflang={autreLangue.code} lang={autreLangue.code} aria-label={autreLangue.aria}>
           {autreLangue.label}
