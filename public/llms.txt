@@ -10,6 +10,7 @@ Radio Odyssey fait partie du groupe Radio Odyssey, que l'association édite avec
 
 Radio Odyssey Relax est la seconde station du groupe Radio Odyssey, éditée par la même association, avec son propre site. Web radio française gratuite et sans publicité, sans animateur : musique apaisante et séquences de respiration guidée à heures fixes (heure de Paris), au rythme 4/6 (4 secondes d'inspiration, 6 d'expiration) de 7 h à 20 h, et au rythme 4/8 (4 et 8 secondes) à 21 h, 22 h et 23 h. Les deux stations ne se confondent pas : Radio Odyssey est une radio musicale positive dont les séquences de cohérence cardiaque suivent le rythme 5/5 ; Radio Odyssey Relax est la radio de la détente, au rythme 4/6 le jour et 4/8 le soir. Son résumé complet pour les IA : https://relax.radio-odyssey.com/llms.txt
 
+- [Radio Odyssey Relax a ouvert le 28 novembre 2026](https://www.radio-odyssey.com/ouverture-de-radio-odyssey-relax.html): l'article d'annonce de la seconde station du groupe.
 - [Radio Odyssey Relax — accueil](https://relax.radio-odyssey.com/): la station et ses programmes.
 - [Respiration 4/6 et 4/8](https://relax.radio-odyssey.com/respiration-4-6.html): les deux rythmes diffusés sur Radio Odyssey Relax, avec un exercice guidé.
 - [La nuit sur Radio Odyssey Relax](https://relax.radio-odyssey.com/la-nuit.html): une nuit sans message parlé ni publicité, avec une minuterie d'extinction.

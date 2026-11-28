@@ -19,7 +19,7 @@
   propose d'écouter, et les cinq renvois de `RenvoiRelax.astro` apparaissent
   en fin de page.
 */
-export const RELAX_LANCEE = false;
+export const RELAX_LANCEE = true;
 
 /*
   Date du lancement public de Radio Odyssey Relax — UNE SEULE SOURCE côté
